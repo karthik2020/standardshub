@@ -44,21 +44,69 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const searchTerm = e.target.value.toLowerCase().trim();
 
-            const links = document.querySelectorAll(".nav-link");
+            const sections = document.querySelectorAll(".section");
 
-            links.forEach((link) => {
+            sections.forEach((section) => {
 
-                const code =
-                    (link.dataset.code || "").toLowerCase();
+                const items = section.querySelector(".section-items");
+                const links = section.querySelectorAll(".nav-link");
 
-                const title =
-                    (link.dataset.title || "").toLowerCase();
+                let visibleCount = 0;
 
-                const matches =
-                    code.includes(searchTerm) ||
-                    title.includes(searchTerm);
+                links.forEach((link) => {
 
-                link.style.display = matches ? "block" : "none";
+                    const code =
+                        (link.dataset.code || "").toLowerCase();
+
+                    const title =
+                        (link.dataset.title || "").toLowerCase();
+
+                    const matches =
+                        searchTerm === "" ||
+                        code.includes(searchTerm) ||
+                        title.includes(searchTerm);
+
+                    link.style.display = matches ? "block" : "none";
+
+                    if (matches) {
+                        visibleCount++;
+                    }
+
+                });
+
+                if (searchTerm === "") {
+
+                    section.style.display = "";
+
+                    const sectionName =
+                        section.dataset.section;
+
+                    const savedState =
+                        localStorage.getItem(
+                            `section-${sectionName}`
+                        );
+
+                    if (savedState === "open") {
+                        items.classList.remove("hidden");
+                        section.classList.add("expanded");
+                    } else {
+                        items.classList.add("hidden");
+                        section.classList.remove("expanded");
+                    }
+
+                } else {
+
+                    section.style.display =
+                        visibleCount > 0
+                            ? ""
+                            : "none";
+
+                    if (visibleCount > 0) {
+                        items.classList.remove("hidden");
+                        section.classList.add("expanded");
+                    }
+
+                }
 
             });
 
