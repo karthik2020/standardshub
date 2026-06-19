@@ -1,0 +1,81 @@
+---
+import standards from "../data/standards.json";
+import NavLink from "./NavLink.astro";
+---
+<aside class="sidebar">
+
+  <div class="sidebar-logo">
+    <h2>StandardsHub</h2>
+  </div>
+
+  <div class="search-box">
+    <input
+      type="text"
+      placeholder="Search standards..."
+    />
+  </div>
+
+ <div class="section section-ias" data-section="ias">
+    <div class="section-header">
+  <span>IAS</span>
+  <span class="arrow"></span>
+</div>
+
+    <div class="section-items">
+  {
+    standards.IAS.map((item) => (
+      <NavLink
+  href={item.url}
+  title={item.title}
+  section="ias"
+>
+  {item.code}
+</NavLink>
+    ))
+  }
+</div>
+  </div>
+
+  <div class="section section-ifrs" data-section="ifrs">
+
+  <div class="section-header">
+    <span>IFRS</span>
+    <span class="arrow"></span>
+  </div>
+
+  <div class="section-items">
+
+    {
+      standards.IFRS.map((item) => (
+        <a href={item.url}>
+          {item.code}
+        </a>
+      ))
+    }
+
+  </div>
+
+</div>
+
+  <div class="section section-indas" data-section="indas">
+
+  <div class="section-header">
+    <span>Ind AS</span>
+    <span class="arrow"></span>
+  </div>
+
+  <div class="section-items">
+
+    {
+      standards.IndAS.map((item) => (
+        <a href={item.url}>
+          {item.code}
+        </a>
+      ))
+    }
+
+  </div>
+
+</div>
+
+</aside>
