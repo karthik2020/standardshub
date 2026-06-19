@@ -10,9 +10,10 @@ import NavLink from "./NavLink.astro";
 
   <div class="search-box">
     <input
-      type="text"
-      placeholder="Search standards..."
-    />
+  id="standard-search"
+  type="text"
+  placeholder="Search standards..."
+/>
   </div>
 
  <div class="section section-ias" data-section="ias">
@@ -24,10 +25,12 @@ import NavLink from "./NavLink.astro";
     <div class="section-items">
   {
     standards.IAS.map((item) => (
-      <NavLink
+     <NavLink
   href={item.url}
   title={item.title}
   section="ias"
+  code={item.code}
+  standardTitle={item.title}
 >
   {item.code}
 </NavLink>
@@ -46,12 +49,18 @@ import NavLink from "./NavLink.astro";
   <div class="section-items">
 
     {
-      standards.IFRS.map((item) => (
-        <a href={item.url}>
-          {item.code}
-        </a>
-      ))
-    }
+  standards.IFRS.map((item) => (
+     <NavLink
+  href={item.url}
+  title={item.title}
+  section="ifrs"
+  code={item.code}
+  standardTitle={item.title}
+>
+  {item.code}
+</NavLink>
+  ))
+}
 
   </div>
 
@@ -67,12 +76,18 @@ import NavLink from "./NavLink.astro";
   <div class="section-items">
 
     {
-      standards.IndAS.map((item) => (
-        <a href={item.url}>
-          {item.code}
-        </a>
-      ))
-    }
+  standards.IndAS.map((item) => (
+    <NavLink
+      href={item.url}
+      title={item.title}
+      section="indas"
+      code={item.code}
+      standardTitle={item.title}
+    >
+      {item.code}
+    </NavLink>
+  ))
+}
 
   </div>
 

@@ -36,5 +36,33 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
     });
+    const searchInput = document.getElementById("standard-search");
 
+    if (searchInput) {
+
+        searchInput.addEventListener("input", (e) => {
+
+            const searchTerm = e.target.value.toLowerCase().trim();
+
+            const links = document.querySelectorAll(".nav-link");
+
+            links.forEach((link) => {
+
+                const code =
+                    (link.dataset.code || "").toLowerCase();
+
+                const title =
+                    (link.dataset.title || "").toLowerCase();
+
+                const matches =
+                    code.includes(searchTerm) ||
+                    title.includes(searchTerm);
+
+                link.style.display = matches ? "block" : "none";
+
+            });
+
+        });
+
+    }
 });
