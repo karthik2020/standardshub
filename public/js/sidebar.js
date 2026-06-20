@@ -114,3 +114,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 });
+document.querySelector(".sidebar").classList.add("loaded");
+const sidebar = document.querySelector(".sidebar");
+
+if (sidebar) {
+
+    const savedScroll =
+        sessionStorage.getItem("sidebar-scroll");
+
+    if (savedScroll) {
+        sidebar.scrollTop = Number(savedScroll);
+    }
+
+    sidebar.addEventListener("scroll", () => {
+        sessionStorage.setItem(
+            "sidebar-scroll",
+            sidebar.scrollTop
+        );
+    });
+
+}
+
+
+
+
+
+
+
+
+
+
