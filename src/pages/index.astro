@@ -1,13 +1,42 @@
 ---
 import StandardLayout from "../layouts/StandardLayout.astro";
+import standards from "../data/standards.json";
 ---
 
 <StandardLayout title="StandardsHub">
 
-  <h1>Welcome to StandardsHub</h1>
+  <section class="hero">
 
-  <p>
-    IAS | IFRS | Ind AS Reference Library
-  </p>
+    <h1>StandardsHub</h1>
+
+    <p>
+      Accounting Standards Reference Library
+    </p>
+
+    <p class="hero-subtitle">
+      Browse IAS, IFRS and Ind AS standards, accounting guidance,
+      financial reporting requirements and reference materials.
+    </p>
+
+  </section>
+
+  <div class="home-grid">
+
+    <a href="/ias/ias1" class="home-card card-ias">
+      <h2>IAS</h2>
+      <p>{standards.IAS.length} Standards</p>
+    </a>
+
+    <a href="/ifrs/ifrs15" class="home-card card-ifrs">
+      <h2>IFRS</h2>
+      <p>{standards.IFRS.length} Standards</p>
+    </a>
+
+    <a href="/indas/indas16" class="home-card card-indas">
+      <h2>Ind AS</h2>
+      <p>{standards.IndAS.length} Standards</p>
+    </a>
+
+  </div>
 
 </StandardLayout>
