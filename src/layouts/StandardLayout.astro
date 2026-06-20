@@ -9,21 +9,29 @@ interface Props {
 const { title } = Astro.props;
 ---
 
-<html>
-  <head>
-    <title>{title} | StandardsHub</title>
-  </head>
+<html lang="en">
 
-  <body>
-    <div class="layout">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-      <Sidebar />
+  <title>{title} | StandardsHub</title>
+</head>
 
-      <main class="content">
-        <slot />
-      </main>
+<body>
 
-    </div>
-    <script is:inline src="/js/sidebar.js"></script>
-  </body>
+  <div class="layout">
+
+    <Sidebar />
+
+    <main class="content">
+      <slot />
+    </main>
+
+  </div>
+
+  <script is:inline src="/js/sidebar.js"></script>
+
+</body>
+
 </html>

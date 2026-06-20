@@ -1,17 +1,111 @@
 ---
-import StandardLayout from "../../layouts/StandardLayout.astro";
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import StandardCard from "../../components/StandardCard.astro";
 ---
 
-<StandardLayout title="IAS 16">
+<StandardPageLayout
+  code="IAS 16"
+  title="Property, Plant and Equipment"
+  category="Assets"
+  objective="Prescribe the accounting treatment for property, plant and equipment so that users of financial statements can understand an entity's investment in PPE and changes in that investment."
+  principle="Recognise PPE when it is probable that future economic benefits will flow to the entity and the cost of the asset can be measured reliably."
+  scope={[
+    "Tangible non-current assets",
+    "Used in production, supply of goods or services, rental to others, or administrative purposes",
+    "Expected to be used for more than one accounting period"
+  ]}
+>
 
-<h1>IAS 16</h1>
+  <div class="standard-cards-grid">
 
-  <p>
-Property, Plant & Equipment
-  </p>
+<StandardCard
+  number="01"
+  title="Initial Measurement"
+  color="blue"
+>
 
-  <p>
-    Content coming soon...
-  </p>
+  PPE is initially measured at cost.
 
-</StandardLayout>
+  Cost includes:
+
+  <ul>
+    <li>Purchase price (net of discounts)</li>
+    <li>Directly attributable costs</li>
+    <li>Initial estimate of dismantling and restoration costs</li>
+  </ul>
+
+</StandardCard>
+
+<StandardCard
+  number="02"
+  title="Depreciation"
+  color="green"
+>
+
+  Depreciation is the systematic allocation of depreciable amount over useful life.
+
+  <ul>
+    <li>Starts when available for use</li>
+    <li>Continues even if asset is idle</li>
+    <li>Stops on derecognition</li>
+  </ul>
+
+  Common methods:
+
+  <ul>
+    <li>Straight-line</li>
+    <li>Reducing balance</li>
+    <li>Units of production</li>
+  </ul>
+
+</StandardCard>
+
+<StandardCard
+  number="03"
+  title="Revaluation"
+  color="orange"
+>
+
+  Optional accounting policy.
+
+  <ul>
+    <li>Entire class of assets must be revalued</li>
+    <li>Carrying amount adjusted to fair value</li>
+    <li>Revalue regularly</li>
+  </ul>
+
+  Increase:
+  OCI → Revaluation Surplus
+
+  <br /><br />
+
+  Decrease:
+  SOPL unless previous surplus exists
+
+</StandardCard>
+
+<StandardCard
+  number="04"
+  title="Derecognition"
+  color="red"
+>
+
+  Remove asset on disposal or when no future economic benefits are expected.
+
+  <br /><br />
+
+  Gain / Loss on disposal:
+
+  <ul>
+    <li>Proceeds</li>
+    <li>Less: Carrying Amount</li>
+  </ul>
+
+  Recognised in SOPL.
+
+</StandardCard>
+```
+
+  </div>
+
+</StandardPageLayout>

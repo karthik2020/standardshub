@@ -1,0 +1,33 @@
+---
+interface Props {
+  number: string;
+  title: string;
+  color?: string;
+}
+
+const {
+  number,
+  title,
+  color = "blue"
+} = Astro.props;
+---
+
+<div class={`standard-card-block ${color}`}>
+
+  <div class="card-number">
+    {number}
+  </div>
+
+  <h3 class="card-title">
+    {title}
+  </h3>
+
+  <div class="card-content">
+
+    <div class="card-summary">
+      <slot />
+    </div>
+
+  </div>
+
+</div>

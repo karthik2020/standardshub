@@ -1,6 +1,19 @@
 ---
 import StandardLayout from "../../layouts/StandardLayout.astro";
 import standards from "../../data/standards.json";
+
+const groupedIAS = /** @type {Record<string, any[]>} */ ({});
+
+for (const item of standards.IAS) {
+
+  const category = item.category;
+
+  if (!groupedIAS[category]) {
+    groupedIAS[category] = [];
+  }
+
+  groupedIAS[category].push(item);
+}
 ---
 
 <StandardLayout title="IAS">
@@ -11,26 +24,121 @@ import standards from "../../data/standards.json";
     Browse all IAS standards.
   </p>
 
-  <div class="standards-grid">
+  <div class="view-toggle">
+
+    <button id="btn-number" class="active">
+      Standard Number
+    </button>
+
+    <button id="btn-category">
+      Category
+    </button>
+
+  </div>
+
+  <div id="number-view">
+
+    <div class="standards-grid">
+
+      {
+        standards.IAS.map((item) => (
+
+          <a href={item.url} class="standard-card">
+
+            <div class="standard-code">
+              {item.code}
+            </div>
+
+            <div class="standard-title">
+              {item.title}
+            </div>
+
+          </a>
+
+        ))
+      }
+
+    </div>
+
+  </div>
+
+  <div id="category-view" style="display:none;">
 
     {
-      standards.IAS.map((item) => (
+      Object.entries(groupedIAS).map(
+        ([category, items]) => (
 
-        <a href={item.url} class="standard-card">
+          <div class="category-group">
 
-          <div class="standard-code">
-            {item.code}
+            <h2>{category}</h2>
+
+            <div class="standards-grid">
+
+              {
+                items.map((item) => (
+
+                  <a
+                    href={item.url}
+                    class="standard-card"
+                  >
+
+                    <div class="standard-code">
+                      {item.code}
+                    </div>
+
+                    <div class="standard-title">
+                      {item.title}
+                    </div>
+
+                  </a>
+
+                ))
+              }
+
+            </div>
+
           </div>
 
-          <div class="standard-title">
-            {item.title}
-          </div>
-
-        </a>
-
-      ))
+        )
+      )
     }
 
   </div>
+
+  <script>
+
+    const btnNumber =
+      document.getElementById("btn-number");
+
+    const btnCategory =
+      document.getElementById("btn-category");
+
+    const numberView =
+      document.getElementById("number-view");
+
+    const categoryView =
+      document.getElementById("category-view");
+
+    btnNumber?.addEventListener("click", () => {
+
+      numberView.style.display = "block";
+      categoryView.style.display = "none";
+
+      btnNumber.classList.add("active");
+      btnCategory.classList.remove("active");
+
+    });
+
+    btnCategory?.addEventListener("click", () => {
+
+      numberView.style.display = "none";
+      categoryView.style.display = "block";
+
+      btnCategory.classList.add("active");
+      btnNumber.classList.remove("active");
+
+    });
+
+  </script>
 
 </StandardLayout>

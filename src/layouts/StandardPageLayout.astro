@@ -1,0 +1,101 @@
+---
+import StandardLayout from "./StandardLayout.astro";
+
+interface Props {
+  code: string;
+  title: string;
+  category?: string;
+  objective?: string;
+  principle?: string;
+  scope?: string[];
+}
+
+const {
+  code,
+  title,
+  category,
+  objective,
+  principle,
+  scope = []
+} = Astro.props;
+---
+
+<StandardLayout title={code}>
+
+  <div class="standard-header">
+
+    <h1>{code}</h1>
+
+    <p class="standard-subtitle">
+      {title}
+    </p>
+
+    <div class="standard-badges">
+
+      {
+        category && (
+          <span class="standard-badge category">
+            {category}
+          </span>
+        )
+      }
+
+      <span class="standard-badge type">
+        IAS
+      </span>
+
+    </div>
+
+  </div>
+
+  <div class="standard-overview">
+
+  {
+    objective && (
+      <section>
+
+        <h2>Objective</h2>
+
+        <p>{objective}</p>
+
+      </section>
+    )
+  }
+
+  {
+    principle && (
+      <section>
+
+        <h2>Core Principle</h2>
+
+        <p>{principle}</p>
+
+      </section>
+    )
+  }
+
+  {
+    scope.length > 0 && (
+      <section>
+
+        <h2>Scope</h2>
+
+        <ul>
+
+          {
+            scope.map((item) => (
+              <li>{item}</li>
+            ))
+          }
+
+        </ul>
+
+      </section>
+    )
+  }
+
+</div>
+
+  <slot />
+
+</StandardLayout>
