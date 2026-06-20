@@ -1,0 +1,36 @@
+---
+import StandardLayout from "../../layouts/StandardLayout.astro";
+import standards from "../../data/standards.json";
+---
+
+<StandardLayout title="IFRS">
+
+  <h1>International Financial Reporting Standards</h1>
+
+  <p class="category-description">
+    Browse all IFRS standards.
+  </p>
+
+  <div class="standards-grid">
+
+    {
+      standards.IFRS.map((item) => (
+
+        <a href={item.url} class="standard-card">
+
+          <div class="standard-code">
+            {item.code}
+          </div>
+
+          <div class="standard-title">
+            {item.title}
+          </div>
+
+        </a>
+
+      ))
+    }
+
+  </div>
+
+</StandardLayout>
