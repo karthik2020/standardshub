@@ -16,14 +16,40 @@ const {
   category,
   objective,
   principle,
-  scope = []
+  scope = [],
+  related = [],
 } = Astro.props;
+
+interface Props {
+  code: string;
+  title: string;
+  category?: string;
+  objective?: string;
+  principle?: string;
+  scope?: string[];
+  related?: {
+    code: string;
+    title: string;
+    url: string;
+  }[];
+}
 ---
 
 <StandardLayout title={code}>
+  <nav class="breadcrumbs">
+    <a href="/">Home</a>
 
+    <span class="breadcrumb-separator">›</span>
+
+    <a href="/ias">IAS</a>
+
+    <span class="breadcrumb-separator">›</span>
+
+    <span class="breadcrumb-current">
+      {code}
+    </span>
+  </nav>
   <div class="standard-header">
-
     <h1>{code}</h1>
 
     <p class="standard-subtitle">
@@ -31,71 +57,67 @@ const {
     </p>
 
     <div class="standard-badges">
+      {category && <span class="standard-badge category">{category}</span>}
 
-      {
-        category && (
-          <span class="standard-badge category">
-            {category}
-          </span>
-        )
-      }
-
-      <span class="standard-badge type">
-        IAS
-      </span>
-
+      <span class="standard-badge type"> IAS </span>
     </div>
-
   </div>
 
-  <div class="standard-overview">
+  <div class="overview-card">
+    <div class="overview-header">
+      <div class="overview-title">Overview</div>
+    </div>
+    {
+      objective && (
+        <section>
+          <h2>Objective</h2>
 
-  {
-    objective && (
-      <section>
+          <p>{objective}</p>
+        </section>
+      )
+    }
 
-        <h2>Objective</h2>
+    {
+      principle && (
+        <section>
+          <h2>Core Principle</h2>
 
-        <p>{objective}</p>
+          <p>{principle}</p>
+        </section>
+      )
+    }
 
-      </section>
-    )
-  }
+    {
+      scope.length > 0 && (
+        <section>
+          <h2>Scope</h2>
 
-  {
-    principle && (
-      <section>
-
-        <h2>Core Principle</h2>
-
-        <p>{principle}</p>
-
-      </section>
-    )
-  }
-
-  {
-    scope.length > 0 && (
-      <section>
-
-        <h2>Scope</h2>
-
-        <ul>
-
-          {
-            scope.map((item) => (
+          <ul>
+            {scope.map((item) => (
               <li>{item}</li>
-            ))
-          }
-
-        </ul>
-
-      </section>
-    )
-  }
-
-</div>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+  </div>
 
   <slot />
+  {
+    related.length > 0 && (
+      <div class="related-standards">
+        <div class="related-title">Related Standards</div>
 
+        <div class="related-grid">
+          {related.map((item) => (
+            <a href={item.url} class="related-card">
+              <div class="related-code">{item.code}</div>
+
+              <div class="related-name">{item.title}</div>
+            </a>
+          ))}
+        </div>
+      </div>
+    )
+  }
 </StandardLayout>

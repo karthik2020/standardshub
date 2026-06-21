@@ -1,6 +1,5 @@
 ---
 import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
-import StandardCard from "../../components/StandardCard.astro";
 import "../../styles/standards-poster.css";
 ---
 
@@ -8,44 +7,183 @@ import "../../styles/standards-poster.css";
   code="IAS 16"
   title="Property, Plant and Equipment"
   category="Assets"
-  objective="Prescribe the accounting treatment for property, plant and equipment so that users of financial statements can understand an entity's investment in PPE and changes in that investment."
-  principle="Recognise PPE when it is probable that future economic benefits will flow to the entity and the cost of the asset can be measured reliably."
+  objective="Prescribe the accounting treatment for property, plant and equipment so that users can understand an entity's investment in PPE and changes in that investment."
+  principle="Recognise PPE when future economic benefits are probable and cost can be measured reliably."
   scope={[
     "Tangible non-current assets",
     "Used in production, supply of goods or services, rental to others, or administrative purposes",
-    "Expected to be used for more than one accounting period"
+    "Expected to be used for more than one accounting period",
+  ]}
+  related={[
+    {
+      code: "IAS 23",
+      title: "Borrowing Costs",
+      url: "/ias/ias23",
+    },
+    {
+      code: "IAS 36",
+      title: "Impairment of Assets",
+      url: "/ias/ias36",
+    },
+    {
+      code: "IAS 38",
+      title: "Intangible Assets",
+      url: "/ias/ias38",
+    },
+    {
+      code: "IAS 40",
+      title: "Investment Property",
+      url: "/ias/ias40",
+    },
   ]}
 >
-
   <div class="poster-grid">
+    <!-- 01 Initial Measurement -->
 
-  <!-- Initial Measurement -->
+    <div class="poster-card info">
+      <div class="poster-number">01</div>
 
-  <div class="poster-card info">
+      <div class="poster-title info">Initial Measurement</div>
 
-    <div class="poster-number">
-      01
+      <div class="poster-principle">
+        Recognise when future economic benefits are probable and cost is
+        reliably measurable. Measure at cost: purchase price + directly
+        attributable costs + estimated dismantling obligation.
+      </div>
+
+      <div class="poster-label">JOURNAL ENTRIES</div>
+
+      <div class="poster-group">
+        <div class="poster-group-label">Acquisition</div>
+
+        <div class="poster-entry">
+          <span class="poster-dr">Dr</span>
+
+          <div class="poster-text">
+            PPE — at cost
+
+            <div class="poster-badges">
+              <span class="poster-badge sofp"> SOFP — non-current assets </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="poster-entry">
+          <span class="poster-cr">Cr</span>
+
+          <div class="poster-text">
+            Cash / Payables
+
+            <div class="poster-badges">
+              <span class="poster-badge sofp"> SOFP </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="poster-note">No SOPL impact at initial recognition.</div>
     </div>
 
-    <div class="poster-title info">
-      Initial Measurement
+    <!-- 02 Depreciation -->
+
+    <div class="poster-card success">
+      <div class="poster-number">02</div>
+
+      <div class="poster-title success">Depreciation</div>
+
+      <div class="poster-principle">
+        Systematic allocation of depreciable amount (cost − residual value) over
+        useful life.
+      </div>
+
+      <div class="poster-label">JOURNAL ENTRIES</div>
+
+      <div class="poster-entry">
+        <span class="poster-dr">Dr</span>
+
+        <div class="poster-text">
+          Depreciation Expense
+
+          <div class="poster-badges">
+            <span class="poster-badge sopl"> SOPL — operating expense </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="poster-entry">
+        <span class="poster-cr">Cr</span>
+
+        <div class="poster-text">
+          Accumulated Depreciation
+
+          <div class="poster-badges">
+            <span class="poster-badge sofp"> SOFP </span>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="poster-principle">
-      Recognise when future economic benefits
-      are probable and cost is reliably measurable.
+    <!-- 03 Revaluation -->
+
+    <div class="poster-card warning">
+      <div class="poster-number">03</div>
+
+      <div class="poster-title warning">Revaluation</div>
+
+      <div class="poster-principle">
+        Optional accounting policy. Apply to an entire class of assets.
+      </div>
+
+      <div class="poster-label">KEY IMPACTS</div>
+
+      <div class="poster-text">
+        Upward revaluation → OCI
+        <br />
+        Creates revaluation surplus
+        <br />
+        Downward revaluation → SOPL unless surplus exists
+      </div>
     </div>
 
+    <!-- 04 Derecognition -->
+
+    <div class="poster-card danger">
+      <div class="poster-number">04</div>
+
+      <div class="poster-title danger">Derecognition</div>
+
+      <div class="poster-principle">
+        Remove asset on disposal or when no future economic benefits are
+        expected.
+      </div>
+
+      <div class="poster-label">GAIN / LOSS</div>
+
+      <div class="poster-text">
+        Proceeds
+        <br />
+        Less: Carrying Amount
+        <br /><br />
+        Recognise gain or loss in SOPL.
+      </div>
+    </div>
   </div>
 
-  <!-- Depreciation -->
+  <div class="poster-legend">
+    <div class="poster-legend-title">Financial Statement Key</div>
 
-  <div class="poster-card success">
+    <div class="poster-legend-row">
+      <span class="poster-badge sofp">SOFP</span>
+      Statement of Financial Position
 
-    ...
+      <span class="poster-badge sopl">SOPL</span>
+      Statement of Profit or Loss
 
+      <span class="poster-badge oci">OCI</span>
+      Other Comprehensive Income
+
+      <span class="poster-badge equity">Equity</span>
+      Equity Section
+    </div>
   </div>
-
-</div>
-
 </StandardPageLayout>

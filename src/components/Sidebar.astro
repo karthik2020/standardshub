@@ -2,98 +2,97 @@
 import standards from "../data/standards.json";
 import NavLink from "./NavLink.astro";
 ---
-<aside class="sidebar">
 
+<aside class="sidebar">
   <div class="sidebar-logo">
     <h2>StandardsHub</h2>
   </div>
-
-  <div class="search-box">
-    <input
-  id="standard-search"
-  type="text"
-  placeholder="Search standards..."
-/>
-<div class="search-help">
-  Search by code or title (e.g. IAS 16, revenue, property)
-</div>
+  <div class="sidebar-search-card">
+    <div class="search-box">
+      <input
+        id="standard-search"
+        type="text"
+        placeholder="Search standards..."
+      />
+      <div class="search-help">
+        Search by code or title (e.g. IAS 16, revenue, property)
+      </div>
+    </div>
   </div>
+  <div class="sidebar-scroll">
+    <div class="section section-ias" data-section="ias">
+      <div class="section-header">
+        <span>IAS ({standards.IAS.length})</span>
+        <span class="arrow"></span>
+      </div>
 
- <div class="section section-ias" data-section="ias">
-    <div class="section-header">
-  <span>IAS ({standards.IAS.length})</span>
-  <span class="arrow"></span>
-</div>
+      <div class="section-items">
+        <div class="sidebar-items">
+          {
+            standards.IAS.map((item) => (
+              <NavLink
+                href={item.url}
+                title={item.title}
+                section="ias"
+                code={item.code}
+                standardTitle={item.title}
+              >
+                {item.code}
+              </NavLink>
+            ))
+          }
+        </div>
+      </div>
+    </div>
 
-    <div class="section-items">
-  {
-    standards.IAS.map((item) => (
-     <NavLink
-  href={item.url}
-  title={item.title}
-  section="ias"
-  code={item.code}
-  standardTitle={item.title}
->
-  {item.code}
-</NavLink>
-    ))
-  }
-</div>
+    <div class="section section-ifrs" data-section="ifrs">
+      <div class="section-header">
+        <span>IFRS ({standards.IFRS.length})</span>
+        <span class="arrow"></span>
+      </div>
+
+      <div class="section-items">
+        <div class="sidebar-items">
+          {
+            standards.IFRS.map((item) => (
+              <NavLink
+                href={item.url}
+                title={item.title}
+                section="ifrs"
+                code={item.code}
+                standardTitle={item.title}
+              >
+                {item.code}
+              </NavLink>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="section section-indas" data-section="indas">
+      <div class="section-header">
+        <span>Ind AS ({standards.IndAS.length})</span>
+        <span class="arrow"></span>
+      </div>
+
+      <div class="section-items">
+        <div class="sidebar-items">
+          {
+            standards.IndAS.map((item) => (
+              <NavLink
+                href={item.url}
+                title={item.title}
+                section="indas"
+                code={item.code}
+                standardTitle={item.title}
+              >
+                {item.code}
+              </NavLink>
+            ))
+          }
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="section section-ifrs" data-section="ifrs">
-
-  <div class="section-header">
-    <span>IFRS ({standards.IFRS.length})</span>
-    <span class="arrow"></span>
-  </div>
-
-  <div class="section-items">
-
-    {
-  standards.IFRS.map((item) => (
-     <NavLink
-  href={item.url}
-  title={item.title}
-  section="ifrs"
-  code={item.code}
-  standardTitle={item.title}
->
-  {item.code}
-</NavLink>
-  ))
-}
-
-  </div>
-
-</div>
-
-  <div class="section section-indas" data-section="indas">
-
-  <div class="section-header">
-    <span>Ind AS ({standards.IndAS.length})</span>
-    <span class="arrow"></span>
-  </div>
-
-  <div class="section-items">
-
-    {
-  standards.IndAS.map((item) => (
-    <NavLink
-      href={item.url}
-      title={item.title}
-      section="indas"
-      code={item.code}
-      standardTitle={item.title}
-    >
-      {item.code}
-    </NavLink>
-  ))
-}
-
-  </div>
-
-</div>
-
 </aside>
