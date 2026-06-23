@@ -8,6 +8,7 @@ interface Props {
   objective?: string;
   principle?: string;
   scope?: string[];
+  standardType?: string;
 }
 
 const {
@@ -18,7 +19,14 @@ const {
   principle,
   scope = [],
   related = [],
+  standardType = "IAS",
 } = Astro.props;
+const breadcrumbClass =
+  standardType === "IFRS"
+    ? "breadcrumbs-ifrs"
+    : standardType === "Ind AS"
+      ? "breadcrumbs-indas"
+      : "breadcrumbs-ias";
 
 interface Props {
   code: string;
@@ -36,14 +44,16 @@ interface Props {
 ---
 
 <StandardLayout title={code}>
-  <nav class="breadcrumbs">
-    <a href="/">Home</a>
+  <nav class={`breadcrumbs ${breadcrumbClass}`}>
+    <a href="/"> Home </a>
 
-    <span class="breadcrumb-separator">›</span>
+    <span class="breadcrumb-separator"> ❯ </span>
 
-    <a href="/ias">IAS</a>
+    <a href="#">
+      {standardType}
+    </a>
 
-    <span class="breadcrumb-separator">›</span>
+    <span class="breadcrumb-separator"> ❯ </span>
 
     <span class="breadcrumb-current">
       {code}

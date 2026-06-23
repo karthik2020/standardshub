@@ -1,17 +1,507 @@
 ---
-import StandardLayout from "../../layouts/StandardLayout.astro";
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import "../../styles/standards-poster.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
 ---
 
-<StandardLayout title="IAS 38">
+<StandardPageLayout
+  code="IAS 38"
+  standardType="IAS"
+  title="Intangible Assets"
+  category="Assets"
+  objective="Prescribe the accounting treatment for intangible assets not dealt with specifically in another IFRS."
+  principle="Recognise an intangible asset only when future economic benefits are probable and cost can be measured reliably."
+  scope={[
+    "Identifiable non-monetary assets without physical substance",
+    "Includes purchased and internally generated development assets",
+    "Excludes goodwill, financial assets and certain specialised assets",
+  ]}
+  related={[
+    {
+      code: "IAS 16",
+      title: "Property, Plant and Equipment",
+      url: "/ias/ias16",
+    },
+    {
+      code: "IAS 36",
+      title: "Impairment of Assets",
+      url: "/ias/ias36",
+    },
+    {
+      code: "IAS 23",
+      title: "Borrowing Costs",
+      url: "/ias/ias23",
+    },
+    {
+      code: "IFRS 3",
+      title: "Business Combinations",
+      url: "/ifrs/ifrs3",
+    },
+  ]}
+>
+  <div class="poster-grid">
+    <!-- 01 Initial Measurement -->
 
-<h1>IAS 38</h1>
+    <div class="poster-card info">
+      <div class="poster-number">01</div>
 
-  <p>
-Intangible Assets
-  </p>
+      <div class="poster-title info">Recognition & initial measurement</div>
 
-  <p>
-    Content coming soon...
-  </p>
+      <div class="poster-principle">
+        An intangible asset is an identifiable non-monetary asset without
+        physical substance. Three tests must all be met before recognition
+      </div>
 
-</StandardLayout>
+      <div class="poster-section-title">THREE RECOGNITION TESTS</div>
+      <ul>
+        <li>
+          <strong>Identifiability</strong> — separable (can be sold/licensed) OR arises
+          from contractual/legal rights
+        </li>
+        <li>
+          <strong>Control</strong> — entity can obtain benefits and restrict others'
+          access
+        </li>
+        <li>
+          <strong>Economic benefit + measurability</strong> — probable future inflows,
+          cost reliably measurable
+        </li>
+      </ul>
+      <div class="poster-divider"></div>
+      <div class="poster-section-title">
+        JOURNAL ENTRIES — INITIAL RECOGNITION
+      </div>
+
+      <div class="poster-group">
+        <div class="poster-group-label">
+          Separate acquisition (or from a business combination at FV)
+        </div>
+
+        <div class="poster-entry">
+          <span class="poster-dr">Dr</span>
+
+          <div class="poster-text">
+            Intangible asset — at cost / FV
+
+            <div class="poster-badges">
+              <span class="poster-badge sofp"> SOFP — non-current assets </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="poster-entry">
+          <span class="poster-cr">Cr</span>
+
+          <div class="poster-text">
+            Cash / payables (or goodwill in IFRS 3)
+
+            <div class="poster-badges">
+              <span class="poster-badge sofp"> SOFP </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="poster-note">
+        No SOPL impact on initial recognition. In a business combination, all
+        identifiable intangibles are recognised separately from goodwill at fair
+        value — even if not previously recognised by the acquiree.
+      </div>
+    </div>
+
+    <!-- 02 Depreciation -->
+
+    <div class="poster-card success">
+      <div class="poster-number">02</div>
+
+      <div class="poster-title success">
+        Internally generated intangibles — R&D
+      </div>
+
+      <div class="poster-principle">
+        Expenditure must be classified into a research phase and a development
+        phase. Research is always expensed. Development is capitalised only if
+        all six criteria are met.
+      </div>
+
+      <div class="poster-section-title">RESEARCH PHASE — always expense</div>
+
+      <div class="poster-entry">
+        <span class="poster-dr">Dr</span>
+
+        <div class="poster-text">
+          Research expense
+
+          <div class="poster-badges">
+            <span class="poster-badge sopl"> SOPL — operating expense </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="poster-entry">
+        <span class="poster-cr">Cr</span>
+
+        <div class="poster-text">
+          Cash / payables
+          <div class="poster-badges">
+            <span class="poster-badge sofp"> SOFP </span>
+          </div>
+        </div>
+      </div><div class="poster-divider"></div>
+      <div class="poster-section-title">
+        DEVELOPMENT PHASE — capitalise if ALL six criteria met (PIRATE)
+      </div>
+      <div class="poster-principle">
+        <ul>
+          <li><strong>P</strong> — Probable future economic benefits</li>
+          <li><strong>I</strong> — Intention to complete and use/sell</li>
+          <li><strong>R</strong> — Resources adequate to complete</li>
+          <li><strong>A</strong> — Ability to use or sell</li>
+          <li><strong>T</strong> — Technical feasibility of completion</li>
+          <li><strong>E</strong> — Expenditure reliably measurable</li>
+        </ul>
+      </div>
+      <div class="poster-entry">
+        <span class="poster-dr">Dr</span>
+
+        <div class="poster-text">
+          Development costs (intangible asset)
+          <div class="poster-badges">
+            <span class="poster-badge sopl"> SOFP — NCAs </span>
+          </div>
+        </div>
+      </div>
+      <div class="poster-entry">
+        <span class="poster-cr">Cr</span>
+
+        <div class="poster-text">
+          Cash / payables
+          <div class="poster-badges">
+            <span class="poster-badge sofp"> SOFP </span>
+          </div>
+        </div>
+      </div>
+      <div class="poster-group-label">
+        If criteria are NOT met → expense as incurred (SOPL). Once expensed,
+        cannot be reinstated as an asset in a later period.
+      </div>
+      <div class="poster-divider"></div>
+      <div class="poster-section-title">
+        CANNOT EVER BE RECOGNISED (IAS 38.63)
+      </div>
+      <ul class="poster-list-x">
+        <li>Internally generated goodwill</li>
+        <li>Internally generated brands & mastheads</li>
+        <li>Publishing titles & customer lists</li>
+        <li>Start-up, training & advertising costs</li>
+      </ul>
+    </div>
+
+    <!-- 03 Revaluation -->
+
+    <div class="poster-card warning">
+      <div class="poster-number">03</div>
+
+      <div class="poster-title warning">Subsequent measurement</div>
+
+      <div class="poster-principle">
+        Choose cost model or revaluation model as an accounting policy.
+        Revaluation is only possible where an active market exists — which is
+        rare for intangibles.
+      </div>
+
+      <div class="poster-section-title">COST MODEL (most common)</div>
+
+      <div class="poster-text">
+        Carrying amount = Cost − Accumulated amortisation − Accumulated
+        impairment losses
+        <br />
+        <span
+          style="font-size:11px;font-weight:500;color:var(--color-text-primary);min-width:14px;"
+          >↳</span
+        > Intangible asset (net)
+        <div class="poster-badges">
+          <span class="poster-badge sofp"> SOFP — NCAs </span>
+        </div>
+      </div>
+      <div class="poster-divider"></div>
+      <div class="poster-section-title">
+        REVALUATION MODEL (requires active market — rare)
+      </div>
+
+      <div class="poster-group">
+        <div class="poster-group-label">
+          Upward revaluation — no prior deficit on this asset
+        </div>
+
+        <div class="poster-entry">
+          <span class="poster-dr">Dr</span>
+
+          <div class="poster-text">
+            Intangible asset — at cost / FV
+
+            <div class="poster-badges">
+              <span class="poster-badge sofp"> SOFP — NCAs </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="poster-entry">
+          <span class="poster-cr">Cr</span>
+
+          <div class="poster-text">
+            Intangible asset — decrease to FV
+
+            <div class="poster-badges">
+              <span class="poster-badge oci"> OCI </span><span
+                class="poster-badge equity"
+              >
+                SOFP — equity
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="poster-group-label">
+          Downward revaluation — no prior surplus on this asset
+        </div>
+
+        <div class="poster-entry">
+          <span class="poster-dr">Dr</span>
+
+          <div class="poster-text">
+            Revaluation loss
+
+            <div class="poster-badges">
+              <span class="poster-badge sopl"> SOPL — expense </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="poster-entry">
+          <span class="poster-cr">Cr</span>
+
+          <div class="poster-text">
+            Intangible asset — decrease to FV
+            <div class="poster-badges">
+              <span class="poster-badge sofp"> SOFP — NCAs </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="poster-note">
+        Reversal rules mirror IAS 16: upward after prior deficit → credit SOPL
+        first (up to deficit amount), excess to OCI. Downward after prior
+        surplus → debit OCI/equity first, excess to SOPL. Must apply revaluation
+        model to entire class of assets.
+      </div>
+    </div>
+
+    <!-- 04 Amortisation -->
+
+    <div class="poster-card danger">
+      <div class="poster-number">04</div>
+
+      <div class="poster-title danger">Amortisation</div>
+      <div class="poster-principle">
+        The useful life assessment drives everything. A finite life triggers
+        systematic amortisation through SOPL. An indefinite life means no
+        amortisation — but a mandatory annual impairment test instead.
+      </div>
+
+      <div class="poster-columns">
+        <div>
+          <div class="poster-pill poster-pill-info">Finite useful life</div>
+          <div class="poster-section-title">JOURNAL ENTRY (each period)</div>
+
+          <div class="poster-entry">
+            <span class="poster-dr">Dr</span>
+
+            <div class="poster-text">
+              Amortisation expense
+              <div class="poster-badges">
+                <span class="poster-badge sopl"> SOPL — expense </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="poster-entry">
+            <span class="poster-cr">Cr</span>
+
+            <div class="poster-text">
+              Accumulated amortisation
+
+              <div class="poster-badges">
+                <span class="poster-badge sofp"> SOFP — reduces CA </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="poster-note">
+            <strong>Method:</strong> reflects consumption of economic benefits (straight-line
+            is most common). Residual value presumed nil unless third party committed
+            to purchase. Review UL & method annually.
+          </div>
+        </div>
+
+        <div>
+          <div class="poster-pill poster-pill-warning">
+            Indefinite useful life
+          </div>
+          <div class="poster-section-title">NO AMORTISATION</div>
+          <div class="poster-text">No charge to SOPL from amortisation.</div>
+          <div class="poster-note">
+            Annual impairment test required under IAS 36 — regardless of whether
+            indicators exist. Review useful life annually; reclassify to finite
+            if circumstances change (prospective). Impairment loss (if any) →
+            SOPL.
+          </div>
+        </div>
+      </div>
+
+      <div class="poster-divider"></div>
+      <div class="poster-section-title">CHANGE IN AMORTISATION ESTIMATE</div>
+      <div class="poster-text">
+        Changes in useful life, residual value or method are accounting
+        estimates under IAS 8 — applied prospectively. No restatement of prior
+        periods.
+      </div>
+    </div>
+
+    <!-- 05 Derecognition -->
+
+    <div class="poster-card teal poster-card-full">
+      <div class="poster-number">04</div>
+
+      <div class="poster-title teal">Amortisation</div>
+      <div class="poster-principle">
+        Remove the intangible asset when disposed of or when no future economic
+        benefits are expected. The resulting gain or loss is the difference
+        between net disposal proceeds and the carrying amount, recognised
+        immediately in SOPL.
+      </div>
+
+      <div class="poster-columns">
+        <div>
+          <div class="poster-section-title">JOURNAL ENTRY</div>
+
+          <div class="poster-entry">
+            <span class="poster-dr">Dr</span>
+
+            <div class="poster-text">
+              Accumulated amortisation
+              <div class="poster-badges">
+                <span class="poster-badge sofp">
+                  SOFP — clears credit balance
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="poster-entry">
+            <span class="poster-dr">Dr</span>
+
+            <div class="poster-text">
+              Cash / receivable (proceeds)
+              <div class="poster-badges">
+                <span class="poster-badge sofp"> SOFP </span>
+              </div>
+            </div>
+          </div>
+          <div class="poster-entry">
+            <span class="poster-dr">Dr</span>
+
+            <div class="poster-text">
+              [if loss] Loss on disposal
+              <div class="poster-badges">
+                <span class="poster-badge sopl"> SOPL — expense </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="poster-entry">
+            <span class="poster-cr">Cr</span>
+
+            <div class="poster-text">
+              Intangible asset — at cost
+
+              <div class="poster-badges">
+                <span class="poster-badge sofp"> SOFP — NCAs</span>
+              </div>
+            </div>
+          </div>
+          <div class="poster-entry">
+            <span class="poster-cr">Cr</span>
+
+            <div class="poster-text">
+              [if gain] Gain on disposal
+
+              <div class="poster-badges">
+                <span class="poster-badge sopl"> SOPL — income </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="poster-section-title">
+            REVALUATION SURPLUS ON DISPOSAL
+          </div>
+          <div class="poster-entry">
+            <span class="poster-dr">Dr</span>
+
+            <div class="poster-text">
+              Revaluation surplus
+              <div class="poster-badges">
+                <span class="poster-badge equity"> SOFP — equity</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="poster-entry">
+            <span class="poster-cr">Cr</span>
+
+            <div class="poster-text">
+              Accumulated amortisation
+
+              <div class="poster-badges">
+                <span class="poster-badge equity">
+                  SOFP — equity (bypass SOPL)
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="poster-divider"></div>
+          <div class="poster-section-title">KEY NOTES</div>
+          <div class="poster-text">
+            Gain/loss presented as other income/expense in SOPL — not revenue.
+            For internally generated development costs, carrying amount used in
+            calculation is the capitalised cost net of amortisation and
+            impairment (not original expenditure). If an active market ceases to
+            exist for a revalued intangible, switch to cost model and use last
+            revalued amount as deemed cost.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="poster-legend">
+    <div class="poster-legend-title">Financial Statement Key</div>
+
+    <div class="poster-legend-row">
+      <span class="poster-badge sofp">SOFP</span>
+      Statement of financial position (balance sheet)
+
+      <span class="poster-badge sopl">SOPL</span>
+      Statement of profit or loss (income statement)
+      <span class="poster-badge oci">OCI</span>
+      Other Comprehensive Income
+
+      <span class="poster-badge equity">SOFP — Equity</span>
+      Equity section (retained earnings / revaluation surplus)
+    </div>
+  </div>
+  <HistoryTimeline items={history.IAS38} />
+</StandardPageLayout>
