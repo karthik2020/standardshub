@@ -1,37 +1,59 @@
 ---
 import "../styles/site.css";
+import "../styles/theme.css";
+import "../styles/reading.css";
 import Sidebar from "../components/Sidebar.astro";
-
+import ReadingPreferences from "../components/ReadingPreferences.astro";
+import Header from "../components/Header.astro";
 interface Props {
+  code: string;
   title: string;
+  framework: string;
 }
+const {
+  code,
 
-const { title } = Astro.props;
+  title,
+
+  framework,
+} = Astro.props;
 ---
 
-<html lang="en">
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} | StandardsHub</title>
+  </head>
 
-  <title>{title} | StandardsHub</title>
-</head>
+  <body>
+    <div class="app-shell">
+      <Header code={code} title={title} framework={framework}>
+        <ReadingPreferences />
+      </Header>
 
-<body>
+      <div class="app-body">
+        <Sidebar />
 
-  <div class="layout">
+        <main class="content">
+          <div class="page-body">
+            <div class="page-content">
+              <slot />
+            </div>
 
-    <Sidebar />
+            <aside class="page-toc">
+              <slot name="toc" />
+            </aside>
+          </div>
+        </main>
+      </div>
+    </div>
 
-    <main class="content">
-      <slot />
-    </main>
-
-  </div>
-
-  <script is:inline src="/js/sidebar.js"></script>
-
-</body>
-
+    <script is:inline src="/js/sidebar.js"></script>
+    <script is:inline src="/js/preferences.js"></script>
+    <script is:inline src="/js/toc.js"></script>
+    <script is:inline src="/js/search.js"></script>
+    <script is:inline src="/js/theme.js"></script>
+  </body>
 </html>

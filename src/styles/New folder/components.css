@@ -1,0 +1,379 @@
+/* ==========================================================
+   TOOLBAR BUTTONS
+========================================================== */
+
+.toolbar-btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    width: 38px;
+
+    height: 38px;
+
+    border: 1px solid transparent;
+
+    border-radius: var(--radius-md);
+
+    background: transparent;
+
+    color: var(--text-secondary);
+
+    cursor: pointer;
+
+    transition:
+        background var(--duration-fast) var(--ease),
+        color var(--duration-fast) var(--ease),
+        border-color var(--duration-fast) var(--ease);
+
+}
+
+.toolbar-btn:hover {
+
+    background: var(--hover);
+
+    color: var(--text);
+
+}
+
+.toolbar-btn.active {
+
+    background: var(--surface-secondary);
+
+    border-color: var(--border);
+
+}
+
+
+/* ==========================================================
+   ICON BUTTONS
+========================================================== */
+
+.icon-btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 36px;
+
+    height: 36px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: transparent;
+
+    color: var(--text-secondary);
+
+    cursor: pointer;
+
+    transition: .18s;
+
+}
+
+.icon-btn:hover {
+
+    background: var(--hover);
+
+    color: var(--text);
+
+}
+
+
+/* ==========================================================
+   DIVIDER
+========================================================== */
+
+.toolbar-divider {
+
+    width: 1px;
+
+    height: 24px;
+
+    background: var(--border);
+
+}
+
+
+/* ==========================================================
+   CHIP
+========================================================== */
+
+.chip {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 5px 12px;
+
+    border-radius: 999px;
+
+    background: var(--surface-secondary);
+
+    color: var(--text-secondary);
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+}
+
+
+/* ==========================================================
+   COMMON CARD
+========================================================== */
+
+.card {
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-lg);
+
+    box-shadow: var(--shadow-sm);
+
+}
+
+
+/* ==========================================================
+   ACRYLIC PANEL
+========================================================== */
+
+.acrylic {
+
+    background: rgba(255, 255, 255, .82);
+
+    backdrop-filter: blur(22px) saturate(180%);
+
+    -webkit-backdrop-filter: blur(22px) saturate(180%);
+
+    border: 1px solid rgba(255, 255, 255, .45);
+
+    box-shadow: var(--shadow-lg);
+
+}
+
+
+/* ==========================================================
+   READING PANEL
+========================================================== */
+
+.reading-panel {
+
+    position: absolute;
+
+    top: calc(100% + 14px);
+
+    right: 0;
+
+    width: 340px;
+
+    padding: 22px;
+
+    border-radius: var(--radius-lg);
+
+    background: rgba(255, 255, 255, .82);
+
+    backdrop-filter: blur(22px) saturate(180%);
+
+    -webkit-backdrop-filter: blur(22px) saturate(180%);
+
+    border: 1px solid rgba(255, 255, 255, .45);
+
+    box-shadow: var(--shadow-lg);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transform: translateY(-8px);
+
+    transition:
+        opacity var(--duration-fast) var(--ease),
+        transform var(--duration-fast) var(--ease),
+        visibility var(--duration-fast);
+
+}
+
+.reading-panel.open {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transform: none;
+
+}
+
+.reading-panel::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: -8px;
+
+    right: 42px;
+
+    width: 14px;
+
+    height: 14px;
+
+    background: inherit;
+
+    border-top: 1px solid rgba(255, 255, 255, .45);
+
+    border-left: 1px solid rgba(255, 255, 255, .45);
+
+    transform: rotate(45deg);
+
+}
+
+
+/* ==========================================================
+   PREFERENCE GROUP
+========================================================== */
+
+.preference-group {
+
+    margin-bottom: 22px;
+
+}
+
+.preference-group:last-child {
+
+    margin-bottom: 0;
+
+}
+
+.preference-label {
+
+    display: block;
+
+    margin-bottom: 12px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    color: var(--text);
+
+}
+
+
+/* ==========================================================
+   OPTION GRID
+========================================================== */
+
+.option-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 10px;
+
+}
+
+.option-btn {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    min-height: 72px;
+
+    padding: 10px;
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-md);
+
+    background: rgba(255, 255, 255, .55);
+
+    cursor: pointer;
+
+    transition:
+        border-color var(--duration-fast) var(--ease),
+        background var(--duration-fast) var(--ease),
+        transform var(--duration-fast) var(--ease);
+
+}
+
+.option-btn:hover {
+
+    transform: translateY(-2px);
+
+    background: rgba(255, 255, 255, .7);
+
+}
+
+.option-btn.active {
+
+    border-color: var(--ias);
+
+    background: var(--ias-soft);
+
+}
+
+.option-btn svg {
+
+    width: 18px;
+
+    height: 18px;
+
+}
+
+.option-btn span {
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+}
+
+
+/* ==========================================================
+   SLIDER
+========================================================== */
+
+.slider {
+
+    width: 100%;
+
+}
+
+.slider-value {
+
+    margin-top: 8px;
+
+    text-align: right;
+
+    font-size: 12px;
+
+    color: var(--text-muted);
+
+}

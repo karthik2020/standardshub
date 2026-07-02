@@ -1,0 +1,29 @@
+---
+interface Item {
+    id: string;
+
+    label: string;
+}
+
+interface Props {
+    items: Item[];
+}
+
+const { items = [] } = Astro.props;
+---
+
+<nav class="toc">
+    <div class="toc-title">Contents</div>
+
+    <ul>
+        {
+            items.map((item) => (
+                <li>
+                    <a href={`#${item.id}`} data-section={item.id}>
+                        {item.label}
+                    </a>
+                </li>
+            ))
+        }
+    </ul>
+</nav>

@@ -1,30 +1,63 @@
 ---
 import standards from "../data/standards.json";
 import NavLink from "./NavLink.astro";
+import {
+  Search,
+  BookOpen,
+  LibraryBig,
+  Files,
+  ArrowRight,
+  Bookmark,
+  Clock,
+  BookText,
+  ChevronRight,
+} from "@lucide/astro";
+const currentPath = Astro.url.pathname;
 ---
 
 <aside class="sidebar">
-  <div class="sidebar-logo">
-    <h2>StandardsHub</h2>
-  </div>
-  <div class="sidebar-search-card">
+  <div class="sidebar-search">
     <div class="search-box">
-      <input
-        id="standard-search"
-        type="text"
-        placeholder="Search standards..."
-      />
-      <div class="search-help">
-        Search by code or title (e.g. IAS 16, revenue, property)
+      <div class="search-input-wrapper">
+        <Search size={15} class="search-icon" />
+
+        <div class="search-placeholder" id="search-placeholder"></div>
+
+        <input
+          class="search-input"
+          id="standard-search"
+          type="text"
+          placeholder=""
+          autocomplete="off"
+        />
+
+        <button class="search-action" id="search-action" type="button">
+          <ArrowRight size={16} />
+        </button>
       </div>
     </div>
   </div>
+
   <div class="sidebar-scroll">
-    <div class="section section-ias" data-section="ias">
-      <div class="section-header">
-        <span>IAS ({standards.IAS.length})</span>
-        <span class="arrow"></span>
-      </div>
+    <div class="sidebar-heading">STANDARDS LIBRARY</div>
+
+    <!-- IAS -->
+
+    <details class="section section-ias" open={currentPath.startsWith("/ias")}>
+      <summary class="section-header">
+        <div class="section-title">
+          <BookText size={17} strokeWidth={2} />
+          <span>IAS</span>
+        </div>
+
+        <div class="section-actions">
+          <span class="count-badge badge-ias">
+            {standards.IAS.length}
+          </span>
+
+          <ChevronRight class="section-chevron" size={16} strokeWidth={2.4} />
+        </div>
+      </summary>
 
       <div class="section-items">
         <div class="sidebar-items">
@@ -43,13 +76,28 @@ import NavLink from "./NavLink.astro";
           }
         </div>
       </div>
-    </div>
+    </details>
 
-    <div class="section section-ifrs" data-section="ifrs">
-      <div class="section-header">
-        <span>IFRS ({standards.IFRS.length})</span>
-        <span class="arrow"></span>
-      </div>
+    <!-- IFRS -->
+
+    <details
+      class="section section-ifrs"
+      open={currentPath.startsWith("/ifrs")}
+    >
+      <summary class="section-header">
+        <div class="section-title">
+          <LibraryBig size={17} strokeWidth={2} />
+          <span>IFRS</span>
+        </div>
+
+        <div class="section-actions">
+          <span class="count-badge badge-ifrs">
+            {standards.IFRS.length}
+          </span>
+
+          <ChevronRight class="section-chevron" size={16} strokeWidth={2.4} />
+        </div>
+      </summary>
 
       <div class="section-items">
         <div class="sidebar-items">
@@ -68,13 +116,28 @@ import NavLink from "./NavLink.astro";
           }
         </div>
       </div>
-    </div>
+    </details>
 
-    <div class="section section-indas" data-section="indas">
-      <div class="section-header">
-        <span>Ind AS ({standards.IndAS.length})</span>
-        <span class="arrow"></span>
-      </div>
+    <!-- Ind AS -->
+
+    <details
+      class="section section-indas"
+      open={currentPath.startsWith("/indas")}
+    >
+      <summary class="section-header">
+        <div class="section-title">
+          <Files size={17} strokeWidth={2} />
+          <span>Ind AS</span>
+        </div>
+
+        <div class="section-actions">
+          <span class="count-badge badge-indas">
+            {standards.IndAS.length}
+          </span>
+
+          <ChevronRight class="section-chevron" size={16} strokeWidth={2.4} />
+        </div>
+      </summary>
 
       <div class="section-items">
         <div class="sidebar-items">
@@ -93,6 +156,32 @@ import NavLink from "./NavLink.astro";
           }
         </div>
       </div>
-    </div>
+    </details>
   </div>
+  <footer class="sidebar-footer">
+    <a href="#" class="footer-link">
+      <Bookmark size={17} strokeWidth={2} />
+      <span>Bookmarks</span>
+    </a>
+
+    <a href="#" class="footer-link">
+      <Clock size={17} strokeWidth={2} />
+      <span>Recent</span>
+    </a>
+
+    <a href="#" class="footer-link">
+      <BookText size={17} strokeWidth={2} />
+      <span>Reading</span>
+    </a>
+
+    <div class="footer-user">
+      <div class="footer-avatar">G</div>
+
+      <div class="footer-user-info">
+        <div class="footer-user-name">Guest User</div>
+
+        <div class="footer-user-subtitle">Sign in to sync progress</div>
+      </div>
+    </div>
+  </footer>
 </aside>

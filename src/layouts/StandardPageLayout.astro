@@ -1,5 +1,6 @@
 ---
 import StandardLayout from "./StandardLayout.astro";
+import "../styles/posters/poster-classic.css";
 
 interface Props {
   code: string;
@@ -9,6 +10,12 @@ interface Props {
   principle?: string;
   scope?: string[];
   standardType?: string;
+
+  related?: {
+    code: string;
+    title: string;
+    url: string;
+  }[];
 }
 
 const {
@@ -21,59 +28,44 @@ const {
   related = [],
   standardType = "IAS",
 } = Astro.props;
+const standardTypeLabel =
+  standardType === "IFRS"
+    ? "International Financial Reporting Standard"
+    : standardType === "Ind AS"
+      ? "Indian Accounting Standard"
+      : "International Accounting Standard";
 const breadcrumbClass =
   standardType === "IFRS"
     ? "breadcrumbs-ifrs"
     : standardType === "Ind AS"
       ? "breadcrumbs-indas"
       : "breadcrumbs-ias";
-
-interface Props {
-  code: string;
-  title: string;
-  category?: string;
-  objective?: string;
-  principle?: string;
-  scope?: string[];
-  related?: {
-    code: string;
-    title: string;
-    url: string;
-  }[];
-}
 ---
 
-<StandardLayout title={code}>
-  <nav class={`breadcrumbs ${breadcrumbClass}`}>
-    <a href="/"> Home </a>
+<StandardLayout code={code} title={title} framework={standardType}>
+  <Fragment slot="toc">
+    <slot name="toc" />
+  </Fragment>
+  <section class="hero hero-card">
+    <div
+      class={`standard-header hero-${standardType.toLowerCase().replace(" ", "")}`}
+    >
+      <h1>{code}</h1>
 
-    <span class="breadcrumb-separator"> ❯ </span>
+      <p class="standard-subtitle">
+        {title}
+      </p>
 
-    <a href="#">
-      {standardType}
-    </a>
+      <div class="standard-badges">
+        {category && <span class="standard-badge category">{category}</span>}
 
-    <span class="breadcrumb-separator"> ❯ </span>
-
-    <span class="breadcrumb-current">
-      {code}
-    </span>
-  </nav>
-  <div class="standard-header">
-    <h1>{code}</h1>
-
-    <p class="standard-subtitle">
-      {title}
-    </p>
-
-    <div class="standard-badges">
-      {category && <span class="standard-badge category">{category}</span>}
-
-      <span class="standard-badge type"> IAS </span>
+        <span class="standard-badge type">
+          {standardTypeLabel}
+        </span>
+      </div>
     </div>
-  </div>
-
-  <div class="overview-card">
+  </section>
+  <div id="overview" class="overview-card">
     <div class="overview-header">
       <div class="overview-title">Overview</div>
     </div>
@@ -111,12 +103,12 @@ interface Props {
       )
     }
   </div>
-
   <slot />
+
   {
     related.length > 0 && (
-      <div class="related-standards">
-        <div class="related-title">Related Standards</div>
+      <div id="related" class="related-standards">
+        <div class="related-heading">Related Standards</div>
 
         <div class="related-grid">
           {related.map((item) => (

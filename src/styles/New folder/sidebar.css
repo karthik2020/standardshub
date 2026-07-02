@@ -1,0 +1,648 @@
+/* ==========================================================
+   SIDEBAR
+========================================================== */
+
+.sidebar {
+
+    width: 300px;
+
+    position: sticky;
+
+    top: var(--header-height);
+
+    height: calc(100vh - var(--header-height));
+
+    display: flex;
+
+    flex-direction: column;
+
+    background: var(--surface);
+
+    border-left: 1px solid var(--border);
+
+    border-right: 1px solid var(--border);
+
+}
+
+
+/* ==========================================================
+   SEARCH
+========================================================== */
+
+.sidebar-search {
+
+    padding: 8px;
+
+    border-bottom: 1px solid var(--border);
+
+}
+
+
+/* ==========================================================
+   SCROLL AREA
+========================================================== */
+
+.sidebar-scroll {
+
+    flex: 1;
+
+    overflow-y: auto;
+
+    padding: 20px 0;
+
+    scrollbar-gutter: stable;
+
+    scrollbar-width: thin;
+
+    scrollbar-color: #CBD5E1 transparent;
+
+}
+
+.sidebar-scroll.ready {
+
+    visibility: visible;
+
+}
+
+/* Chrome */
+
+.sidebar-scroll::-webkit-scrollbar {
+
+    width: 10px;
+
+}
+
+.sidebar-scroll::-webkit-scrollbar-track {
+
+    background: transparent;
+
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb {
+
+    background: #CBD5E1;
+
+    border-radius: 999px;
+
+    border: 2px solid transparent;
+
+    background-clip: padding-box;
+
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb:hover {
+
+    background: #94A3B8;
+
+    background-clip: padding-box;
+
+}
+
+
+/* ==========================================================
+   SECTION
+========================================================== */
+
+.section {
+
+    padding: 0 12px;
+
+    margin-bottom: 14px;
+
+}
+
+.section-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin: 0 -18px;
+
+    padding: 13px 18px;
+
+    border-left: 4px solid transparent;
+
+    font-weight: 600;
+
+    transition:
+        background .2s ease,
+        border-color .2s ease,
+        box-shadow .2s ease;
+
+}
+
+.section.expanded .section-header {
+
+    font-weight: 700;
+
+}
+
+.section-header:hover {
+
+    background: #F8FAFC;
+
+}
+
+
+/* ==========================================================
+   IAS
+========================================================== */
+
+.section-ias .section-header {
+
+    background: #FAFCFF;
+
+    border-left-color: #DBEAFE;
+
+}
+
+.section-ias.expanded .section-header {
+
+    background: #EFF6FF;
+
+    border-left-color: #2563EB;
+
+}
+
+
+/* ==========================================================
+   IFRS
+========================================================== */
+
+.section-ifrs .section-header {
+
+    background: #FAFDFB;
+
+    border-left-color: #DCFCE7;
+
+}
+
+.section-ifrs.expanded .section-header {
+
+    background: #F0FDF4;
+
+    border-left-color: #16A34A;
+
+}
+
+
+/* ==========================================================
+   IND AS
+========================================================== */
+
+.section-indas .section-header {
+
+    background: #FFFCF8;
+
+    border-left-color: #FFEDD5;
+
+}
+
+.section-indas.expanded .section-header {
+
+    background: #FFF7ED;
+
+    border-left-color: #EA580C;
+
+}
+
+
+/* ==========================================================
+   SECTION HEADER
+========================================================== */
+
+.section-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+}
+
+.section-meta {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+.section-ias .section-title svg {
+
+    color: var(--ias);
+
+}
+
+.section-ifrs .section-title svg {
+
+    color: var(--ifrs);
+
+}
+
+.section-indas .section-title svg {
+
+    color: var(--indas);
+
+}
+
+
+/* ==========================================================
+   BADGES
+========================================================== */
+
+.count-badge {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 24px;
+
+    height: 22px;
+
+    padding: 0 8px;
+
+    border-radius: 999px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+}
+
+.badge-ias {
+
+    background: #DBEAFE;
+
+    color: var(--ias);
+
+}
+
+.badge-ifrs {
+
+    background: #DCFCE7;
+
+    color: var(--ifrs);
+
+}
+
+.badge-indas {
+
+    background: #FFEDD5;
+
+    color: var(--indas);
+
+}
+
+
+/* ==========================================================
+   EXPAND / COLLAPSE
+========================================================== */
+
+.section-items {
+
+    max-height: 0;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    margin-bottom: 0;
+
+    transition:
+        max-height .28s ease,
+        opacity .20s ease,
+        margin .28s ease;
+
+}
+
+.section-items.hidden {
+
+    max-height: 0;
+
+    opacity: 0;
+
+    margin-bottom: 0;
+
+}
+
+.section-items:not(.hidden) {
+
+    max-height: 1200px;
+
+    opacity: 1;
+
+    margin-bottom: 12px;
+
+}
+.section-items.hidden {
+
+    max-height: 0;
+
+    opacity: 0;
+
+    margin-bottom: 0;
+
+}
+
+.section-items:not(.hidden) {
+
+    max-height: 1200px;
+
+    opacity: 1;
+
+    margin-bottom: 12px;
+
+}
+
+/* ==========================================================
+   TIMELINE
+========================================================== */
+
+.sidebar-items {
+
+    position: relative;
+
+    padding-top: 6px;
+
+}
+
+.sidebar-items::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 7px;
+
+    top: 8px;
+
+    bottom: 8px;
+
+    width: 1px;
+
+    background: #E2E8F0;
+
+    border-radius: 999px;
+
+}
+
+
+/* ==========================================================
+   NAVIGATION
+========================================================== */
+
+.nav-link {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    margin: 2px 8px 2px 14px;
+
+    padding: 10px 18px;
+
+    border-radius: 8px;
+
+    color: var(--text-secondary);
+
+    text-decoration: none;
+
+    transition:
+        background .18s ease,
+        color .18s ease;
+
+}
+
+.nav-link:hover {
+
+    background: #F8FAFC;
+
+}
+
+.nav-link.active {
+
+    font-weight: 600;
+
+    color: var(--text);
+
+}
+
+.nav-link.active::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: -8px;
+
+    top: 6px;
+
+    bottom: 6px;
+
+    width: 3px;
+
+    border-radius: 999px;
+
+}
+
+.nav-link.active.nav-ias {
+
+    background: #EFF6FF;
+
+}
+
+.nav-link.active.nav-ias::before {
+
+    background: var(--ias);
+
+}
+
+.nav-link.active.nav-ifrs {
+
+    background: #F0FDF4;
+
+}
+
+.nav-link.active.nav-ifrs::before {
+
+    background: var(--ifrs);
+
+}
+
+.nav-link.active.nav-indas {
+
+    background: #FFF7ED;
+
+}
+
+.nav-link.active.nav-indas::before {
+
+    background: var(--indas);
+
+}
+
+
+/* ==========================================================
+   ARROW
+========================================================== */
+
+.arrow {
+
+    width: 8px;
+
+    height: 8px;
+
+    border-right: 2px solid currentColor;
+
+    border-bottom: 2px solid currentColor;
+
+    transform: rotate(45deg);
+
+    transition: transform .25s ease;
+
+}
+
+.section.expanded .arrow {
+
+    transform: rotate(225deg);
+
+}
+
+.section-ias .arrow {
+
+    color: var(--ias);
+
+}
+
+.section-ifrs .arrow {
+
+    color: var(--ifrs);
+
+}
+
+.section-indas .arrow {
+
+    color: var(--indas);
+
+}
+
+
+/* ==========================================================
+   FOOTER
+========================================================== */
+
+.sidebar-footer {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    padding: 18px;
+
+    background: var(--surface);
+
+    border-top: 1px solid var(--border);
+
+}
+
+.footer-link {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 10px 12px;
+
+    border-radius: 10px;
+
+    color: var(--text-secondary);
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    transition: .18s;
+
+}
+
+.footer-link:hover {
+
+    background: #F8FAFC;
+
+}
+
+.footer-user {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 10px;
+
+    padding: 12px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+}
+
+.footer-avatar {
+
+    width: 38px;
+
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--ias);
+
+    color: white;
+
+    font-weight: 700;
+
+}
+
+.footer-user-name {
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+}
+
+.footer-user-subtitle {
+
+    font-size: 12px;
+
+    color: var(--text-muted);
+
+}

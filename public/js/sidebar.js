@@ -1,109 +1,143 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    const headers = document.querySelectorAll(".section-header");
+    // ==========================================================
+    // Helpers
+    // ==========================================================
 
-    headers.forEach((header) => {
+    const sections = [...document.querySelectorAll(".section")];
 
-        const section = header.closest(".section");
-        const sectionName = section.dataset.section;
+    function setSectionState(section, open) {
 
-        const items = header.nextElementSibling;
+        const items = section.querySelector(".section-items");
 
-        if (!items || !items.classList.contains("section-items")) {
-            return;
+        if (!items) return;
+
+        section.classList.toggle("expanded", open);
+        items.classList.toggle("hidden", !open);
+
+        localStorage.setItem(
+            `section-${section.dataset.section}`,
+            open ? "open" : "closed"
+        );
+
+    }
+
+    function getSavedState(section) {
+
+        const key = `section-${section.dataset.section}`;
+
+        const saved = localStorage.getItem(key);
+
+        if (saved !== null) {
+            return saved === "open";
         }
 
-        const savedState = localStorage.getItem(`section-${sectionName}`);
+        return !!section.querySelector(".nav-link.active");
 
-        if (savedState === "open") {
-            section.classList.add("expanded");
-        } else {
-            items.classList.add("hidden");
-        }
+    }
 
-        header.addEventListener("click", () => {
+    // ==========================================================
+    // Initial state
+    // ==========================================================
 
-            items.classList.toggle("hidden");
-            section.classList.toggle("expanded");
+    sections.forEach(section => {
 
-            localStorage.setItem(
-                `section-${sectionName}`,
-                items.classList.contains("hidden")
-                    ? "closed"
-                    : "open"
-            );
-
-        });
+        setSectionState(
+            section,
+            getSavedState(section)
+        );
 
     });
-    const searchInput = document.getElementById("standard-search");
+
+    // ==========================================================
+    // Expand / Collapse
+    // ==========================================================
+
+    // sections.forEach(section => {
+
+    //     const header =
+    //         section.querySelector(".section-header");
+
+    //     if (!header) return;
+
+    //     header.addEventListener("click", () => {
+
+    //         const open =
+    //             !section.classList.contains("expanded");
+
+    //         setSectionState(section, open);
+
+    //     });
+
+    // });
+
+    // ==========================================================
+    // Search
+    // ==========================================================
+
+    const searchInput =
+        document.getElementById("standard-search");
 
     if (searchInput) {
 
-        searchInput.addEventListener("input", (e) => {
+        searchInput.addEventListener("input", () => {
 
-            const searchTerm = e.target.value.toLowerCase().trim();
+            const term =
+                searchInput.value
+                    .trim()
+                    .toLowerCase();
 
-            const sections = document.querySelectorAll(".section");
+            sections.forEach(section => {
 
-            sections.forEach((section) => {
+                const items =
+                    section.querySelector(".section-items");
 
-                const items = section.querySelector(".section-items");
-                const links = section.querySelectorAll(".nav-link");
+                const links =
+                    [...section.querySelectorAll(".nav-link")];
 
-                let visibleCount = 0;
+                let visible = 0;
 
-                links.forEach((link) => {
+                links.forEach(link => {
 
                     const code =
-                        (link.dataset.code || "").toLowerCase();
+                        (link.dataset.code || "")
+                            .toLowerCase();
 
                     const title =
-                        (link.dataset.title || "").toLowerCase();
+                        (link.dataset.title || "")
+                            .toLowerCase();
 
-                    const matches =
-                        searchTerm === "" ||
-                        code.includes(searchTerm) ||
-                        title.includes(searchTerm);
+                    const match =
+                        term === "" ||
+                        code.includes(term) ||
+                        title.includes(term);
 
-                    link.style.display = matches ? "block" : "none";
+                    link.style.display =
+                        match ? "" : "none";
 
-                    if (matches) {
-                        visibleCount++;
-                    }
+                    if (match) visible++;
 
                 });
 
-                if (searchTerm === "") {
+                if (term === "") {
 
                     section.style.display = "";
 
-                    const sectionName =
-                        section.dataset.section;
-
-                    const savedState =
-                        localStorage.getItem(
-                            `section-${sectionName}`
-                        );
-
-                    if (savedState === "open") {
-                        items.classList.remove("hidden");
-                        section.classList.add("expanded");
-                    } else {
-                        items.classList.add("hidden");
-                        section.classList.remove("expanded");
-                    }
+                    setSectionState(
+                        section,
+                        getSavedState(section)
+                    );
 
                 } else {
 
                     section.style.display =
-                        visibleCount > 0
-                            ? ""
-                            : "none";
+                        visible ? "" : "none";
 
-                    if (visibleCount > 0) {
-                        items.classList.remove("hidden");
+                    if (visible) {
+
                         section.classList.add("expanded");
+                        items.classList.remove("collapsed");
+
                     }
 
                 }
@@ -113,34 +147,37 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
     }
-});
-document.querySelector(".sidebar").classList.add("loaded");
-const sidebar = document.querySelector(".sidebar");
 
-if (sidebar) {
+    // ==========================================================
+    // Restore Sidebar Scroll
+    // ==========================================================
 
-    const savedScroll =
-        sessionStorage.getItem("sidebar-scroll");
+    const sidebar =
+        document.querySelector(".sidebar-scroll");
 
-    if (savedScroll) {
-        sidebar.scrollTop = Number(savedScroll);
+    if (sidebar) {
+
+        const saved =
+            sessionStorage.getItem("sidebar-scroll");
+
+        if (saved) {
+
+            sidebar.scrollTop =
+                Number(saved);
+
+        }
+
+        sidebar.addEventListener("scroll", () => {
+
+            sessionStorage.setItem(
+                "sidebar-scroll",
+                sidebar.scrollTop
+            );
+
+        });
+
+        sidebar.classList.add("ready");
+
     }
 
-    sidebar.addEventListener("scroll", () => {
-        sessionStorage.setItem(
-            "sidebar-scroll",
-            sidebar.scrollTop
-        );
-    });
-
-}
-
-
-
-
-
-
-
-
-
-
+});

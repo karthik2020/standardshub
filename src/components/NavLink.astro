@@ -7,13 +7,7 @@ interface Props {
   standardTitle?: string;
 }
 
-const {
-  href,
-  title,
-  section,
-  code,
-  standardTitle
-} = Astro.props;
+const { href, title, section, code, standardTitle } = Astro.props;
 
 const currentPath = Astro.url.pathname;
 const isActive = currentPath === href;
@@ -25,11 +19,11 @@ const isActive = currentPath === href;
   data-section={section}
   data-code={code}
   data-title={standardTitle}
-  class:list={[
-    "nav-link",
-    isActive && "active",
-    section && `nav-${section}`
-  ]}
+  class:list={["nav-link", isActive && "active", section && `nav-${section}`]}
 >
-  <slot />
+  
+
+  <span class="nav-label">
+    <slot />
+  </span>
 </a>

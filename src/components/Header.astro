@@ -1,0 +1,64 @@
+---
+import { House } from "@lucide/astro";
+
+const {
+    code,
+
+    framework,
+
+    title,
+} = Astro.props;
+---
+
+<header class="site-header">
+    <div class="header-left">
+        <a href="/" class="site-logo">
+            <span class="logo-mark"></span>
+
+            <span class="logo-text"> StandardsHub </span>
+        </a>
+
+        <nav class="header-breadcrumbs">
+            <a href="/" class="crumb breadcrumb-home">
+                <House size={14} strokeWidth={2} />
+
+                <span>Home</span>
+            </a>
+
+            <span class="breadcrumb-separator">❯</span>
+
+            <a
+                href={`/${framework.toLowerCase()}`}
+                class={`breadcrumb-framework ${framework.toLowerCase()}`}
+            >
+                {framework}
+            </a>
+
+            <span class="breadcrumb-separator">❯</span>
+
+            <span class="breadcrumb-current">
+                <span class={`breadcrumb-code ${framework.toLowerCase()}`}>
+                    {code}
+                </span>
+
+                <span class="breadcrumb-dot"> • </span>
+
+                <span class="breadcrumb-title">
+                    {title}
+                </span>
+            </span>
+        </nav>
+    </div>
+
+    <div class="header-right">
+        <slot />
+
+        <button class="toolbar-btn" id="printBtn" title="Print"> 🖨 </button>
+    </div>
+</header>
+
+<script>
+    document.getElementById("printBtn")?.addEventListener("click", () => {
+        window.print();
+    });
+</script>
