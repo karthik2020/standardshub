@@ -2163,3 +2163,57 @@ section ul {
         height: 36px;
     }
 }
+
+/* ======================================================
+   AppShell Layout
+   ====================================================== */
+
+/* Desktop: Three-column layout */
+.app-layout {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) minmax(0, 1fr) 230px;
+    gap: var(--space-xl);
+    min-height: calc(100vh - var(--header-height) - 40px);
+    padding: var(--space-xl);
+}
+
+/* Documentation Explorer (left sidebar) */
+.documentation-explorer {
+    min-width: 0;
+}
+
+/* Main Content Slot */
+.content-slot {
+    min-width: 0;
+}
+
+/* Table of Contents (right sidebar) */
+.table-of-contents {
+    min-width: 0;
+}
+
+/* Tablet adaptation */
+@media (max-width: 1200px) {
+    .app-layout {
+        grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+        gap: var(--space-lg);
+    }
+    
+    .table-of-contents {
+        display: none;
+    }
+}
+
+/* Mobile single-column layout */
+@media (max-width: 900px) {
+    .app-layout {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+        padding: var(--space-lg);
+    }
+    
+    .documentation-explorer,
+    .table-of-contents {
+        width: 100%;
+    }
+}
