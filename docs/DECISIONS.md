@@ -36,3 +36,30 @@ Progressive Enhancement
 DEC-006
 Remember navigation state
 
+## DEC-007
+
+### Title
+StandardLayout serves as the Application Shell.
+
+### Status
+Accepted
+
+### Reason
+During implementation, it became clear that StandardLayout already provided the responsibilities originally planned for AppShell. Introducing another layout added unnecessary complexity.
+The project architecture was simplified by evolving StandardLayout instead of introducing a new abstraction.
+
+### Alternatives Considered
+Create a separate AppShell.
+Rejected because it duplicated responsibilities already handled by StandardLayout.
+
+### Impact
+Simpler layout hierarchy.
+Less migration effort.
+Better maintainability.
+
+
+
+
+
+
+
