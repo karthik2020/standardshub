@@ -57,7 +57,29 @@ Simpler layout hierarchy.
 Less migration effort.
 Better maintainability.
 
+## DEC-008
 
+### Title
+
+Use semantic HTML for metadata.
+
+### Status
+
+Accepted
+
+### Decision
+
+Metadata displayed on standard pages uses semantic HTML (`<dl>`, `<dt>`, `<dd>`) instead of generic containers.
+
+### Reason
+
+Metadata represents descriptive information rather than arbitrary layout.
+
+Semantic HTML improves accessibility, screen reader support and document structure.
+
+### Impact
+
+All future metadata components should follow the same pattern.
 
 
 

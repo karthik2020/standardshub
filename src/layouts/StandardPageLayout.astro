@@ -1,125 +1,37 @@
 ---
 import StandardLayout from "./StandardLayout.astro";
+import InformationHeader from "../components/InformationHeader.astro";
 import "../styles/posters/poster-classic.css";
 
 interface Props {
   code: string;
   title: string;
-  category?: string;
-  objective?: string;
-  principle?: string;
-  scope?: string[];
   standardType?: string;
-
-  related?: {
-    code: string;
-    title: string;
-    url: string;
-  }[];
+  issued?: string;
+  latestAmendment?: string;
+  status?: string;
 }
 
 const {
   code,
   title,
-  category,
-  objective,
-  principle,
-  scope = [],
-  related = [],
   standardType = "IAS",
+  issued = "",
+  latestAmendment = "",
+  status = "",
 } = Astro.props;
-const standardTypeLabel =
-  standardType === "IFRS"
-    ? "International Financial Reporting Standard"
-    : standardType === "Ind AS"
-      ? "Indian Accounting Standard"
-      : "International Accounting Standard";
-const breadcrumbClass =
-  standardType === "IFRS"
-    ? "breadcrumbs-ifrs"
-    : standardType === "Ind AS"
-      ? "breadcrumbs-indas"
-      : "breadcrumbs-ias";
 ---
 
 <StandardLayout code={code} title={title} framework={standardType}>
   <Fragment slot="toc">
     <slot name="toc" />
   </Fragment>
-  <section class="hero hero-card">
-    <div
-      class={`standard-header hero-${standardType.toLowerCase().replace(" ", "")}`}
-    >
-      <h1>{code}</h1>
-
-      <p class="standard-subtitle">
-        {title}
-      </p>
-
-      <div class="standard-badges">
-        {category && <span class="standard-badge category">{category}</span>}
-
-        <span class="standard-badge type">
-          {standardTypeLabel}
-        </span>
-      </div>
-    </div>
-  </section>
-  <div id="overview" class="overview-card">
-    <div class="overview-header">
-      <div class="overview-title">Overview</div>
-    </div>
-    {
-      objective && (
-        <section>
-          <h2>Objective</h2>
-
-          <p>{objective}</p>
-        </section>
-      )
-    }
-
-    {
-      principle && (
-        <section>
-          <h2>Core Principle</h2>
-
-          <p>{principle}</p>
-        </section>
-      )
-    }
-
-    {
-      scope.length > 0 && (
-        <section>
-          <h2>Scope</h2>
-
-          <ul>
-            {scope.map((item) => (
-              <li>{item}</li>
-            ))}
-          </ul>
-        </section>
-      )
-    }
-  </div>
+  <InformationHeader
+    code={code}
+    title={title}
+    issued={issued}
+    latestAmendment={latestAmendment}
+    status={status}
+  />
   <slot />
-
-  {
-    related.length > 0 && (
-      <div id="related" class="related-standards">
-        <div class="related-heading">Related Standards</div>
-
-        <div class="related-grid">
-          {related.map((item) => (
-            <a href={item.url} class="related-card">
-              <div class="related-code">{item.code}</div>
-
-              <div class="related-name">{item.title}</div>
-            </a>
-          ))}
-        </div>
-      </div>
-    )
-  }
 </StandardLayout>
