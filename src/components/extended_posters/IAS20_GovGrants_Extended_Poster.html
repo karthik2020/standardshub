@@ -1,91 +1,157 @@
----
-import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
-import PageToc from "../../components/PageToc.astro";
-import "../../styles/standards-poster.css";
-import "../../styles/extended.css";
-import HistoryTimeline from "../../components/HistoryTimeline.astro";
-import history from "../../data/history.json";
-import metadata from "../../data/standards/ias/ias20.json";
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IAS 20 — Government Grants &amp; Assistance | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
 
-<StandardPageLayout
-  code={metadata.code}
-  standardType={metadata.framework}
-  title={metadata.title}
-  issued={metadata.issued}
-  latestAmendment={metadata.latestAmendment}
-  status={metadata.status}
-  summary={metadata.summary}
->
-  <Fragment slot="toc">
-    <PageToc
-      items={[
-        {
-          id: "s1",
-          label: "Conceptual Framework",
-        },
-        {
-          id: "s2",
-          label: "Scope & Definitions",
-        },
-        {
-          id: "s3",
-          label: "Recognition Criteria",
-        },
-        {
-          id: "s4",
-          label: "Grants Related to Assets",
-        },
-        {
-          id: "s5",
-          label: "Grants Related to Income",
-        },
-        {
-          id: "s6",
-          label: "Repayment of Grants",
-        },
-        {
-          id: "s7",
-          label: "Government Assistance",
-        },
-        {
-          id: "s8",
-          label: "Presentation Choices",
-        },
-        {
-          id: "s9",
-          label: "Disclosure",
-        },
-        {
-          id: "s10",
-          label: "Judgements & Estimates",
-        },
-        {
-          id: "s11",
-          label: "IFRS vs US GAAP",
-        },
-        {
-          id: "s12",
-          label: "Statement Mapping",
-        },
-        {
-          id: "s13",
-          label: "Related Standards",
-        },
-        {
-          id: "s14",
-          label: "Glossary",
-        },
-        {
-          id: "history",
-          label: "History & Development",
-        },
-      ]}
-    />
-  </Fragment>
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
 
-  <div class="wrap">
-    <!-- ============ SECTION 1 — CONCEPTUAL FRAMEWORK LINK ============ -->
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .eg  { margin-bottom: 7px; }
+  .egl { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; margin-bottom: 3px; }
+  .entry { display: flex; align-items: flex-start; gap: 4px; margin-bottom: 4px; }
+  .dr { font-size: 11px; font-weight: 500; color: var(--color-text-info);   min-width: 14px; padding-top: 1px; }
+  .cr { font-size: 11px; font-weight: 500; color: var(--color-text-danger); min-width: 14px; padding-top: 1px; padding-left: 6px; }
+  .etxt { font-size: 11px; color: var(--color-text-primary); flex: 1; line-height: 1.4; }
+  .badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">IAS 20 — Government Grants &amp; Disclosure of Government Assistance</div>
+      <div class="hub-sub">Extended reference poster · Conceptual framework link · Recognition · Measurement · Worked examples · Statement mapping · Related standards</div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <a href="#s1">1. Conceptual Framework</a>
+    <a href="#s2">2. Scope &amp; Definitions</a>
+    <a href="#s3">3. Recognition Criteria</a>
+    <a href="#s4">4. Grants Related to Assets</a>
+    <a href="#s5">5. Grants Related to Income</a>
+    <a href="#s6">6. Repayment of Grants</a>
+    <a href="#s7">7. Government Assistance</a>
+    <a href="#s8">8. Presentation Choices</a>
+    <a href="#s9">9. Disclosure</a>
+    <a href="#s10">10. Judgments &amp; Estimates</a>
+    <a href="#s11">11. IFRS vs US GAAP</a>
+    <a href="#s12">12. Statement Mapping</a>
+    <a href="#s13">13. Related Standards</a>
+    <a href="#s14">14. Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 — CONCEPTUAL FRAMEWORK LINK ============ -->
   <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
   <div class="grid">
     <div class="card ci">
@@ -119,8 +185,8 @@ import metadata from "../../data/standards/ias/ias20.json";
       <div class="ctitle cw">What IAS 20 covers</div>
       <div class="principle">IAS 20 applies to accounting for, and disclosure of, government grants and other forms of government assistance. A government grant is assistance by government in the form of a transfer of resources to an entity in return for past or future compliance with certain conditions relating to the entity's operating activities.</div>
       <div class="elabel">THE CORE RECOGNITION TEST</div>
-      <div style="font-size:13px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:5px;">(a) reasonable assurance the entity will comply with any conditions attached; AND</div>
-      <div style="font-size:13px;color:var(--color-text-secondary);">(b) reasonable assurance the grant will be received</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:5px;">(a) reasonable assurance the entity will comply with any conditions attached; AND</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);">(b) reasonable assurance the grant will be received</div>
       <div class="elabel" style="margin-top:9px;">SCOPE EXCLUSIONS — GOVERNED BY OTHER STANDARDS</div>
       <div class="cross-list">
         <span>Government assistance provided in the form of tax breaks, tax holidays, or tax credits → <strong style="font-weight:500">IAS 12</strong> (income tax accounting), not IAS 20</span>
@@ -164,11 +230,11 @@ import metadata from "../../data/standards/ias/ias20.json";
       <div class="two-col">
         <div class="spec-box" style="margin-bottom:0;">
           <div class="spec-title" style="color:var(--color-text-success);">Condition 1 — Reasonable assurance of compliance</div>
-          <div style="font-size:13px;color:var(--color-text-secondary);line-height:1.5;">The entity will comply with the conditions attached to the grant.</div>
+          <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.5;">The entity will comply with the conditions attached to the grant.</div>
         </div>
         <div class="spec-box" style="margin-bottom:0;">
           <div class="spec-title" style="color:var(--color-text-success);">Condition 2 — Reasonable assurance of receipt</div>
-          <div style="font-size:13px;color:var(--color-text-secondary);line-height:1.5;">The grant will be received.</div>
+          <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.5;">The grant will be received.</div>
         </div>
       </div>
       <div class="callout warn" style="margin-top:8px;margin-bottom:0;">⚠️ <strong style="font-weight:600">Systematic recognition, not immediate income:</strong> once recognition criteria are met, IAS 20 requires the grant to be recognised in profit or loss on a SYSTEMATIC BASIS over the periods in which the entity recognises the related costs as expenses, for which the grant is intended to compensate — never all at once unless it compensates for costs already incurred with no future related costs.</div>
@@ -184,7 +250,7 @@ import metadata from "../../data/standards/ias/ias20.json";
         <div class="f-label">MECHANICS</div>
         <div class="f-eq">Grant recognised as deferred income (a liability); released to SOPL over the useful life of the related asset, usually matching the depreciation pattern</div>
       </div>
-      <div style="font-size:13px;color:var(--color-text-secondary);line-height:1.6;">The asset itself is recorded at full cost, gross of the grant, and depreciated normally. The deferred income liability is released to income in proportion to depreciation recognised.</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">The asset itself is recorded at full cost, gross of the grant, and depreciated normally. The deferred income liability is released to income in proportion to depreciation recognised.</div>
     </div>
 
     <div class="card cw">
@@ -192,7 +258,7 @@ import metadata from "../../data/standards/ias/ias20.json";
       <div class="formula-box">
         <div class="f-eq">Grant deducted from the asset's cost; asset carried at (Cost − Grant); reduced depreciation charge over the asset's life effectively recognises the grant in profit</div>
       </div>
-      <div style="font-size:13px;color:var(--color-text-secondary);line-height:1.6;">Both methods are permitted under IAS 20 — the choice is an accounting POLICY CHOICE applied consistently to similar grants, and must be disclosed. Total profit over the asset's life is identical either way; only presentation and the timing pattern of individual line items differ.</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Both methods are permitted under IAS 20 — the choice is an accounting POLICY CHOICE applied consistently to similar grants, and must be disclosed. Total profit over the asset's life is identical either way; only presentation and the timing pattern of individual line items differ.</div>
     </div>
   </div>
 
@@ -267,11 +333,11 @@ import metadata from "../../data/standards/ias/ias20.json";
       <div class="two-col">
         <div>
           <div class="elabel">GRANT RELATED TO INCOME — REPAYABLE</div>
-          <div style="font-size:13px;color:var(--color-text-secondary);line-height:1.6;">Applied first against any unamortised deferred credit balance remaining for the grant; any excess is recognised immediately as an expense.</div>
+          <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Applied first against any unamortised deferred credit balance remaining for the grant; any excess is recognised immediately as an expense.</div>
         </div>
         <div>
           <div class="elabel">GRANT RELATED TO ASSETS — REPAYABLE</div>
-          <div style="font-size:13px;color:var(--color-text-secondary);line-height:1.6;">Recorded by increasing the carrying amount of the asset (Method 2) or reducing the deferred income balance (Method 1) by the repayment amount — the CUMULATIVE additional depreciation that would have been recognised to date, absent the grant, is recognised immediately as an expense.</div>
+          <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Recorded by increasing the carrying amount of the asset (Method 2) or reducing the deferred income balance (Method 1) by the repayment amount — the CUMULATIVE additional depreciation that would have been recognised to date, absent the grant, is recognised immediately as an expense.</div>
         </div>
       </div>
       <div class="worked" style="margin-top:8px;margin-bottom:0;">
@@ -290,7 +356,7 @@ import metadata from "../../data/standards/ias/ias20.json";
   <div class="grid">
     <div class="card cw">
       <div class="ctitle cw">Forms of government assistance excluded from "grant" accounting</div>
-      <div style="font-size:13px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:9px;">Some forms of government assistance cannot reasonably have a value placed on them, or cannot be distinguished from the entity's normal trading transactions — these are NOT accounted for as grants, but disclosure of their nature, extent, and duration may still be required.</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:9px;">Some forms of government assistance cannot reasonably have a value placed on them, or cannot be distinguished from the entity's normal trading transactions — these are NOT accounted for as grants, but disclosure of their nature, extent, and duration may still be required.</div>
       <div class="cross-list">
         <span>Free technical or marketing advice</span>
         <span>Provision of guarantees (loan guarantees)</span>
@@ -304,7 +370,7 @@ import metadata from "../../data/standards/ias/ias20.json";
       <div class="formula-box">
         <div class="f-eq">Grant benefit = Loan proceeds (fair value using market rate) − Actual cash received/carrying amount at initial recognition under IFRS 9</div>
       </div>
-      <div style="font-size:13px;color:var(--color-text-secondary);line-height:1.6;">The loan is initially recognised and measured under IFRS 9 (at fair value, which for a below-market loan is LESS than the cash actually received). The DIFFERENCE between that fair value and the cash proceeds received is accounted for as a government grant under IAS 20.</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">The loan is initially recognised and measured under IFRS 9 (at fair value, which for a below-market loan is LESS than the cash actually received). The DIFFERENCE between that fair value and the cash proceeds received is accounted for as a government grant under IAS 20.</div>
       <div class="note">This is a common intersection point between IAS 20 and IFRS 9 in exams — the loan liability itself follows IFRS 9's amortised cost rules; only the embedded subsidy follows IAS 20.</div>
     </div>
   </div>
@@ -456,8 +522,9 @@ import metadata from "../../data/standards/ias/ias20.json";
       <span class="badge be">Equity</span> Statement of changes in equity
     </div>
   </div>
-  </div>
-  <section id="history">
-    <HistoryTimeline items={history.IAS20} />
-  </section>
-</StandardPageLayout>
+
+  <div class="footer-note">IAS 20 — Government Grants &amp; Disclosure of Government Assistance · Extended Reference Poster · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

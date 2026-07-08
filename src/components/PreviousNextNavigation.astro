@@ -1,0 +1,150 @@
+---
+import { ArrowLeft, ArrowRight } from "@lucide/astro";
+import { IASStandards } from "../data/standards/ias/index";
+import type { Framework, StandardMetadata } from "../data/standards/metadata.types";
+
+interface Props {
+  current: string;
+  framework: Framework;
+}
+
+const { current, framework } = Astro.props;
+
+const STANDARD_INDEX: Record<Framework, StandardMetadata[]> = {
+  IAS: IASStandards,
+  IFRS: [],
+  "Ind AS": [],
+};
+
+const standards = (STANDARD_INDEX[framework] ?? [])
+  .slice()
+  .sort((a, b) => (a.order || 0) - (b.order || 0));
+
+const currentIndex = standards.findIndex((standard) => standard.code === current);
+const previous =
+  currentIndex > 0 ? standards[currentIndex - 1] : undefined;
+const next =
+  currentIndex >= 0 && currentIndex < standards.length - 1
+    ? standards[currentIndex + 1]
+    : undefined;
+
+const frameworkClass = framework.toLowerCase().replace(/\s+/g, "");
+---
+
+{
+  (previous || next) && (
+    <nav class="pnn-nav" aria-label="Previous and next standards">
+      {previous && (
+        <a class={`pnn-card pnn-prev nav-${frameworkClass}`} href={previous.url}>
+          <span class="pnn-label">Previous</span>
+          <span class="pnn-code">
+            <ArrowLeft size={17} class="pnn-arrow" aria-hidden="true" />
+            {previous.code}
+          </span>
+          <span class="pnn-title">{previous.title}</span>
+        </a>
+      )}
+
+      {next && (
+        <a class={`pnn-card pnn-next nav-${frameworkClass}`} href={next.url}>
+          <span class="pnn-label">Next</span>
+          <span class="pnn-code">
+            {next.code}
+            <ArrowRight size={17} class="pnn-arrow" aria-hidden="true" />
+          </span>
+          <span class="pnn-title">{next.title}</span>
+        </a>
+      )}
+    </nav>
+  )
+}
+
+<style>
+  .pnn-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+    margin-top: var(--space-3xl);
+  }
+
+  .pnn-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding: var(--space-xl) var(--space-xl);
+    min-height: 84px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition-fast);
+    align-items: flex-start;
+  }
+
+  .pnn-card:hover {
+    border-color: #cbd5e1;
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+
+  .pnn-card:focus-visible {
+    outline: 2px solid var(--ias);
+    outline-offset: 2px;
+  }
+
+  .pnn-label {
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    font-weight: var(--weight-semibold);
+    color: var(--text-muted);
+  }
+
+  .pnn-code {
+    font-size: var(--text-h3);
+    font-weight: var(--weight-bold);
+    line-height: 1.3;
+  }
+
+  .pnn-arrow {
+    margin-right: 10px;
+    flex-shrink: 0;
+    vertical-align: middle;
+  }
+
+  .pnn-next .pnn-arrow {
+    margin: 0 0 0 10px;
+  }
+
+  .pnn-title {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+
+  .nav-ias .pnn-code {
+    color: var(--ias);
+  }
+
+  .nav-ifrs .pnn-code {
+    color: var(--ifrs);
+  }
+
+  .nav-indas .pnn-code {
+    color: var(--indas);
+  }
+
+  .pnn-next > * {
+    margin-left: auto;
+  }
+
+  @media (max-width: 640px) {
+    .pnn-nav {
+      grid-template-columns: 1fr;
+    }
+
+    .pnn-next > * {
+      margin-left: 0;
+    }
+  }
+</style>

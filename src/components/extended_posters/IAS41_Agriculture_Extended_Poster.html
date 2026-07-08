@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IAS 41 — Agriculture | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+
+  /* Top hub */
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+
+  /* Table of contents */
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+
+  /* Section header bar */
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .eg  { margin-bottom: 7px; }
+  .egl { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; margin-bottom: 3px; }
+  .entry { display: flex; align-items: flex-start; gap: 4px; margin-bottom: 4px; }
+  .dr { font-size: 11px; font-weight: 500; color: var(--color-text-info);   min-width: 14px; padding-top: 1px; }
+  .cr { font-size: 11px; font-weight: 500; color: var(--color-text-danger); min-width: 14px; padding-top: 1px; padding-left: 6px; }
+  .etxt { font-size: 11px; color: var(--color-text-primary); flex: 1; line-height: 1.4; }
+  .badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+
+  /* Worked example box */
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+
+  /* Glossary */
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">IAS 41 — Agriculture</div>
+      <div class="hub-sub">Extended reference poster · Conceptual framework link · Recognition · Measurement · Worked examples · Statement mapping · Related standards</div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <a href="#s1">1. Conceptual Framework</a>
+    <a href="#s2">2. Scope &amp; Definitions</a>
+    <a href="#s3">3. Recognition Criteria</a>
+    <a href="#s4">4. Measurement — Fair Value Model</a>
+    <a href="#s5">5. Bearer Plants &amp; Land</a>
+    <a href="#s6">6. Agricultural Produce &amp; Harvest</a>
+    <a href="#s7">7. Government Grants Link</a>
+    <a href="#s8">8. Gains &amp; Losses</a>
+    <a href="#s9">9. Disclosure</a>
+    <a href="#s10">10. Judgments &amp; Estimates</a>
+    <a href="#s11">11. IFRS vs US GAAP</a>
+    <a href="#s12">12. Statement Mapping</a>
+    <a href="#s13">13. Related Standards</a>
+    <a href="#s14">14. Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 — CONCEPTUAL FRAMEWORK LINK ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Why biological assets are measured differently</div>
+      <div class="principle">The Conceptual Framework permits current-value measurement bases (fair value) where they provide more relevant information than historical cost. IAS 41 is one of the clearest applications of this — biological transformation makes historical cost a poor proxy for an asset's economic reality.</div>
+      <div class="elabel">HOW BIOLOGICAL ASSETS MAP TO THE FRAMEWORK'S ELEMENTS</div>
+      <div class="check-list">
+        <span><strong style="font-weight:500">Control</strong> — the entity controls the living animal or plant, typically through ownership, herding, or cultivation rights</span>
+        <span><strong style="font-weight:500">Past event</strong> — acquisition (purchase or birth) of the animal/plant</span>
+        <span><strong style="font-weight:500">Future economic benefit</strong> — cash flows from sale of the asset itself or of the agricultural produce it yields</span>
+      </div>
+      <div class="note">IAS 41 departs sharply from the historical-cost default used elsewhere in IFRS (e.g. IAS 16, IAS 38) because biological transformation — growth, degeneration, production, procreation — continuously changes the asset's value in ways cost cannot capture.</div>
+    </div>
+
+    <div class="card cs">
+      <div class="ctitle cs">Measurement principles applied by IAS 41</div>
+      <div class="principle">The Conceptual Framework's "current value" basis is IAS 41's DEFAULT — a rare case in IFRS where fair value, not cost, is the primary measurement model.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1fr;"><span>Framework basis</span><span>Used by IAS 41 for…</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1fr;"><span>Fair value less costs to sell</span><span>Biological assets and agricultural produce at point of harvest (DEFAULT)</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1fr;"><span>Historical cost</span><span>Only where fair value cannot be measured reliably (rare, and only on initial recognition)</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1fr;"><span>Cost model (IAS 16-style)</span><span>Bearer plants (moved to PPE scope since 2016 amendment)</span></div>
+      </div>
+      <div class="callout info" style="margin-bottom:0;">ℹ️ <strong style="font-weight:500">Qualitative characteristics in action:</strong> IAS 41 prioritises <strong style="font-weight:500">relevance</strong> over the verifiability that historical cost would offer — users need to see current herd/crop value to assess an agricultural entity's performance, even though fair value estimates for immature biological assets can involve significant judgement.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 — SCOPE & DEFINITIONS ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw">
+      <div class="ctitle cw">What IAS 41 covers</div>
+      <div class="principle">IAS 41 applies to agricultural activity — the management by an entity of the biological transformation and harvest of biological assets for sale, or for conversion into agricultural produce or additional biological assets — when it results in:</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:5px;">(a) biological assets, except bearer plants</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:5px;">(b) agricultural produce AT THE POINT OF HARVEST</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);">(c) government grants related to biological assets measured at fair value less costs to sell</div>
+      <div class="elabel" style="margin-top:9px;">SCOPE EXCLUSIONS — GOVERNED BY OTHER STANDARDS</div>
+      <div class="cross-list">
+        <span>Bearer plants (e.g. tea bushes, rubber trees, grape vines) → <strong style="font-weight:500">IAS 16</strong> (produce growing on bearer plants stays within IAS 41 until harvest)</span>
+        <span>Land related to agricultural activity → <strong style="font-weight:500">IAS 16</strong> / <strong style="font-weight:500">IAS 40</strong></span>
+        <span>Intangible assets related to agricultural activity (e.g. quotas, licences) → <strong style="font-weight:500">IAS 38</strong></span>
+        <span>Agricultural produce AFTER the point of harvest → <strong style="font-weight:500">IAS 2</strong> (Inventories) — harvested produce becomes inventory measured at the IAS 41 fair-value-at-harvest amount, which then becomes its "cost" under IAS 2</span>
+        <span>Right-of-use assets over land used in agricultural activity → <strong style="font-weight:500">IFRS 16</strong></span>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Key definitions you must know</div>
+      <div class="glossary-item">
+        <div class="glossary-term">Biological asset</div>
+        <div class="glossary-def">A living animal or plant.</div>
+      </div>
+      <div class="glossary-item">
+        <div class="glossary-term">Agricultural produce</div>
+        <div class="glossary-def">The harvested product of the entity's biological assets (e.g. milk, wool, harvested cane, picked fruit) — measured under IAS 41 only up to the point of harvest.</div>
+      </div>
+      <div class="glossary-item">
+        <div class="glossary-term">Biological transformation</div>
+        <div class="glossary-def">The processes of growth, degeneration, production, and procreation that cause qualitative or quantitative changes in a biological asset.</div>
+      </div>
+      <div class="glossary-item">
+        <div class="glossary-term">Bearer plant</div>
+        <div class="glossary-def">A living plant that is used in production/supply of agricultural produce, expected to bear produce for more than one period, and has a remote likelihood of being sold as agricultural produce itself (excludes annual crops).</div>
+      </div>
+      <div class="glossary-item" style="border-bottom:none;">
+        <div class="glossary-term">Costs to sell</div>
+        <div class="glossary-def">Incremental costs directly attributable to the disposal of an asset, excluding finance costs and income taxes (e.g. commissions, levies, transfer taxes).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 — RECOGNITION CRITERIA ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Recognition Criteria</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">The recognition test for biological assets and agricultural produce</div>
+      <div class="principle">A biological asset or item of agricultural produce is recognised ONLY when ALL THREE conditions are met — mirroring the general Framework recognition criteria, adapted for living assets.</div>
+      <div class="two-col">
+        <div class="spec-box" style="margin-bottom:0;">
+          <div class="spec-title" style="color:var(--color-text-success);">Condition 1 — Control</div>
+          <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.5;">The entity controls the asset as a result of past events (e.g. legal ownership of a herd, or contractual control over livestock).</div>
+        </div>
+        <div class="spec-box" style="margin-bottom:0;">
+          <div class="spec-title" style="color:var(--color-text-success);">Condition 2 — Probable future economic benefit</div>
+          <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.5;">It is probable that future economic benefits associated with the asset will flow to the entity.</div>
+        </div>
+      </div>
+      <div class="spec-box" style="margin-top:7px;margin-bottom:0;">
+        <div class="spec-title" style="color:var(--color-text-success);">Condition 3 — Reliable measurement</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.5;">The fair value or cost of the asset can be measured reliably.</div>
+      </div>
+      <div class="callout warn" style="margin-top:8px;margin-bottom:0;">⚠️ <strong style="font-weight:600">Newborn/young animals</strong> are recognised as soon as they meet the recognition criteria — e.g. a calf is recognised at birth, initially measured at fair value less costs to sell, generating a gain in the period of birth.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 — MEASUREMENT: FAIR VALUE MODEL (with worked example) ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Measurement — Fair Value Model</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs">
+      <div class="ctitle cs">The core measurement formula</div>
+      <div class="formula-box">
+        <div class="f-label">DEFAULT MEASUREMENT — INITIAL AND SUBSEQUENT</div>
+        <div class="f-eq">Carrying amount = Fair value − Costs to sell</div>
+      </div>
+      <div class="elabel">FAIR VALUE HIERARCHY (IFRS 13 PRINCIPLES APPLIED)</div>
+      <div class="dot-list" style="margin-bottom:9px;">
+        <span><strong style="font-weight:500">Best evidence</strong> — quoted price in an active market for the identical asset</span>
+        <span><strong style="font-weight:500">No active market</strong> — most recent market transaction price, market prices for similar assets adjusted for differences, or sector benchmarks</span>
+        <span><strong style="font-weight:500">No reliable fair value</strong> (rare, only at initial recognition) — measure at cost less accumulated depreciation and impairment, until fair value becomes reliably measurable</span>
+      </div>
+      <div class="callout danger" style="margin-bottom:0;">✕ <strong style="font-weight:600">Never deduct transport/selling costs to get the asset to market</strong> from fair value — only INCREMENTAL costs directly attributable to disposal (e.g. broker commissions) qualify as "costs to sell." Transport costs to get produce TO a market are excluded from costs to sell.</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Worked example — dairy herd at year end</div>
+      <div class="worked">
+        <div class="wk-title">Example 1: Fair value gain on a dairy herd</div>
+        <div class="wk-body">
+          An entity's dairy herd had a fair value less costs to sell of $400,000 at the start of the year. During the year, 15 calves were born (fair value less costs to sell at birth: $18,000 total), and the herd's fair value less costs to sell at year end (excluding the newly born calves, and after accounting for their subsequent growth) is $455,000, inclusive of the calves.
+        </div>
+        <div class="wk-answer">
+          <strong>Total gain</strong> = Closing FV less costs to sell − Opening FV less costs to sell<br>
+          = 455,000 − 400,000 = <strong style="color:var(--color-text-info);">$55,000</strong><br>
+          This $55,000 combines the gain from births ($18,000) and the gain from price changes and physical growth of the existing herd ($37,000) — IAS 41 does not require these to be split, though many entities disclose the split voluntarily.
+        </div>
+      </div>
+      <div class="elabel">JOURNAL ENTRY</div>
+      <div class="entry"><span class="dr">Dr</span><div class="etxt">Biological assets — dairy herd $55,000<div class="badges"><span class="badge bs">SOFP</span></div></div></div>
+      <div class="entry"><span class="cr">Cr</span><div class="etxt">Gain on fair value re-measurement $55,000<div class="badges"><span class="badge bp">SOPL</span></div></div></div>
+      <div class="note">Unlike PPE revaluations, fair value gains/losses on biological assets ALWAYS go through profit or loss — never OCI. There is no revaluation reserve concept in IAS 41.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 — BEARER PLANTS & LAND ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Bearer Plants &amp; Land — The IAS 16 Carve-Out</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Why bearer plants moved to IAS 16 (2016 amendment)</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:9px;">Bearer plants (e.g. tea bushes, oil palms, grapevines, rubber trees) operate more like a manufacturing asset than a biological asset being grown for sale — they are held solely to grow produce over multiple periods, similar to a machine. The IASB concluded their fair value fluctuations added cost and complexity without commensurate benefit to users.</div>
+      <div class="elabel">BEARER PLANT — ALL THREE CONDITIONS MUST BE MET</div>
+      <div class="check-list">
+        <span>Used in the production or supply of agricultural produce</span>
+        <span>Expected to bear produce for more than one period</span>
+        <span>Has a remote likelihood of being sold as agricultural produce, except for incidental scrap sales</span>
+      </div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ <strong style="font-weight:600">Annual crops are NOT bearer plants</strong> — e.g. wheat, maize, sugar cane remain within IAS 41 throughout, since the whole plant is typically harvested/consumed. Only PERENNIAL producing plants qualify.</div>
+    </div>
+
+    <div class="card cs">
+      <div class="ctitle cs">Measurement split — plant vs produce</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 1fr;"><span>Item</span><span>Governing standard &amp; model</span></div>
+        <div class="tr" style="grid-template-columns:1fr 1fr;"><span>The bearer plant itself (e.g. the tea bush)</span><span>IAS 16 — cost model (or revaluation model) with depreciation</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 1fr;"><span>Produce growing on the bearer plant (e.g. unpicked tea leaves)</span><span>IAS 41 — fair value less costs to sell, until harvest</span></div>
+        <div class="tr" style="grid-template-columns:1fr 1fr;"><span>Land the bearer plants grow on</span><span>IAS 16 (owned) or IAS 40 (if held for capital appreciation/rental)</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 1fr;"><span>Harvested tea leaves</span><span>IAS 41 fair value at harvest becomes IAS 2 "cost" thereafter</span></div>
+      </div>
+      <div class="note">A single agricultural operation can therefore straddle three standards simultaneously: IAS 16 for the bearer plant and land, IAS 41 for unharvested produce, and IAS 2 for harvested produce — a frequently tested classification exercise.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 — AGRICULTURAL PRODUCE & HARVEST ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Agricultural Produce &amp; the Point of Harvest</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd">
+      <div class="ctitle cd">The point-of-harvest rule</div>
+      <div class="formula-box">
+        <div class="f-eq">Agricultural produce is measured at FV less costs to sell AT THE POINT OF HARVEST — this amount then becomes its deemed "cost" for IAS 2 purposes going forward</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Once harvested, produce leaves IAS 41's scope entirely. Any subsequent processing (e.g. milk into cheese, grapes into wine) is a manufacturing/inventory question under IAS 2, not an IAS 41 question.</div>
+    </div>
+
+    <div class="card cn">
+      <div class="ctitle cn">Worked example — harvest and transfer to inventory</div>
+      <div class="worked">
+        <div class="wk-title">Example 2: Wheat harvest</div>
+        <div class="wk-body">
+          A farming entity's standing wheat crop had a carrying amount (fair value less costs to sell) of $60,000 immediately before harvest. At the point of harvest, the fair value less costs to sell of the harvested wheat is $68,000.
+        </div>
+        <div class="wk-answer">
+          <strong>Gain on harvest</strong> = 68,000 − 60,000 = <strong style="color:var(--color-text-info);">$8,000</strong> → recognised in SOPL in the period of harvest.<br>
+          The harvested wheat is then transferred to inventory at $68,000, which becomes its "cost" under IAS 2 for all subsequent inventory accounting (lower of cost and NRV testing, etc.).
+        </div>
+      </div>
+      <div class="entry"><span class="dr">Dr</span><div class="etxt">Inventory (harvested wheat) $68,000<div class="badges"><span class="badge bs">SOFP</span></div></div></div>
+      <div class="entry"><span class="cr">Cr</span><div class="etxt">Biological assets (standing crop) $60,000<div class="badges"><span class="badge bs">SOFP</span></div></div></div>
+      <div class="entry"><span class="cr">Cr</span><div class="etxt">Gain on harvest $8,000<div class="badges"><span class="badge bp">SOPL</span></div></div></div>
+      <div class="note">From this point forward, standard IAS 2 rules apply — including subsequent write-downs to net realisable value if market prices fall.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 — GOVERNMENT GRANTS LINK ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Government Grants Linkage (IAS 20 vs IAS 41)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">How IAS 41 overrides IAS 20 for fair-value biological assets</div>
+      <div class="principle">Government grants related to biological assets measured at fair value less costs to sell are NOT accounted for under IAS 20's deferred-income model — IAS 41 has its own, simpler rule based on conditionality.</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">UNCONDITIONAL GRANT</div>
+          <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Recognised in profit or loss as income when — and only when — the grant becomes RECEIVABLE.</div>
+        </div>
+        <div>
+          <div class="elabel">CONDITIONAL GRANT</div>
+          <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Recognised in profit or loss only when the conditions attaching to the grant are met (e.g. "farm this land organically for 5 years") — if conditions permit part of a grant to be retained before conditions are fully met, that part is recognised as conditions are satisfied.</div>
+        </div>
+      </div>
+      <div class="note">For biological assets still measured at COST (the rare case where fair value cannot be reliably determined), the normal IAS 20 rules apply instead.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 — GAINS & LOSSES ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Gains &amp; Losses — Recognition Mechanics</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs">
+      <div class="ctitle cs">Sources of gain/loss and their SOPL treatment</div>
+      <div class="dot-list">
+        <span>Initial recognition of a biological asset at FV less costs to sell (e.g. a newborn animal) → gain recognised immediately</span>
+        <span>Initial recognition of agricultural produce at the point of harvest → gain/loss recognised immediately</span>
+        <span>Change in FV less costs to sell of biological assets during the period → gain/loss recognised immediately</span>
+        <span>Costs to sell are always deducted in arriving at the net measurement — never presented separately as an expense</span>
+      </div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ Because ALL fair value movements hit SOPL immediately, agricultural entities can show highly volatile profit figures driven by commodity price swings and biological growth cycles — a common analytical/ethics discussion point in exams.</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Worked example — combined movement analysis</div>
+      <div class="worked">
+        <div class="wk-title">Example 3: Analysing a herd's total movement</div>
+        <div class="wk-body">
+          Opening herd FV less costs to sell: $200,000. During the year: purchases of new stock $50,000 (at FV on acquisition date), sales of stock at carrying amount of $30,000 (proceeds $34,000 recognised separately as sale proceeds, not through the biological asset account), and closing FV less costs to sell (remaining herd): $235,000.
+        </div>
+        <div class="wk-answer">
+          <strong>Fair value gain for the year</strong> = Closing balance − Opening balance − Purchases + Disposals (at carrying amount)<br>
+          = 235,000 − 200,000 − 50,000 + 30,000 = <strong style="color:var(--color-text-info);">$15,000</strong> gain from price/growth movements.
+        </div>
+      </div>
+      <div class="note">A herd reconciliation (opening balance, purchases, sales, fair value gains, closing balance) is the classic exam proforma for this standard — practise building it as a T-account or roll-forward schedule.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 — DISCLOSURE ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Required disclosures for biological assets and agricultural produce</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">GENERAL DISCLOSURES</div>
+          <div class="check-list">
+            <span>Aggregate gain/loss on initial recognition and from fair value changes during the period</span>
+            <span>Description of each group of biological assets, distinguishing consumable from bearer, and mature from immature where relevant</span>
+            <span>Methods and significant assumptions applied in determining fair value of each group</span>
+            <span>A reconciliation of changes in carrying amount (purchases, sales, harvest, fair value changes, business combinations, FX)</span>
+          </div>
+        </div>
+        <div>
+          <div class="elabel">ADDITIONAL / ENCOURAGED DISCLOSURES</div>
+          <div class="check-list">
+            <span>Existence and carrying amounts of biological assets whose title is restricted, and those pledged as security</span>
+            <span>Amount of commitments for the development or acquisition of biological assets</span>
+            <span>Financial risk management strategies related to agricultural activity</span>
+            <span>Non-financial measures or estimates of physical quantities of biological assets held and produce output (encouraged, not required)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 — JUDGMENTS & ESTIMATES ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Where management judgement matters most</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">SIGNIFICANT ESTIMATES</div>
+          <div class="dot-list">
+            <span>Fair value of biological assets lacking an active/observable market (discounted cash flow models, adjusted comparable prices)</span>
+            <span>Point at which "harvest" is deemed to occur for continuous-output assets (e.g. milk, which is harvested continuously)</span>
+            <span>Costs to sell — distinguishing incremental disposal costs from costs that should stay in the FV estimate</span>
+          </div>
+        </div>
+        <div>
+          <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+          <div class="dot-list">
+            <span>Whether a plant meets ALL THREE bearer plant conditions (borderline for some multi-use crops)</span>
+            <span>Classifying grants as conditional vs unconditional</span>
+            <span>Whether reliable fair value measurement is genuinely unavailable (a very high bar — rebuttable only in rare, clearly evidenced cases)</span>
+          </div>
+        </div>
+      </div>
+      <div class="callout warn" style="margin-top:8px;margin-bottom:0;">⚠️ The presumption that fair value CAN be reliably measured is rebutted only for biological assets with NO active market and NO reliable alternative estimates — and this presumption, once rebutted, must be reassessed every period, since it can only apply at initial recognition.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 — IFRS vs US GAAP ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>IFRS vs US GAAP — Key Differences</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — IAS 41 vs US GAAP (ASC 905)</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Feature</span><span style="color:var(--color-text-info);">IFRS (IAS 41)</span><span style="color:var(--color-text-warning);">US GAAP</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Default measurement model</span><span>Fair value less costs to sell</span><span>Historical cost is generally used; fair value permitted mainly for certain harvested crops/livestock held for sale at market price with no material disposal costs</span></div>
+        <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Bearer plants</span><span>Scoped out to IAS 16 (cost/revaluation model, depreciated)</span><span>No equivalent specific "bearer plant" concept — generally accounted for as PPE-type assets under general US GAAP principles</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Fair value gains recognition</span><span>Always through SOPL</span><span>Generally not applicable, since fair value is not the default; where used, gains typically flow through earnings similarly</span></div>
+        <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Dedicated standard</span><span>Single comprehensive standard (IAS 41)</span><span>No single unified standard — guidance is scattered across industry-specific ASC topics (e.g. agriculture-specific SEC/AICPA guidance)</span></div>
+      </div>
+      <div class="note">This is one of the widest IFRS/US GAAP measurement gaps in the whole standard-setting landscape — IFRS's fair-value-first approach for biological assets has no direct US GAAP counterpart, making agricultural entities' reported profits and asset values difficult to compare across the two frameworks without adjustment.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 — STATEMENT MAPPING TABLE ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping — Where Every Agricultural Event Lands</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Comprehensive event-to-statement mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event / transaction</span><span>Statement(s) affected</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Purchase of a biological asset</span><span><span class="badge bs">SOFP</span></span><span>Recognised at fair value less costs to sell</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Birth of an animal (initial recognition)</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Gain recognised immediately, no exceptions</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Fair value change during the period (price and/or physical growth)</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Always through profit or loss — never OCI</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Harvest of agricultural produce</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Gain/loss recognised, then produce reclassified to inventory</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Sale of a biological asset or harvested produce</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Recognised per IFRS 15/IAS 2 principles once transferred out of biological asset classification</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Bearer plant depreciation</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Governed by IAS 16, not IAS 41</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Unconditional government grant becoming receivable</span><span><span class="badge bp">SOPL</span></span><span>Recognised as income immediately</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Conditional government grant, conditions not yet met</span><span>—</span><span>Not yet recognised; deferred until conditions satisfied</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Cash paid to acquire biological assets</span><span><span class="badge bs">Cash Flow Statement</span></span><span>Investing (or operating, if part of routine herd trading) activities outflow</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Proceeds from sale of biological assets/produce</span><span><span class="badge bs">Cash Flow Statement</span></span><span>Investing or operating activities inflow, depending on nature of the entity's business</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Unrealised fair value gain add-back</span><span><span class="badge bs">Cash Flow Statement</span></span><span>Added back/deducted in operating activities under indirect method (non-cash item)</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Group-level reconciliation and valuation disclosures</span><span><span class="badge bp">Notes</span></span><span>Required for each group of biological assets</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 — RELATED STANDARDS ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How IAS 41 connects across the IFRS body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 16</span><span>Governs bearer plants and land used in agricultural activity, applying the cost/revaluation and depreciation framework instead of fair value</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 2</span><span>Takes over measurement of agricultural produce immediately AFTER harvest, using the IAS 41 fair value at harvest as deemed cost</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 20</span><span>Provides the general government grant framework, but is OVERRIDDEN by IAS 41's own rules for grants tied to fair-value-measured biological assets</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 13</span><span>Supplies the fair value measurement hierarchy and definition (exit price, market participants) that IAS 41 relies on for determining fair value less costs to sell</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 40</span><span>Land held for capital appreciation or rental in connection with agricultural activity may instead be classified as investment property</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 15</span><span>Governs revenue recognition on the eventual SALE of biological assets or agricultural produce, once they leave IAS 41/IAS 2 measurement</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 1</span><span>Determines presentation and classification (typically current or non-current split for biological assets depending on operating cycle) on the SOFP</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 12</span><span>Fair value gains on biological assets can create temporary differences where tax bases differ from accounting carrying amounts, generating deferred tax</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 36</span><span>Applies to bearer plants (as PPE under IAS 16) for impairment testing — biological assets measured at fair value are NOT separately impairment tested since fair value already reflects current conditions</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 — GLOSSARY ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Agricultural activity</div><div class="glossary-def">The management by an entity of the biological transformation and harvest of biological assets for sale, or for conversion into agricultural produce or additional biological assets.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Group of biological assets</div><div class="glossary-def">An aggregation of similar living animals or plants (e.g. "dairy cattle," "orange trees") used for disclosure and fair value estimation purposes.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Consumable biological assets</div><div class="glossary-def">Assets to be harvested as agricultural produce or sold as biological assets themselves (e.g. livestock for meat, crops).</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Bearer biological assets</div><div class="glossary-def">Assets held to bear produce repeatedly, other than as agricultural produce themselves (e.g. dairy cattle for milk, sheep for wool) — distinct from "bearer plants," which are scoped OUT to IAS 16 entirely.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Active market</div><div class="glossary-def">A market with homogeneous items, willing buyers/sellers, and publicly available prices — the primary source of fair value evidence.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Point of harvest</div><div class="glossary-def">The moment produce is detached from the biological asset (or, for continuous production like milk, the moment of milking) — the boundary between IAS 41 and IAS 2.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bs">SOFP</span> Statement of financial position (balance sheet)
+      <span class="badge bp">SOPL</span> Statement of profit or loss (income statement)
+      <span class="badge bo">OCI</span> Other comprehensive income
+      <span class="badge be">Equity</span> Statement of changes in equity
+    </div>
+  </div>
+
+  <div class="footer-note">IAS 41 — Agriculture · Extended Reference Poster · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

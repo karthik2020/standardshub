@@ -1,59 +1,80 @@
 ---
 // InformationHeader component for StandardsHub
+// Primary identity section for every accounting standard
 // Displays standard information with metadata
 
 interface Props {
   // Required
   code: string;
   title: string;
-  
-  // Metadata - optional for flexibility
+
+  // Optional
+  summary?: string;
   issued?: string;
   latestAmendment?: string;
   status?: string;
+  framework?: string;
 }
 
 const {
   code,
   title,
+  summary = "",
   issued = "",
   latestAmendment = "",
   status = "",
+  framework = "ias",
 } = Astro.props;
 ---
 
-<section class="information-header">
+<section class="information-header" data-framework={framework.toLowerCase()}>
   <div class="information-header-content">
     <div class="information-header-main">
-      <h1 class="information-header-code">{code}</h1>
+      <div class="information-header-top">
+        <h1 class="information-header-code">{code}</h1>
+        {status && <div class="information-header-status-pill">{status}</div>}
+      </div>
       <p class="information-header-title">{title}</p>
+
+      {
+        summary && (
+          <div class="information-header-summary">
+            <p class="information-header-summary-text">{summary}</p>
+            <div class="information-header-divider" />
+          </div>
+        )
+      }
     </div>
-    
-    {(issued || latestAmendment || status) && (
-      <dl class="information-header-metadata">
-        {issued && (
-          <div class="metadata-item">
-            <dt class="metadata-label">Issued</dt>
-            <dd class="metadata-value">{issued}</dd>
+
+    {
+      (issued || latestAmendment) && (
+        <div class="information-header-metadata">
+          <div class="information-header-metadata-grid">
+            {issued && (
+              <div class="information-header-metadata-card">
+                <div class="information-header-metadata-label">Issued</div>
+                <div class="information-header-metadata-value">{issued}</div>
+              </div>
+            )}
+
+            {latestAmendment && (
+              <div class="information-header-metadata-card">
+                <div class="information-header-metadata-label">
+                  Latest amendment
+                </div>
+                <div class="information-header-metadata-value">
+                  {latestAmendment}
+                </div>
+              </div>
+            )}
           </div>
-        )}
-        
-        {latestAmendment && (
-          <div class="metadata-item">
-            <dt class="metadata-label">Latest amendment</dt>
-            <dd class="metadata-value">{latestAmendment}</dd>
-          </div>
-        )}
-        
-        {status && (
-          <div class="metadata-item">
-            <dt class="metadata-label">Status</dt>
-            <dd class="metadata-value">{status}</dd>
-          </div>
-        )}
-      </dl>
-    )}
+        </div>
+      )
+    }
   </div>
+
+  {/* Reserve space for future decorative SVG illustration */}
+  <div class="information-header-illustration"></div>
 </section>
 
 <style>
@@ -62,30 +83,91 @@ const {
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     padding: var(--space-xl);
-    margin-bottom: var(--space-xl);
+    /* margin-bottom: var(--space-xl); */
+    position: relative;
+    overflow: hidden;
   }
-  
+
   .information-header-content {
     display: flex;
     flex-direction: column;
-    gap: var(--space-lg);
+    /* gap: var(--space-xl); */
   }
-  
+
   .information-header-main {
     display: flex;
     flex-direction: column;
-    gap: var(--space-sm);
+    gap: var(--space-md);
+    position: relative;
+    padding-left: var(--space-md);
   }
-  
+
+  .information-header-main::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--ias);
+    border-radius: 1.5px;
+  }
+
+  .information-header[data-framework="ifrs"] .information-header-main::before {
+    background: var(--ifrs);
+  }
+
+  .information-header[data-framework="indas"] .information-header-main::before {
+    background: var(--indas);
+  }
+
+  .information-header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--space-md);
+  }
+
   .information-header-code {
     font-size: var(--text-hero);
     font-weight: var(--weight-bold);
     color: var(--text);
-    line-height: 1.1;
+    line-height: 1;
     letter-spacing: -0.03em;
     margin: 0;
   }
-  
+
+  .information-header-status-pill {
+    background: var(--ifrs-soft);
+    border: 1px solid var(--ifrs);
+    border-radius: var(--radius-pill);
+    padding: var(--space-xs) var(--space-md);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    color: var(--ifrs);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+
+  .information-header[data-framework="ias"] .information-header-status-pill {
+    background: var(--ias-soft);
+    border-color: var(--ias);
+    color: var(--ias);
+  }
+
+  .information-header[data-framework="ifrs"] .information-header-status-pill {
+    background: var(--ifrs-soft);
+    border-color: var(--ifrs);
+    color: var(--ifrs);
+  }
+
+  .information-header[data-framework="indas"] .information-header-status-pill {
+    background: var(--indas-soft);
+    border-color: var(--indas);
+    color: var(--indas);
+  }
+
   .information-header-title {
     font-size: var(--text-subtitle);
     font-weight: var(--weight-medium);
@@ -93,67 +175,115 @@ const {
     margin: 0;
     line-height: 1.4;
   }
-  
+
+  .information-header-summary {
+    margin-top: var(--space-md);
+  }
+
+  .information-header-summary-text {
+    font-size: var(--text-body);
+    font-weight: var(--weight-normal);
+    color: var(--text);
+    line-height: 1.6;
+    margin: 0 0 var(--space-md) 0;
+  }
+
+  .information-header-divider {
+    height: 1px;
+    background: var(--divider);
+    width: 100%;
+  }
+
   .information-header-metadata {
+    margin-top: var(--space-lg);
+  }
+
+  .information-header-metadata-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-xl);
-    padding-top: var(--space-lg);
-    border-top: 1px solid var(--border);
+    gap: var(--space-xs);
+    align-items: stretch;
+    justify-content: flex-start;
   }
-  
-  .metadata-item {
+
+  .information-header-metadata-card {
     display: flex;
     flex-direction: column;
-    gap: var(--space-xs);
-    min-width: 120px;
+    justify-content: center;
+
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+
+    padding: var(--space-sm) var(--space-md);
+
+    flex: 0 0 auto;
+
+    min-width: 150px;
+    max-width: 280px;
   }
-  
-  .metadata-label {
+
+  .information-header-metadata-label {
     font-size: var(--text-xs);
-    font-weight: var(--weight-semibold);
+    font-weight: var(--weight-medium);
     color: var(--text-muted);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
   }
-  
-  .metadata-value {
+
+  .information-header-metadata-value {
     font-size: var(--text-small);
-    font-weight: var(--weight-medium);
+    font-weight: var(--weight-semibold);
     color: var(--text);
   }
-  
+
+  .information-header-illustration {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 100%;
+    background: transparent;
+    pointer-events: none;
+  }
+
   /* Responsive adjustments */
   @media (max-width: 768px) {
     .information-header {
       padding: var(--space-lg);
     }
-    
+
     .information-header-code {
       font-size: 32px;
     }
-    
+
     .information-header-title {
       font-size: var(--text-h2);
     }
-    
-    .information-header-metadata {
-      gap: var(--space-lg);
-    }
-    
-    .metadata-item {
-      min-width: 100px;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .information-header-metadata {
-      flex-direction: column;
+
+    .information-header-metadata-grid {
       gap: var(--space-md);
     }
-    
-    .metadata-item {
-      min-width: auto;
+
+    .information-header-illustration {
+      width: 120px;
+      opacity: 0.1;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .information-header-top {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-sm);
+    }
+
+    .information-header-status-pill {
+      align-self: flex-start;
+    }
+
+    .information-header-illustration {
+      display: none;
     }
   }
 </style>

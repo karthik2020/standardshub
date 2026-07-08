@@ -2,6 +2,7 @@
 import StandardLayout from "./StandardLayout.astro";
 import InformationHeader from "../components/InformationHeader.astro";
 import ReferenceGuide from "../components/ReferenceGuide.astro";
+import PreviousNextNavigation from "../components/PreviousNextNavigation.astro";
 import "../styles/posters/poster-classic.css";
 
 interface Props {
@@ -11,6 +12,7 @@ interface Props {
   issued?: string;
   latestAmendment?: string;
   status?: string;
+  summary?: string;
 }
 
 const {
@@ -20,7 +22,9 @@ const {
   issued = "",
   latestAmendment = "",
   status = "",
+  summary = "",
 } = Astro.props;
+---
 ---
 
 <StandardLayout code={code} title={title} framework={standardType}>
@@ -30,11 +34,14 @@ const {
   <InformationHeader
     code={code}
     title={title}
+    summary={summary}
     issued={issued}
     latestAmendment={latestAmendment}
     status={status}
+    framework={standardType}
   />
   <ReferenceGuide>
     <slot />
   </ReferenceGuide>
+  <PreviousNextNavigation current={code} framework={standardType as "IAS" | "IFRS" | "Ind AS"} />
 </StandardLayout>

@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IAS 19 — Employee Benefits | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .entry { display: flex; align-items: flex-start; gap: 4px; margin-bottom: 4px; }
+  .dr { font-size: 11px; font-weight: 500; color: var(--color-text-info);   min-width: 14px; padding-top: 1px; }
+  .cr { font-size: 11px; font-weight: 500; color: var(--color-text-danger); min-width: 14px; padding-top: 1px; padding-left: 6px; }
+  .etxt { font-size: 11px; color: var(--color-text-primary); flex: 1; line-height: 1.4; }
+  .badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">IAS 19 — Employee Benefits</div>
+      <div class="hub-sub">Extended reference poster · Conceptual framework link · DC vs DB plans · Worked examples · Statement mapping · Related standards</div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <a href="#s1">1. Conceptual Framework</a>
+    <a href="#s2">2. Scope &amp; Definitions</a>
+    <a href="#s3">3. Short-Term Employee Benefits</a>
+    <a href="#s4">4. Post-Employment: Defined Contribution</a>
+    <a href="#s5">5. Post-Employment: Defined Benefit</a>
+    <a href="#s6">6. Remeasurements &amp; OCI</a>
+    <a href="#s7">7. Plan Assets &amp; Net Interest</a>
+    <a href="#s8">8. Other Long-Term &amp; Termination Benefits</a>
+    <a href="#s9">9. Disclosure</a>
+    <a href="#s10">10. Judgments &amp; Estimates</a>
+    <a href="#s11">11. IFRS vs US GAAP</a>
+    <a href="#s12">12. Statement Mapping</a>
+    <a href="#s13">13. Related Standards</a>
+    <a href="#s14">14. Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Why employee benefit obligations are genuine Framework liabilities</div>
+      <div class="principle">When an employee renders service to an entity, a present obligation arises to pay the resulting benefits — whether payable now, or years into the future. IAS 19 exists to ensure the COST of employee service is recognised in the period the service is RENDERED, not merely when cash is eventually paid out.</div>
+      <div class="elabel">HOW EMPLOYEE BENEFITS MAP TO THE FRAMEWORK'S ELEMENTS</div>
+      <div class="check-list">
+        <span><strong style="font-weight:500">Present obligation</strong> — a legal obligation (contract, legislation) or CONSTRUCTIVE obligation (established practice creating a valid expectation of payment)</span>
+        <span><strong style="font-weight:500">Past event</strong> — the employee's service rendered during the period</span>
+        <span><strong style="font-weight:500">Expense recognition</strong> — the cost of benefits is recognised as the employee earns them, matched to the service period, not the payment date</span>
+      </div>
+      <div class="note">IAS 19's basic principle is deceptively simple to state — "recognise the cost of benefits when employees earn them, not when paid" — but applying it to long-term, uncertain, post-employment obligations (defined benefit pensions) makes this one of the most actuarially complex standards in IFRS.</div>
+    </div>
+
+    <div class="card cs">
+      <div class="ctitle cs">Measurement principles applied by IAS 19</div>
+      <div class="principle">Measurement complexity scales directly with the RISK profile of each benefit type — from simple undiscounted amounts to full actuarial present value calculations.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1fr;"><span>Benefit type</span><span>Measurement basis</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1fr;"><span>Short-term benefits</span><span>Undiscounted amount expected to be paid</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1fr;"><span>Defined contribution plans</span><span>Contributions payable for the period (no further measurement needed)</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1fr;"><span>Defined benefit plans</span><span>Present value of the obligation, using the Projected Unit Credit method, LESS the fair value of plan assets</span></div>
+      </div>
+      <div class="callout info" style="margin-bottom:0;">ℹ️ <strong style="font-weight:500">Qualitative characteristics in action:</strong> the defined benefit obligation's use of actuarial present value and discounting reflects <strong style="font-weight:500">relevance</strong> — a long-term pension promise decades from settlement would badly misstate the entity's true obligation if measured undiscounted.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw">
+      <div class="ctitle cw">What IAS 19 covers — the four categories</div>
+      <div class="principle">IAS 19 prescribes accounting and disclosure for employee benefits — ALL forms of consideration given by an entity in exchange for service rendered by employees, or for termination of employment.</div>
+      <div class="check-list">
+        <span><strong style="font-weight:500">Short-term employee benefits</strong> — wages, salaries, paid annual/sick leave, profit-sharing, bonuses, and non-monetary benefits, all due to be settled WITHIN 12 months of the related service</span>
+        <span><strong style="font-weight:500">Post-employment benefits</strong> — pensions, other retirement benefits, post-employment life insurance/medical care</span>
+        <span><strong style="font-weight:500">Other long-term employee benefits</strong> — long-service/sabbatical leave, jubilee benefits, long-term disability benefits, profit-sharing/bonuses due 12+ months after period end</span>
+        <span><strong style="font-weight:500">Termination benefits</strong> — provided in exchange for the termination of an employee's employment (redundancy)</span>
+      </div>
+      <div class="note">IAS 19 does NOT cover employee benefits within the scope of IFRS 2 (Share-based Payment) — a critical scope boundary tested frequently in exams.</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Key definitions you must know</div>
+      <div class="glossary-item">
+        <div class="glossary-term">Defined contribution plans</div>
+        <div class="glossary-def">Post-employment benefit plans under which an entity pays fixed contributions into a separate fund and has NO legal or constructive obligation to pay further contributions if the fund has insufficient assets to pay employee benefits.</div>
+      </div>
+      <div class="glossary-item">
+        <div class="glossary-term">Defined benefit plans</div>
+        <div class="glossary-def">Post-employment benefit plans OTHER than defined contribution plans — the entity effectively RETAINS actuarial and investment risk, since it bears the obligation to provide the agreed benefits regardless of fund performance.</div>
+      </div>
+      <div class="glossary-item">
+        <div class="glossary-term">Actuarial gains and losses</div>
+        <div class="glossary-def">Changes in the present value of the defined benefit obligation resulting from experience adjustments (differences between previous actuarial assumptions and what actually occurred) and the effects of changes in actuarial assumptions.</div>
+      </div>
+      <div class="glossary-item" style="border-bottom:none;">
+        <div class="glossary-term">Current service cost</div>
+        <div class="glossary-def">The increase in the present value of the defined benefit obligation resulting from employee service in the CURRENT period.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Short-Term Employee Benefits</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Recognition &amp; measurement — the simplest category</div>
+      <div class="formula-box">
+        <div class="f-eq">Recognise the UNDISCOUNTED amount expected to be paid as an expense, unless another Standard requires/permits capitalisation into the cost of an asset (e.g. inventory, PPE)</div>
+      </div>
+      <div class="elabel">COMPENSATED ABSENCES — TWO TYPES</div>
+      <div class="dot-list">
+        <span><strong style="font-weight:500">Accumulating</strong> (e.g. carried-forward annual leave) — recognised as employees render service that increases their entitlement, even if unused</span>
+        <span><strong style="font-weight:500">Non-accumulating</strong> (e.g. sick leave that lapses if unused) — recognised only when the absence actually occurs</span>
+      </div>
+    </div>
+
+    <div class="card cs">
+      <div class="ctitle cs">Worked example — accrued annual leave</div>
+      <div class="worked">
+        <div class="wk-title">Example 1: Accumulating paid leave provision</div>
+        <div class="wk-body">
+          At year end, 50 employees have a combined total of 320 unused, carried-forward annual leave days. Average daily pay rate: $250. Leave is accumulating and vests (paid out even on resignation).
+        </div>
+        <div class="wk-answer">
+          <strong>Liability for accrued annual leave</strong> = 320 days × $250 = <strong style="color:var(--color-text-info);">$80,000</strong>, recognised undiscounted as a short-term employee benefit liability.
+        </div>
+      </div>
+      <div class="entry"><span class="dr">Dr</span><div class="etxt">Staff cost / leave expense $80,000<div class="badges"><span class="badge bp">SOPL</span></div></div></div>
+      <div class="entry"><span class="cr">Cr</span><div class="etxt">Accrued leave liability $80,000<div class="badges"><span class="badge bs">SOFP</span></div></div></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Post-Employment Benefits — Defined Contribution Plans</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">The simple case — contribution equals expense</div>
+      <div class="principle">Because the entity's obligation is limited to the amount it agrees to contribute (with NO further obligation once contributions are paid), accounting is straightforward: the contribution payable for a period is recognised as an EXPENSE, unless another standard requires capitalisation.</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 2: Defined contribution scheme</div>
+        <div class="wk-body">An entity contributes 8% of gross salaries to a defined contribution pension scheme. Total gross salaries for the period: $2,400,000. $150,000 of the required contribution remains unpaid at year end.</div>
+        <div class="wk-answer">
+          <strong>Total contribution expense</strong> = 2,400,000 × 8% = <strong style="color:var(--color-text-info);">$192,000</strong> (SOPL, in full, regardless of payment timing)<br>
+          <strong>Liability at year end</strong> = <strong style="color:var(--color-text-danger);">$150,000</strong> (unpaid portion only)
+        </div>
+      </div>
+      <div class="note">No actuarial assumptions, discounting, or complex remeasurement is EVER required for defined contribution plans — the entire complexity of Sections 5–7 applies ONLY to defined benefit plans.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Post-Employment Benefits — Defined Benefit Plans</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The net defined benefit liability/asset formula</div>
+      <div class="formula-box">
+        <div class="f-eq">Net defined benefit liability (asset) = Present value of the defined benefit obligation − Fair value of plan assets</div>
+      </div>
+      <div class="elabel">THE PROJECTED UNIT CREDIT METHOD</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Each period of service gives rise to an ADDITIONAL unit of benefit entitlement, and each unit is measured SEPARATELY to build up the final obligation — requiring actuarial assumptions about mortality, staff turnover, salary growth, and discount rates. This calculation is normally performed by a qualified actuary.</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">The three components of defined benefit cost</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.2fr 1fr;"><span>Component</span><span>Recognised in…</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr;"><span>Service cost (current + past service cost + gains/losses on settlement)</span><span><span class="badge bp">SOPL</span></span></div>
+        <div class="tr alt" style="grid-template-columns:1.2fr 1fr;"><span>Net interest on the net defined benefit liability/asset</span><span><span class="badge bp">SOPL</span></span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr;"><span>Remeasurements of the net defined benefit liability/asset</span><span><span class="badge bo">OCI</span></span></div>
+      </div>
+      <div class="note">This three-way split — the "IAS 19R" model since the 2011 amendment — is the single most important structural fact to memorise about defined benefit accounting.</div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card cn span2">
+      <div class="ctitle cn">Worked example — full defined benefit reconciliation</div>
+      <div class="worked">
+        <div class="wk-title">Example 3: Movement in the net defined benefit liability</div>
+        <div class="wk-body">
+          Opening defined benefit obligation: $4,000,000. Opening plan assets: $3,600,000. Current service cost: $250,000. Discount rate at start of year: 5%. Benefits paid during the year: $180,000. Contributions paid into the plan: $220,000. Actuarial loss on the obligation (change in assumptions): $60,000. Return on plan assets (actual): $200,000.
+        </div>
+        <div class="wk-answer">
+          <strong>Net interest on opening net liability</strong> = (4,000,000 − 3,600,000) × 5% = 400,000 × 5% = <strong style="color:var(--color-text-info);">$20,000</strong> (net interest expense, SOPL)<br><br>
+          <strong>Obligation roll-forward:</strong> 4,000,000 + 250,000 (service cost) + 200,000 (interest on obligation: 4,000,000×5%) − 180,000 (benefits paid) + 60,000 (actuarial loss) = <strong>$4,330,000 closing obligation</strong><br>
+          <strong>Plan assets roll-forward:</strong> 3,600,000 + 180,000 (interest on assets: 3,600,000×5%) − 180,000 (benefits paid) + 220,000 (contributions) + 20,000 (return above expected, remeasurement gain) = <strong>$3,840,000 closing assets</strong><br><br>
+          <strong>Closing net defined benefit liability</strong> = 4,330,000 − 3,840,000 = <strong style="color:var(--color-text-danger);">$490,000</strong>
+        </div>
+      </div>
+      <div class="note">Note "return on plan assets" is split: EXPECTED return (at the discount rate) flows through net interest in SOPL; any DIFFERENCE from actual return is a remeasurement in OCI — see Section 6/7.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Remeasurements — Why They Sit in OCI</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Components of remeasurement, and the no-recycling rule</div>
+      <div class="check-list" style="margin-bottom:9px;">
+        <span>Actuarial gains and losses on the defined benefit obligation (experience adjustments and the effects of changes in actuarial assumptions)</span>
+        <span>The difference between actual return on plan assets and the amount included in net interest (i.e. return on plan assets, excluding amounts in net interest)</span>
+        <span>Any change in the effect of the asset ceiling, excluding amounts included in net interest</span>
+      </div>
+      <div class="callout danger" style="margin-bottom:0;">✕ <strong style="font-weight:600">Remeasurements recognised in OCI are NEVER reclassified ("recycled") to profit or loss in a later period</strong> — they may, however, be transferred WITHIN equity (e.g. to retained earnings), similar to a revaluation surplus under IAS 16. This is a frequently tested distinguishing feature versus other OCI items like FX translation reserves (IAS 21), which DO recycle.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Plan Assets, Net Interest &amp; the Asset Ceiling</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs">
+      <div class="ctitle cs">Net interest mechanics</div>
+      <div class="formula-box">
+        <div class="f-eq">Net interest = Net defined benefit liability (asset) at the START of the period × Discount rate determined at the START of the period</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">The SAME discount rate used to measure the obligation is applied to BOTH the obligation and plan assets, ensuring net interest is calculated symmetrically on the NET position.</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">The asset ceiling</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:9px;">Where plan assets EXCEED the defined benefit obligation (a net surplus/asset position), the recognised asset is capped at the "asset ceiling" — the present value of any economic benefits available in the form of refunds from the plan or reductions in future contributions.</div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ An entity cannot simply recognise a large pension surplus as an asset if it has no realistic way to actually access that surplus (e.g. via refund or contribution holidays) — the asset ceiling prevents overstatement of recoverable pension surpluses.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Other Long-Term Benefits &amp; Termination Benefits</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Other long-term employee benefits</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:9px;">Uses a SIMPLIFIED version of defined benefit accounting: the net total of service cost, net interest, AND remeasurements is recognised entirely in PROFIT OR LOSS — unlike defined benefit pensions, there is NO separate OCI presentation for remeasurements here.</div>
+      <div class="dot-list">
+        <span>Long-service/sabbatical leave</span>
+        <span>Jubilee or other long-service benefits</span>
+        <span>Long-term disability benefits</span>
+        <span>Profit-sharing and bonuses payable 12+ months after period end</span>
+      </div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Termination benefits — recognition trigger</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:9px;">Recognised at the EARLIER of: when the entity can no longer withdraw the offer of the benefits; and when the entity recognises costs for a restructuring (IAS 37) that involves paying termination benefits.</div>
+      <div class="note">Termination benefits arise from the DECISION TO TERMINATE, not from employee service rendered — a fundamentally different obligating event from every other category in IAS 19, which is why they're accounted for separately.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Required disclosures (primarily for defined benefit plans)</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">CHARACTERISTICS &amp; RISKS</div>
+          <div class="check-list">
+            <span>Characteristics of the defined benefit plans and risks associated with them (e.g. asset volatility, discount rate risk, longevity risk)</span>
+            <span>A reconciliation of the opening and closing balances of the defined benefit obligation and plan assets, showing each component of change separately</span>
+          </div>
+        </div>
+        <div>
+          <div class="elabel">AMOUNTS &amp; SENSITIVITY</div>
+          <div class="check-list">
+            <span>A disaggregation of plan assets by class/nature and risk characteristics</span>
+            <span>Significant actuarial assumptions used (discount rate, salary growth, mortality)</span>
+            <span>Sensitivity analysis for each significant actuarial assumption, showing the effect of reasonably possible changes on the obligation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Where management judgement matters most</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">SIGNIFICANT ESTIMATES</div>
+          <div class="dot-list">
+            <span>Discount rate — determined by reference to market yields on high-quality corporate bonds (or government bonds where no deep corporate bond market exists) of matching currency and term</span>
+            <span>Future salary growth rates, mortality/longevity assumptions, staff turnover rates</span>
+            <span>Expected inflation and medical cost trend rates for post-employment medical benefit plans</span>
+          </div>
+        </div>
+        <div>
+          <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+          <div class="dot-list">
+            <span>Classifying a plan as defined contribution vs defined benefit — sometimes unclear for multi-employer or state plans</span>
+            <span>Whether a constructive obligation exists (e.g. informal practice of enhancing statutory redundancy pay)</span>
+            <span>Applying the asset ceiling test where a plan is in surplus</span>
+          </div>
+        </div>
+      </div>
+      <div class="callout warn" style="margin-top:8px;margin-bottom:0;">⚠️ A small change in the discount rate assumption can have a DISPROPORTIONATELY large effect on the defined benefit obligation for long-duration pension liabilities — this sensitivity is precisely why detailed sensitivity disclosure is mandatory.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>IFRS vs US GAAP — Key Differences</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — IAS 19 vs US GAAP (ASC 715)</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Feature</span><span style="color:var(--color-text-info);">IFRS (IAS 19)</span><span style="color:var(--color-text-warning);">US GAAP</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Actuarial gains/losses (remeasurements)</span><span>Recognised IMMEDIATELY in OCI, never recycled to SOPL</span><span>May be recognised immediately in OCI, OR deferred and amortised using a "corridor" approach; if deferred, EVENTUALLY recycled through SOPL</span></div>
+        <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Past service cost</span><span>Recognised immediately in SOPL, whether vested or unvested</span><span>Amortised over the future service period of employees, if unvested</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Expected return on plan assets</span><span>No longer a separate concept — net interest uses the SAME discount rate on both obligation and assets</span><span>Expected return on assets is separately estimated (potentially different from the discount rate) and included in pension expense</span></div>
+        <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Presentation of pension cost components</span><span>Service cost + net interest in SOPL; remeasurements in OCI</span><span>Service cost presented within operating expenses; other components (interest, expected return, amortisation) presented separately, often below operating income</span></div>
+      </div>
+      <div class="note">The "corridor approach" permitting delayed, smoothed recognition of actuarial gains/losses under older US GAAP practice is the most significant historical divergence — IFRS's mandatory immediate OCI recognition (since the 2011 IAS 19 amendment) is considerably more conservative and volatility-transparent.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping — Where Every Employee Benefit Event Lands</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Comprehensive event-to-statement mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event / transaction</span><span>Statement(s) affected</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Short-term benefit expense (wages, accrued leave)</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Undiscounted; liability for any unpaid amount</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Defined contribution — contribution payable</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Simple expense recognition, no actuarial complexity</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Defined benefit — current/past service cost</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Increases the obligation and SOPL expense</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Defined benefit — net interest</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Applied to the net opening liability/asset at the opening discount rate</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Defined benefit — remeasurements (actuarial gains/losses, asset return above/below expected)</span><span><span class="badge bo">OCI</span> <span class="badge bs">SOFP</span></span><span>Never recycled to SOPL; may transfer within equity</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Contributions paid into the plan</span><span><span class="badge bs">SOFP</span></span><span>Increases plan assets, reducing the net liability</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Benefits paid out of the plan</span><span><span class="badge bs">SOFP</span></span><span>Reduces both the obligation and plan assets equally — no SOPL/OCI impact</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Other long-term benefits — total net movement</span><span><span class="badge bp">SOPL</span></span><span>All components (service cost, interest, remeasurement) through SOPL — no OCI split</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Termination benefits</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Recognised at the earlier of offer-withdrawal or related restructuring recognition</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Contributions paid (cash)</span><span><span class="badge bs">Cash Flow Statement</span></span><span>Operating activities outflow</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Actuarial assumptions, sensitivity, plan risk characteristics</span><span><span class="badge bp">Notes</span></span><span>Extensive mandatory disclosure for defined benefit plans</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How IAS 19 connects across the IFRS body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 2</span><span>Share-based payment employee benefits are EXPLICITLY EXCLUDED from IAS 19's scope and follow IFRS 2's own fair value-based recognition rules instead</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 12</span><span>Remeasurements recognised in OCI generate temporary differences whose deferred tax effect ALSO flows through OCI, consistent with IAS 12's "tax follows the item" rule</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 37</span><span>A decision to restructure, involving termination benefits, triggers simultaneous recognition of both an IAS 37 restructuring provision and IAS 19 termination benefits</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 1</span><span>Determines where net defined benefit liabilities/assets are presented on the SOFP (always non-current in practice, given the long-term nature) and where remeasurements sit within OCI</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 13</span><span>Supplies the fair value measurement framework used to value plan assets held by the pension fund</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 24</span><span>Key management personnel compensation, including post-employment and other long-term benefits, must be disclosed as related party transactions</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 10 / IAS 27</span><span>Determines whether a pension fund itself should be consolidated by the sponsoring entity, based on the control assessment (usually NOT consolidated where the fund is a separate legal entity administered independently)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Past service cost</div><div class="glossary-def">The change in the present value of the defined benefit obligation for employee service in PRIOR periods, resulting from a plan amendment or curtailment — recognised immediately in SOPL.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Curtailment</div><div class="glossary-def">A significant reduction by the entity in the number of employees covered by a plan, or an amendment reducing future benefits for existing service.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Multi-employer plans</div><div class="glossary-def">Plans that pool the assets contributed by various entities not under common control, used to provide benefits to employees of more than one entity — classified as DC or DB based on the terms, not simply the pooling structure.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Vested employee benefits</div><div class="glossary-def">Benefits not conditional on future employment — the entitlement is secured regardless of whether the employee continues to work for the entity.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Plan assets</div><div class="glossary-def">Assets held by a long-term employee benefit fund, and qualifying insurance policies, that are used solely to settle employee benefit obligations and are not available to the reporting entity's own creditors.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Constructive obligation</div><div class="glossary-def">An obligation arising from an entity's own established pattern of past practice, published policies, or a sufficiently specific current statement, creating a valid expectation among employees that the entity will discharge those responsibilities.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bs">SOFP</span> Statement of financial position (balance sheet)
+      <span class="badge bp">SOPL</span> Statement of profit or loss (income statement)
+      <span class="badge bo">OCI</span> Other comprehensive income
+      <span class="badge be">Equity</span> Statement of changes in equity
+    </div>
+  </div>
+
+  <div class="footer-note">IAS 19 — Employee Benefits · Extended Reference Poster · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>
