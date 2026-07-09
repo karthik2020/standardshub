@@ -3,6 +3,8 @@
 // Primary identity section for every accounting standard
 // Displays standard information with metadata
 
+import { formatStandardDate } from "../utils/date.ts";
+
 interface Props {
   // Required
   code: string;
@@ -31,10 +33,10 @@ const {
   <div class="information-header-content">
     <div class="information-header-main">
       <div class="information-header-top">
-        <h1 class="information-header-code">{code}</h1>
+        <p class="information-header-code">{code}</p>
         {status && <div class="information-header-status-pill">{status}</div>}
       </div>
-      <p class="information-header-title">{title}</p>
+      <h1 class="information-header-title">{title}</h1>
 
       {
         summary && (
@@ -52,8 +54,8 @@ const {
           <div class="information-header-metadata-grid">
             {issued && (
               <div class="information-header-metadata-card">
-                <div class="information-header-metadata-label">Issued</div>
-                <div class="information-header-metadata-value">{issued}</div>
+                 <div class="information-header-metadata-label">Issued</div>
+                <div class="information-header-metadata-value">{formatStandardDate(issued)}</div>
               </div>
             )}
 
@@ -62,8 +64,8 @@ const {
                 <div class="information-header-metadata-label">
                   Latest amendment
                 </div>
-                <div class="information-header-metadata-value">
-                  {latestAmendment}
+                 <div class="information-header-metadata-value">
+                  {formatStandardDate(latestAmendment)}
                 </div>
               </div>
             )}
@@ -83,7 +85,7 @@ const {
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     padding: var(--space-xl);
-    /* margin-bottom: var(--space-xl); */
+    margin-bottom: var(--space-xl);
     position: relative;
     overflow: hidden;
   }
@@ -97,28 +99,7 @@ const {
   .information-header-main {
     display: flex;
     flex-direction: column;
-    gap: var(--space-md);
-    position: relative;
-    padding-left: var(--space-md);
-  }
-
-  .information-header-main::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 3px;
-    background: var(--ias);
-    border-radius: 1.5px;
-  }
-
-  .information-header[data-framework="ifrs"] .information-header-main::before {
-    background: var(--ifrs);
-  }
-
-  .information-header[data-framework="indas"] .information-header-main::before {
-    background: var(--indas);
+    gap: var(--space-sm);
   }
 
   .information-header-top {
@@ -129,12 +110,24 @@ const {
   }
 
   .information-header-code {
-    font-size: var(--text-hero);
+    font-size: 15px;
     font-weight: var(--weight-bold);
-    color: var(--text);
-    line-height: 1;
-    letter-spacing: -0.03em;
+    color: var(--text-secondary);
+    line-height: 1.3;
+    letter-spacing: 0.01em;
     margin: 0;
+  }
+
+  .information-header[data-framework="ias"] .information-header-code {
+    color: var(--ias);
+  }
+
+  .information-header[data-framework="ifrs"] .information-header-code {
+    color: var(--ifrs);
+  }
+
+  .information-header[data-framework="indas"] .information-header-code {
+    color: var(--indas);
   }
 
   .information-header-status-pill {
@@ -169,11 +162,12 @@ const {
   }
 
   .information-header-title {
-    font-size: var(--text-subtitle);
-    font-weight: var(--weight-medium);
-    color: var(--text-secondary);
+    font-size: 32px;
+    font-weight: var(--weight-bold);
+    color: var(--text);
     margin: 0;
-    line-height: 1.4;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
   }
 
   .information-header-summary {
@@ -254,11 +248,11 @@ const {
     }
 
     .information-header-code {
-      font-size: 32px;
+      font-size: 14px;
     }
 
     .information-header-title {
-      font-size: var(--text-h2);
+      font-size: 26px;
     }
 
     .information-header-metadata-grid {
