@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IAS 40 — Investment Property | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .entry { display: flex; align-items: flex-start; gap: 4px; margin-bottom: 4px; }
+  .dr { font-size: 11px; font-weight: 500; color: var(--color-text-info);   min-width: 14px; padding-top: 1px; }
+  .cr { font-size: 11px; font-weight: 500; color: var(--color-text-danger); min-width: 14px; padding-top: 1px; padding-left: 6px; }
+  .etxt { font-size: 11px; color: var(--color-text-primary); flex: 1; line-height: 1.4; }
+  .badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">IAS 40 — Investment Property</div>
+      <div class="hub-sub">Extended reference poster · Conceptual framework link · Fair value vs cost model · Worked examples · Statement mapping · Related standards</div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <a href="#s1">1. Conceptual Framework</a>
+    <a href="#s2">2. Scope &amp; Definitions</a>
+    <a href="#s3">3. Recognition Criteria</a>
+    <a href="#s4">4. Initial Measurement</a>
+    <a href="#s5">5. The Fair Value Model</a>
+    <a href="#s6">6. The Cost Model</a>
+    <a href="#s7">7. Transfers To/From Investment Property</a>
+    <a href="#s8">8. Disposals &amp; Mixed-Use Property</a>
+    <a href="#s9">9. Disclosure</a>
+    <a href="#s10">10. Judgments &amp; Estimates</a>
+    <a href="#s11">11. IFRS vs US GAAP</a>
+    <a href="#s12">12. Statement Mapping</a>
+    <a href="#s13">13. Related Standards</a>
+    <a href="#s14">14. Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Why property held for rental/capital gain is measured differently</div>
+      <div class="principle">The Conceptual Framework permits CURRENT VALUE measurement where it provides more relevant information than historical cost. Property held purely to earn rentals or for capital appreciation generates economic benefits INDEPENDENTLY of the entity's other operations — its FAIR VALUE, not its depreciated cost, is what genuinely reflects the resource's economic potential to a user assessing the entity's investment performance.</div>
+      <div class="elabel">HOW IAS 40 MAPS TO THE FRAMEWORK</div>
+      <div class="check-list">
+        <span><strong style="font-weight:500">Relevance</strong> — fair value changes in investment property are a core measure of the entity's investment performance, unlike owner-occupied property where physical USE, not market value change, drives economic benefit</span>
+        <span><strong style="font-weight:500">Purpose-driven classification</strong> — the SAME physical asset (a building) can be classified completely differently depending on the PURPOSE it is held for — a direct application of the Framework's substance-over-form principle</span>
+        <span><strong style="font-weight:500">Faithful representation</strong> — allowing (but not mandating) fair value gives entities the choice best suited to representing their genuine business model, while still requiring FULL fair value disclosure even under the cost model</span>
+      </div>
+      <div class="note">IAS 40 is one of the clearest illustrations in IFRS of how PURPOSE, not physical characteristics, drives classification — the identical building can be PPE (IAS 16), investment property (IAS 40), or inventory (IAS 2), purely based on WHY the entity holds it.</div>
+    </div>
+
+    <div class="card cs">
+      <div class="ctitle cs">Measurement principles applied by IAS 40</div>
+      <div class="principle">IAS 40 offers a genuine ACCOUNTING POLICY CHOICE between two models — a rare degree of flexibility in modern IFRS, applied consistently to ALL investment property.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1fr;"><span>Model</span><span>Key feature</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1fr;"><span>Fair value model</span><span>Remeasured to fair value EVERY period; gains/losses through SOPL; NO depreciation charged</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1fr;"><span>Cost model</span><span>Cost less accumulated depreciation and impairment, per IAS 16's cost model mechanics; fair value STILL disclosed in the notes</span></div>
+      </div>
+      <div class="callout info" style="margin-bottom:0;">ℹ️ <strong style="font-weight:500">Qualitative characteristics in action:</strong> mandating fair value DISCLOSURE even under the cost model choice ensures <strong style="font-weight:500">comparability</strong> is preserved for users, regardless of which measurement policy an entity elects.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw">
+      <div class="ctitle cw">What IAS 40 covers</div>
+      <div class="principle">IAS 40 applies to the recognition, measurement, and disclosure of investment property — property (land or a building, or part of a building, or both) held (by the owner, or by a lessee as a right-of-use asset) to earn rentals or for capital appreciation, or both.</div>
+      <div class="elabel">EXAMPLES OF INVESTMENT PROPERTY</div>
+      <div class="check-list">
+        <span>Land held for long-term capital appreciation, rather than short-term sale in the ordinary course of business</span>
+        <span>Land held for a currently undetermined future use (NOT yet decided whether it will be owner-occupied or sold in the near term)</span>
+        <span>A building owned by the entity (or held under a right-of-use asset) and leased out under one or more operating leases</span>
+        <span>A vacant building held to be leased out under one or more operating leases</span>
+        <span>Property being constructed or developed for future use as investment property</span>
+      </div>
+      <div class="note">A property interest held by a LESSEE under a lease may be classified as investment property if it meets the definition and the entity uses the fair value model for ALL its investment property.</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Key definitions you must know</div>
+      <div class="glossary-item">
+        <div class="glossary-term">Investment property</div>
+        <div class="glossary-def">Property held to earn rentals or for capital appreciation, or both, rather than for use in the production/supply of goods or services or for administrative purposes, or sale in the ordinary course of business.</div>
+      </div>
+      <div class="glossary-item">
+        <div class="glossary-term">Owner-occupied property</div>
+        <div class="glossary-def">Property held (by the owner or lessee under a right-of-use asset) for use in the production/supply of goods or services or for administrative purposes — governed by IAS 16, NOT IAS 40.</div>
+      </div>
+      <div class="glossary-item" style="border-bottom:none;">
+        <div class="glossary-term">Fair value</div>
+        <div class="glossary-def">The price that would be received to sell an asset in an orderly transaction between market participants at the measurement date, per IFRS 13.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Recognition Criteria &amp; Ancillary Services</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">The two-condition recognition test, plus the "significant portion" tie-breaker</div>
+      <div class="principle">Investment property is recognised as an asset when, and only when: (a) it is PROBABLE that the future economic benefits associated with it will flow to the entity; AND (b) the cost of the property can be measured RELIABLY.</div>
+      <div class="elabel">MIXED-USE JUDGEMENT — ANCILLARY SERVICES</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:9px;">Some properties comprise a portion held to earn rentals/capital appreciation, and another portion held for use in production/administrative purposes. If these portions could be SOLD SEPARATELY (or leased out separately under a finance lease), the entity accounts for them SEPARATELY (part IAS 40, part IAS 16). If NOT separable, the property is classified as investment property ONLY IF the owner-occupied portion is INSIGNIFICANT.</div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ Where an entity provides ANCILLARY SERVICES to occupants (e.g. security, maintenance) and these services are a RELATIVELY INSIGNIFICANT component of the arrangement as a whole, the property is treated as investment property — e.g. an office building owner providing security and maintenance to lessees. If the services provided are SIGNIFICANT (e.g. a hotel managed by the owner, with substantial guest services), the property is treated as OWNER-OCCUPIED (IAS 16), not investment property.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Initial Measurement (with worked example)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs">
+      <div class="ctitle cs">At cost, including transaction costs</div>
+      <div class="formula-box">
+        <div class="f-eq">Initial cost = Purchase price + directly attributable transaction costs (e.g. legal fees, property transfer taxes, other transaction costs)</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">This mirrors IAS 16's initial cost recognition principles closely — the DIVERGENCE between the two standards begins at SUBSEQUENT measurement, not initial recognition.</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Worked example — initial recognition</div>
+      <div class="worked">
+        <div class="wk-title">Example 1: Purchasing a rental property</div>
+        <div class="wk-body">
+          An entity purchases an office building to lease out under operating leases, for $2,000,000. Legal fees of $40,000 and a property transfer tax of $60,000 are also incurred.
+        </div>
+        <div class="wk-answer">
+          <strong>Initial cost recognised</strong> = 2,000,000 + 40,000 + 60,000 = <strong style="color:var(--color-text-info);">$2,100,000</strong>
+        </div>
+      </div>
+      <div class="entry"><span class="dr">Dr</span><div class="etxt">Investment property $2,100,000<div class="badges"><span class="badge bs">SOFP</span></div></div></div>
+      <div class="entry"><span class="cr">Cr</span><div class="etxt">Cash $2,100,000<div class="badges"><span class="badge bs">SOFP</span></div></div></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>The Fair Value Model (with worked example)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Gains and losses always through SOPL — never OCI</div>
+      <div class="principle">Under the fair value model, investment property is REMEASURED to fair value at EVERY reporting date, with gains/losses recognised in profit or loss for the period. NO depreciation is charged — the fair value movement itself already captures any decline (or increase) in value that depreciation would otherwise attempt to approximate.</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 2: Fair value gain recognised</div>
+        <div class="wk-body">
+          The office building from Example 1, initially recognised at $2,100,000, has a fair value of $2,350,000 at the following year end, based on an independent valuation.
+        </div>
+        <div class="wk-answer">
+          <strong>Fair value gain</strong> = 2,350,000 − 2,100,000 = <strong style="color:var(--color-text-success);">$250,000</strong>, recognised IN FULL through profit or loss
+        </div>
+      </div>
+      <div class="entry"><span class="dr">Dr</span><div class="etxt">Investment property $250,000<div class="badges"><span class="badge bs">SOFP</span></div></div></div>
+      <div class="entry"><span class="cr">Cr</span><div class="etxt">Fair value gain on investment property $250,000<div class="badges"><span class="badge bp">SOPL</span></div></div></div>
+      <div class="callout warn" style="margin-top:8px;margin-bottom:0;">⚠️ <strong style="font-weight:600">A frequently tested contrast with IAS 16's revaluation model:</strong> under IAS 16, an upward revaluation typically goes to OCI (revaluation surplus); under IAS 40's fair value model, ALL gains and losses go DIRECTLY through profit or loss, with no OCI route at all.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>The Cost Model</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Applying IAS 16's cost model mechanics</div>
+      <div class="formula-box">
+        <div class="f-eq">Carrying amount = Cost − Accumulated depreciation − Accumulated impairment losses</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Depreciated over the property's useful life exactly as PPE would be under IAS 16, with impairment testing under IAS 36 as normal.</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Mandatory fair value disclosure — even under the cost model</div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ <strong style="font-weight:600">Fair value MUST still be disclosed in the notes, even if the cost model is chosen for measurement purposes</strong> — this is a mandatory disclosure requirement REGARDLESS of the elected measurement model, ensuring users always have access to the current market value information, whichever policy the entity applies to the primary statements.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Transfers To/From Investment Property (with worked example)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Transfers triggered ONLY by a genuine change of use, evidenced by specific events</div>
+      <div class="principle">Transfers to, or from, investment property are made when, and only when, there is a CHANGE IN USE, evidenced by: commencement of owner-occupation (transfer from investment property to owner-occupied); commencement of development with a view to sale (transfer to inventory); end of owner-occupation (transfer to investment property); or commencement of an operating lease to another party (transfer to investment property).</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 3: Transfer from investment property to owner-occupied (fair value model)</div>
+        <div class="wk-body">
+          A property carried under the fair value model at $1,800,000 (fair value at the transfer date) is transferred to owner-occupied use, as the entity begins using it for its own head office.
+        </div>
+        <div class="wk-answer">
+          The property's fair value at the DATE OF TRANSFER ($1,800,000) becomes its DEEMED COST for subsequent accounting under IAS 16 — any fair value gain/loss UP TO the transfer date is recognised in profit or loss as normal under the fair value model, and the property is then depreciated under IAS 16 from that new deemed-cost basis going forward.
+        </div>
+      </div>
+      <div class="note">This "fair value becomes deemed cost" mechanic applies symmetrically to ALL transfers into or out of investment property measured under the fair value model — the transfer itself is always at fair value, with any gain/loss recognised in the SAME manner as an ordinary fair value remeasurement.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Disposals &amp; Mixed-Use Property Considerations</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs">
+      <div class="ctitle cs">Derecognition</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">An investment property is DERECOGNISED on disposal, or when it is permanently withdrawn from use and no future economic benefits are expected from its disposal. Gains/losses on disposal are determined as the difference between the NET DISPOSAL PROCEEDS and the CARRYING AMOUNT, recognised in profit or loss.</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Property under construction/development</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Investment property BEING CONSTRUCTED or developed for future use as investment property IS within IAS 40's scope, and (if the fair value model is used) is measured at fair value where this can be reliably determined — if fair value cannot yet be reliably measured for a property under construction, it is measured at COST until either fair value becomes reliably determinable or construction is complete.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Required disclosures</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">GENERAL DISCLOSURES</div>
+          <div class="check-list">
+            <span>Whether the fair value model or cost model is used</span>
+            <span>Criteria used to distinguish investment property from owner-occupied property and property held for sale, where classification is difficult</span>
+            <span>Rental income and direct operating expenses (including repairs/maintenance) arising from investment property during the period</span>
+          </div>
+        </div>
+        <div>
+          <div class="elabel">MODEL-SPECIFIC DISCLOSURES</div>
+          <div class="check-list">
+            <span>Fair value model: a reconciliation of the carrying amount at the beginning/end of the period (additions, disposals, fair value gains/losses, transfers)</span>
+            <span>Cost model: depreciation methods, useful lives/rates, gross carrying amount and accumulated depreciation, and — critically — the FAIR VALUE of investment property, even though it is not used for measurement</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Where management judgement matters most</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+          <div class="dot-list">
+            <span>Classifying a property as investment property vs owner-occupied vs inventory, especially for mixed-use buildings and where ancillary services are provided</span>
+            <span>Whether ancillary services provided to occupants are "insignificant" (investment property) or "significant" (owner-occupied)</span>
+            <span>Identifying the specific triggering event for a transfer to/from investment property</span>
+          </div>
+        </div>
+        <div>
+          <div class="elabel">SIGNIFICANT ESTIMATES</div>
+          <div class="dot-list">
+            <span>Fair value of investment property, whether used for measurement (fair value model) or disclosure only (cost model)</span>
+            <span>Useful life and depreciation method under the cost model</span>
+          </div>
+        </div>
+      </div>
+      <div class="callout warn" style="margin-top:8px;margin-bottom:0;">⚠️ Once an entity elects the fair value model for its investment property, that choice must be applied CONSISTENTLY to ALL its investment property, with an extremely limited exception for property under construction whose fair value cannot yet be reliably determined — switching between models thereafter is expected to be rare.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>IFRS vs US GAAP — Key Differences</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — IAS 40 vs US GAAP</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Feature</span><span style="color:var(--color-text-info);">IFRS (IAS 40)</span><span style="color:var(--color-text-warning);">US GAAP</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Dedicated standard for investment property</span><span>Yes — IAS 40 is a standalone standard with a genuine fair value model election</span><span>NO equivalent standalone standard — investment property is generally accounted for under the SAME historical cost/depreciation model as other real estate (no fair value option)</span></div>
+        <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Fair value gains/losses</span><span>Recognised through SOPL (fair value model)</span><span>Not applicable, since fair value remeasurement is not generally used for held real estate under US GAAP</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Classification concept</span><span>Explicit "investment property" category distinct from owner-occupied PPE</span><span>No distinct classification category — real estate is generally accounted for uniformly, regardless of purpose held</span></div>
+      </div>
+      <div class="note">This is one of the STARKEST IFRS/US GAAP divergences of any standard in this library — IAS 40's entire fair-value-through-profit-or-loss investment property model has NO direct US GAAP counterpart, since US GAAP does not generally permit fair value remeasurement of held real estate at all, making comparability adjustments significant for real estate-heavy entities reporting under both frameworks.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping — Where Every Investment Property Event Lands</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Comprehensive event-to-statement mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event / transaction</span><span>Statement(s) affected</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Purchase of investment property</span><span><span class="badge bs">SOFP</span></span><span>Recognised at cost including transaction costs</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Fair value gain/loss (fair value model)</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>ALWAYS through profit or loss — never OCI</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Depreciation (cost model only)</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Standard IAS 16-style depreciation charge</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Impairment (cost model only)</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Per IAS 36; not applicable under the fair value model, since fair value already reflects current conditions</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Rental income earned</span><span><span class="badge bp">SOPL</span></span><span>Generally recognised on a straight-line basis over the lease term, per IFRS 16 lessor accounting</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Transfer to owner-occupied use (from fair value model)</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Fair value at transfer date becomes deemed cost under IAS 16; any gain/loss to that date recognised in SOPL</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Transfer to inventory (development for sale)</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Fair value at transfer date becomes deemed cost under IAS 2</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Disposal of investment property</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Gain/loss = net proceeds less carrying amount</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Cash paid to acquire investment property</span><span><span class="badge bs">Cash Flow Statement</span></span><span>Investing activities outflow</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Rental income received (cash)</span><span><span class="badge bs">Cash Flow Statement</span></span><span>Typically operating activities inflow</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Fair value used, model chosen, rental income/direct expenses, reconciliation</span><span><span class="badge bp">Notes</span></span><span>Mandatory regardless of the model elected</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How IAS 40 connects across the IFRS body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 16</span><span>Governs owner-occupied property (the classification alternative to investment property), and supplies the cost model mechanics IAS 40 borrows for entities that don't elect fair value</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 2</span><span>Governs property held for sale in the ordinary course of business (development for sale), the classification alternative when a transfer OUT of investment property occurs</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 13</span><span>Supplies the fair value measurement framework used under the fair value model, and for the mandatory disclosure even under the cost model</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 16</span><span>Governs lessee/lessor accounting for the LEASES under which investment property is let out, and permits a lessee's right-of-use asset to itself be classified as investment property if it meets the definition</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 36</span><span>Applies impairment testing to investment property measured under the cost model (not applicable under the fair value model)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 12</span><span>Fair value gains on investment property create temporary differences, generating deferred tax recognised through SOPL, consistent with the gain itself</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 5</span><span>Investment property classified as held for sale is reclassified out of IAS 40 and into IFRS 5's specific measurement rules</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Owner-occupied property</div><div class="glossary-def">Property held for use in the production/supply of goods or services, or for administrative purposes — accounted for under IAS 16, not IAS 40.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Ancillary services</div><div class="glossary-def">Services provided by the property owner to occupants (e.g. security, maintenance) — if insignificant relative to the arrangement, the property remains investment property; if significant, it is treated as owner-occupied.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Deemed cost</div><div class="glossary-def">The fair value of a property AT THE DATE OF TRANSFER to/from investment property, used as its new "cost" basis under the receiving standard (IAS 16 or IAS 2) going forward.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Right-of-use asset</div><div class="glossary-def">A lessee's asset representing its right to use an underlying leased asset (IFRS 16) — may itself qualify as investment property if held to earn rentals/capital appreciation and measured at fair value.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Fair value model</div><div class="glossary-def">The IAS 40 measurement policy under which investment property is remeasured to fair value each period, with gains/losses recognised in profit or loss.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Cost model</div><div class="glossary-def">The alternative IAS 40 measurement policy, following IAS 16's cost-less-depreciation-less-impairment mechanics, with mandatory fair value disclosure in the notes.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bs">SOFP</span> Statement of financial position (balance sheet)
+      <span class="badge bp">SOPL</span> Statement of profit or loss (income statement)
+      <span class="badge bo">OCI</span> Other comprehensive income
+      <span class="badge be">Equity</span> Statement of changes in equity
+    </div>
+  </div>
+
+  <div class="footer-note">IAS 40 — Investment Property · Extended Reference Poster · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

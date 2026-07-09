@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IAS 12 — Income Taxes | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .entry { display: flex; align-items: flex-start; gap: 4px; margin-bottom: 4px; }
+  .dr { font-size: 11px; font-weight: 500; color: var(--color-text-info);   min-width: 14px; padding-top: 1px; }
+  .cr { font-size: 11px; font-weight: 500; color: var(--color-text-danger); min-width: 14px; padding-top: 1px; padding-left: 6px; }
+  .etxt { font-size: 11px; color: var(--color-text-primary); flex: 1; line-height: 1.4; }
+  .badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">IAS 12 — Income Taxes</div>
+      <div class="hub-sub">Extended reference poster · Conceptual framework link · Current &amp; deferred tax · Worked examples · Statement mapping · Related standards</div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <a href="#s1">1. Conceptual Framework</a>
+    <a href="#s2">2. Scope &amp; Definitions</a>
+    <a href="#s3">3. Current Tax</a>
+    <a href="#s4">4. Temporary Differences</a>
+    <a href="#s5">5. Deferred Tax Liabilities</a>
+    <a href="#s6">6. Deferred Tax Assets</a>
+    <a href="#s7">7. Measurement of Deferred Tax</a>
+    <a href="#s8">8. Recognition Outside SOPL</a>
+    <a href="#s9">9. Disclosure</a>
+    <a href="#s10">10. Judgments &amp; Estimates</a>
+    <a href="#s11">11. IFRS vs US GAAP</a>
+    <a href="#s12">12. Statement Mapping</a>
+    <a href="#s13">13. Related Standards</a>
+    <a href="#s14">14. Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Why deferred tax is a genuine Framework asset/liability</div>
+      <div class="principle">Tax law and accounting standards frequently recognise income and expenses in DIFFERENT periods. IAS 12 exists to recognise the future tax consequences of these timing differences NOW, as genuine assets and liabilities under the Conceptual Framework — not merely as a reconciling disclosure item.</div>
+      <div class="elabel">HOW DEFERRED TAX MAPS TO THE FRAMEWORK'S ELEMENTS</div>
+      <div class="check-list">
+        <span><strong style="font-weight:500">Deferred tax liability</strong> — a present obligation, arising from a past transaction, requiring an outflow of resources (higher future tax payments) — a genuine Framework liability</span>
+        <span><strong style="font-weight:500">Deferred tax asset</strong> — a present economic resource controlled by the entity, from a past event, with the potential to reduce future tax payments — a genuine Framework asset</span>
+        <span><strong style="font-weight:500">Past event</strong> — the transaction or event that created the temporary difference (e.g. purchasing an asset depreciated differently for tax and accounting purposes)</span>
+      </div>
+      <div class="note">IAS 12 uses the BALANCE SHEET (temporary difference) approach rather than the older income-statement (timing difference) approach — a deliberate alignment with the Framework's asset/liability-driven definition of income and expense.</div>
+    </div>
+
+    <div class="card cs">
+      <div class="ctitle cs">Measurement principles applied by IAS 12</div>
+      <div class="principle">Deferred tax is measured using tax rates and laws that have been ENACTED OR SUBSTANTIVELY ENACTED by the reporting date — reflecting the manner in which the entity expects to recover/settle the underlying asset/liability.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1fr;"><span>Framework basis</span><span>Used by IAS 12 for…</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1fr;"><span>Undiscounted, expected settlement value</span><span>Both current and deferred tax — NO discounting to present value, unlike many other long-term liabilities</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1fr;"><span>Enacted/substantively enacted tax rates</span><span>The rate expected to apply when the asset is realised or liability settled</span></div>
+      </div>
+      <div class="callout info" style="margin-bottom:0;">ℹ️ <strong style="font-weight:500">Qualitative characteristics in action:</strong> the strict prohibition on discounting deferred tax balances trades some theoretical <strong style="font-weight:500">relevance</strong> for greater <strong style="font-weight:500">verifiability and comparability</strong> — discounting would require highly subjective assumptions about the TIMING of reversal that IAS 12 deliberately avoids.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw">
+      <div class="ctitle cw">What IAS 12 covers</div>
+      <div class="principle">IAS 12 prescribes the accounting treatment for income taxes — encompassing ALL domestic and foreign taxes based on taxable profits, including withholding taxes payable by a subsidiary/associate/joint venture on distributions to the reporting entity.</div>
+      <div class="elabel">SCOPE INCLUDES</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Current tax, deferred tax, and the tax consequences of dividends and other distributions.</div>
+      <div class="callout warn" style="margin-top:9px;margin-bottom:0;">⚠️ IAS 12 does NOT address methods of accounting for government grants (IAS 20) or investment tax credits — though it DOES address the temporary differences that may arise FROM such grants or credits.</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Key definitions you must know</div>
+      <div class="glossary-item">
+        <div class="glossary-term">Tax base</div>
+        <div class="glossary-def">The amount attributed to an asset or liability for TAX purposes — the amount that will be deductible for tax purposes against any future taxable economic benefits (assets), or the carrying amount less amounts deductible in future periods (liabilities).</div>
+      </div>
+      <div class="glossary-item">
+        <div class="glossary-term">Temporary difference</div>
+        <div class="glossary-def">The difference between the carrying amount of an asset/liability in the SOFP and its tax base — either a taxable temporary difference (leads to a deferred tax liability) or a deductible temporary difference (leads to a deferred tax asset).</div>
+      </div>
+      <div class="glossary-item">
+        <div class="glossary-term">Current tax</div>
+        <div class="glossary-def">The amount of income taxes payable (recoverable) in respect of the taxable profit (tax loss) for a period.</div>
+      </div>
+      <div class="glossary-item" style="border-bottom:none;">
+        <div class="glossary-term">Taxable profit / tax loss</div>
+        <div class="glossary-def">The profit (loss) for a period, determined in accordance with rules established by the TAXATION authorities, upon which income taxes are payable (recoverable).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Current Tax</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Recognition &amp; measurement mechanics</div>
+      <div class="formula-box">
+        <div class="f-eq">Current tax expense = Taxable profit × Applicable tax rate</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:9px;">Current tax for the current and prior periods is recognised as a LIABILITY to the extent unpaid. If the amount already paid exceeds the amount due, the excess is recognised as an ASSET.</div>
+      <div class="elabel">MEASUREMENT</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Measured at the amount expected to be paid to (recovered from) the tax authorities, using tax rates and laws enacted or substantively enacted by the reporting date.</div>
+    </div>
+
+    <div class="card cs">
+      <div class="ctitle cs">Worked example — current tax computation</div>
+      <div class="worked">
+        <div class="wk-title">Example 1: Accounting profit to current tax liability</div>
+        <div class="wk-body">
+          Accounting profit before tax: $500,000. Depreciation charged: $80,000. Tax depreciation (capital allowances) claimed: $120,000. Entertainment expenses of $10,000 are non-deductible for tax. Tax rate: 25%.
+        </div>
+        <div class="wk-answer">
+          Accounting profit: 500,000<br>
+          + Depreciation added back: +80,000<br>
+          − Tax depreciation deducted: −120,000<br>
+          + Non-deductible entertainment: +10,000<br>
+          = Taxable profit: 470,000<br>
+          <strong>Current tax liability</strong> = 470,000 × 25% = <strong style="color:var(--color-text-info);">$117,500</strong>
+        </div>
+      </div>
+      <div class="entry"><span class="dr">Dr</span><div class="etxt">Income tax expense $117,500<div class="badges"><span class="badge bp">SOPL</span></div></div></div>
+      <div class="entry"><span class="cr">Cr</span><div class="etxt">Current tax liability $117,500<div class="badges"><span class="badge bs">SOFP</span></div></div></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Temporary Differences — The Core Mechanic</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Identifying temporary differences with a worked example</div>
+      <div class="formula-box">
+        <div class="f-eq">Temporary difference = Carrying amount (accounting) − Tax base</div>
+      </div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">TAXABLE TEMPORARY DIFFERENCE → DEFERRED TAX LIABILITY</div>
+          <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Carrying amount > Tax base — e.g. an asset where tax depreciation has been claimed FASTER than accounting depreciation, so future taxable profit will be HIGHER when the asset is used/sold.</div>
+        </div>
+        <div>
+          <div class="elabel">DEDUCTIBLE TEMPORARY DIFFERENCE → DEFERRED TAX ASSET</div>
+          <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Carrying amount < Tax base — e.g. a provision recognised for accounting purposes but not yet tax-deductible until actually paid, so future taxable profit will be LOWER when the deduction is finally allowed.</div>
+        </div>
+      </div>
+      <div class="worked" style="margin-top:8px;margin-bottom:0;">
+        <div class="wk-title">Example 2: PPE temporary difference</div>
+        <div class="wk-body">A machine cost $200,000. Accumulated accounting depreciation to date: $40,000 (carrying amount = $160,000). Accumulated tax depreciation to date: $70,000 (tax base = $130,000). Tax rate: 25%.</div>
+        <div class="wk-answer">
+          <strong>Temporary difference</strong> = 160,000 − 130,000 = <strong style="color:var(--color-text-info);">$30,000 taxable temporary difference</strong> (carrying amount exceeds tax base)<br>
+          <strong>Deferred tax liability</strong> = 30,000 × 25% = <strong style="color:var(--color-text-danger);">$7,500</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Deferred Tax Liabilities — Recognition &amp; Exceptions</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw">
+      <div class="ctitle cw">General rule and the three recognition exceptions</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:9px;">A deferred tax liability is recognised for ALL taxable temporary differences, EXCEPT to the extent it arises from:</div>
+      <div class="cross-list">
+        <span>The initial recognition of GOODWILL</span>
+        <span>The initial recognition of an asset/liability in a transaction that is NOT a business combination, and at the time of the transaction affects NEITHER accounting profit NOR taxable profit (the "initial recognition exemption")</span>
+        <span>Taxable temporary differences associated with investments in subsidiaries, branches, associates, and joint arrangements, WHERE the parent/investor/venturer is able to control the timing of reversal AND it is probable the difference will not reverse in the foreseeable future</span>
+      </div>
+    </div>
+
+    <div class="card cn">
+      <div class="ctitle cn">Worked example — revaluation surplus creates deferred tax</div>
+      <div class="worked">
+        <div class="wk-title">Example 3: Deferred tax on a PPE revaluation</div>
+        <div class="wk-body">
+          A building with a carrying amount of $400,000 (tax base also $400,000) is revalued upward to $550,000 under IAS 16's revaluation model. Tax rate: 25%.
+        </div>
+        <div class="wk-answer">
+          <strong>New temporary difference</strong> = 550,000 − 400,000 = <strong style="color:var(--color-text-info);">$150,000</strong><br>
+          <strong>Deferred tax liability</strong> = 150,000 × 25% = <strong style="color:var(--color-text-danger);">$37,500</strong>
+        </div>
+      </div>
+      <div class="entry"><span class="dr">Dr</span><div class="etxt">Revaluation surplus $37,500<div class="badges"><span class="badge bo">OCI</span></div></div></div>
+      <div class="entry"><span class="cr">Cr</span><div class="etxt">Deferred tax liability $37,500<div class="badges"><span class="badge bs">SOFP</span></div></div></div>
+      <div class="note">This is the classic exam example of deferred tax NOT flowing through SOPL — it follows the revaluation surplus into OCI (Section 8).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Deferred Tax Assets — Recognition &amp; the Probability Test</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The recognition threshold</div>
+      <div class="principle">A deferred tax asset is recognised for deductible temporary differences, unused tax LOSSES, and unused tax CREDITS, to the extent it is PROBABLE that future taxable profit will be available against which they can be utilised.</div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ <strong style="font-weight:600">This is the single most heavily tested recognition rule in IAS 12</strong> — deferred tax assets are NOT recognised automatically like liabilities; a genuine probability assessment of future taxable profits is required at EVERY reporting date, and unrecognised deferred tax assets are reassessed at each reporting date too (they may become recognisable later).</div>
+    </div>
+
+    <div class="card cs">
+      <div class="ctitle cs">Worked example — unused tax losses</div>
+      <div class="worked">
+        <div class="wk-title">Example 4: Recognising a deferred tax asset on carried-forward losses</div>
+        <div class="wk-body">
+          An entity has accumulated tax losses of $200,000 carried forward, available to offset against future taxable profits with no expiry. Forecasts show the entity is expected to be reliably profitable going forward, generating sufficient taxable profit within the next 3 years to utilise the full loss. Tax rate: 25%.
+        </div>
+        <div class="wk-answer">
+          Since future taxable profits are judged PROBABLE, the deferred tax asset is recognised:<br>
+          <strong>Deferred tax asset</strong> = 200,000 × 25% = <strong style="color:var(--color-text-success);">$50,000</strong>
+        </div>
+      </div>
+      <div class="note">If instead the entity had a history of recent losses with no convincing forecast of future profits, IAS 12 would require CONVINCING OTHER evidence before recognition — a stricter threshold than "probable" alone.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Measurement of Deferred Tax</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd">
+      <div class="ctitle cd">Rate and manner of recovery/settlement</div>
+      <div class="dot-list">
+        <span>Measured using tax rates EXPECTED to apply in the period the asset is realised or liability settled, based on rates ENACTED or SUBSTANTIVELY ENACTED by the reporting date</span>
+        <span>Measurement reflects the tax consequences that follow from the MANNER in which the entity expects, at the reporting date, to recover or settle the carrying amount of the related asset/liability (e.g. use vs sale of an asset, if different rates apply)</span>
+        <span>NOT discounted to present value, regardless of the expected timing of reversal</span>
+      </div>
+    </div>
+
+    <div class="card cn">
+      <div class="ctitle cn">Worked example — differing rates for use vs sale</div>
+      <div class="worked">
+        <div class="wk-title">Example 5: Manner of recovery affects the rate applied</div>
+        <div class="wk-body">
+          A jurisdiction taxes capital gains from asset SALES at 15%, but profits from ongoing USE of an asset at the standard 25% rate. An entity holds land with a $100,000 taxable temporary difference, and management intends to hold and use the land indefinitely rather than sell it.
+        </div>
+        <div class="wk-answer">
+          Since the entity expects to recover the carrying amount through CONTINUING USE, the deferred tax liability is measured using the 25% rate, NOT the 15% capital gains rate — even though the asset (land) could theoretically be sold.<br>
+          <strong>Deferred tax liability</strong> = 100,000 × 25% = <strong style="color:var(--color-text-danger);">$25,000</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Recognition Outside Profit or Loss</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">The matching principle — tax follows the item it relates to</div>
+      <div class="principle">Current and deferred tax are recognised OUTSIDE profit or loss if the tax relates to items recognised outside profit or loss (either in OCI or directly in equity), in the SAME or a DIFFERENT period.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.4fr 1fr;"><span>Item</span><span>Related tax recognised in…</span></div>
+        <div class="tr" style="grid-template-columns:1.4fr 1fr;"><span>Revaluation surplus (IAS 16/38)</span><span><span class="badge bo">OCI</span></span></div>
+        <div class="tr alt" style="grid-template-columns:1.4fr 1fr;"><span>Remeasurement of defined benefit plans (IAS 19)</span><span><span class="badge bo">OCI</span></span></div>
+        <div class="tr" style="grid-template-columns:1.4fr 1fr;"><span>FVOCI financial assets (IFRS 9)</span><span><span class="badge bo">OCI</span></span></div>
+        <div class="tr alt" style="grid-template-columns:1.4fr 1fr;"><span>Exchange differences on foreign operations (IAS 21)</span><span><span class="badge bo">OCI</span></span></div>
+        <div class="tr" style="grid-template-columns:1.4fr 1fr;"><span>Transaction costs of an equity issue</span><span><span class="badge be">Equity</span> (direct)</span></div>
+        <div class="tr alt" style="grid-template-columns:1.4fr 1fr;"><span>All other temporary differences (the vast majority)</span><span><span class="badge bp">SOPL</span></span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Required disclosures</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">MAJOR COMPONENTS OF TAX EXPENSE</div>
+          <div class="check-list">
+            <span>Current tax expense; adjustments recognised for current tax of prior periods</span>
+            <span>Amount of deferred tax expense/income relating to the origination and reversal of temporary differences, and to changes in tax rates/imposition of new taxes</span>
+            <span>Amount of any benefit from a previously unrecognised tax loss, credit, or temporary difference used to reduce current/deferred tax expense</span>
+          </div>
+        </div>
+        <div>
+          <div class="elabel">RECONCILIATION &amp; OTHER DISCLOSURES</div>
+          <div class="check-list">
+            <span>A numerical reconciliation between tax expense and accounting profit multiplied by the applicable tax rate, explaining the differences</span>
+            <span>Aggregate current and deferred tax relating to items recognised directly in OCI or equity</span>
+            <span>Amount (and expiry date, if any) of deductible temporary differences, unused tax losses, and unused tax credits for which no deferred tax asset is recognised</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Where management judgement matters most</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+          <div class="dot-list">
+            <span>Whether it is "probable" sufficient future taxable profit will be available to utilise deferred tax assets — perhaps the single most subjective judgement in the standard</span>
+            <span>The expected manner of recovery of an asset (use vs sale), where different tax rates or bases apply</span>
+            <span>Whether a taxable temporary difference on an investment in a subsidiary will reverse in the foreseeable future</span>
+          </div>
+        </div>
+        <div>
+          <div class="elabel">SIGNIFICANT ESTIMATES</div>
+          <div class="dot-list">
+            <span>Forecasts of future taxable profits supporting deferred tax asset recognition</span>
+            <span>The applicable future tax rate, where substantively enacted but not yet finally enacted legislation exists</span>
+            <span>Uncertain tax positions (per IFRIC 23) — whether a tax treatment will be accepted by the tax authority</span>
+          </div>
+        </div>
+      </div>
+      <div class="callout warn" style="margin-top:8px;margin-bottom:0;">⚠️ Deferred tax asset recognition is one of the clearest areas where management OPTIMISM can materially inflate reported net assets — auditors and examiners alike scrutinise the quality and timeframe of profit forecasts used to support recognition.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>IFRS vs US GAAP — Key Differences</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — IAS 12 vs US GAAP (ASC 740)</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Feature</span><span style="color:var(--color-text-info);">IFRS (IAS 12)</span><span style="color:var(--color-text-warning);">US GAAP</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Deferred tax asset recognition threshold</span><span>Recognise IF probable future taxable profit available (net presentation of the asset itself)</span><span>Recognise the FULL gross asset, then assess need for a VALUATION ALLOWANCE if not "more likely than not" to be realised — a two-step, gross-then-allowance approach</span></div>
+        <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Initial recognition exemption (goodwill)</span><span>Deferred tax NOT recognised on initial recognition of goodwill</span><span>Similarly excludes goodwill in most circumstances, though mechanics differ in detail</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Current/non-current classification</span><span>All deferred tax classified as NON-CURRENT (per IAS 1)</span><span>Also classified as non-current (aligned since ASU 2015-17)</span></div>
+        <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Uncertain tax positions</span><span>Governed by IFRIC 23 — expected value or most likely amount approach</span><span>Governed by ASC 740-10 (FIN 48) — a two-step recognition/measurement threshold ("more likely than not" to be sustained)</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Substantively enacted rates</span><span>Substantively enacted tax law/rates ARE used</span><span>Only ENACTED tax law/rates are used — substantively enacted is not sufficient</span></div>
+      </div>
+      <div class="note">The gross-asset-plus-valuation-allowance approach under US GAAP versus IFRS's net "probable" recognition threshold is the most conceptually significant difference — both aim at the same economic outcome but via different mechanics, which can affect presentation even when the net deferred tax asset figure is similar.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping — Where Every Tax Event Lands</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Comprehensive event-to-statement mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event / transaction</span><span>Statement(s) affected</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Current tax expense for the period</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Liability recognised for unpaid amount</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Deferred tax on ordinary taxable/deductible temporary differences</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>The vast majority of deferred tax movements</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Deferred tax on a revaluation surplus</span><span><span class="badge bo">OCI</span> <span class="badge bs">SOFP</span></span><span>Follows the related item (IAS 16/38) into OCI, not SOPL</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Deferred tax on remeasurements of defined benefit plans</span><span><span class="badge bo">OCI</span> <span class="badge bs">SOFP</span></span><span>Follows IAS 19 remeasurements into OCI</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Tax effect of share issue costs</span><span><span class="badge be">Equity</span> <span class="badge bs">SOFP</span></span><span>Recognised directly in equity, matching the original cost's treatment</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Change in tax rate — remeasurement of existing deferred tax balances</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Recognised in the period the change is enacted/substantively enacted (generally through SOPL unless the original balance was in OCI/equity)</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Recognition of previously unrecognised deferred tax asset</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Recognised when recovery becomes probable</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Cash tax paid</span><span><span class="badge bs">Cash Flow Statement</span></span><span>Operating activities outflow (IAS 7), unless specifically identifiable with investing/financing</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Movement in deferred tax balances (non-cash)</span><span><span class="badge bs">Cash Flow Statement</span></span><span>Added back/deducted as a non-cash adjustment within operating activities (indirect method)</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Tax rate reconciliation, unrecognised deferred tax assets</span><span><span class="badge bp">Notes</span></span><span>Mandatory disclosure regardless of jurisdiction</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How IAS 12 connects across the IFRS body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 16 / IAS 38</span><span>Revaluations create temporary differences via the gap between carrying amount and tax base; related deferred tax follows the revaluation into OCI</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 19</span><span>Remeasurements of defined benefit plans create temporary differences whose deferred tax effect also flows through OCI</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 37</span><span>Provisions recognised for accounting but not yet tax-deductible are a classic source of deductible temporary differences (deferred tax assets)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 3</span><span>Deferred tax on assets/liabilities acquired in a business combination is recognised as part of the acquisition accounting, EXCEPT for goodwill itself (initial recognition exemption)</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 21</span><span>Exchange differences on translating foreign operations create temporary differences whose deferred tax effect follows into OCI, consistent with the underlying translation reserve</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 8</span><span>Changes in tax rate/law are treated prospectively; retrospective restatements from error correction also require deferred tax recalculation</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 10</span><span>Tax rate changes enacted/substantively enacted AFTER year end but before authorisation are typically non-adjusting events, disclosed rather than reflected in year-end deferred tax balances</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IFRIC 23</span><span>Provides specific guidance on accounting for uncertainty over income tax treatments, supplementing IAS 12's general recognition and measurement principles</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 20</span><span>Government grants themselves are outside IAS 12's direct scope, but any temporary difference they create (e.g. a grant taxable on receipt but recognised as income later) falls within IAS 12</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Accounting profit</div><div class="glossary-def">Profit or loss for a period BEFORE deducting tax expense, as reported in the SOPL.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Tax expense (tax income)</div><div class="glossary-def">The aggregate amount included in profit or loss for the period in respect of current and deferred tax.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Enacted / substantively enacted</div><div class="glossary-def">Tax legislation that has completed (or virtually completed, per specific jurisdictional processes) the legislative process required for it to become law, used as the basis for measuring deferred tax.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Initial recognition exemption</div><div class="glossary-def">The exception preventing deferred tax recognition on an asset/liability's first recognition, where the transaction is not a business combination and affects neither accounting nor taxable profit at the time.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Unused tax losses</div><div class="glossary-def">Tax losses carried forward from prior periods, available to reduce future taxable profits, subject to jurisdiction-specific rules on expiry and offset restrictions.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Withholding tax</div><div class="glossary-def">Tax payable by a subsidiary, associate, or joint venture on distributions to the reporting entity — explicitly within IAS 12's scope.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bs">SOFP</span> Statement of financial position (balance sheet)
+      <span class="badge bp">SOPL</span> Statement of profit or loss (income statement)
+      <span class="badge bo">OCI</span> Other comprehensive income
+      <span class="badge be">Equity</span> Statement of changes in equity
+    </div>
+  </div>
+
+  <div class="footer-note">IAS 12 — Income Taxes · Extended Reference Poster · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

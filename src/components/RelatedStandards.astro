@@ -1,0 +1,131 @@
+---
+import { ArrowUpRight } from "@lucide/astro";
+import type { Framework } from "../data/standards/metadata.types";
+
+interface RelatedItem {
+  code: string;
+  title: string;
+  url: string;
+  relationship: string;
+}
+
+interface Props {
+  related?: RelatedItem[];
+  framework?: Framework;
+}
+
+const { related = [], framework = "IAS" } = Astro.props;
+
+const frameworkClass = framework.toLowerCase().replace(/\s+/g, "");
+---
+
+{
+  related.length > 0 && (
+    <section class="rs-section" aria-label="Related standards">
+      <h2 class="rs-heading">Related Standards</h2>
+      <div class="rs-grid">
+        {related.map((item) => (
+          <a
+            class={`rs-card nav-${frameworkClass}`}
+            href={item.url}
+            rel="noopener"
+          >
+            <span class="rs-code">
+              {item.code}
+              <ArrowUpRight size={16} class="rs-arrow" aria-hidden="true" />
+            </span>
+            <span class="rs-title">{item.title}</span>
+            <span class="rs-relationship">{item.relationship}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .rs-section {
+    margin-top: var(--space-3xl);
+  }
+
+  .rs-heading {
+    font-size: var(--text-h3);
+    font-weight: var(--weight-bold);
+    margin: 0 0 var(--space-lg);
+  }
+
+  .rs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .rs-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding: var(--space-xl);
+    min-height: 84px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition-fast);
+    align-items: flex-start;
+  }
+
+  .rs-card:hover {
+    border-color: #cbd5e1;
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+
+  .rs-card:focus-visible {
+    outline: 2px solid var(--ias);
+    outline-offset: 2px;
+  }
+
+  .rs-code {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--text-h3);
+    font-weight: var(--weight-bold);
+    line-height: 1.3;
+  }
+
+  .rs-arrow {
+    flex-shrink: 0;
+  }
+
+  .rs-title {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+
+  .rs-relationship {
+    font-size: var(--text-xs);
+    line-height: 1.5;
+    color: var(--text-muted);
+  }
+
+  .nav-ias .rs-code {
+    color: var(--ias);
+  }
+
+  .nav-ifrs .rs-code {
+    color: var(--ifrs);
+  }
+
+  .nav-indas .rs-code {
+    color: var(--indas);
+  }
+
+  @media (max-width: 640px) {
+    .rs-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

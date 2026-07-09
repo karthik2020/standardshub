@@ -1,17 +1,503 @@
 ---
-import StandardLayout from "../../layouts/StandardLayout.astro";
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/ias/ias1.json";
 ---
 
-<StandardLayout code="IAS 1" title="IAS 1 - Presentation of Financial Statements" framework="IAS">
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        {
+          id: "s1",
+          label: "Conceptual Framework Linkage",
+        },
+        {
+          id: "s2",
+          label: "Scope & Applicability",
+        },
+        {
+          id: "s3",
+          label: "Overall Considerations",
+        },
+        {
+          id: "s4",
+          label: "Complete Set of Statements",
+        },
+        {
+          id: "s5",
+          label: "Statement of Financial Position",
+        },
+        {
+          id: "s6",
+          label: "Statement of P/L & OCI",
+        },
+        {
+          id: "s7",
+          label: "Statement of Changes in Equity",
+        },
+        {
+          id: "s8",
+          label: "Notes & Accounting Policies",
+        },
+        {
+          id: "s9",
+          label: "Current/Non-Current Classification",
+        },
+        {
+          id: "s10",
+          label: "Critical Judgments & Estimates",
+        },
+        {
+          id: "s11",
+          label: "IFRS vs US GAAP",
+        },
+        {
+          id: "s12",
+          label: "Statement Mapping",
+        },
+        {
+          id: "s13",
+          label: "Related Standards",
+        },
+        {
+          id: "s14",
+          label: "Glossary",
+        },
+        {
+          id: "history",
+          label: "History & Development",
+        },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
 
-  <h1>IAS 1</h1>
+    <!-- ============ SECTION 1 — CONCEPTUAL FRAMEWORK LINK ============ -->
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Why presentation itself is a Framework issue</div>
+        <div class="principle">The Conceptual Framework states the objective of general purpose financial statements is to provide information useful to users in making decisions about providing resources to the entity. IAS 1 is the standard that operationalises HOW that information is structured, so it is presented in a way that is understandable and comparable.</div>
+        <div class="elabel">HOW IAS 1 MAPS TO THE FRAMEWORK'S QUALITATIVE CHARACTERISTICS</div>
+        <div class="check-list">
+          <span><strong style="font-weight:500">Comparability</strong> — consistent structure, consistent presentation and classification from one period to the next, and comparative information for the prior period</span>
+          <span><strong style="font-weight:500">Understandability</strong> — clear titles, aggregation of items of a similar nature, and separate presentation of dissimilar items when material</span>
+          <span><strong style="font-weight:500">Faithful representation</strong> — fair presentation, achieved through compliance with IFRS Standards (and, in extremely rare cases, a departure where compliance would be misleading)</span>
+        </div>
+        <div class="note">IAS 1 does not prescribe a rigid single-format template (unlike some local GAAPs) — it sets out minimum line items and overarching principles, leaving considerable structural flexibility to preparers.</div>
+      </div>
 
-  <p>
-    Presentation of Financial Statements
-  </p>
+      <div class="card cs">
+        <div class="ctitle cs">Measurement vs presentation — a key distinction</div>
+        <div class="principle">IAS 1 is almost entirely a PRESENTATION standard — it does not prescribe how individual items are recognised or measured (those rules sit in other standards). Its role is to determine structure, classification, and disclosure of information already measured elsewhere.</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.3fr 1fr;"><span>Framework concept</span><span>IAS 1's role</span></div>
+          <div class="tr" style="grid-template-columns:1.3fr 1fr;"><span>Elements of financial statements</span><span>Prescribes WHERE assets, liabilities, equity, income, expenses appear and how they're grouped</span></div>
+          <div class="tr alt" style="grid-template-columns:1.3fr 1fr;"><span>Going concern</span><span>A fundamental PRESENTATION assumption IAS 1 requires management to explicitly assess</span></div>
+        </div>
+        <div class="callout info" style="margin-bottom:0;">ℹ️ <strong style="font-weight:500">Qualitative characteristics in action:</strong> the going concern assessment and materiality-driven aggregation/disaggregation decisions required by IAS 1 exist specifically to prevent <strong style="font-weight:500">obscuring material information with immaterial detail</strong> (or vice versa) — a direct application of the Framework's materiality concept.</div>
+      </div>
+    </div>
 
-  <p>
-    Content coming soon...
-  </p>
+    <!-- ============ SECTION 2 — SCOPE & DEFINITIONS ============ -->
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What IAS 1 covers</div>
+        <div class="principle">IAS 1 sets out the overall requirements for the presentation of general purpose financial statements, guidelines for their structure, and minimum requirements for their content, to ensure comparability both with the entity's own prior periods and with other entities.</div>
+        <div class="elabel">APPLIES TO</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:9px;">All general purpose financial statements prepared and presented in accordance with IFRS Standards, for profit-oriented entities, including consolidated financial statements of a group.</div>
+        <div class="elabel">DOES NOT APPLY TO</div>
+        <div class="cross-list">
+          <span>The structure and content of condensed interim financial statements → <strong style="font-weight:500">IAS 34</strong></span>
+          <span>Recognition, measurement, or disclosure of specific transactions and events → governed by the RELEVANT specific standard (e.g. IFRS 15, IAS 16), not IAS 1</span>
+        </div>
+        <div class="note">IAS 1 also does NOT use the term "balance sheet" or "income statement" as mandatory titles — entities may use these traditional titles instead of "statement of financial position" / "statement of profit or loss," as long as they are not misleading.</div>
+      </div>
 
-</StandardLayout>
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions you must know</div>
+        <div class="glossary-item">
+          <div class="glossary-term">General purpose financial statements</div>
+          <div class="glossary-def">Financial statements intended to meet the needs of users who are not in a position to require an entity to prepare reports tailored to their particular information needs.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Material</div>
+          <div class="glossary-def">Information is material if omitting, misstating, or obscuring it could reasonably be expected to influence decisions that primary users of general purpose financial statements make on the basis of those statements.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Impracticable</div>
+          <div class="glossary-def">A requirement is impracticable when the entity cannot apply it after making every reasonable effort to do so — the threshold used for exemptions such as restating comparatives.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Notes</div>
+          <div class="glossary-def">Information in addition to that presented in the primary statements — providing narrative descriptions or disaggregation of items, and information about items that do not qualify for recognition.</div>
+        </div>
+        <div class="glossary-item" style="border-bottom:none;">
+          <div class="glossary-term">Other comprehensive income (OCI)</div>
+          <div class="glossary-def">Items of income and expense (including reclassification adjustments) that are not recognised in profit or loss as required or permitted by other IFRS Standards.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 3 — OVERALL CONSIDERATIONS ============ -->
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Overall Considerations — The Core Principles</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Six overarching principles governing every set of financial statements</div>
+        <div class="two-col">
+          <div>
+            <div class="spec-box">
+              <div class="spec-title" style="color:var(--color-text-info);">1. Fair presentation &amp; compliance with IFRS</div>
+              <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.5;">Fair presentation requires faithful representation of transactions per the Framework's definitions and recognition criteria. Compliance with IFRS is presumed to result in fair presentation; an explicit and unreserved statement of IFRS compliance is required.</div>
+            </div>
+            <div class="spec-box">
+              <div class="spec-title" style="color:var(--color-text-info);">2. Going concern</div>
+              <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.5;">Management must assess the entity's ability to continue as a going concern; financial statements are prepared on a going concern basis unless management intends/has no realistic alternative but to liquidate or cease trading.</div>
+            </div>
+            <div class="spec-box" style="margin-bottom:0;">
+              <div class="spec-title" style="color:var(--color-text-info);">3. Accrual basis of accounting</div>
+              <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.5;">All financial statements EXCEPT the statement of cash flows are prepared using the accrual basis.</div>
+            </div>
+          </div>
+          <div>
+            <div class="spec-box">
+              <div class="spec-title" style="color:var(--color-text-info);">4. Materiality &amp; aggregation</div>
+              <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.5;">Each material class of similar items is presented separately; dissimilar items are presented separately unless immaterial. Immaterial information should not obscure material information.</div>
+            </div>
+            <div class="spec-box">
+              <div class="spec-title" style="color:var(--color-text-info);">5. Offsetting</div>
+              <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.5;">Assets and liabilities, and income and expenses, are NOT offset unless required or permitted by an IFRS Standard.</div>
+            </div>
+            <div class="spec-box" style="margin-bottom:0;">
+              <div class="spec-title" style="color:var(--color-text-info);">6. Frequency of reporting &amp; comparatives</div>
+              <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.5;">Complete financial statements are presented at least annually; comparative information is disclosed for all amounts reported in the current period, plus comparative narrative/descriptive information where relevant.</div>
+            </div>
+          </div>
+        </div>
+        <div class="callout danger" style="margin-top:8px;margin-bottom:0;">✕ <strong style="font-weight:600">"True and fair override"</strong> is available only in extremely rare circumstances — where compliance with a specific IFRS requirement would be so misleading it conflicts with the Framework's objective. When invoked, extensive disclosure of the departure, its nature, and its financial effect is mandatory.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 4 — COMPLETE SET OF STATEMENTS (with worked example) ============ -->
+    <div class="section-header" id="s4"><span class="num">4</span><h2>A Complete Set of Financial Statements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs">
+        <div class="ctitle cs">The five (or six) required components</div>
+        <div class="check-list">
+          <span>A statement of financial position as at the end of the period</span>
+          <span>A statement of profit or loss and other comprehensive income for the period</span>
+          <span>A statement of changes in equity for the period</span>
+          <span>A statement of cash flows for the period</span>
+          <span>Notes, comprising significant accounting policies and other explanatory information</span>
+          <span>Comparative information for the preceding period (a "third" statement of financial position at the beginning of the preceding period is required ONLY when a retrospective restatement, reclassification, or change in accounting policy occurs)</span>
+        </div>
+        <div class="note">The "third SOFP" requirement is one of the most frequently tested technical points in IAS 1 — it applies on retrospective application of a new policy, retrospective restatement, or reclassification, and it must have a material effect.</div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Worked example — third SOFP trigger</div>
+        <div class="worked">
+          <div class="wk-title">Example 1: Retrospective restatement</div>
+          <div class="wk-body">
+            A company with a 31 December year end discovers a material prior period error in its 20X2 financial statements during preparation of its 20X3 financial statements. The correction is applied retrospectively per IAS 8.
+          </div>
+          <div class="wk-answer">
+            The 20X3 financial statements must present THREE statements of financial position: as at 31 Dec 20X3, 31 Dec 20X2 (restated), AND 1 Jan 20X2 (restated, i.e. the beginning of the earliest comparative period) — together with related notes.
+          </div>
+        </div>
+        <div class="callout info" style="margin-bottom:0;">ℹ️ Only the SOFP triples; the statement of profit or loss/OCI, changes in equity, and cash flows still only require the standard TWO periods (current + one comparative) even when a third SOFP is triggered.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 5 — STATEMENT OF FINANCIAL POSITION ============ -->
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Statement of Financial Position — Structure</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Minimum line items (illustrative, not exhaustive)</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">ASSETS</div>
+            <div class="dot-list">
+              <span>Property, plant and equipment</span>
+              <span>Investment property</span>
+              <span>Intangible assets</span>
+              <span>Financial assets</span>
+              <span>Investments accounted for using the equity method</span>
+              <span>Biological assets</span>
+              <span>Inventories</span>
+              <span>Trade and other receivables</span>
+              <span>Cash and cash equivalents</span>
+              <span>Assets classified as held for sale (IFRS 5)</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">LIABILITIES &amp; EQUITY</div>
+            <div class="dot-list">
+              <span>Trade and other payables</span>
+              <span>Provisions</span>
+              <span>Financial liabilities</span>
+              <span>Current tax liabilities/assets</span>
+              <span>Deferred tax liabilities/assets (always non-current)</span>
+              <span>Liabilities in a disposal group held for sale (IFRS 5)</span>
+              <span>Non-controlling interests, presented within equity</span>
+              <span>Issued capital and reserves attributable to owners of the parent</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card cd">
+        <div class="ctitle cd">Presentation format choice</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:9px;">IAS 1 does NOT mandate a specific format or order for the SOFP — entities present either a current/non-current split OR a liquidity-based presentation (broadly in order of liquidity), whichever provides reliable and more relevant information.</div>
+        <div class="callout warn" style="margin-bottom:0;">⚠️ <strong style="font-weight:600">Financial institutions</strong> (banks, insurers) typically use liquidity-based presentation since a current/non-current split would not provide relevant information for their operating cycle — this is a common exam scenario for justifying the alternative format.</div>
+        <div class="elabel" style="margin-top:9px;">DEFERRED TAX — ALWAYS NON-CURRENT</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">When a current/non-current split IS used, deferred tax assets/liabilities must always be classified as non-current, regardless of the expected timing of reversal.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 6 — STATEMENT OF P/L & OCI ============ -->
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Statement of Profit or Loss &amp; Other Comprehensive Income</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs">
+        <div class="ctitle cs">Structure &amp; presentation choices</div>
+        <div class="elabel">SINGLE STATEMENT OR TWO STATEMENTS — POLICY CHOICE</div>
+        <div class="dot-list" style="margin-bottom:9px;">
+          <span><strong style="font-weight:500">Single statement</strong> — one statement of profit or loss and other comprehensive income, profit/loss as a subtotal flowing into total comprehensive income</span>
+          <span><strong style="font-weight:500">Two statements</strong> — a separate statement of profit or loss, followed by a statement beginning with profit/loss and presenting OCI</span>
+        </div>
+        <div class="elabel">EXPENSE CLASSIFICATION — POLICY CHOICE</div>
+        <div class="dot-list">
+          <span><strong style="font-weight:500">By nature</strong> — e.g. depreciation, raw materials, employee benefits, advertising (no cost-of-sales line)</span>
+          <span><strong style="font-weight:500">By function</strong> — e.g. cost of sales, distribution costs, administrative expenses (requires additional nature-based disclosure of depreciation/employee benefits in the notes)</span>
+        </div>
+        <div class="note">The "by function" method requires MORE disclosure overall, since nature-based information (e.g. total depreciation) must still be given in the notes even though the primary statement is function-based.</div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">OCI — classification into two groups</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.4fr 1fr;"><span>OCI item</span><span>Recycled to SOPL?</span></div>
+          <div class="tr" style="grid-template-columns:1.4fr 1fr;"><span>Revaluation surplus (IAS 16/38)</span><span>Never (may transfer within equity to retained earnings)</span></div>
+          <div class="tr alt" style="grid-template-columns:1.4fr 1fr;"><span>Remeasurement of defined benefit plans (IAS 19)</span><span>Never</span></div>
+          <div class="tr" style="grid-template-columns:1.4fr 1fr;"><span>FVOCI equity investments (IFRS 9 irrevocable election)</span><span>Never</span></div>
+          <div class="tr alt" style="grid-template-columns:1.4fr 1fr;"><span>Exchange differences on translating foreign operations (IAS 21)</span><span>Yes, on disposal</span></div>
+          <div class="tr" style="grid-template-columns:1.4fr 1fr;"><span>Cash flow hedge — effective portion (IFRS 9)</span><span>Yes, generally</span></div>
+          <div class="tr alt" style="grid-template-columns:1.4fr 1fr;"><span>FVOCI debt instruments (IFRS 9)</span><span>Yes, on derecognition</span></div>
+        </div>
+        <div class="note">OCI items are presented grouped by whether they will/will not be reclassified ("recycled") to profit or loss in a future period — a mandatory presentation split under IAS 1.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 7 — STATEMENT OF CHANGES IN EQUITY ============ -->
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Statement of Changes in Equity</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Required content &amp; worked reconciliation</div>
+        <div class="check-list" style="margin-bottom:9px;">
+          <span>Total comprehensive income for the period, showing separately amounts attributable to owners of the parent and to non-controlling interests</span>
+          <span>For each component of equity, the effects of retrospective application or restatement recognised per IAS 8</span>
+          <span>For each component of equity, a reconciliation between the opening and closing carrying amount, separately disclosing changes from: profit or loss; each item of OCI; and transactions with owners in their capacity as owners (contributions, distributions, changes in ownership interests)</span>
+          <span>Amount of dividends recognised as distributions, and the related amount per share, either on the face of the statement or in the notes</span>
+        </div>
+        <div class="worked" style="margin-bottom:0;">
+          <div class="wk-title">Example 2: Simple equity roll-forward</div>
+          <div class="wk-body">Retained earnings opening balance $500,000; profit for the year $120,000; dividends declared $40,000; a prior period error correction (IAS 8) reduces opening retained earnings by $15,000.</div>
+          <div class="wk-answer">
+            Restated opening balance = 500,000 − 15,000 = $485,000<br>
+            Closing retained earnings = 485,000 + 120,000 − 40,000 = <strong style="color:var(--color-text-info);">$565,000</strong><br>
+            The $15,000 restatement is shown as a separate line, NOT buried within "profit for the year" — a key presentation distinction.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 8 — NOTES & ACCOUNTING POLICIES ============ -->
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Notes &amp; Accounting Policies</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Structure and ordering of notes</div>
+        <div class="dot-list" style="margin-bottom:9px;">
+          <span>Present information about the basis of preparation and specific accounting policies used</span>
+          <span>Disclose information required by IFRS Standards not presented elsewhere in the primary statements</span>
+          <span>Provide information relevant to understanding the primary statements, but not presented within them</span>
+        </div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Notes are normally presented in a systematic manner, cross-referenced to the related items in the primary statements, though IAS 1 no longer mandates a single fixed ordering — entities have flexibility to present notes in the order that best communicates their financial statements.</div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Judgements and estimates disclosure</div>
+        <div class="elabel">TWO DISTINCT DISCLOSURE REQUIREMENTS — OFTEN CONFUSED</div>
+        <div class="two-col">
+          <div>
+            <div class="spec-box" style="margin-bottom:0;">
+              <div class="spec-title">Significant judgements</div>
+              <div style="font-size:10.5px;color:var(--color-text-secondary);line-height:1.5;">Judgements management has made in applying accounting policies that have the most significant effect on amounts recognised (e.g. classifying a lease, determining control of an investee)</div>
+            </div>
+          </div>
+          <div>
+            <div class="spec-box" style="margin-bottom:0;">
+              <div class="spec-title">Sources of estimation uncertainty</div>
+              <div style="font-size:10.5px;color:var(--color-text-secondary);line-height:1.5;">Key assumptions about the future, and other major sources of estimation uncertainty, with a significant risk of causing a material adjustment within the NEXT financial year</div>
+            </div>
+          </div>
+        </div>
+        <div class="note">The "next financial year" time horizon is specific to the estimation-uncertainty disclosure and is a commonly tested distinguishing detail.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 9 — CURRENT/NON-CURRENT CLASSIFICATION ============ -->
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Current vs Non-Current Classification</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs">
+        <div class="ctitle cs">Current asset — any ONE of four tests</div>
+        <div class="check-list">
+          <span>Expected to be realised, or is held for sale/consumption, in the entity's normal operating cycle</span>
+          <span>Held primarily for the purpose of trading</span>
+          <span>Expected to be realised within twelve months after the reporting period</span>
+          <span>Is cash or a cash equivalent, unless restricted from being exchanged/used to settle a liability for at least twelve months</span>
+        </div>
+        <div class="note">All other assets are classified as non-current. The "operating cycle" test means inventory and trade receivables are current even where the cycle exceeds twelve months (e.g. long-term construction contracts).</div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Current liability — any ONE of four tests</div>
+        <div class="check-list">
+          <span>Expected to be settled in the entity's normal operating cycle</span>
+          <span>Held primarily for the purpose of trading</span>
+          <span>Due to be settled within twelve months after the reporting period</span>
+          <span>The entity does NOT have an unconditional right, at the end of the reporting period, to defer settlement for at least twelve months</span>
+        </div>
+        <div class="callout danger" style="margin-bottom:0;">✕ <strong style="font-weight:600">Loan covenant breach at year end:</strong> if a loan becomes repayable on demand due to a covenant breach existing AT the reporting date, it is classified as CURRENT — even if the lender later agrees (after year end but before authorisation for issue) not to demand repayment, UNLESS the right to defer settlement for at least 12 months existed AT the reporting date itself. This is one of the most heavily examined IAS 1 classification traps.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 10 — JUDGMENTS & ESTIMATES ============ -->
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where management judgement matters most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Whether the going concern basis remains appropriate, and whether material uncertainties exist requiring disclosure</span>
+              <span>Whether an item is material enough to warrant separate presentation or disclosure</span>
+              <span>Classification of the SOFP by current/non-current vs order of liquidity</span>
+              <span>Determining whether the "true and fair override" applies (extremely rare)</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>Whether an unconditional right to defer settlement of a liability exists for at least 12 months at the reporting date</span>
+              <span>The length of the "normal operating cycle" where it is not clearly identifiable (default assumed as 12 months)</span>
+            </div>
+          </div>
+        </div>
+        <div class="callout warn" style="margin-top:8px;margin-bottom:0;">⚠️ Material uncertainties related to going concern must be disclosed even when management still concludes the going concern basis is appropriate — disclosure of the uncertainty itself is separate from, and does not necessarily follow, a conclusion that the entity is NOT a going concern.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 11 — IFRS vs US GAAP ============ -->
+    <div class="section-header" id="s11"><span class="num">11</span><h2>IFRS vs US GAAP — Key Differences</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — IAS 1 vs US GAAP</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Feature</span><span style="color:var(--color-text-info);">IFRS (IAS 1)</span><span style="color:var(--color-text-warning);">US GAAP</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>SOFP order</span><span>Free choice: liquidity order OR current/non-current, whichever more relevant</span><span>Typically presented in decreasing order of liquidity as standard practice</span></div>
+          <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Extraordinary items</span><span>Prohibited — no separate "extraordinary item" classification permitted</span><span>Also prohibited (converged since 2015), though unusual/infrequent items may still be separately disclosed</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>OCI presentation</span><span>Single OR two-statement approach, both permitted</span><span>Single OR two-statement approach also permitted (largely converged)</span></div>
+          <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Expense classification</span><span>Free choice: by nature or by function</span><span>SEC rules generally require presentation by function (e.g. cost of sales)</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Minimum reporting periods</span><span>Statement of financial position: 2 years (3 if restated); SOPL/equity/cash flows: 2 years</span><span>SEC generally requires 2 years for SOFP, 3 years for SOPL/cash flows for larger registrants — a stricter comparative requirement</span></div>
+        </div>
+        <div class="note">Despite convergence efforts eliminating major differences (e.g. extraordinary items), the SEC's typically stricter comparative-period requirements for the income statement and cash flow statement remain a practical difference multinational filers must navigate.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 12 — STATEMENT MAPPING TABLE ============ -->
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping — Where Every IAS 1 Concept Lands</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Comprehensive concept-to-statement mapping table</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>IAS 1 concept / requirement</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Current/non-current or liquidity classification</span><span><span class="badge bs">SOFP</span></span><span>Structural choice, applied consistently</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>By nature / by function expense presentation</span><span><span class="badge bp">SOPL</span></span><span>Policy choice; "by function" needs extra note disclosure</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Items never reclassified to SOPL (revaluation surplus, remeasurements)</span><span><span class="badge bo">OCI</span></span><span>Permanently within equity; may transfer to retained earnings</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Items later reclassified to SOPL (FX translation, cash flow hedges)</span><span><span class="badge bo">OCI</span> <span class="badge bp">SOPL</span></span><span>Recycled on disposal/derecognition of the hedged item</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Dividends declared</span><span><span class="badge be">Equity</span></span><span>Shown as a distribution, not an expense in SOPL</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Prior period error correction / retrospective policy change</span><span><span class="badge be">Equity</span> <span class="badge bs">SOFP</span></span><span>Restated opening retained earnings; may trigger third SOFP (IAS 8)</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Cash flow statement itself</span><span><span class="badge bs">Cash Flow Statement</span></span><span>The only primary statement NOT on the accrual basis (IAS 7)</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Significant judgements &amp; estimation uncertainty</span><span><span class="badge bp">Notes</span></span><span>Two distinct, mandatory disclosures</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Going concern material uncertainty</span><span><span class="badge bp">Notes</span></span><span>Disclosed regardless of the ultimate conclusion reached</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Accounting policies</span><span><span class="badge bp">Notes</span></span><span>Material accounting policy information only (post-2023 amendment)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 13 — RELATED STANDARDS ============ -->
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">How IAS 1 connects across the IFRS body of literature</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 7</span><span>Provides the detailed rules for the statement of cash flows — the one primary statement IAS 1 requires but does not itself govern in detail</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 8</span><span>Governs accounting policies, changes in estimates, and error correction — directly triggers IAS 1's "third SOFP" and restated comparatives requirements</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 10</span><span>Determines whether events after the reporting period (e.g. a covenant waiver) affect current/non-current classification decisions made under IAS 1</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 34</span><span>Sets out the reduced content requirements for INTERIM financial statements, distinct from IAS 1's full annual requirements</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 5</span><span>Determines the separate presentation of assets held for sale and discontinued operations within the SOFP and SOPL structures IAS 1 establishes</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 33</span><span>Earnings per share is presented on the face of the statement of profit or loss, a specific line-item requirement layered onto IAS 1's general structure</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 12 / IFRS 10</span><span>Determine how non-controlling interests and consolidated balances are presented within the equity and SOFP structures IAS 1 requires</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>All recognition/measurement standards</span><span>IAS 1 dictates WHERE and HOW their outputs are displayed, but never overrides their recognition or measurement conclusions</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 14 — GLOSSARY ============ -->
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <div class="three-col">
+      <div class="card cn">
+        <div class="glossary-item"><div class="glossary-term">Total comprehensive income</div><div class="glossary-def">The change in equity during a period resulting from transactions and other events, other than those changes resulting from transactions with owners in their capacity as owners — profit/loss plus OCI.</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Reclassification adjustment</div><div class="glossary-def">Amounts reclassified to profit or loss in the current period that were recognised in OCI in the current or previous periods.</div></div>
+      </div>
+      <div class="card cn">
+        <div class="glossary-item"><div class="glossary-term">Owners</div><div class="glossary-def">Holders of instruments classified as equity.</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Normal operating cycle</div><div class="glossary-def">The time between acquisition of assets for processing and their realisation in cash/cash equivalents — assumed to be twelve months when not clearly identifiable.</div></div>
+      </div>
+      <div class="card cn">
+        <div class="glossary-item"><div class="glossary-term">Authorisation date</div><div class="glossary-def">The date the financial statements are authorised for issue — the cut-off used for classifying liabilities and assessing subsequent events (IAS 10).</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Fair presentation</div><div class="glossary-def">Faithful representation of the effects of transactions, other events, and conditions in accordance with the Framework's definitions and recognition criteria for assets, liabilities, income, and expenses.</div></div>
+      </div>
+    </div>
+
+    <div class="legend">
+      <div class="ltitle">Financial statement key</div>
+      <div class="lrow">
+        <span class="badge bs">SOFP</span> Statement of financial position (balance sheet)
+        <span class="badge bp">SOPL</span> Statement of profit or loss (income statement)
+        <span class="badge bo">OCI</span> Other comprehensive income
+        <span class="badge be">Equity</span> Statement of changes in equity
+      </div>
+    </div>
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.IAS1} />
+  </section>
+</StandardPageLayout>

@@ -3,6 +3,7 @@ import StandardLayout from "./StandardLayout.astro";
 import InformationHeader from "../components/InformationHeader.astro";
 import ReferenceGuide from "../components/ReferenceGuide.astro";
 import PreviousNextNavigation from "../components/PreviousNextNavigation.astro";
+import RelatedStandards from "../components/RelatedStandards.astro";
 import "../styles/posters/poster-classic.css";
 
 interface Props {
@@ -13,6 +14,12 @@ interface Props {
   latestAmendment?: string;
   status?: string;
   summary?: string;
+  related?: {
+    code: string;
+    title: string;
+    url: string;
+    relationship: string;
+  }[];
 }
 
 const {
@@ -23,8 +30,8 @@ const {
   latestAmendment = "",
   status = "",
   summary = "",
+  related = [],
 } = Astro.props;
----
 ---
 
 <StandardLayout code={code} title={title} framework={standardType}>
@@ -43,5 +50,6 @@ const {
   <ReferenceGuide>
     <slot />
   </ReferenceGuide>
+  <RelatedStandards related={related} framework={standardType as "IAS" | "IFRS" | "Ind AS"} />
   <PreviousNextNavigation current={code} framework={standardType as "IAS" | "IFRS" | "Ind AS"} />
 </StandardLayout>

@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IAS 7 — Statement of Cash Flows | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .eg  { margin-bottom: 7px; }
+  .egl { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; margin-bottom: 3px; }
+  .entry { display: flex; align-items: flex-start; gap: 4px; margin-bottom: 4px; }
+  .dr { font-size: 11px; font-weight: 500; color: var(--color-text-info);   min-width: 14px; padding-top: 1px; }
+  .cr { font-size: 11px; font-weight: 500; color: var(--color-text-danger); min-width: 14px; padding-top: 1px; padding-left: 6px; }
+  .etxt { font-size: 11px; color: var(--color-text-primary); flex: 1; line-height: 1.4; }
+  .badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">IAS 7 — Statement of Cash Flows</div>
+      <div class="hub-sub">Extended reference poster · Conceptual framework link · Classification · Direct &amp; indirect methods · Worked examples · Statement mapping · Related standards</div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <a href="#s1">1. Conceptual Framework</a>
+    <a href="#s2">2. Scope &amp; Definitions</a>
+    <a href="#s3">3. The Three Activity Classifications</a>
+    <a href="#s4">4. Operating Activities</a>
+    <a href="#s5">5. Investing Activities</a>
+    <a href="#s6">6. Financing Activities</a>
+    <a href="#s7">7. Special Items</a>
+    <a href="#s8">8. Foreign Currency Cash Flows</a>
+    <a href="#s9">9. Disclosure</a>
+    <a href="#s10">10. Judgments &amp; Estimates</a>
+    <a href="#s11">11. IFRS vs US GAAP</a>
+    <a href="#s12">12. Statement Mapping</a>
+    <a href="#s13">13. Related Standards</a>
+    <a href="#s14">14. Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 — CONCEPTUAL FRAMEWORK LINK ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Why cash flow information matters to the Framework's objective</div>
+      <div class="principle">The Conceptual Framework states users need information about an entity's cash-generating ability, the timing and certainty of cash flows, and how the entity uses cash. Accrual-based profit alone cannot answer these questions — IAS 7 exists to complete the picture by showing what actually happened to cash.</div>
+      <div class="elabel">HOW CASH FLOW INFORMATION MAPS TO THE FRAMEWORK</div>
+      <div class="check-list">
+        <span><strong style="font-weight:500">Assessing liquidity and solvency</strong> — cash flow information helps users evaluate the entity's ability to generate cash and meet obligations as they fall due</span>
+        <span><strong style="font-weight:500">Assessing quality of earnings</strong> — comparing profit to operating cash flow reveals how much reported profit is backed by actual cash generation</span>
+        <span><strong style="font-weight:500">Eliminating the effects of differing accounting treatments</strong> — cash flows are comparable across entities even when accrual policies differ (e.g. depreciation methods)</span>
+      </div>
+      <div class="note">The statement of cash flows is the ONLY primary financial statement prepared on a CASH basis rather than the accrual basis IAS 1 otherwise mandates — a deliberate Framework-level design choice to give users a distinct, complementary lens.</div>
+    </div>
+
+    <div class="card cs">
+      <div class="ctitle cs">Measurement basis — cash, not accrual</div>
+      <div class="principle">IAS 7 measures actual cash and cash equivalent movements — a departure from every other primary statement's accrual/fair-value/cost bases.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1fr;"><span>Framework basis</span><span>Used by IAS 7 for…</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1fr;"><span>Cash basis (not accrual)</span><span>The entire statement — actual receipts and payments of cash and cash equivalents</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1fr;"><span>Reconciliation to accrual profit (indirect method)</span><span>Bridges the accrual-based SOPL to actual cash generated by operations</span></div>
+      </div>
+      <div class="callout info" style="margin-bottom:0;">ℹ️ <strong style="font-weight:500">Qualitative characteristics in action:</strong> cash flow information adds <strong style="font-weight:500">verifiability</strong> that accrual-based figures alone cannot provide — cash movements are objectively observable and far less subject to estimation or management judgement than accrual profit.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 — SCOPE & DEFINITIONS ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw">
+      <div class="ctitle cw">What IAS 7 covers</div>
+      <div class="principle">IAS 7 requires ALL entities to present a statement of cash flows as an integral part of their financial statements for each period presented — there are no scope exemptions by entity type or size within IFRS.</div>
+      <div class="elabel">CASH AND CASH EQUIVALENTS — THE STARTING POINT</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:9px;">Cash comprises cash on hand and demand deposits. Cash equivalents are short-term, highly liquid investments readily convertible to known amounts of cash, and subject to an insignificant risk of changes in value.</div>
+      <div class="elabel">CASH EQUIVALENT — TYPICAL TEST</div>
+      <div class="check-list">
+        <span>Held for the purpose of meeting short-term cash commitments, rather than for investment</span>
+        <span>Normally, only investments with a short maturity of, say, three months or less from the date of acquisition qualify</span>
+        <span>Bank overdrafts repayable on demand and forming an integral part of cash management are included as a component of cash and cash equivalents (a negative balance)</span>
+      </div>
+      <div class="note">Equity investments are generally EXCLUDED from cash equivalents (their value is not "known" and can fluctuate significantly) — unless they are, in substance, a cash equivalent, e.g. preferred shares acquired shortly before maturity with a specified redemption date.</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Key definitions you must know</div>
+      <div class="glossary-item">
+        <div class="glossary-term">Operating activities</div>
+        <div class="glossary-def">The principal revenue-producing activities of the entity, and other activities that are not investing or financing activities.</div>
+      </div>
+      <div class="glossary-item">
+        <div class="glossary-term">Investing activities</div>
+        <div class="glossary-def">The acquisition and disposal of long-term assets and other investments not included in cash equivalents.</div>
+      </div>
+      <div class="glossary-item">
+        <div class="glossary-term">Financing activities</div>
+        <div class="glossary-def">Activities that result in changes in the size and composition of the contributed equity and borrowings of the entity.</div>
+      </div>
+      <div class="glossary-item" style="border-bottom:none;">
+        <div class="glossary-term">Cash equivalents</div>
+        <div class="glossary-def">Short-term, highly liquid investments readily convertible to known amounts of cash and subject to an insignificant risk of changes in value — held for meeting short-term cash commitments, not for investment.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 — THE THREE ACTIVITY CLASSIFICATIONS ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>The Three Activity Classifications — Overview</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Why classification matters — and the core test for each</div>
+      <div class="principle">Separately classifying cash flows into operating, investing, and financing activities provides information that allows users to assess the effects of these activities on the entity's financial position, and the amount, timing, and certainty of future cash flows.</div>
+      <div class="three-col">
+        <div class="spec-box" style="margin-bottom:0;">
+          <div class="spec-title" style="color:var(--color-text-info);">Operating</div>
+          <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.5;">Generally derived from transactions that enter into the determination of profit or loss — the PRIMARY indicator of whether operations generate sufficient cash without external financing.</div>
+        </div>
+        <div class="spec-box" style="margin-bottom:0;">
+          <div class="spec-title" style="color:var(--color-text-info);">Investing</div>
+          <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.5;">Represents the extent to which expenditures have been made for resources intended to generate FUTURE income and cash flows.</div>
+        </div>
+        <div class="spec-box" style="margin-bottom:0;">
+          <div class="spec-title" style="color:var(--color-text-info);">Financing</div>
+          <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.5;">Useful in predicting claims on future cash flows by providers of capital (both debt and equity).</div>
+        </div>
+      </div>
+      <div class="callout warn" style="margin-top:8px;margin-bottom:0;">⚠️ A single transaction may include cash flows classified DIFFERENTLY — e.g. repayment of a loan including both principal (financing) and interest (operating or financing, per policy choice) requires separate classification of each component.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 — OPERATING ACTIVITIES (with worked example) ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Operating Activities — Direct vs Indirect Method</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs">
+      <div class="ctitle cs">Direct method</div>
+      <div class="formula-box">
+        <div class="f-eq">Major classes of gross cash receipts and gross cash payments are disclosed (e.g. cash received from customers, cash paid to suppliers/employees)</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">IAS 7 ENCOURAGES the direct method, as it provides information useful in estimating future cash flows that the indirect method does not.</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Indirect method — by far the most common in practice</div>
+      <div class="formula-box">
+        <div class="f-eq">Profit or loss is adjusted for: non-cash items, deferrals/accruals, and items of income/expense associated with investing/financing cash flows</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Both methods produce the IDENTICAL net cash flow from operating activities — only the presentation of the operating section differs; investing and financing sections are unaffected by the choice.</div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card cn span2">
+      <div class="ctitle cn">Worked example — indirect method reconciliation</div>
+      <div class="worked">
+        <div class="wk-title">Example 1: Profit to operating cash flow reconciliation</div>
+        <div class="wk-body">
+          Profit before tax: $150,000. Depreciation: $30,000. Loss on disposal of equipment: $5,000. Increase in trade receivables: $12,000. Decrease in inventory: $8,000. Increase in trade payables: $6,000. Interest expense (financing, per policy): $10,000. Income tax paid: $28,000.
+        </div>
+        <div class="wk-answer">
+          Profit before tax: 150,000<br>
+          + Depreciation (non-cash): +30,000<br>
+          + Loss on disposal (non-cash, reallocate to investing): +5,000<br>
+          − Increase in receivables (cash tied up): −12,000<br>
+          + Decrease in inventory (cash released): +8,000<br>
+          + Increase in payables (cash retained): +6,000<br>
+          + Interest expense (reclassify to financing): +10,000<br>
+          = Cash generated from operations: 197,000<br>
+          − Income tax paid: −28,000<br>
+          <strong>= Net cash from operating activities: <span style="color:var(--color-text-info);">$169,000</span></strong>
+        </div>
+      </div>
+      <div class="note">Interest and tax paid are shown as SEPARATE line items within operating activities (or interest may be classified as financing per the entity's consistent policy — see Section 7) — they are never left buried inside "profit before tax" in the reconciliation.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 — INVESTING ACTIVITIES ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Investing Activities</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Typical investing cash flows</div>
+      <div class="dot-list">
+        <span>Cash payments to acquire PPE, intangibles, and other long-term assets, INCLUDING those relating to capitalised development costs and self-constructed PPE</span>
+        <span>Cash receipts from sales of PPE, intangibles, and other long-term assets</span>
+        <span>Cash payments/receipts for acquisition/disposal of equity or debt instruments of other entities and interests in joint ventures (excluding cash equivalents and instruments held for trading)</span>
+        <span>Cash advances and loans made to other parties (other than by a financial institution), and receipts from their repayment</span>
+        <span>Cash payments/receipts for derivative contracts, EXCEPT when held for trading, or when the payments/receipts are classified as financing activities</span>
+      </div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Worked example — gross vs net presentation</div>
+      <div class="worked">
+        <div class="wk-title">Example 2: Equipment sale — gross proceeds, not net gain</div>
+        <div class="wk-body">
+          A company sells equipment with a carrying amount of $40,000 for cash proceeds of $52,000, resulting in a $12,000 gain recognised in profit or loss.
+        </div>
+        <div class="wk-answer">
+          <strong>Investing activities:</strong> cash inflow from sale of equipment = <strong style="color:var(--color-text-info);">$52,000</strong> (the GROSS proceeds, not the net gain)<br>
+          <strong>Operating activities (indirect method):</strong> the $12,000 gain is DEDUCTED from profit before tax, since it is a non-cash reallocation already fully captured in the investing section.
+        </div>
+      </div>
+      <div class="note">Never report investing/financing cash flows on a net basis (inflow less outflow) — gross cash receipts and payments are required, EXCEPT for a few specific permitted exceptions (Section 7).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 — FINANCING ACTIVITIES ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Financing Activities</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Typical financing cash flows &amp; worked example</div>
+      <div class="dot-list" style="margin-bottom:9px;">
+        <span>Cash proceeds from issuing shares or other equity instruments</span>
+        <span>Cash payments to owners to acquire or redeem the entity's shares (e.g. share buybacks)</span>
+        <span>Cash proceeds from issuing debentures, loans, notes, bonds, mortgages, and other short/long-term borrowings, and repayments of amounts borrowed</span>
+        <span>Cash payments by a lessee for the reduction of the outstanding lease liability (IFRS 16) — principal portion only</span>
+        <span>Dividends PAID (a policy choice: operating or financing — see Section 7)</span>
+      </div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 3: Loan issuance and share buyback</div>
+        <div class="wk-body">A company issues a $500,000 bank loan and uses part of the proceeds to buy back $150,000 of its own shares during the year; it also pays $60,000 in dividends (classified as financing per its stated policy).</div>
+        <div class="wk-answer">
+          Financing activities: +500,000 (loan proceeds) − 150,000 (share buyback) − 60,000 (dividends paid) = <strong style="color:var(--color-text-info);">Net cash from financing activities: $290,000</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 — SPECIAL ITEMS ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Special Items — Interest, Dividends, Tax &amp; Net Reporting</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd">
+      <div class="ctitle cd">Interest and dividends — classification policy choice</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 1fr;"><span>Item</span><span>Permitted classification(s)</span></div>
+        <div class="tr" style="grid-template-columns:1fr 1fr;"><span>Interest paid</span><span>Operating OR financing</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 1fr;"><span>Interest received</span><span>Operating OR investing</span></div>
+        <div class="tr" style="grid-template-columns:1fr 1fr;"><span>Dividends received</span><span>Operating OR investing</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 1fr;"><span>Dividends paid</span><span>Operating OR financing</span></div>
+      </div>
+      <div class="note">Whichever classification is chosen must be applied CONSISTENTLY from period to period and disclosed as an accounting policy — a genuinely free choice, similar to IAS 20's grant presentation options.</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Income tax and permitted net reporting exceptions</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:9px;"><strong style="font-weight:500">Income tax</strong> paid is classified as OPERATING unless it can be specifically identified with financing or investing activities.</div>
+      <div class="elabel">RARE PERMITTED EXCEPTIONS TO GROSS REPORTING</div>
+      <div class="check-list">
+        <span>Cash receipts/payments on behalf of customers when cash flows reflect the ACTIVITY of the customer, not the entity (e.g. rent collected on behalf of, and paid over to, property owners)</span>
+        <span>Items with quick turnover, large amounts, and short maturities (e.g. purchase/sale of investments, other short-term borrowings with maturity of 3 months or less)</span>
+        <span>Cash flows relating to deposits with fixed maturity dates, advances and loans made to customers, by a financial institution</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 — FOREIGN CURRENCY CASH FLOWS ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Foreign Currency Cash Flows &amp; Non-Cash Transactions</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Foreign currency translation for cash flow purposes</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:9px;">Cash flows arising from transactions in a foreign currency are recorded using the exchange rate at the DATE OF THE CASH FLOW (or a rate that approximates it, e.g. a weighted average rate). Unrealised gains/losses on foreign currency cash and cash equivalents held are NOT cash flows.</div>
+      <div class="callout info" style="margin-bottom:0;">ℹ️ The effect of exchange rate changes on cash/cash equivalents held in foreign currency is presented SEPARATELY from operating, investing, and financing activities, as a reconciling item between opening and closing cash balances.</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Non-cash transactions — excluded entirely</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:9px;">Investing and financing transactions that do NOT require the use of cash or cash equivalents are EXCLUDED from the statement of cash flows entirely — but disclosed separately elsewhere in the financial statements (typically the notes) if they provide relevant information.</div>
+      <div class="dot-list">
+        <span>Acquisition of assets by assuming directly related liabilities, or by means of a finance lease</span>
+        <span>Acquisition of an entity by means of an equity issue</span>
+        <span>Conversion of debt to equity</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 — DISCLOSURE ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Required disclosures</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">CORE DISCLOSURES</div>
+          <div class="check-list">
+            <span>The components of cash and cash equivalents, and a reconciliation of the amounts in the statement of cash flows to the equivalent items in the SOFP</span>
+            <span>The accounting policy adopted in determining the composition of cash and cash equivalents</span>
+            <span>Classification policy for interest, dividends, and tax where alternatives are permitted</span>
+          </div>
+        </div>
+        <div>
+          <div class="elabel">ADDITIONAL / ENCOURAGED DISCLOSURES</div>
+          <div class="check-list">
+            <span>Significant non-cash investing and financing transactions</span>
+            <span>Amount of significant cash and cash equivalent balances held that are NOT available for use by the group (e.g. subject to exchange controls)</span>
+            <span>A reconciliation of liabilities arising from financing activities, showing changes from cash flows AND non-cash changes (e.g. FX movements, fair value changes, new leases) — mandatory since a 2016 amendment</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 — JUDGMENTS & ESTIMATES ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Where management judgement matters most</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+          <div class="dot-list">
+            <span>Which short-term investments genuinely meet the "cash equivalent" definition (the 3-month guideline is illustrative, not an absolute rule)</span>
+            <span>Classification of interest, dividends, and tax between operating/investing/financing where policy choice exists</span>
+            <span>Whether a bank overdraft is an "integral part of cash management" (included in cash equivalents) or a genuine financing borrowing (excluded)</span>
+          </div>
+        </div>
+        <div>
+          <div class="elabel">SIGNIFICANT ESTIMATES</div>
+          <div class="dot-list">
+            <span>Appropriate exchange rate to use for foreign currency cash flow translation when a single transaction-date rate is impracticable</span>
+            <span>Allocating mixed cash receipts/payments between operating, investing, and financing components of a single transaction</span>
+          </div>
+        </div>
+      </div>
+      <div class="callout warn" style="margin-top:8px;margin-bottom:0;">⚠️ Classifying a cash flow in the WRONG activity category (e.g. treating a capital expenditure as an operating outflow) does not change total cash movement, but materially distorts users' analysis of the entity's underlying cash-generating ability — a frequent source of exam marks on classification questions.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 — IFRS vs US GAAP ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>IFRS vs US GAAP — Key Differences</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — IAS 7 vs US GAAP (ASC 230)</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Feature</span><span style="color:var(--color-text-info);">IFRS (IAS 7)</span><span style="color:var(--color-text-warning);">US GAAP</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Interest paid</span><span>Policy choice: operating OR financing</span><span>Always operating — no choice</span></div>
+        <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Interest received</span><span>Policy choice: operating OR investing</span><span>Always operating — no choice</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Dividends received</span><span>Policy choice: operating OR investing</span><span>Always operating — no choice</span></div>
+        <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Dividends paid</span><span>Policy choice: operating OR financing</span><span>Always financing — no choice</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Bank overdrafts</span><span>May be included within cash equivalents if integral to cash management</span><span>Generally classified as financing activities (borrowings), not cash equivalents</span></div>
+        <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Direct vs indirect method</span><span>Both permitted; direct method ENCOURAGED</span><span>Both permitted; indirect method dominant in practice, direct method not specially encouraged</span></div>
+      </div>
+      <div class="note">The rigid, single-classification US GAAP approach to interest and dividends is the single most heavily tested IFRS/US GAAP difference for this standard — IFRS's flexibility here directly affects reported operating cash flow, a key metric analysts scrutinise.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 — STATEMENT MAPPING TABLE ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping — Where Every Cash Flow Event Lands</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Comprehensive event-to-statement mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event / transaction</span><span>Statement(s) affected</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Cash received from customers</span><span><span class="badge bs">Cash Flow Statement</span></span><span>Operating activities inflow (direct method) or embedded in the receivables adjustment (indirect)</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Depreciation and amortisation</span><span><span class="badge bp">SOPL</span> <span class="badge bs">Cash Flow Statement</span></span><span>Non-cash expense in SOPL; added back in operating activities (indirect method)</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Purchase of PPE / intangibles</span><span><span class="badge bs">SOFP</span> <span class="badge bs">Cash Flow Statement</span></span><span>Investing activities outflow, gross amount</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Sale proceeds of PPE / investments</span><span><span class="badge bs">Cash Flow Statement</span></span><span>Investing inflow at GROSS proceeds, not net gain/loss</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Gain/loss on disposal</span><span><span class="badge bp">SOPL</span> <span class="badge bs">Cash Flow Statement</span></span><span>Reversed out of the operating reconciliation (indirect method) since it's non-cash/already in investing</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Issue of share capital for cash</span><span><span class="badge be">Equity</span> <span class="badge bs">Cash Flow Statement</span></span><span>Financing activities inflow</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Repayment of loan principal</span><span><span class="badge bs">SOFP</span> <span class="badge bs">Cash Flow Statement</span></span><span>Financing activities outflow</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Dividends paid</span><span><span class="badge be">Equity</span> <span class="badge bs">Cash Flow Statement</span></span><span>Operating OR financing, per policy choice</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Working capital movements (receivables, payables, inventory)</span><span><span class="badge bs">Cash Flow Statement</span></span><span>Adjustments within operating activities (indirect method)</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Non-cash investing/financing transactions (e.g. debt-for-equity swap)</span><span>—</span><span>EXCLUDED from the statement; disclosed separately in notes</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>FX effect on foreign cash balances held</span><span><span class="badge bs">Cash Flow Statement</span></span><span>Separate reconciling line, not within any of the three activities</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Cash/cash equivalents composition, financing liabilities reconciliation</span><span><span class="badge bp">Notes</span></span><span>Mandatory disclosures supporting the primary statement</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 — RELATED STANDARDS ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How IAS 7 connects across the IFRS body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 1</span><span>Establishes that the statement of cash flows is one of the mandatory components of a complete set of financial statements</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 21</span><span>Governs the exchange rates used to translate foreign currency cash flows and the presentation of related FX effects on cash balances</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 16</span><span>Lease liability principal repayments are classified as financing activities; the interest portion follows the entity's interest classification policy</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 10</span><span>Cash flows relating to obtaining or losing control of subsidiaries are presented separately, classified as investing activities and disclosed net of cash/cash equivalents acquired or disposed of</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 12</span><span>Determines the income tax expense reconciled back to actual cash tax paid, classified within operating activities unless specifically identifiable elsewhere</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 9</span><span>Governs classification and measurement of financial assets/liabilities whose cash flows (purchases, disposals, interest, principal) IAS 7 then classifies into the appropriate activity</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 16 / IAS 38</span><span>Supply the cost figures for PPE/intangible asset purchases and disposal proceeds that flow into the investing activities section</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 8</span><span>Governs how a change in the classification policy for interest/dividends (a change in accounting policy) is applied retrospectively</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 — GLOSSARY ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Direct method</div><div class="glossary-def">Discloses major classes of gross cash receipts and payments — encouraged by IAS 7 but rarely used in practice due to cost of gathering the data.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Indirect method</div><div class="glossary-def">Starts from profit or loss and adjusts for non-cash items and working capital changes — the dominant method used in practice.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Cash generated from operations</div><div class="glossary-def">The subtotal in the indirect method before deducting interest paid and income tax paid — a key intermediate figure often quoted by analysts.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Free cash flow</div><div class="glossary-def">A non-GAAP/non-IFRS metric (not defined by IAS 7 itself) commonly calculated as operating cash flow less capital expenditure, used by analysts to assess discretionary cash available.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Net debt reconciliation</div><div class="glossary-def">A reconciliation of liabilities arising from financing activities, distinguishing cash flow movements from non-cash movements (FX, fair value, new leases) — mandatory since the 2016 amendment.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Restricted cash</div><div class="glossary-def">Cash balances not available for use by the group (e.g. subject to exchange controls or legal restrictions) — separately disclosed, though still included in the cash total unless truly not a cash equivalent.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bs">SOFP</span> Statement of financial position (balance sheet)
+      <span class="badge bp">SOPL</span> Statement of profit or loss (income statement)
+      <span class="badge bo">OCI</span> Other comprehensive income
+      <span class="badge be">Equity</span> Statement of changes in equity
+    </div>
+  </div>
+
+  <div class="footer-note">IAS 7 — Statement of Cash Flows · Extended Reference Poster · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>
