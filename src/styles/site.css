@@ -1589,9 +1589,9 @@ section li:last-child {
 }
 
 /* Framework-driven accent colours so chrome matches the standard identity */
-.content[data-framework="ias"]  { --toc-active: var(--ias);  --section-accent: var(--ias); }
-.content[data-framework="ifrs"] { --toc-active: var(--ifrs); --section-accent: var(--ifrs); }
-.content[data-framework="indas"] { --toc-active: var(--indas); --section-accent: var(--indas); }
+.content[data-framework="ias"]  { --toc-active: var(--ias);  --toc-active-soft: var(--ias-soft);  --section-accent: var(--ias); }
+.content[data-framework="ifrs"] { --toc-active: var(--ifrs); --toc-active-soft: var(--ifrs-soft); --section-accent: var(--ifrs); }
+.content[data-framework="indas"] { --toc-active: var(--indas); --toc-active-soft: var(--indas-soft); --section-accent: var(--indas); }
 
 .page-content {
     min-width: 0;
@@ -1718,10 +1718,14 @@ section li:last-child {
 }
 
 .toc a.active {
-    color: var(--ias);
+    color: var(--toc-active, var(--ias));
     font-weight: var(--weight-semibold);
-    background: var(--ias-soft);
+    background: var(--toc-active-soft, var(--ias-soft));
     border-radius: var(--radius-sm);
+}
+
+.toc a.active::before {
+    background: var(--toc-active, var(--ias));
 }
 
 .toc a::before {
