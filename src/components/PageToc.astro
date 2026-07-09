@@ -24,10 +24,13 @@ const slugify = (text: string) =>
         {
             items.map((item) => {
                 const href = `#${item.id}_${slugify(item.label)}`;
+                const numMatch = item.id.match(/^s(\d+)$/);
+                const number = numMatch ? parseInt(numMatch[1], 10) : null;
                 return (
                     <li>
                         <a href={href} data-section={item.id}>
-                            {item.label}
+                            <span class="toc-number">{number !== null ? number : ""}</span>
+                            <span class="toc-label">{item.label}</span>
                         </a>
                     </li>
                 );

@@ -1675,15 +1675,34 @@ section li:last-child {
 
 .toc a {
     position: relative;
-    display: block;
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-sm);
     padding: var(--space-sm) var(--space-md) var(--space-sm) var(--space-lg);
+    line-height: 1.4;
 }
 
 .toc a:hover {
-    background: var(--surface-alt);
-
-    transform: translateX(2px);
+    background: var(--surface-hover);
+    color: var(--text-secondary);
     border-radius: var(--radius-sm);
+}
+
+.toc a.partial {
+    opacity: 0.6;
+}
+
+.toc-number {
+    flex: 0 0 auto;
+    min-width: 18px;
+    font-variant-numeric: tabular-nums;
+    font-weight: var(--weight-semibold);
+    text-align: right;
+}
+
+.toc-label {
+    flex: 1 1 auto;
+    min-width: 0;
 }
 
 .toc a.active {
