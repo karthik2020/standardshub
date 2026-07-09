@@ -10,6 +10,11 @@ interface Props {
 }
 
 const { items = [] } = Astro.props;
+
+// Slugify a label for the URL hash, e.g. "Net Realisable Value & Write-Downs"
+// -> "Net_Realisable_Value_And_Write_Downs". Casing is preserved for readability.
+const slugify = (text: string) =>
+    text.replace(/[^a-zA-Z0-9]+/g, "_").replace(/^_+|_+$/g, "");
 ---
 
 <nav class="toc">
@@ -17,13 +22,16 @@ const { items = [] } = Astro.props;
 
     <ul>
         {
-            items.map((item) => (
-                <li>
-                    <a href={`#${item.id}`} data-section={item.id}>
-                        {item.label}
-                    </a>
-                </li>
-            ))
+            items.map((item) => {
+                const href = `#${item.id}_${slugify(item.label)}`;
+                return (
+                    <li>
+                        <a href={href} data-section={item.id}>
+                            {item.label}
+                        </a>
+                    </li>
+                );
+            })
         }
     </ul>
 </nav>

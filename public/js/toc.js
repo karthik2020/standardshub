@@ -7,6 +7,31 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
+    const headerHeight = () =>
+        parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 72;
+
+    // Smooth-scroll to a real section id (e.g. "s6"), offset for the sticky header.
+    function scrollToId(targetId) {
+        if (!targetId) return;
+        const targetElement = document.getElementById(targetId);
+        if (!targetElement) return;
+
+        const offset = headerHeight() + 20; // Additional padding
+        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
+
+        window.scrollTo({
+            top: targetPosition,
+            behavior: "smooth"
+        });
+    }
+
+    // Pretty hashes look like "#s6_Net_Realisable_Value_And_Write_Downs"; the real
+    // element id is the part before the first underscore ("s6"). Real ids never
+    // contain underscores, so this split is safe.
+    function idFromHash(hash) {
+        return hash.replace(/^#/, "").split("_")[0];
+    }
+
     // Function to scroll TOC to keep active item visible
     function scrollTocToActiveItem() {
         const activeLink = document.querySelector(".toc a.active");
@@ -65,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         {
             // Adjust rootMargin to account for sticky header
-            rootMargin: `-${parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 72}px 0px -40% 0px`,
+            rootMargin: `-${headerHeight()}px 0px -40% 0px`,
             threshold: [0, 0.25, 0.5, 0.75, 1]
         }
     );
@@ -74,47 +99,31 @@ document.addEventListener("DOMContentLoaded", () => {
         observer.observe(section);
     });
 
-    // Smooth scroll with offset for sticky header
+    // Smooth scroll with offset for sticky header.
+    // Scroll to the real section id, but write the pretty hash to the URL.
     links.forEach((link) => {
         link.addEventListener("click", (e) => {
             const href = link.getAttribute("href");
-            if (href.startsWith("#")) {
-                e.preventDefault();
-                const targetId = href.substring(1);
-                const targetElement = document.getElementById(targetId);
-                
-                if (targetElement) {
-                    const headerHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 72;
-                    const offset = headerHeight + 20; // Additional padding
-                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: "smooth"
-                    });
-                    
-                    // Update URL without jumping
-                    history.pushState(null, null, href);
-                }
-            }
+            if (!href || !href.startsWith("#")) return;
+
+            e.preventDefault();
+            scrollToId(link.dataset.section);
+            // Update URL without jumping
+            history.pushState(null, null, href);
         });
     });
 
-    // Handle browser back/forward navigation
-    window.addEventListener("popstate", () => {
-        const hash = window.location.hash;
-        if (hash) {
-            const targetElement = document.getElementById(hash.substring(1));
-            if (targetElement) {
-                const headerHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 72;
-                const offset = headerHeight + 20;
-                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: "smooth"
-                });
-            }
-        }
-    });
+    // Resolve a (pretty) hash to the real section id and scroll to it.
+    function handleHashNavigation() {
+        scrollToId(idFromHash(window.location.hash));
+    }
+
+    // Handle browser back/forward navigation and shared links.
+    window.addEventListener("popstate", handleHashNavigation);
+
+    // Scroll to a section when the page is opened directly with a hash
+    // (e.g. a shared link like #s6_Net_Realisable_Value_And_Write_Downs).
+    if (window.location.hash) {
+        requestAnimationFrame(handleHashNavigation);
+    }
 });
