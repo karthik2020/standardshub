@@ -1,10 +1,54 @@
+/* ======================================================
+   Poster Grid & Layout
+   ====================================================== */
+
 .poster-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
     align-items: start;
     max-width: 100%;
+    margin-bottom: 40px;
 }
+
+.poster-columns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 8px;
+}
+
+.poster-columns-3 {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.poster-card-full {
+    grid-column: 1 / -1;
+}
+
+@media (max-width: 900px) {
+    .poster-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .poster-columns {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 900px) {
+    .poster-columns-3 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ======================================================
+   Poster Card
+   ====================================================== */
 
 .poster-card {
     min-width: 0;
@@ -53,6 +97,16 @@
     border-left: 3px solid #ec4899;
 }
 
+@media (max-width: 520px) {
+    .poster-card {
+        padding: 12px;
+    }
+}
+
+/* ======================================================
+   Poster Titles & Numbers
+   ====================================================== */
+
 .poster-number {
     font-size: 10px;
     font-weight: 500;
@@ -64,13 +118,6 @@
     font-size: 13px;
     font-weight: 600;
     margin-bottom: 7px;
-}
-
-.poster-section-title {
-    font-size: 11px;
-    font-weight: 700;
-    color: #9ca3af;
-    margin-bottom: 8px;
 }
 
 .poster-title.info {
@@ -101,6 +148,17 @@
     color: #db2777;
 }
 
+.poster-section-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: #9ca3af;
+    margin-bottom: 8px;
+}
+
+/* ======================================================
+   Poster Typography & Boxes
+   ====================================================== */
+
 .poster-principle {
     font-size: 11px;
     color: #374151;
@@ -129,6 +187,76 @@
     font-style: italic;
     margin-bottom: 3px;
 }
+
+.poster-note {
+    font-size: 10px;
+    color: #9ca3af;
+    font-style: italic;
+    line-height: 1.5;
+    margin-top: 5px;
+}
+
+/* ======================================================
+   Poster Lists
+   ====================================================== */
+
+.poster-card ul {
+    margin: 6px 0 0 18px;
+    padding: 0;
+}
+
+.poster-card li {
+    font-size: 11px;
+    color: #374151;
+    line-height: 1.6;
+    margin-bottom: 4px;
+}
+
+.poster-list-x {
+    list-style: none;
+    padding-left: 0;
+    margin: 8px 0;
+}
+
+.poster-list-x li {
+    position: relative;
+    padding-left: 18px;
+    margin-bottom: 6px;
+}
+
+.poster-list-x li::before {
+    content: "✕";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #ef4444;
+    font-weight: 700;
+}
+
+.poster-list-check {
+    list-style: none;
+    padding-left: 0;
+    margin: 8px 0;
+}
+
+.poster-list-check li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 6px;
+}
+
+.poster-list-check li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #16a34a;
+    font-weight: 700;
+}
+
+/* ======================================================
+   Poster Entries (Journal)
+   ====================================================== */
 
 .poster-entry {
     display: flex;
@@ -194,19 +322,36 @@
     color: #b45309;
 }
 
+@media (max-width: 520px) {
+    .poster-entry {
+        flex-wrap: wrap;
+    }
+
+    .poster-dr,
+    .poster-cr {
+        min-width: 16px;
+    }
+}
+
+/* ======================================================
+   Poster Dividers
+   ====================================================== */
+
 .poster-divider {
     height: 1px;
     background: #e5e7eb;
     margin: 7px 0;
 }
 
-.poster-note {
-    font-size: 10px;
-    color: #9ca3af;
-    font-style: italic;
-    line-height: 1.5;
-    margin-top: 5px;
+.poster-divider-strong {
+    height: 2px;
+    background: #d1d5db;
+    margin: 14px 0;
 }
+
+/* ======================================================
+   Poster Legend
+   ====================================================== */
 
 .poster-legend {
     margin-top: 12px;
@@ -216,6 +361,7 @@
     border-radius: 8px;
     display: inline-block;
     max-width: 100%;
+    margin-bottom: 60px;
 }
 
 .poster-legend-title {
@@ -233,154 +379,16 @@
     margin-top: 4px;
 }
 
-@media (max-width: 900px) {
-    .poster-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-.poster-card ul {
-    margin: 6px 0 0 18px;
-    padding: 0;
-}
-
-.poster-card li {
-    font-size: 11px;
-    color: #374151;
-    line-height: 1.6;
-    margin-bottom: 4px;
-}
-
-.poster-legend {
-    margin-top: 12px;
-    margin-bottom: 60px;
-}
-
-.poster-grid {
-    margin-bottom: 40px;
-}
-
-.poster-card-full {
-    grid-column: 1 / -1;
-}
-
-/* <div class="poster-card purple poster-card-full"> */
-.poster-columns-3 {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 18px;
-}
-
-@media (max-width: 900px) {
-    .poster-columns-3 {
-        grid-template-columns: 1fr;
-    }
-}
-
-.poster-list-x {
-    list-style: none;
-    padding-left: 0;
-    margin: 8px 0;
-}
-
-.poster-list-x li {
-    position: relative;
-    padding-left: 18px;
-    margin-bottom: 6px;
-}
-
-.poster-list-x li::before {
-    content: "✕";
-    position: absolute;
-    left: 0;
-    top: 0;
-    color: #ef4444;
-    font-weight: 700;
-}
-
-/* <ul class="poster-list-x"> */
-.poster-list-x li {
-    position: relative;
-    padding-left: 18px;
-    margin-bottom: 2px;
-    line-height: 1.4;
-}
-
-.poster-list-check {
-    list-style: none;
-    padding-left: 0;
-    margin: 8px 0;
-}
-
-.poster-list-check li {
-    position: relative;
-    padding-left: 20px;
-    margin-bottom: 6px;
-}
-
-.poster-list-check li::before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    top: 0;
-    color: #16a34a;
-    font-weight: 700;
-}
-
-/* <ul class="poster-list-check"> */
-.poster-list-check li {
-    position: relative;
-    padding-left: 20px;
-    margin-bottom: 2px;
-    line-height: 1.4;
-}
-
-.poster-divider {
-    height: 1px;
-    background: #e5e7eb;
-    margin: 12px 0;
-}
-
-/* <div class="poster-divider"></div> */
-.poster-divider-strong {
-    height: 2px;
-    background: #d1d5db;
-    margin: 14px 0;
-}
-
-/* <div class="poster-divider-strong"></div> */
-.poster-columns {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
-    margin-top: 8px;
-}
-
-@media (max-width: 768px) {
-    .poster-columns {
-        grid-template-columns: 1fr;
-    }
-}
-
 @media (max-width: 520px) {
-    .poster-card {
-        padding: 12px;
-    }
-
-    .poster-entry {
-        flex-wrap: wrap;
-    }
-
-    .poster-dr,
-    .poster-cr {
-        min-width: 16px;
-    }
-
     .poster-legend {
         display: block;
         margin-bottom: var(--space-2xl);
     }
 }
+
+/* ======================================================
+   Poster Pills
+   ====================================================== */
 
 .poster-pill {
     display: inline-block;
@@ -389,18 +397,6 @@
     font-size: 11px;
     font-weight: 600;
     margin-bottom: 10px;
-}
-
-.poster-pill-info {
-    background: #eff6ff;
-    border: 1px solid #3b82f6;
-    color: #2563eb;
-}
-
-.poster-pill-warning {
-    background: #fff7ed;
-    border: 1px solid #f59e0b;
-    color: #d97706;
 }
 
 .poster-pill-info {
