@@ -1,4 +1,13 @@
 ---
+/*
+Page table of contents.
+
+Props:
+- items
+
+Renders a linked list of sections for the current page. Section numbers are extracted from item IDs matching the pattern s<N>. Labels are slugified for URL hashes.
+*/
+
 interface Item {
     id: string;
 
@@ -11,8 +20,6 @@ interface Props {
 
 const { items = [] } = Astro.props;
 
-// Slugify a label for the URL hash, e.g. "Net Realisable Value & Write-Downs"
-// -> "Net_Realisable_Value_And_Write_Downs". Casing is preserved for readability.
 const slugify = (text: string) =>
     text.replace(/[^a-zA-Z0-9]+/g, "_").replace(/^_+|_+$/g, "");
 ---
