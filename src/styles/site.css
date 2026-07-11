@@ -84,7 +84,7 @@
     --z-panel: 300;
     --z-modal: 1000;
     /* ====================================================== Spacing tokens ======================================================*/
---space-xs: 4px;
+    --space-xs: 4px;
     --space-sm: 8px;
     --space-md: 12px;
     --space-lg: 16px;
@@ -190,6 +190,7 @@
     color: var(--text-secondary);
     line-height: 1.4;
 }
+
 .related-heading {
     margin-bottom: var(--space-lg);
     font-size: var(--text-h2);
@@ -1004,7 +1005,7 @@ section li:last-child {
 
     border-radius: var(--radius-pill);
 
-    
+
 
     font-size: var(--text-small);
 
@@ -1616,9 +1617,23 @@ section li:last-child {
 }
 
 /* Framework-driven accent colours so chrome matches the standard identity */
-.content[data-framework="ias"]  { --toc-active: var(--ias);  --toc-active-soft: var(--ias-soft);  --section-accent: var(--ias); }
-.content[data-framework="ifrs"] { --toc-active: var(--ifrs); --toc-active-soft: var(--ifrs-soft); --section-accent: var(--ifrs); }
-.content[data-framework="indas"] { --toc-active: var(--indas); --toc-active-soft: var(--indas-soft); --section-accent: var(--indas); }
+.content[data-framework="ias"] {
+    --toc-active: var(--ias);
+    --toc-active-soft: var(--ias-soft);
+    --section-accent: var(--ias);
+}
+
+.content[data-framework="ifrs"] {
+    --toc-active: var(--ifrs);
+    --toc-active-soft: var(--ifrs-soft);
+    --section-accent: var(--ifrs);
+}
+
+.content[data-framework="indas"] {
+    --toc-active: var(--indas);
+    --toc-active-soft: var(--indas-soft);
+    --section-accent: var(--indas);
+}
 
 .page-content {
     min-width: 0;
@@ -2341,7 +2356,7 @@ section li:last-child {
         grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
         gap: var(--space-lg);
     }
-    
+
     .table-of-contents {
         display: none;
     }
@@ -2354,7 +2369,7 @@ section li:last-child {
         gap: var(--space-lg);
         padding: var(--space-lg);
     }
-    
+
     .documentation-explorer,
     .table-of-contents {
         width: 100%;
@@ -2403,10 +2418,158 @@ section li:last-child {
     font-size: var(--text-xs);
 }
 
-@media (max-width: 768px) {
-    .footer-content {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: var(--space-sm);
+ @media (max-width: 768px) {
+     .footer-content {
+         flex-direction: column;
+         align-items: flex-start;
+         gap: var(--space-sm);
+     }
+ }
+
+/* ======================================================
+   Previous / Next Navigation
+   ====================================================== */
+
+.pnn-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+    margin-top: var(--space-3xl);
+}
+
+.pnn-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding: var(--space-xl) var(--space-xl);
+    min-height: 84px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition-fast);
+    align-items: flex-start;
+}
+
+/* Pin each card to its own column so position is independent of which
+   cards actually render (e.g. Next alone still sits on the right). */
+.pnn-prev {
+    grid-column: 1;
+}
+
+.pnn-next {
+    grid-column: 2;
+}
+
+/* Calm, documentation-style hover: the card stays stationary. Only the
+   border, background and a subtle framework-tinted glow respond. */
+.pnn-card:hover,
+.pnn-card:focus-visible {
+    border-color: #cbd5e1;
+    background: var(--surface-hover);
+}
+
+.nav-ias:hover,
+.nav-ias:focus-visible {
+    box-shadow: 0 0 0 3px var(--ias-soft);
+}
+
+.nav-ifrs:hover,
+.nav-ifrs:focus-visible {
+    box-shadow: 0 0 0 3px var(--ifrs-soft);
+}
+
+.nav-indas:hover,
+.nav-indas:focus-visible {
+    box-shadow: 0 0 0 3px var(--indas-soft);
+}
+
+/* Keyboard focus keeps the same calm feedback plus a clear outline. */
+.pnn-card:focus-visible {
+    outline-offset: 2px;
+}
+
+.nav-ias.pnn-card:focus-visible {
+    outline: 2px solid var(--ias);
+}
+
+.nav-ifrs.pnn-card:focus-visible {
+    outline: 2px solid var(--ifrs);
+}
+
+.nav-indas.pnn-card:focus-visible {
+    outline: 2px solid var(--indas);
+}
+
+.pnn-label {
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    font-weight: var(--weight-semibold);
+    color: var(--text-muted);
+}
+
+.pnn-code {
+    font-size: var(--text-h3);
+    font-weight: var(--weight-bold);
+    line-height: 1.3;
+}
+
+.pnn-arrow {
+    margin-right: 10px;
+    flex-shrink: 0;
+    vertical-align: middle;
+    transition: transform var(--duration-normal) var(--ease);
+}
+
+/* Only the arrow moves on hover/focus — subtle, directional nudge. */
+.pnn-prev:hover .pnn-arrow,
+.pnn-prev:focus-visible .pnn-arrow {
+    transform: translateX(-4px);
+}
+
+.pnn-next:hover .pnn-arrow,
+.pnn-next:focus-visible .pnn-arrow {
+    transform: translateX(4px);
+}
+
+.pnn-next .pnn-arrow {
+    margin: 0 0 0 10px;
+}
+
+.pnn-title {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+.nav-ias .pnn-code {
+    color: var(--ias);
+}
+
+.nav-ifrs .pnn-code {
+    color: var(--ifrs);
+}
+
+.nav-indas .pnn-code {
+    color: var(--indas);
+}
+
+.pnn-next > * {
+    margin-left: auto;
+}
+
+@media (max-width: 640px) {
+    .pnn-nav {
+        grid-template-columns: 1fr;
+    }
+
+    .pnn-prev,
+    .pnn-next {
+        grid-column: 1;
+    }
+
+    .pnn-next > * {
+        margin-left: 0;
     }
 }
