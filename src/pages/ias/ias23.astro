@@ -1,5 +1,7 @@
 ---
 import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
 import PageToc from "../../components/PageToc.astro";
 import "../../styles/standards-poster.css";
 import "../../styles/extended.css";
@@ -175,7 +177,7 @@ import metadata from "../../data/standards/ias/ias23.json";
         <div class="formula-box">
           <div class="f-eq">Capitalised amount = Actual borrowing costs incurred on the specific loan − Investment income earned on temporary investment of the unused loan proceeds</div>
         </div>
-        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Where funds are borrowed SPECIFICALLY for a qualifying asset, the entity can directly trace the actual costs incurred — but any surplus funds not yet spent, temporarily invested, generate investment income that must be DEDUCTED before capitalisation.</div>
+        <div class="text-supporting">Where funds are borrowed SPECIFICALLY for a qualifying asset, the entity can directly trace the actual costs incurred — but any surplus funds not yet spent, temporarily invested, generate investment income that must be DEDUCTED before capitalisation.</div>
       </div>
 
       <div class="card cw">
@@ -244,7 +246,7 @@ import metadata from "../../data/standards/ias/ias23.json";
     <div class="grid">
       <div class="card cs span2">
         <div class="ctitle cs">When the offset does — and doesn't — apply</div>
-        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:9px;">The investment-income deduction rule (Section 4) applies ONLY to SPECIFIC borrowings, where temporarily unused funds from that SAME specific loan are invested. It does NOT apply to the general borrowings pool — no similar deduction is made against the weighted-average capitalisation rate calculation for surplus general funds invested elsewhere.</div>
+        <div class="text-supporting" style="margin-bottom:9px;">The investment-income deduction rule (Section 4) applies ONLY to SPECIFIC borrowings, where temporarily unused funds from that SAME specific loan are invested. It does NOT apply to the general borrowings pool — no similar deduction is made against the weighted-average capitalisation rate calculation for surplus general funds invested elsewhere.</div>
         <div class="callout warn" style="margin-bottom:0;">⚠️ A common exam trap: students sometimes try to net investment income against the GENERAL pool capitalisation rate — the netting rule is EXCLUSIVE to specific, traceable borrowings.</div>
       </div>
     </div>
@@ -254,7 +256,7 @@ import metadata from "../../data/standards/ias/ias23.json";
     <div class="grid">
       <div class="card cd span2">
         <div class="ctitle cd">The impairment interaction</div>
-        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">When the carrying amount, or the expected ultimate cost, of a qualifying asset EXCEEDS its recoverable amount or net realisable value, the carrying amount is WRITTEN DOWN or written off in accordance with the requirements of OTHER Standards (typically IAS 36 for PPE/intangibles, or IAS 2 for inventories) — capitalised borrowing costs do NOT escape the normal impairment testing rules simply because they represent financing cost rather than construction cost.</div>
+        <div class="text-supporting">When the carrying amount, or the expected ultimate cost, of a qualifying asset EXCEEDS its recoverable amount or net realisable value, the carrying amount is WRITTEN DOWN or written off in accordance with the requirements of OTHER Standards (typically IAS 36 for PPE/intangibles, or IAS 2 for inventories) — capitalised borrowing costs do NOT escape the normal impairment testing rules simply because they represent financing cost rather than construction cost.</div>
       </div>
     </div>
 
@@ -273,7 +275,7 @@ import metadata from "../../data/standards/ias/ias23.json";
           </div>
           <div>
             <div class="elabel">CONTEXT FOR USERS</div>
-            <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">These disclosures allow users to assess how much of an entity's reported PPE/inventory cost reflects financing cost versus direct construction cost, and to compare capitalisation policies across entities with genuinely different funding structures.</div>
+            <div class="text-supporting">These disclosures allow users to assess how much of an entity's reported PPE/inventory cost reflects financing cost versus direct construction cost, and to compare capitalisation policies across entities with genuinely different funding structures.</div>
           </div>
         </div>
       </div>
@@ -362,33 +364,20 @@ import metadata from "../../data/standards/ias/ias23.json";
 
     <!-- ============ SECTION 14 ============ -->
     <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
-    <div class="three-col">
-      <div class="card cn">
-        <div class="glossary-item"><div class="glossary-term">Specific borrowings</div><div class="glossary-def">Funds borrowed SPECIFICALLY for the purpose of obtaining a particular qualifying asset — allows direct tracing of actual borrowing costs.</div></div>
-        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">General borrowings</div><div class="glossary-def">Funds borrowed for general corporate purposes, not tied to any specific asset — requires the weighted-average capitalisation rate approach.</div></div>
-      </div>
-      <div class="card cn">
-        <div class="glossary-item"><div class="glossary-term">Substantial period</div><div class="glossary-def">The undefined time threshold that determines whether an asset qualifies for capitalisation — a matter of judgement based on facts and circumstances, not a bright-line rule.</div></div>
-        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Active development</div><div class="glossary-def">Physical construction or substantial administrative/technical work needed to prepare an asset for use — its interruption (beyond normal, necessary delays) triggers suspension of capitalisation.</div></div>
-      </div>
-      <div class="card cn">
-        <div class="glossary-item"><div class="glossary-term">Effective interest method</div><div class="glossary-def">The IFRS 9 method of allocating interest expense over the relevant period, used to determine the "borrowing cost" figure IAS 23 requires for capitalisation.</div></div>
-        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Capitalisation rate</div><div class="glossary-def">The weighted average interest rate applicable to the general borrowings pool, applied to qualifying asset expenditure to determine the capitalised amount.</div></div>
-      </div>
-    </div>
+<Glossary entries={[
+      { term: "Specific borrowings", definition: "Funds borrowed SPECIFICALLY for the purpose of obtaining a particular qualifying asset — allows direct tracing of actual borrowing costs." },
+      { term: "General borrowings", definition: "Funds borrowed for general corporate purposes, not tied to any specific asset — requires the weighted-average capitalisation rate approach." },
+      { term: "Substantial period", definition: "The undefined time threshold that determines whether an asset qualifies for capitalisation — a matter of judgement based on facts and circumstances, not a bright-line rule." },
+      { term: "Active development", definition: "Physical construction or substantial administrative/technical work needed to prepare an asset for use — its interruption (beyond normal, necessary delays) triggers suspension of capitalisation." },
+      { term: "Effective interest method", definition: "The IFRS 9 method of allocating interest expense over the relevant period, used to determine the \"borrowing cost\" figure IAS 23 requires for capitalisation." },
+      { term: "Capitalisation rate", definition: "The weighted average interest rate applicable to the general borrowings pool, applied to qualifying asset expenditure to determine the capitalised amount." }
+    ]} />
 
-    <div class="legend">
-      <div class="ltitle">Financial statement key</div>
-      <div class="lrow">
-        <span class="badge bs">SOFP</span> Statement of financial position (balance sheet)
-        <span class="badge bp">SOPL</span> Statement of profit or loss (income statement)
-        <span class="badge bo">OCI</span> Other comprehensive income
-        <span class="badge be">Equity</span> Statement of changes in equity
-      </div>
-    </div>
+<FinancialStatementKey />
 
   </div>
   <section id="history">
     <HistoryTimeline items={history.IAS23} />
   </section>
 </StandardPageLayout>
+

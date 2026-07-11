@@ -1,129 +1,214 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const links = document.querySelectorAll(".toc a");
-    const sections = document.querySelectorAll(".page-content section[id], .page-content div[id]");
     const tocContainer = document.querySelector(".toc ul");
+    const links = Array.from(document.querySelectorAll(".toc a[data-section]"));
 
-    if (!links.length || !sections.length) {
+    // Build the heading -> link map once. Each TOC link carries the real
+    // section id in `data-section`; the heading element is the element with
+    // that id. We skip links whose heading is missing so the map always
+    // reflects what is actually on the page.
+    const items = links
+        .map((link) => {
+            const id = link.dataset.section;
+            const heading = id ? document.getElementById(id) : null;
+            return heading ? { id, link, heading } : null;
+        })
+        .filter(Boolean);
+
+    if (!items.length) {
         return;
     }
 
     const headerHeight = () =>
-        parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 72;
+        parseInt(
+            getComputedStyle(document.documentElement).getPropertyValue("--header-height")
+        ) || 72;
 
-    // Smooth-scroll to a real section id (e.g. "s6"), offset for the sticky header.
     function scrollToId(targetId) {
         if (!targetId) return;
         const targetElement = document.getElementById(targetId);
         if (!targetElement) return;
 
-        const offset = headerHeight() + 20; // Additional padding
-        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
+        const offset = headerHeight() + 20;
+        const targetPosition =
+            targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
 
         window.scrollTo({
             top: targetPosition,
-            behavior: "smooth"
+            behavior: "smooth",
         });
     }
 
-    // Pretty hashes look like "#s6_Net_Realisable_Value_And_Write_Downs"; the real
-    // element id is the part before the first underscore ("s6"). Real ids never
-    // contain underscores, so this split is safe.
     function idFromHash(hash) {
         return hash.replace(/^#/, "").split("_")[0];
     }
 
-    // Function to scroll TOC to keep active item visible
-    function scrollTocToActiveItem() {
-        const activeLink = document.querySelector(".toc a.active");
+    // --- Viewport-based active detection -----------------------------------
+    //
+    // We never trust individual IntersectionObserver events (those only report
+    // the *delta* of what changed, so a section that is still on screen but did
+    // not cross a threshold on this frame is reported as "not intersecting").
+    // Instead we compute the reading region on every scroll frame and ask the
+    // real layout where each heading currently sits.
+    //
+    // Reading region: a band just below the sticky header. A heading is active
+    // when it sits inside the band, so several headings can be active at once.
+    // When no heading is inside the band we keep the closest *preceding* heading
+    // active, which gives the stable "trailing" behaviour documentation sites use.
+
+    const READING_OFFSET = 12; // gap below the sticky header
+    const READING_RATIO = 0.66; // band height as a fraction of the viewport
+    const MIN_BAND = 140; // keep the band usable on short viewports
+
+    // Keeps the TOC list scrolled so the active item stays in view.
+    function keepActiveInView(activeLinks) {
+        const activeLink = activeLinks[0];
         if (!activeLink || !tocContainer) return;
 
         const tocRect = tocContainer.getBoundingClientRect();
         const linkRect = activeLink.getBoundingClientRect();
-        
-        // Check if active link is outside visible area
+
         if (linkRect.top < tocRect.top || linkRect.bottom > tocRect.bottom) {
             activeLink.scrollIntoView({
                 behavior: "smooth",
                 block: "center",
-                inline: "nearest"
+                inline: "nearest",
             });
         }
     }
 
-    const observer = new IntersectionObserver(
-        (entries) => {
-            // Track all currently visible sections
-            const visibleSections = new Set();
-            
-            entries.forEach((entry) => {
-                const id = entry.target.id;
-                if (entry.isIntersecting) {
-                    visibleSections.add(id);
-                }
-            });
+    function computeActive() {
+        const vh = window.innerHeight;
+        const bandTop = headerHeight() + READING_OFFSET;
+        const bandBottom = bandTop + Math.max(vh * READING_RATIO, MIN_BAND);
 
-            // Update all links based on visible sections
-            links.forEach((link) => {
-                const sectionId = link.dataset.section;
-                const isVisible = visibleSections.has(sectionId);
-                
-                link.classList.toggle("active", isVisible);
-                
-                // Add partial class for sections that are partially visible
-                if (isVisible) {
-                    const section = document.getElementById(sectionId);
-                    if (section) {
-                        const sectionRect = section.getBoundingClientRect();
-                        const viewportHeight = window.innerHeight;
-                        const isFullyVisible = sectionRect.top >= 0 && sectionRect.bottom <= viewportHeight;
-                        link.classList.toggle("partial", !isFullyVisible);
-                    }
-                } else {
-                    link.classList.remove("partial");
-                }
-            });
+        const inBand = [];
+        let preceding = null; // { item, top } with greatest top <= bandTop
 
-            // Scroll TOC to keep active items visible
-            if (visibleSections.size > 0) {
-                requestAnimationFrame(scrollTocToActiveItem);
+        for (const item of items) {
+            const top = item.heading.getBoundingClientRect().top;
+            if (top >= bandTop && top <= bandBottom) {
+                inBand.push(item);
+            } else if (top <= bandTop) {
+                if (!preceding || top > preceding.top) {
+                    preceding = { item, top };
+                }
             }
-        },
-        {
-            // Adjust rootMargin to account for sticky header
-            rootMargin: `-${headerHeight()}px 0px -40% 0px`,
-            threshold: [0, 0.25, 0.5, 0.75, 1]
         }
-    );
 
-    sections.forEach((section) => {
-        observer.observe(section);
-    });
+        let active;
+        if (inBand.length) {
+            active = inBand;
+        } else if (preceding) {
+            active = [preceding.item];
+        } else {
+            // Nothing above the band yet (top of page) — default to first.
+            active = [items[0]];
+        }
 
-    // Smooth scroll with offset for sticky header.
-    // Scroll to the real section id, but write the pretty hash to the URL.
+        const activeIds = new Set(active.map((i) => i.id));
+        const activeLinks = [];
+        for (const item of items) {
+            const isActive = activeIds.has(item.id);
+            item.link.classList.toggle("active", isActive);
+            if (isActive) activeLinks.push(item.link);
+        }
+
+        keepActiveInView(activeLinks);
+    }
+
+    // --- Click handling without flicker ------------------------------------
+    //
+    // A click should activate the *target* immediately and hold it while the
+    // smooth scroll travels, so intermediate sections never flash active. The
+    // lock releases once the target heading reaches the reading line, once the
+    // user takes over scrolling, or after a safety timeout.
+
+    let pendingTarget = null;
+    let releaseTimer = null;
+
+    function releasePending() {
+        pendingTarget = null;
+        if (releaseTimer) {
+            clearTimeout(releaseTimer);
+            releaseTimer = null;
+        }
+    }
+
+    function setActiveItem(item) {
+        const activeIds = new Set([item.id]);
+        const activeLinks = [];
+        for (const it of items) {
+            const isActive = activeIds.has(it.id);
+            it.link.classList.toggle("active", isActive);
+            if (isActive) activeLinks.push(it.link);
+        }
+        keepActiveInView(activeLinks);
+    }
+
     links.forEach((link) => {
         link.addEventListener("click", (e) => {
             const href = link.getAttribute("href");
             if (!href || !href.startsWith("#")) return;
 
             e.preventDefault();
-            scrollToId(link.dataset.section);
-            // Update URL without jumping
+            const id = link.dataset.section;
+            scrollToId(id);
             history.pushState(null, null, href);
+
+            const item = items.find((i) => i.id === id);
+            if (item) {
+                setActiveItem(item);
+                pendingTarget = item;
+                if (releaseTimer) clearTimeout(releaseTimer);
+                releaseTimer = setTimeout(releasePending, 1500);
+            }
         });
     });
 
-    // Resolve a (pretty) hash to the real section id and scroll to it.
-    function handleHashNavigation() {
-        scrollToId(idFromHash(window.location.hash));
+    // --- Throttled scroll/resize loop --------------------------------------
+    let ticking = false;
+
+    function onScroll() {
+        if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(() => {
+                ticking = false;
+
+                if (pendingTarget) {
+                    const bandTop = headerHeight() + READING_OFFSET;
+                    const top = pendingTarget.heading.getBoundingClientRect().top;
+                    if (top <= bandTop + 4) {
+                        // Target has arrived at the reading line — release lock.
+                        releasePending();
+                    } else {
+                        // Hold the target active until it gets there.
+                        return;
+                    }
+                }
+
+                computeActive();
+            });
+        }
     }
 
-    // Handle browser back/forward navigation and shared links.
-    window.addEventListener("popstate", handleHashNavigation);
+    // User takes over scrolling -> drop the click lock immediately.
+    ["wheel", "touchstart", "keydown"].forEach((evt) =>
+        window.addEventListener(evt, () => {
+            if (pendingTarget) {
+                releasePending();
+                computeActive();
+            }
+        }, { passive: true })
+    );
 
-    // Scroll to a section when the page is opened directly with a hash
-    // (e.g. a shared link like #s6_Net_Realisable_Value_And_Write_Downs).
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    window.addEventListener("popstate", () => scrollToId(idFromHash(window.location.hash)));
+
     if (window.location.hash) {
-        requestAnimationFrame(handleHashNavigation);
+        requestAnimationFrame(() => scrollToId(idFromHash(window.location.hash)));
     }
+
+    // Initial paint.
+    requestAnimationFrame(computeActive);
 });

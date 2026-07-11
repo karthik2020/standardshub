@@ -1,5 +1,7 @@
 ---
 import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
 import PageToc from "../../components/PageToc.astro";
 import "../../styles/standards-poster.css";
 import "../../styles/extended.css";
@@ -119,7 +121,7 @@ import metadata from "../../data/standards/ias/ias34.json";
         <div class="ctitle cw">What IAS 34 covers</div>
         <div class="principle">IAS 34 does NOT mandate WHICH entities must publish interim financial reports, how frequently, or how soon after the end of an interim period — this is left to national governments, securities regulators, stock exchanges, and accountancy bodies. IAS 34 prescribes the MINIMUM CONTENT of an interim financial report, and the recognition/measurement principles to apply, WHEN an entity IS required (or chooses) to publish one.</div>
         <div class="elabel">ENCOURAGED, NOT MANDATED</div>
-        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">IAS 34 ENCOURAGES publicly traded entities to provide interim financial reports at least at the end of the first half of their financial year, and to make them available NOT LATER than 60 days after the end of the interim period — but this is an encouragement, not a mandatory requirement of the standard itself.</div>
+        <div class="text-supporting">IAS 34 ENCOURAGES publicly traded entities to provide interim financial reports at least at the end of the first half of their financial year, and to make them available NOT LATER than 60 days after the end of the interim period — but this is an encouragement, not a mandatory requirement of the standard itself.</div>
         <div class="note">In practice, LOCAL regulation (e.g. stock exchange listing rules) is almost always what actually MANDATES interim reporting frequency — IAS 34 only governs the CONTENT once that obligation exists.</div>
       </div>
 
@@ -194,7 +196,7 @@ import metadata from "../../data/standards/ias/ias34.json";
         <div class="formula-box">
           <div class="f-eq">An entity applies the SAME accounting policies in its interim financial statements as are applied in its annual financial statements — EXCEPT for a policy change made after the most recent annual statements, to be reflected in the current financial year</div>
         </div>
-        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Measurements for interim reporting purposes are made on a YEAR-TO-DATE basis, so that the frequency of an entity's reporting (annual, half-yearly, quarterly) does NOT affect the measurement of its annual results.</div>
+        <div class="text-supporting">Measurements for interim reporting purposes are made on a YEAR-TO-DATE basis, so that the frequency of an entity's reporting (annual, half-yearly, quarterly) does NOT affect the measurement of its annual results.</div>
       </div>
 
       <div class="card cw">
@@ -226,7 +228,7 @@ import metadata from "../../data/standards/ias/ias34.json";
     <div class="grid">
       <div class="card cs">
         <div class="ctitle cs">Costs incurred unevenly during the year</div>
-        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Costs that are incurred UNEVENLY during a financial year are anticipated or deferred for interim reporting purposes ONLY IF it is ALSO appropriate to anticipate or defer that type of cost at the end of the financial year — e.g. a major planned annual maintenance shutdown cost genuinely incurred in Q3 is NOT smoothed across all four quarters, unless a provision genuinely existed and met recognition criteria earlier.</div>
+        <div class="text-supporting">Costs that are incurred UNEVENLY during a financial year are anticipated or deferred for interim reporting purposes ONLY IF it is ALSO appropriate to anticipate or defer that type of cost at the end of the financial year — e.g. a major planned annual maintenance shutdown cost genuinely incurred in Q3 is NOT smoothed across all four quarters, unless a provision genuinely existed and met recognition criteria earlier.</div>
       </div>
 
       <div class="card cw">
@@ -234,7 +236,7 @@ import metadata from "../../data/standards/ias/ias34.json";
         <div class="formula-box">
           <div class="f-eq">Interim tax expense = Year-to-date pre-tax profit × Best estimate of the WEIGHTED AVERAGE annual effective tax rate expected for the full financial year</div>
         </div>
-        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">This is a specific, unique exception to the strict "discrete period" principle — tax IS estimated using an ANNUAL effective rate applied to year-to-date profit, rather than being computed as if the interim period were entirely standalone.</div>
+        <div class="text-supporting">This is a specific, unique exception to the strict "discrete period" principle — tax IS estimated using an ANNUAL effective rate applied to year-to-date profit, rather than being computed as if the interim period were entirely standalone.</div>
         <div class="note">Impairment losses recognised in an earlier interim period for goodwill are NEVER reversed in a subsequent interim period, consistent with the permanent prohibition on goodwill impairment reversal under IAS 36.</div>
       </div>
     </div>
@@ -244,7 +246,7 @@ import metadata from "../../data/standards/ias/ias34.json";
     <div class="grid">
       <div class="card ci span2">
         <div class="ctitle ci">Greater reliance on estimation is explicitly acceptable</div>
-        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">The measurement procedures followed in an interim financial report are designed to ensure the resulting information is reliable, and that all material financial information relevant to understanding the entity's financial position/performance is appropriately disclosed. While measurements in both annual and interim reports are OFTEN based on reasonable estimates, preparing interim reports GENERALLY requires a GREATER use of estimation methods than annual reports — a deliberate, explicit acknowledgement of the practical time constraints of interim reporting cycles.</div>
+        <div class="text-supporting">The measurement procedures followed in an interim financial report are designed to ensure the resulting information is reliable, and that all material financial information relevant to understanding the entity's financial position/performance is appropriately disclosed. While measurements in both annual and interim reports are OFTEN based on reasonable estimates, preparing interim reports GENERALLY requires a GREATER use of estimation methods than annual reports — a deliberate, explicit acknowledgement of the practical time constraints of interim reporting cycles.</div>
         <div class="note">IAS 34 provides illustrative examples (e.g. full physical inventory counts may not be necessary at every interim date; estimation techniques may be used) — this doesn't lower the RELIABILITY bar, but does acknowledge cost-benefit trade-offs are reasonable given the shorter reporting cycle.</div>
       </div>
     </div>
@@ -361,30 +363,16 @@ import metadata from "../../data/standards/ias/ias34.json";
 
     <!-- ============ SECTION 14 ============ -->
     <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
-    <div class="three-col">
-      <div class="card cn">
-        <div class="glossary-item"><div class="glossary-term">Condensed financial statements</div><div class="glossary-def">An abbreviated version of a complete set of financial statements, containing at minimum each of the headings and subtotals included in the most recent annual statements, plus selected explanatory notes.</div></div>
-        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Discrete period view</div><div class="glossary-def">The view, adopted by IAS 34, that each interim period should be treated as a separate accounting period in its own right, applying annual recognition/measurement principles.</div></div>
-      </div>
-      <div class="card cn">
-        <div class="glossary-item"><div class="glossary-term">Integral view</div><div class="glossary-def">The alternative (NOT adopted by IAS 34) that treats each interim period as merely a fraction of the annual period, smoothing/allocating costs and revenues to match an expected full-year pattern.</div></div>
-        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Estimated annual effective tax rate</div><div class="glossary-def">The best estimate of the weighted average tax rate expected for the FULL financial year, applied to year-to-date pre-tax profit to determine interim tax expense.</div></div>
-      </div>
-      <div class="card cn">
-        <div class="glossary-item"><div class="glossary-term">Year-to-date basis</div><div class="glossary-def">Measurement cumulatively from the start of the financial year through to the end of the current interim period.</div></div>
-        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Materiality (in the interim context)</div><div class="glossary-def">In deciding how to recognise, measure, classify, or disclose an item for interim reporting purposes, materiality is assessed in relation to the INTERIM period financial data, not the annual data.</div></div>
-      </div>
-    </div>
+<Glossary entries={[
+      { term: "Condensed financial statements", definition: "An abbreviated version of a complete set of financial statements, containing at minimum each of the headings and subtotals included in the most recent annual statements, plus selected explanatory notes." },
+      { term: "Discrete period view", definition: "The view, adopted by IAS 34, that each interim period should be treated as a separate accounting period in its own right, applying annual recognition/measurement principles." },
+      { term: "Integral view", definition: "The alternative (NOT adopted by IAS 34) that treats each interim period as merely a fraction of the annual period, smoothing/allocating costs and revenues to match an expected full-year pattern." },
+      { term: "Estimated annual effective tax rate", definition: "The best estimate of the weighted average tax rate expected for the FULL financial year, applied to year-to-date pre-tax profit to determine interim tax expense." },
+      { term: "Year-to-date basis", definition: "Measurement cumulatively from the start of the financial year through to the end of the current interim period." },
+      { term: "Materiality (in the interim context)", definition: "In deciding how to recognise, measure, classify, or disclose an item for interim reporting purposes, materiality is assessed in relation to the INTERIM period financial data, not the annual data." }
+    ]} />
 
-    <div class="legend">
-      <div class="ltitle">Financial statement key</div>
-      <div class="lrow">
-        <span class="badge bs">SOFP</span> Statement of financial position (balance sheet)
-        <span class="badge bp">SOPL</span> Statement of profit or loss (income statement)
-        <span class="badge bo">OCI</span> Other comprehensive income
-        <span class="badge be">Equity</span> Statement of changes in equity
-      </div>
-    </div>
+<FinancialStatementKey />
 
   </div>
   <section id="history">

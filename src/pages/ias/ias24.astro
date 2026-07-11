@@ -1,5 +1,7 @@
 ---
 import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
 import PageToc from "../../components/PageToc.astro";
 import "../../styles/standards-poster.css";
 import "../../styles/extended.css";
@@ -376,32 +378,19 @@ import metadata from "../../data/standards/ias/ias24.json";
 
     <!-- ============ SECTION 14 ============ -->
     <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
-    <div class="three-col">
-      <div class="card cn">
-        <div class="glossary-item"><div class="glossary-term">Government</div><div class="glossary-def">Government, government agencies, and similar bodies, whether local, national, or international.</div></div>
-        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Government-related entity</div><div class="glossary-def">An entity controlled, jointly controlled, or significantly influenced by a government.</div></div>
-      </div>
-      <div class="card cn">
-        <div class="glossary-item"><div class="glossary-term">Compensation</div><div class="glossary-def">All employee benefits (IAS 19), including those in the form of share-based payment (IFRS 2), payable, or in exchange for services rendered to the entity — required disclosure for key management personnel.</div></div>
-        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Close members of the family of a person</div><div class="glossary-def">Family members expected to influence, or be influenced by, that person — includes children, spouse/domestic partner, and dependants.</div></div>
-      </div>
-      <div class="card cn">
-        <div class="glossary-item"><div class="glossary-term">Ultimate controlling party</div><div class="glossary-def">The party at the very top of a group structure that ultimately controls the reporting entity — disclosed regardless of whether it prepares publicly available financial statements.</div></div>
-        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Reporting entity</div><div class="glossary-def">The entity preparing its own financial statements — the reference point against which all related party relationships in IAS 24 are assessed.</div></div>
-      </div>
-    </div>
+<Glossary entries={[
+      { term: "Government", definition: "Government, government agencies, and similar bodies, whether local, national, or international." },
+      { term: "Government-related entity", definition: "An entity controlled, jointly controlled, or significantly influenced by a government." },
+      { term: "Compensation", definition: "All employee benefits (IAS 19), including those in the form of share-based payment (IFRS 2), payable, or in exchange for services rendered to the entity — required disclosure for key management personnel." },
+      { term: "Close members of the family of a person", definition: "Family members expected to influence, or be influenced by, that person — includes children, spouse/domestic partner, and dependants." },
+      { term: "Ultimate controlling party", definition: "The party at the very top of a group structure that ultimately controls the reporting entity — disclosed regardless of whether it prepares publicly available financial statements." },
+      { term: "Reporting entity", definition: "The entity preparing its own financial statements — the reference point against which all related party relationships in IAS 24 are assessed." }
+    ]} />
 
-    <div class="legend">
-      <div class="ltitle">Financial statement key</div>
-      <div class="lrow">
-        <span class="badge bs">SOFP</span> Statement of financial position (balance sheet)
-        <span class="badge bp">SOPL</span> Statement of profit or loss (income statement)
-        <span class="badge bo">OCI</span> Other comprehensive income
-        <span class="badge be">Equity</span> Statement of changes in equity
-      </div>
-    </div>
+<FinancialStatementKey />
   </div>
   <section id="history">
     <HistoryTimeline items={history.IAS24} />
   </section>
 </StandardPageLayout>
+

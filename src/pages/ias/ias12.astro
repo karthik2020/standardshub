@@ -1,5 +1,7 @@
 ---
 import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
 import PageToc from "../../components/PageToc.astro";
 import "../../styles/standards-poster.css";
 import "../../styles/extended.css";
@@ -119,7 +121,7 @@ import metadata from "../../data/standards/ias/ias12.json";
         <div class="ctitle cw">What IAS 12 covers</div>
         <div class="principle">IAS 12 prescribes the accounting treatment for income taxes — encompassing ALL domestic and foreign taxes based on taxable profits, including withholding taxes payable by a subsidiary/associate/joint venture on distributions to the reporting entity.</div>
         <div class="elabel">SCOPE INCLUDES</div>
-        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Current tax, deferred tax, and the tax consequences of dividends and other distributions.</div>
+        <div class="text-supporting">Current tax, deferred tax, and the tax consequences of dividends and other distributions.</div>
         <div class="callout warn" style="margin-top:9px;margin-bottom:0;">⚠️ IAS 12 does NOT address methods of accounting for government grants (IAS 20) or investment tax credits — though it DOES address the temporary differences that may arise FROM such grants or credits.</div>
       </div>
 
@@ -152,9 +154,9 @@ import metadata from "../../data/standards/ias/ias12.json";
         <div class="formula-box">
           <div class="f-eq">Current tax expense = Taxable profit × Applicable tax rate</div>
         </div>
-        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:9px;">Current tax for the current and prior periods is recognised as a LIABILITY to the extent unpaid. If the amount already paid exceeds the amount due, the excess is recognised as an ASSET.</div>
+        <div class="text-supporting" style="margin-bottom:9px;">Current tax for the current and prior periods is recognised as a LIABILITY to the extent unpaid. If the amount already paid exceeds the amount due, the excess is recognised as an ASSET.</div>
         <div class="elabel">MEASUREMENT</div>
-        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Measured at the amount expected to be paid to (recovered from) the tax authorities, using tax rates and laws enacted or substantively enacted by the reporting date.</div>
+        <div class="text-supporting">Measured at the amount expected to be paid to (recovered from) the tax authorities, using tax rates and laws enacted or substantively enacted by the reporting date.</div>
       </div>
 
       <div class="card cs">
@@ -189,11 +191,11 @@ import metadata from "../../data/standards/ias/ias12.json";
         <div class="two-col">
           <div>
             <div class="elabel">TAXABLE TEMPORARY DIFFERENCE → DEFERRED TAX LIABILITY</div>
-            <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Carrying amount > Tax base — e.g. an asset where tax depreciation has been claimed FASTER than accounting depreciation, so future taxable profit will be HIGHER when the asset is used/sold.</div>
+            <div class="text-supporting">Carrying amount > Tax base — e.g. an asset where tax depreciation has been claimed FASTER than accounting depreciation, so future taxable profit will be HIGHER when the asset is used/sold.</div>
           </div>
           <div>
             <div class="elabel">DEDUCTIBLE TEMPORARY DIFFERENCE → DEFERRED TAX ASSET</div>
-            <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Carrying amount < Tax base — e.g. a provision recognised for accounting purposes but not yet tax-deductible until actually paid, so future taxable profit will be LOWER when the deduction is finally allowed.</div>
+            <div class="text-supporting">Carrying amount < Tax base — e.g. a provision recognised for accounting purposes but not yet tax-deductible until actually paid, so future taxable profit will be LOWER when the deduction is finally allowed.</div>
           </div>
         </div>
         <div class="worked" style="margin-top:8px;margin-bottom:0;">
@@ -212,7 +214,7 @@ import metadata from "../../data/standards/ias/ias12.json";
     <div class="grid">
       <div class="card cw">
         <div class="ctitle cw">General rule and the three recognition exceptions</div>
-        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:9px;">A deferred tax liability is recognised for ALL taxable temporary differences, EXCEPT to the extent it arises from:</div>
+        <div class="text-supporting" style="margin-bottom:9px;">A deferred tax liability is recognised for ALL taxable temporary differences, EXCEPT to the extent it arises from:</div>
         <div class="cross-list">
           <span>The initial recognition of GOODWILL</span>
           <span>The initial recognition of an asset/liability in a transaction that is NOT a business combination, and at the time of the transaction affects NEITHER accounting profit NOR taxable profit (the "initial recognition exemption")</span>
@@ -421,33 +423,22 @@ import metadata from "../../data/standards/ias/ias12.json";
 
     <!-- ============ SECTION 14 ============ -->
     <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
-    <div class="three-col">
-      <div class="card cn">
-        <div class="glossary-item"><div class="glossary-term">Accounting profit</div><div class="glossary-def">Profit or loss for a period BEFORE deducting tax expense, as reported in the SOPL.</div></div>
-        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Tax expense (tax income)</div><div class="glossary-def">The aggregate amount included in profit or loss for the period in respect of current and deferred tax.</div></div>
-      </div>
-      <div class="card cn">
-        <div class="glossary-item"><div class="glossary-term">Enacted / substantively enacted</div><div class="glossary-def">Tax legislation that has completed (or virtually completed, per specific jurisdictional processes) the legislative process required for it to become law, used as the basis for measuring deferred tax.</div></div>
-        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Initial recognition exemption</div><div class="glossary-def">The exception preventing deferred tax recognition on an asset/liability's first recognition, where the transaction is not a business combination and affects neither accounting nor taxable profit at the time.</div></div>
-      </div>
-      <div class="card cn">
-        <div class="glossary-item"><div class="glossary-term">Unused tax losses</div><div class="glossary-def">Tax losses carried forward from prior periods, available to reduce future taxable profits, subject to jurisdiction-specific rules on expiry and offset restrictions.</div></div>
-        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Withholding tax</div><div class="glossary-def">Tax payable by a subsidiary, associate, or joint venture on distributions to the reporting entity — explicitly within IAS 12's scope.</div></div>
-      </div>
-    </div>
+<Glossary entries={[
+      { term: "Accounting profit", definition: "Profit or loss for a period BEFORE deducting tax expense, as reported in the SOPL." },
+      { term: "Tax expense (tax income)", definition: "The aggregate amount included in profit or loss for the period in respect of current and deferred tax." },
+      { term: "Enacted / substantively enacted", definition: "Tax legislation that has completed (or virtually completed, per specific jurisdictional processes) the legislative process required for it to become law, used as the basis for measuring deferred tax." },
+      { term: "Initial recognition exemption", definition: "The exception preventing deferred tax recognition on an asset/liability's first recognition, where the transaction is not a business combination and affects neither accounting nor taxable profit at the time." },
+      { term: "Unused tax losses", definition: "Tax losses carried forward from prior periods, available to reduce future taxable profits, subject to jurisdiction-specific rules on expiry and offset restrictions." },
+      { term: "Withholding tax", definition: "Tax payable by a subsidiary, associate, or joint venture on distributions to the reporting entity — explicitly within IAS 12's scope." }
+    ]} />
 
-    <div class="legend">
-      <div class="ltitle">Financial statement key</div>
-      <div class="lrow">
-        <span class="badge bs">SOFP</span> Statement of financial position (balance sheet)
-        <span class="badge bp">SOPL</span> Statement of profit or loss (income statement)
-        <span class="badge bo">OCI</span> Other comprehensive income
-        <span class="badge be">Equity</span> Statement of changes in equity
-      </div>
-    </div>
+<FinancialStatementKey />
 
   </div>
   <section id="history">
     <HistoryTimeline items={history.IAS12} />
   </section>
 </StandardPageLayout>
+
+
+

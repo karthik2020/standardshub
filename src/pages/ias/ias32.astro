@@ -1,5 +1,7 @@
 ---
 import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
 import PageToc from "../../components/PageToc.astro";
 import "../../styles/standards-poster.css";
 import "../../styles/extended.css";
@@ -158,11 +160,11 @@ import metadata from "../../data/standards/ias/ias32.json";
         <div class="two-col">
           <div class="spec-box" style="margin-bottom:0;">
             <div class="spec-title" style="color:var(--color-text-danger);">Points toward LIABILITY classification</div>
-            <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.5;">Mandatory redemption at a fixed/determinable date or at the holder's option; contractually obligated dividend/coupon payments the issuer cannot avoid; obligations settled in a VARIABLE number of the issuer's own shares whose value equals a fixed amount (or an amount based on a variable other than the issuer's own share price)</div>
+            <div class="text-supporting text-supporting--tight">Mandatory redemption at a fixed/determinable date or at the holder's option; contractually obligated dividend/coupon payments the issuer cannot avoid; obligations settled in a VARIABLE number of the issuer's own shares whose value equals a fixed amount (or an amount based on a variable other than the issuer's own share price)</div>
           </div>
           <div class="spec-box" style="margin-bottom:0;">
             <div class="spec-title" style="color:var(--color-text-success);">Points toward EQUITY classification</div>
-            <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.5;">No contractual obligation to deliver cash; distributions are discretionary (declared at the issuer's option); settlement (if any) via a FIXED number of the issuer's own equity instruments for a FIXED amount of cash (the "fixed-for-fixed" condition)</div>
+            <div class="text-supporting text-supporting--tight">No contractual obligation to deliver cash; distributions are discretionary (declared at the issuer's option); settlement (if any) via a FIXED number of the issuer's own equity instruments for a FIXED amount of cash (the "fixed-for-fixed" condition)</div>
           </div>
         </div>
         <div class="callout danger" style="margin-top:8px;margin-bottom:0;">✕ <strong style="font-weight:600">"Redeemable preference shares" are almost always financial LIABILITIES</strong>, not equity, DESPITE their legal name and form — because the issuer has a contractual obligation to redeem (deliver cash) at a future date, satisfying the liability definition regardless of what the instrument is called.</div>
@@ -178,7 +180,7 @@ import metadata from "../../data/standards/ias/ias32.json";
           <div class="f-label">STEP-BY-STEP APPROACH</div>
           <div class="f-eq">1) Measure the LIABILITY component first, at the fair value of a similar liability WITHOUT the equity conversion feature<br>2) The EQUITY component is the RESIDUAL — total proceeds LESS the liability component (a "with-and-without" method)</div>
         </div>
-        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">This residual approach ensures the liability and equity components ALWAYS sum to total proceeds — the equity component is NEVER independently valued, only derived by subtraction.</div>
+        <div class="text-supporting">This residual approach ensures the liability and equity components ALWAYS sum to total proceeds — the equity component is NEVER independently valued, only derived by subtraction.</div>
       </div>
 
       <div class="card cw">
@@ -252,7 +254,7 @@ import metadata from "../../data/standards/ias/ias32.json";
     <div class="grid">
       <div class="card cs span2">
         <div class="ctitle cs">An entity cannot recognise a gain/loss on its own shares</div>
-        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">If an entity reacquires its OWN equity instruments, those instruments ("treasury shares") are DEDUCTED from equity — NO gain or loss is recognised in profit or loss on the purchase, sale, issue, or cancellation of an entity's own equity instruments. Consideration paid or received is recognised DIRECTLY in equity.</div>
+        <div class="text-supporting">If an entity reacquires its OWN equity instruments, those instruments ("treasury shares") are DEDUCTED from equity — NO gain or loss is recognised in profit or loss on the purchase, sale, issue, or cancellation of an entity's own equity instruments. Consideration paid or received is recognised DIRECTLY in equity.</div>
         <div class="callout warn" style="margin-bottom:0;">⚠️ This is a direct application of the Framework's principle that an entity cannot profit from transactions with its OWNERS in their capacity as owners — treasury share transactions are, by definition, transactions in the entity's own equity, never income-statement events.</div>
       </div>
     </div>
@@ -380,33 +382,21 @@ import metadata from "../../data/standards/ias/ias32.json";
 
     <!-- ============ SECTION 14 ============ -->
     <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
-    <div class="three-col">
-      <div class="card cn">
-        <div class="glossary-item"><div class="glossary-term">Fixed-for-fixed condition</div><div class="glossary-def">The requirement that settlement in the issuer's own equity instruments involves a FIXED number of shares for a FIXED amount of cash/other financial asset, for the arrangement to qualify as an equity instrument.</div></div>
-        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Contingent settlement provisions</div><div class="glossary-def">Clauses requiring settlement in cash (or otherwise as a liability) upon the occurrence of an uncertain future event outside the control of both parties — generally results in liability classification unless the contingency is not genuine or would only arise in remote/liquidation scenarios.</div></div>
-      </div>
-      <div class="card cn">
-        <div class="glossary-item"><div class="glossary-term">Treasury shares</div><div class="glossary-def">An entity's own equity instruments reacquired by itself or its subsidiaries — deducted from equity, never treated as a financial asset.</div></div>
-        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Residual interest</div><div class="glossary-def">The claim on an entity's assets remaining after deducting all liabilities — the Framework's definition of equity, which IAS 32 uses as its classification benchmark.</div></div>
-      </div>
-      <div class="card cn">
-        <div class="glossary-item"><div class="glossary-term">Master netting arrangement</div><div class="glossary-def">A contractual agreement providing for a single net settlement of all instruments covered, typically in the event of default — does not automatically satisfy IAS 32's offsetting criteria unless net settlement is also the norm in the ordinary course of business.</div></div>
-        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Puttable instrument</div><div class="glossary-def">A financial instrument giving the holder the right to sell it back to the issuer for cash or another financial asset — normally a liability, unless the narrow equity exception conditions are all satisfied.</div></div>
-      </div>
-    </div>
+<Glossary entries={[
+      { term: "Fixed-for-fixed condition", definition: "The requirement that settlement in the issuer's own equity instruments involves a FIXED number of shares for a FIXED amount of cash/other financial asset, for the arrangement to qualify as an equity instrument." },
+      { term: "Contingent settlement provisions", definition: "Clauses requiring settlement in cash (or otherwise as a liability) upon the occurrence of an uncertain future event outside the control of both parties — generally results in liability classification unless the contingency is not genuine or would only arise in remote/liquidation scenarios." },
+      { term: "Treasury shares", definition: "An entity's own equity instruments reacquired by itself or its subsidiaries — deducted from equity, never treated as a financial asset." },
+      { term: "Residual interest", definition: "The claim on an entity's assets remaining after deducting all liabilities — the Framework's definition of equity, which IAS 32 uses as its classification benchmark." },
+      { term: "Master netting arrangement", definition: "A contractual agreement providing for a single net settlement of all instruments covered, typically in the event of default — does not automatically satisfy IAS 32's offsetting criteria unless net settlement is also the norm in the ordinary course of business." },
+      { term: "Puttable instrument", definition: "A financial instrument giving the holder the right to sell it back to the issuer for cash or another financial asset — normally a liability, unless the narrow equity exception conditions are all satisfied." }
+    ]} />
 
-    <div class="legend">
-      <div class="ltitle">Financial statement key</div>
-      <div class="lrow">
-        <span class="badge bs">SOFP</span> Statement of financial position (balance sheet)
-        <span class="badge bp">SOPL</span> Statement of profit or loss (income statement)
-        <span class="badge bo">OCI</span> Other comprehensive income
-        <span class="badge be">Equity</span> Statement of changes in equity
-      </div>
-    </div>
+<FinancialStatementKey />
 
   </div>
   <section id="history">
     <HistoryTimeline items={history.IAS32} />
   </section>
 </StandardPageLayout>
+
+

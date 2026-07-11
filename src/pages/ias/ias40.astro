@@ -1,5 +1,7 @@
 ---
 import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
 import PageToc from "../../components/PageToc.astro";
 import "../../styles/standards-poster.css";
 import "../../styles/extended.css";
@@ -1122,75 +1124,19 @@ import metadata from "../../data/standards/ias/ias40.json";
       <span class="num">14</span><h2>Quick-Reference Glossary</h2><span
         class="line"></span>
     </div>
-    <div class="three-col">
-      <div class="card cn">
-        <div class="glossary-item">
-          <div class="glossary-term">Goodwill</div><div class="glossary-def">
-            The excess of consideration transferred over the net identifiable
-            assets acquired in a business combination — never recognised
-            internally, only on acquisition (IFRS 3).
-          </div>
-        </div>
-        <div class="glossary-item" style="border-bottom:none;">
-          <div class="glossary-term">Useful life</div><div class="glossary-def">
-            The period over which an asset is expected to be available for use,
-            or the number of production/similar units expected to be obtained
-            from it — may be finite or indefinite for intangibles.
-          </div>
-        </div>
-      </div>
-      <div class="card cn">
-        <div class="glossary-item">
-          <div class="glossary-term">Separability</div><div
-            class="glossary-def"
-          >
-            The capability of being separated from the entity and sold,
-            transferred, licensed, rented, or exchanged, either individually or
-            with a related contract/asset/liability.
-          </div>
-        </div>
-        <div class="glossary-item" style="border-bottom:none;">
-          <div class="glossary-term">PIRATE criteria</div><div
-            class="glossary-def"
-          >
-            The six mandatory conditions (Probable benefits, Intention,
-            Resources, Ability, Technical feasibility, Expenditure reliably
-            measured) for capitalising development costs.
-          </div>
-        </div>
-      </div>
-      <div class="card cn">
-        <div class="glossary-item">
-          <div class="glossary-term">Recoverable amount</div><div
-            class="glossary-def"
-          >
-            Higher of fair value less costs of disposal and value in use (IAS
-            36).
-          </div>
-        </div>
-        <div class="glossary-item" style="border-bottom:none;">
-          <div class="glossary-term">Class of intangible assets</div><div
-            class="glossary-def"
-          >
-            A grouping of assets of similar nature/use (e.g. patents, licences,
-            software, brands) used for disclosure and policy application.
-          </div>
-        </div>
-      </div>
-    </div>
+ <Glossary entries={[
+      { term: "Goodwill", definition: "The excess of consideration transferred over the net identifiable assets acquired in a business combination — never recognised internally, only on acquisition (IFRS 3)." },
+      { term: "Useful life", definition: "The period over which an asset is expected to be available for use, or the number of production/similar units expected to be obtained from it — may be finite or indefinite for intangibles." },
+      { term: "Separability", definition: "The capability of being separated from the entity and sold, transferred, licensed, rented, or exchanged, either individually or with a related contract/asset/liability." },
+      { term: "PIRATE criteria", definition: "The six mandatory conditions (Probable benefits, Intention, Resources, Ability, Technical feasibility, Expenditure reliably measured) for capitalising development costs." },
+      { term: "Recoverable amount", definition: "Higher of fair value less costs of disposal and value in use (IAS 36)." },
+      { term: "Class of intangible assets", definition: "A grouping of assets of similar nature/use (e.g. patents, licences, software, brands) used for disclosure and policy application." }
+    ]} />
 
-    <div class="legend">
-      <div class="ltitle">Financial statement key</div>
-      <div class="lrow">
-        <span class="badge bs">SOFP</span> Statement of financial position (balance
-        sheet)
-        <span class="badge bp">SOPL</span> Statement of profit or loss (income statement)
-        <span class="badge bo">OCI</span> Other comprehensive income
-        <span class="badge be">Equity</span> Statement of changes in equity
-      </div>
-    </div>
+<FinancialStatementKey />
   </div>
   <section id="history">
     <HistoryTimeline items={history.IAS40} />
   </section>
 </StandardPageLayout>
+

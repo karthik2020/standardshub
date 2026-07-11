@@ -1,5 +1,7 @@
 ---
 import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
 import PageToc from "../../components/PageToc.astro";
 import "../../styles/standards-poster.css";
 import "../../styles/extended.css";
@@ -119,7 +121,7 @@ import metadata from "../../data/standards/ias/ias33.json";
         <div class="ctitle cw">What IAS 33 covers</div>
         <div class="principle">IAS 33 applies to entities whose ordinary shares or potential ordinary shares are PUBLICLY TRADED (or which are in the process of issuing such shares in public markets) — presenting basic and diluted EPS on the face of the statement of profit or loss.</div>
         <div class="elabel">MANDATORY PRESENTATION LOCATION</div>
-        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">EPS is presented on the FACE of the statement of profit or loss, for profit/loss from CONTINUING operations attributable to ordinary equity holders, AND for profit/loss attributable to ordinary equity holders overall (i.e. including discontinued operations, if any) — with EQUAL prominence given to basic and diluted figures.</div>
+        <div class="text-supporting">EPS is presented on the FACE of the statement of profit or loss, for profit/loss from CONTINUING operations attributable to ordinary equity holders, AND for profit/loss attributable to ordinary equity holders overall (i.e. including discontinued operations, if any) — with EQUAL prominence given to basic and diluted figures.</div>
         <div class="note">An entity that does NOT have publicly traded shares, but chooses to disclose EPS voluntarily, must still calculate it in accordance with IAS 33 if it makes that choice — there is no "partial compliance" option.</div>
       </div>
 
@@ -153,7 +155,7 @@ import metadata from "../../data/standards/ias/ias33.json";
           <div class="f-eq">Basic EPS = Profit/loss attributable to ordinary equity holders of the parent ÷ Weighted average number of ordinary shares outstanding during the period</div>
         </div>
         <div class="elabel">NUMERATOR ADJUSTMENTS</div>
-        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Profit/loss attributable to ordinary shareholders is calculated AFTER deducting: preference dividends (whether or not declared, if the preference shares are CUMULATIVE), and any other items relating to non-ordinary equity holders.</div>
+        <div class="text-supporting">Profit/loss attributable to ordinary shareholders is calculated AFTER deducting: preference dividends (whether or not declared, if the preference shares are CUMULATIVE), and any other items relating to non-ordinary equity holders.</div>
       </div>
 
       <div class="card cw">
@@ -178,7 +180,7 @@ import metadata from "../../data/standards/ias/ias33.json";
     <div class="grid">
       <div class="card cd">
         <div class="ctitle cd">Bonus (capitalisation) issues — retrospective adjustment</div>
-        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:9px;">A bonus issue (shares issued to existing shareholders for NO consideration) is treated as if it had occurred at the BEGINNING of the EARLIEST period presented — since no new resources are raised, the weighted average share count for ALL periods presented is adjusted retrospectively by the bonus ratio, and PRIOR PERIOD EPS FIGURES ARE RESTATED accordingly.</div>
+        <div class="text-supporting" style="margin-bottom:9px;">A bonus issue (shares issued to existing shareholders for NO consideration) is treated as if it had occurred at the BEGINNING of the EARLIEST period presented — since no new resources are raised, the weighted average share count for ALL periods presented is adjusted retrospectively by the bonus ratio, and PRIOR PERIOD EPS FIGURES ARE RESTATED accordingly.</div>
         <div class="worked" style="margin-bottom:0;">
           <div class="wk-title">Example 2: 1-for-4 bonus issue</div>
           <div class="wk-body">A company had 4,000,000 shares in issue throughout 20X1, reporting EPS of $0.80. During 20X2, it makes a 1-for-4 bonus issue (1,000,000 new shares), giving 5,000,000 shares in issue for the rest of the year.</div>
@@ -190,7 +192,7 @@ import metadata from "../../data/standards/ias/ias33.json";
 
       <div class="card cn">
         <div class="ctitle cn">Rights issues — the bonus element adjustment</div>
-        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:9px;">A rights issue often includes a BONUS ELEMENT, since new shares are typically issued below full market price. The weighted average number of shares is adjusted using a THEORETICAL EX-RIGHTS PRICE (TERP) factor to reflect this embedded bonus.</div>
+        <div class="text-supporting" style="margin-bottom:9px;">A rights issue often includes a BONUS ELEMENT, since new shares are typically issued below full market price. The weighted average number of shares is adjusted using a THEORETICAL EX-RIGHTS PRICE (TERP) factor to reflect this embedded bonus.</div>
         <div class="formula-box">
           <div class="f-label">TERP FORMULA</div>
           <div class="f-eq">TERP = (Shares before rights × Fair value before rights + New shares issued × Rights issue price) ÷ Total shares after the rights issue</div>
@@ -264,7 +266,7 @@ import metadata from "../../data/standards/ias/ias33.json";
 
       <div class="card cw">
         <div class="ctitle cw">Discontinued operations — separate presentation</div>
-        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">If an entity presents a discontinued operation (IFRS 5), basic and diluted amounts per share for the DISCONTINUED operation are presented either on the face of the SOPL or in the notes — in ADDITION to the continuing-operations and total EPS figures required on the face of the statement.</div>
+        <div class="text-supporting">If an entity presents a discontinued operation (IFRS 5), basic and diluted amounts per share for the DISCONTINUED operation are presented either on the face of the SOPL or in the notes — in ADDITION to the continuing-operations and total EPS figures required on the face of the statement.</div>
         <div class="note">This gives users THREE distinct EPS pairs to work with: continuing operations, discontinued operations, and total — a frequently tested presentation nuance.</div>
       </div>
     </div>
@@ -375,33 +377,20 @@ import metadata from "../../data/standards/ias/ias33.json";
 
     <!-- ============ SECTION 14 ============ -->
     <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
-    <div class="three-col">
-      <div class="card cn">
-        <div class="glossary-item"><div class="glossary-term">Weighted average number of ordinary shares</div><div class="glossary-def">The number of shares outstanding at the START of the period, adjusted by shares bought back or issued during the period, weighted by the time they were outstanding.</div></div>
-        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Treasury stock method</div><div class="glossary-def">The method used to calculate the dilutive effect of options and warrants — assumed proceeds from exercise are treated as used to repurchase shares at the average market price, adding only the NET incremental shares to the diluted EPS denominator.</div></div>
-      </div>
-      <div class="card cn">
-        <div class="glossary-item"><div class="glossary-term">Theoretical ex-rights price (TERP)</div><div class="glossary-def">The theoretical share price immediately after a rights issue, calculated as a weighted average of the pre-rights price and the discounted rights issue price, used to identify the bonus element embedded in a rights issue.</div></div>
-        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Contingently issuable shares</div><div class="glossary-def">Ordinary shares issuable for little or no cash/other consideration upon satisfaction of specified conditions — included in diluted EPS if the conditions would be met if the period ended today.</div></div>
-      </div>
-      <div class="card cn">
-        <div class="glossary-item"><div class="glossary-term">Cumulative preference shares</div><div class="glossary-def">Preference shares whose dividend entitlement, if unpaid, accumulates and must be deducted from earnings for EPS purposes REGARDLESS of whether it was actually declared.</div></div>
-        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Bonus element</div><div class="glossary-def">The implicit value given to existing shareholders in a bonus issue or a rights issue priced below fair value, requiring a retrospective adjustment to the weighted average share count.</div></div>
-      </div>
-    </div>
+<Glossary entries={[
+      { term: "Weighted average number of ordinary shares", definition: "The number of shares outstanding at the START of the period, adjusted by shares bought back or issued during the period, weighted by the time they were outstanding." },
+      { term: "Treasury stock method", definition: "The method used to calculate the dilutive effect of options and warrants — assumed proceeds from exercise are treated as used to repurchase shares at the average market price, adding only the NET incremental shares to the diluted EPS denominator." },
+      { term: "Theoretical ex-rights price (TERP)", definition: "The theoretical share price immediately after a rights issue, calculated as a weighted average of the pre-rights price and the discounted rights issue price, used to identify the bonus element embedded in a rights issue." },
+      { term: "Contingently issuable shares", definition: "Ordinary shares issuable for little or no cash/other consideration upon satisfaction of specified conditions — included in diluted EPS if the conditions would be met if the period ended today." },
+      { term: "Cumulative preference shares", definition: "Preference shares whose dividend entitlement, if unpaid, accumulates and must be deducted from earnings for EPS purposes REGARDLESS of whether it was actually declared." },
+      { term: "Bonus element", definition: "The implicit value given to existing shareholders in a bonus issue or a rights issue priced below fair value, requiring a retrospective adjustment to the weighted average share count." }
+    ]} />
 
-    <div class="legend">
-      <div class="ltitle">Financial statement key</div>
-      <div class="lrow">
-        <span class="badge bs">SOFP</span> Statement of financial position (balance sheet)
-        <span class="badge bp">SOPL</span> Statement of profit or loss (income statement)
-        <span class="badge bo">OCI</span> Other comprehensive income
-        <span class="badge be">Equity</span> Statement of changes in equity
-      </div>
-    </div>
+<FinancialStatementKey />
 
   </div>
   <section id="history">
     <HistoryTimeline items={history.IAS33} />
   </section>
 </StandardPageLayout>
+

@@ -1,5 +1,7 @@
 ---
 import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
 import PageToc from "../../components/PageToc.astro";
 import "../../styles/standards-poster.css";
 import "../../styles/extended.css";
@@ -432,30 +434,16 @@ import metadata from "../../data/standards/ias/ias20.json";
 
   <!-- ============ SECTION 14 — GLOSSARY ============ -->
   <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
-  <div class="three-col">
-    <div class="card cn">
-      <div class="glossary-item"><div class="glossary-term">Grants related to assets</div><div class="glossary-def">Grants whose primary condition is the purchase, construction, or acquisition of long-term assets.</div></div>
-      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Grants related to income</div><div class="glossary-def">All government grants other than those related to assets.</div></div>
-    </div>
-    <div class="card cn">
-      <div class="glossary-item"><div class="glossary-term">Forgivable loans</div><div class="glossary-def">Loans which the lender undertakes to waive repayment of under certain prescribed conditions — treated as a government grant when there is reasonable assurance the entity will meet the terms for forgiveness.</div></div>
-      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Fair value</div><div class="glossary-def">Used to measure non-monetary grants (e.g. donated land or equipment), consistent with the IFRS 13 definition.</div></div>
-    </div>
-    <div class="card cn">
-      <div class="glossary-item"><div class="glossary-term">Deferred income</div><div class="glossary-def">A liability representing grant amounts received/receivable but not yet recognised in profit or loss, pending satisfaction of the matching condition.</div></div>
-      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Reasonable assurance</div><div class="glossary-def">The recognition threshold used by IAS 20 — a lower bar than "virtually certain," requiring credible evidence conditions will be met and the grant received.</div></div>
-    </div>
-  </div>
+<Glossary entries={[
+      { term: "Grants related to assets", definition: "Grants whose primary condition is the purchase, construction, or acquisition of long-term assets." },
+      { term: "Grants related to income", definition: "All government grants other than those related to assets." },
+      { term: "Forgivable loans", definition: "Loans which the lender undertakes to waive repayment of under certain prescribed conditions — treated as a government grant when there is reasonable assurance the entity will meet the terms for forgiveness." },
+      { term: "Fair value", definition: "Used to measure non-monetary grants (e.g. donated land or equipment), consistent with the IFRS 13 definition." },
+      { term: "Deferred income", definition: "A liability representing grant amounts received/receivable but not yet recognised in profit or loss, pending satisfaction of the matching condition." },
+      { term: "Reasonable assurance", definition: "The recognition threshold used by IAS 20 — a lower bar than \"virtually certain,\" requiring credible evidence conditions will be met and the grant received." }
+    ]} />
 
-  <div class="legend">
-    <div class="ltitle">Financial statement key</div>
-    <div class="lrow">
-      <span class="badge bs">SOFP</span> Statement of financial position (balance sheet)
-      <span class="badge bp">SOPL</span> Statement of profit or loss (income statement)
-      <span class="badge bo">OCI</span> Other comprehensive income
-      <span class="badge be">Equity</span> Statement of changes in equity
-    </div>
-  </div>
+<FinancialStatementKey />
   </div>
   <section id="history">
     <HistoryTimeline items={history.IAS20} />

@@ -82,12 +82,40 @@ const frameworkClass = framework.toLowerCase().replace(/\s+/g, "");
     align-items: flex-start;
   }
 
-  .pnn-card:hover {
-    border-color: #cbd5e1;
-    box-shadow: var(--shadow-md);
-    transform: translateY(-2px);
+  /* Pin each card to its own column so position is independent of which
+     cards actually render (e.g. Next alone still sits on the right). */
+  .pnn-prev {
+    grid-column: 1;
   }
 
+  .pnn-next {
+    grid-column: 2;
+  }
+
+  /* Calm, documentation-style hover: the card stays stationary. Only the
+     border, background and a subtle framework-tinted glow respond. */
+  .pnn-card:hover,
+  .pnn-card:focus-visible {
+    border-color: #cbd5e1;
+    background: var(--surface-hover);
+  }
+
+  .nav-ias:hover,
+  .nav-ias:focus-visible {
+    box-shadow: 0 0 0 3px var(--ias-soft);
+  }
+
+  .nav-ifrs:hover,
+  .nav-ifrs:focus-visible {
+    box-shadow: 0 0 0 3px var(--ifrs-soft);
+  }
+
+  .nav-indas:hover,
+  .nav-indas:focus-visible {
+    box-shadow: 0 0 0 3px var(--indas-soft);
+  }
+
+  /* Keyboard focus keeps the same calm feedback plus a clear outline. */
   .pnn-card:focus-visible {
     outline: 2px solid var(--ias);
     outline-offset: 2px;
@@ -110,6 +138,18 @@ const frameworkClass = framework.toLowerCase().replace(/\s+/g, "");
     margin-right: 10px;
     flex-shrink: 0;
     vertical-align: middle;
+    transition: transform 200ms var(--ease);
+  }
+
+  /* Only the arrow moves on hover/focus — subtle, directional nudge. */
+  .pnn-prev:hover .pnn-arrow,
+  .pnn-prev:focus-visible .pnn-arrow {
+    transform: translateX(-4px);
+  }
+
+  .pnn-next:hover .pnn-arrow,
+  .pnn-next:focus-visible .pnn-arrow {
+    transform: translateX(4px);
   }
 
   .pnn-next .pnn-arrow {
@@ -141,6 +181,11 @@ const frameworkClass = framework.toLowerCase().replace(/\s+/g, "");
   @media (max-width: 640px) {
     .pnn-nav {
       grid-template-columns: 1fr;
+    }
+
+    .pnn-prev,
+    .pnn-next {
+      grid-column: 1;
     }
 
     .pnn-next > * {

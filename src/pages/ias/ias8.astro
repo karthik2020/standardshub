@@ -1,5 +1,7 @@
 ---
 import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
 import PageToc from "../../components/PageToc.astro";
 import "../../styles/standards-poster.css";
 import "../../styles/extended.css";
@@ -157,11 +159,11 @@ import metadata from "../../data/standards/ias/ias8.json";
         <div class="two-col">
           <div class="spec-box" style="margin-bottom:0;">
             <div class="spec-title" style="color:var(--color-text-success);">Step 1 — Mandatory sources</div>
-            <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.5;">Requirements in other IFRS Standards dealing with similar/related issues, AND the Conceptual Framework's definitions, recognition criteria, and measurement concepts for assets, liabilities, income, and expenses.</div>
+            <div class="text-supporting text-supporting--tight">Requirements in other IFRS Standards dealing with similar/related issues, AND the Conceptual Framework's definitions, recognition criteria, and measurement concepts for assets, liabilities, income, and expenses.</div>
           </div>
           <div class="spec-box" style="margin-bottom:0;">
             <div class="spec-title" style="color:var(--color-text-success);">Step 2 — May also consider</div>
-            <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.5;">Pronouncements of other standard-setting bodies using a similar conceptual framework, other accounting literature, and accepted industry practices — ONLY if not in conflict with Step 1.</div>
+            <div class="text-supporting text-supporting--tight">Pronouncements of other standard-setting bodies using a similar conceptual framework, other accounting literature, and accepted industry practices — ONLY if not in conflict with Step 1.</div>
           </div>
         </div>
         <div class="callout warn" style="margin-top:8px;margin-bottom:0;">⚠️ <strong style="font-weight:600">Step 1 is not optional or discretionary</strong> — the Conceptual Framework must be consulted, and requirements from OTHER, related IFRS Standards take priority over any outside literature. This ordering is one of the most frequently tested technical points in IAS 8.</div>
@@ -175,7 +177,7 @@ import metadata from "../../data/standards/ias/ias8.json";
         <div class="ctitle cs">When a voluntary change is permitted</div>
         <div class="principle">A voluntary change in accounting policy is permitted ONLY if it is required by an IFRS Standard, OR results in the financial statements providing reliable and MORE RELEVANT information.</div>
         <div class="elabel">MANDATORY (NOT VOLUNTARY) CHANGES</div>
-        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Adoption of a new IFRS Standard is applied per that Standard's own specific transitional provisions; only in their absence does IAS 8's general retrospective rule apply by default.</div>
+        <div class="text-supporting">Adoption of a new IFRS Standard is applied per that Standard's own specific transitional provisions; only in their absence does IAS 8's general retrospective rule apply by default.</div>
         <div class="formula-box" style="margin-top:9px;">
           <div class="f-label">RETROSPECTIVE APPLICATION MECHANICS</div>
           <div class="f-eq">Adjust the opening balance of each affected component of equity for the EARLIEST prior period presented, and restate other comparative amounts as if the new policy had always applied</div>
@@ -275,7 +277,7 @@ import metadata from "../../data/standards/ias/ias8.json";
     <div class="grid">
       <div class="card ci">
         <div class="ctitle ci">When retrospective treatment is not required</div>
-        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:9px;">Retrospective application/restatement is NOT required when it is impracticable to determine either the period-specific effects, or the cumulative effect, of the change/error.</div>
+        <div class="text-supporting" style="margin-bottom:9px;">Retrospective application/restatement is NOT required when it is impracticable to determine either the period-specific effects, or the cumulative effect, of the change/error.</div>
         <div class="elabel">A REQUIREMENT IS IMPRACTICABLE WHEN</div>
         <div class="check-list">
           <span>The effects of retrospective application/restatement are not determinable</span>
@@ -403,33 +405,20 @@ import metadata from "../../data/standards/ias/ias8.json";
 
     <!-- ============ SECTION 14 — GLOSSARY ============ -->
     <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
-    <div class="three-col">
-      <div class="card cn">
-        <div class="glossary-item"><div class="glossary-term">Retrospective application</div><div class="glossary-def">Applying a NEW accounting policy to transactions/events as if that policy had always been applied.</div></div>
-        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Retrospective restatement</div><div class="glossary-def">CORRECTING the recognition, measurement, and disclosure of amounts in financial statements as if a prior period error had never occurred.</div></div>
-      </div>
-      <div class="card cn">
-        <div class="glossary-item"><div class="glossary-term">Prospective application</div><div class="glossary-def">Applying a new accounting policy, or recognising the effect of a change in estimate, to transactions/events occurring AFTER the date the policy is changed / estimate is revised.</div></div>
-        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Impracticable</div><div class="glossary-def">A requirement is impracticable when the entity cannot apply it after making every reasonable effort — the exemption threshold that allows a prospective fallback instead of full retrospective treatment.</div></div>
-      </div>
-      <div class="card cn">
-        <div class="glossary-item"><div class="glossary-term">Material</div><div class="glossary-def">Errors, omissions, or misstatements are material if they could, individually or collectively, influence the economic decisions of users based on the financial statements.</div></div>
-        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">IFRS Standards</div><div class="glossary-def">Standards and Interpretations adopted by the IASB, comprising IFRS Standards, IAS Standards, and Interpretations developed by the IFRS Interpretations Committee / former SIC.</div></div>
-      </div>
-    </div>
+<Glossary entries={[
+      { term: "Retrospective application", definition: "Applying a NEW accounting policy to transactions/events as if that policy had always been applied." },
+      { term: "Retrospective restatement", definition: "CORRECTING the recognition, measurement, and disclosure of amounts in financial statements as if a prior period error had never occurred." },
+      { term: "Prospective application", definition: "Applying a new accounting policy, or recognising the effect of a change in estimate, to transactions/events occurring AFTER the date the policy is changed / estimate is revised." },
+      { term: "Impracticable", definition: "A requirement is impracticable when the entity cannot apply it after making every reasonable effort — the exemption threshold that allows a prospective fallback instead of full retrospective treatment." },
+      { term: "Material", definition: "Errors, omissions, or misstatements are material if they could, individually or collectively, influence the economic decisions of users based on the financial statements." },
+      { term: "IFRS Standards", definition: "Standards and Interpretations adopted by the IASB, comprising IFRS Standards, IAS Standards, and Interpretations developed by the IFRS Interpretations Committee / former SIC." }
+    ]} />
 
-    <div class="legend">
-      <div class="ltitle">Financial statement key</div>
-      <div class="lrow">
-        <span class="badge bs">SOFP</span> Statement of financial position (balance sheet)
-        <span class="badge bp">SOPL</span> Statement of profit or loss (income statement)
-        <span class="badge bo">OCI</span> Other comprehensive income
-        <span class="badge be">Equity</span> Statement of changes in equity
-      </div>
-    </div>
+<FinancialStatementKey />
 
   </div>
   <section id="history">
     <HistoryTimeline items={history.IAS8} />
   </section>
 </StandardPageLayout>
+

@@ -11,6 +11,8 @@
 */
 
 import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
 import PageToc from "../../components/PageToc.astro";
 import "../../styles/standards-poster.css";
 import "../../styles/extended.css";
@@ -408,32 +410,19 @@ import metadata from "../../data/standards/ias/ias19.json";
 
     <!-- ============ SECTION 14 ============ -->
     <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
-    <div class="three-col">
-      <div class="card cn">
-        <div class="glossary-item"><div class="glossary-term">Past service cost</div><div class="glossary-def">The change in the present value of the defined benefit obligation for employee service in PRIOR periods, resulting from a plan amendment or curtailment — recognised immediately in SOPL.</div></div>
-        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Curtailment</div><div class="glossary-def">A significant reduction by the entity in the number of employees covered by a plan, or an amendment reducing future benefits for existing service.</div></div>
-      </div>
-      <div class="card cn">
-        <div class="glossary-item"><div class="glossary-term">Multi-employer plans</div><div class="glossary-def">Plans that pool the assets contributed by various entities not under common control, used to provide benefits to employees of more than one entity — classified as DC or DB based on the terms, not simply the pooling structure.</div></div>
-        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Vested employee benefits</div><div class="glossary-def">Benefits not conditional on future employment — the entitlement is secured regardless of whether the employee continues to work for the entity.</div></div>
-      </div>
-      <div class="card cn">
-        <div class="glossary-item"><div class="glossary-term">Plan assets</div><div class="glossary-def">Assets held by a long-term employee benefit fund, and qualifying insurance policies, that are used solely to settle employee benefit obligations and are not available to the reporting entity's own creditors.</div></div>
-        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Constructive obligation</div><div class="glossary-def">An obligation arising from an entity's own established pattern of past practice, published policies, or a sufficiently specific current statement, creating a valid expectation among employees that the entity will discharge those responsibilities.</div></div>
-      </div>
-    </div>
+<Glossary entries={[
+      { term: "Past service cost", definition: "The change in the present value of the defined benefit obligation for employee service in PRIOR periods, resulting from a plan amendment or curtailment — recognised immediately in SOPL." },
+      { term: "Curtailment", definition: "A significant reduction by the entity in the number of employees covered by a plan, or an amendment reducing future benefits for existing service." },
+      { term: "Multi-employer plans", definition: "Plans that pool the assets contributed by various entities not under common control, used to provide benefits to employees of more than one entity — classified as DC or DB based on the terms, not simply the pooling structure." },
+      { term: "Vested employee benefits", definition: "Benefits not conditional on future employment — the entitlement is secured regardless of whether the employee continues to work for the entity." },
+      { term: "Plan assets", definition: "Assets held by a long-term employee benefit fund, and qualifying insurance policies, that are used solely to settle employee benefit obligations and are not available to the reporting entity's own creditors." },
+      { term: "Constructive obligation", definition: "An obligation arising from an entity's own established pattern of past practice, published policies, or a sufficiently specific current statement, creating a valid expectation among employees that the entity will discharge those responsibilities." }
+    ]} />
 
-    <div class="legend">
-      <div class="ltitle">Financial statement key</div>
-      <div class="lrow">
-        <span class="badge bs">SOFP</span> Statement of financial position (balance sheet)
-        <span class="badge bp">SOPL</span> Statement of profit or loss (income statement)
-        <span class="badge bo">OCI</span> Other comprehensive income
-        <span class="badge be">Equity</span> Statement of changes in equity
-      </div>
-    </div>
+<FinancialStatementKey />
   </div>
   <section id="history">
     <HistoryTimeline items={history.IAS19} />
   </section>
 </StandardPageLayout>
+

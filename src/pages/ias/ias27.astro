@@ -1,5 +1,7 @@
 ---
 import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
 import PageToc from "../../components/PageToc.astro";
 import "../../styles/standards-poster.css";
 import "../../styles/extended.css";
@@ -337,32 +339,19 @@ import metadata from "../../data/standards/ias/ias27.json";
 
     <!-- ============ SECTION 14 ============ -->
     <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
-    <div class="three-col">
-      <div class="card cn">
-        <div class="glossary-item"><div class="glossary-term">Subsidiary</div><div class="glossary-def">An entity controlled by another entity (the parent), per the control definition in IFRS 10.</div></div>
-        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Associate</div><div class="glossary-def">An entity over which the investor has significant influence, per IAS 28.</div></div>
-      </div>
-      <div class="card cn">
-        <div class="glossary-item"><div class="glossary-term">Joint venture</div><div class="glossary-def">A joint arrangement whereby the parties with joint control have rights to the net assets of the arrangement, per IFRS 11.</div></div>
-        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Equity method</div><div class="glossary-def">A method of accounting whereby the investment is initially recognised at cost and adjusted thereafter for the investor's post-acquisition share of the investee's profit/loss and OCI.</div></div>
-      </div>
-      <div class="card cn">
-        <div class="glossary-item"><div class="glossary-term">Group</div><div class="glossary-def">A parent and all its subsidiaries, per IFRS 10 — the reporting scope of consolidated financial statements, distinct from the parent-only scope of separate financial statements.</div></div>
-        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Total comprehensive income</div><div class="glossary-def">Profit or loss plus other comprehensive income for a period — the benchmark used in the dividend-exceeds-TCI impairment indicator test.</div></div>
-      </div>
-    </div>
+<Glossary entries={[
+      { term: "Subsidiary", definition: "An entity controlled by another entity (the parent), per the control definition in IFRS 10." },
+      { term: "Associate", definition: "An entity over which the investor has significant influence, per IAS 28." },
+      { term: "Joint venture", definition: "A joint arrangement whereby the parties with joint control have rights to the net assets of the arrangement, per IFRS 11." },
+      { term: "Equity method", definition: "A method of accounting whereby the investment is initially recognised at cost and adjusted thereafter for the investor's post-acquisition share of the investee's profit/loss and OCI." },
+      { term: "Group", definition: "A parent and all its subsidiaries, per IFRS 10 — the reporting scope of consolidated financial statements, distinct from the parent-only scope of separate financial statements." },
+      { term: "Total comprehensive income", definition: "Profit or loss plus other comprehensive income for a period — the benchmark used in the dividend-exceeds-TCI impairment indicator test." }
+    ]} />
 
-    <div class="legend">
-      <div class="ltitle">Financial statement key</div>
-      <div class="lrow">
-        <span class="badge bs">SOFP</span> Statement of financial position (balance sheet)
-        <span class="badge bp">SOPL</span> Statement of profit or loss (income statement)
-        <span class="badge bo">OCI</span> Other comprehensive income
-        <span class="badge be">Equity</span> Statement of changes in equity
-      </div>
-    </div>
+<FinancialStatementKey />
   </div>
   <section id="history">
     <HistoryTimeline items={history.IAS27} />
   </section>
 </StandardPageLayout>
+

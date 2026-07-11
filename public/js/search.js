@@ -25,7 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let index = 0;
     let timer;
-    let buttonAnimated = false;
 
     placeholder.textContent = suggestions[index];
 
@@ -88,22 +87,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
         container.classList.add("focused");
 
-        if (!buttonAnimated) {
+    });
 
-            buttonAnimated = true;
+    input.addEventListener("blur", () => {
+        if (input.value.trim() === "") {
 
-            button.classList.add("button-active");
-            button.classList.add("button-intro");
+            container.classList.remove("focused");
 
-            setTimeout(() => {
+            index = 0;
+            firstRotation = true;
 
-                button.classList.remove("button-intro");
+            placeholder.textContent = suggestions[index];
 
-            }, 250);
+            scheduleNext();
 
         }
-
     });
+
+});
 
     input.addEventListener("blur", () => {
 

@@ -161,7 +161,8 @@
         transform var(--transition-fast);
 }
 
-.related-card:hover {
+.related-card:hover,
+.related-card:focus-visible {
     background: var(--card-hover);
     border-color: var(--border);
     box-shadow: var(--shadow-sm);
@@ -397,7 +398,8 @@ body {
     gap: 10px;
 }
 
-.section-header:hover {
+.section-header:hover,
+.section-header:focus-visible {
     background: var(--surface-alt);
 }
 
@@ -455,10 +457,6 @@ body {
     overflow-y: scroll;
     padding: 20px 0;
     scrollbar-gutter: stable;
-}
-
-.sidebar-scroll.ready {
-    visibility: visible;
 }
 
 /* Chrome / Edge */
@@ -582,7 +580,8 @@ section li:last-child {
     transition: background .18s ease, color .18s ease;
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.nav-link:focus-visible {
     background: var(--surface-alt);
 }
 
@@ -695,7 +694,8 @@ section li:last-child {
     transition: transform var(--duration-normal) var(--ease), box-shadow var(--duration-normal) var(--ease);
 }
 
-.home-card:hover {
+.home-card:hover,
+.home-card:focus-visible {
     transform: translateY(-3px);
     box-shadow: var(--shadow-md);
 }
@@ -743,7 +743,8 @@ section li:last-child {
     transition: transform var(--duration-normal) var(--ease), box-shadow var(--duration-normal) var(--ease);
 }
 
-.standard-card:hover {
+.standard-card:hover,
+.standard-card:focus-visible {
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
 }
@@ -775,7 +776,8 @@ section li:last-child {
     transition: background var(--duration-fast) var(--ease), border-color var(--duration-fast) var(--ease), color var(--duration-fast) var(--ease);
 }
 
-.view-toggle button:hover {
+.view-toggle button:hover,
+.view-toggle button:focus-visible {
 
     background: var(--surface-alt);
 
@@ -1098,7 +1100,8 @@ section li:last-child {
     color: inherit;
 }
 
-.breadcrumbs a:hover {
+.breadcrumbs a:hover,
+.breadcrumbs a:focus-visible {
     text-decoration: underline;
 }
 
@@ -1304,7 +1307,8 @@ section li:last-child {
     color: inherit;
 }
 
-.site-logo:hover .logo-mark {
+.site-logo:hover .logo-mark,
+.site-logo:focus-visible .logo-mark {
     transform: rotate(15deg) scale(1.08);
 }
 
@@ -1327,7 +1331,8 @@ section li:last-child {
     color: var(--text);
 }
 
-.site-logo:hover {
+.site-logo:hover,
+.site-logo:focus-visible {
     color: var(--ias);
 }
 
@@ -1363,7 +1368,8 @@ section li:last-child {
     transition: background var(--duration-fast) var(--ease), color var(--duration-fast) var(--ease), transform var(--duration-fast) var(--ease);
 }
 
-.toolbar-btn:hover {
+.toolbar-btn:hover,
+.toolbar-btn:focus-visible {
     background: rgba(37, 99, 235, .08);
     transform: translateY(-1px);
 }
@@ -1394,7 +1400,8 @@ section li:last-child {
     font-weight: 500;
 }
 
-.breadcrumb-home:hover {
+.breadcrumb-home:hover,
+.breadcrumb-home:focus-visible {
     color: var(--text);
 }
 
@@ -1435,7 +1442,8 @@ section li:last-child {
     align-items: center;
     height: 44px;
     position: relative;
-    padding-left: 10px;
+    padding-left: 38px;
+    padding-right: 44px;
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
     background: var(--surface);
@@ -1448,15 +1456,13 @@ section li:last-child {
     transform: translateY(-4px);
 }
 
+.search-input.has-value .search-placeholder {
+    opacity: 0;
+}
+
 .search-input:focus-within {
     border-color: var(--ias);
     box-shadow: 0 0 0 3px rgba(37, 99, 235, .08);
-}
-
-.search-input:focus-within .search-action {
-    background: var(--ias);
-    border-color: var(--ias);
-    color: white;
 }
 
 .search-input input {
@@ -1505,67 +1511,88 @@ section li:last-child {
     position: absolute;
     right: 8px;
     top: 50%;
-    transform: translateY(-50%);
-    width: 30px;
-    height: 30px;
+    z-index: 4;
+    width: 28px;
+    height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
     border: none;
     border-radius: var(--radius-sm);
-    background: var(--surface-alt);
-    color: var(--text-muted);
-}
-
-.button-active {
     background: var(--ias);
-    color: white;
-    border-color: var(--ias);
+    color: #fff;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(-50%) scale(0.5);
+    pointer-events: none;
+    transition: opacity .18s ease, transform .18s ease, background .18s ease;
 }
 
-.button-intro svg {
-    animation: arrowIntro .22s ease;
-}
-
-@keyframes arrowIntro {
-    0% {
-        opacity: 0;
-        transform: translateX(-6px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: none;
-    }
+.search-action.visible {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+    pointer-events: auto;
 }
 
 .search-action:hover {
-    background: var(--surface-hover);
+    background: #1d4ed8;
+}
+
+.search-action:focus-visible {
+    background: #1d4ed8;
+    outline: 2px solid #fff;
+    outline-offset: -2px;
+}
+
+.sidebar-empty {
+    padding: 28px 20px;
+    text-align: center;
+    animation: sidebarEmptyIn .2s ease;
+}
+
+.sidebar-empty[hidden] {
+    display: none;
+}
+
+.sidebar-empty-title {
+    font-weight: var(--weight-semibold);
     color: var(--text-secondary);
+    font-size: 14px;
+    margin-bottom: 6px;
 }
 
-.search-action.active {
-    background: var(--surface);
-    border-color: var(--ias);
+.sidebar-empty-text {
+    font-size: var(--text-small);
+    line-height: 1.5;
+    color: var(--text-muted);
 }
 
-.search-action svg {
-    transition: transform .22s ease, opacity .22s ease;
+.sidebar-empty-examples {
+    margin-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
 }
 
-.search-input:focus-within .search-action svg {
-    animation: searchArrow .22s ease;
+.sidebar-empty-examples span {
+    font-size: var(--text-xs);
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: var(--surface-alt);
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
 }
 
-@keyframes searchArrow {
-    0% {
+@keyframes sidebarEmptyIn {
+    from {
         opacity: 0;
-        transform: translateX(-8px);
+        transform: translateY(4px);
     }
 
-    100% {
+    to {
         opacity: 1;
-        transform: translateX(0);
+        transform: none;
     }
 }
 
@@ -1594,6 +1621,12 @@ section li:last-child {
 .content[data-framework="indas"] { --toc-active: var(--indas); --toc-active-soft: var(--indas-soft); --section-accent: var(--indas); }
 
 .page-content {
+    min-width: 0;
+}
+
+/* Reading column wrapper: holds the documentation content (hero, poster,
+   Previous/Next) and the footer, excluding the sidebar and the TOC. */
+.reading-column {
     min-width: 0;
 }
 
@@ -1688,7 +1721,8 @@ section li:last-child {
     line-height: 1.4;
 }
 
-.toc a:hover {
+.toc a:hover,
+.toc a:focus-visible {
     background: var(--surface-hover);
     color: var(--text-secondary);
     border-radius: var(--radius-sm);
@@ -1847,7 +1881,8 @@ section li:last-child {
     transition: var(--transition-fast);
 }
 
-.footer-link:hover {
+.footer-link:hover,
+.footer-link:focus-visible {
     background: var(--surface-alt);
     color: var(--text);
 }
@@ -2000,7 +2035,8 @@ section li:last-child {
     transition: background var(--transition-fast) var(--ease), border-color var(--transition-fast) var(--ease), transform var(--transition-fast) var(--ease);
 }
 
-.crumb:hover {
+.crumb:hover,
+.crumb:focus-visible {
 
     background: var(--surface-hover);
 
@@ -2170,6 +2206,20 @@ section li:last-child {
     }
 }
 
+/* Constrain the documentation reading column on very large monitors.
+   The comfortable reading width is reached once the content area
+   (viewport − 300px sidebar) hits ~960px, i.e. at ~1600px viewport.
+   Below that the cap exceeds the natural width, so 1366/1440/1600 stay
+   unchanged; above it the column is capped and centred within its grid
+   track. The sidebar and the TOC (separate grid item) are untouched, and
+   no whitespace appears between the sidebar and the content. */
+@media (min-width: 1600px) {
+    .reading-column {
+        max-inline-size: 960px;
+        margin-inline: auto;
+    }
+}
+
 @media (max-width: 720px) {
     .site-header {
         padding: var(--space-md);
@@ -2184,11 +2234,16 @@ section li:last-child {
     }
 
     .breadcrumb-current {
-        width: 100%;
+        width: auto;
+        min-width: 0;
     }
 
-    .breadcrumb-title {
-        max-width: 100%;
+    /* On small screens show only the standard code (already rendered in
+       .breadcrumb-code) instead of the full title, keeping the crumbs on a
+       single line and preserving the Home > framework > code hierarchy. */
+    .breadcrumb-title,
+    .breadcrumb-dot {
+        display: none;
     }
 
     .hero h1,
@@ -2338,7 +2393,8 @@ section li:last-child {
     transition: color var(--transition-fast);
 }
 
-.footer-nav a:hover {
+.footer-nav a:hover,
+.footer-nav a:focus-visible {
     color: var(--ias);
 }
 

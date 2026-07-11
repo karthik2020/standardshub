@@ -6,7 +6,7 @@ import {
   BookOpen,
   LibraryBig,
   Files,
-  ArrowRight,
+  X,
   Bookmark,
   Clock,
   BookText,
@@ -28,11 +28,12 @@ const currentPath = Astro.url.pathname;
           id="standard-search"
           type="text"
           placeholder=""
+          aria-label="Filter standards"
           autocomplete="off"
         />
 
-        <button class="search-action" id="search-action" type="button">
-          <ArrowRight size={16} />
+        <button class="search-action" id="search-action" type="button" aria-label="Clear filter" title="Clear filter">
+          <X size={15} />
         </button>
       </div>
     </div>
@@ -157,6 +158,16 @@ const currentPath = Astro.url.pathname;
         </div>
       </div>
     </details>
+
+    <div class="sidebar-empty" id="sidebar-empty" hidden>
+      <div class="sidebar-empty-title">No matching standards</div>
+      <div class="sidebar-empty-text">Try another standard number or keyword.</div>
+      <div class="sidebar-empty-examples">
+        <span>IAS 16</span>
+        <span>Revenue</span>
+        <span>Lease</span>
+      </div>
+    </div>
   </div>
   <footer class="sidebar-footer">
     <a href="#" class="footer-link">

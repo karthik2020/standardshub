@@ -1,5 +1,7 @@
 ---
 import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
 import PageToc from "../../components/PageToc.astro";
 import "../../styles/standards-poster.css";
 import "../../styles/extended.css";
@@ -120,8 +122,8 @@ import metadata from "../../data/standards/ias/ias21.json";
         <div class="ctitle cw">What IAS 21 covers</div>
         <div class="principle">IAS 21 applies to accounting for transactions and balances in foreign currencies, EXCEPT those derivative transactions and balances within IFRS 9's scope; translating results and financial position of foreign operations included in the entity's financial statements; and translating results/financial position into a presentation currency.</div>
         <div class="elabel">TWO DISTINCT PROBLEMS IAS 21 SOLVES</div>
-        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:5px;">(1) How does an individual entity account for TRANSACTIONS denominated in a currency OTHER than its functional currency?</div>
-        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">(2) How does a group TRANSLATE the results of a foreign operation into the presentation currency used for consolidated financial statements?</div>
+        <div class="text-supporting" style="margin-bottom:5px;">(1) How does an individual entity account for TRANSACTIONS denominated in a currency OTHER than its functional currency?</div>
+        <div class="text-supporting">(2) How does a group TRANSLATE the results of a foreign operation into the presentation currency used for consolidated financial statements?</div>
         <div class="note">These are genuinely separate questions with DIFFERENT mechanics (Sections 4–5 for the first, Section 6 for the second) — a common source of confusion.</div>
       </div>
 
@@ -187,7 +189,7 @@ import metadata from "../../data/standards/ias/ias21.json";
           <div class="f-label">INITIAL RECOGNITION</div>
           <div class="f-eq">Record at the SPOT exchange rate on the transaction date (or an average rate that approximates it, if rates don't fluctuate significantly)</div>
         </div>
-        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">At EACH subsequent reporting date, translate: monetary items at the CLOSING rate; non-monetary items at historical cost using the HISTORICAL rate; non-monetary items at fair value using the rate WHEN fair value was determined.</div>
+        <div class="text-supporting">At EACH subsequent reporting date, translate: monetary items at the CLOSING rate; non-monetary items at historical cost using the HISTORICAL rate; non-monetary items at fair value using the rate WHEN fair value was determined.</div>
       </div>
 
       <div class="card cw">
@@ -275,7 +277,7 @@ import metadata from "../../data/standards/ias/ias21.json";
     <div class="grid">
       <div class="card cw span2">
         <div class="ctitle cw">Monetary items forming part of the net investment</div>
-        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:9px;">Exchange differences on a MONETARY item that forms part of a reporting entity's net investment in a foreign operation (e.g. an intercompany loan not expected to be settled in the foreseeable future, effectively permanent financing) are recognised in OCI in the CONSOLIDATED financial statements, and reclassified to SOPL only on disposal of the foreign operation — even though such a loan would normally be an ordinary monetary item recognised through SOPL.</div>
+        <div class="text-supporting" style="margin-bottom:9px;">Exchange differences on a MONETARY item that forms part of a reporting entity's net investment in a foreign operation (e.g. an intercompany loan not expected to be settled in the foreseeable future, effectively permanent financing) are recognised in OCI in the CONSOLIDATED financial statements, and reclassified to SOPL only on disposal of the foreign operation — even though such a loan would normally be an ordinary monetary item recognised through SOPL.</div>
         <div class="callout warn" style="margin-bottom:0;">⚠️ In the SEPARATE (unconsolidated) financial statements of either the parent or the foreign operation, exchange differences on such a loan are recognised in PROFIT OR LOSS as normal — the special OCI treatment applies ONLY at the consolidated level, since it is only there that the loan is genuinely "quasi-equity" (eliminating intragroup effects).</div>
       </div>
     </div>
@@ -388,30 +390,16 @@ import metadata from "../../data/standards/ias/ias21.json";
 
     <!-- ============ SECTION 14 ============ -->
     <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
-    <div class="three-col">
-      <div class="card cn">
-        <div class="glossary-item"><div class="glossary-term">Spot exchange rate</div><div class="glossary-def">The exchange rate for immediate delivery, used to record the initial recognition of foreign currency transactions.</div></div>
-        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Exchange difference</div><div class="glossary-def">The difference resulting from translating a given number of units of one currency into another currency at different exchange rates.</div></div>
-      </div>
-      <div class="card cn">
-        <div class="glossary-item"><div class="glossary-term">Net investment in a foreign operation</div><div class="glossary-def">The amount of the reporting entity's interest in the net assets of a foreign operation, including any monetary item accounted for as part of that net investment (e.g. long-term intercompany loans not expected to be settled).</div></div>
-        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Reclassification adjustment</div><div class="glossary-def">Amounts reclassified to profit or loss in the current period that were previously recognised in OCI — applies to cumulative translation differences on disposal.</div></div>
-      </div>
-      <div class="card cn">
-        <div class="glossary-item"><div class="glossary-term">Fair value hedge / cash flow hedge</div><div class="glossary-def">Hedge accounting designations under IFRS 9 that may modify the normal IAS 21 treatment of exchange differences on hedged monetary items.</div></div>
-        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Translation reserve</div><div class="glossary-def">The separate component of equity accumulating cumulative exchange differences arising on translating foreign operations for consolidation.</div></div>
-      </div>
-    </div>
+<Glossary entries={[
+      { term: "Spot exchange rate", definition: "The exchange rate for immediate delivery, used to record the initial recognition of foreign currency transactions." },
+      { term: "Exchange difference", definition: "The difference resulting from translating a given number of units of one currency into another currency at different exchange rates." },
+      { term: "Net investment in a foreign operation", definition: "The amount of the reporting entity's interest in the net assets of a foreign operation, including any monetary item accounted for as part of that net investment (e.g. long-term intercompany loans not expected to be settled)." },
+      { term: "Reclassification adjustment", definition: "Amounts reclassified to profit or loss in the current period that were previously recognised in OCI — applies to cumulative translation differences on disposal." },
+      { term: "Fair value hedge / cash flow hedge", definition: "Hedge accounting designations under IFRS 9 that may modify the normal IAS 21 treatment of exchange differences on hedged monetary items." },
+      { term: "Translation reserve", definition: "The separate component of equity accumulating cumulative exchange differences arising on translating foreign operations for consolidation." }
+    ]} />
 
-    <div class="legend">
-      <div class="ltitle">Financial statement key</div>
-      <div class="lrow">
-        <span class="badge bs">SOFP</span> Statement of financial position (balance sheet)
-        <span class="badge bp">SOPL</span> Statement of profit or loss (income statement)
-        <span class="badge bo">OCI</span> Other comprehensive income
-        <span class="badge be">Equity</span> Statement of changes in equity
-      </div>
-    </div>
+<FinancialStatementKey />
 
   </div>
   <section id="history">

@@ -11,6 +11,8 @@
 */
 
 import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
 import PageToc from "../../components/PageToc.astro";
 import "../../styles/standards-poster.css";
 import "../../styles/extended.css";
@@ -403,23 +405,14 @@ import metadata from "../../data/standards/ias/ias37.json";
           <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 15</span><span>Onerous revenue contracts interact with IAS 37's onerous contract provisions where unavoidable costs exceed expected benefits</span></div>
         </div>
       </div>
-      <div class="card cn">
-        <div class="ctitle cn">Quick-reference glossary</div>
-        <div class="glossary-item"><div class="glossary-term">Executory contract</div><div class="glossary-def">A contract under which neither party has performed any of its obligations, or both have partially performed to an equal extent — generally outside IAS 37's scope unless onerous.</div></div>
-        <div class="glossary-item"><div class="glossary-term">Onerous contract</div><div class="glossary-def">A contract in which the unavoidable costs of meeting the obligations exceed the economic benefits expected to be received.</div></div>
-        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Constructive obligation</div><div class="glossary-def">An obligation derived from an entity's actions, established pattern of practice, or published policies, creating a valid expectation in others that it will discharge certain responsibilities.</div></div>
-      </div>
+<Glossary entries={[
+      { term: "Executory contract", definition: "A contract under which neither party has performed any of its obligations, or both have partially performed to an equal extent — generally outside IAS 37's scope unless onerous." },
+      { term: "Onerous contract", definition: "A contract in which the unavoidable costs of meeting the obligations exceed the economic benefits expected to be received." },
+      { term: "Constructive obligation", definition: "An obligation derived from an entity's actions, established pattern of practice, or published policies, creating a valid expectation in others that it will discharge certain responsibilities." }
+    ]} title="Quick-reference glossary" />
     </div>
 
-    <div class="legend">
-      <div class="ltitle">Financial statement key</div>
-      <div class="lrow">
-        <span class="badge bs">SOFP</span> Statement of financial position (balance sheet)
-        <span class="badge bp">SOPL</span> Statement of profit or loss (income statement)
-        <span class="badge bo">OCI</span> Other comprehensive income
-        <span class="badge be">Equity</span> Statement of changes in equity
-      </div>
-    </div>
+<FinancialStatementKey />
   </div>
   <section id="history">
     <HistoryTimeline items={history.IAS37} />

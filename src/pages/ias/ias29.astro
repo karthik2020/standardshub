@@ -1,5 +1,7 @@
 ---
 import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
 import PageToc from "../../components/PageToc.astro";
 import "../../styles/standards-poster.css";
 import "../../styles/extended.css";
@@ -344,32 +346,20 @@ import metadata from "../../data/standards/ias/ias29.json";
 
     <!-- ============ SECTION 14 ============ -->
     <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
-    <div class="three-col">
-      <div class="card cn">
-        <div class="glossary-item"><div class="glossary-term">Hyperinflationary economy</div><div class="glossary-def">An economy exhibiting characteristics such as a cumulative 3-year inflation rate approaching or exceeding 100%, along with the qualitative indicators in Section 3.</div></div>
-        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Measuring unit current at the reporting date</div><div class="glossary-def">The unit of currency value, adjusted for cumulative purchasing power changes, used to express ALL amounts in restated hyperinflationary financial statements.</div></div>
-      </div>
-      <div class="card cn">
-        <div class="glossary-item"><div class="glossary-term">Historical cost approach (under IAS 29)</div><div class="glossary-def">Restating historical cost/depreciated historical cost financial statements by a general price index, rather than switching to a wholly different current-cost accounting system.</div></div>
-        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Current cost approach (under IAS 29)</div><div class="glossary-def">A less commonly used alternative where items are already stated at current cost, which are then restated to the measuring unit current at the reporting date.</div></div>
-      </div>
-      <div class="card cn">
-        <div class="glossary-item"><div class="glossary-term">Net monetary position</div><div class="glossary-def">The net of an entity's monetary assets and monetary liabilities — its sign (net asset vs net liability) determines whether hyperinflation produces a loss or gain of purchasing power.</div></div>
-        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Purchasing power</div><div class="glossary-def">The value of currency expressed in terms of the quantity of goods/services it can buy — the concept IAS 29 restatement seeks to preserve consistently across time.</div></div>
-      </div>
-    </div>
+<Glossary entries={[
+      { term: "Hyperinflationary economy", definition: "An economy exhibiting characteristics such as a cumulative 3-year inflation rate approaching or exceeding 100%, along with the qualitative indicators in Section 3." },
+      { term: "Measuring unit current at the reporting date", definition: "The unit of currency value, adjusted for cumulative purchasing power changes, used to express ALL amounts in restated hyperinflationary financial statements." },
+      { term: "Historical cost approach (under IAS 29)", definition: "Restating historical cost/depreciated historical cost financial statements by a general price index, rather than switching to a wholly different current-cost accounting system." },
+      { term: "Current cost approach (under IAS 29)", definition: "A less commonly used alternative where items are already stated at current cost, which are then restated to the measuring unit current at the reporting date." },
+      { term: "Net monetary position", definition: "The net of an entity's monetary assets and monetary liabilities — its sign (net asset vs net liability) determines whether hyperinflation produces a loss or gain of purchasing power." },
+      { term: "Purchasing power", definition: "The value of currency expressed in terms of the quantity of goods/services it can buy — the concept IAS 29 restatement seeks to preserve consistently across time." }
+    ]} />
 
-    <div class="legend">
-      <div class="ltitle">Financial statement key</div>
-      <div class="lrow">
-        <span class="badge bs">SOFP</span> Statement of financial position (balance sheet)
-        <span class="badge bp">SOPL</span> Statement of profit or loss (income statement)
-        <span class="badge bo">OCI</span> Other comprehensive income
-        <span class="badge be">Equity</span> Statement of changes in equity
-      </div>
-    </div>
+<FinancialStatementKey />
   </div>
   <section id="history">
     <HistoryTimeline items={history.IAS29} />
   </section>
 </StandardPageLayout>
+
+

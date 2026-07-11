@@ -1,5 +1,7 @@
 ---
 import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
 import PageToc from "../../components/PageToc.astro";
 import "../../styles/standards-poster.css";
 import "../../styles/extended.css";
@@ -119,7 +121,7 @@ import metadata from "../../data/standards/ias/ias10.json";
         <div class="ctitle cw">What IAS 10 covers</div>
         <div class="principle">IAS 10 prescribes when an entity should adjust its financial statements for events after the reporting period, and the disclosures an entity should give about the date the financial statements were authorised for issue, and about events after the reporting period.</div>
         <div class="elabel">THE REPORTING WINDOW COVERED</div>
-        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Events after the reporting period are those events, favourable and unfavourable, that occur between the END OF THE REPORTING PERIOD and the DATE THE FINANCIAL STATEMENTS ARE AUTHORISED FOR ISSUE — this window can span several weeks or months depending on an entity's reporting timetable.</div>
+        <div class="text-supporting">Events after the reporting period are those events, favourable and unfavourable, that occur between the END OF THE REPORTING PERIOD and the DATE THE FINANCIAL STATEMENTS ARE AUTHORISED FOR ISSUE — this window can span several weeks or months depending on an entity's reporting timetable.</div>
         <div class="callout warn" style="margin-top:9px;margin-bottom:0;">⚠️ Applies to EVERY entity with a reporting period, regardless of size or listing status — there are no scope exemptions.</div>
       </div>
 
@@ -149,11 +151,11 @@ import metadata from "../../data/standards/ias/ias10.json";
         <div class="two-col">
           <div class="spec-box" style="margin-bottom:0;">
             <div class="spec-title" style="color:var(--color-text-success);">Adjusting event → recognise/remeasure</div>
-            <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.5;">Condition existed at year end; the subsequent event is EVIDENCE of that condition. Financial statements are adjusted to reflect it.</div>
+            <div class="text-supporting text-supporting--tight">Condition existed at year end; the subsequent event is EVIDENCE of that condition. Financial statements are adjusted to reflect it.</div>
           </div>
           <div class="spec-box" style="margin-bottom:0;">
             <div class="spec-title" style="color:var(--color-text-success);">Non-adjusting event → disclose only</div>
-            <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.5;">Condition arose entirely AFTER year end. No new recognition or remeasurement is permitted; only disclosure if material.</div>
+            <div class="text-supporting text-supporting--tight">Condition arose entirely AFTER year end. No new recognition or remeasurement is permitted; only disclosure if material.</div>
           </div>
         </div>
         <div class="callout warn" style="margin-top:8px;margin-bottom:0;">⚠️ Once financial statements are AUTHORISED FOR ISSUE, an entity should NOT adjust for events occurring after that date, even if material — such events fall entirely outside the scope of the reported financial statements (though may require separate communication, e.g. a press release).</div>
@@ -241,7 +243,7 @@ import metadata from "../../data/standards/ias/ias10.json";
     <div class="grid">
       <div class="card cs">
         <div class="ctitle cs">Dividends are always non-adjusting</div>
-        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:9px;">If dividends to holders of equity instruments are declared AFTER the reporting period, an entity should NOT recognise those dividends as a liability at the end of the reporting period — there is no present obligation at year end, since the declaration (the obligating event) has not yet occurred.</div>
+        <div class="text-supporting" style="margin-bottom:9px;">If dividends to holders of equity instruments are declared AFTER the reporting period, an entity should NOT recognise those dividends as a liability at the end of the reporting period — there is no present obligation at year end, since the declaration (the obligating event) has not yet occurred.</div>
         <div class="callout warn" style="margin-bottom:0;">⚠️ This applies EVEN IF the dividend relates to profits earned during the reporting period being reported on — the KEY event is the declaration date, not the period the profit relates to.</div>
       </div>
 
@@ -266,15 +268,15 @@ import metadata from "../../data/standards/ias/ias10.json";
     <div class="grid">
       <div class="card cd span2">
         <div class="ctitle cd">Identifying the "date of authorisation for issue"</div>
-        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:9px;">The process for authorising financial statements for issue varies depending on management structure, statutory requirements, and procedures for preparing/finalising them — the ENTITY must determine, based on its specific facts, when this date occurs, and disclose it.</div>
+        <div class="text-supporting" style="margin-bottom:9px;">The process for authorising financial statements for issue varies depending on management structure, statutory requirements, and procedures for preparing/finalising them — the ENTITY must determine, based on its specific facts, when this date occurs, and disclose it.</div>
         <div class="two-col">
           <div>
             <div class="elabel">SCENARIO A — MANAGEMENT ISSUES TO A SUPERVISORY BOARD</div>
-            <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">The financial statements are authorised for issue when management authorises them for issue to the supervisory board, NOT when the supervisory board subsequently approves them.</div>
+            <div class="text-supporting">The financial statements are authorised for issue when management authorises them for issue to the supervisory board, NOT when the supervisory board subsequently approves them.</div>
           </div>
           <div>
             <div class="elabel">SCENARIO B — SHAREHOLDER APPROVAL REQUIRED</div>
-            <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">The date of authorisation for issue is the date the financial statements are issued (e.g. to shareholders for approval), NOT the later date shareholders approve them at the AGM — shareholder approval does not extend the subsequent events window.</div>
+            <div class="text-supporting">The date of authorisation for issue is the date the financial statements are issued (e.g. to shareholders for approval), NOT the later date shareholders approve them at the AGM — shareholder approval does not extend the subsequent events window.</div>
           </div>
         </div>
       </div>
@@ -386,33 +388,22 @@ import metadata from "../../data/standards/ias/ias10.json";
 
     <!-- ============ SECTION 14 ============ -->
     <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
-    <div class="three-col">
-      <div class="card cn">
-        <div class="glossary-item"><div class="glossary-term">Reporting period</div><div class="glossary-def">The period covered by the financial statements — typically 12 months, ending on the reporting date.</div></div>
-        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Authorisation for issue</div><div class="glossary-def">The point at which the entity's management/board formally releases the financial statements for external use — defines the end of the subsequent events window.</div></div>
-      </div>
-      <div class="card cn">
-        <div class="glossary-item"><div class="glossary-term">Break-up basis</div><div class="glossary-def">A basis of accounting used when an entity is no longer a going concern — assets and liabilities are measured at amounts expected to be realised on liquidation, rather than on an ongoing operational basis.</div></div>
-        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Obligating event</div><div class="glossary-def">An event that creates a legal or constructive obligation, leaving the entity no realistic alternative but to settle it — the trigger for dividend recognition under IAS 10/IAS 37.</div></div>
-      </div>
-      <div class="card cn">
-        <div class="glossary-item"><div class="glossary-term">Material</div><div class="glossary-def">Information whose omission or misstatement could reasonably be expected to influence users' decisions — the threshold for requiring non-adjusting event disclosure.</div></div>
-        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Supervisory board</div><div class="glossary-def">A separate governance body (common in some jurisdictions) that may need to approve financial statements AFTER management has already authorised them for issue to that board.</div></div>
-      </div>
-    </div>
+<Glossary entries={[
+      { term: "Reporting period", definition: "The period covered by the financial statements — typically 12 months, ending on the reporting date." },
+      { term: "Authorisation for issue", definition: "The point at which the entity's management/board formally releases the financial statements for external use — defines the end of the subsequent events window." },
+      { term: "Break-up basis", definition: "A basis of accounting used when an entity is no longer a going concern — assets and liabilities are measured at amounts expected to be realised on liquidation, rather than on an ongoing operational basis." },
+      { term: "Obligating event", definition: "An event that creates a legal or constructive obligation, leaving the entity no realistic alternative but to settle it — the trigger for dividend recognition under IAS 10/IAS 37." },
+      { term: "Material", definition: "Information whose omission or misstatement could reasonably be expected to influence users' decisions — the threshold for requiring non-adjusting event disclosure." },
+      { term: "Supervisory board", definition: "A separate governance body (common in some jurisdictions) that may need to approve financial statements AFTER management has already authorised them for issue to that board." }
+    ]} />
 
-    <div class="legend">
-      <div class="ltitle">Financial statement key</div>
-      <div class="lrow">
-        <span class="badge bs">SOFP</span> Statement of financial position (balance sheet)
-        <span class="badge bp">SOPL</span> Statement of profit or loss (income statement)
-        <span class="badge bo">OCI</span> Other comprehensive income
-        <span class="badge be">Equity</span> Statement of changes in equity
-      </div>
-    </div>
+<FinancialStatementKey />
 
   </div>
   <section id="history">
     <HistoryTimeline items={history.IAS10} />
   </section>
 </StandardPageLayout>
+
+
+

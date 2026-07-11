@@ -11,6 +11,8 @@
 */
 
 import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
 import PageToc from "../../components/PageToc.astro";
 import "../../styles/standards-poster.css";
 import "../../styles/extended.css";
@@ -552,56 +554,19 @@ import metadata from "../../data/standards/ias/ias36.json";
     <div class="section-header" id="s13">
       <span class="num">13</span><h2>Quick-Reference Glossary</h2><span class="line"></span>
     </div>
-    <div class="three-col">
-      <div class="card cn">
-        <div class="glossary-item">
-          <div class="glossary-term">Recoverable amount</div><div class="glossary-def">
-            Higher of fair value less costs of disposal (FVLCD) and value in use (VIU).
-          </div>
-        </div>
-        <div class="glossary-item" style="border-bottom:none;">
-          <div class="glossary-term">Value in use (VIU)</div><div class="glossary-def">
-            Present value of future cash flows expected from continuing use of asset and its disposal at end of useful life.
-          </div>
-        </div>
-      </div>
-      <div class="card cn">
-        <div class="glossary-item">
-          <div class="glossary-term">Cash-generating unit (CGU)</div><div class="glossary-def">
-            Smallest identifiable group of assets that generates cash inflows largely independent of other assets/groups.
-          </div>
-        </div>
-        <div class="glossary-item" style="border-bottom:none;">
-          <div class="glossary-term">Goodwill</div><div class="glossary-def">
-            Future economic benefits from assets not individually identified/recognised separately; tested for impairment annually at CGU level.
-          </div>
-        </div>
-      </div>
-      <div class="card cn">
-        <div class="glossary-item">
-          <div class="glossary-term">Impairment loss</div><div class="glossary-def">
-            Amount by which carrying amount exceeds recoverable amount.
-          </div>
-        </div>
-        <div class="glossary-item" style="border-bottom:none;">
-          <div class="glossary-term">Carrying amount</div><div class="glossary-def">
-            Amount at which asset is recognised after deducting accumulated depreciation/amortisation and impairment losses.
-          </div>
-        </div>
-      </div>
-    </div>
+<Glossary entries={[
+      { term: "Recoverable amount", definition: "Higher of fair value less costs of disposal (FVLCD) and value in use (VIU)." },
+      { term: "Value in use (VIU)", definition: "Present value of future cash flows expected from continuing use of asset and its disposal at end of useful life." },
+      { term: "Cash-generating unit (CGU)", definition: "Smallest identifiable group of assets that generates cash inflows largely independent of other assets/groups." },
+      { term: "Goodwill", definition: "Future economic benefits from assets not individually identified/recognised separately; tested for impairment annually at CGU level." },
+      { term: "Impairment loss", definition: "Amount by which carrying amount exceeds recoverable amount." },
+      { term: "Carrying amount", definition: "Amount at which asset is recognised after deducting accumulated depreciation/amortisation and impairment losses." }
+    ]} />
 
-    <div class="legend">
-      <div class="ltitle">Financial statement key</div>
-      <div class="lrow">
-        <span class="badge bs">SOFP</span> Statement of financial position (balance sheet)
-        <span class="badge bp">SOPL</span> Statement of profit or loss (income statement)
-        <span class="badge bo">OCI</span> Other comprehensive income
-        <span class="badge be">Equity</span> Statement of changes in equity
-      </div>
-    </div>
+<FinancialStatementKey />
   </div>
   <section id="history">
     <HistoryTimeline items={history.IAS36} />
   </section>
 </StandardPageLayout>
+

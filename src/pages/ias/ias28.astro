@@ -1,5 +1,7 @@
 ---
 import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
 import PageToc from "../../components/PageToc.astro";
 import "../../styles/standards-poster.css";
 import "../../styles/extended.css";
@@ -378,32 +380,20 @@ import metadata from "../../data/standards/ias/ias28.json";
 
     <!-- ============ SECTION 14 ============ -->
     <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
-    <div class="three-col">
-      <div class="card cn">
-        <div class="glossary-item"><div class="glossary-term">One-line consolidation</div><div class="glossary-def">A colloquial description of the equity method, reflecting the fact that it captures the investee's economic performance within a single SOFP/SOPL line item rather than full line-by-line combination.</div></div>
-        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Joint control</div><div class="glossary-def">The contractually agreed sharing of control of an arrangement, existing only when decisions about relevant activities require unanimous consent of the parties sharing control.</div></div>
-      </div>
-      <div class="card cn">
-        <div class="glossary-item"><div class="glossary-term">Upstream transaction</div><div class="glossary-def">A transaction from the associate/joint venture TO the investor (e.g. the associate sells goods to the investor).</div></div>
-        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Downstream transaction</div><div class="glossary-def">A transaction from the investor TO the associate/joint venture (e.g. the investor sells goods to the associate).</div></div>
-      </div>
-      <div class="card cn">
-        <div class="glossary-item"><div class="glossary-term">Net investment</div><div class="glossary-def">The carrying amount of the investment under the equity method, together with any long-term interests that, in substance, form part of the investor's net investment in the associate/JV.</div></div>
-        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Venture capital organisation</div><div class="glossary-def">An entity that may elect to measure investments in associates/JVs at fair value through profit or loss instead of applying the equity method, per IAS 28's specific exemption.</div></div>
-      </div>
-    </div>
+<Glossary entries={[
+      { term: "One-line consolidation", definition: "A colloquial description of the equity method, reflecting the fact that it captures the investee's economic performance within a single SOFP/SOPL line item rather than full line-by-line combination." },
+      { term: "Joint control", definition: "The contractually agreed sharing of control of an arrangement, existing only when decisions about relevant activities require unanimous consent of the parties sharing control." },
+      { term: "Upstream transaction", definition: "A transaction from the associate/joint venture TO the investor (e.g. the associate sells goods to the investor)." },
+      { term: "Downstream transaction", definition: "A transaction from the investor TO the associate/joint venture (e.g. the investor sells goods to the associate)." },
+      { term: "Net investment", definition: "The carrying amount of the investment under the equity method, together with any long-term interests that, in substance, form part of the investor's net investment in the associate/JV." },
+      { term: "Venture capital organisation", definition: "An entity that may elect to measure investments in associates/JVs at fair value through profit or loss instead of applying the equity method, per IAS 28's specific exemption." }
+    ]} />
 
-    <div class="legend">
-      <div class="ltitle">Financial statement key</div>
-      <div class="lrow">
-        <span class="badge bs">SOFP</span> Statement of financial position (balance sheet)
-        <span class="badge bp">SOPL</span> Statement of profit or loss (income statement)
-        <span class="badge bo">OCI</span> Other comprehensive income
-        <span class="badge be">Equity</span> Statement of changes in equity
-      </div>
-    </div>
+<FinancialStatementKey />
   </div>
   <section id="history">
     <HistoryTimeline items={history.IAS28} />
   </section>
 </StandardPageLayout>
+
+

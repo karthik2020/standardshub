@@ -1,5 +1,7 @@
 ---
 import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
 import PageToc from "../../components/PageToc.astro";
 import "../../styles/standards-poster.css";
 import "../../styles/extended.css";
@@ -1049,79 +1051,42 @@ import metadata from "../../data/standards/ias/ias41.json";
       <span class="num">14</span><h2>Quick-Reference Glossary</h2><span
         class="line"></span>
     </div>
-    <div class="three-col">
-      <div class="card cn">
-        <div class="glossary-item">
-          <div class="glossary-term">Agricultural activity</div><div
-            class="glossary-def"
-          >
-            The management by an entity of the biological transformation and
-            harvest of biological assets for sale, or for conversion into
-            agricultural produce or additional biological assets.
-          </div>
-        </div>
-        <div class="glossary-item" style="border-bottom:none;">
-          <div class="glossary-term">Group of biological assets</div><div
-            class="glossary-def"
-          >
-            An aggregation of similar living animals or plants (e.g. "dairy
-            cattle," "orange trees") used for disclosure and fair value
-            estimation purposes.
-          </div>
-        </div>
-      </div>
-      <div class="card cn">
-        <div class="glossary-item">
-          <div class="glossary-term">Consumable biological assets</div><div
-            class="glossary-def"
-          >
-            Assets to be harvested as agricultural produce or sold as biological
-            assets themselves (e.g. livestock for meat, crops).
-          </div>
-        </div>
-        <div class="glossary-item" style="border-bottom:none;">
-          <div class="glossary-term">Bearer biological assets</div><div
-            class="glossary-def"
-          >
-            Assets held to bear produce repeatedly, other than as agricultural
-            produce themselves (e.g. dairy cattle for milk, sheep for wool) —
-            distinct from "bearer plants," which are scoped OUT to IAS 16
-            entirely.
-          </div>
-        </div>
-      </div>
-      <div class="card cn">
-        <div class="glossary-item">
-          <div class="glossary-term">Active market</div><div
-            class="glossary-def"
-          >
-            A market with homogeneous items, willing buyers/sellers, and
-            publicly available prices — the primary source of fair value
-            evidence.
-          </div>
-        </div>
-        <div class="glossary-item" style="border-bottom:none;">
-          <div class="glossary-term">Point of harvest</div><div
-            class="glossary-def"
-          >
-            The moment produce is detached from the biological asset (or, for
-            continuous production like milk, the moment of milking) — the
-            boundary between IAS 41 and IAS 2.
-          </div>
-        </div>
-      </div>
-    </div>
+    <Glossary
+      entries={[
+        {
+          term: "Agricultural activity",
+          definition:
+            "The management by an entity of the biological transformation and harvest of biological assets for sale, or for conversion into agricultural produce or additional biological assets.",
+        },
+        {
+          term: "Group of biological assets",
+          definition:
+            'An aggregation of similar living animals or plants (e.g. "dairy cattle," "orange trees") used for disclosure and fair value estimation purposes.',
+        },
+        {
+          term: "Consumable biological assets",
+          definition:
+            "Assets to be harvested as agricultural produce or sold as biological assets themselves (e.g. livestock for meat, crops).",
+        },
+        {
+          term: "Bearer biological assets",
+          definition:
+            'Assets held to bear produce repeatedly, other than as agricultural produce themselves (e.g. dairy cattle for milk, sheep for wool) — distinct from "bearer plants," which are scoped OUT to IAS 16 entirely.',
+        },
+        {
+          term: "Active market",
+          definition:
+            "A market with homogeneous items, willing buyers/sellers, and publicly available prices — the primary source of fair value evidence.",
+        },
+        {
+          term: "Point of harvest",
+          definition:
+            "The moment produce is detached from the biological asset (or, for continuous production like milk, the moment of milking) — the boundary between IAS 41 and IAS 2.",
+        },
+      ]}
+    />
 
-    <div class="legend">
-      <div class="ltitle">Financial statement key</div>
-      <div class="lrow">
-        <span class="badge bs">SOFP</span> Statement of financial position (balance
-        sheet)
-        <span class="badge bp">SOPL</span> Statement of profit or loss (income statement)
-        <span class="badge bo">OCI</span> Other comprehensive income
-        <span class="badge be">Equity</span> Statement of changes in equity
-      </div>
-    </div>
+<FinancialStatementKey />
   </div>
   <section id="history">
     <HistoryTimeline items={history.IAS41} />

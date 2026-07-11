@@ -1,4 +1,10 @@
-document.addEventListener("DOMContentLoaded", () => {
+// Run initialization as early as possible. This script is shipped at the end
+// of <body>, so the sidebar DOM is already parsed by the time it executes and
+// the browser has not painted yet. Restoring the scroll position here means
+// the list appears already at the correct offset on the very first paint —
+// no scroll jump and no hide/show blink. (The scroll restore must happen
+// after the filter restore, which can change the list height.)
+function initSidebar() {
 
     // ==========================================================
     // Helpers
@@ -72,79 +78,119 @@ document.addEventListener("DOMContentLoaded", () => {
     // });
 
     // ==========================================================
-    // Search
+    // Filter (navigation)
     // ==========================================================
 
-    const searchInput =
+    const FILTER_KEY = "sidebar-filter";
+
+    const filterInput =
         document.getElementById("standard-search");
+    const filterContainer =
+        document.querySelector(".search-input");
+    const clearButton =
+        document.getElementById("search-action");
+    const emptyState =
+        document.getElementById("sidebar-empty");
 
-    if (searchInput) {
+    // Whitespace-insensitive, case-insensitive key for matching, so that
+    // "IAS16", "IAS 16", "ias16" and "iAs 16" all normalise identically.
+    const normalize = (value) =>
+        value.toLowerCase().replace(/\s+/g, "");
 
-        searchInput.addEventListener("input", () => {
+    function applyFilter(rawTerm) {
 
-            const term =
-                searchInput.value
-                    .trim()
-                    .toLowerCase();
+        const term = normalize(rawTerm);
+        const hasTerm = term !== "";
 
-            sections.forEach(section => {
+        if (filterContainer) {
+            filterContainer.classList.toggle("has-value", hasTerm);
+        }
+        if (clearButton) {
+            clearButton.classList.toggle("visible", hasTerm);
+        }
 
-                const items =
-                    section.querySelector(".section-items");
+        let totalVisible = 0;
 
-                const links =
-                    [...section.querySelectorAll(".nav-link")];
+        sections.forEach(section => {
 
-                let visible = 0;
+            const items =
+                section.querySelector(".section-items");
 
-                links.forEach(link => {
+            const links =
+                [...section.querySelectorAll(".nav-link")];
 
-                    const code =
-                        (link.dataset.code || "")
-                            .toLowerCase();
+            let visible = 0;
 
-                    const title =
-                        (link.dataset.title || "")
-                            .toLowerCase();
+            links.forEach(link => {
 
-                    const match =
-                        term === "" ||
-                        code.includes(term) ||
-                        title.includes(term);
+                const code = normalize(link.dataset.code || "");
+                const title = normalize(link.dataset.title || "");
 
-                    link.style.display =
-                        match ? "" : "none";
+                const match =
+                    !hasTerm ||
+                    code.includes(term) ||
+                    title.includes(term);
 
-                    if (match) visible++;
+                link.style.display = match ? "" : "none";
 
-                });
-
-                if (term === "") {
-
-                    section.style.display = "";
-
-                    setSectionState(
-                        section,
-                        getSavedState(section)
-                    );
-
-                } else {
-
-                    section.style.display =
-                        visible ? "" : "none";
-
-                    if (visible) {
-
-                        section.classList.add("expanded");
-                        items.classList.remove("collapsed");
-
-                    }
-
-                }
+                if (match) visible++;
 
             });
 
+            if (!hasTerm) {
+
+                section.style.display = "";
+                if (items) items.classList.remove("collapsed");
+                setSectionState(section, getSavedState(section));
+
+            } else {
+
+                section.style.display = visible ? "" : "none";
+
+                if (visible && items) {
+                    section.classList.add("expanded");
+                    items.classList.remove("collapsed");
+                }
+
+            }
+
+            totalVisible += visible;
+
         });
+
+        if (emptyState) {
+            emptyState.hidden = !(hasTerm && totalVisible === 0);
+        }
+
+        if (filterInput) {
+            sessionStorage.setItem(FILTER_KEY, filterInput.value);
+        }
+
+    }
+
+    if (filterInput) {
+
+        filterInput.setAttribute("aria-label", "Filter standards");
+
+        filterInput.addEventListener("input", () => {
+            applyFilter(filterInput.value);
+        });
+
+        if (clearButton) {
+            clearButton.setAttribute("aria-label", "Clear filter");
+            clearButton.addEventListener("click", () => {
+                filterInput.value = "";
+                applyFilter("");
+                filterInput.focus();
+            });
+        }
+
+        // Restore the persisted filter for the current session.
+        const saved = sessionStorage.getItem(FILTER_KEY);
+        if (saved) {
+            filterInput.value = saved;
+            applyFilter(saved);
+        }
 
     }
 
@@ -176,8 +222,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
         });
 
-        sidebar.classList.add("ready");
-
     }
 
-});
+}
+
+// Restore synchronously when the sidebar is already in the DOM (the normal
+// case: this script sits at the end of <body>). Fall back to DOMContentLoaded
+// only if it somehow executes before the sidebar exists.
+if (document.querySelector(".sidebar-scroll")) {
+    initSidebar();
+} else {
+    document.addEventListener("DOMContentLoaded", initSidebar);
+}
