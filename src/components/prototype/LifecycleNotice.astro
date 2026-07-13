@@ -23,6 +23,7 @@ import {
   CirclePause,
   ArrowRight,
 } from "@lucide/astro";
+import { getLifecycleCountdown } from "../../utils/lifecycle";
 
 interface Props {
   type:
@@ -39,6 +40,7 @@ interface Props {
   link: string;
   linkText: string;
   currentLabel?: string;
+  eventDate?: string;
 }
 
 const {
@@ -49,6 +51,7 @@ const {
   link,
   linkText,
   currentLabel = "Current Standard",
+  eventDate,
 } = Astro.props;
 
 const iconMap = {
@@ -73,13 +76,23 @@ const titleMap = {
 
 const Icon = iconMap[type];
 const resolvedTitle = title ?? titleMap[type];
+const countdown = getLifecycleCountdown(eventDate);
 ---
 
 <section class={`ln ln--${type}`}>
-  <div class="ln__header">
-    <span class="ln__icon"><Icon size={18} strokeWidth={2} /></span>
-    <span class="ln__title">{resolvedTitle}</span>
-  </div>
+<div class="ln__header">
+  <span class="ln__icon"><Icon size={18} strokeWidth={2} /></span>
+  <span class="ln__title">{resolvedTitle}</span>
+  {countdown.showCountdown && (
+    <span class="ln__badge">
+      {countdown.isToday
+        ? "Today"
+        : countdown.isTomorrow
+          ? "Tomorrow"
+          : `${countdown.daysRemaining} days`}
+    </span>
+  )}
+</div>
   <div class="ln__body">
     <p class="ln__text">{explanation}</p>
     <p class="ln__text">{historical}</p>
@@ -128,6 +141,18 @@ const resolvedTitle = title ?? titleMap[type];
     text-transform: uppercase;
     letter-spacing: 0.08em;
     line-height: 1;
+  }
+
+  .ln__badge {
+    margin-left: auto;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1;
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    white-space: nowrap;
   }
 
   .ln__body {
