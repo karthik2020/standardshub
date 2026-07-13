@@ -47,7 +47,13 @@ const {
     <div class="information-header-main">
       <div class="information-header-top">
         <p class="information-header-code">{code}</p>
-        {status && <div class="information-header-status-pill">{status}</div>}
+        {status && (
+          <div
+            class={`information-header-status-pill information-header-status-pill--${status.toLowerCase().replace(/\s+/g, "-")}`}
+          >
+            {status}
+          </div>
+        )}
       </div>
       <h1 class="information-header-title">{title}</h1>
 
@@ -144,34 +150,47 @@ const {
   }
 
   .information-header-status-pill {
-    background: var(--ifrs-soft);
-    border: 1px solid var(--ifrs);
+    background: var(--status-soft);
+    border: 1px solid var(--status-accent);
     border-radius: var(--radius-pill);
     padding: var(--space-xs) var(--space-md);
     font-size: var(--text-xs);
     font-weight: var(--weight-semibold);
-    color: var(--ifrs);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    color: var(--status-ink);
+    text-transform: none;
+    letter-spacing: 0.01em;
     white-space: nowrap;
   }
 
-  .information-header[data-framework="ias"] .information-header-status-pill {
-    background: var(--ias-soft);
-    border-color: var(--ias);
-    color: var(--ias);
+  .information-header-status-pill--active {
+    --status-accent: #059669;
+    --status-soft: #ecfdf5;
+    --status-ink: #065f46;
   }
 
-  .information-header[data-framework="ifrs"] .information-header-status-pill {
-    background: var(--ifrs-soft);
-    border-color: var(--ifrs);
-    color: var(--ifrs);
+  .information-header-status-pill--upcoming {
+    --status-accent: #7c3aed;
+    --status-soft: #f5f3ff;
+    --status-ink: #6d28d9;
   }
 
-  .information-header[data-framework="indas"] .information-header-status-pill {
-    background: var(--indas-soft);
-    border-color: var(--indas);
-    color: var(--indas);
+  .information-header-status-pill--superseded,
+  .information-header-status-pill--replaced {
+    --status-accent: #b45309;
+    --status-soft: #fffbeb;
+    --status-ink: #92400e;
+  }
+
+  .information-header-status-pill--withdrawn {
+    --status-accent: #dc2626;
+    --status-soft: #fff1f2;
+    --status-ink: #b91c1c;
+  }
+
+  .information-header-status-pill--exposure-draft {
+    --status-accent: #475569;
+    --status-soft: #f8fafc;
+    --status-ink: #334155;
   }
 
   .information-header-title {
