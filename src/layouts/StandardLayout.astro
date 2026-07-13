@@ -7,6 +7,7 @@ interface Props {
   code: string;
   title: string;
   framework?: string;
+  noindex?: boolean;
 }
 const {
   code,
@@ -14,6 +15,7 @@ const {
   title,
 
   framework = "",
+  noindex = false,
 } = Astro.props;
 ---
 
@@ -21,7 +23,7 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    {noindex && <meta name="robots" content="noindex" />}
     <title>{title} | StandardsHub</title>
   </head>
 
