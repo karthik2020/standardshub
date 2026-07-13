@@ -22,6 +22,7 @@ import {
   RefreshCw,
   CirclePause,
   ArrowRight,
+  ArrowDown,
 } from "@lucide/astro";
 import { getLifecycleCountdown } from "../../utils/lifecycle";
 
@@ -41,6 +42,8 @@ interface Props {
   linkText: string;
   currentLabel?: string;
   eventDate?: string;
+  transitionTo?: string;
+  targetStatus?: string;
 }
 
 const {
@@ -52,6 +55,8 @@ const {
   linkText,
   currentLabel = "Current Standard",
   eventDate,
+  transitionTo,
+  targetStatus,
 } = Astro.props;
 
 const iconMap = {
@@ -93,6 +98,12 @@ const countdown = getLifecycleCountdown(eventDate);
     </span>
   )}
 </div>
+  {transitionTo && targetStatus && (
+    <div class="ln__transition">
+      <span class="ln__transition-arrow"><ArrowDown size={14} strokeWidth={2} /></span>
+      <span class="ln__transition-target">{targetStatus}</span>
+    </div>
+  )}
   <div class="ln__body">
     <p class="ln__text">{explanation}</p>
     <p class="ln__text">{historical}</p>
@@ -153,6 +164,34 @@ const countdown = getLifecycleCountdown(eventDate);
     background: rgba(255, 255, 255, 0.25);
     color: #ffffff;
     white-space: nowrap;
+  }
+
+  .ln__transition {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 6px 16px;
+    background: var(--ln-soft);
+    border-top: 1px solid var(--ln-divider);
+    color: var(--ln-ink);
+  }
+
+  .ln__transition-arrow {
+    display: inline-flex;
+    flex-shrink: 0;
+  }
+
+  .ln__transition-arrow :global(svg) {
+    width: 14px;
+    height: 14px;
+  }
+
+  .ln__transition-target {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
   }
 
   .ln__body {
