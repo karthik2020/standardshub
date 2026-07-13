@@ -70,15 +70,6 @@ import "../../styles/extended.css";
             <div class="proto-hero__meta-value">{formatStandardDate(metadata.latestAmendment)}</div>
           </div>
         )}
-        <div class="proto-hero__meta-card">
-          <div class="proto-hero__meta-label">Status</div>
-          <div class="proto-hero__meta-value">
-            <span class="hero-status-pill hero-status-pill--superseded">
-              <span class="hero-status-pill__circle"><ArrowRightLeft /></span>
-              Superseded
-            </span>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -376,8 +367,10 @@ import "../../styles/extended.css";
     .proto-hero__header {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       gap: var(--space-md);
       flex-wrap: wrap;
+      margin-bottom: var(--space-sm);
     }
     .proto-hero__code {
       font-size: 15px;
@@ -591,6 +584,17 @@ import "../../styles/extended.css";
     .proto-lifecycle__action-link :global(svg) {
       width: 14px;
       height: 14px;
+    }
+
+    @media (max-width: 640px) {
+      .proto-hero__header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-sm);
+      }
+      .hero-status-pill {
+        align-self: flex-start;
+      }
     }
   </style>
 </StandardLayout>
