@@ -253,7 +253,7 @@ body {
 }
 
 .sidebar-item.active {
-    background: #2563eb;
+    background: var(--accent);
     color: white;
     font-weight: 600;
 }
@@ -273,6 +273,23 @@ body {
     flex: 1;
     min-width: 0;
     padding: var(--space-lg) 0 0 var(--space-lg);
+    --accent: #475569;
+}
+
+.content[data-framework="home"] {
+    --accent: #475569;
+}
+
+.content[data-framework="ias"] {
+    --accent: var(--ias);
+}
+
+.content[data-framework="ifrs"] {
+    --accent: var(--ifrs);
+}
+
+.content[data-framework="indas"] {
+    --accent: var(--indas);
 }
 
 .search-input-wrapper {
@@ -308,13 +325,13 @@ body {
 }
 
 .search-box input:hover {
-    border-color: #93c5fd;
+    border-color: var(--accent);
 }
 
 .search-box input:focus {
     outline: none;
-    border-color: #2563eb;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12), 0 0 16px rgba(37, 99, 235, 0.15);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 12%, transparent), 0 0 16px color-mix(in srgb, var(--accent) 15%, transparent);
 }
 
 .section {
@@ -1536,11 +1553,11 @@ section li:last-child {
 }
 
 .search-action:hover {
-    background: #1d4ed8;
+    background: var(--accent);
 }
 
 .search-action:focus-visible {
-    background: #1d4ed8;
+    background: var(--accent);
     outline: 2px solid #fff;
     outline-offset: -2px;
 }
