@@ -31,20 +31,22 @@ import StandardLayout from "../layouts/StandardLayout.astro";
 
     <div class="page-404__section">
       <h2 class="page-404__section-title">Search</h2>
-      <div class="search-box">
-        <div class="search-input-wrapper">
-          <div class="search-placeholder" id="search-placeholder"></div>
-          <input
-            class="search-input"
-            id="standard-search"
-            type="text"
-            placeholder="Search standards..."
-            aria-label="Search standards"
-            autocomplete="off"
-          />
-          <button class="search-action" id="search-action" type="button" aria-label="Clear" title="Clear">
-            ✕
-          </button>
+      <div class="page-404__search">
+        <div class="search-box">
+          <div class="search-input-wrapper">
+            <div class="search-placeholder" id="search-placeholder"></div>
+            <input
+              class="search-input"
+              id="standard-search"
+              type="text"
+              placeholder="Search standards..."
+              aria-label="Search standards"
+              autocomplete="off"
+            />
+            <button class="search-action" id="search-action" type="button" aria-label="Clear" title="Clear">
+              ✕
+            </button>
+          </div>
         </div>
       </div>
       <!-- TODO: Wire this search input to the site's standard search functionality -->
@@ -190,92 +192,8 @@ import StandardLayout from "../layouts/StandardLayout.astro";
     transform: translateY(-1px);
   }
 
-  /* Reuse existing search box styles from site.css */
-  .search-box {
-    position: relative;
+  .page-404__search {
     max-width: 480px;
-  }
-
-  .search-box::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: var(--radius-pill);
-    border: 1px solid var(--border);
-    background: var(--input);
-    transition: border-color var(--transition-fast) var(--ease), box-shadow var(--transition-fast) var(--ease);
-    pointer-events: none;
-  }
-
-  .search-box:focus-within::before {
-    border-color: var(--text-muted);
-    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.04);
-  }
-
-  .search-box input:hover::before {
-    border-color: var(--text-muted);
-  }
-
-  .search-box input:focus {
-    outline: none;
-  }
-
-  .search-input-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
-
-  .search-input {
-    width: 100%;
-    padding: 10px 36px 10px 14px;
-    border: none;
-    border-radius: var(--radius-pill);
-    background: transparent;
-    font-size: var(--text-small);
-    color: var(--text);
-    line-height: 1.4;
-  }
-
-  .search-input::placeholder {
-    color: var(--text-muted);
-    opacity: .7;
-  }
-
-  .search-input:focus-visible {
-    outline: none;
-  }
-
-  .search-action {
-    position: absolute;
-    right: 8px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px;
-    height: 24px;
-    border: none;
-    border-radius: var(--radius-pill);
-    background: transparent;
-    color: var(--text-muted);
-    cursor: pointer;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity var(--transition-fast) var(--ease), background var(--transition-fast) var(--ease);
-    padding: 0;
-    font-size: 14px;
-    line-height: 1;
-  }
-
-  .search-action.visible {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .search-action:hover,
-  .search-action:focus-visible {
-    background: var(--surface-alt);
-    color: var(--text);
   }
 
   @media (max-width: 640px) {
