@@ -8,6 +8,7 @@ interface Props {
   title: string;
   framework?: string;
   noindex?: boolean;
+  hideFramework?: boolean;
 }
 const {
   code,
@@ -16,6 +17,7 @@ const {
 
   framework = "",
   noindex = false,
+  hideFramework = false,
 } = Astro.props;
 ---
 
@@ -29,7 +31,31 @@ const {
 
   <body>
     <div class="app-shell">
-      <Header code={code} title={title} framework={framework} />
+      {hideFramework ? (
+        <header class="site-header">
+          <div class="header-left">
+            <a href="/" class="site-logo">
+              <span class="logo-mark"></span>
+              <span class="logo-text"> StandardsHub </span>
+            </a>
+            <nav class="header-breadcrumbs">
+              <a href="/" class="crumb breadcrumb-home">
+                <span>Home</span>
+              </a>
+              <span class="breadcrumb-separator">❯</span>
+              <span class="breadcrumb-current">
+                <span class="breadcrumb-title">{title}</span>
+              </span>
+            </nav>
+          </div>
+          <div class="header-right">
+            <slot />
+            <button class="toolbar-btn" id="printBtn" title="Print"> 🖨 </button>
+          </div>
+        </header>
+      ) : (
+        <Header code={code} title={title} framework={framework} />
+      )}
 
       <div class="app-body">
         <Sidebar />
