@@ -1,0 +1,89 @@
+---
+/*
+  Definition
+
+  Reusable reference-definition block for IAS / IFRS / Ind AS pages.
+  Distinct from the callout panels: quiet, textbook-like, surface-tinted,
+  with a subtle neutral left-border accent.
+
+  Usage:
+    <Definition term="Asset">
+      A resource controlled by the entity as a result of past events
+      from which future economic benefits are expected to flow.
+    </Definition>
+*/
+
+interface Props {
+  term: string;
+  class?: string;
+}
+
+const { term, class: className } = Astro.props;
+---
+
+<section class:list={["definition", className]} aria-label="Definition">
+  <div class="definition__head">
+    <span class="definition__label">Definition</span>
+  </div>
+  <dl class="definition__dl">
+    <dt class="definition__term">{term}</dt>
+    <dd class="definition__body">
+      <slot />
+    </dd>
+  </dl>
+</section>
+
+<style>
+  .definition {
+    background: var(--color-background-tertiary);
+    border: 1px solid var(--color-border-secondary);
+    border-left: 3px solid var(--color-border-secondary);
+    border-radius: var(--border-radius-md);
+    padding: 13px 15px;
+    margin: 0 0 12px;
+  }
+
+  .definition__head {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 7px;
+  }
+
+  .definition__label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-text-tertiary);
+  }
+
+  .definition__dl {
+    margin: 0;
+  }
+
+  .definition__term {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin: 0 0 4px;
+  }
+
+  .definition__body {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+  }
+
+  .definition__body :global(strong) {
+    color: var(--color-text-primary);
+    font-weight: 600;
+  }
+
+  @media (max-width: 520px) {
+    .definition {
+      padding: 11px 13px;
+    }
+  }
+</style>

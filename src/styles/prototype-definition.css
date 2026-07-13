@@ -1,0 +1,182 @@
+/* ======================================================
+   PROTOTYPE — Definition component variants
+   ------------------------------------------------------
+   Fully isolated under the `.pd-` prefix.
+   Does NOT modify the production Definition component,
+   any accounting page, or any existing stylesheet.
+
+   Reuses existing design tokens:
+     --color-background-tertiary
+     --color-border-secondary
+     --color-text-primary / -secondary / -tertiary
+     --border-radius-md
+
+   No framework colours, gradients, shadows, chips, or
+   decorative elements.
+   ====================================================== */
+
+/* ---------- Prototype page scaffolding ---------- */
+
+.pd-intro {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin: 0 0 8px;
+}
+
+.pd-intro strong {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.pd-note {
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--color-text-tertiary);
+  border-left: 3px solid var(--color-border-secondary);
+  background: var(--color-background-tertiary);
+  border-radius: var(--border-radius-md);
+  padding: 10px 12px;
+  margin: 0 0 22px;
+}
+
+.pd-col-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.pd-col-head {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  padding-bottom: 8px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid var(--color-border-secondary);
+}
+
+.pd-col-head span {
+  display: block;
+  margin-top: 3px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--color-text-tertiary);
+}
+
+/* ---------- Definition block (shared) ---------- */
+
+.pd-def {
+  background: var(--color-background-tertiary);
+  border: 1px solid var(--color-border-secondary);
+  border-radius: var(--border-radius-md);
+  padding: 13px 15px;
+  margin: 0 0 12px;
+}
+
+.pd-def__head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 7px;
+}
+
+.pd-def__label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+
+.pd-def__dl {
+  margin: 0;
+}
+
+.pd-def__term {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 4px;
+}
+
+.pd-def__body {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+}
+
+.pd-def__body strong {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+/* ---------- Variant 1 — Current implementation ----------
+   Mirrors the production Definition component exactly:
+   subtle neutral 3px left border, 16px term, no icon. */
+
+.pd-def--current {
+  border-left: 3px solid var(--color-border-secondary);
+}
+
+/* ---------- Variant A ----------
+   Per spec: no BookOpen icon (none present), 16px term
+   (unchanged), subtle neutral ~3px left border (unchanged).
+   Visually identical to current. */
+
+.pd-def--a {
+  border-left: 3px solid var(--color-border-secondary);
+}
+
+/* ---------- Variant B ----------
+   Same as A, but the left border is replaced by a slightly
+   stronger neutral top border. */
+
+.pd-def--b {
+  border-top: 3px solid var(--color-border-secondary);
+}
+
+/* ---------- Recommendation ---------- */
+
+.pd-reco {
+  margin: 34px 0 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--color-border-secondary);
+}
+
+.pd-reco h2 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 10px;
+}
+
+.pd-reco p {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+  margin: 0 0 10px;
+}
+
+.pd-reco strong {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+@media (max-width: 880px) {
+  .pd-col-grid {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+}
+
+@media (max-width: 520px) {
+  .pd-def {
+    padding: 11px 13px;
+  }
+}

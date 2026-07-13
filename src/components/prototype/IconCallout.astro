@@ -1,0 +1,32 @@
+---
+import {
+  Info,
+  TriangleAlert,
+  Check,
+  X,
+  Lightbulb,
+} from "@lucide/astro";
+
+interface Props {
+  variant: "info" | "warn" | "danger" | "suc" | "formula";
+}
+
+const { variant = "info" } = Astro.props;
+
+const icons = {
+  info: Info,
+  warn: TriangleAlert,
+  suc: Check,
+  danger: X,
+  formula: Lightbulb,
+} as const;
+
+const Icon = icons[variant];
+---
+
+<div class:list={["pc-callout", `pc-callout--${variant}`]}>
+  <span class="pc-callout__bead">
+    <Icon />
+  </span>
+  <slot />
+</div>

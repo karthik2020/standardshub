@@ -1,0 +1,112 @@
+---
+/*
+  Example
+
+  Reusable worked-illustration block for IAS / IFRS / Ind AS pages.
+  Distinct from Definition (no left-border accent), Callout (no colour tint),
+  and Formula box (no warm palette).
+
+  Usage:
+    <Example title="Capitalisation of Borrowing Costs">
+      A company constructs a factory over 18 months using a specific borrowing.
+
+      Interest incurred during construction is capitalised as part of the
+      cost of the qualifying asset.
+    </Example>
+
+    <!-- Without a title -->
+    <Example>
+      The aircraft industry characteristically produces high-value,
+      long-lived assets with extended production cycles.
+    </Example>
+*/
+
+interface Props {
+  title?: string;
+  class?: string;
+}
+
+const { title, class: className } = Astro.props;
+---
+
+<section class:list={["example", className]} aria-label="Example">
+
+  <div class="example__head">
+    <span class="example__label">Example</span>
+  </div>
+
+  {title && (
+    <div class="example__title-wrap">
+      <p class="example__title">{title}</p>
+    </div>
+  )}
+
+  <div class="example__body">
+    <slot />
+  </div>
+
+</section>
+
+<style>
+  .example {
+    background: var(--color-background-tertiary);
+    border: 1px solid var(--color-border-secondary);
+    border-left: 3px solid var(--color-border-secondary);
+    border-radius: var(--border-radius-md);
+    padding: 13px 15px;
+    margin: 0 0 12px;
+  }
+
+  .example__head {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 7px;
+  }
+
+  .example__label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-text-tertiary);
+  }
+
+  .example__title-wrap {
+    margin-bottom: 6px;
+  }
+
+  .example__title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .example__body {
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  .example__body :global(p) {
+    margin: 0 0 6px;
+  }
+
+  .example__body :global(p:last-child) {
+    margin-bottom: 0;
+  }
+
+  .example__body :global(strong) {
+    color: var(--color-text-primary);
+    font-weight: 600;
+  }
+
+  @media (max-width: 520px) {
+    .example {
+      padding: 11px 13px;
+    }
+  }
+</style>

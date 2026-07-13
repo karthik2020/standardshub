@@ -1,0 +1,356 @@
+---
+import StandardLayout from "../../layouts/StandardLayout.astro";
+import "../../styles/prototype-worked-example.css";
+
+const example = {
+  title: "Initial measurement \u2014 automated production line",
+  standard: "IAS 16",
+  reference: "Property, Plant and Equipment",
+  scenario:
+    "MfgCo Ltd installs a new automated production line at its main plant. The line is expected to operate for 12 years with no residual value. Work commenced on 1 January 20X1 and the asset was ready for its intended use on 30 June 20X1.",
+  given: [
+    { item: "Direct materials \u2014 purchased and used", cost: 85_000 },
+    { item: "Direct labour \u2014 factory operators and technicians", cost: 42_000 },
+    { item: "Production overhead \u2014 allocated to the project", cost: 18_000 },
+    { item: "Site preparation and clearing", cost: 12_000 },
+    { item: "Delivery and handling", cost: 6_000 },
+    { item: "Assembly and installation", cost: 22_000 },
+    { item: "Trial and test runs (functioning verified)", cost: 8_000 },
+    { item: "Present value of asset retirement obligation", cost: 15_000 },
+  ],
+  total: 208_000,
+  calculation:
+    "$85,000 + $42,000 + $18,000 + $12,000 + $6,000 + $22,000 + $8,000 + $15,000 = $208,000",
+  entry:
+    "Dr Property, Plant and Equipment \u2014 Production Line  $208,000\\n      Cr Accounts Payable / Cash                                $208,000\\n(Being initial measurement of the production line capitalised)",
+  conclusion:
+    "All costs that are directly attributable to bringing the asset to the location and condition necessary for it to be capable of operating in the manner intended by management are capitalised as part of the cost of the PPE under IAS 16.15\u2013.16. Day-to-day servicing costs are recognised as an expense when incurred.",
+};
+---
+
+<StandardLayout
+  code="PROT5"
+  title="Worked Example \u2014 Visual Prototype"
+  framework="Design"
+>
+  <p class="pw-intro">
+    <strong>Design prototype only.</strong> This page does not modify any existing
+    worked example, component, or stylesheet. It demonstrates three distinct visual
+    concepts for a standalone Worked Example block so a direction can be chosen
+    before extraction into a production component. The same IAS 16 accounting
+    scenario is used throughout.
+  </p>
+
+  <div class="pw-grid-2">
+    <!-- ============ CONCEPT A ============ -->
+    <div class="pw-section">
+      <h2 class="pw-concept__title">Concept A \u2014 Current Evolution</h2>
+      <p class="pw-concept__desc">
+        Improves the existing orange left-border treatment with better spacing,
+        stronger typographic hierarchy, and clearer internal sections.
+        Warm amber accent retained so it reads as a natural evolution of
+        the current design.
+      </p>
+
+      <div class="pwa">
+        <div class="pwa__head">
+          <span class="pwa__label">Worked Example</span>
+          <h3 class="pwa__title">{example.title}</h3>
+        </div>
+
+        <div class="pwa__section">
+          <div class="pwa__section-header">Scenario</div>
+          <p class="pwa__body">{example.scenario}</p>
+        </div>
+
+        <div class="pwa__section">
+          <div class="pwa__section-header">Given Information</div>
+          <p class="pwa__body">{example.given.length} relevant costs identified:</p>
+          <div class="pwa__calc">
+            {example.given.map((g) => (
+              <div class="pwa__calc-item">
+                <span>{g.item}</span>
+                <span>${g.cost.toLocaleString()}</span>
+              </div>
+            ))}
+            <div class="pwa__calc-total">
+              <span>Total capitalisable cost</span>
+              <span>${example.total.toLocaleString()}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pwa__section">
+          <div class="pwa__section-header">Calculation</div>
+          <p class="pwa__body">{example.calculation}</p>
+        </div>
+
+        <div class="pwa__section">
+          <div class="pwa__section-header">Journal Entry</div>
+          <div class="pwa__entry">
+            <span class="pwa__entry-debit">Dr PPE \u2014 Production Line</span>
+            <span>${example.total.toLocaleString()}</span>
+          </div>
+          <div class="pwa__entry pwa__entry-credit">
+            <span class="pwa__entry-credit">Cr Cash / Accounts Payable</span>
+            <span>${example.total.toLocaleString()}</span>
+          </div>
+        </div>
+
+        <div class="pwa__section">
+          <div class="pwa__section-header">Conclusion</div>
+          <p class="pwa__body">{example.conclusion}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ CONCEPT B ============ -->
+    <div class="pw-section">
+      <h2 class="pw-concept__title">Concept B \u2014 Textbook Style</h2>
+      <p class="pw-concept__desc">
+        Minimal colours, strong typography, clear section dividers, and a calm
+        documentation appearance. Readability is the primary focus; the form
+        echoes the structure of accounting textbooks.
+      </p>
+
+      <div class="pwb">
+        <div class="pwb__head">
+          <div class="pwb__label">Worked Example</div>
+          <h3 class="pwb__title">{example.title}</h3>
+        </div>
+
+        <div class="pwb__section">
+          <div class="pwb__section-header" data-num="1">Scenario</div>
+          <p class="pwb__body">{example.scenario}</p>
+        </div>
+
+        <div class="pwb__section">
+          <div class="pwb__section-header" data-num="2">Given Information</div>
+          <table class="pwb__table">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th style="text-align:right">Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              {example.given.map((g) => (
+                <tr>
+                  <td>{g.item}</td>
+                  <td>${g.cost.toLocaleString()}</td>
+                </tr>
+              ))}
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Total capitalisable cost</td>
+                <td>${example.total.toLocaleString()}</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+
+        <div class="pwb__section">
+          <div class="pwb__section-header" data-num="3">Calculation</div>
+          <p class="pwb__body">{example.calculation}</p>
+        </div>
+
+        <div class="pwb__section">
+          <div class="pwb__section-header" data-num="4">Journal Entry</div>
+          <div class="pwb__entry">
+            <span class="pwb__entry-debit">Dr PPE \u2014 Production Line</span>
+            <span>${example.total.toLocaleString()}</span>
+          </div>
+          <div class="pwb__entry">
+            <span class="pwb__entry-credit">Cr Cash / Accounts Payable</span>
+            <span>${example.total.toLocaleString()}</span>
+          </div>
+        </div>
+
+        <div class="pwb__section">
+          <div class="pwb__section-header" data-num="5">Conclusion</div>
+          <p class="pwb__conclusion">
+            <strong>Key point:</strong> {example.conclusion}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ CONCEPT C ============ -->
+  <div class="pw-section" style="margin-top: 22px;">
+    <h2 class="pw-concept__title">Concept C \u2014 StandardsHub Signature</h2>
+    <p class="pw-concept__desc">
+      A unique anchored-bar pattern with step-coded internal sections. Uses a
+      neutral dark header so it reads as a formal case-study card. The two-column
+      body grid keeps Scenario and Information on the left while Calculation and
+      Journal Entry sit on the right, then Conclusion spans full width below.
+    </p>
+
+    <div class="pwc">
+      <div class="pwc__bar">
+        <span class="pwc__bar-num">1</span>
+        <span class="pwc__bar-label">Worked Example</span>
+        <span class="pwc__bar-title">{example.title}</span>
+      </div>
+
+      <div class="pwc__body">
+        <div class="pwc__section">
+          <div class="pwc__section-header">
+            <span class="pwc__step">1</span>
+            Scenario
+          </div>
+          <p class="pwc__section-body">{example.scenario}</p>
+        </div>
+
+        <div class="pwc__section">
+          <div class="pwc__section-header">
+            <span class="pwc__step">2</span>
+            Given Information
+          </div>
+          <p class="pwc__section-body">
+            {example.given.length} relevant costs identified under IAS 16.16:
+          </p>
+          <table class="pwc__table" style="margin-top:5px;">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th style="text-align:right">Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              {example.given.map((g) => (
+                <tr>
+                  <td>{g.item}</td>
+                  <td>${g.cost.toLocaleString()}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <div class="pwc__calc" style="margin-top:6px;">
+            {example.given.map((g) => (
+              <div class="pwc__calc-item">
+                <span>{g.item}</span>
+                <span>${g.cost.toLocaleString()}</span>
+              </div>
+            ))}
+            <div class="pwc__calc-total">
+              <span>Total</span>
+              <span>${example.total.toLocaleString()}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pwc__section">
+          <div class="pwc__section-header">
+            <span class="pwc__step">3</span>
+            Calculation
+          </div>
+          <p class="pwc__section-body">{example.calculation}</p>
+        </div>
+
+        <div class="pwc__section">
+          <div class="pwc__section-header">
+            <span class="pwc__step">4</span>
+            Journal Entry
+          </div>
+          <div class="pwc__entry">
+            <span class="pwc__entry-debit">Dr PPE \u2014 Production Line</span>
+            <span class="pwc__entry-amount">${example.total.toLocaleString()}</span>
+          </div>
+          <div class="pwc__entry">
+            <span class="pwc__entry-credit">Cr Cash / Accounts Payable</span>
+            <span class="pwc__entry-amount">${example.total.toLocaleString()}</span>
+          </div>
+        </div>
+
+        <div class="pwc__section pwc__section--full">
+          <div class="pwc__section-header">
+            <span class="pwc__step">5</span>
+            Conclusion
+          </div>
+          <p class="pwc__section-body">{example.conclusion}</p>
+        </div>
+      </div>
+
+      <div class="pwc__footer">
+        <strong>Reference:</strong> {example.standard}: Property, Plant and Equipment.
+        Costs directly attributable under IAS 16.15\u2013.16. Dismantling obligations
+        recognised per IAS 37 at present value.
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ EVALUATION ============ -->
+  <section class="pw-eval">
+    <h2 class="pw-eval__title">Evaluation</h2>
+
+    <h3>Concept A \u2014 Current Evolution</h3>
+    <p>
+      <strong>Strengths:</strong> The most familiar direction for existing StandardsHub
+      readers. Warm amber accent reuses the current orange convention, so users do not
+      need to learn a new language. Section labels, inset calculation boxes, and
+      stronger title weight improve scannability without departing from the site's
+      visual rhythm.
+    </p>
+    <p>
+      <strong>Weaknesses:</strong> It is structurally identical to the callout card
+      pattern (left-border accent + surface-tinted card), so despite improved spacing it
+      still risks being confused with an information box. It does not yet feel like a
+      distinct "work" or "case study" block.
+    </p>
+
+    <h3>Concept B \u2014 Textbook Style</h3>
+    <p>
+      <strong>Strengths:</strong> The most readable and least distracting treatment.
+      By removing colour from the hierarchy it forces the reader to engage with the
+      accounting content rather than the container. The horizontal dividers between
+      named sections create a clear document rhythm, and the inclusion/rendering of
+      tabular data for given information is genuinely more useful for complex numbers
+      than a prose description.
+    </p>
+    <p>
+      <strong>Weaknesses:</strong> Lacks visual "signature" — at a glance it is easy to
+      mistake for an expanded Definition block or a general note. Without an accent the
+      page feels flatter and less branded. Could also intimidate casual readers who
+      prefer visual cues over typographic structure.
+    </p>
+
+    <h3>Concept C \u2014 StandardsHub Signature</h3>
+    <p>
+      <strong>Strengths:</strong> The number-coded bar header and step-badged sections
+      give the block an immediate "case study" identity that no other component on
+      StandardsHub currently has. It feels like a self-contained accounting lab. The
+      two-column body grid creates a natural left-to-right reading flow (Scenario
+      \u2192 Information on the left; Calculation \u2192 Journal Entry on the right),
+      which mirrors how students approach an exam question. It is the only concept
+      that simultaneously reads as "worked example", "case study", and "StandardsHub".
+    </p>
+    <p>
+      <strong>Weaknesses:</strong> The most visually complex of the three, so it carries
+      the highest risk of spacing breakdowns across content lengths. The header bar
+      occupies extra vertical space on mobile, and the two-column grid needs a
+      deliberate stacking rule. Producing it inside a reusable component would require
+      careful slot naming to keep the HTML structure manageable for content editors.
+    </p>
+
+    <h3>Recommendation</h3>
+    <p>
+      <strong>Concept C \u2014 StandardsHub Signature</strong> is the recommended
+      direction. It is the only concept that gives the Worked Example a genuinely
+      distinct, ownable visual identity that is recognisable without colour cues and
+      that communicates purpose before the reader encounters a single word of text.
+      The step-coded sections and anchored header bar speak the StandardsHub design
+      language (modular units, structured hierarchy, clean surfaces) while avoiding
+      any colour association with callouts, formulas, or the legacy orange panel.
+    </p>
+    <p style="margin-top:10px;">
+      <strong>Concept A</strong> is the safe fallback if a contained, conservative
+      evolution is preferred (tests better with existing orange-conditioned readers).
+      <strong>Concept B</strong> is suitable for standalone appendices or long form
+      textbook exports but is too subtle as the default inline pattern.
+      The production component should be refined from <strong>Concept C</strong> after
+      this review.
+    </p>
+  </section>
+</StandardLayout>
