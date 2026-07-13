@@ -13,6 +13,7 @@ import ias8 from "./ias8.json";
 import ias10 from "./ias10.json";
 import ias12 from "./ias12.json";
 import ias16 from "./ias16.json";
+import ias17 from "./ias17.json";
 import ias19 from "./ias19.json";
 import ias20 from "./ias20.json";
 import ias21 from "./ias21.json";
@@ -22,12 +23,15 @@ import ias26 from "./ias26.json";
 import ias27 from "./ias27.json";
 import ias28 from "./ias28.json";
 import ias29 from "./ias29.json";
+import ias31 from "./ias31.json";
 import ias32 from "./ias32.json";
 import ias33 from "./ias33.json";
 import ias34 from "./ias34.json";
+import ias35 from "./ias35.json";
 import ias36 from "./ias36.json";
 import ias37 from "./ias37.json";
 import ias38 from "./ias38.json";
+import ias39 from "./ias39.json";
 import ias40 from "./ias40.json";
 import ias41 from "./ias41.json";
 
@@ -43,6 +47,7 @@ export const IASStandards: StandardMetadata[] = [
   ias10 as StandardMetadata,
   ias12 as StandardMetadata,
   ias16 as StandardMetadata,
+  ias17 as StandardMetadata,
   ias19 as StandardMetadata,
   ias20 as StandardMetadata,
   ias21 as StandardMetadata,
@@ -52,12 +57,15 @@ export const IASStandards: StandardMetadata[] = [
   ias27 as StandardMetadata,
   ias28 as StandardMetadata,
   ias29 as StandardMetadata,
+  ias31 as StandardMetadata,
   ias32 as StandardMetadata,
   ias33 as StandardMetadata,
   ias34 as StandardMetadata,
+  ias35 as StandardMetadata,
   ias36 as StandardMetadata,
   ias37 as StandardMetadata,
   ias38 as StandardMetadata,
+  ias39 as StandardMetadata,
   ias40 as StandardMetadata,
   ias41 as StandardMetadata,
 ].sort((a, b) => (a.order || 999) - (b.order || 999));

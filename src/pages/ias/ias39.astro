@@ -1,0 +1,340 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import StandardLifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import metadata from "../../data/standards/ias/ias39.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  issued={metadata.issued}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope & Applicability" },
+        { id: "s3", label: "The Four Classification Categories" },
+        { id: "s4", label: "Recognition & Initial Measurement" },
+        { id: "s5", label: "Subsequent Measurement" },
+        { id: "s6", label: "Impairment — Incurred Loss" },
+        { id: "s7", label: "Derecognition" },
+        { id: "s8", label: "Embedded Derivatives & Hedge Accounting" },
+        { id: "s9", label: "Disclosure Requirements" },
+        { id: "s10", label: "Critical Judgments & Estimates" },
+        { id: "s11", label: "IAS 39 vs IFRS 9" },
+        { id: "s12", label: "Statement Mapping" },
+        { id: "s13", label: "Related Standards" },
+        { id: "s14", label: "Quick-Reference Glossary" },
+      ]}
+    />
+  </Fragment>
+
+  <StandardLifecycleNotice
+    type="superseded"
+    title="Superseded Standard"
+  >
+    <p>
+      IAS 39 was withdrawn and replaced by <strong>IFRS 9 Financial Instruments</strong>,
+      effective for periods beginning on or after 1 January 2018. It is retained here for
+      historical reference and because its core recognition, derecognition, and hedge
+      accounting concepts still underpin IFRS 9 in modified form. For current financial
+      instrument accounting, always apply IFRS 9 (and IAS 32/IFRS 7 for presentation and
+      disclosure).
+    </p>
+  </StandardLifecycleNotice>
+
+  <div class="wrap">
+    <!-- ============ SECTION 1 ============ -->
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Why a rules-based classification system emerged, and why it was replaced</div>
+        <div class="principle">The Conceptual Framework requires financial assets to be measured in a way that faithfully represents the economic benefits an entity expects to derive from them. IAS 39 attempted this through FOUR separate classification categories, each with DETAILED, RULES-BASED criteria — a structure that grew increasingly complex and was ultimately judged to depart from the Framework's preference for PRINCIPLES-BASED classification.</div>
+        <div class="elabel">HOW IAS 39 MAPPED TO THE FRAMEWORK</div>
+        <div class="check-list">
+          <span><strong style="font-weight:500">Faithful representation</strong> — different measurement bases (FVTPL, amortised cost, AFS) attempted to match measurement to the entity's genuine intention and business purpose for holding each instrument</span>
+          <span><strong style="font-weight:500">Complexity vs relevance trade-off</strong> — the FOUR-category system, with detailed rules for reclassification and tainting, became so complex that preparers and users struggled to apply/understand it — a direct tension with the Framework's understandability characteristic</span>
+          <span><strong style="font-weight:500">The "incurred loss" impairment weakness</strong> — IAS 39 required objective evidence a loss event had ALREADY occurred before any impairment could be recognised, a backward-looking approach criticised (especially after the 2008 financial crisis) for recognising credit losses "too little, too late"</span>
+        </div>
+        <div class="note">IAS 39's replacement by IFRS 9 was directly triggered by the GLOBAL FINANCIAL CRISIS — the incurred loss impairment model was widely blamed for delaying recognition of credit losses on financial assets until losses had already crystallised, prompting the G20 and international regulators to demand a more FORWARD-LOOKING replacement.</div>
+      </div>
+
+      <div class="card cs">
+        <div class="ctitle cs">The four-category measurement structure</div>
+        <div class="principle">IAS 39's classification categories drove fundamentally different measurement bases, adding a layer of rules-based complexity that IFRS 9 later simplified into just two principal categories (plus FVTPL as a residual).</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.3fr 1fr;"><span>Category</span><span>Measurement basis</span></div>
+          <div class="tr" style="grid-template-columns:1.3fr 1fr;"><span>FVTPL (held for trading or designated)</span><span>Fair value; gains/losses through profit or loss</span></div>
+          <div class="tr alt" style="grid-template-columns:1.3fr 1fr;"><span>Held-to-maturity (HTM)</span><span>Amortised cost, using the effective interest method</span></div>
+          <div class="tr" style="grid-template-columns:1.3fr 1fr;"><span>Loans and receivables</span><span>Amortised cost, using the effective interest method</span></div>
+          <div class="tr alt" style="grid-template-columns:1.3fr 1fr;"><span>Available-for-sale (AFS)</span><span>Fair value; gains/losses through OCI (recycled to SOPL on disposal/impairment)</span></div>
+        </div>
+        <div class="callout info" style="margin-bottom:0;">ℹ️ <strong style="font-weight:500">Qualitative characteristics in action:</strong> AFS as a "default" residual category for assets not fitting the other three reflected a pragmatic but ultimately unsatisfying compromise — it lacked a clear PRINCIPLE for WHY those assets deserved OCI treatment, a gap IFRS 9's business-model/cash-flow test later closed.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 2 ============ -->
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What IAS 39 covered</div>
+        <div class="principle">IAS 39 established principles for recognising and measuring financial assets, financial liabilities, and some contracts to buy/sell non-financial items — applicable to virtually all entities and all types of financial instruments, with specific scope exclusions.</div>
+        <div class="elabel">SCOPE EXCLUSIONS (LARGELY CARRIED FORWARD TO IFRS 9)</div>
+        <div class="cross-list">
+          <span>Interests in subsidiaries, associates, and joint ventures accounted for under IFRS 10/IAS 27/IAS 28</span>
+          <span>Employers' rights and obligations under employee benefit plans (IAS 19)</span>
+          <span>Insurance contracts, except embedded derivatives within them (IFRS 4, later IFRS 17)</span>
+          <span>Share-based payment transactions (IFRS 2), except for certain specific instruments</span>
+        </div>
+        <div class="note">The general scope architecture of IAS 39 — and most of its exclusions — carried forward largely UNCHANGED into IFRS 9, since the scope boundary itself was not the source of the standard's widely criticised weaknesses.</div>
+      </div>
+
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions you must know</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Held-to-maturity investments</div>
+          <div class="glossary-def">Non-derivative financial assets with fixed or determinable payments and a fixed maturity, which the entity has the POSITIVE INTENTION and ABILITY to hold to maturity.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Loans and receivables</div>
+          <div class="glossary-def">Non-derivative financial assets with fixed or determinable payments that are NOT quoted in an active market.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Available-for-sale financial assets</div>
+          <div class="glossary-def">Non-derivative financial assets designated as available for sale, or NOT classified into any of the other three categories.</div>
+        </div>
+        <div class="glossary-item" style="border-bottom:none;">
+          <div class="glossary-term">Effective interest method</div>
+          <div class="glossary-def">A method of calculating the amortised cost of a financial asset/liability, and of allocating interest income/expense over the relevant period — carried forward unchanged into IFRS 9.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 3 ============ -->
+    <div class="section-header" id="s3"><span class="num">3</span><h2>The Four Classification Categories (with worked example)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Classification criteria and the "tainting" rule</div>
+        <div class="principle">Classification into HTM required a genuine positive INTENTION and ABILITY to hold to maturity — sales/reclassifications of MORE than an insignificant amount of HTM assets BEFORE maturity (outside narrow permitted exceptions) triggered "TAINTING," requiring the entity to RECLASSIFY its ENTIRE remaining HTM portfolio to AFS, and PROHIBITING use of the HTM category for TWO FULL FINANCIAL YEARS thereafter.</div>
+        <div class="worked" style="margin-bottom:0;">
+          <div class="wk-title">Example 1: HTM tainting consequence</div>
+          <div class="wk-body">
+            An entity holds a portfolio of HTM bonds worth $5,000,000. During the year, it sells $600,000 of these bonds before maturity, for reasons NOT qualifying for the narrow permitted exceptions (e.g. not due to a significant deterioration in the issuer's creditworthiness).
+          </div>
+          <div class="wk-answer">
+            Since the $600,000 disposal is MORE than insignificant relative to the total HTM portfolio, the ENTIRE remaining HTM portfolio ($4,400,000) must be RECLASSIFIED to available-for-sale, remeasured to fair value, with the difference recognised in OCI — and the entity is PROHIBITED from classifying ANY financial assets as HTM for the CURRENT and following TWO financial years.
+          </div>
+        </div>
+        <div class="callout danger" style="margin-bottom:0;">✕ <strong style="font-weight:600">This severe "tainting" penalty — a hallmark of IAS 39's rules-based complexity — has NO direct equivalent under IFRS 9</strong>, which replaced the HTM category (and its intention-based test) with a business model assessment that is reviewed but does not carry the same automatic, portfolio-wide, multi-year punitive consequence.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 4 ============ -->
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Recognition &amp; Initial Measurement</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs">
+        <div class="ctitle cs">Trade date vs settlement date accounting</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">A "regular way" purchase or sale of a financial asset was recognised using EITHER trade date accounting (recognising the asset/liability on the date the entity commits to purchase/sell) OR settlement date accounting (on the date the asset is actually delivered) — a genuine, consistently applied POLICY CHOICE, carried forward into IFRS 9 largely unchanged.</div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Initial measurement</div>
+        <div class="formula-box">
+          <div class="f-eq">Initial measurement = Fair value + (for items NOT at FVTPL) transaction costs directly attributable to the acquisition/issue</div>
+        </div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Transaction costs were EXPENSED immediately for FVTPL instruments, but CAPITALISED into the initial carrying amount for all other categories — a distinction that survives essentially unchanged under IFRS 9 today.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 5 ============ -->
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Subsequent Measurement by Category (with worked example)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Where gains and losses landed, by category</div>
+        <div class="worked" style="margin-bottom:0;">
+          <div class="wk-title">Example 2: AFS fair value gain, recognised in OCI</div>
+          <div class="wk-body">
+            An entity holds an AFS equity investment purchased for $200,000. At year end, its fair value has risen to $235,000.
+          </div>
+          <div class="wk-answer">
+            <strong>Fair value gain</strong> = 235,000 − 200,000 = <strong style="color:var(--color-text-success);">$35,000</strong>, recognised in OCI and accumulated in a separate AFS reserve within equity — NOT through profit or loss — UNTIL the asset was sold or became impaired, at which point the CUMULATIVE gain/loss was RECYCLED (reclassified) to profit or loss.
+          </div>
+        </div>
+        <div class="note">This "recycling on disposal or impairment" mechanic for AFS assets has NO direct equivalent for FVOCI EQUITY investments under IFRS 9 — under IFRS 9, gains/losses on FVOCI equity instruments are NEVER recycled to profit or loss, even on disposal, a deliberate and significant departure from IAS 39's approach.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 6 ============ -->
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Impairment — The Incurred Loss Model (with worked example)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Objective evidence of a loss event was required BEFORE recognition</div>
+        <div class="principle">Under IAS 39, an impairment loss was recognised ONLY if there was OBJECTIVE EVIDENCE of impairment as a result of ONE OR MORE events that occurred AFTER initial recognition (a "loss event"), and that loss event had an impact on the estimated future cash flows that could be RELIABLY ESTIMATED. Losses EXPECTED to result from FUTURE events, no matter how likely, were NOT recognised.</div>
+        <div class="worked" style="margin-bottom:0;">
+          <div class="wk-title">Example 3: The incurred loss trigger</div>
+          <div class="wk-body">
+            At year end, a bank holds a loan portfolio. Economic forecasts strongly suggest a recession is imminent, likely increasing defaults significantly next year, but no specific loss events (e.g. actual missed payments, bankruptcy filings) have yet occurred for any individual loan.
+          </div>
+          <div class="wk-answer">
+            Under IAS 39's incurred loss model, NO impairment provision could be recognised for these FORWARD-LOOKING, purely anticipated future losses — only losses evidenced by an ACTUAL loss event that had ALREADY occurred qualified for recognition. This is precisely the "too little, too late" criticism that led to IFRS 9's expected credit loss (ECL) model.
+          </div>
+        </div>
+        <div class="callout danger" style="margin-bottom:0;">✕ <strong style="font-weight:600">This is the single most significant conceptual difference between IAS 39 and IFRS 9</strong> — IFRS 9's ECL model requires forward-looking provisioning from initial recognition, entirely reversing IAS 39's "wait for a loss event" philosophy.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 7 ============ -->
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Derecognition</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">The risks-and-rewards / control test — carried forward largely unchanged</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">A financial asset was derecognised when the CONTRACTUAL RIGHTS to the cash flows expired, OR the entity TRANSFERRED substantially all the risks and rewards of ownership. Where risks/rewards were neither substantially transferred nor retained, the test moved to whether CONTROL had been surrendered. This multi-step derecognition decision tree is one of the FEW major areas IFRS 9 carried forward almost entirely UNCHANGED from IAS 39, since it was not identified as a source of the standard's key weaknesses.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 8 ============ -->
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Embedded Derivatives &amp; Hedge Accounting (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Embedded derivatives — the "bifurcation" requirement</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">An embedded derivative within a HOST CONTRACT was SEPARATED ("bifurcated") from the host and accounted for as a standalone derivative if its economic characteristics/risks were NOT closely related to those of the host contract, and the combined instrument was NOT already measured at FVTPL — a complex, widely criticised requirement.</div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Hedge accounting — three types, rules-based effectiveness testing</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">IAS 39 permitted FAIR VALUE hedges, CASH FLOW hedges, and hedges of a NET INVESTMENT in a foreign operation — but REQUIRED a strict, retrospective 80%–125% QUANTITATIVE effectiveness testing range to continue applying hedge accounting, widely seen as arbitrary and disconnected from genuine risk management practice.</div>
+        <div class="note">IFRS 9 REPLACED IAS 39's rigid 80-125% quantitative bright-line test with a more principles-based, forward-looking "economic relationship" assessment more closely aligned to an entity's actual risk management strategy — one of IFRS 9's most significant substantive reforms.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 9 ============ -->
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure Requirements (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Required disclosures (largely migrated to IFRS 7 even before IAS 39's withdrawal)</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">CLASSIFICATION-RELATED</div>
+            <div class="check-list">
+              <span>Carrying amounts of each of the four categories of financial assets/liabilities</span>
+              <span>Reclassifications between categories, and the reasons for them</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">IMPAIRMENT &amp; HEDGE-RELATED</div>
+            <div class="check-list">
+              <span>Amount of impairment losses recognised, and objective evidence supporting recognition</span>
+              <span>Hedge effectiveness test results and hedge accounting designations applied</span>
+            </div>
+          </div>
+        </div>
+        <div class="note">Most detailed financial instrument disclosures were ALREADY housed in the separate IFRS 7 standard by the time IAS 39 was withdrawn — IAS 39's own residual disclosure requirements were comparatively modest.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 10 ============ -->
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments &amp; Estimates (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where management judgement mattered most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Classification into one of the four categories, and genuine intention/ability assessments for HTM</span>
+              <span>Whether an embedded derivative required bifurcation from its host contract</span>
+              <span>Identifying objective evidence of a genuine "loss event" for impairment recognition</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>Fair value of financial instruments without an observable market price</span>
+              <span>Hedge effectiveness testing calculations against the strict 80-125% range</span>
+            </div>
+          </div>
+        </div>
+        <div class="callout warn" style="margin-top:8px;margin-bottom:0;">⚠️ The complexity of IAS 39's rules-based structure — four categories, tainting rules, bright-line hedge effectiveness tests — made it one of the most widely criticised and difficult-to-apply standards in the entire IFRS suite, directly motivating its eventual complete replacement rather than incremental amendment.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 11 ============ -->
+    <div class="section-header" id="s11"><span class="num">11</span><h2>IAS 39 vs IFRS 9 — What Changed</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — the transition from IAS 39 to IFRS 9</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Feature</span><span style="color:var(--color-text-info);">IAS 39 (superseded)</span><span style="color:var(--color-text-warning);">IFRS 9 (current)</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Classification categories</span><span>FOUR: FVTPL, HTM, loans and receivables, AFS</span><span>Simplified: amortised cost, FVOCI, and FVTPL, driven by a business model AND contractual cash flow characteristics test</span></div>
+          <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Impairment model</span><span>INCURRED loss — requires objective evidence a loss event has already occurred</span><span>EXPECTED credit loss (ECL) — forward-looking, recognised from initial recognition, updated for changes in credit risk</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Reclassification / "tainting"</span><span>Severe HTM tainting penalty — entire portfolio reclassified, 2-year prohibition</span><span>Reclassification only permitted when the BUSINESS MODEL genuinely changes, a rare event, without the punitive tainting mechanism</span></div>
+          <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Hedge accounting effectiveness testing</span><span>Rigid 80%-125% quantitative bright-line test</span><span>Principles-based "economic relationship" assessment, more closely aligned to actual risk management</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Equity investment gains/losses in OCI</span><span>AFS gains/losses recycled to SOPL on disposal or impairment</span><span>FVOCI equity investments (irrevocable election) NEVER recycled, even on disposal</span></div>
+          <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Derecognition</span><span>Risks/rewards and control-based multi-step test</span><span>LARGELY UNCHANGED — one of the few areas carried forward essentially intact</span></div>
+        </div>
+        <div class="note">The impairment model overhaul (incurred loss → expected credit loss) and the classification simplification (four categories → business-model-driven principles) were the TWO most consequential reforms — both direct responses to lessons learned from the 2008 global financial crisis.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 12 ============ -->
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping — Where Every Financial Instrument Event Landed (Historical, Under IAS 39)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Comprehensive event-to-statement mapping table</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event / transaction</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Initial recognition of a financial asset</span><span><span class="badge bs">SOFP</span></span><span>At fair value plus transaction costs (unless FVTPL)</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>FVTPL remeasurement</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Fair value change recognised immediately in profit or loss</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>HTM / loans and receivables — amortised cost accretion</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Effective interest method</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>AFS fair value remeasurement</span><span><span class="badge bo">OCI</span> <span class="badge bs">SOFP</span></span><span>Accumulated in a separate AFS reserve; recycled on disposal/impairment</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Impairment loss recognised (objective evidence of a loss event)</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Incurred loss model; backward-looking trigger</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>HTM tainting — portfolio reclassified to AFS</span><span><span class="badge bo">OCI</span> <span class="badge bs">SOFP</span></span><span>Entire remaining portfolio remeasured to fair value</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Fair value hedge — hedged item remeasurement</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Offsetting gain/loss on the hedging instrument, also through SOPL</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Cash flow hedge — effective portion</span><span><span class="badge bo">OCI</span></span><span>Deferred until the hedged transaction affects profit or loss</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Derecognition on disposal/settlement</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Gain/loss recognised; cumulative OCI recycled where applicable</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Cash movements on financial instruments</span><span><span class="badge bs">Cash Flow Statement</span></span><span>Classified per IAS 7's normal rules</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Category carrying amounts, hedge designations, impairment evidence</span><span><span class="badge bp">Notes</span></span><span>Mandatory disclosure, largely supplemented by IFRS 7</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 13 ============ -->
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">How IAS 39's legacy connects across the IFRS body of literature</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 9</span><span>The DIRECT successor standard — replaced classification, impairment, and hedge accounting, while retaining IAS 39's derecognition model largely intact</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 32</span><span>Continued to supply the liability/equity classification framework, which IAS 39 relied upon and which remains unchanged under IFRS 9's regime</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 7</span><span>Supplied (and continues to supply) the detailed disclosure framework for financial instruments, largely independent of whether IAS 39 or IFRS 9 governs recognition/measurement</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 13</span><span>Introduced later, supplying a unified fair value measurement framework that IAS 39's fair value requirements were subsequently interpreted through</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 1</span><span>Provided (and continues to provide) transition relief for first-time adopters regarding retrospective application of financial instrument derecognition and classification rules</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 21</span><span>Governed foreign currency-denominated financial instruments' translation, interacting with IAS 39's classification and measurement rules</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 14 ============ -->
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Tainting", definition: "The consequence of selling more than an insignificant amount of HTM assets before maturity without a qualifying exception — reclassification of the entire remaining HTM portfolio to AFS, with a two-year prohibition on future HTM use." },
+      { term: "Objective evidence of impairment", definition: "A specific 'loss event' (e.g. significant financial difficulty of the issuer, default, bankruptcy) that had ALREADY occurred, required before any impairment could be recognised under the incurred loss model." },
+      { term: "Embedded derivative", definition: "A component of a hybrid (combined) instrument that also includes a non-derivative host contract, causing some cash flows to vary in a way similar to a standalone derivative." },
+      { term: "Bifurcation", definition: "Separating an embedded derivative from its host contract for separate accounting, required when the embedded derivative's risks were not closely related to the host." },
+      { term: "Hedge effectiveness", definition: "Under IAS 39, measured using a strict retrospective 80%-125% quantitative offset range, required to continue applying hedge accounting." },
+      { term: "Regular way purchase or sale", definition: "A purchase/sale of a financial asset under a contract requiring delivery within the timeframe generally established by regulation/convention in the marketplace — subject to trade date or settlement date accounting." }
+    ]} />
+
+    <FinancialStatementKey />
+  </div>
+</StandardPageLayout>

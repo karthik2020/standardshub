@@ -1,0 +1,167 @@
+---
+/*
+  StandardLifecycleNotice
+
+  Represents the lifecycle of an accounting standard (not the page status).
+
+  Props:
+  - type: "superseded" | "replaced" | "withdrawn" | "historical-reference" | "amended"
+  - title: string
+  - link?: string
+  - linkText?: string — defaults to the link URL
+
+  Usage:
+    <StandardLifecycleNotice
+      type="superseded"
+      title="Superseded Standard"
+      link="/ifrs/ifrs9"
+      linkText="IFRS 9 Financial Instruments"
+    >
+      IAS 39 was superseded by IFRS 9 Financial Instruments for annual periods
+      beginning on or after 1 January 2018.
+    </StandardLifecycleNotice>
+*/
+
+import {
+  TriangleAlert,
+  Archive,
+  BookOpen,
+  FilePenLine,
+  ArrowRight,
+} from "@lucide/astro";
+
+interface Props {
+  type: "superseded" | "replaced" | "withdrawn" | "historical-reference" | "amended";
+  title: string;
+  link?: string;
+  linkText?: string;
+}
+
+const { type, title, link, linkText } = Astro.props;
+
+const lifecycleConfig = {
+  superseded: {
+    icon: TriangleAlert,
+    borderColor: "var(--color-border-warning)",
+    bg: "var(--color-background-warning)",
+    iconColor: "var(--color-text-warning)",
+  },
+  replaced: {
+    icon: TriangleAlert,
+    borderColor: "var(--color-border-warning)",
+    bg: "var(--color-background-warning)",
+    iconColor: "var(--color-text-warning)",
+  },
+  withdrawn: {
+    icon: Archive,
+    borderColor: "var(--color-border-secondary)",
+    bg: "var(--color-background-secondary)",
+    iconColor: "var(--text-muted)",
+  },
+  "historical-reference": {
+    icon: BookOpen,
+    borderColor: "var(--color-border-info)",
+    bg: "var(--color-background-info)",
+    iconColor: "var(--color-text-info)",
+  },
+  amended: {
+    icon: FilePenLine,
+    borderColor: "var(--color-border-info)",
+    bg: "var(--color-background-info)",
+    iconColor: "var(--color-text-info)",
+  },
+};
+
+const config = lifecycleConfig[type];
+const Icon = config.icon;
+---
+
+<div class="standard-lifecycle-notice">
+  <span class="standard-lifecycle-notice__icon" style="color: {config.iconColor}">
+    <Icon size={16} strokeWidth={1.5} />
+  </span>
+  <div class="standard-lifecycle-notice__body">
+    <h3 class="standard-lifecycle-notice__title">{title}</h3>
+    <div class="standard-lifecycle-notice__content">
+      <slot />
+    </div>
+    {link && (
+      <a
+        class="standard-lifecycle-notice__link"
+        href={link}
+      >
+        {linkText ?? link}
+        <ArrowRight size={14} strokeWidth={1.5} />
+      </a>
+    )}
+  </div>
+</div>
+
+<style>
+  .standard-lifecycle-notice {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+    padding: var(--space-lg) var(--space-xl);
+    border-left: 2px solid var(--color-border-secondary);
+    border-top: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    background: var(--color-background-secondary);
+    margin-bottom: var(--space-xl);
+  }
+
+  .standard-lifecycle-notice__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .standard-lifecycle-notice__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    min-width: 0;
+  }
+
+  .standard-lifecycle-notice__title {
+    font-size: var(--text-body);
+    font-weight: var(--weight-semibold);
+    color: var(--text);
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .standard-lifecycle-notice__content {
+    font-size: var(--text-small);
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .standard-lifecycle-notice__content :global(p) {
+    margin: 0 0 var(--space-md);
+  }
+
+  .standard-lifecycle-notice__content :global(p:last-child) {
+    margin-bottom: 0;
+  }
+
+  .standard-lifecycle-notice__link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: var(--text-small);
+    font-weight: var(--weight-medium);
+    color: var(--color-text-info);
+    text-decoration: none;
+    margin-top: var(--space-sm);
+  }
+
+  .standard-lifecycle-notice__link:hover,
+  .standard-lifecycle-notice__link:focus-visible {
+    text-decoration: underline;
+  }
+</style>

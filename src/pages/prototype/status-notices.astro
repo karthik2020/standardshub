@@ -1,0 +1,222 @@
+---
+import StandardLayout from "../../layouts/StandardLayout.astro";
+import StandardStatus from "../../components/StandardStatus.astro";
+import StandardLifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import EducationalDisclaimer from "../../components/EducationalDisclaimer.astro";
+---
+
+<StandardLayout
+  code="PROT7"
+  title="Status & Lifecycle Notices — Prototype"
+  framework="Design"
+>
+  <p class="prototype-intro">
+    <strong>Design prototype only.</strong> This page does not modify any existing
+    component, page, or stylesheet. It demonstrates three independent reusable
+    components for page status, standard lifecycle, and educational disclaimers.
+  </p>
+
+  <!-- ============ STANDARD STATUS ============ -->
+  <section class="prototype-section">
+    <h2 class="prototype-section__title">StandardStatus</h2>
+    <p class="prototype-section__desc">
+      Compact indicator of the page's review/publication state. Placed near the
+      top of each standard page.
+    </p>
+
+    <div class="prototype-grid">
+      <div class="prototype-card">
+        <div class="prototype-card__label">Published</div>
+        <StandardStatus
+          status="published"
+          reviewed="12 July 2026"
+        />
+      </div>
+
+      <div class="prototype-card">
+        <div class="prototype-card__label">Under Review</div>
+        <StandardStatus
+          status="under-review"
+          reviewed="June 2026"
+        />
+      </div>
+
+      <div class="prototype-card">
+        <div class="prototype-card__label">Draft</div>
+        <StandardStatus
+          status="draft"
+        />
+      </div>
+
+      <div class="prototype-card">
+        <div class="prototype-card__label">Archived</div>
+        <StandardStatus
+          status="archived"
+          reviewed="1 January 2020"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STANDARD LIFECYCLE NOTICE ============ -->
+  <section class="prototype-section">
+    <h2 class="prototype-section__title">StandardLifecycleNotice</h2>
+    <p class="prototype-section__desc">
+      Communicates the accounting standard's lifecycle. More noticeable than
+      StandardStatus but still calm, professional, and documentation-oriented.
+    </p>
+
+    <div class="prototype-stack">
+      <div class="prototype-card">
+        <div class="prototype-card__label">Superseded — IAS 39</div>
+        <StandardLifecycleNotice
+          type="superseded"
+          title="Superseded Standard"
+          link="/ias/ias39"
+          linkText="IAS 39 Financial Instruments"
+        >
+          <p>
+            IAS 39 was superseded by IFRS 9 Financial Instruments for annual periods
+            beginning on or after 1 January 2018.
+          </p>
+          <p>
+            This page is retained for historical reference because many recognition,
+            derecognition and hedge accounting concepts remain useful when
+            understanding IFRS 9.
+          </p>
+          <p>Looking for the current requirements?</p>
+        </StandardLifecycleNotice>
+      </div>
+
+      <div class="prototype-card">
+        <div class="prototype-card__label">Historical Reference</div>
+        <StandardLifecycleNotice
+          type="historical-reference"
+          title="Historical Reference"
+        >
+          <p>
+            This standard has been withdrawn and is retained solely for historical
+            reference. It does not reflect current IFRS requirements and should
+            not be applied to current periods.
+          </p>
+        </StandardLifecycleNotice>
+      </div>
+
+      <div class="prototype-card">
+        <div class="prototype-card__label">Amended</div>
+        <StandardLifecycleNotice
+          type="amended"
+          title="Amended Standard"
+        >
+          <p>
+            This standard has been amended by subsequent standards and
+            interpretations. The amendments are effective for annual periods
+            beginning on or after the dates specified in each amending standard.
+          </p>
+        </StandardLifecycleNotice>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EDUCATIONAL DISCLAIMER ============ -->
+  <section class="prototype-section">
+    <h2 class="prototype-section__title">EducationalDisclaimer</h2>
+    <p class="prototype-section__desc">
+      Very subtle footnote-style disclaimer. No icon, no border, no card styling.
+      Placed near the bottom of every standard page.
+    </p>
+
+    <div class="prototype-card">
+      <div class="prototype-card__label">In Context</div>
+      <div class="prototype-simulated-content">
+        <p class="prototype-simulated-text">
+          Financial statements are structured to provide decision-useful information
+          to a wide range of users. The statement of financial position presents
+          the entity's assets, liabilities, and equity at a point in time, while
+          the statement of profit or loss and other comprehensive income reports
+          performance over a period.
+        </p>
+        <p class="prototype-simulated-text">
+          Classification as current or non-current depends on whether the asset
+          or liability is expected to be realised or settled within the entity's
+          normal operating cycle or within twelve months after the reporting period.
+        </p>
+        <EducationalDisclaimer />
+      </div>
+    </div>
+  </section>
+</StandardLayout>
+
+<style>
+  .prototype-intro {
+    font-size: var(--text-small);
+    color: var(--text-secondary);
+    line-height: 1.6;
+    padding: var(--space-lg);
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .prototype-section {
+    margin-bottom: var(--space-3xl);
+  }
+
+  .prototype-section__title {
+    font-size: var(--text-h2);
+    font-weight: var(--weight-bold);
+    color: var(--text);
+    margin: 0 0 var(--space-sm);
+  }
+
+  .prototype-section__desc {
+    font-size: var(--text-small);
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0 0 var(--space-xl);
+    max-width: 720px;
+  }
+
+  .prototype-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: var(--space-lg);
+  }
+
+  .prototype-stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    max-width: 800px;
+  }
+
+  .prototype-card {
+    padding: var(--space-lg);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+  }
+
+  .prototype-card__label {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-medium);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-md);
+  }
+
+  .prototype-simulated-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .prototype-simulated-text {
+    font-size: var(--text-small);
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+  }
+</style>
