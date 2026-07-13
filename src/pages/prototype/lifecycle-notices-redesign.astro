@@ -1,0 +1,102 @@
+---
+import StandardLayout from "../../layouts/StandardLayout.astro";
+import LifecycleNotice from "../../components/prototype/LifecycleNotice.astro";
+---
+
+<StandardLayout code="PROTO" title="Lifecycle Notice — Redesign Preview" framework="Design">
+  <p class="proto-intro">
+    Prototype preview of the redesigned Standard Lifecycle Notice. Each panel shows a
+    different lifecycle status with realistic accounting wording so the typography,
+    spacing and colour hierarchy can be evaluated. No production pages are affected.
+  </p>
+
+  <p class="proto-context">Superseded — IAS 35 → IFRS 5</p>
+  <LifecycleNotice
+    type="superseded"
+    explanation="IAS 35 Discontinuing Operations was superseded by IFRS 5 Non-current Assets Held for Sale and Discontinued Operations for annual periods beginning on or after 1 January 2005."
+    historical="This page is retained for historical reference because the discontinuing-operations concept it introduced is the direct ancestor of IFRS 5's discontinued-operations and held-for-sale classification, and the standard may still be encountered in older study material and historical financial reporting discussions."
+    link="/ifrs/ifrs5"
+    linkText="IFRS 5 Non-current Assets Held for Sale and Discontinued Operations"
+  />
+
+  <p class="proto-context">Withdrawn — IAS 15 (no longer in the literature)</p>
+  <LifecycleNotice
+    type="withdrawn"
+    explanation="IAS 15 Information Reflecting the Effects of Changing Prices was withdrawn and is no longer part of the IFRS literature. Its subject matter is not addressed by a dedicated current standard."
+    historical="This page is retained for historical reference because the disclosure practices it promoted still appear in narrative reporting, and the standard may be encountered in older academic texts and historical financial statements."
+    link="/ias/ias16"
+    linkText="IAS 16 Property, Plant and Equipment"
+  />
+
+  <p class="proto-context">Historical Reference — IAS 17 → IFRS 16</p>
+  <LifecycleNotice
+    type="historical-reference"
+    explanation="IAS 17 Leases is provided here as a historical reference. Lease accounting for virtually all entities is now governed by IFRS 16 Leases for annual periods beginning on or after 1 January 2019."
+    historical="This page is retained for historical reference because IAS 17's finance/operating lease classification logic still underpins lessor accounting under IFRS 16, and the standard remains common in older exam material and historical financial statements."
+    link="/ifrs/ifrs16"
+    linkText="IFRS 16 Leases"
+  />
+
+  <p class="proto-context">Effective Soon — IFRS 18 (future mandatory date)</p>
+  <LifecycleNotice
+    type="effective-soon"
+    currentLabel="Becomes Effective"
+    explanation="IFRS 18 Presentation and Disclosure of Financial Statements becomes mandatory for annual periods beginning on or after 1 January 2027, with earlier application permitted."
+    historical="This page describes the upcoming requirements so readers can prepare ahead of adoption. Until the effective date, IFRS 18 does not yet apply to current reporting periods."
+    link="/ifrs/ifrs18"
+    linkText="IFRS 18 Presentation and Disclosure of Financial Statements"
+  />
+
+  <p class="proto-context">Amended — IAS 1 (narrow-scope improvements)</p>
+  <LifecycleNotice
+    type="amended"
+    explanation="IAS 1 Presentation of Financial Statements was amended to clarify disclosure principles and to introduce the defined contribution plan classification, among other narrow-scope improvements."
+    historical="This page reflects the amended requirements. Prior versions of IAS 1 remain relevant when reading financial statements prepared under earlier effective dates, and are retained here for historical reference."
+    link="/ias/ias1"
+    linkText="IAS 1 Presentation of Financial Statements"
+  />
+
+  <p class="proto-context">Replaced — IAS 39 → IFRS 9</p>
+  <LifecycleNotice
+    type="replaced"
+    explanation="IAS 39 Financial Instruments: Recognition and Measurement was replaced by IFRS 9 Financial Instruments for annual periods beginning on or after 1 January 2018."
+    historical="This page is retained for historical reference because IAS 39's recognition, derecognition and hedge accounting concepts still underpin IFRS 9 in modified form, and the standard is frequently encountered in older study material."
+    link="/ifrs/ifrs9"
+    linkText="IFRS 9 Financial Instruments"
+  />
+
+  <p class="proto-context">Suspended — deferred effective date</p>
+  <LifecycleNotice
+    type="suspended"
+    explanation="The mandatory effective date of the new presentation and disclosure requirements has been suspended by the IASB pending the outcome of its post-implementation review, so the existing requirements continue to apply in the interim."
+    historical="This page is retained because the suspended change may be reactivated, and readers should monitor IASB announcements for the revised effective date before applying the new requirements."
+    link="/ias/ias1"
+    linkText="IAS 1 Presentation of Financial Statements"
+  />
+
+  <style>
+    .proto-intro {
+      font-size: var(--text-small);
+      color: var(--text-secondary);
+      line-height: 1.6;
+      padding: var(--space-lg);
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      margin-bottom: var(--space-2xl);
+    }
+
+    .proto-context {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin: 0 0 var(--space-sm);
+    }
+
+    .proto-context:not(:first-of-type) {
+      margin-top: var(--space-2xl);
+    }
+  </style>
+</StandardLayout>
