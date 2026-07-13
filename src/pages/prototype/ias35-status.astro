@@ -38,7 +38,13 @@ import "../../styles/extended.css";
   <!-- ============ REDESIGNED HERO (PROTOTYPE) ============ -->
   <section class="proto-hero" data-framework="ias">
     <div class="proto-hero__content">
-      <p class="proto-hero__code">{metadata.code}</p>
+      <div class="proto-hero__header">
+        <p class="proto-hero__code">{metadata.code}</p>
+        <span class="hero-status-pill hero-status-pill--superseded">
+          <span class="hero-status-pill__circle"><ArrowRightLeft /></span>
+          Superseded
+        </span>
+      </div>
       <h1 class="proto-hero__title">{metadata.title}</h1>
       {
         metadata.summary && (
@@ -366,6 +372,12 @@ import "../../styles/extended.css";
     .proto-hero__content {
       display: flex;
       flex-direction: column;
+    }
+    .proto-hero__header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      flex-wrap: wrap;
     }
     .proto-hero__code {
       font-size: 15px;
