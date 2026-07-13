@@ -1,6 +1,15 @@
 ---
 import StandardLayout from "../../layouts/StandardLayout.astro";
 import LifecycleNotice from "../../components/prototype/LifecycleNotice.astro";
+import {
+  ArrowRightLeft,
+  Ban,
+  BookMarked,
+  CalendarClock,
+  FileDiff,
+  RefreshCw,
+  CirclePause,
+} from "@lucide/astro";
 ---
 
 <StandardLayout code="PROTO" title="Lifecycle Notice — Redesign Preview" framework="Design">
@@ -10,6 +19,13 @@ import LifecycleNotice from "../../components/prototype/LifecycleNotice.astro";
     spacing and colour hierarchy can be evaluated. No production pages are affected.
   </p>
 
+  <div class="proto-lifecycle-hero">
+    <span class="proto-lifecycle-hero__code">IAS 35</span>
+    <span class="hero-status-pill hero-status-pill--superseded">
+      <span class="hero-status-pill__circle"><ArrowRightLeft /></span>
+      Superseded
+    </span>
+  </div>
   <p class="proto-context">Superseded — IAS 35 → IFRS 5</p>
   <LifecycleNotice
     type="superseded"
@@ -21,6 +37,13 @@ import LifecycleNotice from "../../components/prototype/LifecycleNotice.astro";
     targetStatus="Active"
   />
 
+  <div class="proto-lifecycle-hero">
+    <span class="proto-lifecycle-hero__code">IAS 15</span>
+    <span class="hero-status-pill hero-status-pill--withdrawn">
+      <span class="hero-status-pill__circle"><Ban /></span>
+      Withdrawn
+    </span>
+  </div>
   <p class="proto-context">Withdrawn — IAS 15 (no longer in the literature)</p>
   <LifecycleNotice
     type="withdrawn"
@@ -30,6 +53,13 @@ import LifecycleNotice from "../../components/prototype/LifecycleNotice.astro";
     linkText="IAS 16 Property, Plant and Equipment"
   />
 
+  <div class="proto-lifecycle-hero">
+    <span class="proto-lifecycle-hero__code">IAS 17</span>
+    <span class="hero-status-pill hero-status-pill--historical-reference">
+      <span class="hero-status-pill__circle"><BookMarked /></span>
+      Historical Reference
+    </span>
+  </div>
   <p class="proto-context">Historical Reference — IAS 17 → IFRS 16</p>
   <LifecycleNotice
     type="historical-reference"
@@ -39,6 +69,13 @@ import LifecycleNotice from "../../components/prototype/LifecycleNotice.astro";
     linkText="IFRS 16 Leases"
   />
 
+  <div class="proto-lifecycle-hero">
+    <span class="proto-lifecycle-hero__code">IFRS 18</span>
+    <span class="hero-status-pill hero-status-pill--effective-soon">
+      <span class="hero-status-pill__circle"><CalendarClock /></span>
+      Effective Soon
+    </span>
+  </div>
   <p class="proto-context">Effective Soon — IFRS 18 (future mandatory date)</p>
   <LifecycleNotice
     type="effective-soon"
@@ -50,6 +87,13 @@ import LifecycleNotice from "../../components/prototype/LifecycleNotice.astro";
     eventDate="2027-01-01"
   />
 
+  <div class="proto-lifecycle-hero">
+    <span class="proto-lifecycle-hero__code">IAS 1</span>
+    <span class="hero-status-pill hero-status-pill--amended">
+      <span class="hero-status-pill__circle"><FileDiff /></span>
+      Amended
+    </span>
+  </div>
   <p class="proto-context">Amended — IAS 1 (narrow-scope improvements)</p>
   <LifecycleNotice
     type="amended"
@@ -60,6 +104,13 @@ import LifecycleNotice from "../../components/prototype/LifecycleNotice.astro";
     eventDate="2026-08-01"
   />
 
+  <div class="proto-lifecycle-hero">
+    <span class="proto-lifecycle-hero__code">IAS 39</span>
+    <span class="hero-status-pill hero-status-pill--replaced">
+      <span class="hero-status-pill__circle"><RefreshCw /></span>
+      Replaced
+    </span>
+  </div>
   <p class="proto-context">Replaced — IAS 39 → IFRS 9</p>
   <LifecycleNotice
     type="replaced"
@@ -69,6 +120,13 @@ import LifecycleNotice from "../../components/prototype/LifecycleNotice.astro";
     linkText="IFRS 9 Financial Instruments"
   />
 
+  <div class="proto-lifecycle-hero">
+    <span class="proto-lifecycle-hero__code">IFRS 18</span>
+    <span class="hero-status-pill hero-status-pill--suspended">
+      <span class="hero-status-pill__circle"><CirclePause /></span>
+      Suspended
+    </span>
+  </div>
   <p class="proto-context">Suspended — deferred effective date</p>
   <LifecycleNotice
     type="suspended"
@@ -88,6 +146,99 @@ import LifecycleNotice from "../../components/prototype/LifecycleNotice.astro";
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
       margin-bottom: var(--space-2xl);
+    }
+
+    .proto-lifecycle-hero {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-sm);
+    }
+    .proto-lifecycle-hero__code {
+      font-size: 15px;
+      font-weight: var(--weight-bold);
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    /* ===== Redesigned integrated status pill ===== */
+    .hero-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      height: 28px;
+      padding: 0 12px 0 4px;
+      border-radius: 999px;
+      border: 1px solid var(--status-accent);
+      background: var(--status-soft);
+      color: var(--status-ink);
+      font-size: 12px;
+      font-weight: var(--weight-semibold);
+      line-height: 1;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+    }
+    .hero-status-pill__circle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--status-accent);
+      color: #ffffff;
+    }
+    .hero-status-pill__circle :global(svg) {
+      width: 12px;
+      height: 12px;
+    }
+    .hero-status-pill--published {
+      --status-accent: #059669;
+      --status-soft: #ecfdf5;
+      --status-ink: #065f46;
+    }
+    .hero-status-pill--draft {
+      --status-accent: #475569;
+      --status-soft: #f8fafc;
+      --status-ink: #334155;
+    }
+    .hero-status-pill--archived {
+      --status-accent: #64748b;
+      --status-soft: #f1f5f9;
+      --status-ink: #475569;
+    }
+    .hero-status-pill--superseded,
+    .hero-status-pill--replaced {
+      --status-accent: #b45309;
+      --status-soft: #fffbeb;
+      --status-ink: #92400e;
+    }
+    .hero-status-pill--withdrawn {
+      --status-accent: #dc2626;
+      --status-soft: #fff1f2;
+      --status-ink: #b91c1c;
+    }
+    .hero-status-pill--historical-reference {
+      --status-accent: #475569;
+      --status-soft: #f1f5f9;
+      --status-ink: #334155;
+    }
+    .hero-status-pill--effective-soon {
+      --status-accent: #4f46e5;
+      --status-soft: #eef2ff;
+      --status-ink: #4338ca;
+    }
+    .hero-status-pill--amended {
+      --status-accent: #7c3aed;
+      --status-soft: #f5f3ff;
+      --status-ink: #6d28d9;
+    }
+    .hero-status-pill--suspended {
+      --status-accent: #c2410c;
+      --status-soft: #fff7ed;
+      --status-ink: #9a3412;
     }
 
     .proto-context {
