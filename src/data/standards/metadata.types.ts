@@ -50,6 +50,12 @@ export interface StandardMetadata {
   /** Current lifecycle status */
   status: StandardStatus;
 
+  /** Date associated with a lifecycle event */
+  eventDate?: string;
+
+  /** Target standard code for a lifecycle transition */
+  transitionTo?: string;
+
   /** History identifier */
   history: string;
 
