@@ -36,28 +36,40 @@ const {
                 <span>Home</span>
             </a>
 
-            <span class="breadcrumb-separator">❯</span>
+            {code.toLowerCase() !== framework.toLowerCase() && (
+                <>
+                    <span class="breadcrumb-separator">❯</span>
 
-            <a
-                href={`/${framework.toLowerCase()}`}
-                class={`breadcrumb-framework ${framework.toLowerCase()}`}
-            >
-                {framework}
-            </a>
+                    <a
+                        href={`/${framework.toLowerCase()}`}
+                        class={`breadcrumb-framework ${framework.toLowerCase()}`}
+                    >
+                        {framework}
+                    </a>
+                </>
+            )}
 
-            <span class="breadcrumb-separator">❯</span>
+            {code.toLowerCase() !== "home" && (
+                <>
+                    <span class="breadcrumb-separator">❯</span>
 
-            <span class="breadcrumb-current">
-                <span class={`breadcrumb-code ${framework.toLowerCase()}`}>
-                    {code}
-                </span>
+                    <span class="breadcrumb-current">
+                        <span class={`breadcrumb-code ${framework.toLowerCase()}`}>
+                            {code}
+                        </span>
 
-                <span class="breadcrumb-dot"> • </span>
+                        {code.toLowerCase() !== framework.toLowerCase() && (
+                            <>
+                                <span class="breadcrumb-dot"> • </span>
 
-                <span class="breadcrumb-title">
-                    {title}
-                </span>
-            </span>
+                                <span class="breadcrumb-title">
+                                    {title}
+                                </span>
+                            </>
+                        )}
+                    </span>
+                </>
+            )}
         </nav>
     </div>
 
