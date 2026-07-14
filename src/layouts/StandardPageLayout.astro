@@ -14,6 +14,9 @@ interface Props {
   latestAmendment?: string;
   status?: string;
   summary?: string;
+  description?: string;
+  canonical?: string;
+  robots?: string;
   related?: {
     code: string;
     title: string;
@@ -30,11 +33,24 @@ const {
   latestAmendment = "",
   status = "",
   summary = "",
+  description,
+  canonical,
+  robots,
   related = [],
 } = Astro.props;
+
+const seoTitle = `${code} ${title}`;
 ---
 
-<StandardLayout code={code} title={title} framework={standardType}>
+<StandardLayout
+  code={code}
+  title={title}
+  seoTitle={seoTitle}
+  framework={standardType}
+  description={description}
+  canonical={canonical}
+  robots={robots}
+>
   <Fragment slot="toc">
     <slot name="toc" />
   </Fragment>

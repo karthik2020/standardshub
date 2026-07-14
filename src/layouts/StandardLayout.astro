@@ -4,13 +4,20 @@ import "../styles/print.css";
 import Sidebar from "../components/Sidebar.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import Seo from "../components/Seo.astro";
 
 interface Props {
   code: string;
-  title: string;
+  /** Display title used in the header/breadcrumbs. */
+  title?: string;
+  /** SEO document title prefix. Defaults to `title`. Omit for the home page. */
+  seoTitle?: string;
   framework?: string;
   noindex?: boolean;
   hideFramework?: boolean;
+  description?: string;
+  canonical?: string;
+  robots?: string;
 }
 
 const {
@@ -18,9 +25,14 @@ const {
 
   title,
 
+  seoTitle = title,
+
   framework = "",
   noindex = false,
   hideFramework = false,
+  description,
+  canonical,
+  robots = noindex ? "noindex" : undefined,
 } = Astro.props;
 ---
 
@@ -28,8 +40,7 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {noindex && <meta name="robots" content="noindex" />}
-    <title>{title} | StandardsHub</title>
+    <Seo title={seoTitle} description={description} canonical={canonical} robots={robots} />
   </head>
 
   <body>
