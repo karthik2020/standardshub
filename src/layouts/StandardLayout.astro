@@ -5,6 +5,7 @@ import Sidebar from "../components/Sidebar.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Seo from "../components/Seo.astro";
+import { detectSeoType } from "../utils/seo";
 
 interface Props {
   code: string;
@@ -22,7 +23,7 @@ interface Props {
   ogImage?: string;
   twitterCard?: string;
   /** Standard page context used to auto-generate the description. */
-  standard?: { code: string; title: string };
+  standard?: { code: string; title: string; dateModified?: string };
 }
 
 const {
@@ -43,6 +44,8 @@ const {
   twitterCard,
   standard,
 } = Astro.props;
+
+const seoType = detectSeoType({ code, framework, standard, hideFramework });
 ---
 
 <html lang="en">
@@ -58,6 +61,7 @@ const {
       ogImage={ogImage}
       twitterCard={twitterCard}
       standard={standard}
+      seoType={seoType}
     />
   </head>
 

@@ -1,6 +1,6 @@
 ---
 import { SITE } from "../config/site";
-import { resolveSeo } from "../utils/seo";
+import { resolveSeo, buildJsonLd, type SeoPageType } from "../utils/seo";
 
 interface Props {
   title?: string;
@@ -11,7 +11,9 @@ interface Props {
   ogImage?: string;
   twitterCard?: string;
   /** Standard page context used to auto-generate the description. */
-  standard?: { code: string; title: string };
+  standard?: { code: string; title: string; dateModified?: string };
+  /** Structured-data schema for this page, or null/undefined for none. */
+  seoType?: SeoPageType;
   /** When true, also emits the viewport meta tag (for pages that own <head>). */
   viewport?: boolean;
 }
@@ -25,6 +27,7 @@ const {
   ogImage,
   twitterCard,
   standard,
+  seoType,
   viewport = false,
 } = Astro.props;
 
@@ -32,6 +35,8 @@ const seo = resolveSeo(
   { title, description, canonical, robots, ogType, ogImage, twitterCard, standard },
   Astro.url.pathname
 );
+
+const jsonLd = buildJsonLd(seoType ?? null, seo, standard);
 ---
 
 <title>{seo.title}</title>
@@ -56,3 +61,5 @@ const seo = resolveSeo(
 <meta name="twitter:title" content={seo.title} />
 <meta name="twitter:description" content={seo.description} />
 <meta name="twitter:image" content={seo.ogImage} />
+
+{jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}

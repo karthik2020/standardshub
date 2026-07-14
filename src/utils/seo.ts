@@ -16,7 +16,7 @@ export interface SeoInput {
   /** Twitter/X card type. Falls back to the site default ("summary_large_image"). */
   twitterCard?: string;
   /** Standard page context used to auto-generate the description. Only supplied for standard pages. */
-  standard?: { code: string; title: string };
+  standard?: { code: string; title: string; dateModified?: string };
 }
 
 export interface ResolvedSeo {
@@ -28,6 +28,9 @@ export interface ResolvedSeo {
   ogImage: string;
   twitterCard: string;
 }
+
+/** Structured-data schema applied to a page. `null` means no JSON-LD is emitted. */
+export type SeoPageType = "website" | "collection" | "article" | null;
 
 /**
  * Builds the full document title.
@@ -120,4 +123,106 @@ export function resolveSeo(input: SeoInput, pathname: string): ResolvedSeo {
     ogImage: buildOgImage(input.ogImage),
     twitterCard: buildTwitterCard(input.twitterCard),
   };
+}
+
+/**
+ * Determines which structured-data schema a page should use, derived entirely
+ * from signals the layouts already supply — no page-specific JSON-LD logic.
+ *
+ *   - Standard pages (a `standard` context is present)         → "article"
+ *   - The home page (code "Home", framework "home")            → "website"
+ *   - Framework landing pages (code === framework)             → "collection"
+ *   - The 404 page (code "404") and everything else            → null (no JSON-LD)
+ */
+export function detectSeoType(input: {
+  code?: string;
+  framework?: string;
+  standard?: SeoInput["standard"];
+  hideFramework?: boolean;
+}): SeoPageType {
+  if (input.standard) {
+    return "article";
+  }
+  if (input.code?.toLowerCase() === "404") {
+    return null;
+  }
+  if (input.code?.toLowerCase() === "home") {
+    return "website";
+  }
+  if (
+    input.code &&
+    input.framework &&
+    input.code.toLowerCase() === input.framework.toLowerCase()
+  ) {
+    return "collection";
+  }
+  return null;
+}
+
+/**
+ * Builds the JSON-LD structured-data object for a page, reusing the resolved
+ * title, description, canonical URL and Open Graph image. Returns `null` when a
+ * page should not emit structured data (e.g. 404).
+ */
+export function buildJsonLd(type: SeoPageType, seo: ResolvedSeo, standard?: SeoInput["standard"]): object | null {
+  if (!type) {
+    return null;
+  }
+
+  const publisher = {
+    "@type": "Organization",
+    name: SITE.name,
+    url: SITE.url,
+  };
+
+  if (type === "website") {
+    return {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: SITE.name,
+      url: seo.canonical,
+      description: seo.description,
+      publisher,
+    };
+  }
+
+  if (type === "collection") {
+    return {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: seo.title,
+      description: seo.description,
+      url: seo.canonical,
+      mainEntity: {
+        "@type": "ItemList",
+        name: "Accounting Standards",
+        description: "A collection of accounting standards.",
+      },
+    };
+  }
+
+  const article: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: seo.title,
+    description: seo.description,
+    url: seo.canonical,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": seo.canonical,
+    },
+    author: {
+      "@type": "Organization",
+      name: SITE.author,
+    },
+    publisher,
+    image: seo.ogImage,
+    inLanguage: "en",
+  };
+
+  if (standard?.dateModified) {
+    article.dateModified = standard.dateModified;
+  }
+
+  return article;
 }
