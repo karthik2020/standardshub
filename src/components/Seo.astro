@@ -7,13 +7,20 @@ interface Props {
   description?: string;
   canonical?: string;
   robots?: string;
+  ogType?: string;
+  ogImage?: string;
+  twitterCard?: string;
   /** When true, also emits the viewport meta tag (for pages that own <head>). */
   viewport?: boolean;
 }
 
-const { title, description, canonical, robots, viewport = false } = Astro.props;
+const { title, description, canonical, robots, ogType, ogImage, twitterCard, viewport = false } =
+  Astro.props;
 
-const seo = resolveSeo({ title, description, canonical, robots }, Astro.url.pathname);
+const seo = resolveSeo(
+  { title, description, canonical, robots, ogType, ogImage, twitterCard },
+  Astro.url.pathname
+);
 ---
 
 <title>{seo.title}</title>
@@ -24,3 +31,17 @@ const seo = resolveSeo({ title, description, canonical, robots }, Astro.url.path
 <meta name="application-name" content={SITE.applicationName} />
 {viewport && <meta name="viewport" content="width=device-width, initial-scale=1.0" />}
 <meta name="theme-color" content={SITE.themeColor} />
+
+<!-- Open Graph -->
+<meta property="og:title" content={seo.title} />
+<meta property="og:description" content={seo.description} />
+<meta property="og:type" content={seo.ogType} />
+<meta property="og:url" content={seo.canonical} />
+<meta property="og:site_name" content={SITE.name} />
+<meta property="og:image" content={seo.ogImage} />
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content={seo.twitterCard} />
+<meta name="twitter:title" content={seo.title} />
+<meta name="twitter:description" content={seo.description} />
+<meta name="twitter:image" content={seo.ogImage} />

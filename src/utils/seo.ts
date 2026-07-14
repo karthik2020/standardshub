@@ -9,6 +9,12 @@ export interface SeoInput {
   canonical?: string;
   /** Robots directive. Falls back to the site default. */
   robots?: string;
+  /** Open Graph type. Falls back to the site default ("website"). */
+  ogType?: string;
+  /** Root-relative Open Graph image path. Falls back to the site default image. */
+  ogImage?: string;
+  /** Twitter/X card type. Falls back to the site default ("summary_large_image"). */
+  twitterCard?: string;
 }
 
 export interface ResolvedSeo {
@@ -16,6 +22,9 @@ export interface ResolvedSeo {
   description: string;
   canonical: string;
   robots: string;
+  ogType: string;
+  ogImage: string;
+  twitterCard: string;
 }
 
 /**
@@ -52,11 +61,34 @@ export function buildRobots(robots?: string): string {
   return robots ?? SITE.defaultRobots;
 }
 
+export function buildOgType(ogType?: string): string {
+  return ogType ?? SITE.ogType;
+}
+
+/**
+ * Resolves the absolute Open Graph image URL.
+ *
+ * Uses an explicit (root-relative) path when supplied, otherwise the site
+ * default image. The URL is made absolute against the configured site base
+ * URL so social crawlers receive a fully-qualified address.
+ */
+export function buildOgImage(ogImage: string | undefined): string {
+  const image = ogImage ?? SITE.ogImage;
+  return new URL(image, SITE.url).toString();
+}
+
+export function buildTwitterCard(twitterCard?: string): string {
+  return twitterCard ?? SITE.twitterCard;
+}
+
 export function resolveSeo(input: SeoInput, pathname: string): ResolvedSeo {
   return {
     title: buildPageTitle(input.title),
     description: input.description ?? SITE.description,
     canonical: buildCanonical(input.canonical, pathname),
     robots: buildRobots(input.robots),
+    ogType: buildOgType(input.ogType),
+    ogImage: buildOgImage(input.ogImage),
+    twitterCard: buildTwitterCard(input.twitterCard),
   };
 }

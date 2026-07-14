@@ -18,6 +18,9 @@ interface Props {
   description?: string;
   canonical?: string;
   robots?: string;
+  ogType?: string;
+  ogImage?: string;
+  twitterCard?: string;
 }
 
 const {
@@ -33,6 +36,9 @@ const {
   description,
   canonical,
   robots = noindex ? "noindex" : undefined,
+  ogType,
+  ogImage,
+  twitterCard,
 } = Astro.props;
 ---
 
@@ -40,7 +46,15 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <Seo title={seoTitle} description={description} canonical={canonical} robots={robots} />
+    <Seo
+      title={seoTitle}
+      description={description}
+      canonical={canonical}
+      robots={robots}
+      ogType={ogType}
+      ogImage={ogImage}
+      twitterCard={twitterCard}
+    />
   </head>
 
   <body>

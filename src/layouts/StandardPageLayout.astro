@@ -17,6 +17,9 @@ interface Props {
   description?: string;
   canonical?: string;
   robots?: string;
+  ogType?: string;
+  ogImage?: string;
+  twitterCard?: string;
   related?: {
     code: string;
     title: string;
@@ -36,6 +39,9 @@ const {
   description,
   canonical,
   robots,
+  ogType,
+  ogImage,
+  twitterCard,
   related = [],
 } = Astro.props;
 
@@ -50,6 +56,9 @@ const seoTitle = `${code} ${title}`;
   description={description}
   canonical={canonical}
   robots={robots}
+  ogType={ogType}
+  ogImage={ogImage}
+  twitterCard={twitterCard}
 >
   <Fragment slot="toc">
     <slot name="toc" />

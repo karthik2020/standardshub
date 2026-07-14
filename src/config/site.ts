@@ -7,8 +7,14 @@ export interface SiteConfig {
   description: string;
   /** Content for the meta author tag. */
   author: string;
-  /** Canonical site base URL (no trailing slash), e.g. "https://standardshub.example". */
+  /** Canonical site base URL (no trailing slash), e.g. "https://standardshub.in". */
   url: string;
+  /** Default Open Graph image (root-relative path under /public). */
+  ogImage: string;
+  /** Default Open Graph type. */
+  ogType: string;
+  /** Default Twitter/X card type. */
+  twitterCard: string;
   /** Background colour for browser chrome (theme-color). */
   themeColor: string;
   /** Default robots directive applied to pages that do not override it. */
@@ -23,7 +29,10 @@ export const SITE: SiteConfig = {
   description:
     "StandardsHub is a reference library for accounting standards, with clear, structured explanations of IAS, IFRS and Ind AS, worked examples and cross-standard links.",
   author: "StandardsHub",
-  url: "",
+  url: "https://standardshub.in",
+  ogImage: "/og-image.png",
+  ogType: "website",
+  twitterCard: "summary_large_image",
   themeColor: "#ffffff",
   defaultRobots: "index, follow",
   applicationName: "StandardsHub",
