@@ -21,6 +21,8 @@ interface Props {
   ogType?: string;
   ogImage?: string;
   twitterCard?: string;
+  /** Standard page context used to auto-generate the description. */
+  standard?: { code: string; title: string };
 }
 
 const {
@@ -39,6 +41,7 @@ const {
   ogType,
   ogImage,
   twitterCard,
+  standard,
 } = Astro.props;
 ---
 
@@ -54,6 +57,7 @@ const {
       ogType={ogType}
       ogImage={ogImage}
       twitterCard={twitterCard}
+      standard={standard}
     />
   </head>
 

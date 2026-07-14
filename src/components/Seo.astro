@@ -10,15 +10,26 @@ interface Props {
   ogType?: string;
   ogImage?: string;
   twitterCard?: string;
+  /** Standard page context used to auto-generate the description. */
+  standard?: { code: string; title: string };
   /** When true, also emits the viewport meta tag (for pages that own <head>). */
   viewport?: boolean;
 }
 
-const { title, description, canonical, robots, ogType, ogImage, twitterCard, viewport = false } =
-  Astro.props;
+const {
+  title,
+  description,
+  canonical,
+  robots,
+  ogType,
+  ogImage,
+  twitterCard,
+  standard,
+  viewport = false,
+} = Astro.props;
 
 const seo = resolveSeo(
-  { title, description, canonical, robots, ogType, ogImage, twitterCard },
+  { title, description, canonical, robots, ogType, ogImage, twitterCard, standard },
   Astro.url.pathname
 );
 ---

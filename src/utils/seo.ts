@@ -15,6 +15,8 @@ export interface SeoInput {
   ogImage?: string;
   /** Twitter/X card type. Falls back to the site default ("summary_large_image"). */
   twitterCard?: string;
+  /** Standard page context used to auto-generate the description. Only supplied for standard pages. */
+  standard?: { code: string; title: string };
 }
 
 export interface ResolvedSeo {
@@ -81,10 +83,37 @@ export function buildTwitterCard(twitterCard?: string): string {
   return twitterCard ?? SITE.twitterCard;
 }
 
+/**
+ * Builds the auto-generated description for a standard page.
+ *
+ * Format: "Learn {code} {title} with simplified notes, key concepts, examples and exam-focused summaries."
+ */
+export function generateStandardDescription(code: string, title: string): string {
+  return `Learn ${code} ${title} with simplified notes, key concepts, examples and exam-focused summaries.`;
+}
+
+/**
+ * Resolves the meta description.
+ *
+ * Priority:
+ *   1. An explicit (manual) description, used exactly as supplied.
+ *   2. An auto-generated description for standard pages (when a standard context is present).
+ *   3. The site-wide default description for every other page.
+ */
+export function buildDescription(input: SeoInput): string {
+  if (input.description) {
+    return input.description;
+  }
+  if (input.standard) {
+    return generateStandardDescription(input.standard.code, input.standard.title);
+  }
+  return SITE.description;
+}
+
 export function resolveSeo(input: SeoInput, pathname: string): ResolvedSeo {
   return {
     title: buildPageTitle(input.title),
-    description: input.description ?? SITE.description,
+    description: buildDescription(input),
     canonical: buildCanonical(input.canonical, pathname),
     robots: buildRobots(input.robots),
     ogType: buildOgType(input.ogType),
