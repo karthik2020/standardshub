@@ -37,6 +37,18 @@ import "../../styles/extended.css";
     />
   </Fragment>
 
+  <!-- ============ PRINT COVER (PROTOTYPE) ============ -->
+  <div class="print-cover">
+    <div class="print-cover__code">{metadata.code}</div>
+    <h1 class="print-cover__title">{metadata.title}</h1>
+    <div class="print-cover__subtitle">Educational Summary</div>
+    <div class="print-cover__meta">
+      <div class="print-cover__brand">StandardsHub</div>
+      <div class="print-cover__url">www.standardshub.in</div>
+      <div class="print-cover__date" id="print-date"></div>
+    </div>
+  </div>
+
   <!-- ============ REDESIGNED HERO (PROTOTYPE) ============ -->
   <section class="proto-hero" data-framework="ias">
     <div class="proto-hero__content">
@@ -489,7 +501,275 @@ import "../../styles/extended.css";
   <RelatedStandards related={[]} framework="IAS" />
   <PreviousNextNavigation current={metadata.code} framework="IAS" />
 
+  <script is:inline>
+    document.getElementById("print-date")?.textContent = "Printed " + new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+  </script>
+
   <style>
+    /* ===== Print Cover ===== */
+    .print-cover {
+      break-after: page;
+      page-break-after: always;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 100vh;
+      padding: 4cm 2cm;
+      box-sizing: border-box;
+    }
+
+    .print-cover__code {
+      font-size: 18pt;
+      font-weight: 700;
+      color: #374151;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .print-cover__title {
+      font-size: 22pt;
+      font-weight: 700;
+      color: #111827;
+      line-height: 1.3;
+      margin: 0 0 24px;
+      max-width: 14cm;
+    }
+
+    .print-cover__subtitle {
+      font-size: 12pt;
+      font-weight: 600;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 48px;
+    }
+
+    .print-cover__meta {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      margin-top: auto;
+      padding-top: 48px;
+      border-top: 1px solid #e5e7eb;
+      width: 100%;
+      max-width: 10cm;
+    }
+
+    .print-cover__brand {
+      font-size: 14pt;
+      font-weight: 700;
+      color: #111827;
+    }
+
+    .print-cover__url {
+      font-size: 10pt;
+      color: #6b7280;
+    }
+
+    .print-cover__date {
+      font-size: 9pt;
+      color: #9ca3af;
+      margin-top: 4px;
+    }
+
+    /* ===== Print Stylesheet ===== */
+    @media print {
+      @page {
+        size: A4;
+        margin: 2cm 2cm 2.5cm 2cm;
+        @top-center {
+          content: "StandardsHub • IAS 16 • Property, Plant and Equipment";
+          font-family: "Inter", system-ui, sans-serif;
+          font-size: 8pt;
+          color: #6b7280;
+          border-bottom: 0.5pt solid #d1d5db;
+          padding-bottom: 4mm;
+          margin-bottom: 4mm;
+        }
+        @bottom-center {
+          content: "© StandardsHub | Educational summary only | Not official IASB literature | www.standardshub.in";
+          font-family: "Inter", system-ui, sans-serif;
+          font-size: 7.5pt;
+          color: #6b7280;
+          border-top: 0.5pt solid #d1d5db;
+          padding-top: 4mm;
+          margin-top: 4mm;
+        }
+      }
+
+      @page :first {
+        @top-center { content: none; }
+        @bottom-center { content: none; }
+      }
+
+      /* Hide chrome */
+      .site-header,
+      .sidebar,
+      .page-toc,
+      .search-box,
+      .site-footer,
+      .previous-next-navigation,
+      .toolbar-btn,
+      .header-right,
+      .header-left,
+      .information-header-illustration,
+      .sidebar-footer,
+      .sidebar-empty,
+      .sidebar-search {
+        display: none !important;
+      }
+
+      /* Reset layout */
+      * {
+        box-shadow: none !important;
+        text-shadow: none !important;
+        animation: none !important;
+        transition: none !important;
+      }
+
+      html, body {
+        background: #fff !important;
+        color: #000 !important;
+        font-size: 10pt;
+        line-height: 1.5;
+      }
+
+      .app-shell,
+      .app-body,
+      .content,
+      .page-body,
+      .reading-column,
+      .page-content {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        background: transparent !important;
+        border: none !important;
+        border-radius: 0 !important;
+        grid: none !important;
+      }
+
+      /* Typography */
+      h1, h2, h3, h4, h5, h6 {
+        page-break-after: avoid;
+        break-after: avoid;
+        color: #000 !important;
+      }
+
+      h1 { font-size: 18pt; }
+      h2 { font-size: 14pt; }
+      h3 { font-size: 12pt; }
+
+      p, li, td, th {
+        orphans: 3;
+        widows: 3;
+      }
+
+      /* Links */
+      a {
+        color: #000 !important;
+        text-decoration: none !important;
+      }
+      a[href^="http"]::after {
+        content: " (" attr(href) ")";
+        font-size: 8pt;
+        color: #666;
+      }
+
+      /* Page break controls */
+      .proto-hero,
+      .lifecycle-notice,
+      .callout,
+      .definition-block,
+      .formula-box,
+      .example-block,
+      .td-table,
+      .poster,
+      .history-items,
+      .section-header,
+      h2, h3 {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .section-header {
+        break-after: avoid;
+        page-break-after: avoid;
+      }
+
+      .section-header + .grid,
+      .section-header + div {
+        break-before: auto;
+        page-break-before: auto;
+      }
+
+      /* Allow breaks between major sections */
+      .grid, .wrap > div {
+        break-before: auto;
+        page-break-before: auto;
+      }
+
+      /* Remove visual noise */
+      .proto-hero {
+        border: 1pt solid #d1d5db !important;
+        background: #fff !important;
+        padding: 16pt !important;
+        margin-bottom: 18pt !important;
+      }
+
+      .hero-status-pill {
+        border: 1pt solid currentColor !important;
+        background: transparent !important;
+        color: #000 !important;
+      }
+
+      .hero-status-pill__circle {
+        background: #000 !important;
+        color: #fff !important;
+      }
+
+      .proto-hero__meta-card,
+      .card {
+        border: 1pt solid #d1d5db !important;
+        background: #fff !important;
+        box-shadow: none !important;
+      }
+
+      .callout,
+      .definition-block,
+      .example-block,
+      .formula-box {
+        border: 1pt solid #d1d5db !important;
+        background: #f9fafb !important;
+        box-shadow: none !important;
+      }
+
+      .td-table {
+        border: 1pt solid #000 !important;
+      }
+
+      .th {
+        background: #f3f4f6 !important;
+        border-bottom: 1pt solid #000 !important;
+      }
+
+      .tr {
+        border-bottom: 0.5pt solid #d1d5db !important;
+      }
+
+      /* Page number counter */
+      .print-cover ~ * {
+        counter-reset: page 0;
+      }
+    }
+
+    /* ===== Screen Styles (original) ===== */
     .proto-hero {
       background: var(--surface);
       border: 1px solid var(--border);
