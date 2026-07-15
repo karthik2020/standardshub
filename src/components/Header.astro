@@ -29,16 +29,18 @@ const {
             <span class="logo-text"> StandardsHub </span>
         </a>
 
-        <nav class="header-breadcrumbs">
+        <nav class="header-breadcrumbs" aria-label="Breadcrumb">
             <a href="/" class="crumb breadcrumb-home">
                 <House size={14} strokeWidth={2} />
 
                 <span>Home</span>
             </a>
 
+            <span class="breadcrumb-separator" aria-hidden="true">❯</span>
+
             {code.toLowerCase() !== framework.toLowerCase() && (
                 <>
-                    <span class="breadcrumb-separator">❯</span>
+                    <span class="breadcrumb-separator" aria-hidden="true">❯</span>
 
                     <a
                         href={`/${framework.toLowerCase()}`}
@@ -51,9 +53,9 @@ const {
 
             {code.toLowerCase() !== "home" && (
                 <>
-                    <span class="breadcrumb-separator">❯</span>
+                    <span class="breadcrumb-separator" aria-hidden="true">❯</span>
 
-                    <span class="breadcrumb-current">
+                    <span class="breadcrumb-current" aria-current="page">
                         <span class={`breadcrumb-code ${framework.toLowerCase()}`}>
                             {code}
                         </span>
@@ -76,7 +78,7 @@ const {
     <div class="header-right">
         <slot />
 
-        <button class="toolbar-btn" id="printBtn" title="Print"> 🖨 </button>
+        <button class="toolbar-btn" id="printBtn" title="Print" aria-label="Print this page"> 🖨 </button>
     </div>
 </header>
 

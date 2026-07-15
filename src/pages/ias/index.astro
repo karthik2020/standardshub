@@ -26,11 +26,11 @@ for (const item of standards.IAS) {
 
   <div class="view-toggle">
 
-    <button id="btn-number" class="active">
+    <button id="btn-number" class="active" aria-pressed="true" aria-controls="number-view">
       Standard Number
     </button>
 
-    <button id="btn-category">
+    <button id="btn-category" aria-pressed="false" aria-controls="category-view">
       Category
     </button>
 
@@ -125,7 +125,9 @@ for (const item of standards.IAS) {
       categoryView.style.display = "none";
 
       btnNumber.classList.add("active");
+      btnNumber.setAttribute("aria-pressed", "true");
       btnCategory.classList.remove("active");
+      btnCategory.setAttribute("aria-pressed", "false");
 
     });
 
@@ -135,7 +137,9 @@ for (const item of standards.IAS) {
       categoryView.style.display = "block";
 
       btnCategory.classList.add("active");
+      btnCategory.setAttribute("aria-pressed", "true");
       btnNumber.classList.remove("active");
+      btnNumber.setAttribute("aria-pressed", "false");
 
     });
 
