@@ -28,13 +28,14 @@ document.addEventListener("DOMContentLoaded", () => {
         const targetElement = document.getElementById(targetId);
         if (!targetElement) return;
 
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         const offset = headerHeight() + 20;
         const targetPosition =
             targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
 
         window.scrollTo({
             top: targetPosition,
-            behavior: "smooth",
+            behavior: prefersReducedMotion ? "auto" : "smooth",
         });
     }
 
@@ -64,12 +65,13 @@ document.addEventListener("DOMContentLoaded", () => {
         const activeLink = activeLinks[0];
         if (!activeLink || !tocContainer) return;
 
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         const tocRect = tocContainer.getBoundingClientRect();
         const linkRect = activeLink.getBoundingClientRect();
 
         if (linkRect.top < tocRect.top || linkRect.bottom > tocRect.bottom) {
             activeLink.scrollIntoView({
-                behavior: "smooth",
+                behavior: prefersReducedMotion ? "auto" : "smooth",
                 block: "center",
                 inline: "nearest",
             });

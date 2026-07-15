@@ -334,7 +334,7 @@ body {
 .search-box input:focus {
     outline: none;
     border-color: var(--framework-accent);
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--framework-accent) 12%, transparent), 0 0 16px color-mix(in srgb, var(--framework-accent) 15%, transparent);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--framework-accent) 20%, transparent), 0 0 0 1px var(--framework-accent), 0 0 24px color-mix(in srgb, var(--framework-accent) 25%, transparent);
 }
 
 .section {
@@ -1483,7 +1483,7 @@ section li:last-child {
 
 .search-input:focus-within {
     border-color: var(--framework-accent);
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--framework-accent) 8%, transparent);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--framework-accent) 18%, transparent), 0 0 0 1px var(--framework-accent), 0 0 20px color-mix(in srgb, var(--framework-accent) 22%, transparent);
 }
 
 .search-input input {
@@ -2593,5 +2593,28 @@ section li:last-child {
 
     .pnn-next > * {
         margin-left: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .related-card:hover,
+    .home-card:hover,
+    .standard-card:hover,
+    .crumb:hover,
+    .site-logo:hover .logo-mark,
+    .toolbar-btn:hover,
+    .pnn-prev:hover .pnn-arrow,
+    .pnn-next:hover .pnn-arrow {
+        transform: none !important;
     }
 }
