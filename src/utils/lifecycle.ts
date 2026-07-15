@@ -70,32 +70,3 @@ export function getLifecycleCountdown(eventDate?: string | null): LifecycleCount
 
   return result;
 }
-
-// Example outputs:
-//
-// getLifecycleCountdown(null)
-// => { validDate: false, daysRemaining: null, isToday: false, isTomorrow: false, isPast: false, showCountdown: false }
-//
-// getLifecycleCountdown("")
-// => { validDate: false, daysRemaining: null, isToday: false, isTomorrow: false, isPast: false, showCountdown: false }
-//
-// getLifecycleCountdown("not-a-date")
-// => { validDate: false, daysRemaining: null, isToday: false, isTomorrow: false, isPast: false, showCountdown: false }
-//
-// getLifecycleCountdown("2026-01-01")
-// => { validDate: true, daysRemaining: -192, isToday: false, isTomorrow: false, isPast: true, showCountdown: false }
-//
-// getLifecycleCountdown("2026-07-13")
-// => { validDate: true, daysRemaining: 0, isToday: true, isTomorrow: false, isPast: false, showCountdown: true }
-//
-// getLifecycleCountdown("2026-07-14")
-// => { validDate: true, daysRemaining: 1, isToday: false, isTomorrow: true, isPast: false, showCountdown: true }
-//
-// getLifecycleCountdown("2026-08-15")
-// => { validDate: true, daysRemaining: 33, isToday: false, isTomorrow: false, isPast: false, showCountdown: true }
-//
-// getLifecycleCountdown("2026-10-11")
-// => { validDate: true, daysRemaining: 90, isToday: false, isTomorrow: false, isPast: false, showCountdown: true }
-//
-// getLifecycleCountdown("2026-10-12")
-// => { validDate: true, daysRemaining: 91, isToday: false, isTomorrow: false, isPast: false, showCountdown: false }
