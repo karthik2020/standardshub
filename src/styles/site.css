@@ -858,16 +858,200 @@ section li:last-child {
 }
 
 .standard-card {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: var(--space-md);
     text-decoration: none;
     padding: var(--space-lg);
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
-    min-height: 120px;
+    min-height: 150px;
     transition: transform var(--duration-normal) var(--ease), box-shadow var(--duration-normal) var(--ease);
     position: relative;
+}
+
+.standard-card:hover,
+.standard-card:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.standard-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    background: var(--icon-bg, var(--surface));
+    color: var(--icon-color, var(--text));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.standard-icon img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.standard-body {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.standard-code {
+    font-weight: 700;
+    color: var(--text);
+    font-size: var(--text-small);
+    line-height: 1.3;
+}
+
+.standard-title {
+    color: var(--text-muted);
+    font-size: var(--text-xs);
+    line-height: 1.45;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.standard-status {
+    align-self: flex-start;
+    margin-top: var(--space-xs);
+    padding: 2px 8px;
+    border-radius: var(--radius-pill);
+    font-size: 11px;
+    font-weight: var(--weight-semibold);
+    color: var(--text-muted);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+}
+
+.standard-status--superseded,
+.standard-status--replaced {
+    color: #92400e;
+    background: #fffbeb;
+    border-color: #fde68a;
+}
+
+.standard-status--withdrawn {
+    color: #b91c1c;
+    background: #fff1f2;
+    border-color: #fecaca;
+}
+
+.standard-status--historical-reference {
+    color: #334155;
+    background: #f1f5f9;
+    border-color: #e2e8f0;
+}
+
+.standard-status--effective-soon {
+    color: #4338ca;
+    background: #eef2ff;
+    border-color: #c7d2fe;
+}
+
+.standard-status--amended {
+    color: #6d28d9;
+    background: #f5f3ff;
+    border-color: #ddd6fe;
+}
+
+.standard-status--suspended {
+    color: #9a3412;
+    background: #fff7ed;
+    border-color: #fed7aa;
+}
+
+.standard-arrow {
+    position: absolute;
+    bottom: var(--space-lg);
+    right: var(--space-lg);
+    color: var(--text-muted);
+    opacity: 0.35;
+    transform: translateX(0);
+    transition: transform var(--duration-normal) var(--ease);
+}
+
+.standard-card:hover .standard-arrow,
+.standard-card:focus-visible .standard-arrow {
+    transform: translateX(4px);
+}
+
+@media (max-width: 900px) {
+    .standard-card {
+        padding: var(--space-md);
+        min-height: 120px;
+    }
+
+    .standard-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .standard-icon img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .standard-arrow {
+        bottom: var(--space-md);
+        right: var(--space-md);
+    }
+}
+
+@media (max-width: 720px) {
+    .standard-card {
+        padding: var(--space-md);
+        min-height: 90px;
+    }
+
+    .standard-body {
+        gap: 2px;
+    }
+
+    .standard-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .standard-icon img {
+        width: 18px;
+        height: 18px;
+    }
+
+    .standard-code {
+        font-size: var(--text-xs);
+    }
+
+    .standard-title {
+        font-size: 11px;
+        -webkit-line-clamp: 2;
+    }
+
+    .standard-status {
+        margin-top: 4px;
+        font-size: 10px;
+        padding: 1px 6px;
+    }
+
+    .standard-arrow {
+        bottom: var(--space-sm);
+        right: var(--space-sm);
+    }
+
+    .standard-arrow svg {
+        width: 14px;
+        height: 14px;
+    }
 }
 
 .standard-card:hover,

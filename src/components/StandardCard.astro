@@ -60,25 +60,24 @@ const resolvedStatus = statusProp ?? standardData?.status;
 ---
 
 <a href={href} class="standard-card" style={`--icon-bg: ${theme.bg}; --icon-color: ${theme.color};`}>
-  <div class="standard-header">
-    <div class="standard-icon">
-      <img
-        src={resolvedIcon}
-        alt=""
-        loading="lazy"
-      />
-    </div>
-
-    <div class="standard-code">{code}</div>
+  <div class="standard-icon">
+    <img
+      src={resolvedIcon}
+      alt=""
+      loading="lazy"
+    />
   </div>
 
-  <div class="standard-title">{title}</div>
+  <div class="standard-body">
+    <div class="standard-code">{code}</div>
+    <div class="standard-title">{title}</div>
 
-  {resolvedStatus && resolvedStatus !== "Active" && (
-    <div class={`standard-status standard-status--${resolvedStatus.toLowerCase()}`}>
-      {resolvedStatus}
-    </div>
-  )}
+    {resolvedStatus && resolvedStatus !== "Active" && (
+      <div class={`standard-status standard-status--${resolvedStatus.toLowerCase()}`}>
+        {resolvedStatus}
+      </div>
+    )}
+  </div>
 
   <div class="standard-arrow" aria-hidden="true">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
