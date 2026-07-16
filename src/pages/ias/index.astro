@@ -39,26 +39,62 @@ for (const item of standards.IAS) {
 
   <div id="number-view">
 
-    <div class="standards-grid">
+    <div class="standards-group">
+      <h2 class="standards-group-title">Active Standards</h2>
+      <div class="standards-grid">
 
-      {
-        standards.IAS.map((item) => (
+        {
+          standards.IAS.filter((item) => !item.status).map((item) => (
 
-          <a href={item.url} class="standard-card">
+            <a href={item.url} class="standard-card">
 
-            <div class="standard-code">
-              {item.code}
-            </div>
+              <div class="standard-code">
+                {item.code}
+              </div>
 
-            <div class="standard-title">
-              {item.title}
-            </div>
+              <div class="standard-title">
+                {item.title}
+              </div>
 
-          </a>
+            </a>
 
-        ))
-      }
+          ))
+        }
 
+      </div>
+    </div>
+
+    <div class="standards-divider"></div>
+
+    <div class="standards-group">
+      <h2 class="standards-group-title">Historical Standards</h2>
+      <div class="standards-grid">
+
+        {
+          standards.IAS.filter((item) => item.status).map((item) => (
+
+            <a href={item.url} class="standard-card">
+
+              <div class="standard-code">
+                {item.code}
+              </div>
+
+              <div class="standard-title">
+                {item.title}
+              </div>
+
+              {item.status && (
+                <div class="standard-status">
+                  {item.status}
+                </div>
+              )}
+
+            </a>
+
+          ))
+        }
+
+      </div>
     </div>
 
   </div>
@@ -67,40 +103,87 @@ for (const item of standards.IAS) {
 
     {
       Object.entries(groupedIAS).map(
-        ([category, items]) => (
+        ([category, items]) => {
 
-          <div class="category-group">
+          const activeItems = items.filter((item) => !item.status);
+          const historicalItems = items.filter((item) => item.status);
 
-            <h2>{category}</h2>
+          return (
+            <div class="category-group">
 
-            <div class="standards-grid">
+              <h2>{category}</h2>
 
-              {
-                items.map((item) => (
+              {activeItems.length > 0 && (
+                <div class="standards-group">
+                  <div class="standards-grid">
 
-                  <a
-                    href={item.url}
-                    class="standard-card"
-                  >
+                    {
+                      activeItems.map((item) => (
 
-                    <div class="standard-code">
-                      {item.code}
+                        <a
+                          href={item.url}
+                          class="standard-card"
+                        >
+
+                          <div class="standard-code">
+                            {item.code}
+                          </div>
+
+                          <div class="standard-title">
+                            {item.title}
+                          </div>
+
+                        </a>
+
+                      ))
+                    }
+
+                  </div>
+                </div>
+              )}
+
+              {historicalItems.length > 0 && (
+                <>
+                  <div class="standards-divider"></div>
+                  <div class="standards-group">
+                    <div class="standards-grid">
+
+                      {
+                        historicalItems.map((item) => (
+
+                          <a
+                            href={item.url}
+                            class="standard-card"
+                          >
+
+                            <div class="standard-code">
+                              {item.code}
+                            </div>
+
+                            <div class="standard-title">
+                              {item.title}
+                            </div>
+
+                            {item.status && (
+                              <div class="standard-status">
+                                {item.status}
+                              </div>
+                            )}
+
+                          </a>
+
+                        ))
+                      }
+
                     </div>
-
-                    <div class="standard-title">
-                      {item.title}
-                    </div>
-
-                  </a>
-
-                ))
-              }
+                  </div>
+                </>
+              )}
 
             </div>
+          );
 
-          </div>
-
-        )
+        }
       )
     }
 
