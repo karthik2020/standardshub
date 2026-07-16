@@ -26,33 +26,34 @@ const iconPath = `/images/standards/${framework}/${code.toLowerCase()}.svg`;
 const fallbackPath = `/images/standards/${framework}/default.svg`;
 
 const palette = [
-  { bg: "var(--ias-soft)", border: "var(--ias-light)" },
-  { bg: "var(--ifrs-soft)", border: "var(--ifrs-light)" },
-  { bg: "var(--indas-soft)", border: "var(--indas-light)" },
-  { bg: "#f5f3ff", border: "#e9d5ff" },
-  { bg: "#ecfdf5", border: "#a7f3d0" },
-  { bg: "#fff1f2", border: "#fecdd3" },
+  { bg: "#DBEAFE", color: "#2563EB" },
+  { bg: "#DCFCE7", color: "#16A34A" },
+  { bg: "#FFEDD5", color: "#EA580C" },
+  { bg: "#F3E8FF", color: "#9333EA" },
+  { bg: "#CCFBF1", color: "#0F766E" },
+  { bg: "#FCE7F3", color: "#DB2777" },
 ];
 
 const theme = palette[code.length % palette.length];
 ---
 
-<a href={href} class="standard-card" style={`--card-bg: ${theme.bg}; --card-border: ${theme.border};`}>
-  <div class="standard-icon">
-    <img
-      src={iconPath}
-      onerror="this.onerror=null; this.src='${fallbackPath}';"
-      alt=""
-      loading="lazy"
-    />
-  </div>
+<a href={href} class="standard-card" style={`--icon-bg: ${theme.bg}; --icon-color: ${theme.color};`}>
+  <div class="standard-header">
+    <div class="standard-icon">
+      <img
+        src={iconPath}
+        onerror="this.onerror=null; this.src='${fallbackPath}';"
+        alt=""
+        loading="lazy"
+      />
+    </div>
 
-  <div class="standard-body">
     <div class="standard-code">{code}</div>
-    <div class="standard-title">{title}</div>
   </div>
 
-  {status && (
+  <div class="standard-title">{title}</div>
+
+  {status && status !== "Active" && (
     <div class="standard-status">
       {status}
     </div>
