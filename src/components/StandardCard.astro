@@ -12,8 +12,6 @@
  * - status?: string (optional, e.g. "Superseded")
  */
 
-import fs from "fs";
-import path from "path";
 import standards from "../data/standards.json";
 
 interface Props {
@@ -28,11 +26,6 @@ const { href, code, title, framework, status: statusProp } = Astro.props;
 
 const iconPath = `/images/standards/${framework}/${code.toLowerCase().replace(/\s+/g, "")}.svg`;
 const fallbackPath = `/images/standards/${framework}/default.svg`;
-
-const iconPathAbs = path.resolve(process.cwd(), "src", "images", "standards", framework, `${code.toLowerCase().replace(/\s+/g, "")}.svg`);
-const hasIcon = fs.existsSync(iconPathAbs);
-
-const resolvedIcon = hasIcon ? iconPath : fallbackPath;
 
 const palette = [
   { bg: "#DBEAFE", color: "#2563EB" },
@@ -62,9 +55,10 @@ const resolvedStatus = statusProp ?? standardData?.status;
 <a href={href} class="standard-card" style={`--icon-bg: ${theme.bg}; --icon-color: ${theme.color};`}>
   <div class="standard-icon">
     <img
-      src={resolvedIcon}
+      src={iconPath}
       alt=""
       loading="lazy"
+      onerror={`this.onerror=null;this.src='${fallbackPath}';`}
     />
   </div>
 
