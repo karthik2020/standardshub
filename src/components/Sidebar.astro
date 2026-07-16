@@ -73,8 +73,27 @@ const currentPath = Astro.url.pathname;
 
       <div class="section-items">
         <ul class="sidebar-items">
+          <li class="sidebar-group-label">Active Standards</li>
           {
-            standards.IAS.map((item) => (
+            standards.IAS.filter((item) => !["IAS 17", "IAS 31", "IAS 35", "IAS 39"].includes(item.code)).map((item) => (
+              <li>
+                <NavLink
+                  href={item.url}
+                  title={item.title}
+                  section="ias"
+                  code={item.code}
+                  standardTitle={item.title}
+                >
+                  {item.code}
+                </NavLink>
+              </li>
+            ))
+          }
+        </ul>
+        <ul class="sidebar-items">
+          <li class="sidebar-group-label">Historical Standards</li>
+          {
+            standards.IAS.filter((item) => ["IAS 17", "IAS 31", "IAS 35", "IAS 39"].includes(item.code)).map((item) => (
               <li>
                 <NavLink
                   href={item.url}
