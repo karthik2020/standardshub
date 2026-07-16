@@ -12,6 +12,9 @@
  * - status?: string (optional, e.g. "Superseded")
  */
 
+import fs from "fs";
+import path from "path";
+
 interface Props {
   href: string;
   code: string;
@@ -25,6 +28,11 @@ const { href, code, title, framework, status } = Astro.props;
 const iconPath = `/images/standards/${framework}/${code.toLowerCase()}.svg`;
 const fallbackPath = `/images/standards/${framework}/default.svg`;
 
+const iconPathAbs = path.resolve(process.cwd(), "src", "images", "standards", framework, `${code.toLowerCase()}.svg`);
+const hasIcon = fs.existsSync(iconPathAbs);
+
+const resolvedIcon = hasIcon ? iconPath : fallbackPath;
+
 const palette = [
   { bg: "#DBEAFE", color: "#2563EB" },
   { bg: "#DCFCE7", color: "#16A34A" },
@@ -34,15 +42,23 @@ const palette = [
   { bg: "#FCE7F3", color: "#DB2777" },
 ];
 
-const theme = palette[code.length % palette.length];
+function hashCode(str) {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    hash = ((hash << 5) - hash) + str.charCodeAt(i);
+    hash = hash & hash;
+  }
+  return Math.abs(hash);
+}
+
+const theme = palette[hashCode(code) % palette.length];
 ---
 
 <a href={href} class="standard-card" style={`--icon-bg: ${theme.bg}; --icon-color: ${theme.color};`}>
   <div class="standard-header">
     <div class="standard-icon">
       <img
-        src={iconPath}
-        onerror="this.onerror=null; this.src='${fallbackPath}';"
+        src={resolvedIcon}
         alt=""
         loading="lazy"
       />
