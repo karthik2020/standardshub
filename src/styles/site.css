@@ -743,6 +743,68 @@ section li:last-child {
     border-left: 4px solid var(--indas);
 }
 
+.home-section {
+    margin-top: var(--space-3xl);
+}
+
+.home-section-title {
+    font-size: var(--text-h2);
+    font-weight: var(--weight-bold);
+    color: var(--text);
+    margin: 0 0 var(--space-lg);
+}
+
+.popular-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 180px), 1fr));
+    gap: var(--space-md);
+}
+
+.popular-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-md) var(--space-lg);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    text-decoration: none;
+    color: var(--text);
+    font-size: var(--text-small);
+    font-weight: var(--weight-semibold);
+    transition: transform var(--duration-fast) var(--ease), box-shadow var(--duration-fast) var(--ease), border-color var(--duration-fast) var(--ease);
+}
+
+.popular-card:hover,
+.popular-card:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+    border-color: var(--text-muted);
+}
+
+.about-card {
+    padding: var(--space-xl);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+/* Homepage layout: pin footer to bottom when content is short */
+.page-body.home-layout {
+    align-items: stretch;
+}
+
+.page-body.home-layout .reading-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.page-body.home-layout .page-content {
+    flex: 1;
+}
+
 /* Category Pages */
 .category-description {
     color: var(--text-muted);
