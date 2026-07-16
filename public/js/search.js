@@ -14,17 +14,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!placeholder || !button || !container) return;
 
         const suggestions = [
-            "IAS 38",
-            "Revenue",
-            "IFRS 15",
-            "Leases",
-            "IAS 16",
-            "Fair value",
-            "IAS 36",
-            "Impairment",
-            "Cash flows",
-            "Goodwill",
-            "Consolidation"
+            "Search IAS 16...",
+            "Search Inventories...",
+            "Search IFRS 15...",
+            "Search Property...",
+            "Search Revenue..."
         ];
 
         let index = 0;
