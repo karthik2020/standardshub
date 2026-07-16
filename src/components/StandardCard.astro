@@ -1,0 +1,66 @@
+---
+/**
+ * StandardCard
+ *
+ * Reusable card component for framework landing pages.
+ *
+ * Props:
+ * - href: string
+ * - code: string (e.g. "IAS 16")
+ * - title: string
+ * - framework: "ias" | "ifrs" | "indas"
+ * - status?: string (optional, e.g. "Superseded")
+ */
+
+interface Props {
+  href: string;
+  code: string;
+  title: string;
+  framework: "ias" | "ifrs" | "indas";
+  status?: string;
+}
+
+const { href, code, title, framework, status } = Astro.props;
+
+const iconPath = `/images/standards/${framework}/${code.toLowerCase()}.svg`;
+const fallbackPath = `/images/standards/${framework}/default.svg`;
+
+const palette = [
+  { bg: "var(--ias-soft)", border: "var(--ias-light)" },
+  { bg: "var(--ifrs-soft)", border: "var(--ifrs-light)" },
+  { bg: "var(--indas-soft)", border: "var(--indas-light)" },
+  { bg: "#f5f3ff", border: "#e9d5ff" },
+  { bg: "#ecfdf5", border: "#a7f3d0" },
+  { bg: "#fff1f2", border: "#fecdd3" },
+];
+
+const theme = palette[code.length % palette.length];
+---
+
+<a href={href} class="standard-card" style={`--card-bg: ${theme.bg}; --card-border: ${theme.border};`}>
+  <div class="standard-icon">
+    <img
+      src={iconPath}
+      onerror="this.onerror=null; this.src='${fallbackPath}';"
+      alt=""
+      loading="lazy"
+    />
+  </div>
+
+  <div class="standard-body">
+    <div class="standard-code">{code}</div>
+    <div class="standard-title">{title}</div>
+  </div>
+
+  {status && (
+    <div class="standard-status">
+      {status}
+    </div>
+  )}
+
+  <div class="standard-arrow" aria-hidden="true">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12h14M12 5l7 7-7 7" />
+    </svg>
+  </div>
+</a>

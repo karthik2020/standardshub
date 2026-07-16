@@ -1,6 +1,7 @@
 ---
 import StandardLayout from "../../layouts/StandardLayout.astro";
 import standards from "../../data/standards.json";
+import StandardCard from "../../components/StandardCard.astro";
 ---
 
 <StandardLayout code="IFRS" title="International Financial Reporting Standards (IFRS)" framework="IFRS">
@@ -19,17 +20,12 @@ import standards from "../../data/standards.json";
       {
         standards.IFRS.map((item) => (
 
-          <a href={item.url} class="standard-card">
-
-            <div class="standard-code">
-              {item.code}
-            </div>
-
-            <div class="standard-title">
-              {item.title}
-            </div>
-
-          </a>
+          <StandardCard
+            href={item.url}
+            code={item.code}
+            title={item.title}
+            framework="ifrs"
+          />
 
         ))
       }

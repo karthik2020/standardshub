@@ -1,6 +1,7 @@
 ---
 import StandardLayout from "../../layouts/StandardLayout.astro";
 import standards from "../../data/standards.json";
+import StandardCard from "../../components/StandardCard.astro";
 
 const groupedIAS = /** @type {Record<string, any[]>} */ ({});
 
@@ -46,17 +47,12 @@ for (const item of standards.IAS) {
         {
           standards.IAS.filter((item) => !item.status).map((item) => (
 
-            <a href={item.url} class="standard-card">
-
-              <div class="standard-code">
-                {item.code}
-              </div>
-
-              <div class="standard-title">
-                {item.title}
-              </div>
-
-            </a>
+            <StandardCard
+              href={item.url}
+              code={item.code}
+              title={item.title}
+              framework="ias"
+            />
 
           ))
         }
@@ -73,23 +69,13 @@ for (const item of standards.IAS) {
         {
           standards.IAS.filter((item) => item.status).map((item) => (
 
-            <a href={item.url} class="standard-card">
-
-              <div class="standard-code">
-                {item.code}
-              </div>
-
-              <div class="standard-title">
-                {item.title}
-              </div>
-
-              {item.status && (
-                <div class="standard-status">
-                  {item.status}
-                </div>
-              )}
-
-            </a>
+            <StandardCard
+              href={item.url}
+              code={item.code}
+              title={item.title}
+              framework="ias"
+              status={item.status}
+            />
 
           ))
         }
@@ -120,20 +106,12 @@ for (const item of standards.IAS) {
                     {
                       activeItems.map((item) => (
 
-                        <a
+                        <StandardCard
                           href={item.url}
-                          class="standard-card"
-                        >
-
-                          <div class="standard-code">
-                            {item.code}
-                          </div>
-
-                          <div class="standard-title">
-                            {item.title}
-                          </div>
-
-                        </a>
+                          code={item.code}
+                          title={item.title}
+                          framework="ias"
+                        />
 
                       ))
                     }
@@ -149,30 +127,17 @@ for (const item of standards.IAS) {
                     <div class="standards-grid">
 
                       {
-                        historicalItems.map((item) => (
+                      historicalItems.map((item) => (
 
-                          <a
-                            href={item.url}
-                            class="standard-card"
-                          >
+                        <StandardCard
+                          href={item.url}
+                          code={item.code}
+                          title={item.title}
+                          framework="ias"
+                          status={item.status}
+                        />
 
-                            <div class="standard-code">
-                              {item.code}
-                            </div>
-
-                            <div class="standard-title">
-                              {item.title}
-                            </div>
-
-                            {item.status && (
-                              <div class="standard-status">
-                                {item.status}
-                              </div>
-                            )}
-
-                          </a>
-
-                        ))
+                      ))
                       }
 
                     </div>
