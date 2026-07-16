@@ -814,7 +814,19 @@ section li:last-child {
 .standards-grid {
     display: grid;
     gap: var(--space-lg);
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 900px) {
+    .standards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1200px) {
+    .standards-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 .standard-card {
