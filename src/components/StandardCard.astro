@@ -26,10 +26,10 @@ interface Props {
 
 const { href, code, title, framework, status: statusProp } = Astro.props;
 
-const iconPath = `/images/standards/${framework}/${code.toLowerCase()}.svg`;
+const iconPath = `/images/standards/${framework}/${code.toLowerCase().replace(/\s+/g, "")}.svg`;
 const fallbackPath = `/images/standards/${framework}/default.svg`;
 
-const iconPathAbs = path.resolve(process.cwd(), "src", "images", "standards", framework, `${code.toLowerCase()}.svg`);
+const iconPathAbs = path.resolve(process.cwd(), "src", "images", "standards", framework, `${code.toLowerCase().replace(/\s+/g, "")}.svg`);
 const hasIcon = fs.existsSync(iconPathAbs);
 
 const resolvedIcon = hasIcon ? iconPath : fallbackPath;
