@@ -865,7 +865,7 @@ section li:last-child {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
-    min-height: 145px;
+    min-height: 120px;
     transition: transform var(--duration-normal) var(--ease), box-shadow var(--duration-normal) var(--ease);
     position: relative;
 }
@@ -933,26 +933,62 @@ section li:last-child {
     letter-spacing: .04em;
 }
 
+.standard-status--superseded,
+.standard-status--replaced {
+    color: #92400e;
+    background: #fffbeb;
+    border-color: #fde68a;
+}
+
+.standard-status--withdrawn {
+    color: #b91c1c;
+    background: #fff1f2;
+    border-color: #fecaca;
+}
+
+.standard-status--historical-reference {
+    color: #334155;
+    background: #f1f5f9;
+    border-color: #e2e8f0;
+}
+
+.standard-status--effective-soon {
+    color: #4338ca;
+    background: #eef2ff;
+    border-color: #c7d2fe;
+}
+
+.standard-status--amended {
+    color: #6d28d9;
+    background: #f5f3ff;
+    border-color: #ddd6fe;
+}
+
+.standard-status--suspended {
+    color: #9a3412;
+    background: #fff7ed;
+    border-color: #fed7aa;
+}
+
 .standard-arrow {
     position: absolute;
     bottom: var(--space-lg);
     right: var(--space-lg);
     color: var(--text-muted);
-    opacity: 0;
+    opacity: 0.35;
     transform: translateX(0);
-    transition: opacity var(--duration-normal) var(--ease), transform var(--duration-normal) var(--ease);
+    transition: transform var(--duration-normal) var(--ease);
 }
 
 .standard-card:hover .standard-arrow,
 .standard-card:focus-visible .standard-arrow {
-    opacity: 1;
     transform: translateX(4px);
 }
 
 @media (max-width: 900px) {
     .standard-card {
         padding: var(--space-md);
-        min-height: 130px;
+        min-height: 105px;
     }
 
     .standard-icon {
@@ -974,7 +1010,7 @@ section li:last-child {
 @media (max-width: 720px) {
     .standard-card {
         padding: var(--space-md);
-        min-height: 110px;
+        min-height: 88px;
     }
 
     .standard-header {

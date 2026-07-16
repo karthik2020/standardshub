@@ -14,6 +14,7 @@
 
 import fs from "fs";
 import path from "path";
+import standards from "../data/standards.json";
 
 interface Props {
   href: string;
@@ -23,7 +24,7 @@ interface Props {
   status?: string;
 }
 
-const { href, code, title, framework, status } = Astro.props;
+const { href, code, title, framework, status: statusProp } = Astro.props;
 
 const iconPath = `/images/standards/${framework}/${code.toLowerCase()}.svg`;
 const fallbackPath = `/images/standards/${framework}/default.svg`;
@@ -52,6 +53,10 @@ function hashCode(str) {
 }
 
 const theme = palette[hashCode(code) % palette.length];
+
+const frameworkKey = framework === "indas" ? "IndAS" : framework.toUpperCase();
+const standardData = standards[frameworkKey]?.find((s) => s.code === code);
+const resolvedStatus = statusProp ?? standardData?.status;
 ---
 
 <a href={href} class="standard-card" style={`--icon-bg: ${theme.bg}; --icon-color: ${theme.color};`}>
@@ -69,9 +74,9 @@ const theme = palette[hashCode(code) % palette.length];
 
   <div class="standard-title">{title}</div>
 
-  {status && status !== "Active" && (
-    <div class="standard-status">
-      {status}
+  {resolvedStatus && resolvedStatus !== "Active" && (
+    <div class={`standard-status standard-status--${resolvedStatus.toLowerCase()}`}>
+      {resolvedStatus}
     </div>
   )}
 
