@@ -168,31 +168,22 @@ function initSidebar() {
 
     }
 
-    if (filterInput) {
+        if (filterInput) {
+            filterInput.setAttribute("aria-label", "Filter standards");
 
-        filterInput.setAttribute("aria-label", "Filter standards");
-
-        filterInput.addEventListener("input", () => {
-            applyFilter(filterInput.value);
-        });
-
-        if (clearButton) {
-            clearButton.setAttribute("aria-label", "Clear filter");
-            clearButton.addEventListener("click", () => {
-                filterInput.value = "";
-                applyFilter("");
-                filterInput.focus();
+            filterInput.addEventListener("input", () => {
+                applyFilter(filterInput.value);
             });
-        }
 
-        // Restore the persisted filter for the current session.
-        const saved = sessionStorage.getItem(FILTER_KEY);
-        if (saved) {
-            filterInput.value = saved;
-            applyFilter(saved);
+            if (clearButton) {
+                clearButton.setAttribute("aria-label", "Clear filter");
+                clearButton.addEventListener("click", () => {
+                    filterInput.value = "";
+                    applyFilter("");
+                    filterInput.focus();
+                });
+            }
         }
-
-    }
 
     // ==========================================================
     // Restore Sidebar Scroll
