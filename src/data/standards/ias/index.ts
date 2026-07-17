@@ -35,6 +35,7 @@ import ias26 from "./ias26.json";
 import ias27 from "./ias27.json";
 import ias28 from "./ias28.json";
 import ias29 from "./ias29.json";
+import ias30 from "./ias30.json";
 import ias31 from "./ias31.json";
 import ias32 from "./ias32.json";
 import ias33 from "./ias33.json";
@@ -81,6 +82,7 @@ export const IASStandards: StandardMetadata[] = [
   ias27 as StandardMetadata,
   ias28 as StandardMetadata,
   ias29 as StandardMetadata,
+  ias30 as StandardMetadata,
   ias31 as StandardMetadata,
   ias32 as StandardMetadata,
   ias33 as StandardMetadata,
