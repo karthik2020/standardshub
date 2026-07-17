@@ -15,10 +15,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const suggestions = [
             "Search IAS 16...",
+            "Search Revenue...",
+            "Search Leases...",
+            "Search PPE...",
             "Search Inventories...",
-            "Search IFRS 15...",
-            "Search Property...",
-            "Search Revenue..."
+            "Search IAS 38..."
         ];
 
         let index = 0;
