@@ -8,6 +8,10 @@ import type { StandardMetadata } from "../types";
 // Import all IAS metadata files
 import ias1 from "./ias1.json";
 import ias2 from "./ias2.json";
+import ias3 from "./ias3.json";
+import ias4 from "./ias4.json";
+import ias5 from "./ias5.json";
+import ias6 from "./ias6.json";
 import ias7 from "./ias7.json";
 import ias8 from "./ias8.json";
 import ias10 from "./ias10.json";
@@ -42,6 +46,10 @@ import ias41 from "./ias41.json";
 export const IASStandards: StandardMetadata[] = [
   ias1 as StandardMetadata,
   ias2 as StandardMetadata,
+  ias3 as StandardMetadata,
+  ias4 as StandardMetadata,
+  ias5 as StandardMetadata,
+  ias6 as StandardMetadata,
   ias7 as StandardMetadata,
   ias8 as StandardMetadata,
   ias10 as StandardMetadata,
