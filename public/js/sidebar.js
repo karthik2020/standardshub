@@ -19,7 +19,12 @@ function initSidebar() {
         if (!items) return;
 
         section.classList.toggle("expanded", open);
-        items.classList.toggle("hidden", !open);
+
+        if (open) {
+            items.style.maxHeight = items.scrollHeight + "px";
+        } else {
+            items.style.maxHeight = "0px";
+        }
 
         localStorage.setItem(
             `section-${section.dataset.section}`,
@@ -150,6 +155,7 @@ function initSidebar() {
                 if (visible && items) {
                     section.classList.add("expanded");
                     items.classList.remove("collapsed");
+                    items.style.maxHeight = items.scrollHeight + "px";
                 }
 
             }
