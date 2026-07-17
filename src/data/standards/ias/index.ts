@@ -20,13 +20,17 @@ import ias11 from "./ias11.json";
 import ias12 from "./ias12.json";
 import ias13 from "./ias13.json";
 import ias14 from "./ias14.json";
+import ias15 from "./ias15.json";
 import ias16 from "./ias16.json";
 import ias17 from "./ias17.json";
+import ias18 from "./ias18.json";
 import ias19 from "./ias19.json";
 import ias20 from "./ias20.json";
 import ias21 from "./ias21.json";
+import ias22 from "./ias22.json";
 import ias23 from "./ias23.json";
 import ias24 from "./ias24.json";
+import ias25 from "./ias25.json";
 import ias26 from "./ias26.json";
 import ias27 from "./ias27.json";
 import ias28 from "./ias28.json";
@@ -62,13 +66,17 @@ export const IASStandards: StandardMetadata[] = [
   ias12 as StandardMetadata,
   ias13 as StandardMetadata,
   ias14 as StandardMetadata,
+  ias15 as StandardMetadata,
   ias16 as StandardMetadata,
   ias17 as StandardMetadata,
+  ias18 as StandardMetadata,
   ias19 as StandardMetadata,
   ias20 as StandardMetadata,
   ias21 as StandardMetadata,
+  ias22 as StandardMetadata,
   ias23 as StandardMetadata,
   ias24 as StandardMetadata,
+  ias25 as StandardMetadata,
   ias26 as StandardMetadata,
   ias27 as StandardMetadata,
   ias28 as StandardMetadata,
