@@ -21,8 +21,10 @@ function initSidebar() {
         section.classList.toggle("expanded", open);
 
         if (open) {
+            section.setAttribute("open", "");
             items.style.maxHeight = items.scrollHeight + "px";
         } else {
+            section.removeAttribute("open");
             items.style.maxHeight = "0px";
         }
 
@@ -64,23 +66,25 @@ function initSidebar() {
     // Expand / Collapse
     // ==========================================================
 
-    // sections.forEach(section => {
+    sections.forEach(section => {
 
-    //     const header =
-    //         section.querySelector(".section-header");
+        const header =
+            section.querySelector(".sidebar-section-header");
 
-    //     if (!header) return;
+        if (!header) return;
 
-    //     header.addEventListener("click", () => {
+        header.addEventListener("click", (event) => {
 
-    //         const open =
-    //             !section.classList.contains("expanded");
+            event.preventDefault();
 
-    //         setSectionState(section, open);
+            const open =
+                !section.classList.contains("expanded");
 
-    //     });
+            setSectionState(section, open);
 
-    // });
+        });
+
+    });
 
     // ==========================================================
     // Filter (navigation)

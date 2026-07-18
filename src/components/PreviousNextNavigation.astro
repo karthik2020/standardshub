@@ -10,8 +10,8 @@ Renders linked previous and next standard cards based on the framework's ordered
 */
 
 import { ArrowLeft, ArrowRight } from "@lucide/astro";
-import { IASStandards } from "../data/standards/ias/index";
-import type { Framework, StandardMetadata } from "../data/standards/metadata.types";
+import standards from "../data/standards.json";
+import type { Framework } from "../data/standards/metadata.types";
 
 interface Props {
   current: string;
@@ -20,20 +20,20 @@ interface Props {
 
 const { current, framework } = Astro.props;
 
-const STANDARD_INDEX: Record<Framework, StandardMetadata[]> = {
-  IAS: IASStandards,
-  IFRS: [],
-  "Ind AS": [],
-};
+const allIAS = [
+  ...standards.IAS.filter((s) => !s.status),
+  ...standards.IAS.filter((s) => s.status),
+];
 
-const standards = STANDARD_INDEX[framework] ?? [];
+const standardsList =
+  framework === "IAS" ? allIAS : standards[framework === "Ind AS" ? "IndAS" : framework] ?? [];
 
-const currentIndex = standards.findIndex((standard) => standard.code === current);
+const currentIndex = standardsList.findIndex((standard) => standard.code === current);
 const previous =
-  currentIndex > 0 ? standards[currentIndex - 1] : undefined;
+  currentIndex > 0 ? standardsList[currentIndex - 1] : undefined;
 const next =
-  currentIndex >= 0 && currentIndex < standards.length - 1
-    ? standards[currentIndex + 1]
+  currentIndex >= 0 && currentIndex < standardsList.length - 1
+    ? standardsList[currentIndex + 1]
     : undefined;
 
 const frameworkClass = framework.toLowerCase().replace(/\s+/g, "");
