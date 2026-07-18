@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IFRS 1 — First-time Adoption of IFRS Standards | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .entry { display: flex; align-items: flex-start; gap: 4px; margin-bottom: 4px; }
+  .dr { font-size: 11px; font-weight: 500; color: var(--color-text-info);   min-width: 14px; padding-top: 1px; }
+  .cr { font-size: 11px; font-weight: 500; color: var(--color-text-danger); min-width: 14px; padding-top: 1px; padding-left: 6px; }
+  .etxt { font-size: 11px; color: var(--color-text-primary); flex: 1; line-height: 1.4; }
+  .badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">IFRS 1 — First-time Adoption of IFRS Standards</div>
+      <div class="hub-sub">Extended reference poster · Conceptual framework link · The opening IFRS SOFP · Exemptions &amp; exceptions · Worked examples · Statement mapping</div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <a href="#s1">1. Conceptual Framework</a>
+    <a href="#s2">2. Scope &amp; Definitions</a>
+    <a href="#s3">3. The Opening IFRS Statement of Financial Position</a>
+    <a href="#s4">4. General Principle — Full Retrospective Application</a>
+    <a href="#s5">5. Optional Exemptions — Business Combinations</a>
+    <a href="#s6">6. Optional Exemptions — Deemed Cost for PPE</a>
+    <a href="#s7">7. Optional Exemptions — Leases &amp; Cumulative Translation Differences</a>
+    <a href="#s8">8. Mandatory Exceptions</a>
+    <a href="#s9">9. Disclosure &amp; Reconciliations</a>
+    <a href="#s10">10. Judgments &amp; Estimates</a>
+    <a href="#s11">11. IFRS 1 vs US GAAP Transition Guidance</a>
+    <a href="#s12">12. Statement Mapping</a>
+    <a href="#s13">13. Related Standards</a>
+    <a href="#s14">14. Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Why full retrospective adoption needs a dedicated standard</div>
+      <div class="principle">The Conceptual Framework's comparability objective would, in principle, require an entity switching to IFRS to apply EVERY Standard fully retrospectively, as if it had always reported under IFRS. IFRS 1 recognises this is often IMPRACTICABLE or excessively costly for events long in the past — it provides a structured, cost-effective bridge between old GAAP and full IFRS compliance.</div>
+      <div class="elabel">HOW IFRS 1 MAPS TO THE FRAMEWORK</div>
+      <div class="check-list">
+        <span><strong style="font-weight:500">Comparability</strong> — the ultimate goal is IFRS financial statements genuinely comparable across all periods presented, and to other IFRS reporters, achieved through retrospective application wherever practicable</span>
+        <span><strong style="font-weight:500">Cost constraint on useful information</strong> — the Framework explicitly acknowledges that the benefit of information must justify the cost of providing it; IFRS 1's OPTIONAL exemptions exist specifically because full retrospective restatement of certain historical transactions would be disproportionately costly</span>
+        <span><strong style="font-weight:500">Faithful representation</strong> — MANDATORY exceptions exist where retrospective application would require the use of HINDSIGHT, which would not faithfully represent conditions as they were actually known at the time</span>
+      </div>
+      <div class="note">IFRS 1 is essentially a ONE-TIME transitional standard — once an entity's first IFRS financial statements are prepared, IFRS 1 has served its purpose and the entity applies ordinary IFRS Standards (including IAS 8) from that point forward.</div>
+    </div>
+
+    <div class="card cs">
+      <div class="ctitle cs">The general vs exception/exemption structure</div>
+      <div class="principle">IFRS 1's architecture balances the Framework's comparability goal against practical cost and reliability constraints through THREE distinct categories of departure from full retrospection.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1fr;"><span>Category</span><span>Nature</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1fr;"><span>General principle</span><span>Full retrospective application of EVERY IFRS Standard effective at the reporting date</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1fr;"><span>Optional exemptions</span><span>An entity MAY elect relief from full retrospection in specific, cost-driven areas</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1fr;"><span>Mandatory exceptions</span><span>An entity MUST NOT apply full retrospection, since hindsight would distort faithful representation</span></div>
+      </div>
+      <div class="callout info" style="margin-bottom:0;">ℹ️ <strong style="font-weight:500">Qualitative characteristics in action:</strong> the exemptions are OPTIONAL (a cost-benefit judgement the entity itself makes) while the exceptions are MANDATORY (a reliability safeguard the Framework itself requires) — this distinction is fundamental to understanding the standard's structure.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw">
+      <div class="ctitle cw">What IFRS 1 covers</div>
+      <div class="principle">An entity applies IFRS 1 in its FIRST IFRS financial statements, and in each interim financial report (if any) presented under IAS 34 for part of the period covered by those first IFRS financial statements.</div>
+      <div class="elabel">WHAT COUNTS AS "FIRST-TIME ADOPTION"</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">An entity's FIRST IFRS financial statements are the first ANNUAL financial statements in which the entity makes an EXPLICIT AND UNRESERVED statement of compliance with IFRS Standards. This includes entities transitioning from national GAAP, entities preparing IFRS statements for the FIRST time even if they previously prepared IFRS-based statements not intended for external users, and entities resuming IFRS reporting after a period of non-compliance.</div>
+      <div class="note">A common misconception: an entity that PREVIOUSLY complied with IFRS, then stopped, and is now RESUMING compliance IS still a first-time adopter under IFRS 1 — "first-time" refers to the first EXPLICIT, UNRESERVED statement of compliance, which can occur more than once in an entity's history if compliance lapses.</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Key definitions you must know</div>
+      <div class="glossary-item">
+        <div class="glossary-term">Date of transition to IFRS</div>
+        <div class="glossary-def">The beginning of the earliest period for which an entity presents FULL comparative information under IFRS Standards in its first IFRS financial statements.</div>
+      </div>
+      <div class="glossary-item">
+        <div class="glossary-term">Opening IFRS statement of financial position</div>
+        <div class="glossary-def">An entity's statement of financial position AT the date of transition to IFRS Standards.</div>
+      </div>
+      <div class="glossary-item">
+        <div class="glossary-term">Previous GAAP</div>
+        <div class="glossary-def">The basis of accounting a first-time adopter used immediately BEFORE adopting IFRS Standards.</div>
+      </div>
+      <div class="glossary-item" style="border-bottom:none;">
+        <div class="glossary-term">Deemed cost</div>
+        <div class="glossary-def">An amount used as a surrogate for cost, or depreciated cost, at a given date — subsequent depreciation/amortisation assumes this deemed cost was the asset's original cost.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>The Opening IFRS Statement of Financial Position</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">The four-step core requirement</div>
+      <div class="principle">An entity's opening IFRS SOFP is the STARTING POINT for its accounting under IFRS Standards — prepared at the date of transition. In that opening SOFP, an entity shall:</div>
+      <div class="check-list">
+        <span>RECOGNISE all assets and liabilities whose recognition IS required by IFRS Standards</span>
+        <span>NOT recognise items as assets or liabilities if IFRS Standards do NOT permit such recognition</span>
+        <span>RECLASSIFY items recognised under previous GAAP as one type of asset/liability/equity component, but classified as a DIFFERENT type under IFRS</span>
+        <span>Apply IFRS Standards in MEASURING all recognised assets and liabilities</span>
+      </div>
+      <div class="callout warn" style="margin-top:8px;margin-bottom:0;">⚠️ <strong style="font-weight:600">The resulting adjustments are recognised DIRECTLY IN RETAINED EARNINGS (or another appropriate equity category)</strong> at the date of transition — NEVER through profit or loss, since these adjustments relate to periods BEFORE the entity was reporting under IFRS.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>General Principle — Full Retrospective Application (with worked example)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs">
+      <div class="ctitle cs">The default rule</div>
+      <div class="principle">EXCEPT as specifically provided for by the optional exemptions or mandatory exceptions, an entity shall, in its opening IFRS SOFP: use the SAME accounting policies throughout ALL periods presented, and those policies must comply with EACH IFRS Standard effective at the END of its first IFRS reporting period.</div>
+      <div class="note">This means an entity does NOT apply superseded/withdrawn versions of Standards, nor early versions of Standards not yet effective at the reporting date — it applies the LATEST effective version of each Standard consistently across all periods presented, including the opening SOFP.</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Worked example — retrospective inventory policy change</div>
+      <div class="worked">
+        <div class="wk-title">Example 1: Adjusting an inventory valuation on transition</div>
+        <div class="wk-body">
+          A company transitioning to IFRS on 1 January 20X1 (date of transition) used a local GAAP inventory valuation method that included certain administrative overheads NOT permitted under IAS 2. Previous GAAP inventory carrying amount: $850,000. Recalculated IAS 2-compliant carrying amount: $790,000.
+        </div>
+        <div class="wk-answer">
+          <strong>Adjustment</strong> = 790,000 − 850,000 = <strong style="color:var(--color-text-danger);">$(60,000)</strong>, recognised DIRECTLY in retained earnings at 1 January 20X1 (the transition date) — NOT as an expense in the current or comparative period's profit or loss.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Optional Exemptions — Business Combinations</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Perhaps the single most-used exemption</div>
+      <div class="principle">A first-time adopter MAY elect NOT to apply IFRS 3 retrospectively to past business combinations that occurred BEFORE the date of transition to IFRS. If this exemption is used, ALL business combinations before the transition date must be treated consistently (an entity cannot selectively restate some acquisitions and not others).</div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ Fully restating decades of historical acquisitions under IFRS 3's acquisition method (fair valuing every identifiable asset/liability acquired, recalculating goodwill) would be enormously costly and often IMPRACTICABLE due to lost historical data — this exemption exists precisely to address that cost-benefit reality, letting entities essentially "freeze" prior acquisition accounting as previously reported (with certain specific adjustments still required, e.g. to align asset recognition/derecognition with IFRS's own criteria).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Optional Exemptions — Deemed Cost for PPE (with worked example)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Using fair value or a previous GAAP revaluation as deemed cost</div>
+      <div class="principle">A first-time adopter may elect to measure an item of PPE (or investment property under the cost model, or certain intangible assets) at its FAIR VALUE at the date of transition, and use that fair value AS ITS DEEMED COST at that date — avoiding the need to reconstruct full historical cost records.</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 2: Electing deemed cost for a factory building</div>
+        <div class="wk-body">
+          A company cannot reliably reconstruct the original historical cost of a factory building purchased 20 years ago under previous GAAP, since detailed records were not retained. At the date of transition, the building's fair value is independently assessed at $3,200,000.
+        </div>
+        <div class="wk-answer">
+          The entity elects the deemed cost exemption: the building is recognised in the opening IFRS SOFP at $3,200,000, which becomes its DEEMED COST going forward — subsequent depreciation under IAS 16 is calculated from this $3,200,000 figure over the building's remaining useful life, as if it had ALWAYS been the asset's cost.
+        </div>
+      </div>
+      <div class="note">A previous GAAP revaluation may ALSO be used as deemed cost at the date of that revaluation, if it was broadly comparable to fair value or a cost-based measure adjusted for a general/specific price index — a related but distinct relief from the fair-value-at-transition-date election.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Optional Exemptions — Leases &amp; Cumulative Translation Differences</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs">
+      <div class="ctitle cs">Leases (IFRS 16 transition relief)</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">A first-time adopter may elect to measure a lease liability at the present value of the remaining lease payments, discounted using the LESSEE'S incremental borrowing rate at the date of transition, rather than fully reconstructing the lease's original commencement-date figures — a similarly cost-driven relief to the business combinations exemption.</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Cumulative translation differences (IAS 21)</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">A first-time adopter may elect to DEEM the cumulative translation differences for all foreign operations to be ZERO at the date of transition — avoiding the need to reconstruct potentially decades of historical foreign currency translation reserve movements. Any gain/loss on a SUBSEQUENT disposal of a foreign operation then excludes translation differences arising BEFORE the transition date, and includes only LATER translation differences.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Mandatory Exceptions — Prohibiting the Use of Hindsight</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Retrospective application is PROHIBITED in these areas</div>
+      <div class="check-list">
+        <span><strong style="font-weight:500">Estimates</strong> — an entity's estimates under IFRS at the date of transition must be CONSISTENT with estimates made for the SAME date under previous GAAP (after adjusting for any DIFFERENCE in accounting policy), UNLESS there is objective evidence those estimates were in error — estimates are NOT adjusted to reflect conditions or information that only became known LATER (using hindsight is prohibited)</span>
+        <span><strong style="font-weight:500">Derecognition of financial assets and liabilities</strong> — a first-time adopter generally applies the IFRS 9 derecognition requirements PROSPECTIVELY from the transition date, not retrospectively to transactions before that date</span>
+        <span><strong style="font-weight:500">Hedge accounting</strong> — an entity does NOT retrospectively reflect hedge relationships in its opening IFRS SOFP that did not satisfy hedge accounting conditions under previous GAAP</span>
+        <span><strong style="font-weight:500">Non-controlling interests</strong> — certain specific IFRS 10 requirements (e.g. attribution of total comprehensive income to NCI even when it results in a deficit) are applied PROSPECTIVELY from the transition date</span>
+        <span><strong style="font-weight:500">Classification and measurement of financial assets</strong> — the assessment of a financial asset's business model and contractual cash flow characteristics (IFRS 9) is made based on facts and circumstances existing AT the date of transition, not reconstructed with later hindsight</span>
+      </div>
+      <div class="callout danger" style="margin-bottom:0;">✕ <strong style="font-weight:600">The "no hindsight" principle is absolute for the estimates exception</strong> — even if an entity KNOWS with certainty today how a past estimate ultimately turned out, it must use only the information that would have been available at the historical measurement date.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure &amp; Reconciliations</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Required disclosures — explaining the transition to users</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">RECONCILIATIONS REQUIRED</div>
+          <div class="check-list">
+            <span>A reconciliation of EQUITY reported under previous GAAP to equity under IFRS Standards, at BOTH the date of transition AND the end of the latest period presented in the entity's most recent annual financial statements under previous GAAP</span>
+            <span>A reconciliation of TOTAL COMPREHENSIVE INCOME reported under previous GAAP to total comprehensive income under IFRS Standards, for the latest period in the entity's most recent annual financial statements under previous GAAP</span>
+          </div>
+        </div>
+        <div>
+          <div class="elabel">OTHER DISCLOSURES</div>
+          <div class="check-list">
+            <span>If material errors made under previous GAAP are corrected as part of the transition, this must be disclosed and distinguished from mere accounting policy changes</span>
+            <span>Explanation of the material adjustments to the statement of cash flows, if previous GAAP presented one</span>
+            <span>Details of significant reconciling items and the exemptions/exceptions applied</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Where management judgement matters most</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+          <div class="dot-list">
+            <span>Which optional exemptions to elect, and their cost-benefit trade-off against full retrospective restatement</span>
+            <span>Whether previous GAAP estimates reflect a genuine error (requiring correction) versus simply a different accounting policy (requiring adjustment, not correction)</span>
+            <span>Assessing financial asset classification criteria (IFRS 9) based on conditions genuinely existing at the transition date, without hindsight</span>
+          </div>
+        </div>
+        <div>
+          <div class="elabel">SIGNIFICANT ESTIMATES</div>
+          <div class="dot-list">
+            <span>Fair value of PPE/investment property elected as deemed cost at the transition date</span>
+            <span>Incremental borrowing rate used to measure lease liabilities under the IFRS 16 transition relief</span>
+          </div>
+        </div>
+      </div>
+      <div class="callout warn" style="margin-top:8px;margin-bottom:0;">⚠️ Electing the business combinations exemption is essentially a one-way, all-or-nothing decision for ALL pre-transition acquisitions — a common practical trap is failing to recognise the consistency requirement across every historical combination once the exemption is used.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>IFRS 1 vs US GAAP Transition Guidance</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — IFRS 1 vs equivalent US GAAP concepts</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Feature</span><span style="color:var(--color-text-info);">IFRS (IFRS 1)</span><span style="color:var(--color-text-warning);">US GAAP</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Dedicated first-time adoption standard</span><span>Yes — IFRS 1 is a standalone, comprehensive standard specifically for IFRS transitions</span><span>No direct equivalent standalone standard, since US GAAP transition scenarios (e.g. adopting a new ASC topic) are handled by each individual standard's own transitional provisions</span></div>
+        <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Optional cost-relief exemptions</span><span>Extensive menu of specific exemptions (business combinations, PPE deemed cost, leases, translation differences, and more)</span><span>No comparable menu of transition exemptions exists, since there is no single "switch to US GAAP" transition event in the same sense</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Reconciliation disclosures</span><span>Mandatory equity and total comprehensive income reconciliations from previous GAAP to IFRS</span><span>Not applicable in the same structural sense; new standard adoption disclosures (transition method, effect on opening balances) are governed by the specific new standard itself</span></div>
+      </div>
+      <div class="note">IFRS 1 exists because IFRS is adopted by entities transitioning from MANY different national GAAPs around the world — a genuinely global transition challenge with no direct US GAAP parallel, since US GAAP is typically a single jurisdiction's existing basis of accounting being incrementally updated, not wholesale replaced.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping — Where Every Transition Adjustment Lands</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Comprehensive event-to-statement mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event / transaction</span><span>Statement(s) affected</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Recognition of a previously unrecognised asset/liability</span><span><span class="badge bs">Opening SOFP</span> <span class="badge be">Equity</span></span><span>Adjustment recognised directly in retained earnings</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Derecognition of an item not qualifying under IFRS</span><span><span class="badge bs">Opening SOFP</span> <span class="badge be">Equity</span></span><span>Removed, with the offsetting adjustment to equity</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Reclassification between asset/liability/equity categories</span><span><span class="badge bs">Opening SOFP</span></span><span>No net equity effect; presentation change only</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Remeasurement to IFRS-compliant basis (e.g. inventory, provisions)</span><span><span class="badge bs">Opening SOFP</span> <span class="badge be">Equity</span></span><span>Adjustment through retained earnings, not SOPL</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Deemed cost election for PPE/investment property</span><span><span class="badge bs">Opening SOFP</span> <span class="badge be">Equity</span></span><span>Carrying amount reset to fair value at transition; equity adjusted for the difference</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Business combinations exemption applied</span><span><span class="badge bs">Opening SOFP</span></span><span>Prior acquisition accounting largely carried forward unchanged, subject to specific adjustments</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Cumulative translation differences deemed zero</span><span><span class="badge be">Equity</span></span><span>Translation reserve reset; future disposal gain/loss excludes pre-transition differences</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Subsequent (post-transition) periods</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Ordinary IFRS Standards (including IAS 8) apply from this point forward</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Equity and total comprehensive income reconciliations</span><span><span class="badge bp">Notes</span></span><span>Mandatory disclosure explaining the transition to users</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How IFRS 1 connects across the IFRS body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 3</span><span>Subject of the most widely used optional exemption — permitting prior business combinations to remain largely unrestated</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 16 / IAS 40 / IAS 38</span><span>Subject of the "deemed cost" exemption, using fair value at transition instead of reconstructing historical cost</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 16</span><span>Subject of a specific lease-transition relief permitting simplified lease liability measurement using the incremental borrowing rate at transition</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 21</span><span>Subject of the cumulative translation differences exemption, allowing these to be deemed zero at transition</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 9</span><span>Governs the prospective (not retrospective) application of derecognition and classification rules for financial instruments under IFRS 1's mandatory exceptions</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 10</span><span>Certain non-controlling interest attribution requirements are applied prospectively rather than retrospectively at transition</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 8</span><span>Governs ALL subsequent changes in accounting policy, estimates, and error correction ONCE an entity has completed its transition and IFRS 1 no longer applies</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">First IFRS financial statements</div><div class="glossary-def">The first annual financial statements in which an entity makes an explicit and unreserved statement of compliance with IFRS Standards.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Reporting date</div><div class="glossary-def">The end of the latest period covered by the first IFRS financial statements or interim report.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Optional exemption</div><div class="glossary-def">A specific relief a first-time adopter MAY elect to use, providing an alternative to full retrospective application in a cost-driven area.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Mandatory exception</div><div class="glossary-def">An area where retrospective application is PROHIBITED, since it would require using hindsight not available at the historical measurement date.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Fair value as deemed cost</div><div class="glossary-def">An election allowing an asset to be measured at fair value at the transition date, with that fair value then treated as its cost for all future depreciation/amortisation purposes.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Hindsight</div><div class="glossary-def">Using knowledge that only became available AFTER a historical measurement date — explicitly prohibited when applying IFRS 1's mandatory exceptions, particularly for estimates.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bs">SOFP</span> Statement of financial position (balance sheet)
+      <span class="badge bp">SOPL</span> Statement of profit or loss (income statement)
+      <span class="badge bo">OCI</span> Other comprehensive income
+      <span class="badge be">Equity</span> Statement of changes in equity
+    </div>
+  </div>
+
+  <div class="footer-note">IFRS 1 — First-time Adoption of IFRS Standards · Extended Reference Poster · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

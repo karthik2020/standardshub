@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IFRS 16 — Leases | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb; --color-background-tertiary: #f3f4f6; --color-background-info: #eff6ff; --color-background-success: #f0fdf4; --color-background-warning: #fffbeb; --color-background-danger: #fff1f2;
+    --color-border-secondary: #e5e7eb; --color-border-tertiary: #e5e7eb; --color-border-info: #3b82f6; --color-border-success: #22c55e; --color-border-warning: #f59e0b; --color-border-danger: #ef4444;
+    --color-text-primary: #111827; --color-text-secondary: #374151; --color-text-tertiary: #9ca3af; --color-text-info: #2563eb; --color-text-success: #16a34a; --color-text-warning: #b45309; --color-text-danger: #dc2626;
+    --border-radius-lg: 10px; --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; } * { box-sizing: border-box; } .wrap { padding: 1rem 0 0.5rem; }
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #fff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; } .span2 { grid-column: span 2; }
+  .card { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); } .card.cs { border-left: 3px solid var(--color-border-success); } .card.cw { border-left: 3px solid var(--color-border-warning); } .card.cd { border-left: 3px solid var(--color-border-danger); } .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; } .ctitle.ci { color: var(--color-text-info); } .ctitle.cs { color: var(--color-text-success); } .ctitle.cw { color: var(--color-text-warning); } .ctitle.cd { color: var(--color-text-danger); } .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info { background: var(--color-background-info); color: var(--color-text-info); border: 1px solid var(--color-border-info); }
+  .callout.warn { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger); color: var(--color-text-danger); border: 1px solid var(--color-border-danger); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; } .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span { display: block; padding-left: 14px; position: relative; font-size: 11px; color: var(--color-text-secondary); line-height: 1.75; }
+  .dot-list span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger); font-size: 10px; top: 2px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+  .badge { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info); color: var(--color-text-info); } .bp { background: var(--color-background-danger); color: var(--color-text-danger); } .bo { background: var(--color-background-success); color: var(--color-text-success); } .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+  @media (max-width: 640px) { .grid, .two-col, .three-col { grid-template-columns: 1fr; } .span2 { grid-column: span 1; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub"><div class="hub-box">
+    <div class="hub-title">IFRS 16 — Leases</div>
+    <div class="hub-sub">Extended reference poster · Conceptual framework link · The single lessee model · Right-of-use asset &amp; lease liability · Worked examples</div>
+  </div></div>
+
+  <div class="toc">
+    <a href="#s1">1. Conceptual Framework</a><a href="#s2">2. Scope &amp; Definitions</a><a href="#s3">3. Identifying a Lease</a>
+    <a href="#s4">4. Lessee — Initial Recognition &amp; Measurement</a><a href="#s5">5. Lessee — Subsequent Measurement</a><a href="#s6">6. Short-Term &amp; Low-Value Exemptions</a>
+    <a href="#s7">7. Lease Modifications</a><a href="#s8">8. Lessor Accounting</a><a href="#s9">9. Sale and Leaseback</a>
+    <a href="#s10">10. Disclosure</a><a href="#s11">11. Judgments &amp; Estimates</a><a href="#s12">12. IFRS vs US GAAP</a>
+    <a href="#s13">13. Statement Mapping</a><a href="#s14">14. Related Standards &amp; Glossary</a>
+  </div>
+
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Why (almost) every lease is now on the balance sheet</div>
+      <div class="principle">The Conceptual Framework defines an asset as a resource CONTROLLED as a result of past events, from which future economic benefits are expected. IFRS 16 applies this directly: a lease conveys the RIGHT TO USE an identified asset, which is itself a resource the lessee controls — meaning virtually EVERY lease creates a genuine asset (and corresponding liability) for the lessee, abolishing IAS 17's off-balance-sheet operating lease treatment entirely.</div>
+      <div class="elabel">HOW IFRS 16 MAPS TO THE FRAMEWORK</div>
+      <div class="check-list">
+        <span><strong style="font-weight:500">Faithful representation</strong> — recognising a right-of-use asset and lease liability for ALL leases (with narrow exemptions) ensures the SOFP reflects genuine economic obligations previously kept off-balance-sheet</span>
+        <span><strong style="font-weight:500">Comparability</strong> — a SINGLE lessee model eliminates the classification judgement (finance vs operating) that made comparing lessees under IAS 17 difficult</span>
+        <span><strong style="font-weight:500">Substance over form</strong> — the right to use an asset is a genuine resource regardless of whether legal title ever transfers</span>
+      </div>
+      <div class="note">IFRS 16 was a DIRECT response to long-standing criticism that IAS 17's off-balance-sheet operating lease treatment understated corporate leverage — a criticism that persisted for decades before finally being addressed.</div>
+    </div>
+    <div class="card cs">
+      <div class="ctitle cs">The single lessee model vs the retained lessor dual model</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1fr;"><span>Party</span><span>Model</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1fr;"><span>Lessee</span><span>SINGLE model — right-of-use asset + lease liability for (almost) all leases</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1fr;"><span>Lessor</span><span>DUAL model RETAINED — finance vs operating classification, largely unchanged from IAS 17</span></div>
+      </div>
+      <div class="callout info" style="margin-bottom:0;">ℹ️ The reform focused ENTIRELY on the lessee side — lessor accounting was judged to already faithfully represent economic substance and was left substantively intact.</div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw">
+      <div class="ctitle cw">What IFRS 16 covers</div>
+      <div class="principle">IFRS 16 applies to ALL leases, EXCEPT: leases to explore for minerals/oil/gas; leases of biological assets (IAS 41); service concession arrangements (IFRIC 12); licences of intellectual property granted by a lessor (IFRS 15); and rights held under licensing agreements for films, patents, copyrights (IAS 38).</div>
+      <div class="note">A lessee MAY elect NOT to apply IFRS 16 to leases of INTANGIBLE assets (an optional scope exclusion).</div>
+    </div>
+    <div class="card cd">
+      <div class="ctitle cd">Key definitions you must know</div>
+      <div class="glossary-item"><div class="glossary-term">Lease</div><div class="glossary-def">A contract, or part of a contract, that conveys the right to CONTROL the use of an identified asset for a period of time in exchange for consideration.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Right-of-use asset</div><div class="glossary-def">An asset representing a lessee's right to use an underlying asset for the lease term.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Incremental borrowing rate</div><div class="glossary-def">The rate a lessee would have to pay to borrow, over a similar term and security, funds necessary to obtain an asset of similar value — used to discount lease payments if the rate implicit in the lease is not readily determinable.</div></div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Identifying a Lease (with worked example)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">The two-part test — identified asset + control over use</div>
+      <div class="principle">A contract IS (or contains) a lease if it conveys the right to CONTROL the use of an IDENTIFIED asset for a period of time. This requires: (1) an IDENTIFIED asset (explicitly or implicitly specified, without substantive substitution rights held by the supplier); and (2) the customer has the right to OBTAIN SUBSTANTIALLY ALL the economic benefits from use, AND the right to DIRECT the use of the asset throughout the period.</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 1: Testing for a lease — substantive substitution rights</div>
+        <div class="wk-body">A customer contracts for the use of a specific truck for 3 years to transport goods, with the customer deciding routes, timing, and cargo. The supplier retains a theoretical CONTRACTUAL right to substitute the truck for another, but has NO PRACTICAL ability to do so economically (substitution would require significant cost/effort with no real benefit to the supplier), and has NEVER exercised this right historically.</div>
+        <div class="wk-answer">Since the supplier's substitution right is NOT substantive (no practical ability/economic benefit), the truck IS an identified asset. The customer directs its use (routes, timing, cargo) and obtains substantially all economic benefits — this contract IS a LEASE under IFRS 16, requiring right-of-use asset and lease liability recognition by the customer (lessee).</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Lessee — Initial Recognition &amp; Measurement (with worked example)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs">
+      <div class="ctitle cs">The initial measurement formulas</div>
+      <div class="formula-box">
+        <div class="f-eq">Lease liability = Present value of lease payments not yet paid, discounted at the rate implicit in the lease (or the lessee's incremental borrowing rate)</div>
+      </div>
+      <div class="formula-box">
+        <div class="f-eq">Right-of-use asset = Lease liability + initial direct costs + prepaid lease payments + estimated restoration costs − lease incentives received</div>
+      </div>
+    </div>
+    <div class="card cw">
+      <div class="ctitle cw">Worked example — initial recognition</div>
+      <div class="worked">
+        <div class="wk-title">Example 2: Initial recognition of a 5-year office lease</div>
+        <div class="wk-body">A lessee enters a 5-year lease with annual payments of $50,000 in arrears, discounted at an incremental borrowing rate of 6%. Present value of the 5 payments = $210,618. Initial direct costs incurred by the lessee: $8,000.</div>
+        <div class="wk-answer">
+          <strong>Lease liability</strong> = <strong style="color:var(--color-text-info);">$210,618</strong> (PV of payments)<br>
+          <strong>Right-of-use asset</strong> = 210,618 + 8,000 = <strong style="color:var(--color-text-info);">$218,618</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Lessee — Subsequent Measurement (with worked example)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Depreciation and effective interest, running in parallel</div>
+      <div class="principle">The right-of-use asset is DEPRECIATED (generally straight-line) over the SHORTER of the lease term and the asset's useful life (or over the useful life if ownership transfers/a purchase option is reasonably certain to be exercised). The lease liability is measured using the EFFECTIVE INTEREST METHOD, with interest expense recognised separately from the depreciation charge.</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 3: Year 1 subsequent measurement</div>
+        <div class="wk-body">Continuing Example 2: right-of-use asset $218,618, depreciated straight-line over 5 years. Lease liability $210,618 at 6%, with a $50,000 payment at the end of Year 1.</div>
+        <div class="wk-answer">
+          <strong>Depreciation</strong> = 218,618 / 5 = <strong style="color:var(--color-text-info);">$43,724</strong><br>
+          <strong>Interest expense</strong> = 210,618 × 6% = $12,637<br>
+          <strong>Liability after payment</strong> = 210,618 + 12,637 − 50,000 = <strong style="color:var(--color-text-info);">$173,255</strong><br>
+          TWO separate P&amp;L charges result: depreciation ($43,724) and interest ($12,637) — TOTAL Year 1 expense of $56,361, FRONT-LOADED compared to a straight-line operating lease expense of $50,000/year under the old IAS 17 model.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Short-Term &amp; Low-Value Exemptions</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">The narrow "off-balance-sheet" survivors</div>
+      <div class="principle">A lessee MAY elect NOT to recognise a right-of-use asset and lease liability for: SHORT-TERM leases (lease term of 12 months or less, with no purchase option); and leases of LOW-VALUE underlying assets (assessed on an absolute basis when new, e.g. laptops, small office furniture — NOT dependent on the lessee's size). For these, lease payments are recognised as an EXPENSE on a straight-line (or other systematic) basis — essentially preserving IAS 17's old operating lease treatment for these two narrow categories only.</div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Lease Modifications</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Separate lease vs remeasurement of the existing lease</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">A modification INCREASING scope AND consideration by an amount COMMENSURATE with the stand-alone price for the increase is accounted for as a SEPARATE, new lease. Other modifications (decreasing scope, or increasing scope without commensurate pricing) require REMEASUREMENT of the existing lease liability using a revised discount rate, with a corresponding adjustment to the right-of-use asset.</div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Lessor Accounting</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Retained largely unchanged from IAS 17</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">A lessor classifies each lease as a FINANCE lease (substantially all risks/rewards transferred — derecognise the asset, recognise a net investment receivable) or an OPERATING lease (asset retained on the lessor's SOFP, lease income recognised straight-line) — using indicators essentially IDENTICAL to IAS 17's own classification test.</div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Sale and Leaseback Transactions</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">A materially reformed area versus IAS 17</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">If a sale qualifies as a genuine "sale" under IFRS 15's control-transfer test, the seller-lessee recognises a right-of-use asset for the PROPORTION of the previous carrying amount relating to the right retained, and recognises ONLY the gain/loss relating to the RIGHTS TRANSFERRED to the buyer-lessor — a materially more complex, RESTRICTIVE approach than IAS 17's deferred-gain mechanism.</div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Required disclosures</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">LESSEE DISCLOSURES</div>
+          <div class="check-list">
+            <span>Depreciation charge for right-of-use assets by class, interest expense on lease liabilities</span>
+            <span>Expense relating to short-term and low-value asset leases</span>
+            <span>Maturity analysis of lease liabilities (similar to IFRS 7's own maturity analysis)</span>
+          </div>
+        </div>
+        <div>
+          <div class="elabel">LESSOR DISCLOSURES</div>
+          <div class="check-list">
+            <span>Similar to IAS 17's own disclosures — finance lease reconciliations, operating lease future minimum payments</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Where management judgement matters most</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+          <div class="dot-list">
+            <span>Whether a contract contains a lease (identified asset, control over use)</span>
+            <span>Determining the lease term, including assessing whether extension/termination options are reasonably certain to be exercised</span>
+          </div>
+        </div>
+        <div>
+          <div class="elabel">SIGNIFICANT ESTIMATES</div>
+          <div class="dot-list">
+            <span>Incremental borrowing rate, where the rate implicit in the lease cannot be readily determined</span>
+            <span>Estimated restoration/dismantling costs included in the right-of-use asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="callout warn" style="margin-top:8px;margin-bottom:0;">⚠️ Determining the LEASE TERM (including renewal options reasonably certain to be exercised) is one of the MOST frequently tested and consequential judgements under IFRS 16, directly affecting both the asset and liability measurement.</div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s12"><span class="num">12</span><h2>IFRS vs US GAAP</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — IFRS 16 vs US GAAP (ASC 842)</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Feature</span><span style="color:var(--color-text-info);">IFRS (IFRS 16)</span><span style="color:var(--color-text-warning);">US GAAP</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Lessee model</span><span>SINGLE model — all leases create a right-of-use asset and liability</span><span>DUAL model RETAINED — lessees STILL classify leases as "finance" or "operating," with DIFFERENT P&amp;L expense patterns for each</span></div>
+        <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Operating lease P&amp;L pattern (lessee)</span><span>Front-loaded (depreciation + declining interest), same as finance leases</span><span>SINGLE straight-line total lease expense for operating leases — a KEY remaining divergence from IFRS</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Low-value asset exemption</span><span>Available (absolute value-based)</span><span>NOT available under US GAAP — no direct equivalent exemption</span></div>
+      </div>
+      <div class="note">This is one of the MOST significant remaining IFRS/US GAAP divergences — IFRS 16 abolished the lessee dual model ENTIRELY, while ASC 842 retained it, meaning IFRS and US GAAP lessees can report MATERIALLY different P&amp;L expense patterns for economically similar leases.</div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Statement Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Comprehensive event-to-statement mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event / transaction</span><span>Statement(s) affected</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Initial recognition (lessee)</span><span><span class="badge bs">SOFP</span></span><span>Right-of-use asset and lease liability recognised at commencement</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Depreciation of right-of-use asset</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Straight-line, shorter of lease term/useful life</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Interest on lease liability</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Effective interest method</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Short-term/low-value lease payments</span><span><span class="badge bp">SOPL</span></span><span>Straight-line expense; NO SOFP recognition</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Lease modification (remeasurement)</span><span><span class="badge bs">SOFP</span></span><span>Liability remeasured at revised discount rate; asset adjusted</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Sale and leaseback — gain on rights transferred</span><span><span class="badge bp">SOPL</span></span><span>Only the proportion relating to transferred rights</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Cash lease payments</span><span><span class="badge bs">Cash Flow Statement</span></span><span>Principal (financing) and interest (per policy) split</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Lessor operating/finance lease accounting</span><span><span class="badge bs">SOFP</span> <span class="badge bp">SOPL</span></span><span>Largely unchanged from IAS 17</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Related Standards &amp; Glossary</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd">
+      <div class="ctitle cd">Cross-reference map</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Standard</span><span>Connection</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 17</span><span>The DIRECT predecessor standard — IFRS 16 abolished lessee dual classification but retained lessor accounting</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 15</span><span>Supplies the control-transfer test used to assess sale and leaseback qualification</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 36</span><span>Governs impairment testing of right-of-use assets</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 1</span><span>Provides transition relief allowing first-time adopters to measure lease liabilities using the incremental borrowing rate at transition</span></div>
+      </div>
+    </div>
+    <div class="card cn">
+      <div class="ctitle cn">Quick-reference glossary</div>
+      <div class="glossary-item"><div class="glossary-term">Lease term</div><div class="glossary-def">The non-cancellable period of a lease, plus periods covered by extension options reasonably certain to be exercised, and periods covered by termination options reasonably certain NOT to be exercised.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Commencement date</div><div class="glossary-def">The date the lessor makes the underlying asset available for use by the lessee.</div></div>
+    </div>
+  </div>
+
+  <div class="legend"><div class="ltitle">Financial statement key</div><div class="lrow">
+    <span class="badge bs">SOFP</span> Statement of financial position
+    <span class="badge bp">SOPL</span> Statement of profit or loss
+    <span class="badge bo">OCI</span> Other comprehensive income
+    <span class="badge be">Equity</span> Statement of changes in equity
+  </div></div>
+
+  <div class="footer-note">IFRS 16 — Leases · Extended Reference Poster · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

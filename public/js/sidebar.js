@@ -225,6 +225,52 @@ function initSidebar() {
 
     }
 
+    // ==========================================================
+    // Mobile Menu Toggle
+    // ==========================================================
+
+    const menuBtn =
+        document.getElementById("mobileMenuBtn");
+
+    const sidebarEl =
+        document.querySelector(".sidebar");
+
+    const overlay =
+        document.getElementById("sidebarOverlay");
+
+    if (menuBtn && sidebarEl) {
+
+        menuBtn.addEventListener("click", () => {
+
+            const isOpen =
+                sidebarEl.classList.toggle("open");
+
+            overlay?.classList.toggle("visible", isOpen);
+
+            menuBtn.setAttribute("aria-expanded", String(isOpen));
+
+            menuBtn.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+
+        });
+
+        if (overlay) {
+
+            overlay.addEventListener("click", () => {
+
+                sidebarEl.classList.remove("open");
+
+                overlay.classList.remove("visible");
+
+                menuBtn.setAttribute("aria-expanded", "false");
+
+                menuBtn.setAttribute("aria-label", "Open menu");
+
+            });
+
+        }
+
+    }
+
 }
 
 // Restore synchronously when the sidebar is already in the DOM (the normal

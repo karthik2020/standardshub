@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IFRS 3 — Business Combinations | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .entry { display: flex; align-items: flex-start; gap: 4px; margin-bottom: 4px; }
+  .dr { font-size: 11px; font-weight: 500; color: var(--color-text-info);   min-width: 14px; padding-top: 1px; }
+  .cr { font-size: 11px; font-weight: 500; color: var(--color-text-danger); min-width: 14px; padding-top: 1px; padding-left: 6px; }
+  .etxt { font-size: 11px; color: var(--color-text-primary); flex: 1; line-height: 1.4; }
+  .badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">IFRS 3 — Business Combinations</div>
+      <div class="hub-sub">Extended reference poster · Conceptual framework link · The acquisition method · Goodwill &amp; bargain purchases · Worked examples · Statement mapping</div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <a href="#s1">1. Conceptual Framework</a>
+    <a href="#s2">2. Scope &amp; Definitions</a>
+    <a href="#s3">3. Identifying the Acquirer &amp; Acquisition Date</a>
+    <a href="#s4">4. The Acquisition Method — Four Steps</a>
+    <a href="#s5">5. Recognising Identifiable Assets &amp; Liabilities</a>
+    <a href="#s6">6. Consideration Transferred</a>
+    <a href="#s7">7. Goodwill &amp; Bargain Purchase Gains</a>
+    <a href="#s8">8. Non-Controlling Interests — Two Measurement Options</a>
+    <a href="#s9">9. Measurement Period Adjustments</a>
+    <a href="#s10">10. Disclosure</a>
+    <a href="#s11">11. Judgments &amp; Estimates</a>
+    <a href="#s12">12. IFRS vs US GAAP</a>
+    <a href="#s13">13. Statement Mapping</a>
+    <a href="#s14">14. Related Standards &amp; Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Why acquisitions are measured at fair value, not historical cost</div>
+      <div class="principle">The Conceptual Framework's asset/liability definitions require FAITHFUL REPRESENTATION of what an entity actually controls after a business combination. IFRS 3's acquisition method achieves this by recognising the acquiree's identifiable assets and liabilities at their FAIR VALUE at the acquisition date — a genuinely NEW measurement basis for the combined entity, distinct from the acquiree's own historical carrying amounts.</div>
+      <div class="elabel">HOW IFRS 3 MAPS TO THE FRAMEWORK</div>
+      <div class="check-list">
+        <span><strong style="font-weight:500">Fresh-start measurement</strong> — the ACQUIRER'S financial statements reflect what it PAID and ACQUIRED at fair value, not the acquiree's own historical cost basis, since a genuinely new economic transaction has occurred</span>
+        <span><strong style="font-weight:500">Goodwill as a residual</strong> — goodwill represents future economic benefits from assets NOT individually identifiable/separately recognisable (e.g. synergies, workforce), captured as the RESIDUAL after all identifiable items are fair-valued</span>
+        <span><strong style="font-weight:500">Control as the recognition trigger</strong> — the entire acquisition method is triggered by the ACQUIRER obtaining CONTROL, directly invoking the Framework's control-based definition of a reporting entity's boundary</span>
+      </div>
+      <div class="note">IFRS 3's acquisition method is one of the clearest applications of the Framework's "faithful representation over historical continuity" principle — a business combination is treated as a genuinely NEW transaction, not merely a combination of two sets of pre-existing book values.</div>
+    </div>
+
+    <div class="card cs">
+      <div class="ctitle cs">Measurement principles applied by IFRS 3</div>
+      <div class="principle">IFRS 3 applies fair value measurement almost universally at the acquisition date — one of the most comprehensive applications of fair value anywhere in IFRS.</div>
+      <div class="formula-box">
+        <div class="f-eq">Goodwill = Consideration transferred + Fair value of any NCI + Fair value of previously held equity interest (if any) − Fair value of net identifiable assets acquired</div>
+      </div>
+      <div class="callout info" style="margin-bottom:0;">ℹ️ <strong style="font-weight:500">Qualitative characteristics in action:</strong> measuring virtually EVERYTHING at fair value on the SAME date reflects <strong style="font-weight:500">comparability</strong> — a consistent measurement basis across the entire transaction, rather than a patchwork of historical costs from different original acquisition dates.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw">
+      <div class="ctitle cw">What IFRS 3 covers</div>
+      <div class="principle">IFRS 3 applies to a transaction or other event in which an acquirer obtains CONTROL of one or more BUSINESSES — the definition of "business" itself is critical, since IFRS 3 applies ONLY to acquisitions meeting this threshold.</div>
+      <div class="elabel">SCOPE EXCLUSIONS</div>
+      <div class="cross-list">
+        <span>Formation of a JOINT ARRANGEMENT (IFRS 11) in the financial statements of the joint arrangement itself</span>
+        <span>Acquisition of an asset or group of assets that does NOT constitute a business (an ordinary ASSET acquisition, accounted for by allocating cost to individual assets/liabilities based on relative fair values — NO goodwill arises)</span>
+        <span>Combinations of entities under COMMON CONTROL (e.g. group reorganisations) — outside IFRS 3's scope, though the IASB has published separate guidance</span>
+      </div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ <strong style="font-weight:600">Whether a transaction is a "business" or merely an "asset acquisition" is one of the most consequential judgements in the whole standard</strong> — a business combination applies the fair value acquisition method and can generate goodwill; an asset acquisition allocates cost proportionately and NEVER generates goodwill.</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Key definitions you must know</div>
+      <div class="glossary-item">
+        <div class="glossary-term">Business combination</div>
+        <div class="glossary-def">A transaction or other event in which an acquirer obtains control of one or more businesses.</div>
+      </div>
+      <div class="glossary-item">
+        <div class="glossary-term">Business</div>
+        <div class="glossary-def">An integrated set of activities and assets that is capable of being conducted and managed to provide a return to investors/other owners, members, or participants — assessed via the "outputs" test and "substantive process" screening test.</div>
+      </div>
+      <div class="glossary-item">
+        <div class="glossary-term">Acquisition date</div>
+        <div class="glossary-def">The date the acquirer obtains CONTROL of the acquiree — normally the CLOSING date, though it can be earlier or later if control is obtained on a different date by agreement.</div>
+      </div>
+      <div class="glossary-item" style="border-bottom:none;">
+        <div class="glossary-term">Non-controlling interest (NCI)</div>
+        <div class="glossary-def">The equity in a subsidiary NOT attributable, directly or indirectly, to a parent.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Identifying the Acquirer &amp; Acquisition Date</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Determining WHO is the acquirer, and WHEN</div>
+      <div class="principle">For EVERY business combination, one of the combining entities must be identified as the ACQUIRER — using IFRS 10's control guidance, and, if unclear, additional indicators (relative size, which entity issues equity, which party initiated the combination, which entity's former management dominates the combined entity).</div>
+      <div class="elabel">REVERSE ACQUISITIONS</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">In a "reverse acquisition," the LEGAL acquirer (e.g. the entity issuing shares) may be identified as the ACCOUNTING ACQUIREE, and vice versa, if the SUBSTANCE of the transaction indicates the legally acquired entity's former owners/management actually control the COMBINED entity — a classic example is a private company "acquiring" a smaller public shell company to obtain a stock exchange listing.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>The Acquisition Method — Four Steps</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">The mandatory sequence</div>
+      <div class="check-list">
+        <span><strong style="font-weight:500">Step 1</strong> — Identify the ACQUIRER</span>
+        <span><strong style="font-weight:500">Step 2</strong> — Determine the ACQUISITION DATE</span>
+        <span><strong style="font-weight:500">Step 3</strong> — Recognise and measure the IDENTIFIABLE assets acquired, liabilities assumed, and any NCI in the acquiree</span>
+        <span><strong style="font-weight:500">Step 4</strong> — Recognise and measure GOODWILL or a gain from a BARGAIN PURCHASE</span>
+      </div>
+      <div class="note">Every business combination is accounted for by applying this SAME four-step sequence — a genuinely consistent, universal method REGARDLESS of the specific structure or industry involved.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Recognising Identifiable Assets &amp; Liabilities (with worked example)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd">
+      <div class="ctitle cd">Recognition and measurement principles</div>
+      <div class="formula-box">
+        <div class="f-eq">Identifiable assets acquired and liabilities assumed are measured at their ACQUISITION-DATE FAIR VALUES</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">To qualify for RECOGNITION, an item must meet the Framework's asset/liability definitions at the acquisition date — the acquirer's INTENTIONS for future use are NOT relevant to recognition, only whether a genuine present asset/liability exists.</div>
+      <div class="callout warn" style="margin-top:8px;margin-bottom:0;">⚠️ A CONTINGENT LIABILITY of the acquiree is RECOGNISED at fair value at the acquisition date, EVEN IF it would not otherwise meet IAS 37's normal "probable" recognition threshold — a specific IFRS 3 override, since the acquirer has effectively PAID for it as part of the purchase price.</div>
+    </div>
+
+    <div class="card cn">
+      <div class="ctitle cn">Worked example — intangibles not on the acquiree's own books</div>
+      <div class="worked">
+        <div class="wk-title">Example 1: Customer relationships recognised only on acquisition</div>
+        <div class="wk-body">
+          A target company has never recognised its customer relationships as an intangible asset (since internally generated customer relationships are prohibited from recognition under IAS 38). On acquisition, the acquirer's valuation specialists determine these customer relationships have an acquisition-date fair value of $2,400,000.
+        </div>
+        <div class="wk-answer">
+          The $2,400,000 customer relationship intangible IS recognised SEPARATELY in the consolidated accounts at fair value, even though it NEVER appeared on the acquiree's own standalone balance sheet — this is a classic example of IFRS 3 recognising items that IAS 38's internal-generation prohibition would otherwise exclude.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Consideration Transferred (with worked example)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Fair value of everything given up — including contingent consideration</div>
+      <div class="principle">Consideration transferred is measured at FAIR VALUE, calculated as the sum of the acquisition-date fair values of assets transferred, liabilities incurred, and equity instruments issued by the acquirer — PLUS the fair value of any CONTINGENT CONSIDERATION.</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 2: Consideration with cash, shares, and contingent consideration</div>
+        <div class="wk-body">
+          An acquirer pays $8,000,000 cash, issues 500,000 of its own shares (fair value $6 each), and agrees to pay an additional $1,500,000 if the acquiree achieves a specific profit target within 2 years (fair value of this contingent consideration at acquisition date, discounted for probability and time value: $900,000).
+        </div>
+        <div class="wk-answer">
+          <strong>Total consideration transferred</strong> = 8,000,000 (cash) + 3,000,000 (500,000 × $6 shares) + 900,000 (contingent consideration) = <strong style="color:var(--color-text-info);">$11,900,000</strong>
+        </div>
+      </div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ Contingent consideration classified as a LIABILITY is REMEASURED each period through PROFIT OR LOSS (per IFRS 9), NOT as a subsequent adjustment to goodwill — only measurement PERIOD adjustments (Section 9) affect goodwill; changes after the measurement period ends go through SOPL.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Goodwill &amp; Bargain Purchase Gains (with worked example)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">The full goodwill formula, applied</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 3: Calculating goodwill</div>
+        <div class="wk-body">
+          Continuing Example 2: total consideration transferred was $11,900,000, for 80% of the acquiree. The acquirer elects to measure NCI at its PROPORTIONATE SHARE of net identifiable assets (Section 8). The fair value of net identifiable assets acquired is $12,000,000.
+        </div>
+        <div class="wk-answer">
+          <strong>NCI at proportionate share</strong> = 12,000,000 × 20% = $2,400,000<br>
+          <strong>Goodwill</strong> = 11,900,000 (consideration) + 2,400,000 (NCI) − 12,000,000 (net identifiable assets) = <strong style="color:var(--color-text-info);">$2,300,000</strong>
+        </div>
+      </div>
+      <div class="callout danger" style="margin-bottom:0;">✕ <strong style="font-weight:600">A "bargain purchase" (negative goodwill)</strong> arises RARELY, when the fair value of net identifiable assets EXCEEDS the total of consideration transferred plus NCI plus any previously held interest. Before recognising a bargain purchase GAIN in profit or loss, the acquirer MUST REASSESS whether it has correctly identified ALL assets acquired/liabilities assumed and correctly MEASURED all amounts — only after this reassessment confirms the excess is genuine is the gain recognised, since bargain purchases are inherently unusual and often signal a measurement error rather than a true economic gain.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Non-Controlling Interests — Two Measurement Options (with worked example)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">The full goodwill vs partial goodwill method — a genuine choice</div>
+      <div class="principle">For EACH business combination, the acquirer elects to measure any NCI in the acquiree EITHER: (a) at FAIR VALUE ("full goodwill" method — this INCLUDES NCI's share of goodwill); OR (b) at NCI's PROPORTIONATE SHARE of the acquiree's identifiable net assets ("partial goodwill" method — goodwill relates ONLY to the parent's controlling interest).</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 4: Comparing the two NCI measurement methods</div>
+        <div class="wk-body">
+          Same facts as Example 3, but suppose the FAIR VALUE of the 20% NCI (based on quoted market price or valuation techniques) is instead determined to be $2,700,000, rather than the $2,400,000 proportionate share.
+        </div>
+        <div class="wk-answer">
+          <strong>Full goodwill method</strong> (NCI at fair value): Goodwill = 11,900,000 + 2,700,000 − 12,000,000 = <strong style="color:var(--color-text-info);">$2,600,000</strong> (HIGHER — includes NCI's implied share of goodwill)<br>
+          <strong>Partial goodwill method</strong> (NCI at proportionate share, from Example 3): Goodwill = <strong style="color:var(--color-text-info);">$2,300,000</strong> (LOWER — excludes NCI's share of goodwill)<br>
+          The election is made SEPARATELY for EACH business combination, but MUST be applied CONSISTENTLY within that single transaction.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Measurement Period Adjustments</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">The 12-month window for retrospective adjustment</div>
+      <div class="principle">If the initial accounting for a business combination is INCOMPLETE by the end of the reporting period in which the combination occurs, the acquirer reports PROVISIONAL amounts. During the "MEASUREMENT PERIOD" (a period NOT EXCEEDING ONE YEAR from the acquisition date), the acquirer RETROSPECTIVELY adjusts the provisional amounts to reflect new information about facts/circumstances that EXISTED AT the acquisition date, had they been known at that date — with a CORRESPONDING adjustment to GOODWILL.</div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ Adjustments MADE AFTER the measurement period ends, or resulting from EVENTS occurring AFTER the acquisition date (rather than clarifying acquisition-date facts), are accounted for as CORRECTIONS OF ERRORS (IAS 8) or as ORDINARY period changes in estimate — NOT as adjustments to goodwill.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Required disclosures</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">FOR EACH MATERIAL BUSINESS COMBINATION</div>
+          <div class="check-list">
+            <span>Name and description of the acquiree, acquisition date, percentage of voting equity acquired, and primary reasons for the combination</span>
+            <span>Fair value of total consideration transferred, and the fair value of each major class of consideration</span>
+            <span>Amounts recognised for each major class of assets acquired and liabilities assumed</span>
+            <span>Amount of goodwill (or bargain purchase gain), and a QUALITATIVE description of the factors making up goodwill</span>
+          </div>
+        </div>
+        <div>
+          <div class="elabel">FURTHER DISCLOSURES</div>
+          <div class="check-list">
+            <span>NCI measurement basis chosen for each combination, and the amount recognised</span>
+            <span>Revenue and profit/loss of the acquiree since the acquisition date included in the group's results (and, if practicable, what group revenue/profit would have been had the acquisition occurred at the start of the period)</span>
+            <span>Details of measurement period adjustments made during the reporting period</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Where management judgement matters most</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+          <div class="dot-list">
+            <span>Whether an acquisition constitutes a "business" (goodwill possible) or merely an asset acquisition (no goodwill)</span>
+            <span>Identifying the accounting acquirer, especially in reverse acquisitions and mergers of equals</span>
+            <span>Which NCI measurement method to elect for each combination</span>
+          </div>
+        </div>
+        <div>
+          <div class="elabel">SIGNIFICANT ESTIMATES</div>
+          <div class="dot-list">
+            <span>Fair value of identifiable intangible assets not previously recognised by the acquiree (e.g. customer relationships, brands, technology)</span>
+            <span>Fair value of contingent consideration, and its probability-weighted future payment</span>
+            <span>Fair value of NCI, where the fair value method is elected</span>
+          </div>
+        </div>
+      </div>
+      <div class="callout warn" style="margin-top:8px;margin-bottom:0;">⚠️ Purchase price allocation (PPA) — the process of identifying and fair-valuing every acquired asset and assumed liability — is one of the most JUDGEMENT- and specialist-VALUATION-intensive exercises in all of IFRS, frequently requiring external valuation experts for intangibles and contingent liabilities.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>IFRS vs US GAAP — Key Differences</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — IFRS 3 vs US GAAP (ASC 805)</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Feature</span><span style="color:var(--color-text-info);">IFRS (IFRS 3)</span><span style="color:var(--color-text-warning);">US GAAP</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>NCI measurement</span><span>CHOICE: fair value OR proportionate share of net identifiable assets</span><span>MANDATORY fair value only — no proportionate share option available</span></div>
+        <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Bargain purchase gain</span><span>Recognised in profit or loss after reassessment</span><span>Also recognised in earnings, broadly converged in substance</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Measurement period</span><span>Up to 1 year from acquisition date</span><span>Also up to 1 year, largely converged</span></div>
+        <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Acquisition-related costs (legal, advisory fees)</span><span>EXPENSED as incurred</span><span>Also EXPENSED as incurred, converged</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>"Business" definition</span><span>Refined by a 2018 amendment adding a "concentration test" screening step</span><span>Similar refinement made via ASU 2017-01, broadly converged following coordinated efforts</span></div>
+      </div>
+      <div class="note">IFRS 3 and ASC 805 are substantially converged following coordinated joint standard-setting — the CLEAREST remaining difference is the NCI measurement choice, which IFRS uniquely offers but US GAAP does not.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Statement Mapping — Where Every Business Combination Event Lands</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Comprehensive event-to-statement mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event / transaction</span><span>Statement(s) affected</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Recognition of identifiable assets/liabilities at fair value</span><span><span class="badge bs">SOFP</span></span><span>At acquisition-date fair value, replacing acquiree's historical carrying amounts</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Goodwill recognised</span><span><span class="badge bs">SOFP</span></span><span>Residual, tested annually for impairment (IAS 36), never amortised</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Bargain purchase gain</span><span><span class="badge bp">SOPL</span></span><span>Recognised immediately, after reassessment confirms it is genuine</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Acquisition-related costs (legal, advisory)</span><span><span class="badge bp">SOPL</span></span><span>Expensed as incurred, never capitalised</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>NCI recognised at acquisition</span><span><span class="badge be">Equity</span></span><span>Fair value or proportionate share, per the elected method</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Contingent consideration remeasurement (liability-classified)</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Per IFRS 9, not adjusted through goodwill after the measurement period</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Measurement period adjustment</span><span><span class="badge bs">SOFP</span></span><span>Retrospective adjustment to provisional amounts and goodwill, within 1 year</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Cash paid to acquire the business</span><span><span class="badge bs">Cash Flow Statement</span></span><span>Investing activities outflow, net of cash acquired</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Consideration, goodwill factors, NCI method, PPA details</span><span><span class="badge bp">Notes</span></span><span>Extensive mandatory disclosure per acquisition</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Related Standards &amp; Glossary</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd">
+      <div class="ctitle cd">Related standards — cross-reference map</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Standard</span><span>Connection</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 10</span><span>Supplies the "control" definition determining WHO the acquirer is and WHEN the combination occurs</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 36</span><span>Governs mandatory annual goodwill impairment testing at the CGU level following the acquisition</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 13</span><span>Supplies the fair value measurement framework used almost universally throughout the acquisition method</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 9</span><span>Governs subsequent remeasurement of liability-classified contingent consideration through profit or loss</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 12</span><span>Deferred tax is recognised on temporary differences arising from fair value adjustments made at acquisition</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 1</span><span>Provides an optional exemption allowing first-time adopters to avoid full retrospective restatement of pre-transition business combinations</span></div>
+      </div>
+    </div>
+    <div class="card cn">
+      <div class="ctitle cn">Quick-reference glossary</div>
+      <div class="glossary-item"><div class="glossary-term">Contingent consideration</div><div class="glossary-def">An obligation of the acquirer to transfer additional assets/equity interests to the former owners of an acquiree, if specified future events occur or conditions are met.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Measurement period</div><div class="glossary-def">The period after the acquisition date, not exceeding one year, during which the acquirer may retrospectively adjust provisional amounts recognised for a business combination.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Bargain purchase</div><div class="glossary-def">A business combination where the fair value of net identifiable assets acquired exceeds the sum of consideration transferred, NCI, and any previously held equity interest — recognised as a gain, after mandatory reassessment.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bs">SOFP</span> Statement of financial position (balance sheet)
+      <span class="badge bp">SOPL</span> Statement of profit or loss (income statement)
+      <span class="badge bo">OCI</span> Other comprehensive income
+      <span class="badge be">Equity</span> Statement of changes in equity
+    </div>
+  </div>
+
+  <div class="footer-note">IFRS 3 — Business Combinations · Extended Reference Poster · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>
