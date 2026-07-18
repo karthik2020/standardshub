@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ind AS 108 — Operating Segments | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb; --color-background-tertiary: #f3f4f6; --color-background-info: #eff6ff; --color-background-success: #f0fdf4; --color-background-warning: #fffbeb; --color-background-danger: #fff1f2;
+    --color-border-secondary: #e5e7eb; --color-border-tertiary: #e5e7eb; --color-border-info: #3b82f6; --color-border-success: #22c55e; --color-border-warning: #f59e0b; --color-border-danger: #ef4444;
+    --color-text-primary: #111827; --color-text-secondary: #374151; --color-text-tertiary: #9ca3af; --color-text-info: #2563eb; --color-text-success: #16a34a; --color-text-warning: #b45309; --color-text-danger: #dc2626;
+    --border-radius-lg: 10px; --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; } * { box-sizing: border-box; } .wrap { padding: 1rem 0 0.5rem; }
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+  .india-banner { background: var(--color-background-success); border: 1.5px solid var(--color-border-success); border-radius: var(--border-radius-md); padding: 10px 16px; margin: 10px 0 6px; text-align: center; font-size: 11.5px; color: var(--color-text-success); line-height: 1.6; }
+  .india-banner strong { font-weight: 700; }
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #fff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; } .span2 { grid-column: span 2; }
+  .card { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); } .card.cs { border-left: 3px solid var(--color-border-success); } .card.cw { border-left: 3px solid var(--color-border-warning); } .card.cd { border-left: 3px solid var(--color-border-danger); } .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; } .ctitle.ci { color: var(--color-text-info); } .ctitle.cs { color: var(--color-text-success); } .ctitle.cw { color: var(--color-text-warning); } .ctitle.cd { color: var(--color-text-danger); } .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info { background: var(--color-background-info); color: var(--color-text-info); border: 1px solid var(--color-border-info); }
+  .callout.warn { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger); color: var(--color-text-danger); border: 1px solid var(--color-border-danger); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; } .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span { display: block; padding-left: 14px; position: relative; font-size: 11px; color: var(--color-text-secondary); line-height: 1.75; }
+  .dot-list span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger); font-size: 10px; top: 2px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+  .badge { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info); color: var(--color-text-info); } .bp { background: var(--color-background-danger); color: var(--color-text-danger); } .bo { background: var(--color-background-success); color: var(--color-text-success); } .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+  @media (max-width: 640px) { .grid, .two-col, .three-col { grid-template-columns: 1fr; } .span2 { grid-column: span 1; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub"><div class="hub-box">
+    <div class="hub-title">Ind AS 108 — Operating Segments</div>
+    <div class="hub-sub">Extended reference poster · Converged with IFRS 8 · Interaction with Companies Act, 2013 Schedule III · Worked examples</div>
+  </div></div>
+
+  <div class="india-banner">
+    🇮🇳 <strong>IND AS — CLOSELY CONVERGED WITH IFRS 8</strong> — Ind AS 108 mirrors IFRS 8's management approach and quantitative thresholds almost exactly. The main Indian-specific interaction is with Schedule III of the Companies Act, 2013 (governing overall financial statement FORMAT), not with segment identification itself. Section 11 covers the full comparison.
+  </div>
+
+  <div class="toc">
+    <a href="#s1">1. Conceptual Framework</a><a href="#s2">2. Scope &amp; Definitions</a><a href="#s3">3. Identifying Operating Segments</a>
+    <a href="#s4">4. Aggregation of Segments</a><a href="#s5">5. The Quantitative Thresholds — 10% Tests</a><a href="#s6">6. The 75% Reporting Sufficiency Test</a>
+    <a href="#s7">7. Schedule III Interaction</a><a href="#s8">8. Entity-Wide Disclosures</a>
+    <a href="#s9">9. Disclosure</a><a href="#s10">10. Judgments &amp; Estimates</a><a href="#s11">11. Ind AS 108 vs IFRS 8 — Full Comparison</a>
+    <a href="#s12">12. Statement Mapping</a><a href="#s13">13. Related Standards</a><a href="#s14">14. Glossary</a>
+  </div>
+
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Identical management approach philosophy to IFRS 8</div>
+      <div class="principle">Ind AS 108 applies the IDENTICAL "management approach" as IFRS 8 — segments are defined by how the entity is ACTUALLY organised and managed internally (via reports reviewed by the Chief Operating Decision Maker), not an externally imposed classification, DIRECTLY carrying forward IFRS 8's own rationale into the Indian context.</div>
+      <div class="elabel">HOW IND AS 108 MAPS TO THE FRAMEWORK</div>
+      <div class="check-list">
+        <span><strong style="font-weight:500">Relevance</strong> — reporting segments the way management actually monitors them — IDENTICAL to IFRS 8</span>
+        <span><strong style="font-weight:500">Cost constraint</strong> — segment information derived from data management already produces internally — IDENTICAL to IFRS 8</span>
+        <span><strong style="font-weight:500">CODM identification in Indian corporate structures</strong> — for many Indian companies (particularly those with a managing director or promoter-led executive structure), identifying the CODM function requires the SAME judgement-based analysis as under IFRS 8, though Indian corporate governance conventions (e.g. the Board's role under the Companies Act, 2013) sometimes inform this identification</span>
+      </div>
+      <div class="note">Ind AS 108 does NOT introduce any INDIA-SPECIFIC segment identification concept — the management approach, CODM concept, and quantitative thresholds are reproduced essentially verbatim from IFRS 8.</div>
+    </div>
+    <div class="card cs">
+      <div class="ctitle cs">Measurement principles — identical to IFRS 8</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1fr;"><span>Framework concept</span><span>Ind AS 108's application</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1fr;"><span>Measurement basis</span><span>WHATEVER basis management uses internally — may differ from Ind AS, IDENTICAL to IFRS 8</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1fr;"><span>Reconciliation requirement</span><span>Mandatory, IDENTICAL to IFRS 8</span></div>
+      </div>
+      <div class="callout info" style="margin-bottom:0;">ℹ️ No substantive divergence exists on measurement principles.</div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw">
+      <div class="ctitle cw">What Ind AS 108 covers</div>
+      <div class="principle">Ind AS 108 applies to entities with publicly traded debt/equity, or filing to issue such instruments — IDENTICAL scope trigger to IFRS 8.</div>
+      <div class="note">Many LARGE unlisted Indian companies (e.g. certain NBFCs, or companies required to apply Ind AS due to net worth thresholds) MAY still voluntarily or be otherwise required to disclose segment information depending on specific listing/debt circumstances.</div>
+    </div>
+    <div class="card cd">
+      <div class="ctitle cd">Key definitions you must know</div>
+      <div class="glossary-item"><div class="glossary-term">Operating segment</div><div class="glossary-def">IDENTICAL definition to IFRS 8 — a component with revenue/expenses, regularly reviewed by the CODM, with discrete financial information available.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Schedule III (Companies Act, 2013)</div><div class="glossary-def">The statutory format prescribing the general structure of Indian companies' financial statements, operating alongside (and requiring consistency with) Ind AS 108's segment disclosures where applicable.</div></div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Identifying Operating Segments</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Identical three-part test to IFRS 8</div>
+      <div class="principle">A component qualifies as an operating segment ONLY if it: engages in revenue-generating business activities; has results regularly reviewed by the CODM; and has discrete financial information available — IDENTICAL to IFRS 8's own definition, with no Indian-specific modification.</div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Aggregation of Segments</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Identical five-factor test to IFRS 8</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Segments may be aggregated if similar in nature of products/services, production processes, customer type, distribution methods, and regulatory environment — IDENTICAL five-factor test to IFRS 8.</div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s5"><span class="num">5</span><h2>The Quantitative Thresholds — 10% Tests (with worked example)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Identical three tests to IFRS 8</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 1: An Indian conglomerate's segment threshold test</div>
+        <div class="wk-body">An Indian group has 4 segments. Segment revenues: Textiles ₹120 crore, Chemicals ₹300 crore, Logistics ₹40 crore, Real Estate ₹90 crore. Combined revenue = ₹550 crore.</div>
+        <div class="wk-answer">10% threshold = ₹55 crore. Textiles (₹120 crore), Chemicals (₹300 crore), and Real Estate (₹90 crore) all EXCEED this and are REPORTABLE. Logistics (₹40 crore) does NOT meet the revenue test alone (though it may still qualify via the profit/loss or assets tests, or via the 75% sufficiency test) — an IDENTICAL analysis to how IFRS 8 would apply.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s6"><span class="num">6</span><h2>The 75% Reporting Sufficiency Test</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Identical backstop to IFRS 8</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">If reportable segments' total external revenue is LESS THAN 75% of total consolidated external revenue, additional segments must be added until 75% is reached — IDENTICAL to IFRS 8.</div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Schedule III Interaction</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Consistency with the overall financial statement format</h2>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Schedule III of the Companies Act, 2013 prescribes the GENERAL format for Indian companies' Balance Sheet and Statement of Profit and Loss (classification of assets/liabilities, line item requirements) — Ind AS 108's segment disclosures are presented CONSISTENTLY with, but as a SEPARATE note disclosure alongside, this prescribed general format. This is a purely PRESENTATIONAL interaction, not a substantive difference in HOW segments are identified or measured.</div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Entity-Wide Disclosures</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Identical backstop disclosures to IFRS 8</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Revenue by product/service, geographical revenue/non-current asset split (India domicile vs foreign), and major customer concentration (10%+ of revenue) — IDENTICAL requirements to IFRS 8, applying regardless of the entity's own internal segment structure.</div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Identical disclosure requirements to IFRS 8</div>
+      <div class="check-list">
+        <span>Factors used to identify reportable segments; products/services by segment</span>
+        <span>Segment revenue, profit/loss, assets, liabilities (as reported to the CODM)</span>
+        <span>Reconciliation of segment totals to consolidated Ind AS totals</span>
+        <span>Entity-wide product/geographical/major customer disclosures</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Where management judgement matters most</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+          <div class="dot-list">
+            <span>Identifying the CODM function correctly in complex Indian promoter-led/board structures</span>
+            <span>Whether operating segments meet the aggregation criteria</span>
+          </div>
+        </div>
+        <div>
+          <div class="elabel">SIGNIFICANT ESTIMATES</div>
+          <div class="dot-list">
+            <span>Allocating shared/corporate costs between segments</span>
+          </div>
+        </div>
+      </div>
+      <div class="callout warn" style="margin-top:8px;margin-bottom:0;">⚠️ In Indian promoter-controlled group structures, identifying the CODM can require careful analysis of WHO genuinely reviews segment performance for resource allocation — sometimes the promoter/managing director individually, sometimes a formal management committee.</div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Ind AS 108 vs IFRS 8 — Full Comparison</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comprehensive comparison table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Feature</span><span style="color:var(--color-text-info);">IFRS 8</span><span style="color:var(--color-text-success);">Ind AS 108</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Management approach</span><span>CODM-based internal reporting</span><span>IDENTICAL — no substantive divergence</span></div>
+        <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>10% thresholds &amp; 75% test</span><span>Standard mechanics</span><span>IDENTICAL</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>General financial statement format interaction</span><span>Varies by local company law</span><span>Schedule III of the Companies Act, 2013 governs overall statement FORMAT, with segment notes presented consistently alongside it</span></div>
+        <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Terminology</span><span>"Operating segments," IFRS</span><span>Same terminology; "Balance Sheet"/"Statement of Profit and Loss" per Companies Act conventions</span></div>
+      </div>
+      <div class="note">Ind AS 108 is one of the MOST closely converged Ind AS standards — essentially IDENTICAL accounting substance to IFRS 8, with the only meaningful Indian context being the interaction with Schedule III's general presentation format, not the segment identification methodology itself.</div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Where every Ind AS 108 disclosure lands</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Disclosure item</span><span>Location</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Segment revenue, profit/loss, assets, liabilities</span><span><span class="badge bp">Notes</span></span><span>May use non-Ind AS internal measures</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Reconciliation to consolidated totals</span><span><span class="badge bp">Notes</span></span><span>Mandatory bridging disclosure</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Entity-wide disclosures</span><span><span class="badge bp">Notes</span></span><span>Required regardless of segment structure</span></div>
+      </div>
+      <div class="note">Like IFRS 8, Ind AS 108 is entirely a DISCLOSURE standard.</div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd">
+      <div class="ctitle cd">Cross-reference map</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Standard</span><span>Connection</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 8</span><span>The GLOBAL counterpart standard, near-identically converged</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>Schedule III (Companies Act, 2013)</span><span>Governs the general financial statement format Ind AS 108's disclosures sit alongside</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>Ind AS 105</span><span>Segments must be identified for held-for-sale/discontinued operations</span></div>
+      </div>
+    </div>
+    <div class="card cn">
+      <div class="ctitle cn">Quick-reference glossary</div>
+      <div class="glossary-item"><div class="glossary-term">Schedule III</div><div class="glossary-def">The statutory format under the Companies Act, 2013 prescribing the general structure of Indian companies' financial statements.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">CODM</div><div class="glossary-def">Chief Operating Decision Maker — a function, not necessarily a specific title, identical concept to IFRS 8.</div></div>
+    </div>
+  </div>
+
+  <div class="legend"><div class="ltitle">Financial statement key</div><div class="lrow">
+    <span class="badge bs">Balance Sheet</span> Statement of financial position
+    <span class="badge bp">P&amp;L</span> Statement of profit or loss
+    <span class="badge bo">OCI</span> Other comprehensive income
+    <span class="badge be">Equity</span> Statement of changes in equity
+  </div></div>
+
+  <div class="footer-note">Ind AS 108 — Operating Segments · Converged with IFRS 8 · Extended Reference Poster · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>
