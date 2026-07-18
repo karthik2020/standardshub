@@ -1,0 +1,246 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import metadata from "../../data/standards/indas/indas109.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  bannerNotice={metadata.bannerNotice}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope & Definitions" },
+        { id: "s3", label: "Classification — Business Model & SPPI Tests" },
+        { id: "s4", label: "Expected Credit Losses — The Three-Stage Model" },
+        { id: "s5", label: "RBI's Parallel Provisioning Framework for Banks/NBFCs" },
+        { id: "s6", label: "Financial Liabilities Classification" },
+        { id: "s7", label: "Derecognition" },
+        { id: "s8", label: "Hedge Accounting" },
+        { id: "s9", label: "Disclosure" },
+        { id: "s10", label: "Judgments & Estimates" },
+        { id: "s11", label: "Ind AS 109 vs IFRS 9 — Full Comparison" },
+        { id: "s12", label: "Statement Mapping" },
+        { id: "s13", label: "Related Standards" },
+        { id: "s14", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <!-- ============ SECTION 1 — CONCEPTUAL FRAMEWORK LINKAGE ============ -->
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Identical classification and ECL philosophy to IFRS 9</div>
+        <div class="principle">Ind AS 109 applies the IDENTICAL Conceptual Framework logic as IFRS 9 — classification via business model + SPPI cash flow tests, and FORWARD-LOOKING expected credit loss provisioning replacing the old incurred loss model. India's convergence carries this forward WITHOUT substantive modification to the core accounting model.</div>
+        <div class="elabel">HOW IND AS 109 MAPS TO THE FRAMEWORK</div>
+        <div class="check-list">
+          <span><strong style="font-weight:500">Faithful representation</strong> — classification reflects genuine business purpose and cash flow characteristics — IDENTICAL to IFRS 9</span>
+          <span><strong style="font-weight:500">Timeliness/relevance</strong> — the ECL model recognises credit deterioration earlier than an incurred loss approach — IDENTICAL to IFRS 9</span>
+          <span><strong style="font-weight:500">A genuinely DUAL credit provisioning landscape for Indian banks</strong> — RBI has historically prescribed its OWN specific asset classification and provisioning norms (NPA-based) for banks, and has been separately working toward its own ECL-aligned "Expected Credit Loss" framework FOR BANKS specifically, creating a genuinely distinctive Indian regulatory transition dynamic that most other jurisdictions applying IFRS 9 do not face in quite the same way</span>
+        </div>
+        <div class="note">Ind AS 109 itself is applied by Indian NBFCs (Non-Banking Financial Companies) directly, generally WITHOUT the same RBI provisioning overlay complexity full commercial banks face — banks themselves have had a MORE GRADUAL, phased Ind AS 109 implementation given RBI's own parallel regulatory considerations.</div>
+      </div>
+      <div class="card cs">
+        <div class="ctitle cs">The three classification categories — identical to IFRS 9</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.3fr 1fr;"><span>Category</span><span>Measurement basis</span></div>
+          <div class="tr" style="grid-template-columns:1.3fr 1fr;"><span>Amortised cost</span><span>Hold to collect + SPPI — IDENTICAL to IFRS 9</span></div>
+          <div class="tr alt" style="grid-template-columns:1.3fr 1fr;"><span>FVOCI (debt)</span><span>Hold to collect and sell + SPPI — IDENTICAL to IFRS 9</span></div>
+          <div class="tr" style="grid-template-columns:1.3fr 1fr;"><span>FVTPL</span><span>Residual — IDENTICAL to IFRS 9</span></div>
+        </div>
+        <div class="callout info callout--chip" style="margin-bottom:0;">ℹ️ No substantive classification divergence exists between Ind AS 109 and IFRS 9.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 2 — SCOPE & DEFINITIONS ============ -->
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Definitions</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What Ind AS 109 covers</div>
+        <div class="principle">Ind AS 109 applies to ALL financial assets/liabilities — IDENTICAL scope to IFRS 9, with the SAME exclusions (subsidiary/associate/JV interests, employee benefit plans, most insurance contracts, share-based payment transactions).</div>
+        <div class="note">Ind AS 109 is genuinely central to accounting for Indian NBFCs, given their core lending business — arguably one of the MOST consequential Ind AS standards for this sector.</div>
+      </div>
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions you must know</div>
+        <div class="glossary-item"><div class="glossary-term">Business model / SPPI</div><div class="glossary-def">IDENTICAL definitions and tests to IFRS 9.</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">NBFC</div><div class="glossary-def">Non-Banking Financial Company — an RBI-regulated Indian lending/financial services entity, subject to Ind AS 109 for its financial statements, alongside RBI's own prudential norms (though generally less extensively overlaid than full banks).</div></div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 3 — CLASSIFICATION ============ -->
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Classification — Business Model &amp; SPPI Tests</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Identical two-part test to IFRS 9</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">The business model test (hold to collect, hold to collect and sell, other) and the SPPI (solely payments of principal and interest) cash flow characteristics test are IDENTICAL to IFRS 9, applied by Indian entities without modification.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 4 — EXPECTED CREDIT LOSSES ============ -->
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Expected Credit Losses — The Three-Stage Model</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Identical staging model to IFRS 9</div>
+        <div class="worked" style="margin-bottom:0;">
+          <div class="wk-title">Example 1: An Indian NBFC's ECL staging</div>
+          <div class="wk-body">An Indian NBFC's vehicle loan of ₹8,00,000 has a 12-month ECL of ₹15,000 at initial recognition (Stage 1). By the next reporting date, the borrower has missed two consecutive EMI payments, indicating a significant increase in credit risk (Stage 2), with lifetime ECL estimated at ₹85,000.</div>
+          <div class="wk-answer">The loan moves from Stage 1 to <strong style="color:var(--color-text-info);">Stage 2</strong> — loss allowance increases from ₹15,000 to <strong style="color:var(--color-text-danger);">₹85,000</strong>, an incremental charge of ₹70,000 recognised immediately in profit or loss — an IDENTICAL mechanism to IFRS 9's own three-stage model globally.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 5 — RBI PARALLEL PROVISIONING ============ -->
+    <div class="section-header" id="s5"><span class="num">5</span><h2>RBI's Parallel Provisioning Framework for Banks/NBFCs</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">A genuinely distinctive dual system, in transition</div>
+        <div class="principle">RBI has historically mandated its OWN asset classification (Standard, Sub-standard, Doubtful, Loss — the "NPA" categories) and PROVISIONING norms for banks, based on DAYS-PAST-DUE thresholds, largely INDEPENDENT of Ind AS 109's forward-looking ECL model. RBI has SEPARATELY been working on its own "Expected Credit Loss" (ECL)-based provisioning framework specifically for banks, intended to align more closely with the Ind AS 109 philosophy — but as of this poster's preparation, this convergence remains an ACTIVE, ongoing regulatory transition, not yet fully complete for all bank categories.</div>
+        <div class="worked" style="margin-bottom:0;">
+          <div class="wk-title">Example 2: Two parallel provisioning calculations for the same loan</div>
+          <div class="wk-body">A commercial bank's corporate loan of ₹50,00,000 is 95 days past due. Under RBI's existing NPA norms (90+ days past due threshold), it is classified as "Sub-standard," requiring a specific minimum provisioning percentage. SEPARATELY, under Ind AS 109's ECL model, the bank calculates its own forward-looking lifetime ECL based on its internal risk models.</div>
+          <div class="wk-answer">The bank must calculate BOTH figures — RBI's regulatory provisioning requirement (for prudential/regulatory capital purposes) AND its Ind AS 109 ECL provision (for its Ind AS-compliant financial statements) — these TWO figures are NOT always identical, requiring careful reconciliation, a genuinely DISTINCTIVE feature of the Indian banking sector's dual reporting obligations that most other IFRS 9 jurisdictions do not face in quite the same acute form.</div>
+        </div>
+        <div class="callout warn" style="margin-bottom:0;">⚠️ This DUAL provisioning requirement (RBI NPA norms + Ind AS 109 ECL) represents one of the MOST significant, practically consequential Indian-specific complexities in the entire Ind AS/IFRS comparison — an active area of regulatory convergence still evolving.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 6 — FINANCIAL LIABILITIES ============ -->
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Financial Liabilities Classification</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">Identical to IFRS 9</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Most liabilities at amortised cost; own credit risk changes on fair-value-option liabilities presented in OCI unless creating an accounting mismatch — IDENTICAL to IFRS 9's own treatment.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 7 — DERECOGNITION ============ -->
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Derecognition</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Identical to IFRS 9</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">The risks/rewards and control-based derecognition test is IDENTICAL to IFRS 9 — genuinely relevant for Indian NBFCs engaging in loan securitisation/assignment transactions, a common Indian financing structure.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 8 — HEDGE ACCOUNTING ============ -->
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Hedge Accounting</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Identical principles-based model to IFRS 9</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">The economic relationship test, replacing the old 80-125% bright line, is IDENTICAL to IFRS 9 — relevant for Indian companies hedging foreign currency exposure (given significant import/export activity) and commodity price risk.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 9 — DISCLOSURE ============ -->
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Identical to IFRS 9, supplemented by Ind AS 107</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Classification, ECL staging movements, hedge accounting disclosures — governed alongside Ind AS 107's own detailed disclosure requirements, IDENTICAL in structure to the IFRS 9/IFRS 7 combination globally.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 10 — JUDGMENTS & ESTIMATES ============ -->
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where management judgement matters most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Business model determination — identical to IFRS 9</span>
+              <span>Reconciling RBI's regulatory provisioning approach with Ind AS 109's ECL model, for banks specifically</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>Probability-weighted ECL calculations, incorporating Indian macroeconomic scenarios (GDP growth, inflation, monsoon-dependent agricultural cycles for rural lending portfolios)</span>
+            </div>
+          </div>
+        </div>
+        <div class="callout warn" style="margin-top:8px;margin-bottom:0;">⚠️ Indian NBFCs with significant RURAL or agricultural lending portfolios face genuinely DISTINCTIVE ECL modelling challenges given India's monsoon-dependent economic cycles affecting borrower repayment capacity — a practical consideration less prominent in many other IFRS 9 jurisdictions.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 11 — IND AS 109 VS IFRS 9 ============ -->
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Ind AS 109 vs IFRS 9 — Full Comparison</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comprehensive comparison table</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Feature</span><span style="color:var(--color-text-info);">IFRS 9</span><span style="color:var(--color-text-success);">Ind AS 109</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Classification (business model + SPPI)</span><span>Standard model</span><span>IDENTICAL — no substantive divergence</span></div>
+          <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>ECL three-stage model</span><span>Standard model</span><span>IDENTICAL</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Bank/NBFC regulatory provisioning overlay</span><span>Varies by jurisdiction; some overlap with local Basel-aligned rules</span><span>RBI's SEPARATE NPA-based provisioning norms operate ALONGSIDE Ind AS 109's ECL model for banks — a genuinely distinctive DUAL system, with RBI's own ECL-alignment initiative still an ACTIVE, ongoing transition</span></div>
+          <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Hedge accounting</span><span>Principles-based economic relationship test</span><span>IDENTICAL</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Applicability timeline for banks specifically</span><span>N/A (global)</span><span>Ind AS 109 (and Ind AS generally) applicability to SCHEDULED COMMERCIAL BANKS has been repeatedly DEFERRED by the RBI/MCA, a genuinely distinctive Indian implementation SEQUENCING feature</span></div>
+        </div>
+        <div class="note">Ind AS 109's accounting SUBSTANCE mirrors IFRS 9 almost exactly for entities that apply it — the GENUINELY IMPORTANT Indian-specific complexity lies in the PARALLEL RBI regulatory provisioning framework for banks, and the DEFERRED implementation timeline for the banking sector specifically, both distinctive features of India's phased financial sector Ind AS convergence journey.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 12 — STATEMENT MAPPING ============ -->
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Comprehensive event-to-statement mapping table</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event / transaction</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Amortised cost interest accretion</span><span><span class="badge bp">P&amp;L</span> <span class="badge bs">Balance Sheet</span></span><span>Effective interest method, identical to IFRS 9</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>ECL recognition/movement between stages</span><span><span class="badge bp">P&amp;L</span> <span class="badge bs">Balance Sheet</span></span><span>Identical mechanics to IFRS 9</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>RBI regulatory NPA provisioning (banks)</span><span><span class="badge bp">Regulatory Return</span></span><span>Parallel, separate calculation from Ind AS 109 ECL</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Cash flow hedge — effective portion</span><span><span class="badge bo">OCI</span></span><span>Identical to IFRS 9</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 13 — RELATED STANDARDS ============ -->
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Cross-reference map</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Standard</span><span>Connection</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 9</span><span>The GLOBAL counterpart standard, near-identically converged</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>Ind AS 107</span><span>Supplies the disclosure requirements explaining Ind AS 109 amounts and risk exposures</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>Ind AS 113</span><span>Supplies the fair value measurement framework</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>RBI Master Directions / Prudential Norms</span><span>Supplies the PARALLEL NPA classification/provisioning framework for banks, in ongoing transition toward ECL alignment</span></div>
+        </div>
+      </div>
+      <div class="card cn">
+        <div class="ctitle cn">Quick-reference glossary</div>
+        <div class="glossary-item"><div class="glossary-term">NPA (Non-Performing Asset)</div><div class="glossary-def">RBI's regulatory loan default classification, based on days-past-due thresholds, operating alongside (and distinct from) Ind AS 109's ECL model.</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Days Past Due (DPD)</div><div class="glossary-def">The regulatory metric (e.g. 90+ DPD) underlying RBI's NPA classification, used alongside Ind AS 109's own forward-looking "significant increase in credit risk" staging trigger.</div></div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 14 — GLOSSARY ============ -->
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Business model / SPPI", definition: "IDENTICAL definitions and tests to IFRS 9 — the two-part classification test for financial assets." },
+      { term: "NBFC", definition: "Non-Banking Financial Company — an RBI-regulated Indian lending/financial services entity, subject to Ind AS 109 for its financial statements." },
+      { term: "NPA (Non-Performing Asset)", definition: "RBI's regulatory loan default classification, based on days-past-due thresholds, operating alongside (and distinct from) Ind AS 109's ECL model." },
+      { term: "Days Past Due (DPD)", definition: "The regulatory metric (e.g. 90+ DPD) underlying RBI's NPA classification, used alongside Ind AS 109's own forward-looking 'significant increase in credit risk' staging trigger." },
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+</StandardPageLayout>
