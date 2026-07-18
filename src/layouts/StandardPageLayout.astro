@@ -26,6 +26,11 @@ interface Props {
     variant: "success" | "warning" | "danger" | "info";
     title: string;
     body: string;
+    replacementStandard?: {
+      code: string;
+      title: string;
+      href: string;
+    };
   };
   related?: {
     code: string;
@@ -90,6 +95,7 @@ const standard = { code, title, dateModified: latestAmendment || undefined };
         variant={bannerNotice.variant}
         title={bannerNotice.title}
         body={bannerNotice.body}
+        replacementStandard={bannerNotice.replacementStandard}
       />
     </div>
   )}

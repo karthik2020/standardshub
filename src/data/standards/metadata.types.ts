@@ -71,5 +71,15 @@ export interface StandardMetadata {
     variant: "success" | "warning" | "danger" | "info";
     title: string;
     body: string;
+    /**
+     * Optional replacement standard, typically for a superseded (danger)
+     * standard. When present, the banner renders a full-row "Current Standard"
+     * footer link. Omitted entirely when absent.
+     */
+    replacementStandard?: {
+      code: string;
+      title: string;
+      href: string;
+    };
   };
 }

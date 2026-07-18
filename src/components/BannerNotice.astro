@@ -29,6 +29,10 @@
       info    — newly issued / recently issued standards             (blue)
   - title:  string  (required) — rendered bold + uppercase
   - body?:  string  — supporting paragraph. If omitted, the default slot is used.
+  - replacementStandard?: { code, title, href }
+      Optional. Typically used with the `danger` variant for a superseded
+      standard. When provided, a full-row "Current Standard" footer link is
+      rendered pointing to the replacement standard. Omitted entirely when absent.
 
   Reusable across IAS, IFRS and Ind AS (current, historical, and future
   standards such as IFRS 18/19/20 and future amendments) with no component
@@ -41,17 +45,25 @@ import {
   faTriangleExclamation,
   faCircleXmark,
   faCircleInfo,
+  faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
 
 type Variant = "success" | "warning" | "danger" | "info";
+
+interface ReplacementStandard {
+  code: string;
+  title: string;
+  href: string;
+}
 
 interface Props {
   variant: Variant;
   title: string;
   body?: string;
+  replacementStandard?: ReplacementStandard;
 }
 
-const { variant, title, body } = Astro.props;
+const { variant, title, body, replacementStandard } = Astro.props;
 
 // The variant is the single source of truth: it determines the icon,
 // colour, stripe style and typography. Pages never choose these.
@@ -63,22 +75,35 @@ const iconByVariant: Record<Variant, typeof faCircleCheck> = {
 };
 
 const iconSvg = icon(iconByVariant[variant]).html.join("");
+const arrowSvg = icon(faArrowRight).html.join("");
 ---
 
 <aside class={`banner-notice banner-notice--${variant}`} role="note">
-  <span class="banner-notice__icon" aria-hidden="true" set:html={iconSvg} />
-  <div class="banner-notice__content">
-    <p class="banner-notice__title">{title}</p>
-    <p class="banner-notice__body">{body ?? <slot />}</p>
+  <div class="banner-notice__row">
+    <span class="banner-notice__icon" aria-hidden="true" set:html={iconSvg} />
+    <div class="banner-notice__content">
+      <p class="banner-notice__title">{title}</p>
+      <p class="banner-notice__body">{body ?? <slot />}</p>
+    </div>
   </div>
+
+  {replacementStandard && (
+    <a class="banner-notice__replacement" href={replacementStandard.href}>
+      <span class="banner-notice__replacement-label">Current Standard</span>
+      <span class="banner-notice__replacement-main">
+        <span class="banner-notice__replacement-text">
+          {replacementStandard.code} — {replacementStandard.title}
+        </span>
+        <span class="banner-notice__replacement-arrow" aria-hidden="true" set:html={arrowSvg} />
+      </span>
+    </a>
+  )}
 </aside>
 
 <style>
   .banner-notice {
     /* Full width */
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
+    display: block;
     width: 100%;
     box-sizing: border-box;
 
@@ -98,6 +123,12 @@ const iconSvg = icon(iconByVariant[variant]).html.join("");
     );
 
     box-shadow: none; /* no shadow */
+  }
+
+  .banner-notice__row {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
   }
 
   .banner-notice__icon {
@@ -135,6 +166,63 @@ const iconSvg = icon(iconByVariant[variant]).html.join("");
     font-size: 14.5px; /* ~14–15px */
     line-height: 1.55; /* comfortable line height (~1.5–1.6) */
     color: rgba(255, 255, 255, 0.94);
+  }
+
+  /* ===== Optional replacement-standard footer (full-row link) ===== */
+  .banner-notice__replacement {
+    display: block;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.35);
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  .banner-notice__replacement-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 4px;
+  }
+
+  .banner-notice__replacement-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .banner-notice__replacement-text {
+    font-size: 14.5px;
+    font-weight: 600;
+    line-height: 1.4;
+    min-width: 0;
+  }
+
+  .banner-notice__replacement-arrow {
+    display: inline-flex;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+
+  .banner-notice__replacement-arrow :global(svg) {
+    width: 15px;
+    height: 15px;
+    fill: currentColor;
+    display: block;
+  }
+
+  .banner-notice__replacement:hover,
+  .banner-notice__replacement:focus-visible {
+    text-decoration: underline;
+  }
+
+  .banner-notice__replacement:hover .banner-notice__replacement-arrow,
+  .banner-notice__replacement:focus-visible .banner-notice__replacement-arrow {
+    transform: translateX(4px);
   }
 
   /* ===== Variant colours (solid) ===== */
