@@ -61,4 +61,15 @@ export interface StandardMetadata {
 
   /** One-line summary */
   summary: string;
+
+  /**
+   * Optional semantic banner shown directly below the Hero on the standard page.
+   * The component maps the variant to its icon, colour, stripe and typography;
+   * pages only declare the variant, title and body.
+   */
+  bannerNotice?: {
+    variant: "success" | "warning" | "danger" | "info";
+    title: string;
+    body: string;
+  };
 }

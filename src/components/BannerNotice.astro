@@ -1,29 +1,38 @@
 ---
 /*
-  BannerNotice — reusable, full-width notice banner (PROTOTYPE)
+  BannerNotice — reusable, full-width semantic notice banner.
 
   A modern, solid-colour banner with a subtle diagonal stripe overlay,
-  a left icon, a bold uppercase title and a supporting paragraph of body
-  content supplied via the default slot.
+  a left icon, a bold uppercase title and a supporting paragraph.
 
-  Usage:
+  Metadata-driven API — pages declare ONLY the semantic variant, a title
+  and body text. The component alone maps each variant to its icon,
+  colour, stripe style and typography. Pages never specify icons or colours.
+
+  Usage (via page metadata):
     <BannerNotice
       variant="warning"
-      title="Heads up"
-      icon="triangle-exclamation"   // optional — defaults per variant
-    >
-      Supporting body text goes here.
+      title="Ind AS — Converged with IAS 1, but with a divergence"
+      body="Supporting paragraph text…"
+    />
+
+  Or with slotted body content (equivalent, for richer markup):
+    <BannerNotice variant="info" title="New Standard">
+      Supporting paragraph text…
     </BannerNotice>
 
   Props:
   - variant: "success" | "warning" | "danger" | "info"  (required)
-  - title:   string  (required) — rendered bold + uppercase
-  - icon?:   Font Awesome Free (solid) icon name, e.g. "circle-check",
-             "triangle-exclamation", "circle-xmark", "circle-info".
-             Falls back to a sensible default for the chosen variant.
+      success — standards substantially converged with IAS / IFRS   (green)
+      warning — standards with significant national modifications    (amber)
+      danger  — withdrawn / superseded / historical standards        (red)
+      info    — newly issued / recently issued standards             (blue)
+  - title:  string  (required) — rendered bold + uppercase
+  - body?:  string  — supporting paragraph. If omitted, the default slot is used.
 
-  Body:
-  - Provided through the default <slot>.
+  Reusable across IAS, IFRS and Ind AS (current, historical, and future
+  standards such as IFRS 18/19/20 and future amendments) with no component
+  changes — only the variant/title/body metadata differs.
 */
 
 import { icon } from "@fortawesome/fontawesome-svg-core";
@@ -39,40 +48,28 @@ type Variant = "success" | "warning" | "danger" | "info";
 interface Props {
   variant: Variant;
   title: string;
-  icon?: string;
+  body?: string;
 }
 
-const { variant, title, icon: iconName } = Astro.props;
+const { variant, title, body } = Astro.props;
 
-// Registry of the Font Awesome Free (solid) icons this component supports.
-const iconRegistry = {
-  "circle-check": faCircleCheck,
-  "triangle-exclamation": faTriangleExclamation,
-  "circle-xmark": faCircleXmark,
-  "circle-info": faCircleInfo,
-} as const;
-
-// Default icon per variant when `icon` is not supplied.
-const defaultIconByVariant: Record<Variant, keyof typeof iconRegistry> = {
-  success: "circle-check",
-  warning: "triangle-exclamation",
-  danger: "circle-xmark",
-  info: "circle-info",
+// The variant is the single source of truth: it determines the icon,
+// colour, stripe style and typography. Pages never choose these.
+const iconByVariant: Record<Variant, typeof faCircleCheck> = {
+  success: faCircleCheck, // circle-check
+  warning: faTriangleExclamation, // triangle-exclamation
+  danger: faCircleXmark, // circle-xmark
+  info: faCircleInfo, // circle-info
 };
 
-const resolvedIconName =
-  (iconName as keyof typeof iconRegistry) in iconRegistry
-    ? (iconName as keyof typeof iconRegistry)
-    : defaultIconByVariant[variant];
-
-const iconSvg = icon(iconRegistry[resolvedIconName]).html.join("");
+const iconSvg = icon(iconByVariant[variant]).html.join("");
 ---
 
 <aside class={`banner-notice banner-notice--${variant}`} role="note">
   <span class="banner-notice__icon" aria-hidden="true" set:html={iconSvg} />
   <div class="banner-notice__content">
     <p class="banner-notice__title">{title}</p>
-    <p class="banner-notice__body"><slot /></p>
+    <p class="banner-notice__body">{body ?? <slot />}</p>
   </div>
 </aside>
 
@@ -125,7 +122,7 @@ const iconSvg = icon(iconRegistry[resolvedIconName]).html.join("");
 
   .banner-notice__title {
     margin: 0;
-    font-weight: 700; /* bold heading */
+    font-weight: 700; /* bold heading (~700) */
     text-transform: uppercase;
     font-size: 17.5px; /* ~17–18px */
     line-height: 1.3;
@@ -136,22 +133,22 @@ const iconSvg = icon(iconRegistry[resolvedIconName]).html.join("");
     margin: 6px 0 0;
     font-weight: 400; /* regular */
     font-size: 14.5px; /* ~14–15px */
-    line-height: 1.6; /* comfortable line height */
+    line-height: 1.55; /* comfortable line height (~1.5–1.6) */
     color: rgba(255, 255, 255, 0.94);
   }
 
   /* ===== Variant colours (solid) ===== */
   .banner-notice--success {
-    --bn-bg: #16a34a;
+    --bn-bg: #16a34a; /* green */
   }
   .banner-notice--warning {
-    --bn-bg: #d97706;
+    --bn-bg: #d97706; /* amber */
   }
   .banner-notice--danger {
-    --bn-bg: #dc2626;
+    --bn-bg: #dc2626; /* red */
   }
   .banner-notice--info {
-    --bn-bg: #2563eb;
+    --bn-bg: #2563eb; /* blue */
   }
 
   /* ===== Responsive ===== */
