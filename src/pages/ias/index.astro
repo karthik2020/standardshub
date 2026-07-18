@@ -3,6 +3,9 @@ import StandardLayout from "../../layouts/StandardLayout.astro";
 import standards from "../../data/standards.json";
 import StandardCard from "../../components/StandardCard.astro";
 import { palette } from "../../data/standardVisuals";
+import { FRAMEWORK_CONFIG, getFramework } from "../../data/frameworks";
+
+const framework = getFramework("ias")!;
 
 const groupedIAS = /** @type {Record<string, any[]>} */ ({});
 
@@ -18,13 +21,12 @@ for (const item of standards.IAS) {
 }
 ---
 
-<StandardLayout code="IAS" title="International Accounting Standards (IAS)" framework="IAS">
+<StandardLayout code={framework.code} title={`${framework.fullName} (${framework.code})`} framework={framework.code}>
 
-  <h1>International Accounting Standards</h1>
+  <h1>{framework.fullName}</h1>
 
   <p class="category-description">
-    International Accounting Standards (IAS) are a set of accounting principles issued by the IASB,
-    covering topics such as revenue recognition, inventory valuation, and financial statement presentation.
+    {framework.description}
   </p>
 
   <div class="view-toggle">
@@ -52,7 +54,7 @@ for (const item of standards.IAS) {
               href={item.url}
               code={item.code}
               title={item.title}
-              framework="ias"
+              framework={framework.id}
               theme={palette[index % palette.length]}
             />
 
@@ -75,7 +77,7 @@ for (const item of standards.IAS) {
               href={item.url}
               code={item.code}
               title={item.title}
-              framework="ias"
+              framework={framework.id}
               theme={palette[index % palette.length]}
             />
 
@@ -108,13 +110,13 @@ for (const item of standards.IAS) {
                      {
                        activeItems.map((item, index) => (
 
-                         <StandardCard
-                           href={item.url}
-                           code={item.code}
-                           title={item.title}
-                           framework="ias"
-                           theme={palette[index % palette.length]}
-                         />
+            <StandardCard
+              href={item.url}
+              code={item.code}
+              title={item.title}
+              framework={framework.id}
+              theme={palette[index % palette.length]}
+            />
 
                        ))
                      }
@@ -136,7 +138,7 @@ for (const item of standards.IAS) {
                           href={item.url}
                           code={item.code}
                           title={item.title}
-                          framework="ias"
+                          framework={framework.id}
                           status={item.status}
                           theme={palette[index % palette.length]}
                         />

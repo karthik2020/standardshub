@@ -6,19 +6,24 @@ Top navigation bar for standard pages.
 
 Props:
 - code (optional, defaults to "")
-- framework (optional, defaults to "IAS")
+- framework (optional, defaults to IAS)
 - title (optional)
 
 Renders the StandardsHub logo, framework breadcrumbs, current standard identity, and an optional print button. Slot available for toolbar actions.
 */
 
-import { House } from "@lucide/astro";
+import { House, PanelLeft } from "@lucide/astro";
+import { getFramework } from "../data/frameworks";
+
+const defaultFramework = getFramework("ias")!;
 
 const {
     code = "",
-    framework = "IAS",
+    framework = defaultFramework.code,
     title,
 } = Astro.props;
+
+const frameworkConfig = getFramework(framework) ?? defaultFramework;
 ---
 
 <header class="site-header">
@@ -36,15 +41,15 @@ const {
                 <span>Home</span>
             </a>
 
-            {code.toLowerCase() !== framework.toLowerCase() && (
+            {code.toLowerCase() !== frameworkConfig.code.toLowerCase() && (
                 <>
                     <span class="breadcrumb-separator" aria-hidden="true">❯</span>
 
                     <a
-                        href={`/${framework.toLowerCase()}`}
-                        class={`breadcrumb-framework ${framework.toLowerCase()}`}
+                        href={frameworkConfig.route}
+                        class={`breadcrumb-framework ${frameworkConfig.id}`}
                     >
-                        {framework}
+                        {frameworkConfig.displayName}
                     </a>
                 </>
             )}
@@ -54,11 +59,11 @@ const {
                     <span class="breadcrumb-separator" aria-hidden="true">❯</span>
 
                     <span class="breadcrumb-current" aria-current="page">
-                        <span class={`breadcrumb-code ${framework.toLowerCase()}`}>
+                        <span class={`breadcrumb-code ${frameworkConfig.id}`}>
                             {code}
                         </span>
 
-                        {code.toLowerCase() !== framework.toLowerCase() && (
+                        {code.toLowerCase() !== frameworkConfig.code.toLowerCase() && (
                             <>
                                 <span class="breadcrumb-dot"> • </span>
 
@@ -74,6 +79,10 @@ const {
     </div>
 
     <div class="header-right">
+        <button class="toolbar-btn mobile-menu-btn" id="mobileMenuBtn" title="Menu" aria-label="Open menu" aria-expanded="false">
+            <PanelLeft size={20} strokeWidth={2} />
+        </button>
+
         <slot />
 
         <button class="toolbar-btn" id="printBtn" title="Print" aria-label="Print this page"> 🖨 </button>

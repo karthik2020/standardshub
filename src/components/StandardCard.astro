@@ -15,6 +15,7 @@
 
 import standards from "../data/standards.json";
 import { getStandardIconHtml } from "../data/standardVisuals";
+import { getFramework } from "../data/frameworks";
 
 interface Props {
   href: string;
@@ -27,7 +28,8 @@ interface Props {
 
 const { href, code, title, framework, theme, status: statusProp } = Astro.props;
 
-const frameworkKey = framework === "indas" ? "IndAS" : framework.toUpperCase();
+const frameworkConfig = getFramework(framework)!;
+const frameworkKey = frameworkConfig.code === "Ind AS" ? "IndAS" : frameworkConfig.code;
 const standardData = standards[frameworkKey]?.find((s) => s.code === code);
 const resolvedStatus = statusProp ?? standardData?.status;
 

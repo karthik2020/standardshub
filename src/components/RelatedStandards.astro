@@ -4,13 +4,14 @@ Related standards navigation.
 
 Props:
 - related
-- framework (optional, defaults to "IAS")
+- framework (optional, defaults to IAS)
 
 Renders a responsive grid of cards linking to related standards. Hidden automatically when no related items are provided.
 */
 
 import { ArrowUpRight } from "@lucide/astro";
 import type { Framework } from "../data/standards/metadata.types";
+import { getFramework } from "../data/frameworks";
 
 interface RelatedItem {
   code: string;
@@ -26,7 +27,8 @@ interface Props {
 
 const { related = [], framework = "IAS" } = Astro.props;
 
-const frameworkClass = framework.toLowerCase().replace(/\s+/g, "");
+const frameworkConfig = getFramework(framework) ?? getFramework("ias")!;
+const frameworkClass = frameworkConfig.id;
 ---
 
 {

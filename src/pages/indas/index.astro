@@ -3,15 +3,17 @@ import StandardLayout from "../../layouts/StandardLayout.astro";
 import standards from "../../data/standards.json";
 import StandardCard from "../../components/StandardCard.astro";
 import { palette } from "../../data/standardVisuals";
+import { getFramework } from "../../data/frameworks";
+
+const framework = getFramework("indas")!;
 ---
 
-<StandardLayout code="Ind AS" title="Indian Accounting Standards (Ind AS)" framework="Ind AS">
+<StandardLayout code={framework.code} title={`${framework.fullName} (${framework.code})`} framework={framework.code}>
 
-  <h1>Indian Accounting Standards</h1>
+  <h1>{framework.fullName}</h1>
 
   <p class="category-description">
-    Indian Accounting Standards (Ind AS) are converged with IFRS and issued by the Ministry of Corporate Affairs,
-    aligning Indian financial reporting with international standards.
+    {framework.description}
   </p>
 
   <div class="standards-group">
@@ -25,7 +27,7 @@ import { palette } from "../../data/standardVisuals";
             href={item.url}
             code={item.code}
             title={item.title}
-            framework="indas"
+            framework={framework.id}
             theme={palette[index % palette.length]}
           />
 

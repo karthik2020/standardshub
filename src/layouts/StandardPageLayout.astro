@@ -4,6 +4,7 @@ import InformationHeader from "../components/InformationHeader.astro";
 import ReferenceGuide from "../components/ReferenceGuide.astro";
 import PreviousNextNavigation from "../components/PreviousNextNavigation.astro";
 import RelatedStandards from "../components/RelatedStandards.astro";
+import { getFramework } from "../data/frameworks";
 import "../styles/posters/poster-classic.css";
 
 interface Props {
@@ -45,6 +46,8 @@ const {
   related = [],
 } = Astro.props;
 
+const frameworkConfig = getFramework(standardType) ?? getFramework("ias")!;
+
 const seoTitle = `${code} ${title}`;
 const standard = { code, title, dateModified: latestAmendment || undefined };
 ---
@@ -53,7 +56,7 @@ const standard = { code, title, dateModified: latestAmendment || undefined };
   code={code}
   title={title}
   seoTitle={seoTitle}
-  framework={standardType}
+  framework={frameworkConfig.code}
   description={description}
   canonical={canonical}
   robots={robots}
@@ -72,11 +75,11 @@ const standard = { code, title, dateModified: latestAmendment || undefined };
     issued={issued}
     latestAmendment={latestAmendment}
     status={status}
-    framework={standardType}
+    framework={frameworkConfig.code}
   />
   <ReferenceGuide>
     <slot />
   </ReferenceGuide>
-  <RelatedStandards related={related} framework={standardType as "IAS" | "IFRS" | "Ind AS"} />
-  <PreviousNextNavigation current={code} framework={standardType as "IAS" | "IFRS" | "Ind AS"} />
+  <RelatedStandards related={related} framework={frameworkConfig.code as "IAS" | "IFRS" | "Ind AS"} />
+  <PreviousNextNavigation current={code} framework={frameworkConfig.code as "IAS" | "IFRS" | "Ind AS"} />
 </StandardLayout>

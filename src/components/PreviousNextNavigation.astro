@@ -12,6 +12,7 @@ Renders linked previous and next standard cards based on the framework's ordered
 import { ArrowLeft, ArrowRight } from "@lucide/astro";
 import standards from "../data/standards.json";
 import type { Framework } from "../data/standards/metadata.types";
+import { getFramework } from "../data/frameworks";
 
 interface Props {
   current: string;
@@ -20,13 +21,15 @@ interface Props {
 
 const { current, framework } = Astro.props;
 
+const frameworkConfig = getFramework(framework) ?? getFramework("ias")!;
+
 const allIAS = [
   ...standards.IAS.filter((s) => !s.status),
   ...standards.IAS.filter((s) => s.status),
 ];
 
 const standardsList =
-  framework === "IAS" ? allIAS : standards[framework === "Ind AS" ? "IndAS" : framework] ?? [];
+  frameworkConfig.code === "IAS" ? allIAS : standards[frameworkConfig.code === "Ind AS" ? "IndAS" : frameworkConfig.code] ?? [];
 
 const currentIndex = standardsList.findIndex((standard) => standard.code === current);
 const previous =
@@ -36,7 +39,7 @@ const next =
     ? standardsList[currentIndex + 1]
     : undefined;
 
-const frameworkClass = framework.toLowerCase().replace(/\s+/g, "");
+const frameworkClass = frameworkConfig.id;
 ---
 
 {

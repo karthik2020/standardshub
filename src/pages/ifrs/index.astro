@@ -3,15 +3,17 @@ import StandardLayout from "../../layouts/StandardLayout.astro";
 import standards from "../../data/standards.json";
 import StandardCard from "../../components/StandardCard.astro";
 import { palette } from "../../data/standardVisuals";
+import { getFramework } from "../../data/frameworks";
+
+const framework = getFramework("ifrs")!;
 ---
 
-<StandardLayout code="IFRS" title="International Financial Reporting Standards (IFRS)" framework="IFRS">
+<StandardLayout code={framework.code} title={`${framework.fullName} (${framework.code})`} framework={framework.code}>
 
-  <h1>International Financial Reporting Standards</h1>
+  <h1>{framework.fullName}</h1>
 
   <p class="category-description">
-    International Financial Reporting Standards (IFRS) are issued by the IFRS Foundation and include
-    standards that converged with or replaced IAS, providing a global framework for financial reporting.
+    {framework.description}
   </p>
 
   <div class="standards-group">
@@ -25,7 +27,7 @@ import { palette } from "../../data/standardVisuals";
             href={item.url}
             code={item.code}
             title={item.title}
-            framework="ifrs"
+            framework={framework.id}
             theme={palette[index % palette.length]}
           />
 

@@ -22,6 +22,14 @@ import {
   Clock,
   ChevronRight,
 } from "@lucide/astro";
+import { FRAMEWORK_CONFIG, FRAMEWORK_ORDER } from "../data/frameworks";
+
+const lucideIconMap: Record<string, any> = {
+  BookText,
+  LibraryBig,
+  Files,
+};
+
 const currentPath = Astro.url.pathname;
 ---
 
@@ -53,149 +61,70 @@ const currentPath = Astro.url.pathname;
     <nav aria-label="Standards Library">
     <div class="sidebar-heading">STANDARDS LIBRARY</div>
 
-    <!-- IAS -->
+    {
+      FRAMEWORK_ORDER.map((id) => {
+        const framework = FRAMEWORK_CONFIG[id];
+        const sectionStandards = standards[framework.code.toUpperCase() === "IND AS" ? "IndAS" : framework.code.toUpperCase()];
+        const IconComponent = lucideIconMap[framework.lucideIcon];
 
-    <details class="section section-ias" data-section="ias" open={currentPath.startsWith("/ias")}>
-      <summary class="sidebar-section-header">
-        <div class="section-title">
-          <BookText size={17} strokeWidth={2} />
-          <span>IAS</span>
-        </div>
+        return (
+          <details class={`section section-${framework.id}`} data-section={framework.id} open={currentPath.startsWith(framework.route)}>
+            <summary class="sidebar-section-header">
+              <div class="section-title">
+                {IconComponent && <IconComponent size={17} strokeWidth={2} />}
+                <span>{framework.displayName}</span>
+              </div>
 
-        <div class="section-actions">
-          <span class="count-badge badge-ias">
-            {standards.IAS.length}
-          </span>
+              <div class="section-actions">
+                <span class={`count-badge badge-${framework.id}`}>
+                  {sectionStandards.length}
+                </span>
 
-          <ChevronRight class="section-chevron" size={16} strokeWidth={2.4} />
-        </div>
-      </summary>
+                <ChevronRight class="section-chevron" size={16} strokeWidth={2.4} />
+              </div>
+            </summary>
 
-      <div class="section-items">
-        <ul class="sidebar-items">
-          <li class="sidebar-group-label">Active Standards</li>
-          {
-            standards.IAS.filter((item) => !item.status).map((item) => (
-              <li>
-                <NavLink
-                  href={item.url}
-                  title={item.title}
-                  section="ias"
-                  code={item.code}
-                  standardTitle={item.title}
-                >
-                  {item.code}
-                </NavLink>
-              </li>
-            ))
-          }
-        </ul>
-        <ul class="sidebar-items">
-          <li class="sidebar-group-label">Historical Standards</li>
-          {
-            standards.IAS.filter((item) => item.status).map((item) => (
-              <li>
-                <NavLink
-                  href={item.url}
-                  title={item.title}
-                  section="ias"
-                  code={item.code}
-                  standardTitle={item.title}
-                >
-                  {item.code}
-                </NavLink>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-    </details>
-
-    <!-- IFRS -->
-
-    <details
-      class="section section-ifrs"
-      data-section="ifrs"
-      open={currentPath.startsWith("/ifrs")}
-    >
-      <summary class="sidebar-section-header">
-        <div class="section-title">
-          <LibraryBig size={17} strokeWidth={2} />
-          <span>IFRS</span>
-        </div>
-
-        <div class="section-actions">
-          <span class="count-badge badge-ifrs">
-            {standards.IFRS.length}
-          </span>
-
-          <ChevronRight class="section-chevron" size={16} strokeWidth={2.4} />
-        </div>
-      </summary>
-
-      <div class="section-items">
-        <ul class="sidebar-items">
-          {
-            standards.IFRS.map((item) => (
-              <li>
-                <NavLink
-                  href={item.url}
-                  title={item.title}
-                  section="ifrs"
-                  code={item.code}
-                  standardTitle={item.title}
-                >
-                  {item.code}
-                </NavLink>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-    </details>
-
-    <!-- Ind AS -->
-
-    <details
-      class="section section-indas"
-      data-section="indas"
-      open={currentPath.startsWith("/indas")}
-    >
-      <summary class="sidebar-section-header">
-        <div class="section-title">
-          <Files size={17} strokeWidth={2} />
-          <span>Ind AS</span>
-        </div>
-
-        <div class="section-actions">
-          <span class="count-badge badge-indas">
-            {standards.IndAS.length}
-          </span>
-
-          <ChevronRight class="section-chevron" size={16} strokeWidth={2.4} />
-        </div>
-      </summary>
-
-      <div class="section-items">
-        <ul class="sidebar-items">
-          {
-            standards.IndAS.map((item) => (
-              <li>
-                <NavLink
-                  href={item.url}
-                  title={item.title}
-                  section="indas"
-                  code={item.code}
-                  standardTitle={item.title}
-                >
-                  {item.code}
-                </NavLink>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-    </details>
+            <div class="section-items">
+              <ul class="sidebar-items">
+                {
+                  sectionStandards.filter((item: any) => !item.status).map((item: any) => (
+                    <li>
+                      <NavLink
+                        href={item.url}
+                        title={item.title}
+                        section={framework.id}
+                        code={item.code}
+                        standardTitle={item.title}
+                      >
+                        {item.code}
+                      </NavLink>
+                    </li>
+                  ))
+                }
+              </ul>
+              <ul class="sidebar-items">
+                <li class="sidebar-group-label">Historical Standards</li>
+                {
+                  sectionStandards.filter((item: any) => item.status).map((item: any) => (
+                    <li>
+                      <NavLink
+                        href={item.url}
+                        title={item.title}
+                        section={framework.id}
+                        code={item.code}
+                        standardTitle={item.title}
+                      >
+                        {item.code}
+                      </NavLink>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+          </details>
+        );
+      })
+    }
 
     <div class="sidebar-empty" id="sidebar-empty" hidden>
       <div class="sidebar-empty-title">No matching standards</div>
