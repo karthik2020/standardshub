@@ -1,0 +1,261 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import metadata from "../../data/standards/indas/indas101.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  bannerNotice={metadata.bannerNotice}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope & Applicability" },
+        { id: "s3", label: "The Opening Ind AS Balance Sheet" },
+        { id: "s4", label: "General Principle — Retrospective Application" },
+        { id: "s5", label: "Optional Exemptions — Business Combinations" },
+        { id: "s6", label: "Optional Exemptions — Deemed Cost" },
+        { id: "s7", label: "India-Specific Exemptions" },
+        { id: "s8", label: "Mandatory Exceptions" },
+        { id: "s9", label: "Disclosure & Reconciliations" },
+        { id: "s10", label: "Critical Judgments & Estimates" },
+        { id: "s11", label: "Ind AS 101 vs IFRS 1 — Full Comparison" },
+        { id: "s12", label: "Statement Mapping" },
+        { id: "s13", label: "Related Standards" },
+        { id: "s14", label: "Quick-Reference Glossary" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <!-- ============ SECTION 1 — CONCEPTUAL FRAMEWORK LINKAGE ============ -->
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Convergence, not adoption — why Ind AS exists as a separate standard</div>
+        <div class="principle">India did NOT adopt IFRS directly — it issued Ind AS, a SEPARATE but CONVERGED set of standards under Indian company law, numbered to MIRROR the corresponding IFRS/IAS (Ind AS 101 ≈ IFRS 1, Ind AS 16 ≈ IAS 16, etc.). This "converged, not adopted" approach let India retain SPECIFIC carve-outs addressing local legal, tax, and regulatory realities (e.g. the Companies Act 2013, Indian tax law) while remaining broadly comparable to IFRS globally.</div>
+        <div class="elabel">HOW IND AS 101 MAPS TO THE FRAMEWORK</div>
+        <div class="check-list">
+          <span><strong style="font-weight:500">Comparability, tempered by local context</strong> — Ind AS 101 pursues the SAME comparability objective as IFRS 1, but permits carve-outs where full IFRS convergence would conflict with Indian company law or create disproportionate transition costs for Indian first-time adopters</span>
+          <span><strong style="font-weight:500">Faithful representation within a national legal framework</strong> — several Ind AS 101 carve-outs (e.g. specific treatment of exchange differences) reflect genuine differences in India's regulatory/tax environment, not weaker principles</span>
+          <span><strong style="font-weight:500">A transitional standard, just like IFRS 1</strong> — the underlying PURPOSE (a one-time bridge from previous Indian GAAP to Ind AS) is identical to IFRS 1's purpose for global IFRS transitions</span>
+        </div>
+        <div class="note">Ind AS became MANDATORY for specified classes of Indian companies in a PHASED manner starting FY 2016-17, with applicability based on net worth/listing status thresholds — Ind AS 101 governed EACH company's individual transition to the new regime.</div>
+      </div>
+      <div class="card cs">
+        <div class="ctitle cs">The general vs exception/exemption structure — identical in spirit to IFRS 1</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.3fr 1fr;"><span>Category</span><span>Nature</span></div>
+          <div class="tr" style="grid-template-columns:1.3fr 1fr;"><span>General principle</span><span>Full retrospective application of every Ind AS effective at the reporting date</span></div>
+          <div class="tr alt" style="grid-template-columns:1.3fr 1fr;"><span>Optional exemptions</span><span>SAME core menu as IFRS 1, PLUS India-specific exemptions (Section 7)</span></div>
+          <div class="tr" style="grid-template-columns:1.3fr 1fr;"><span>Mandatory exceptions</span><span>Broadly identical to IFRS 1's own exceptions</span></div>
+        </div>
+        <div class="callout info callout--chip" style="margin-bottom:0;">ℹ️ Ind AS 101's STRUCTURE mirrors IFRS 1 almost exactly — the KEY differences lie in a small number of ADDITIONAL India-specific exemptions layered on top.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 2 — SCOPE & DEFINITIONS ============ -->
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What Ind AS 101 covers</div>
+        <div class="principle">Ind AS 101 applies to an entity's FIRST Ind AS financial statements, and interim financial reports (if any) for part of the period covered by those first Ind AS financial statements — mirroring IFRS 1's own scope, but referencing "previous Indian GAAP" (typically the Companies (Accounting Standards) Rules, 2006) as the transition starting point.</div>
+        <div class="note">"Previous GAAP" for MOST Indian first-time adopters specifically means the earlier Indian Accounting Standards (AS) notified under the Companies Act, NOT a foreign national GAAP — a meaningful practical distinction from a typical global IFRS 1 transition.</div>
+      </div>
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions you must know</div>
+        <div class="glossary-item"><div class="glossary-term">Date of transition to Ind AS</div><div class="glossary-def">The beginning of the earliest period for which an entity presents full comparative information under Ind AS.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Previous GAAP (Indian context)</div><div class="glossary-def">Typically the Companies (Accounting Standards) Rules, 2006 (the pre-Ind AS Indian GAAP) applied immediately before Ind AS adoption.</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">MCA (Ministry of Corporate Affairs)</div><div class="glossary-def">The Indian government ministry responsible for notifying Ind AS under the Companies Act, 2013 — the national standard-setting authority equivalent to the IASB's global role.</div></div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 3 — THE OPENING IND AS BALANCE SHEET ============ -->
+    <div class="section-header" id="s3"><span class="num">3</span><h2>The Opening Ind AS Balance Sheet</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">The four-step core requirement — identical to IFRS 1</div>
+        <div class="principle">An entity's opening Ind AS Balance Sheet is prepared at the date of transition. The entity shall: RECOGNISE all assets/liabilities required by Ind AS; NOT recognise items Ind AS does not permit; RECLASSIFY items to their correct Ind AS category; and MEASURE all recognised assets/liabilities per applicable Ind AS.</div>
+        <div class="callout warn callout--chip" style="margin-top:8px;margin-bottom:0;">⚠️ <strong style="font-weight:600">Resulting adjustments are recognised DIRECTLY IN RETAINED EARNINGS</strong> (or another appropriate equity category) at the transition date — identical treatment to IFRS 1.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 4 — GENERAL PRINCIPLE — RETROSPECTIVE APPLICATION ============ -->
+    <div class="section-header" id="s4"><span class="num">4</span><h2>General Principle — Retrospective Application</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">The default rule — identical to IFRS 1</div>
+        <div class="principle">Except as specifically provided by the optional exemptions/exceptions, an entity applies the SAME accounting policies throughout all periods presented, using the LATEST version of each Ind AS effective at the reporting date — mirroring IFRS 1's default rule exactly.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 5 — OPTIONAL EXEMPTIONS — BUSINESS COMBINATIONS ============ -->
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Optional Exemptions — Business Combinations (with worked example)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">The same core exemption as IFRS 1</div>
+        <div class="principle">A first-time adopter MAY elect NOT to apply Ind AS 103 retrospectively to past business combinations before the transition date — IDENTICAL in structure to IFRS 1's own business combinations exemption, requiring consistent treatment across ALL pre-transition acquisitions if elected.</div>
+        <div class="worked" style="margin-bottom:0;">
+          <div class="wk-title">Example 1: Electing the business combinations exemption</div>
+          <div class="wk-body">An Indian company acquired a subsidiary in 2012 under previous Indian GAAP, recognising goodwill of ₹8 crore using pooling-of-interests-adjacent methods then permitted. On Ind AS transition (1 April 2016), the company elects the business combinations exemption.</div>
+          <div class="wk-answer">The ₹8 crore goodwill carrying amount is carried FORWARD into the opening Ind AS Balance Sheet largely UNCHANGED (subject to specific required adjustments, e.g. aligning recognition criteria), avoiding a costly full retrospective restatement of the 2012 acquisition under Ind AS 103's acquisition method.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 6 — OPTIONAL EXEMPTIONS — DEEMED COST ============ -->
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Optional Exemptions — Deemed Cost</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Fair value or previous GAAP revaluation as deemed cost — same as IFRS 1</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">A first-time adopter MAY elect to measure PPE, investment property, or intangible assets at fair value at the transition date, using that fair value as DEEMED COST — identical to IFRS 1. India's MCA ALSO specifically permits using the PREVIOUS GAAP CARRYING AMOUNT itself (under Indian AS, often based on historical cost) as deemed cost, WITHOUT requiring a fresh valuation exercise — a genuinely practical INDIAN-SPECIFIC relief given the scale and cost of valuing PPE across India's large first-time-adopter population (Section 7 covers this in more detail).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 7 — INDIA-SPECIFIC EXEMPTIONS ============ -->
+    <div class="section-header" id="s7"><span class="num">7</span><h2>India-Specific Exemptions (with worked example)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Carve-ins unique to Ind AS 101</div>
+        <div class="check-list">
+          <span><strong style="font-weight:500">Deemed cost using previous GAAP carrying value</strong> — Ind AS 101 EXPLICITLY permits using the previous Indian GAAP net block (carrying value) of PPE, intangible assets, and investment property AS deemed cost on transition, WITHOUT needing a fair value exercise — a relief NOT present in this exact form under IFRS 1</span>
+          <span><strong style="font-weight:500">Long-term foreign currency monetary items</strong> — a (now largely time-expired, but historically significant) option allowing exchange differences on long-term foreign currency loans used to acquire depreciable assets to be CAPITALISED into the asset's cost, rather than expensed through profit or loss as IAS 21/Ind AS 21 would otherwise require</span>
+          <span><strong style="font-weight:500">Cumulative translation differences</strong> — SAME as IFRS 1, deemed zero at transition if elected</span>
+        </div>
+        <div class="worked" style="margin-top:8px;margin-bottom:0;">
+          <div class="wk-title">Example 2: Using previous GAAP carrying value as deemed cost</div>
+          <div class="wk-body">An Indian manufacturing company's factory building has a previous Indian GAAP net book value of ₹15 crore at the transition date (1 April 2016), based on historical cost less accumulated depreciation. No independent fair valuation is obtained.</div>
+          <div class="wk-answer">The company elects to use the ₹15 crore previous GAAP carrying value DIRECTLY as deemed cost — avoiding the cost and effort of an independent valuation exercise, a PRACTICAL relief that proved genuinely important given the SCALE of India's first-time Ind AS transition across thousands of companies simultaneously.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 8 — MANDATORY EXCEPTIONS ============ -->
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Mandatory Exceptions</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Broadly identical to IFRS 1</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Estimates, derecognition of financial assets/liabilities, hedge accounting, non-controlling interests, and classification of financial assets are all subject to the SAME "no hindsight" mandatory exceptions as IFRS 1 — this is one of the MOST closely aligned areas between the two standards.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 9 — DISCLOSURE & RECONCILIATIONS ============ -->
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure &amp; Reconciliations</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Required disclosures — identical structure to IFRS 1</div>
+        <div class="check-list">
+          <span>Reconciliation of EQUITY reported under previous Indian GAAP to Ind AS, at both the transition date and end of the last previous-GAAP period</span>
+          <span>Reconciliation of TOTAL COMPREHENSIVE INCOME reported under previous Indian GAAP to Ind AS</span>
+          <span>Explanation of material adjustments to the previous GAAP cash flow statement, if presented</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 10 — CRITICAL JUDGMENTS & ESTIMATES ============ -->
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where management judgement matters most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Whether to use previous GAAP carrying value or a fresh fair valuation as deemed cost</span>
+              <span>Which optional exemptions (including India-specific ones) to elect</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>Fair value of PPE/investment property, where a fresh valuation IS elected</span>
+              <span>Incremental borrowing rate for lease liability transition relief (Ind AS 116)</span>
+            </div>
+          </div>
+        </div>
+        <div class="callout warn callout--chip" style="margin-top:8px;margin-bottom:0;">⚠️ Given the SCALE of India's phased Ind AS rollout across thousands of companies, the previous-GAAP-carrying-value deemed cost exemption was WIDELY used in practice — a genuinely important cost-saving relief specific to the Indian transition context.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 11 — IND AS 101 VS IFRS 1 ============ -->
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Ind AS 101 vs IFRS 1 — Full Comparison</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comprehensive comparison table</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Feature</span><span style="color:var(--color-text-info);">IFRS 1</span><span style="color:var(--color-text-success);">Ind AS 101</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Overall structure</span><span>General principle + optional exemptions + mandatory exceptions</span><span>IDENTICAL structure</span></div>
+          <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Business combinations exemption</span><span>Available, consistent treatment required</span><span>IDENTICAL</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Deemed cost for PPE/intangibles</span><span>Fair value OR previous GAAP revaluation as deemed cost</span><span>ADDITIONALLY permits previous GAAP CARRYING VALUE (net book value) directly as deemed cost, WITHOUT a fresh valuation — a genuine India-specific relief</span></div>
+          <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Long-term foreign currency monetary items</span><span>No equivalent capitalisation option — exchange differences go through P&amp;L per IAS 21</span><span>Historically permitted CAPITALISING exchange differences on long-term foreign currency loans financing depreciable assets — a notable carve-out (now largely phased out for new transactions, but relevant historically and for legacy balances)</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Previous GAAP reference point</span><span>Whatever national GAAP the entity used (any jurisdiction)</span><span>SPECIFICALLY the Companies (Accounting Standards) Rules, 2006 (or earlier Indian AS) for most Indian companies</span></div>
+          <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Terminology</span><span>"Statement of financial position," "IFRS"</span><span>"Balance Sheet," "Ind AS" — terminology aligned with the Companies Act, 2013</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Regulatory authority</span><span>IASB (international)</span><span>MCA, based on ICAI (Institute of Chartered Accountants of India) recommendations — a national notification process</span></div>
+        </div>
+        <div class="note">Ind AS 101's carve-outs are DELIBERATELY narrow and PRACTICAL — designed to ease the transition COST for Indian first-time adopters (especially the deemed cost relief) rather than reflecting any FUNDAMENTAL philosophical disagreement with IFRS 1's underlying principles.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 12 — STATEMENT MAPPING ============ -->
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Comprehensive event-to-statement mapping table</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event / transaction</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Recognition/derecognition adjustments</span><span><span class="badge bs">Balance Sheet</span> <span class="badge be">Equity</span></span><span>Direct adjustment to retained earnings, per IFRS 1's own approach</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Deemed cost election (previous GAAP carrying value)</span><span><span class="badge bs">Balance Sheet</span></span><span>NO fair value step-up needed if this Ind AS-specific relief is used</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Business combinations exemption applied</span><span><span class="badge bs">Balance Sheet</span></span><span>Prior acquisition accounting carried forward largely unchanged</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Long-term foreign currency monetary item exchange differences (if elected historically)</span><span><span class="badge bs">Balance Sheet</span></span><span>Capitalised into asset cost, rather than through profit or loss</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Equity/TCI reconciliation disclosures</span><span><span class="badge bp">Notes</span></span><span>Mandatory, identical structure to IFRS 1</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 13 — RELATED STANDARDS ============ -->
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Cross-reference map</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Standard</span><span>Connection</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 1</span><span>The GLOBAL counterpart standard Ind AS 101 is converged with</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>Ind AS 103</span><span>Subject of the business combinations exemption</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>Ind AS 16 / Ind AS 38 / Ind AS 40</span><span>Subject of the deemed cost exemptions (including the India-specific previous GAAP carrying value relief)</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>Ind AS 21</span><span>Governs foreign exchange, subject to the historical long-term monetary item exemption</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>Ind AS 8</span><span>Governs subsequent accounting policy changes/estimates/errors once transition is complete</span></div>
+        </div>
+      </div>
+      <div class="card cn">
+        <div class="ctitle cn">Quick-reference glossary</div>
+        <div class="glossary-item"><div class="glossary-term">Previous GAAP (Indian context)</div><div class="glossary-def">Typically the Companies (Accounting Standards) Rules, 2006, applied by an Indian entity immediately before Ind AS transition.</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Net block</div><div class="glossary-def">Indian accounting terminology for the net carrying value of a fixed asset (cost less accumulated depreciation) — often used as deemed cost on Ind AS transition.</div></div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 14 — GLOSSARY ============ -->
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Date of transition to Ind AS", definition: "The beginning of the earliest period for which an entity presents full comparative information under Ind AS." },
+      { term: "Previous GAAP (Indian context)", definition: "Typically the Companies (Accounting Standards) Rules, 2006 (the pre-Ind AS Indian GAAP) applied immediately before Ind AS adoption." },
+      { term: "MCA (Ministry of Corporate Affairs)", definition: "The Indian government ministry responsible for notifying Ind AS under the Companies Act, 2013 — the national standard-setting authority equivalent to the IASB's global role." },
+      { term: "Net block", definition: "Indian accounting terminology for the net carrying value of a fixed asset (cost less accumulated depreciation) — often used as deemed cost on Ind AS transition." },
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+</StandardPageLayout>
