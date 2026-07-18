@@ -2,6 +2,7 @@
 import StandardLayout from "../../layouts/StandardLayout.astro";
 import standards from "../../data/standards.json";
 import StandardCard from "../../components/StandardCard.astro";
+import { palette } from "../../data/standardVisuals";
 
 const groupedIAS = /** @type {Record<string, any[]>} */ ({});
 
@@ -45,13 +46,14 @@ for (const item of standards.IAS) {
       <div class="standards-grid">
 
         {
-          standards.IAS.filter((item) => !item.status).map((item) => (
+          standards.IAS.filter((item) => !item.status).map((item, index) => (
 
             <StandardCard
               href={item.url}
               code={item.code}
               title={item.title}
               framework="ias"
+              theme={palette[index % palette.length]}
             />
 
           ))
@@ -67,13 +69,14 @@ for (const item of standards.IAS) {
       <div class="standards-grid">
 
         {
-          standards.IAS.filter((item) => item.status).map((item) => (
+          standards.IAS.filter((item) => item.status).map((item, index) => (
 
             <StandardCard
               href={item.url}
               code={item.code}
               title={item.title}
               framework="ias"
+              theme={palette[index % palette.length]}
             />
 
           ))
@@ -102,18 +105,19 @@ for (const item of standards.IAS) {
                 <div class="standards-group">
                   <div class="standards-grid">
 
-                    {
-                      activeItems.map((item) => (
+                     {
+                       activeItems.map((item, index) => (
 
-                        <StandardCard
-                          href={item.url}
-                          code={item.code}
-                          title={item.title}
-                          framework="ias"
-                        />
+                         <StandardCard
+                           href={item.url}
+                           code={item.code}
+                           title={item.title}
+                           framework="ias"
+                           theme={palette[index % palette.length]}
+                         />
 
-                      ))
-                    }
+                       ))
+                     }
 
                   </div>
                 </div>
@@ -126,7 +130,7 @@ for (const item of standards.IAS) {
                     <div class="standards-grid">
 
                       {
-                      historicalItems.map((item) => (
+                      historicalItems.map((item, index) => (
 
                         <StandardCard
                           href={item.url}
@@ -134,6 +138,7 @@ for (const item of standards.IAS) {
                           title={item.title}
                           framework="ias"
                           status={item.status}
+                          theme={palette[index % palette.length]}
                         />
 
                       ))

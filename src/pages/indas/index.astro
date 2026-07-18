@@ -2,6 +2,7 @@
 import StandardLayout from "../../layouts/StandardLayout.astro";
 import standards from "../../data/standards.json";
 import StandardCard from "../../components/StandardCard.astro";
+import { palette } from "../../data/standardVisuals";
 ---
 
 <StandardLayout code="Ind AS" title="Indian Accounting Standards (Ind AS)" framework="Ind AS">
@@ -18,13 +19,14 @@ import StandardCard from "../../components/StandardCard.astro";
     <div class="standards-grid">
 
       {
-        standards.IndAS.map((item) => (
+        standards.IndAS.map((item, index) => (
 
           <StandardCard
             href={item.url}
             code={item.code}
             title={item.title}
             framework="indas"
+            theme={palette[index % palette.length]}
           />
 
         ))
