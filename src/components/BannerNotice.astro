@@ -29,10 +29,12 @@
       info    — newly issued / recently issued standards             (blue)
   - title:  string  (required) — rendered bold + uppercase
   - body?:  string  — supporting paragraph. If omitted, the default slot is used.
-  - replacementStandard?: { code, title, href }
-      Optional. Typically used with the `danger` variant for a superseded
-      standard. When provided, a full-row "Current Standard" footer link is
-      rendered pointing to the replacement standard. Omitted entirely when absent.
+  - action?: { label, code, title, href }
+      Optional, generic call-to-action footer. When provided, a full-row link
+      is rendered: an uppercase `label` heading (e.g. "Current Standard",
+      "Replaced By", "See Also", "Read Next", "Related Standard") above a
+      "{code} — {title} →" row that links to `href`. Omitted entirely when absent.
+      This generic shape supports many future scenarios without component changes.
 
   Reusable across IAS, IFRS and Ind AS (current, historical, and future
   standards such as IFRS 18/19/20 and future amendments) with no component
@@ -50,7 +52,8 @@ import {
 
 type Variant = "success" | "warning" | "danger" | "info";
 
-interface ReplacementStandard {
+interface BannerAction {
+  label: string;
   code: string;
   title: string;
   href: string;
@@ -60,10 +63,10 @@ interface Props {
   variant: Variant;
   title: string;
   body?: string;
-  replacementStandard?: ReplacementStandard;
+  action?: BannerAction;
 }
 
-const { variant, title, body, replacementStandard } = Astro.props;
+const { variant, title, body, action } = Astro.props;
 
 // The variant is the single source of truth: it determines the icon,
 // colour, stripe style and typography. Pages never choose these.
@@ -87,14 +90,14 @@ const arrowSvg = icon(faArrowRight).html.join("");
     </div>
   </div>
 
-  {replacementStandard && (
-    <a class="banner-notice__replacement" href={replacementStandard.href}>
-      <span class="banner-notice__replacement-label">Current Standard</span>
-      <span class="banner-notice__replacement-main">
-        <span class="banner-notice__replacement-text">
-          {replacementStandard.code} — {replacementStandard.title}
+  {action && (
+    <a class="banner-notice__action" href={action.href}>
+      <span class="banner-notice__action-label">{action.label}</span>
+      <span class="banner-notice__action-main">
+        <span class="banner-notice__action-text">
+          {action.code} — {action.title}
         </span>
-        <span class="banner-notice__replacement-arrow" aria-hidden="true" set:html={arrowSvg} />
+        <span class="banner-notice__action-arrow" aria-hidden="true" set:html={arrowSvg} />
       </span>
     </a>
   )}
@@ -168,8 +171,8 @@ const arrowSvg = icon(faArrowRight).html.join("");
     color: rgba(255, 255, 255, 0.94);
   }
 
-  /* ===== Optional replacement-standard footer (full-row link) ===== */
-  .banner-notice__replacement {
+  /* ===== Optional generic action footer (full-row link) ===== */
+  .banner-notice__action {
     display: block;
     margin-top: 14px;
     padding-top: 12px;
@@ -178,7 +181,7 @@ const arrowSvg = icon(faArrowRight).html.join("");
     text-decoration: none;
   }
 
-  .banner-notice__replacement-label {
+  .banner-notice__action-label {
     display: block;
     font-size: 11px;
     font-weight: 700;
@@ -188,40 +191,40 @@ const arrowSvg = icon(faArrowRight).html.join("");
     margin-bottom: 4px;
   }
 
-  .banner-notice__replacement-main {
+  .banner-notice__action-main {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
   }
 
-  .banner-notice__replacement-text {
+  .banner-notice__action-text {
     font-size: 14.5px;
     font-weight: 600;
     line-height: 1.4;
     min-width: 0;
   }
 
-  .banner-notice__replacement-arrow {
+  .banner-notice__action-arrow {
     display: inline-flex;
     flex-shrink: 0;
     transition: transform 0.2s ease;
   }
 
-  .banner-notice__replacement-arrow :global(svg) {
+  .banner-notice__action-arrow :global(svg) {
     width: 15px;
     height: 15px;
     fill: currentColor;
     display: block;
   }
 
-  .banner-notice__replacement:hover,
-  .banner-notice__replacement:focus-visible {
+  .banner-notice__action:hover,
+  .banner-notice__action:focus-visible {
     text-decoration: underline;
   }
 
-  .banner-notice__replacement:hover .banner-notice__replacement-arrow,
-  .banner-notice__replacement:focus-visible .banner-notice__replacement-arrow {
+  .banner-notice__action:hover .banner-notice__action-arrow,
+  .banner-notice__action:focus-visible .banner-notice__action-arrow {
     transform: translateX(4px);
   }
 

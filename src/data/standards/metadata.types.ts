@@ -72,11 +72,15 @@ export interface StandardMetadata {
     title: string;
     body: string;
     /**
-     * Optional replacement standard, typically for a superseded (danger)
-     * standard. When present, the banner renders a full-row "Current Standard"
-     * footer link. Omitted entirely when absent.
+     * Optional, generic call-to-action footer. When present, the banner
+     * renders a full-row link with an uppercase `label` heading (e.g.
+     * "Current Standard", "Replaced By", "See Also", "Read Next") above a
+     * "{code} — {title} →" row linking to `href`. Omitted entirely when absent.
+     * Generic by design so future scenarios need only new metadata, not
+     * component changes.
      */
-    replacementStandard?: {
+    action?: {
+      label: string;
       code: string;
       title: string;
       href: string;
