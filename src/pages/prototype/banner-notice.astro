@@ -1,0 +1,89 @@
+---
+import StandardLayout from "../../layouts/StandardLayout.astro";
+import BannerNotice from "../../components/BannerNotice.astro";
+---
+
+<StandardLayout
+  code="PROT8"
+  title="BannerNotice — Prototype"
+  framework="Design"
+  noindex={true}
+>
+  <p class="prototype-intro">
+    <strong>Design prototype only.</strong> This page previews the reusable
+    <code>BannerNotice</code> component and is not integrated into any standard
+    page. Four stacked examples below demonstrate every supported variant:
+    <em>success</em>, <em>warning</em>, <em>danger</em> and <em>info</em>.
+  </p>
+
+  <div class="prototype-stack">
+    <!-- 1. SUCCESS -->
+    <BannerNotice
+      variant="success"
+      title="Ind AS — Closely Converged with IAS 2"
+      icon="circle-check"
+    >
+      Ind AS 2 reproduces IAS 2's cost measurement, NRV and cost formula
+      requirements almost exactly. The primary Indian practical difference
+      concerns GST input tax credits. Section 11 contains the detailed
+      comparison.
+    </BannerNotice>
+
+    <!-- 2. WARNING -->
+    <BannerNotice
+      variant="warning"
+      title="Ind AS — Converged with IAS 1, but with a Genuine Format-Level Divergence"
+      icon="triangle-exclamation"
+    >
+      Ind AS 1 follows IAS 1 closely, however Schedule III of the Companies Act
+      prescribes mandatory financial statement formats and requires a single
+      combined Statement of Profit and Loss including OCI.
+    </BannerNotice>
+
+    <!-- 3. DANGER -->
+    <BannerNotice
+      variant="danger"
+      title="Withdrawn Standard — Superseded by Ind AS 115"
+      icon="circle-xmark"
+    >
+      Ind AS 11 has been withdrawn and replaced by Ind AS 115. This page is
+      retained for historical reference and to explain the transition from
+      percentage-of-completion accounting to the five-step revenue model.
+    </BannerNotice>
+
+    <!-- 4. INFO -->
+    <BannerNotice
+      variant="info"
+      title="Important Educational Note"
+      icon="circle-info"
+    >
+      This page is intended as a simplified educational reference and should be
+      read together with the official standard where authoritative guidance is
+      required.
+    </BannerNotice>
+  </div>
+</StandardLayout>
+
+<style>
+  .prototype-intro {
+    font-size: var(--text-small);
+    color: var(--text-secondary);
+    line-height: 1.6;
+    padding: var(--space-lg);
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .prototype-intro code {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.9em;
+  }
+
+  .prototype-stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+</style>

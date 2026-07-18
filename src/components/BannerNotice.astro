@@ -1,0 +1,174 @@
+---
+/*
+  BannerNotice — reusable, full-width notice banner (PROTOTYPE)
+
+  A modern, solid-colour banner with a subtle diagonal stripe overlay,
+  a left icon, a bold uppercase title and a supporting paragraph of body
+  content supplied via the default slot.
+
+  Usage:
+    <BannerNotice
+      variant="warning"
+      title="Heads up"
+      icon="triangle-exclamation"   // optional — defaults per variant
+    >
+      Supporting body text goes here.
+    </BannerNotice>
+
+  Props:
+  - variant: "success" | "warning" | "danger" | "info"  (required)
+  - title:   string  (required) — rendered bold + uppercase
+  - icon?:   Font Awesome Free (solid) icon name, e.g. "circle-check",
+             "triangle-exclamation", "circle-xmark", "circle-info".
+             Falls back to a sensible default for the chosen variant.
+
+  Body:
+  - Provided through the default <slot>.
+*/
+
+import { icon } from "@fortawesome/fontawesome-svg-core";
+import {
+  faCircleCheck,
+  faTriangleExclamation,
+  faCircleXmark,
+  faCircleInfo,
+} from "@fortawesome/free-solid-svg-icons";
+
+type Variant = "success" | "warning" | "danger" | "info";
+
+interface Props {
+  variant: Variant;
+  title: string;
+  icon?: string;
+}
+
+const { variant, title, icon: iconName } = Astro.props;
+
+// Registry of the Font Awesome Free (solid) icons this component supports.
+const iconRegistry = {
+  "circle-check": faCircleCheck,
+  "triangle-exclamation": faTriangleExclamation,
+  "circle-xmark": faCircleXmark,
+  "circle-info": faCircleInfo,
+} as const;
+
+// Default icon per variant when `icon` is not supplied.
+const defaultIconByVariant: Record<Variant, keyof typeof iconRegistry> = {
+  success: "circle-check",
+  warning: "triangle-exclamation",
+  danger: "circle-xmark",
+  info: "circle-info",
+};
+
+const resolvedIconName =
+  (iconName as keyof typeof iconRegistry) in iconRegistry
+    ? (iconName as keyof typeof iconRegistry)
+    : defaultIconByVariant[variant];
+
+const iconSvg = icon(iconRegistry[resolvedIconName]).html.join("");
+---
+
+<aside class={`banner-notice banner-notice--${variant}`} role="note">
+  <span class="banner-notice__icon" aria-hidden="true" set:html={iconSvg} />
+  <div class="banner-notice__content">
+    <p class="banner-notice__title">{title}</p>
+    <p class="banner-notice__body"><slot /></p>
+  </div>
+</aside>
+
+<style>
+  .banner-notice {
+    /* Full width */
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 16px 20px;
+    border-radius: 12px; /* rounded corners */
+
+    color: #ffffff; /* white text */
+
+    /* Solid colour + subtle diagonal stripe overlay (no glossy gradient) */
+    background-color: var(--bn-bg);
+    background-image: repeating-linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.06) 0px,
+      rgba(255, 255, 255, 0.06) 2px,
+      rgba(255, 255, 255, 0) 2px,
+      rgba(255, 255, 255, 0) 12px
+    );
+
+    box-shadow: none; /* no shadow */
+  }
+
+  .banner-notice__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    /* Nudge to align optically with the title's cap height */
+    margin-top: 1px;
+  }
+
+  .banner-notice__icon :global(svg) {
+    width: 22px;
+    height: 22px;
+    fill: currentColor;
+    display: block;
+  }
+
+  .banner-notice__content {
+    min-width: 0;
+  }
+
+  .banner-notice__title {
+    margin: 0;
+    font-weight: 700; /* bold heading */
+    text-transform: uppercase;
+    font-size: 17.5px; /* ~17–18px */
+    line-height: 1.3;
+    letter-spacing: 0.01em;
+  }
+
+  .banner-notice__body {
+    margin: 6px 0 0;
+    font-weight: 400; /* regular */
+    font-size: 14.5px; /* ~14–15px */
+    line-height: 1.6; /* comfortable line height */
+    color: rgba(255, 255, 255, 0.94);
+  }
+
+  /* ===== Variant colours (solid) ===== */
+  .banner-notice--success {
+    --bn-bg: #16a34a;
+  }
+  .banner-notice--warning {
+    --bn-bg: #d97706;
+  }
+  .banner-notice--danger {
+    --bn-bg: #dc2626;
+  }
+  .banner-notice--info {
+    --bn-bg: #2563eb;
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 520px) {
+    .banner-notice {
+      padding: 14px 16px;
+      gap: 12px;
+    }
+    .banner-notice__title {
+      font-size: 16.5px;
+    }
+    .banner-notice__body {
+      font-size: 14px;
+    }
+    .banner-notice__icon :global(svg) {
+      width: 20px;
+      height: 20px;
+    }
+  }
+</style>
