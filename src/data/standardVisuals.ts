@@ -55,6 +55,8 @@ import {
   faFileContract,
   faNetworkWired,
   faDivide,
+  faFileShield,
+  faScaleUnbalancedFlip,
 } from "@fortawesome/free-solid-svg-icons";
 
 const iconMap: Record<string, any> = {
@@ -113,6 +115,8 @@ const iconMap: Record<string, any> = {
   fileContract: faFileContract,
   networkWired: faNetworkWired,
   divide: faDivide,
+  fileShield: faFileShield,
+  scaleUnbalancedFlip: faScaleUnbalancedFlip,
 };
 
 export function getIconHtml(name: string): string {
@@ -168,6 +172,26 @@ export const standardIcons: Record<string, string> = {
   "IAS 31": "peopleGroup",
   "IAS 35": "storeSlash",
   "IAS 39": "magnifyingGlassDollar",
+  "IFRS 1": "flagCheckered",
+  "IFRS 2": "award",
+  "IFRS 3": "codeMerge",
+  "IFRS 4": "shieldHeart",
+  "IFRS 5": "storeSlash",
+  "IFRS 6": "mountainSun",
+  "IFRS 7": "eye",
+  "IFRS 8": "chartSimple",
+  "IFRS 9": "calculator",
+  "IFRS 10": "sitemap",
+  "IFRS 11": "handshake",
+  "IFRS 12": "circleNodes",
+  "IFRS 13": "scaleBalanced",
+  "IFRS 14": "clockRotateLeft",
+  "IFRS 15": "fileSignature",
+  "IFRS 16": "key",
+  "IFRS 17": "fileShield",
+  "IFRS 18": "chartPie",
+  "IFRS 19": "buildingUser",
+  "IFRS 20": "scaleUnbalancedFlip",
   "Ind AS 101": "flagCheckered",
   "Ind AS 102": "award",
   "Ind AS 103": "codeMerge",
