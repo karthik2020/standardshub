@@ -1,0 +1,85 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/sic/sic19.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "What SIC-19 Addressed (Historical)" },
+        { id: "s2", label: "The Conclusion It Reached (Historical)" },
+        { id: "s3", label: "Where This Guidance Lives Today" },
+        { id: "s4", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="historical-reference"
+    explanation="SIC-19 was withdrawn in March 2003 when the IASB issued a revised IAS 21 The Effects of Changes in Foreign Exchange Rates, which superseded SIC-19 by replacing the reporting currency concept with the modern functional currency concept."
+    historical="This page is retained for historical and comparative reference. Entities should refer to the current standard that superseded this interpretation for authoritative guidance."
+    link="/ias/ias21"
+    linkText="IAS 21 The Effects of Changes in Foreign Exchange Rates"
+  />
+
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>What SIC-19 Addressed (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">What SIC-19 addressed</div>
+        <div class="principle">SIC-19 addressed how to select the reporting currency for measuring and presenting financial statements under IAS 21 (1993). It considered whether an entity should select the currency of the primary economic environment in which it operates, or its local currency, or another currency as the reporting currency.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>The Conclusion It Reached (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">The conclusion it reached</div>
+        <div class="principle">SIC-19 confirmed that the reporting currency should be selected based on the currency of the primary economic environment in which the entity operates, and that this currency should be used consistently for measuring and presenting the financial statements. The selection should reflect the currency that mainly influences sales prices and costs.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Where This Guidance Lives Today</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card">
+        <div class="ctitle">Where this guidance lives today</div>
+        <div class="td-table">
+          <div class="tr"><span>Superseded by</span><span>IAS 21 The Effects of Changes in Foreign Exchange Rates</span></div>
+          <div class="tr alt"><span>Why withdrawn</span><span>The 2003 revision replaced the reporting currency concept with the functional currency concept</span></div>
+          <div class="tr"><span>Current status</span><span>Superseded</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><h2>Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Reporting currency", definition: "The currency in which financial statements are presented, replaced by the functional currency concept in the 2003 IAS 21 revision." },
+      { term: "Functional currency", definition: "The currency of the primary economic environment in which the entity operates, now the central concept in IAS 21 for selecting the presentation currency." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.SIC19} />
+  </section>
+</StandardPageLayout>
