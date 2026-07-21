@@ -132,9 +132,25 @@ export const FRAMEWORK_CONFIG: Record<string, FrameworkConfig> = {
     faIcon: "building",
     status: "active",
   },
+  ifric: {
+    id: "ifric",
+    code: "IFRIC",
+    displayName: "IFRIC",
+    fullName: "IFRIC Interpretations",
+    description:
+      "IFRIC Interpretations are issued by the IFRS Interpretations Committee to provide guidance on applying IFRS Accounting Standards, addressing specific accounting issues not explicitly covered by the standards themselves.",
+    route: "/ifric",
+    primary: "#4F46E5",
+    light: "#E0E7FF",
+    soft: "#EEF2FF",
+    dark: "#3730A3",
+    lucideIcon: "ScrollText",
+    faIcon: "scroll",
+    status: "active",
+  },
 };
 
-export const FRAMEWORK_ORDER = ["ias", "ifrs", "indas", "ifrssustainability", "ifrspublications", "ifrsforsmes"] as const;
+export const FRAMEWORK_ORDER = ["ias", "ifrs", "indas", "ifrssustainability", "ifrspublications", "ifrsforsmes", "ifric"] as const;
 
 export type FrameworkId = keyof typeof FRAMEWORK_CONFIG;
 

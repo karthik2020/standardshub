@@ -51,7 +51,12 @@ const standardsList =
                 ...standards.IFRSForSMEs.filter((s) => !s.status),
                 ...standards.IFRSForSMEs.filter((s) => s.status),
               ]
-            : standards[frameworkConfig.code] ?? [];
+            : frameworkConfig.code === "IFRIC"
+              ? [
+                  ...standards.IFRIC.filter((s) => !s.status),
+                  ...standards.IFRIC.filter((s) => s.status),
+                ]
+              : standards[frameworkConfig.code] ?? [];
 
 const currentIndex = standardsList.findIndex((standard) => standard.code === current);
 const previous =
