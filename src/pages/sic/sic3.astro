@@ -1,0 +1,85 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/sic/sic3.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "What SIC-3 Addressed (Historical)" },
+        { id: "s2", label: "The Conclusion It Reached (Historical)" },
+        { id: "s3", label: "Where This Guidance Lives Today" },
+        { id: "s4", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="historical-reference"
+    explanation="SIC-3 was withdrawn in March 2003 when the IASB issued a revised IAS 28 Investments in Associates, which incorporated the elimination of unrealised profits and losses on transactions with associates directly into the equity method guidance."
+    historical="This page is retained for historical and comparative reference. Entities should refer to the current standard that superseded this interpretation for authoritative guidance."
+    link="/ias/ias28"
+    linkText="IAS 28 Investments in Associates and Joint Ventures"
+  />
+
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>What SIC-3 Addressed (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">What SIC-3 addressed</div>
+        <div class="principle">SIC-3 addressed how to measure the investor's share of unrealised profits and losses on transactions with associates under the equity method. It clarified whether unrealised profits and losses should be eliminated in full or only to the extent of the investor's interest in the associate.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>The Conclusion It Reached (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">The conclusion it reached</div>
+        <div class="principle">SIC-3 concluded that unrealised profits and losses should be eliminated to the extent of the investor's interest in the associate. The portion of unrealised profits and losses attributable to any remaining investment in the associate should be recognised in the investor's profit or loss. The investor's share of the associate's profit or loss is adjusted accordingly.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Where This Guidance Lives Today</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card">
+        <div class="ctitle">Where this guidance lives today</div>
+        <div class="td-table">
+          <div class="tr"><span>Superseded by</span><span>IAS 28 Investments in Associates and Joint Ventures</span></div>
+          <div class="tr alt"><span>Why withdrawn</span><span>The 2003 revision incorporated the elimination principle directly into the equity method guidance</span></div>
+          <div class="tr"><span>Current status</span><span>Withdrawn</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Equity method", definition: "A method of accounting whereby an investment in an associate is initially recognised at cost and subsequently adjusted for the post-acquisition change in the investor's share of net assets of the associate." },
+      { term: "Unrealised profit", definition: "A profit earned on a transaction with an associate that has not yet been realised through a transaction with an external party, and therefore must be eliminated under the equity method." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.SIC3} />
+  </section>
+</StandardPageLayout>
