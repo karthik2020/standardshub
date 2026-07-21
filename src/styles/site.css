@@ -66,6 +66,10 @@
     --indas-soft: #FFF7ED;
     --indas-light: #FED7AA;
     --indas-dark: #9A3412;
+    --usgaap: #0F172A;
+    --usgaap-soft: #F1F5F9;
+    --usgaap-light: #F8FAFC;
+    --usgaap-dark: #1E293B;
     /* ====================================================== Shadows ====================================================== */
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, .05);
     --shadow-md: 0 4px 12px rgba(0, 0, 0, .08);
@@ -322,6 +326,10 @@ body {
 
 .app-body[data-framework="indas"] {
     --framework-accent: var(--indas);
+}
+
+.app-body[data-framework="usgaap"] {
+    --framework-accent: var(--usgaap);
 }
 
 .search-input-wrapper {
@@ -707,6 +715,21 @@ section li:last-child {
     width: 3px;
     border-radius: var(--radius-pill);
     background: var(--indas);
+}
+
+.nav-link.active.nav-usgaap {
+    background: var(--usgaap-light);
+}
+
+.nav-link.active.nav-usgaap::before {
+    content: "";
+    position: absolute;
+    left: -8px;
+    top: 6px;
+    bottom: 6px;
+    width: 3px;
+    border-radius: var(--radius-pill);
+    background: var(--usgaap);
 }
 
 .nav-link.active {
@@ -2874,6 +2897,11 @@ section li:last-child {
     box-shadow: 0 0 0 3px var(--indas-soft);
 }
 
+.nav-usgaap:hover,
+.nav-usgaap:focus-visible {
+    box-shadow: 0 0 0 3px var(--usgaap-soft);
+}
+
 /* Keyboard focus keeps the same calm feedback plus a clear outline. */
 .pnn-card:focus-visible {
     outline-offset: 2px;
@@ -2889,6 +2917,10 @@ section li:last-child {
 
 .nav-indas.pnn-card:focus-visible {
     outline: 2px solid var(--indas);
+}
+
+.nav-usgaap.pnn-card:focus-visible {
+    outline: 2px solid var(--usgaap);
 }
 
 .pnn-label {
@@ -2942,6 +2974,10 @@ section li:last-child {
 
 .nav-indas .pnn-code {
     color: var(--indas);
+}
+
+.nav-usgaap .pnn-code {
+    color: var(--usgaap);
 }
 
 .pnn-next > * {

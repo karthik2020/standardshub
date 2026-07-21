@@ -1,0 +1,292 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc105.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        {
+          id: "s1",
+          label: "Purpose & Conceptual Role",
+        },
+        {
+          id: "s2",
+          label: "Scope — Nongovernmental Entities vs GASB",
+        },
+        {
+          id: "s3",
+          label: "Before the Codification — the Pre-2009 GAAP Hierarchy",
+        },
+        {
+          id: "s4",
+          label: "What the Codification Did",
+        },
+        {
+          id: "s5",
+          label: "Sources Incorporated Into the Codification",
+        },
+        {
+          id: "s6",
+          label: "Codification Structure — Topics, Subtopics, Sections, Paragraphs",
+        },
+        {
+          id: "s7",
+          label: "The 9 Areas & ~90 Topics at a Glance",
+        },
+        {
+          id: "s8",
+          label: "SEC Content Within the Codification",
+        },
+        {
+          id: "s9",
+          label: "Non-Authoritative Guidance — When the Codification Is Silent",
+        },
+        {
+          id: "s10",
+          label: "FASB Concepts Statements vs the Codification",
+        },
+        {
+          id: "s11",
+          label: "Amending the Codification — Accounting Standards Updates",
+        },
+        {
+          id: "s12",
+          label: "US GAAP Statement Naming Conventions",
+        },
+        {
+          id: "s13",
+          label: "Worked Example — Researching an Issue",
+        },
+        {
+          id: "s14",
+          label: "Worked Example — Applying the Non-Authoritative Hierarchy",
+        },
+        {
+          id: "s15",
+          label: "ASC 105 vs IFRS Preface & Conceptual Framework",
+        },
+        {
+          id: "s16",
+          label: "Related Topics / Cross-Reference Map",
+        },
+        {
+          id: "s17",
+          label: "Glossary",
+        },
+        {
+          id: "history",
+          label: "History & Development",
+        },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="hub"><div class="hub-box"><div class="hub-title">ASC 105 — Generally Accepted Accounting Principles</div><div class="hub-sub">Extended reference poster · US GAAP · FASB Accounting Standards Codification, Topic 105 · Effective for periods ending after 15 Sept 2009 · Foundational/organisational topic — establishes the Codification itself</div></div></div>
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Purpose &amp; Conceptual Role</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci"><div class="ctitle ci">The single source of truth for US GAAP</div><div class="principle">ASC 105 establishes the FASB Accounting Standards Codification (the "Codification" or "ASC") as the SINGLE SOURCE of authoritative U.S. generally accepted accounting principles (GAAP) for nongovernmental entities, in addition to guidance issued by the SEC. Before the Codification, authoritative GAAP was scattered across thousands of separate pronouncements from multiple standard-setters, issued over more than 50 years — ASC 105 is the provision that collapsed all of that into one, consistently structured research system.</div></div>
+      <div class="card cs"><div class="ctitle cs">Codification did not create new GAAP</div><div class="principle">Critically, the Codification launch did NOT change GAAP — it reorganised EXISTING authoritative literature into a new structure. Any change in practice upon adoption resulted from the Codification's reorganisation and elimination of redundant/superseded guidance, not from any new technical requirement. This is analogous in spirit to how the IFRS Conceptual Framework and Preface are non-technical, orientation documents — except ASC 105, unlike those, IS itself part of the authoritative literature.</div></div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope — Nongovernmental Entities vs GASB</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw"><div class="ctitle cw">Who the Codification applies to</div><div class="principle">The Codification applies to NONGOVERNMENTAL entities — private companies, public companies, and not-for-profit organisations. This includes commercial, industrial, and financial entities in corporate or other organisational forms.</div></div>
+      <div class="card cd"><div class="ctitle cd">Governmental entities — a separate standard-setter entirely</div><div class="principle">STATE AND LOCAL GOVERNMENT entities in the US do NOT follow the FASB Codification — they instead follow standards issued by the GOVERNMENTAL ACCOUNTING STANDARDS BOARD (GASB), a separate, sister standard-setting body also operating under the Financial Accounting Foundation (FAF). GASB's own codification is structured and numbered independently, and the two frameworks (FASB GAAP and GASB GAAP) are NOT interchangeable.</div></div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Before the Codification — the Pre-2009 GAAP Hierarchy</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">The old four-level hierarchy under SAS 69</div><div class="principle">Before July 2009, determining "the" authoritative source on a given topic required navigating a FOUR-LEVEL hierarchy of pronouncements (established by AICPA Statement on Auditing Standards No. 69), often issued by different bodies with overlapping or even conflicting guidance.</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:0.5fr 2.5fr;"><span>Category</span><span>Sources (highest authority first)</span></div>
+      <div class="tr" style="grid-template-columns:0.5fr 2.5fr;"><span>Category A</span><span>FASB Statements of Financial Accounting Standards (SFAS), FASB Interpretations (FIN), FASB Statement 133 Implementation Issues, APB Opinions, AICPA Accounting Research Bulletins (ARB)</span></div>
+      <div class="tr alt" style="grid-template-columns:0.5fr 2.5fr;"><span>Category B</span><span>FASB Technical Bulletins; AICPA Industry Audit and Accounting Guides and Statements of Position (SOP), if cleared by the FASB</span></div>
+      <div class="tr" style="grid-template-columns:0.5fr 2.5fr;"><span>Category C</span><span>Consensus positions of the FASB Emerging Issues Task Force (EITF); AICPA Practice Bulletins, if cleared by the FASB</span></div>
+      <div class="tr alt" style="grid-template-columns:0.5fr 2.5fr;"><span>Category D</span><span>AICPA Accounting Interpretations; FASB/AICPA "Q&amp;A" guides; widely recognised, prevalent industry practice</span></div>
+      </div>
+      <div class="callout warn callout--chip">⚠️ This structure made research genuinely difficult — the same topic could be addressed piecemeal across an SFAS, an EITF consensus, AND an AICPA SOP simultaneously, each carrying different authority. ASC 105 exists specifically to eliminate this fragmentation.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>What the Codification Did</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Flattening the hierarchy into a single authoritative level</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Effective for financial statements covering interim and annual periods ending AFTER SEPTEMBER 15, 2009, the Codification became the SINGLE, exclusively authoritative source of nongovernmental U.S. GAAP — eliminating the four-category hierarchy in Section 3 entirely. All content within the Codification carries EQUAL authority (subject only to the SEC-content distinction in Section 8); there is no longer a "Category A vs Category D" ranking within GAAP itself. Superseded, duplicative, and internally inconsistent legacy guidance was eliminated in the process.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Sources Incorporated Into the Codification</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">What went into the single system</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.4fr 1.6fr;"><span>Legacy source</span><span>Issuing body</span></div>
+      <div class="tr" style="grid-template-columns:1.4fr 1.6fr;"><span>Statements of Financial Accounting Standards (SFAS)</span><span>FASB</span></div>
+      <div class="tr alt" style="grid-template-columns:1.4fr 1.6fr;"><span>FASB Interpretations (FIN)</span><span>FASB</span></div>
+      <div class="tr" style="grid-template-columns:1.4fr 1.6fr;"><span>FASB Technical Bulletins</span><span>FASB</span></div>
+      <div class="tr alt" style="grid-template-columns:1.4fr 1.6fr;"><span>FASB Staff Positions (FSP)</span><span>FASB staff</span></div>
+      <div class="tr" style="grid-template-columns:1.4fr 1.6fr;"><span>EITF Abstracts and Topics</span><span>Emerging Issues Task Force</span></div>
+      <div class="tr alt" style="grid-template-columns:1.4fr 1.6fr;"><span>Derivatives Implementation Group (DIG) Issues</span><span>FASB-sponsored working group</span></div>
+      <div class="tr" style="grid-template-columns:1.4fr 1.6fr;"><span>Accounting Principles Board (APB) Opinions</span><span>AICPA's Accounting Principles Board (pre-FASB, pre-1973)</span></div>
+      <div class="tr alt" style="grid-template-columns:1.4fr 1.6fr;"><span>Accounting Research Bulletins (ARB)</span><span>AICPA Committee on Accounting Procedure (pre-1959)</span></div>
+      <div class="tr" style="grid-template-columns:1.4fr 1.6fr;"><span>AICPA Statements of Position (SOP), cleared by FASB</span><span>AICPA</span></div>
+      <div class="tr alt" style="grid-template-columns:1.4fr 1.6fr;"><span>AICPA Accounting and Auditing Guides (accounting content only), cleared by FASB</span><span>AICPA</span></div>
+      <div class="tr" style="grid-template-columns:1.4fr 1.6fr;"><span>AICPA Practice Bulletins, cleared by FASB</span><span>AICPA</span></div>
+      </div>
+      <div class="note">This range of source bodies illustrates why pre-Codification research was so fragmented — five or more different issuing bodies, spanning six decades, all contributed literature that could bear on a single accounting question.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Codification Structure — Topics, Subtopics, Sections, Paragraphs</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">A consistent four-level citation format</div>
+      <div class="formula-box formula-box--chip"><div class="f-label">CITATION FORMAT</div><div class="f-eq">ASC XXX-YY-ZZ-PP → Topic (XXX) – Subtopic (YY) – Section (ZZ) – Paragraph (PP)</div></div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1fr 2fr;"><span>Level</span><span>What it represents</span></div>
+      <div class="tr" style="grid-template-columns:1fr 2fr;"><span>Topic</span><span>A collection of related guidance on a broad subject — e.g. Topic 842, Leases</span></div>
+      <div class="tr alt" style="grid-template-columns:1fr 2fr;"><span>Subtopic</span><span>A subset of a Topic, generally distinguished by type or scope — e.g. within Leases, Subtopic 20 (Lessee) vs Subtopic 30 (Lessor)</span></div>
+      <div class="tr" style="grid-template-columns:1fr 2fr;"><span>Section</span><span>The NATURE of the content — Sections are numbered consistently across every Subtopic (e.g. -05 Overview, -15 Scope, -25 Recognition, -30 Initial Measurement, -35 Subsequent Measurement, -45 Presentation, -50 Disclosure)</span></div>
+      <div class="tr alt" style="grid-template-columns:1fr 2fr;"><span>Paragraph</span><span>The individual numbered paragraph within a Section — the most granular citation level</span></div>
+      </div>
+      <div class="note">The consistent Section numbering (e.g. -25 is always Recognition, -50 is always Disclosure, no matter which Topic) is one of the Codification's most distinctive design features — a researcher who knows this pattern can navigate ANY Topic predictably.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>The 9 Areas &amp; ~90 Topics at a Glance</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">The top-level organisational map</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:0.6fr 2.4fr;"><span>Area (number range)</span><span>Broad content</span></div>
+      <div class="tr" style="grid-template-columns:0.6fr 2.4fr;"><span>100 General Principles</span><span>Topic 105 only — the Codification's own governing provisions (this poster's subject)</span></div>
+      <div class="tr alt" style="grid-template-columns:0.6fr 2.4fr;"><span>200 Presentation</span><span>Financial statement presentation topics — 205, 210, 215, 220, 225, 230, 235, 250, 255, 260, 270, 272, 274, 275, 280</span></div>
+      <div class="tr" style="grid-template-columns:0.6fr 2.4fr;"><span>300 Assets</span><span>305–360 — cash, receivables, investments, inventory, intangibles, PP&amp;E</span></div>
+      <div class="tr alt" style="grid-template-columns:0.6fr 2.4fr;"><span>400 Liabilities</span><span>405–480 — general liabilities, asset retirement obligations, contingencies, guarantees, debt, liability/equity distinction</span></div>
+      <div class="tr" style="grid-template-columns:0.6fr 2.4fr;"><span>500 Equity</span><span>505 only</span></div>
+      <div class="tr alt" style="grid-template-columns:0.6fr 2.4fr;"><span>600 Revenue</span><span>605 (legacy), 606 (current — Revenue from Contracts with Customers), 610</span></div>
+      <div class="tr" style="grid-template-columns:0.6fr 2.4fr;"><span>700 Expenses</span><span>705–740 — cost of sales, compensation, R&amp;D, income taxes</span></div>
+      <div class="tr alt" style="grid-template-columns:0.6fr 2.4fr;"><span>800 Broad Transactions</span><span>805–860 — business combinations, consolidation, derivatives/hedging, fair value, financial instruments, foreign currency, leases, related parties, subsequent events</span></div>
+      <div class="tr" style="grid-template-columns:0.6fr 2.4fr;"><span>900 Industry</span><span>905–995 — specialised guidance for ~25 industries (agriculture, airlines, financial services, health care, not-for-profit, real estate, software, etc.)</span></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>SEC Content Within the Codification</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Included for convenience, not FASB-authoritative</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">The Codification also includes relevant SECURITIES AND EXCHANGE COMMISSION (SEC) guidance, organised using the SAME topical structure, in separate clearly-labelled sections. This SEC content — Regulation S-X, SEC Staff Accounting Bulletins (SAB), SEC Staff Observer comments, and similar material — is included purely as a CONVENIENCE for registrants and is NOT itself authoritative GAAP issued by the FASB; it is authoritative for SEC REGISTRANTS by virtue of separate SEC rulemaking authority, but does not apply to non-public entities.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Non-Authoritative Guidance — When the Codification Is Silent</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">A structured fallback, not a free-for-all</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">If the guidance for a transaction or event is NOT specified within a source of authoritative GAAP for that entity, an entity FIRST considers whether the guidance for SIMILAR transactions or events within the Codification can be applied by analogy. If accounting treatment is still not specified, an entity may consider OTHER accounting literature — but only after first considering the FASB CONCEPTS STATEMENTS (Section 10). Other non-authoritative sources an entity may consider include: practices widely recognised as GAAP for governmental entities or other non-GAAP jurisdictions, pronouncements of professional associations/regulatory agencies, AICPA Technical Practice Aids, and accounting textbooks/articles — applied based on the FACTS AND CIRCUMSTANCES, and consistently applied.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>FASB Concepts Statements vs the Codification</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">The Concepts Statements are NOT authoritative GAAP</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">The FASB's Statements of Financial Accounting Concepts (the "CON" series, CON 1 through CON 8) form the FASB's own conceptual framework — parallel in role to the IASB's Conceptual Framework. Like the IASB's framework, the CON series is explicitly EXCLUDED from the Codification and is NOT itself a source of authoritative GAAP. It is consulted for its underlying reasoning and, per Section 9, is the FIRST non-authoritative source considered when the Codification is silent and no analogous guidance exists.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Amending the Codification — Accounting Standards Updates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2"><div class="ctitle cn">ASUs, not new standalone standards</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Since the Codification's launch, the FASB no longer issues new "Statements" or "Interpretations" as separate documents. Instead, all changes to U.S. GAAP are issued as ACCOUNTING STANDARDS UPDATES (ASUs), which amend the Codification text directly (deleting, replacing, or adding paragraphs within the relevant existing Topics/Subtopics) rather than existing as freestanding new pronouncements. An ASU is NOT itself authoritative until its provisions are incorporated into the Codification — the ASU is essentially a transmittal/cover document explaining the amendment and its background.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>US GAAP Statement Naming Conventions</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">How US GAAP statement names differ from IFRS — the reference table for this entire library</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.3fr 1.5fr;"><span>Statement</span><span style="color:var(--color-text-info);">IFRS terminology (this library's badges)</span><span style="color:var(--color-text-warning);">US GAAP terminology (ASC Topic)</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.3fr 1.5fr;"><span>Position statement</span><span>Statement of Financial Position (SOFP)</span><span><strong>Balance Sheet</strong> — ASC 210; "Statement of Financial Position" is used occasionally but "Balance Sheet" is the dominant, codified term (ASC 210's own Topic title)</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.3fr 1.5fr;"><span>Performance statement</span><span>Statement of Profit or Loss (SOPL)</span><span><strong>Income Statement</strong> — ASC 225; also commonly called the "Statement of Operations," especially by public companies in SEC filings</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.3fr 1.5fr;"><span>Comprehensive income</span><span>Other Comprehensive Income (OCI) — presented in a single statement of P&amp;L and OCI, or two statements</span><span><strong>Other Comprehensive Income (OCI)</strong> — same term and concept; governed by ASC 220, "Income Statement—Reporting Comprehensive Income"; may be presented in one continuous statement or two consecutive statements, mirroring IFRS's own option</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.3fr 1.5fr;"><span>Equity movement statement</span><span>Statement of Changes in Equity</span><span><strong>Statement of Shareholders' Equity</strong> (or "Statement of Stockholders' Equity") — ASC 215</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.3fr 1.5fr;"><span>Cash flow statement</span><span>Statement of Cash Flows</span><span><strong>Statement of Cash Flows</strong> — ASC 230; SAME name as IFRS, one of the few statements where terminology fully aligns</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.3fr 1.5fr;"><span>Notes</span><span>Notes to the Financial Statements</span><span><strong>Notes to Financial Statements</strong> — ASC 235; same term</span></div>
+      </div>
+      <div class="callout info callout--chip">ℹ️ Going forward, US GAAP posters in this library use the badges <strong>BS</strong> (Balance Sheet), <strong>IS</strong> (Income Statement), <strong>OCI</strong> (Other Comprehensive Income), and <strong>SE</strong> (Statement of Shareholders' Equity) — the correct native terminology for this framework — rather than the IFRS-native SOFP/SOPL badges used elsewhere in the library.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Worked Example — Researching an Issue in the Codification</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Finding the right citation for a lease classification question</div>
+      <div class="worked"><div class="wk-title">Example: A lessee wants to know how to classify a new equipment lease</div><div class="wk-body">A preparer needs to determine how to classify (and subsequently measure) a newly signed 5-year equipment lease under current US GAAP.</div><div class="wk-answer">Research path: the preparer navigates to <strong>Topic 842 (Leases)</strong> — the CURRENT leases Topic (Topic 840 is the LEGACY, superseded leases Topic, retained in the Codification only for historical/comparative reference where 842 has not yet been adopted). Within Topic 842, <strong>Subtopic 20 (Lessee)</strong> applies, since the preparer's entity is the lessee. Classification guidance sits in the <strong>-25 (Recognition)</strong> Section, giving a full citation of roughly <strong>ASC 842-20-25</strong> for the classification test itself, with subsequent measurement in the <strong>-30/-35</strong> Sections and disclosure in the <strong>-50</strong> Section of the same Subtopic — illustrating how the consistent Section-numbering convention (Section 6) lets a researcher predict where within any Topic to look.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Worked Example — Applying the Non-Authoritative Hierarchy</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2"><div class="ctitle cn">A genuinely novel transaction with no direct Codification guidance</div>
+      <div class="worked"><div class="wk-title">Example: A transaction type not directly addressed anywhere in the Codification</div><div class="wk-body">An entity enters into a genuinely novel financing arrangement with characteristics not directly addressed by any existing Codification Topic, and no clearly analogous transaction exists elsewhere in the Codification either.</div><div class="wk-answer">Per Section 9's hierarchy: the entity first confirms no ANALOGOUS Codification guidance applies. Finding none, it next considers the FASB CONCEPTS STATEMENTS (the CON series) for the underlying definitional and recognition principles relevant to the arrangement (e.g. does it meet the CON 6/CON 8 definition of a liability?). Only after considering the Concepts Statements would the entity look to OTHER non-authoritative sources — such as pronouncements of other standard-setters (potentially even IFRS Standards, considered as non-authoritative literature in this context), AICPA Technical Practice Aids, or accounting textbooks — selecting whichever source is most relevant to the entity's specific facts and circumstances, and applying it consistently.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s15"><span class="num">15</span><h2>ASC 105 vs IFRS Preface &amp; Conceptual Framework</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Comparison — ASC 105 vs the Preface to IFRS Standards / IASB Conceptual Framework</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">ASC 105 (US GAAP)</span><span style="color:var(--color-text-info);">Preface / Conceptual Framework (IFRS)</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Authoritative status</span><span>ASC 105 IS itself authoritative GAAP — part of the Codification</span><span>NEITHER the Preface nor the Conceptual Framework is a Standard; both are explicitly non-authoritative and yield to any conflicting Standard</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Structural philosophy</span><span>ONE integrated Codification; ~90 Topics under one numbering system</span><span>MANY separate numbered Standards (IAS/IFRS) plus separate Interpretations (IFRIC/SIC), not unified into one document</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Conceptual framework equivalent</span><span>FASB Concepts Statements (CON 1–8) — explicitly non-authoritative, used only per the Section 9 hierarchy</span><span>IASB Conceptual Framework — also non-authoritative, but more heavily and directly referenced in day-to-day standard interpretation than the CON series tends to be in US practice</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Governing/process document equivalent</span><span>No single "Preface" — governance and due process are described in FAF/FASB rules of procedure, separate from the Codification itself</span><span>Preface to IFRS Standards, a dedicated document describing IASB structure and due process</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Hierarchy for unaddressed issues</span><span>Explicit Codification-analogy → Concepts Statements → other non-authoritative literature hierarchy (Section 9)</span><span>IAS 8 provides an analogous hierarchy: apply requirements of Standards dealing with similar issues, then Conceptual Framework definitions/criteria, then (optionally) other standard-setters' pronouncements not in conflict with IFRS</span></div>
+      </div>
+      <div class="note">Both frameworks converge on a broadly similar logical structure for handling gaps (look for analogous specific guidance first, then fall back to conceptual principles, then other literature) — but US GAAP's single-Codification structure makes ASC 105 a much more load-bearing, authoritative document than either of its two IFRS counterparts.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s16"><span class="num">16</span><h2>Related Topics / Cross-Reference Map</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd"><div class="ctitle cd">Within US GAAP</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 205</span><span>Governs overall financial statement presentation, the first topic a preparer typically consults after ASC 105 itself</span></div>
+      <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 250</span><span>Governs accounting changes and error corrections — relevant when applying new ASUs that amend the Codification</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 275</span><span>Risks and Uncertainties — general disclosure principles that interact with the non-authoritative guidance hierarchy in areas of genuine measurement uncertainty</span></div>
+      </div>
+      </div>
+      <div class="card cn"><div class="ctitle cn">Quick-reference glossary preview</div>
+      <div class="glossary-item"><div class="glossary-term">FAF</div><div class="glossary-def">Financial Accounting Foundation — the independent, private-sector organisation overseeing both the FASB and GASB.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Nongovernmental entity</div><div class="glossary-def">Any entity other than a state or local government — the scope boundary determining whether FASB GAAP (via the Codification) or GASB GAAP applies.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s17"><span class="num">17</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+      <div class="glossary-item"><div class="glossary-term">Accounting Standards Update (ASU)</div><div class="glossary-def">The mechanism by which the FASB amends the Codification today — a transmittal document explaining and incorporating a change, rather than a freestanding new pronouncement.</div></div>
+      <div class="glossary-item"><div class="glossary-term">EITF (Emerging Issues Task Force)</div><div class="glossary-def">A FASB-affiliated group that historically reached "consensus" positions on emerging accounting issues, incorporated into the Codification as part of its source material.</div></div>
+      <div class="glossary-item"><div class="glossary-term">GASB</div><div class="glossary-def">Governmental Accounting Standards Board — the separate standard-setter for US state and local government entities, outside ASC 105's scope.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">SEC Regulation S-X</div><div class="glossary-def">The SEC's own rules governing the form and content of financial statements filed by registrants, reproduced for convenience (but not FASB-authored) within the Codification's SEC content.</div></div>
+      </div>
+    </div>
+
+    <Glossary entries={[
+      { term: "Accounting Standards Update (ASU)", definition: "The mechanism by which the FASB amends the Codification today — a transmittal document explaining and incorporating a change, rather than a freestanding new pronouncement." },
+      { term: "EITF (Emerging Issues Task Force)", definition: "A FASB-affiliated group that historically reached 'consensus' positions on emerging accounting issues, incorporated into the Codification as part of its source material." },
+      { term: "GASB", definition: "Governmental Accounting Standards Board — the separate standard-setter for US state and local government entities, outside ASC 105's scope." },
+      { term: "SEC Regulation S-X", definition: "The SEC's own rules governing the form and content of financial statements filed by registrants, reproduced for convenience (but not FASB-authored) within the Codification's SEC content." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.ASC105} />
+  </section>
+</StandardPageLayout>

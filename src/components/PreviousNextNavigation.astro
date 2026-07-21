@@ -28,6 +28,17 @@ const allIAS = [
   ...standards.IAS.filter((s) => s.status),
 ];
 
+const codeToKey = (code: string) => {
+  if (code === "Ind AS") return "IndAS";
+  if (code === "IFRS Sustainability") return "IFRSSustainability";
+  if (code === "IFRS Publications") return "IFRSPublications";
+  if (code === "IFRS for SMEs") return "IFRSForSMEs";
+  if (code === "IFRIC") return "IFRIC";
+  if (code === "SIC") return "SIC";
+  if (code === "US GAAP") return "USGAAP";
+  return code;
+};
+
 const standardsList =
   frameworkConfig.code === "IAS"
     ? allIAS
@@ -52,16 +63,21 @@ const standardsList =
                 ...standards.IFRSForSMEs.filter((s) => s.status),
               ]
              : frameworkConfig.code === "IFRIC"
-               ? [
-                   ...standards.IFRIC.filter((s) => !s.status),
-                   ...standards.IFRIC.filter((s) => s.status),
-                 ]
-               : frameworkConfig.code === "SIC"
-                 ? [
-                     ...standards.SIC.filter((s) => !s.status),
-                     ...standards.SIC.filter((s) => s.status),
-                   ]
-                 : standards[frameworkConfig.code] ?? [];
+                ? [
+                    ...standards.IFRIC.filter((s) => !s.status),
+                    ...standards.IFRIC.filter((s) => s.status),
+                  ]
+                : frameworkConfig.code === "SIC"
+                  ? [
+                      ...standards.SIC.filter((s) => !s.status),
+                      ...standards.SIC.filter((s) => s.status),
+                    ]
+                  : frameworkConfig.code === "US GAAP"
+                    ? [
+                        ...standards.USGAAP.filter((s) => !s.status),
+                        ...standards.USGAAP.filter((s) => s.status),
+                      ]
+                    : standards[codeToKey(frameworkConfig.code)] ?? [];
 
 const currentIndex = standardsList.findIndex((standard) => standard.code === current);
 const previous =

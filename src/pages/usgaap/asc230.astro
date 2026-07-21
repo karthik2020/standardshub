@@ -1,0 +1,211 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc230.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope & Applicability" },
+        { id: "s3", label: "Three Categories of Cash Flow" },
+        { id: "s4", label: "Direct vs Indirect Method — Operating Activities" },
+        { id: "s5", label: "The Mandatory Reconciliation Requirement" },
+        { id: "s6", label: "Classification of Interest & Dividends" },
+        { id: "s7", label: "Restricted Cash (ASU 2016-18)" },
+        { id: "s8", label: "Bank Overdrafts" },
+        { id: "s9", label: "Noncash Investing & Financing Activities" },
+        { id: "s10", label: "Worked Example — Indirect Method Reconciliation" },
+        { id: "s11", label: "Worked Example — Interest/Dividend Classification" },
+        { id: "s12", label: "Worked Example — Restricted Cash Reconciliation" },
+        { id: "s13", label: "Disclosure Requirements" },
+        { id: "s14", label: "Critical Judgments & Estimates" },
+        { id: "s15", label: "ASC 230 vs IAS 7 — the Interest/Dividend Divergence" },
+        { id: "s16", label: "Statement Mapping" },
+        { id: "s17", label: "Related Topics" },
+        { id: "s18", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card ci"><div class="ctitle ci">Cash, the one thing accrual accounting can obscure</div><div class="principle">Net income under accrual accounting can diverge substantially from cash actually generated or consumed. ASC 230 exists to give users a clean, direct view of an entity's CASH INFLOWS AND OUTFLOWS during a period — one of the few areas where US GAAP and IFRS terminology (and much of the underlying mechanics) are FULLY aligned, since the Statement of Cash Flows is named identically in both frameworks.</div></div>
+    <div class="card cs"><div class="ctitle cs">A statement immune to most estimation judgement</div><div class="principle">Unlike accrual-based statements, cash flow reporting is comparatively free of estimation uncertainty — cash either moved or it didn't. ASC 230's main judgement areas are therefore CLASSIFICATION questions (which category a cash flow belongs in) rather than measurement questions, making the classification choices in Sections 4–8 the heart of this Topic's practical complexity.</div></div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">A required primary statement for nearly all entities</div><div class="principle">ASC 230 requires a Statement of Cash Flows as part of a complete set of financial statements for essentially all business entities. Certain entities are exempt or subject to modified requirements (e.g. certain investment companies, employee benefit plans covered by their own industry Topics in the 900s), but the general-purpose requirement is broad and closely mirrors IAS 7's own universal applicability.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Three Categories of Cash Flow</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">Operating, Investing, Financing — identical category names to IFRS</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:1fr 2fr;"><span>Category</span><span>What it captures</span></div>
+    <div class="tr" style="grid-template-columns:1fr 2fr;"><span>Operating activities</span><span>Cash effects of transactions entering into the determination of net income — the entity's principal revenue-producing activities</span></div>
+    <div class="tr alt" style="grid-template-columns:1fr 2fr;"><span>Investing activities</span><span>Making and collecting loans, and acquiring/disposing of debt/equity investments and PP&amp;E</span></div>
+    <div class="tr" style="grid-template-columns:1fr 2fr;"><span>Financing activities</span><span>Obtaining resources from owners and creditors, and repaying/returning amounts borrowed or invested</span></div>
+    </div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Direct vs Indirect Method — Operating Activities</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">Both methods permitted, a genuine free choice</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">As with IAS 7, an entity may present operating cash flows using EITHER the DIRECT method (showing major classes of gross cash receipts and payments) OR the INDIRECT method (starting from net income and adjusting for non-cash items and working capital changes). US practice overwhelmingly favours the INDIRECT method — the direct method is rarely used in practice despite being explicitly encouraged (though not required) by the FASB, a preference pattern also broadly mirrored in IFRS practice.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>The Mandatory Reconciliation Requirement</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">A stricter requirement than IAS 7</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">If an entity uses the DIRECT method, ASC 230 REQUIRES it to ALSO separately disclose a reconciliation of net income to net cash flow from operating activities (i.e. the INDIRECT method calculation) — typically in the notes. <strong>IAS 7 imposes no equivalent dual-disclosure requirement</strong> — an IFRS preparer using the direct method is not required to also present the indirect reconciliation. This makes the direct method meaningfully more costly to adopt under US GAAP than under IFRS, which likely contributes to the direct method's continued rarity in US practice.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Classification of Interest &amp; Dividends</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cs span2"><div class="ctitle cs">One of the most heavily tested US GAAP/IFRS differences</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:1.4fr 0.8fr 0.8fr"><span>Item</span><span style="color:var(--color-text-warning);">US GAAP</span><span style="color:var(--color-text-info);">IFRS (IAS 7)</span></div>
+    <div class="tr" style="grid-template-columns:1.4fr 0.8fr 0.8fr"><span>Interest paid</span><span>Operating (fixed)</span><span>Operating OR financing (choice, consistent)</span></div>
+    <div class="tr alt" style="grid-template-columns:1.4fr 0.8fr 0.8fr"><span>Interest received</span><span>Operating (fixed)</span><span>Operating OR investing (choice, consistent)</span></div>
+    <div class="tr" style="grid-template-columns:1.4fr 0.8fr 0.8fr"><span>Dividends received</span><span>Operating (fixed)</span><span>Operating OR investing (choice, consistent)</span></div>
+    <div class="tr alt" style="grid-template-columns:1.4fr 0.8fr 0.8fr"><span>Dividends paid</span><span>Financing (fixed)</span><span>Operating OR financing (choice, consistent)</span></div>
+    </div>
+    <div class="callout warn callout--chip">⚠️ US GAAP has NO CHOICE here at all — all four items follow the single fixed classification shown above. IFRS gives entities a genuine classification election (applied consistently period to period) — meaning two IFRS preparers with identical cash flows can validly report different operating cash flow totals, something impossible under US GAAP's rigid classification.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Restricted Cash (ASU 2016-18)</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">Included in the cash reconciliation, not treated as an investing transfer</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">ASU 2016-18 requires entities to include RESTRICTED CASH and restricted cash equivalents together with unrestricted cash and cash equivalents when reconciling the beginning-of-period and end-of-period totals shown in the Statement of Cash Flows. Before this amendment, transfers between cash and restricted cash were sometimes presented as investing (or operating) activity cash flows — the amendment eliminated that presentation, treating changes in restricted cash purely as part of the OVERALL cash reconciliation rather than as separate line-item cash flows.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Bank Overdrafts</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">A further classification divergence from IFRS</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Under US GAAP, bank overdrafts are generally treated as a FINANCING activity (short-term borrowing), NOT netted against cash and cash equivalents. Under IAS 7, by contrast, bank overdrafts REPAYABLE ON DEMAND that form an INTEGRAL PART of an entity's cash management may be included as a COMPONENT of cash and cash equivalents — meaning IFRS can, in specific circumstances, show a NEGATIVE cash and cash equivalents balance that US GAAP would never present the same way.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Noncash Investing &amp; Financing Activities</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cn span2"><div class="ctitle cn">Disclosed supplementally, excluded from the statement</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Significant NONCASH investing and financing transactions — such as acquiring an asset by assuming a directly related liability, converting debt to equity, or acquiring an asset via a finance lease — are DISCLOSED SEPARATELY (either on the face of the statement or in the notes), but EXCLUDED from the body of the statement itself, since no cash actually moved. This treatment is fully aligned with IAS 7's own noncash transaction disclosure requirement.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Worked Example — Indirect Method Reconciliation</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">Building operating cash flow from net income</div>
+    <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Adjusting net income for non-cash items and working capital</div><div class="wk-body">Net income for the year is $5,000,000. Depreciation expense was $800,000. Accounts receivable increased by $300,000; inventory decreased by $150,000; accounts payable increased by $200,000.</div><div class="wk-answer">Net cash from operating activities = $5,000,000 + $800,000 (add back non-cash depreciation) − $300,000 (increase in receivables uses cash) + $150,000 (decrease in inventory frees cash) + $200,000 (increase in payables defers cash outflow) = <strong>$5,850,000</strong>.</div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Worked Example — Interest/Dividend Classification</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card ci span2"><div class="ctitle ci">The same cash flows, classified differently under each framework</div>
+    <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Interest paid and dividends received</div><div class="wk-body">An entity pays $1,200,000 of interest on its debt and receives $400,000 of dividend income from an equity investment during the year.</div><div class="wk-answer"><strong>Under US GAAP:</strong> both amounts are OPERATING cash flows — no choice available.<br><strong>Under IFRS (IAS 7):</strong> the entity COULD classify the $1,200,000 interest paid as either operating OR financing, and the $400,000 dividends received as either operating OR investing — an IFRS preparer electing financing/investing classification for both items would report OPERATING cash flow $1,600,000 HIGHER than a US GAAP preparer with the identical underlying cash flows.</div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Worked Example — Restricted Cash Reconciliation</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cn span2"><div class="ctitle cn">Combining restricted and unrestricted cash</div>
+    <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Post-ASU 2016-18 reconciliation</div><div class="wk-body">At the start of the year, an entity holds $2,000,000 unrestricted cash and $500,000 restricted cash (held as loan collateral). By year end, unrestricted cash is $2,800,000 and restricted cash is $500,000 (unchanged).</div><div class="wk-answer">The Statement of Cash Flows reconciles a COMBINED opening balance of $2,500,000 to a combined closing balance of $3,300,000 — the $500,000 restricted cash is included throughout, and NO separate "transfer to restricted cash" line item is presented, since the restricted amount did not change during the year.</div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">What ASC 230 requires</div><div class="check-list"><span>Amount of interest paid (net of amounts capitalised) and income taxes paid, disclosed regardless of method used</span><span>Reconciliation of net income to operating cash flow, required in all cases involving the direct method</span><span>Significant noncash investing and financing transactions</span><span>Policy for determining which highly liquid items are treated as cash equivalents</span><span>Reconciliation of restricted and unrestricted cash to the amounts shown on the balance sheet, post-ASU 2016-18</span></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+    <div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Classifying ambiguous transactions between operating, investing, and financing categories</span><span>Determining which highly liquid short-term investments qualify as cash equivalents (generally original maturities of three months or less)</span></div></div>
+    <div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Generally minimal — cash flow reporting is largely mechanical once classification judgements are made</span></div></div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s15"><span class="num">15</span><h2>ASC 230 vs IAS 7 — the Interest/Dividend Divergence</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card ci span2"><div class="ctitle ci">Comparison — ASC 230 vs IAS 7</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">US GAAP (ASC 230)</span><span style="color:var(--color-text-info);">IFRS (IAS 7)</span></div>
+    <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Interest/dividend classification</span><span>Fixed — no choice (Section 6)</span><span>Genuine classification choice, consistently applied</span></div>
+    <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Direct method reconciliation</span><span>Mandatory even under the direct method</span><span>Not required if the direct method is used</span></div>
+    <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Bank overdrafts</span><span>Financing activity; not netted against cash</span><span>May be included within cash and cash equivalents if repayable on demand and integral to cash management</span></div>
+    <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Restricted cash</span><span>Explicitly included in the cash reconciliation (ASU 2016-18)</span><span>Less explicitly codified; generally similar substance-based inclusion in practice, without an equivalent dedicated amendment</span></div>
+    </div>
+    <div class="note">The interest/dividend classification difference is arguably the single most frequently tested US GAAP/IFRS divergence in professional exams covering both frameworks, given how directly and mechanically it changes reported operating cash flow for identical underlying transactions.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s16"><span class="num">16</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cs span2"><div class="ctitle cs">Where every ASC 230 event lands</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+    <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Operating cash receipts/payments</span><span><span class="badge bc">SCF</span></span><span>Direct or indirect presentation</span></div>
+    <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Interest paid</span><span><span class="badge bc">SCF</span></span><span>Always operating under US GAAP</span></div>
+    <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Dividends paid</span><span><span class="badge bc">SCF</span></span><span>Always financing under US GAAP</span></div>
+    <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Noncash investing/financing transaction</span><span>Notes only</span><span>Disclosed supplementally, excluded from the statement body</span></div>
+    </div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s17"><span class="num">17</span><h2>Related Topics</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd"><div class="ctitle cd">Cross-reference map</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+    <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 205</span><span>Supplies the overall complete-set-of-financial-statements framework the cash flow statement is part of</span></div>
+    <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 830</span><span>Governs translation of foreign currency cash flows for consolidation purposes</span></div>
+    <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 606/842</span><span>Supply the underlying operating activity transactions (revenue, leases) reflected in operating cash flows</span></div>
+    </div>
+    </div>
+    <div class="card cn"><div class="ctitle cn">Quick-reference glossary preview</div>
+    <div class="glossary-item"><div class="glossary-term">Cash equivalents</div><div class="glossary-def">Short-term, highly liquid investments readily convertible to known amounts of cash, with original maturities of three months or less.</div></div>
+    <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Direct method</div><div class="glossary-def">A presentation of operating cash flows showing major classes of gross cash receipts and payments, rather than starting from net income.</div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s18"><span class="num">18</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cn span2">
+    <div class="glossary-item"><div class="glossary-term">Indirect method</div><div class="glossary-def">A presentation of operating cash flows starting from net income and adjusting for non-cash items and changes in working capital — the dominant method in both US and IFRS practice.</div></div>
+    <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Restricted cash</div><div class="glossary-def">Cash whose use is limited by contract or regulation (e.g. held as loan collateral), included together with unrestricted cash in the Statement of Cash Flows reconciliation per ASU 2016-18.</div></div>
+    </div>
+    </div>
+
+    <Glossary entries={[
+      { term: "Cash equivalents", definition: "Short-term, highly liquid investments readily convertible to known amounts of cash, with original maturities of three months or less." },
+      { term: "Direct method", definition: "A presentation of operating cash flows showing major classes of gross cash receipts and payments, rather than starting from net income." },
+      { term: "Indirect method", definition: "A presentation of operating cash flows starting from net income and adjusting for non-cash items and changes in working capital — the dominant method in both US and IFRS practice." },
+      { term: "Restricted cash", definition: "Cash whose use is limited by contract or regulation (e.g. held as loan collateral), included together with unrestricted cash in the Statement of Cash Flows reconciliation per ASU 2016-18." }
+    ]} />
+
+  <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.ASC230} />
+  </section>
+</StandardPageLayout>

@@ -132,6 +132,22 @@ export const FRAMEWORK_CONFIG: Record<string, FrameworkConfig> = {
     faIcon: "building",
     status: "active",
   },
+  usgaap: {
+    id: "usgaap",
+    code: "US GAAP",
+    displayName: "US GAAP",
+    fullName: "U.S. Generally Accepted Accounting Principles",
+    description:
+      "U.S. Generally Accepted Accounting Principles (US GAAP) are the accounting standards issued by the FASB for nongovernmental entities in the United States, organised within the FASB Accounting Standards Codification.",
+    route: "/usgaap",
+    primary: "#0F172A",
+    light: "#F8FAFC",
+    soft: "#F1F5F9",
+    dark: "#1E293B",
+    lucideIcon: "BookText",
+    faIcon: "book-open",
+    status: "active",
+  },
   ifric: {
     id: "ifric",
     code: "IFRIC",
@@ -166,7 +182,7 @@ export const FRAMEWORK_CONFIG: Record<string, FrameworkConfig> = {
   },
 };
 
-export const FRAMEWORK_ORDER = ["ias", "ifrs", "indas", "ifrssustainability", "ifrspublications", "ifrsforsmes", "ifric", "sic"] as const;
+export const FRAMEWORK_ORDER = ["ias", "ifrs", "indas", "ifrssustainability", "ifrspublications", "ifrsforsmes", "usgaap", "ifric", "sic"] as const;
 
 export type FrameworkId = keyof typeof FRAMEWORK_CONFIG;
 
