@@ -1,0 +1,261 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/ifric/ifric21.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework" },
+        { id: "s2", label: "Scope & Definitions" },
+        { id: "s3", label: "The Obligating Event Principle" },
+        { id: "s4", label: "Point-in-Time vs Progressive Recognition" },
+        { id: "s5", label: "The No Realistic Alternative Trap" },
+        { id: "s6", label: "Interim Reporting Consistency" },
+        { id: "s7", label: "Worked Example — Threshold-Triggered Levy" },
+        { id: "s8", label: "Worked Example — Activity-Based Levy" },
+        { id: "s9", label: "Disclosure" },
+        { id: "s10", label: "Judgments & Estimates" },
+        { id: "s11", label: "IFRIC 21 vs US GAAP" },
+        { id: "s12", label: "Statement Mapping" },
+        { id: "s13", label: "Related Standards" },
+        { id: "s14", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Why levies needed a specific interpretation</div>
+        <div class="principle">Levies imposed by government are COMMON but often poorly understood in accounting terms. They share characteristics with taxes (imposed by government, often mandatory) and with provisions (a present obligation for a past event), but they fit NEITHER category neatly. IAS 12 governs income taxes (explicitly excluded from IFRIC 21), and IAS 37 governs provisions — but neither addresses levies specifically. IFRIC 21 fills this gap by applying IAS 37's recognition criteria to levies, with a specific focus on the OBLIGATING EVENT.</div>
+        <div class="note">The Conceptual Framework's definition of a liability — a present obligation arising from past events — applies to levies just as it applies to any other obligation. IFRIC 21's contribution is to identify the EXACT POINT at which the past event (the obligating event) occurs for a levy.</div>
+      </div>
+      <div class="card cs">
+        <div class="ctitle cs">The obligating event as the recognition trigger</div>
+        <div class="principle">IFRIC 21's central insight is that the obligating event for a levy is the ACTIVITY DESCRIBED IN THE LEGISLATION THAT TRIGGERS PAYMENT — not the passage of time, not the imposition of the levy, and not the preparation of financial statements. This means that if a levy is triggered by reaching a certain threshold of activity (e.g. revenue above £10m), the obligating event is the ACTIVITY that crosses the threshold, not the later date when the levy is assessed or paid.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope & Definitions</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What IFRIC 21 covers</div>
+        <div class="principle">IFRIC 21 applies to LEVIES IMPOSED BY GOVERNMENT — specifically, mandatory payments to government that are not income taxes (excluded under IAS 12), not fines or penalties (excluded because they are not for services received), and not amounts accounted for under IFRS 2 or IFRS 9. The key characteristic is that the levy is IMPOSED ON AN ENTITY in connection with performing a SPECIFIED ACTIVITY.</div>
+        <div class="elabel">TYPICAL FACT PATTERNS</div>
+        <div class="dot-list">
+          <span>Banking levies imposed on financial institutions based on balance sheet size</span>
+          <span>Carbon taxes or environmental levies based on emissions produced</span>
+          <span>Industry-specific levies triggered by revenue or transaction thresholds</span>
+          <span>Regulatory fees based on the scale of regulated activities</span>
+        </div>
+      </div>
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Obligating event</div>
+          <div class="glossary-def">The activity described in the legislation that triggers the payment of the levy — the past event that creates the present obligation under IAS 37.</div>
+        </div>
+        <div class="glossary-item" style="border-bottom:none;">
+          <div class="glossary-term">Levies</div>
+          <div class="glossary-def">Mandatory payments to government imposed in connection with performing a specified activity, excluding income taxes, fines, and penalties.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>The Obligating Event Principle</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">The core recognition principle</div>
+        <div class="td-table">
+          <div class="th cols-13-1"><span>Scenario</span><span>Obligating event</span><span>Recognition timing</span></div>
+          <div class="tr cols-13-1"><span>Levies based on revenue threshold</span><span>The activity of generating revenue that crosses the threshold</span><span>When revenue crosses the threshold — not when the levy is assessed or paid</span></div>
+          <div class="tr alt cols-13-1"><span>Levies based on balance sheet items</span><span>The activity of holding the relevant balance sheet item at the reporting date</span><span>At the reporting date when the balance sheet item exists</span></div>
+          <div class="tr cols-13-1"><span>Levies based on transactions</span><span>The activity of undertaking the relevant transaction</span><span>When the transaction occurs — not at a later assessment date</span></div>
+          <div class="tr alt cols-13-1"><span>Annual levies based on prior year activity</span><span>The activity in the prior year that triggered the current year levy</span><span>At the reporting date — the prior year activity is complete</span></div>
+        </div>
+        <div class="callout warn callout--flush">⚠️ The obligating event is ALWAYS the activity that triggers the levy, NOT the passage of time between the activity and the assessment date. This means that if a levy is assessed annually based on prior year activity, the obligating event occurs during the prior year, and the liability must be recognised at the END OF EACH REPORTING DATE during the prior year.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Point-in-Time vs Progressive Recognition</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">Point-in-time recognition — when the obligating event is a single moment</div>
+        <div class="principle">Where the levy is triggered by a SPECIFIC ACTIVITY that occurs at a point in time (e.g. a transaction, crossing a threshold, or holding an asset at a date), the liability is recognised AT THAT POINT. There is no progressive recognition — the full liability is recognised when the activity occurs, even if the levy amount is not determined until a later date.</div>
+      </div>
+      <div class="card cd">
+        <div class="ctitle cd">Progressive recognition — when the obligating event is a continuing activity</div>
+        <div class="principle">Where the levy is triggered by a CONTINUING ACTIVITY (e.g. holding a balance sheet item for the entire reporting period), the liability is recognised PROGRESSIVELY as the activity occurs. For example, a levy on average deposits held during the year would be recognised as deposits are accumulated, not as a single point-in-time event.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>The No Realistic Alternative Trap</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Avoiding the "we could avoid the levy" argument</div>
+        <div class="principle">IAS 37's definition of a present obligation requires that the entity has NO REALISTIC ALTERNATIVE to settling the obligation. For levies, IFRIC 21 makes clear that this test is applied to the ACTIVITY THAT TRIGGERS THE LEVY — not to whether the entity could stop the activity. If the entity HAS engaged in the triggering activity, the levy obligation exists regardless of whether the entity could have avoided it by not engaging in that activity. The "no realistic alternative" test applies to SETTLING the obligation, not to AVOIDING the triggering activity.</div>
+        <div class="callout info">For example, if a bank holds deposits that trigger a banking levy, the bank has no realistic alternative to settling the levy once the deposits exist — even though the bank could theoretically close its deposit business to avoid future levies. The levy obligation is recognised when the deposits exist, not when the levy is paid.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Interim Reporting Consistency</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Applying IFRIC 21 in interim financial statements</div>
+        <div class="principle">IFRIC 21 requires that the obligating event principle be applied CONSISTENTLY across interim and annual reporting. This means that if a levy is triggered by an activity that occurs during an interim period, the liability is recognised IN THAT INTERIM PERIOD — not deferred to the annual reporting date. The entity cannot wait until year-end to recognise a levy that was triggered by an activity that occurred in Q1 or Q2.</div>
+        <div class="elabel">INTERIM REPORTING APPLICATION</div>
+        <div class="dot-list">
+          <span>Levies triggered by interim-period activities are recognised in that interim period</span>
+          <span>The measurement of the levy at interim dates follows the same principles as at year-end</span>
+          <span>If the levy amount depends on year-end data (e.g. annual balance), the interim estimate is updated each period</span>
+        </div>
+        <div class="callout warn callout--flush">⚠️ A common mistake is to recognise levies only at the annual reporting date. IFRIC 21, applied consistently with IAS 34, requires that levies be recognised at each interim reporting date based on the obligating events that have occurred to date.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Worked Example — Threshold-Triggered Levy</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="worked">
+          <div class="wk-title">Example: Banking levy on total assets</div>
+          <div class="wk-body">A banking levy is imposed at £0.01 per £1 of total assets held at year-end. The levy is assessed in the following year based on the prior year's closing balance sheet. The bank's total assets were £5bn at 31 December 20X1 and £5.5bn at 31 December 20X2. The levy rate changed to £0.015 per £1 in 20X3. The levy is payable in March of the following year.</div>
+          <div class="wk-answer"><strong>20X1 year-end:</strong><br>Obligating event: holding £5bn assets at 31 December 20X1<br>Levy liability = £5bn × £0.01 = £50m<br>Recognised in 20X1 financial statements<br><br><strong>20X2 year-end:</strong><br>Obligating event: holding £5.5bn assets at 31 December 20X2<br>Levy liability = £5.5bn × £0.01 = £55m<br>Recognised in 20X2 financial statements<br><br><strong>20X3 year-end:</strong><br>Obligating event: holding £5.5bn assets at 31 December 20X3 (assuming unchanged)<br>Levy liability = £5.5bn × £0.015 = £82.5m<br>Recognised in 20X3 financial statements<br><br><strong>Payment dates:</strong> £50m paid in March 20X2, £55m paid in March 20X3, £82.5m paid in March 20X4.<br><strong>Key point:</strong> The liability is recognised at each year-end based on the assets HELD AT THAT DATE, not when the levy is paid.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Worked Example — Activity-Based Levy</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="worked">
+          <div class="wk-title">Example: Levy on transactions above a threshold</div>
+          <div class="wk-body">A levy of 0.5% is imposed on the value of all property transactions above £1m. The levy is payable within 30 days of each transaction. During Q1 20X1, the company completed three qualifying transactions: £1.5m (January), £2.0m (February), and £1.2m (March).</div>
+          <div class="wk-answer"><strong>January transaction:</strong><br>Obligating event: completion of £1.5m transaction<br>Levy liability = £1.5m × 0.5% = £7,500<br>Recognised in January (Q1 interim period)<br><br><strong>February transaction:</strong><br>Obligating event: completion of £2.0m transaction<br>Levy liability = £2.0m × 0.5% = £10,000<br>Recognised in February (Q1 interim period)<br><br><strong>March transaction:</strong><br>Obligating event: completion of £1.2m transaction<br>Levy liability = £1.2m × 0.5% = £6,000<br>Recognised in March (Q1 interim period)<br><br><strong>Q1 total levy recognised:</strong> £7,500 + £10,000 + £6,000 = £23,500<br><strong>Key point:</strong> Each transaction triggers a SEPARATE obligating event. The levy is recognised transaction-by-transaction as the qualifying activity occurs, not as a lump sum at quarter-end.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">What IFRIC 21 requires</div>
+        <div class="check-list">
+          <span>Description of the levy and the activity that triggers it</span>
+          <span>The amount of the levy recognised during the period</span>
+          <span>The amount of the levy unpaid at the reporting date</span>
+          <span>The obligating event(s) that caused the levy to be recognised</span>
+          <span>Any changes in the levy rate or the activity threshold during the period</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Judgments & Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where judgement matters most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Identifying the obligating event in complex legislation with multiple trigger conditions</span>
+              <span>Determining whether the levy is within IFRIC 21's scope (not an income tax, fine, or penalty)</span>
+              <span>Assessing whether the entity has a realistic alternative to settling the levy</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>The amount of the levy when the rate depends on data not yet available at the reporting date</span>
+              <span>Timing of interim levies when the activity is ongoing</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>IFRIC 21 vs US GAAP</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — IFRIC 21 vs US GAAP</div>
+        <div class="td-table">
+          <div class="th cols-12-1-1"><span>Feature</span><span>IFRIC 21 (IFRS)</span><span>US GAAP</span></div>
+          <div class="tr cols-12-1-1"><span>Obligating event</span><span>The activity described in legislation that triggers payment</span><span>Similar principle — the event that makes payment unavoidable</span></div>
+          <div class="tr alt cols-12-1-1"><span>Recognition timing</span><span>When the triggering activity occurs</span><span>When the triggering activity occurs</span></div>
+          <div class="tr cols-12-1-1"><span>Income taxes excluded</span><span>Explicitly excluded under IAS 12</span><span>Governed by ASC 740 — different framework entirely</span></div>
+          <div class="tr alt cols-12-1-1"><span>Interim reporting</span><span>Applied consistently at each interim date per IAS 34</span><span>ASC 270 governs interim reporting; similar principle applies</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Where every IFRIC 21 event lands</div>
+        <div class="td-table">
+          <div class="th cols-16-1-14"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr cols-16-1-14"><span>Levy liability recognised</span><span><span class="badge bs">SOFP</span> <span class="badge bp">SOPL</span></span><span>Provision recognised under IAS 37; expense in profit or loss</span></div>
+          <div class="tr alt cols-16-1-14"><span>Levy paid</span><span><span class="badge bs">SOFP</span> <span class="badge bp">SOPL</span></span><span>Settlement of liability; cash outflow in financing or operating activities</span></div>
+          <div class="tr cols-16-1-14"><span>Levy rate change</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Change in estimate — accounted for prospectively</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Cross-reference map</div>
+        <div class="td-table">
+          <div class="th cols-08-2"><span>Standard</span><span>Connection</span></div>
+          <div class="tr cols-08-2"><span>IAS 37</span><span>Supplies the underlying recognition and measurement framework IFRIC 21 applies specifically to levies</span></div>
+          <div class="tr alt cols-08-2"><span>IAS 12</span><span>Governs income taxes, explicitly excluded from IFRIC 21's scope</span></div>
+          <div class="tr cols-08-2"><span>IFRIC 6</span><span>The earlier interpretation whose obligating-event reasoning IFRIC 21 generalises to all levies</span></div>
+          <div class="tr alt cols-08-2"><span>IAS 34</span><span>Governs interim reporting, into which IFRIC 21's obligating-event timing is applied consistently</span></div>
+        </div>
+      </div>
+      <div class="card cn">
+        <div class="ctitle cn">Quick-reference glossary</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Obligating event</div>
+          <div class="glossary-def">The activity described in the legislation that triggers payment of the levy — the past event that creates the present obligation under IFRIC 21.</div>
+        </div>
+        <div class="glossary-item" style="border-bottom:none;">
+          <div class="glossary-term">Minimum funding requirement</div>
+          <div class="glossary-def">A statutory or regulatory requirement that an employer maintain a minimum level of assets in a defined benefit plan, potentially restricting access to surplus.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Obligating event", definition: "The activity described in the legislation that triggers payment of the levy — the past event that creates the present obligation under IFRIC 21." },
+      { term: "Levy", definition: "A mandatory payment to government imposed in connection with performing a specified activity, excluding income taxes, fines, and penalties." },
+      { term: "No realistic alternative", definition: "The IAS 37 test for a present obligation — the entity has no realistic alternative to settling the obligation, applied to the settlement rather than the triggering activity." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.IFRIC21} />
+  </section>
+</StandardPageLayout>

@@ -1,0 +1,269 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/ifric/ifric17.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework" },
+        { id: "s2", label: "Scope & Definitions" },
+        { id: "s3", label: "When the Dividend Liability Is Recognised" },
+        { id: "s4", label: "Measuring the Dividend Payable" },
+        { id: "s5", label: "Remeasurement at Each Reporting Date" },
+        { id: "s6", label: "Settlement — The Gain or Loss on Distribution" },
+        { id: "s7", label: "Worked Example — Full Distribution Cycle" },
+        { id: "s8", label: "Choice-of-Alternative Dividends" },
+        { id: "s9", label: "Disclosure" },
+        { id: "s10", label: "Judgments & Estimates" },
+        { id: "s11", label: "IFRIC 17 vs US GAAP" },
+        { id: "s12", label: "Statement Mapping" },
+        { id: "s13", label: "Related Standards" },
+        { id: "s14", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Why a specific interpretation for non-cash dividends was needed</div>
+        <div class="principle">IAS 10 governs when a dividend is recognised as a liability — it becomes a present obligation when the dividend is appropriately authorised and no longer at the discretion of the entity. But IAS 10 said NOTHING about HOW to MEASURE a dividend that is payable NOT in cash but in the form of the entity's OWN EQUITY INSTRUMENTS or OTHER NON-CASH ASSETS. IFRIC 17 closes that gap by specifying the measurement and remeasurement mechanics.</div>
+        <div class="note">Without IFRIC 17, entities could measure non-cash dividends inconsistently — some using historical cost, others using fair value, and still others recognising no gain or loss on distribution at all. This created a material comparability gap.</div>
+      </div>
+      <div class="card cs">
+        <div class="ctitle cs">The Conceptual Framework at work</div>
+        <div class="principle">IFRIC 17 applies the Conceptual Framework's liability recognition criteria to a specific dividend scenario. The dividend becomes a present obligation when authorised; the obligation is settled when the asset is distributed. The MEASUREMENT of the liability (fair value at recognition, remeasured at each reporting date) faithfully represents the economic cost to the entity of fulfilling its obligation to distribute non-cash assets to owners.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope & Definitions</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What IFRIC 17 covers</div>
+        <div class="principle">IFRIC 17 applies to DIVIDENDS that are payable in a form OTHER THAN CASH — specifically, distributions of NON-CASH ASSETS to owners (e.g. property, plant and equipment, investments in subsidiaries, or other non-current assets) and distributions of the entity's OWN EQUITY INSTRUMENTS. The interpretation does NOT apply to distributions that are part of a business combination or restructuring.</div>
+        <div class="elabel">TYPICAL FACT PATTERNS</div>
+        <div class="dot-list">
+          <span>Parent distributing a subsidiary's shares to its own shareholders as a dividend-in-specie</span>
+          <span>Real estate investment trust distributing property assets to unit holders</span>
+          <span>Listed company distributing a subsidiary stake to existing shareholders as a special dividend</span>
+        </div>
+      </div>
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Dividend payable</div>
+          <div class="glossary-def">A present obligation arising from the authorisation of a dividend, measured at the fair value of the non-cash assets to be distributed.</div>
+        </div>
+        <div class="glossary-item" style="border-bottom:none;">
+          <div class="glossary-term">Gain or loss on distribution</div>
+          <div class="glossary-def">The difference between the carrying amount of the distributed asset and the carrying amount of the dividend payable at the date of settlement, recognised in profit or loss.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>When the Dividend Liability Is Recognised</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">The recognition trigger — same as cash dividends</div>
+        <div class="principle">IFRIC 17 confirms that the timing of recognition for a NON-CASH dividend follows the SAME RULE as a cash dividend under IAS 10: the dividend becomes a PRESENT OBLIGATION when it is APPROPRIATELY AUTHORISED and no longer at the discretion of the entity. At that point, a liability is recognised for the FAIR VALUE of the non-cash assets to be distributed. The recognition timing is NOT affected by the form of the dividend.</div>
+        <div class="callout warn callout--flush">⚠️ The dividend liability is recognised at the FAIR VALUE of the non-cash asset at the date the dividend is authorised — not at the date of distribution. Any change in fair value between authorisation and distribution affects the remeasurement, not the initial recognition.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Measuring the Dividend Payable</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Fair value at the date of authorisation</div>
+        <div class="principle">The dividend payable is measured at the FAIR VALUE of the non-cash assets to be distributed, CALCULATED AT THE DATE THE DIVIDEND IS AUTHORISED. If the distributed assets are measured at FAIR VALUE in the entity's balance sheet (e.g. under IFRS 13), the carrying amount is used. If they are measured at COST or AMORTISED COST, a fresh fair value measurement is required.</div>
+        <div class="formula-box">
+          <div class="f-label">DIVIDEND PAYABLE MEASUREMENT</div>
+          <div class="f-eq">Dividend payable = Fair value of non-cash assets at the date of authorisation</div>
+        </div>
+      </div>
+      <div class="card cw">
+        <div class="ctitle cw">When fair value cannot be reliably measured</div>
+        <div class="principle">If the fair value of the non-cash asset CANNOT be RELIABLY MEASURED — for example, an unquoted subsidiary with no observable market price — the entity must estimate fair value using VALUATION TECHNIQUES (discounted cash flow, comparable company multiples, etc.). If fair value cannot be reliably measured even with valuation techniques, the dividend is measured at the CARRYING AMOUNT of the assets.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Remeasurement at Each Reporting Date</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">The remeasurement obligation</div>
+        <div class="principle">Between the date of authorisation and the date of distribution, the dividend payable must be REMEASURED AT EACH REPORTING DATE. Any change in the fair value of the non-cash asset between reporting dates is recognised in PROFIT OR LOSS. This ensures the liability faithfully represents the entity's obligation at each balance sheet date.</div>
+        <div class="elabel">REMEASUREMENT MECHANICS</div>
+        <div class="dot-list">
+          <span>If fair value increases: debit the dividend payable, credit profit or loss</span>
+          <span>If fair value decreases: debit profit or loss, credit the dividend payable</span>
+          <span>The remeasurement continues until the asset is distributed to owners</span>
+        </div>
+        <div class="callout info">The remeasurement requirement means that non-cash dividends create PROFIT OR LOSS VOLATILITY between the authorisation and distribution dates — an important consideration for entities planning large in-specie distributions.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Settlement — The Gain or Loss on Distribution</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">The final gain or loss on distribution</div>
+        <div class="principle">When the non-cash asset is DISTRIBUTED to owners, the carrying amount of the asset is REMOVED from the balance sheet, and the dividend payable liability is REMOVED at its REMEASURED carrying amount. The DIFFERENCE between the two amounts is recognised as a GAIN OR LOSS ON DISTRIBUTION in profit or loss.</div>
+        <div class="formula-box">
+          <div class="f-label">GAIN/LOSS ON DISTRIBUTION</div>
+          <div class="f-eq">Gain/loss = Carrying amount of non-cash asset - Carrying amount of dividend payable (at settlement date)</div>
+        </div>
+        <div class="elabel">KEY PRINCIPLES</div>
+        <div class="dot-list">
+          <span>The gain or loss is ALWAYS recognised in profit or loss — never in other comprehensive income</span>
+          <span>The gain or loss represents the difference between the "book value" of the distribution obligation and the actual assets given up</span>
+          <span>A gain means the distributed asset's value fell between authorisation and distribution; a loss means it rose</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Worked Example — Full Distribution Cycle</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="worked">
+          <div class="wk-title">Example: Distribution of a subsidiary stake</div>
+          <div class="wk-body">A parent company owns 80% of a subsidiary with a carrying amount of £80m. On 1 March, the board authorises a dividend-in-specie of the subsidiary stake to shareholders. The fair value of the subsidiary on 1 March is £120m. The distribution occurs on 30 June. Fair value at 30 June is £110m.</div>
+          <div class="wk-answer"><strong>1 March (authorisation):</strong><br>Dividend payable recognised at fair value: £120m<br>Deferred gain recognised in equity: £120m - £80m = £40m (deferred gain, not immediately in P&L)<br><br><strong>30 June (reporting date):</strong><br>Remeasure dividend payable to fair value: £110m<br>Recognise remeasurement gain in P&L: £120m - £110m = £10m<br><br><strong>30 June (settlement):</strong><br>Carrying amount of subsidiary: £80m<br>Dividend payable (remeasured): £110m<br>Gain on distribution = £80m - £110m = -£30m (loss recognised in P&L)<br><br><strong>Total P&L impact:</strong> £10m remeasurement gain + £30m distribution loss = £20m net loss</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Choice-of-Alternative Dividends</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">When shareholders choose between cash and non-cash</div>
+        <div class="principle">If shareholders have a CHOICE between receiving a CASH dividend and receiving a NON-CASH dividend (e.g. shares in a subsidiary), IFRIC 17 requires the entity to measure the dividend payable at the FAIR VALUE OF THE CASH ALTERNATIVE. The entity does NOT get to choose which fair value to use — the cash alternative's fair value governs, because that is the amount the entity is effectively giving up.</div>
+      </div>
+      <div class="card cw">
+        <div class="ctitle cw">When the cash alternative is unavailable</div>
+        <div class="principle">If shareholders do NOT have a cash alternative (the dividend is ONLY payable in non-cash assets), the fair value of the non-cash assets themselves is used. This is a practical recognition that the entity cannot force a cash payment, so the true economic cost is the fair value of the distributed assets.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">What IFRIC 17 requires</div>
+        <div class="check-list">
+          <span>Description of the non-cash asset(s) distributed or to be distributed</span>
+          <span>The carrying amount of the non-cash asset at the date of distribution</span>
+          <span>The fair value of the dividend payable at the date of authorisation and at each reporting date</span>
+          <span>The gain or loss recognised on distribution, and any remeasurement gains or losses recognised between reporting dates</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Judgments & Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where judgement matters most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Whether the distributed asset's fair value can be reliably measured, or whether the carrying amount must be used</span>
+              <span>Whether shareholders have a genuine cash alternative choice (affecting the measurement basis)</span>
+              <span>Whether the distribution is within IFRIC 17's scope (not a business combination or restructuring)</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>Fair value of unquoted subsidiaries or complex assets at the authorisation date</span>
+              <span>Fair value changes between reporting dates affecting remeasurement</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>IFRIC 17 vs US GAAP</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — IFRIC 17 vs ASC 505-30 (Treasury Stock)</div>
+        <div class="td-table">
+          <div class="th cols-12-1-1"><span>Feature</span><span>IFRIC 17 (IFRS)</span><span>US GAAP (ASC 505-30)</span></div>
+          <div class="tr cols-12-1-1"><span>Liability recognition</span><span>At fair value at authorisation date</span><span>At fair value at declaration date</span></div>
+          <div class="tr alt cols-12-1-1"><span>Remeasurement</span><span>Remeasured at each reporting date, P&L impact</span><span>Remeasured at each reporting date, P&L impact</span></div>
+          <div class="tr cols-12-1-1"><span>Gain/loss on distribution</span><span>Recognised in profit or loss</span><span>Recognised in profit or loss</span></div>
+          <div class="tr alt cols-12-1-1"><span>Choice-of-alternative</span><span>Cash alternative fair value governs if choice exists</span><span>Similar principle applies</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Where every IFRIC 17 event lands</div>
+        <div class="td-table">
+          <div class="th cols-16-1-14"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr cols-16-1-14"><span>Dividend payable recognised at authorisation</span><span><span class="badge bs">SOFP</span></span><span>Liability at fair value of non-cash asset</span></div>
+          <div class="tr alt cols-16-1-14"><span>Remeasurement between reporting dates</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Gain or loss in profit or loss; liability adjusted</span></div>
+          <div class="tr cols-16-1-14"><span>Asset removed from balance sheet</span><span><span class="badge bs">SOFP</span></span><span>Non-cash asset derecognised at carrying amount</span></div>
+          <div class="tr alt cols-16-1-14"><span>Gain or loss on distribution</span><span><span class="badge bp">SOPL</span></span><span>Difference between asset carrying amount and final dividend payable</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Cross-reference map</div>
+        <div class="td-table">
+          <div class="th cols-08-2"><span>Standard</span><span>Connection</span></div>
+          <div class="tr cols-08-2"><span>IAS 10</span><span>Governs when a dividend becomes a present obligation — the same timing applies to non-cash dividends under IFRIC 17</span></div>
+          <div class="tr alt cols-08-2"><span>IAS 37</span><span>Supplies the general liability recognition principle applied to the dividend payable</span></div>
+          <div class="tr cols-08-2"><span>IFRS 5</span><span>May apply to the distributed asset beforehand if it meets held-for-distribution criteria</span></div>
+          <div class="tr alt cols-08-2"><span>IFRS 3</span><span>Supplies the definition of a business relevant to determining the nature of the non-cash asset distributed</span></div>
+        </div>
+      </div>
+      <div class="card cn">
+        <div class="ctitle cn">Quick-reference glossary</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Dividend payable</div>
+          <div class="glossary-def">A present obligation arising from the authorisation of a dividend, measured at the fair value of the non-cash assets to be distributed.</div>
+        </div>
+        <div class="glossary-item" style="border-bottom:none;">
+          <div class="glossary-term">Gain or loss on distribution</div>
+          <div class="glossary-def">The difference between the carrying amount of the distributed asset and the carrying amount of the dividend payable at the date of settlement, recognised in profit or loss.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Dividend payable", definition: "A present obligation arising from the authorisation of a dividend, measured at the fair value of the non-cash assets to be distributed." },
+      { term: "Gain or loss on distribution", definition: "The difference between the carrying amount of the distributed asset and the carrying amount of the dividend payable at the date of settlement, recognised in profit or loss." },
+      { term: "Non-cash dividend", definition: "A dividend payable in the form of non-cash assets or the entity's own equity instruments, rather than cash — the subject matter of IFRIC 17." },
+      { term: "Remeasurement", definition: "The adjustment of the dividend payable at each reporting date between authorisation and distribution, reflecting changes in the fair value of the non-cash assets to be distributed." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.IFRIC17} />
+  </section>
+</StandardPageLayout>
