@@ -148,9 +148,25 @@ export const FRAMEWORK_CONFIG: Record<string, FrameworkConfig> = {
     faIcon: "scroll",
     status: "active",
   },
+  sic: {
+    id: "sic",
+    code: "SIC",
+    displayName: "SIC",
+    fullName: "SIC Interpretations",
+    description:
+      "SIC Interpretations were issued by the Standing Interpretations Committee and address specific accounting issues not explicitly covered by IAS Standards.",
+    route: "/sic",
+    primary: "#0369A1",
+    light: "#CFFAFE",
+    soft: "#ECFEFF",
+    dark: "#155E75",
+    lucideIcon: "ScrollText",
+    faIcon: "scroll",
+    status: "active",
+  },
 };
 
-export const FRAMEWORK_ORDER = ["ias", "ifrs", "indas", "ifrssustainability", "ifrspublications", "ifrsforsmes", "ifric"] as const;
+export const FRAMEWORK_ORDER = ["ias", "ifrs", "indas", "ifrssustainability", "ifrspublications", "ifrsforsmes", "ifric", "sic"] as const;
 
 export type FrameworkId = keyof typeof FRAMEWORK_CONFIG;
 
