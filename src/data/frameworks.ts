@@ -84,9 +84,57 @@ export const FRAMEWORK_CONFIG: Record<string, FrameworkConfig> = {
     faIcon: "flag",
     status: "active",
   },
+  ifrssustainability: {
+    id: "ifrssustainability",
+    code: "IFRS Sustainability",
+    displayName: "IFRS Sustainability",
+    fullName: "IFRS Sustainability Disclosure Standards",
+    description:
+      "IFRS Sustainability Disclosure Standards are issued by the International Sustainability Standards Board (ISSB) to provide a global baseline for sustainability-related financial disclosures.",
+    route: "/ifrssustainability",
+    primary: "#059669",
+    light: "#D1FAE5",
+    soft: "#ECFDF5",
+    dark: "#065F46",
+    lucideIcon: "Leaf",
+    faIcon: "leaf",
+    status: "active",
+  },
+  ifrspublications: {
+    id: "ifrspublications",
+    code: "IFRS Publications",
+    displayName: "IFRS Publications",
+    fullName: "IFRS Foundation Publications",
+    description:
+      "IFRS Foundation publications include the Conceptual Framework, Preface to IFRS Standards, IFRS Practice Statements, and the IFRS for SMEs Standard.",
+    route: "/ifrspublications",
+    primary: "#7C3AED",
+    light: "#EDE9FE",
+    soft: "#F5F3FF",
+    dark: "#6D28D9",
+    lucideIcon: "BookOpen",
+    faIcon: "book-open",
+    status: "active",
+  },
+  ifrsforsmes: {
+    id: "ifrsforsmes",
+    code: "IFRS for SMEs",
+    displayName: "IFRS for SMEs",
+    fullName: "IFRS for Small and Medium-sized Entities",
+    description:
+      "The IFRS for SMEs Standard is a self-contained, simplified accounting standard developed by the IASB for entities without public accountability.",
+    route: "/ifrsforsmes",
+    primary: "#0891B2",
+    light: "#CFFAFE",
+    soft: "#ECFEFF",
+    dark: "#155E75",
+    lucideIcon: "Building2",
+    faIcon: "building",
+    status: "active",
+  },
 };
 
-export const FRAMEWORK_ORDER = ["ias", "ifrs", "indas"] as const;
+export const FRAMEWORK_ORDER = ["ias", "ifrs", "indas", "ifrssustainability", "ifrspublications", "ifrsforsmes"] as const;
 
 export type FrameworkId = keyof typeof FRAMEWORK_CONFIG;
 

@@ -29,7 +29,29 @@ const allIAS = [
 ];
 
 const standardsList =
-  frameworkConfig.code === "IAS" ? allIAS : standards[frameworkConfig.code === "Ind AS" ? "IndAS" : frameworkConfig.code] ?? [];
+  frameworkConfig.code === "IAS"
+    ? allIAS
+    : frameworkConfig.code === "Ind AS"
+      ? [
+          ...standards.IndAS.filter((s) => !s.status),
+          ...standards.IndAS.filter((s) => s.status),
+        ]
+      : frameworkConfig.code === "IFRS Sustainability"
+        ? [
+            ...standards.IFRSSustainability.filter((s) => !s.status),
+            ...standards.IFRSSustainability.filter((s) => s.status),
+          ]
+        : frameworkConfig.code === "IFRS Publications"
+          ? [
+              ...standards.IFRSPublications.filter((s) => !s.status),
+              ...standards.IFRSPublications.filter((s) => s.status),
+            ]
+          : frameworkConfig.code === "IFRS for SMEs"
+            ? [
+                ...standards.IFRSForSMEs.filter((s) => !s.status),
+                ...standards.IFRSForSMEs.filter((s) => s.status),
+              ]
+            : standards[frameworkConfig.code] ?? [];
 
 const currentIndex = standardsList.findIndex((standard) => standard.code === current);
 const previous =

@@ -21,6 +21,8 @@ import {
   BookText,
   Clock,
   ChevronRight,
+  Leaf,
+  Building2,
 } from "@lucide/astro";
 import { FRAMEWORK_CONFIG, FRAMEWORK_ORDER } from "../data/frameworks";
 
@@ -28,6 +30,9 @@ const lucideIconMap: Record<string, any> = {
   BookText,
   LibraryBig,
   Files,
+  Leaf,
+  BookOpen,
+  Building2,
 };
 
 const currentPath = Astro.url.pathname;
@@ -64,7 +69,14 @@ const currentPath = Astro.url.pathname;
     {
       FRAMEWORK_ORDER.map((id) => {
         const framework = FRAMEWORK_CONFIG[id];
-        const sectionStandards = standards[framework.code.toUpperCase() === "IND AS" ? "IndAS" : framework.code.toUpperCase()];
+        const codeToKey = (code: string) => {
+          if (code === "Ind AS") return "IndAS";
+          if (code === "IFRS Sustainability") return "IFRSSustainability";
+          if (code === "IFRS Publications") return "IFRSPublications";
+          if (code === "IFRS for SMEs") return "IFRSForSMEs";
+          return code;
+        };
+        const sectionStandards = standards[codeToKey(framework.code)] ?? [];
         const IconComponent = lucideIconMap[framework.lucideIcon];
 
         return (
