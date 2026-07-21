@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASC 310 — Receivables | Extended Reference</title>
+<style>
+  :root { --color-background-secondary:#f9fafb;--color-background-tertiary:#f3f4f6;--color-background-info:#eff6ff;--color-background-success:#f0fdf4;--color-background-warning:#fffbeb;--color-background-danger:#fff1f2;--color-border-secondary:#e5e7eb;--color-border-tertiary:#e5e7eb;--color-border-info:#3b82f6;--color-border-success:#22c55e;--color-border-warning:#f59e0b;--color-border-danger:#ef4444;--color-text-primary:#111827;--color-text-secondary:#374151;--color-text-tertiary:#9ca3af;--color-text-info:#2563eb;--color-text-success:#16a34a;--color-text-warning:#b45309;--color-text-danger:#dc2626;--border-radius-lg:10px;--border-radius-md:8px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#fff;color:#111827;margin:0;padding:0;}
+  body{padding:20px;max-width:1180px;margin:0 auto;}*{box-sizing:border-box;}.wrap{padding:1rem 0 .5rem;}
+  .hub{display:flex;justify-content:center;margin-bottom:8px;}.hub-box{padding:12px 28px;background:var(--color-background-secondary);border:1.5px solid var(--color-border-secondary);border-radius:var(--border-radius-lg);text-align:center;}
+  .hub-title{font-size:17px;font-weight:600;color:var(--color-text-primary);}.hub-sub{font-size:11px;color:var(--color-text-tertiary);margin-top:3px;}
+  .toc{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin:14px 0 26px;}.toc a{font-size:10.5px;font-weight:500;padding:4px 11px;border-radius:14px;background:var(--color-background-tertiary);color:var(--color-text-secondary);text-decoration:none;border:1px solid var(--color-border-tertiary);}
+  .section-header{display:flex;align-items:center;gap:8px;margin:30px 0 12px;}.section-header .num{font-size:11px;font-weight:700;color:#fff;background:var(--color-text-info);width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .section-header h2{font-size:14px;font-weight:600;color:var(--color-text-primary);margin:0;}.section-header .line{flex:1;height:1px;background:var(--color-border-tertiary);}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start;}.span2{grid-column:span 2;}
+  .card{border-radius:var(--border-radius-lg);border:1px solid var(--color-border-tertiary);padding:13px 14px;background:var(--color-background-secondary);}
+  .card.ci{border-left:3px solid var(--color-border-info);}.card.cs{border-left:3px solid var(--color-border-success);}.card.cw{border-left:3px solid var(--color-border-warning);}.card.cd{border-left:3px solid var(--color-border-danger);}.card.cn{border-left:3px solid var(--color-border-secondary);}
+  .ctitle{font-size:13px;font-weight:500;margin-bottom:7px;}.ctitle.ci{color:var(--color-text-info);}.ctitle.cs{color:var(--color-text-success);}.ctitle.cw{color:var(--color-text-warning);}.ctitle.cd{color:var(--color-text-danger);}.ctitle.cn{color:var(--color-text-primary);}
+  .principle{font-size:11px;color:var(--color-text-secondary);margin-bottom:9px;line-height:1.55;padding:6px 8px;background:var(--color-background-tertiary);border-radius:6px;}
+  .elabel{font-size:10px;font-weight:500;color:var(--color-text-tertiary);margin-bottom:5px;letter-spacing:.03em;}
+  .note{font-size:10px;color:var(--color-text-tertiary);font-style:italic;line-height:1.5;margin-top:4px;}
+  .callout{font-size:11px;line-height:1.5;padding:6px 9px;border-radius:6px;margin-bottom:8px;}
+  .callout.info{background:var(--color-background-info);color:var(--color-text-info);border:1px solid var(--color-border-info);}
+  .callout.warn{background:var(--color-background-warning);color:var(--color-text-warning);border:1px solid var(--color-border-warning);}
+  .callout.danger{background:var(--color-background-danger);color:var(--color-text-danger);border:1px solid var(--color-border-danger);}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start;}
+  .dot-list span,.check-list span,.cross-list span{display:block;padding-left:14px;position:relative;font-size:11px;color:var(--color-text-secondary);line-height:1.75;}
+  .dot-list span::before{content:"·";position:absolute;left:1px;color:var(--color-text-tertiary);}
+  .check-list span::before{content:"✓";position:absolute;left:0;color:var(--color-text-success);font-size:10px;top:2px;font-weight:700;}
+  .cross-list span::before{content:"✕";position:absolute;left:0;color:var(--color-text-danger);font-size:10px;top:2px;}
+  .formula-box{background:var(--color-background-tertiary);border:1px solid var(--color-border-secondary);border-radius:8px;padding:8px 12px;margin-bottom:8px;font-size:11px;line-height:1.8;}.formula-box .f-label{font-size:10px;font-weight:500;color:var(--color-text-tertiary);margin-bottom:4px;}.formula-box .f-eq{font-weight:500;color:var(--color-text-primary);}
+  .td-table{border:1px solid var(--color-border-tertiary);border-radius:8px;overflow:hidden;font-size:10px;margin-bottom:8px;}
+  .td-table .th{display:grid;background:var(--color-background-tertiary);padding:5px 8px;font-weight:500;color:var(--color-text-secondary);}
+  .td-table .tr{display:grid;padding:4px 8px;border-top:1px solid var(--color-border-tertiary);color:var(--color-text-secondary);}.td-table .tr.alt{background:var(--color-background-tertiary);}
+  .worked{border:1px solid var(--color-border-info);border-radius:8px;padding:10px 12px;background:var(--color-background-info);margin-bottom:9px;}
+  .worked .wk-title{font-size:11px;font-weight:600;color:var(--color-text-info);margin-bottom:5px;}.worked .wk-body{font-size:11px;color:var(--color-text-secondary);line-height:1.6;}
+  .worked .wk-answer{margin-top:6px;padding-top:6px;border-top:1px dashed var(--color-border-info);font-size:11px;color:var(--color-text-primary);}
+  .glossary-item{padding:7px 0;border-bottom:1px solid var(--color-border-tertiary);}.glossary-term{font-size:11.5px;font-weight:600;color:var(--color-text-primary);}.glossary-def{font-size:11px;color:var(--color-text-secondary);line-height:1.5;margin-top:2px;}
+  .legend{margin-top:20px;padding:12px 16px;background:var(--color-background-secondary);border:1px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);}
+  .lrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:11px;color:var(--color-text-secondary);margin-top:4px;}.ltitle{font-size:11px;font-weight:500;color:var(--color-text-primary);}
+  .badge{font-size:9px;font-weight:500;padding:1px 5px;border-radius:4px;}.bs{background:var(--color-background-info);color:var(--color-text-info);}.bp{background:var(--color-background-danger);color:var(--color-text-danger);}.bo{background:var(--color-background-success);color:var(--color-text-success);}.be{background:var(--color-background-warning);color:var(--color-text-warning);}.bc{background:#ede9fe;color:#6d28d9;}
+  .footer-note{margin-top:24px;padding:12px 16px;background:var(--color-background-tertiary);border-radius:var(--border-radius-md);font-size:10.5px;color:var(--color-text-tertiary);text-align:center;}
+  @media (max-width:640px){.grid,.two-col{grid-template-columns:1fr;}.span2{grid-column:span 1;}}
+</style></head>
+<body><div class="wrap">
+
+<div class="hub"><div class="hub-box"><div class="hub-title">ASC 310 — Receivables</div><div class="hub-sub">Extended reference poster · US GAAP · Subtopics: 310-10 Overall, 310-20 Nonrefundable Fees, 310-30 PCD Assets, 310-40 Troubled Debt Restructurings · USD examples</div></div></div>
+
+<div class="toc">
+<a href="#s1">1. Conceptual Framework Linkage</a><a href="#s2">2. Scope &amp; Applicability</a><a href="#s3">3. Initial Recognition &amp; Measurement</a>
+<a href="#s4">4. Nonrefundable Fees and Costs (310-20)</a><a href="#s5">5. Allowance for Credit Losses — Cross-Reference to CECL (ASC 326)</a>
+<a href="#s6">6. Purchased Financial Assets with Credit Deterioration (PCD)</a><a href="#s7">7. Troubled Debt Restructurings — the ASU 2022-02 Simplification</a>
+<a href="#s8">8. Worked Example — Nonrefundable Fee Deferral</a><a href="#s9">9. Worked Example — Basic Receivable Recognition</a>
+<a href="#s10">10. Disclosure Requirements</a><a href="#s11">11. Critical Judgments &amp; Estimates</a>
+<a href="#s12">12. ASC 310/326 vs IFRS 9 — CECL vs the Three-Stage ECL Model</a><a href="#s13">13. Statement Mapping</a><a href="#s14">14. Related Topics</a><a href="#s15">15. Glossary</a>
+</div>
+
+<div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card ci"><div class="ctitle ci">A right to future cash, carrying genuine collection risk</div><div class="principle">A receivable is a contractual right to receive cash or another financial asset — meeting the Conceptual Framework's asset definition, but carrying real UNCERTAINTY about full collection. ASC 310 governs how receivables are initially recognised, and works alongside ASC 326 (credit losses) to ensure the CARRYING AMOUNT faithfully reflects the amount genuinely expected to be collected, not simply the contractual face amount.</div></div>
+<div class="card cs"><div class="ctitle cs">One of the most consequential post-financial-crisis reforms</div><div class="principle">The credit loss measurement model governing receivables was FUNDAMENTALLY overhauled by ASU 2016-13, introducing the CURRENT EXPECTED CREDIT LOSS (CECL) model — a direct regulatory response to concerns that the pre-2016 "incurred loss" model recognised credit losses too LATE, only after a loss event had already occurred. This makes the credit loss estimation methodology (Section 5, elaborated fully in the ASC 326 poster) one of the most significant differences between US GAAP and IFRS in the entire Codification.</div>
+</div>
+</div>
+
+<div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cw span2"><div class="ctitle cw">Trade and financing receivables</div><div class="principle">ASC 310 applies to receivables generally — including TRADE receivables (from ordinary sale of goods/services) and FINANCING receivables (loans, notes receivable, and similar financing arrangements) — for all entities, though its practical significance is greatest for financial institutions and entities extending significant trade credit.</div>
+</div>
+</div>
+
+<div class="section-header" id="s3"><span class="num">3</span><h2>Initial Recognition &amp; Measurement</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">Face amount, adjusted for the time value of money where significant</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Receivables are initially recognised at their FACE (contractual) amount — for most trade receivables with short settlement terms, no discounting is required. For LONGER-term receivables where a significant financing component exists, the receivable is measured at the PRESENT VALUE of expected future cash flows, broadly consistent with how IFRS 15 requires an entity to adjust the transaction price for a significant financing component.</div>
+</div>
+</div>
+
+<div class="section-header" id="s4"><span class="num">4</span><h2>Nonrefundable Fees and Costs (310-20)</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cw span2"><div class="ctitle cw">Deferred and recognised as a yield adjustment</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">NONREFUNDABLE loan origination FEES received, and direct loan origination COSTS incurred, are DEFERRED and recognised over the life of the related loan as an adjustment to the loan's effective YIELD (using the effective interest method) — NOT recognised immediately in income. This produces a result functionally similar to how IFRS 9 incorporates transaction costs and fees directly into the EFFECTIVE INTEREST RATE calculation for financial assets measured at amortised cost, even though the two frameworks arrive at this outcome through separately drafted guidance.</div>
+</div>
+</div>
+
+<div class="section-header" id="s5"><span class="num">5</span><h2>Allowance for Credit Losses — Cross-Reference to CECL (ASC 326)</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">Detailed CECL mechanics live in ASC 326, not here</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Since ASU 2016-13, the DETAILED measurement of expected credit losses on receivables is governed by <strong>ASC 326 (Financial Instruments—Credit Losses)</strong> rather than ASC 310 itself — ASC 310 retains general receivable recognition/classification guidance, while ASC 326 supplies the CECL methodology. The headline conceptual point: CECL requires recognising a LIFETIME expected credit loss allowance at ORIGINATION or ACQUISITION of a receivable, regardless of whether credit quality has since deteriorated — a fundamentally more forward-looking, "day-one" full-lifetime-loss approach than the staged model IFRS 9 uses (elaborated fully in Section 12).</div>
+</div>
+</div>
+
+<div class="section-header" id="s6"><span class="num">6</span><h2>Purchased Financial Assets with Credit Deterioration (PCD)</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cs span2"><div class="ctitle cs">A specific category for acquired, already-deteriorated assets</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Loans and debt securities ACQUIRED with evidence of MORE-THAN-INSIGNIFICANT credit deterioration since origination — "PCD" assets — receive specific treatment: the initial allowance for expected credit losses is added DIRECTLY to the purchase price to establish the asset's initial amortised cost basis (rather than being recognised as a day-one expense), reflecting that the discount paid for the asset already substantially factored in the expected credit deterioration.</div>
+</div>
+</div>
+
+<div class="section-header" id="s7"><span class="num">7</span><h2>Troubled Debt Restructurings — the ASU 2022-02 Simplification</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cw span2"><div class="ctitle cw">A genuinely recent simplification</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Historically, ASC 310-40 provided specific recognition and measurement guidance for "troubled debt restructurings" (TDRs) — concessions granted to a borrower experiencing financial difficulty. <strong>ASU 2022-02 ELIMINATED the separate TDR recognition and measurement guidance</strong> for entities that have adopted CECL, on the basis that CECL's forward-looking, lifetime-loss allowance already captures the economics a separate TDR model previously existed to address. In its place, ASU 2022-02 introduced ENHANCED DISCLOSURE requirements specifically for loan modifications made to borrowers experiencing financial difficulty — a genuinely recent (2022) shift in US practice.</div>
+</div>
+</div>
+
+<div class="section-header" id="s8"><span class="num">8</span><h2>Worked Example — Nonrefundable Fee Deferral</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cw span2"><div class="ctitle cw">Spreading an origination fee over the loan term</div>
+<div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: A $50,000 loan origination fee on a 5-year loan</div><div class="wk-body">A lender originates a $2,000,000, 5-year loan and receives a $50,000 nonrefundable origination fee, while incurring $10,000 of direct origination costs.</div><div class="wk-answer">The NET $40,000 ($50,000 fee − $10,000 costs) is DEFERRED and recognised over the 5-year loan term as an adjustment to the effective yield (typically using the effective interest method), rather than recognised immediately as fee income — increasing the loan's effective interest rate above its stated contractual rate.</div></div>
+</div>
+</div>
+
+<div class="section-header" id="s9"><span class="num">9</span><h2>Worked Example — Basic Receivable Recognition</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card ci span2"><div class="ctitle ci">Recognising a trade receivable and its allowance</div>
+<div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: A trade sale on credit</div><div class="wk-body">An entity sells goods for $500,000 on 60-day credit terms. Applying CECL, the entity estimates a lifetime expected credit loss allowance of $8,000 based on historical loss rates, current conditions, and reasonable forecasts.</div><div class="wk-answer"><strong>Entry:</strong> Debit Accounts receivable $500,000 / Credit Revenue $500,000 (per ASC 606). Debit Credit loss expense $8,000 / Credit Allowance for credit losses $8,000 — recognised IMMEDIATELY at origination, reflecting the full LIFETIME expected loss, consistent with CECL's day-one approach.</div></div>
+</div>
+</div>
+
+<div class="section-header" id="s10"><span class="num">10</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">What ASC 310 requires</div><div class="check-list"><span>Nature and terms of receivable categories, including significant concentrations of credit risk</span><span>Nonrefundable fee and cost amortisation policy</span><span>Enhanced disclosure of loan modifications to borrowers experiencing financial difficulty, per ASU 2022-02</span><span>Nature of PCD assets acquired during the period, including the purchase price allocation between the asset and its initial allowance</span></div>
+</div>
+</div>
+
+<div class="section-header" id="s11"><span class="num">11</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+<div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Whether a purchased financial asset qualifies as PCD (more-than-insignificant credit deterioration since origination)</span><span>Whether a loan modification is made to a borrower experiencing financial difficulty, triggering ASU 2022-02 disclosure</span></div></div>
+<div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Lifetime expected credit losses under CECL, incorporating historical experience, current conditions, and reasonable and supportable forecasts</span><span>Effective yield adjustments for deferred nonrefundable fees and costs</span></div></div></div>
+</div>
+</div>
+
+<div class="section-header" id="s12"><span class="num">12</span><h2>ASC 310/326 vs IFRS 9 — CECL vs the Three-Stage ECL Model</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card ci span2"><div class="ctitle ci">Comparison — CECL vs IFRS 9's expected credit loss model</div>
+<div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">US GAAP — CECL (ASC 326)</span><span style="color:var(--color-text-info);">IFRS 9 — Three-Stage ECL Model</span></div>
+<div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Initial (day-one) allowance</span><span>FULL LIFETIME expected credit losses, recognised immediately at origination/acquisition</span><span>Only 12-MONTH expected credit losses at initial recognition (Stage 1) — a smaller initial allowance</span></div>
+<div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Staging concept</span><span>NO staging — a single measurement basis (lifetime ECL) applies throughout the asset's life</span><span>THREE stages: Stage 1 (12-month ECL, performing), Stage 2 (lifetime ECL, significant credit deterioration), Stage 3 (lifetime ECL, credit-impaired)</span></div>
+<div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Trigger for moving to lifetime ECL</span><span>Not applicable — always lifetime from day one</span><span>A SIGNIFICANT INCREASE in credit risk since initial recognition moves an asset from Stage 1 to Stage 2</span></div>
+<div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Overall day-one earnings impact</span><span>LARGER immediate expense at origination (full lifetime loss upfront)</span><span>SMALLER immediate expense at origination (only 12-month loss upfront), with lifetime loss recognised only later if credit quality deteriorates</span></div>
+</div>
+<div class="callout warn" style="margin-bottom:0;">⚠️ This is widely regarded as THE single largest measurement divergence between US GAAP and IFRS in financial instruments accounting today — CECL's simpler, single-basis, always-lifetime approach trades away IFRS 9's staging complexity, but produces materially LARGER day-one credit loss expense recognition for newly originated performing loans and receivables.</div>
+</div>
+</div>
+
+<div class="section-header" id="s13"><span class="num">13</span><h2>Statement Mapping</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cs span2"><div class="ctitle cs">Where every ASC 310 event lands</div>
+<div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+<div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Initial recognition of a receivable</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>At face amount (or present value if significant financing component)</span></div>
+<div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Day-one CECL allowance</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Full lifetime expected loss recognised immediately as an expense</span></div>
+<div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Nonrefundable fee/cost amortisation</span><span><span class="badge bp">IS</span></span><span>Recognised over the loan term as a yield adjustment</span></div>
+<div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>PCD asset acquisition</span><span><span class="badge bs">BS</span></span><span>Initial allowance added to the purchase price, not expensed day one</span></div>
+</div>
+</div>
+</div>
+
+<div class="section-header" id="s14"><span class="num">14</span><h2>Related Topics</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd"><div class="ctitle cd">Cross-reference map</div>
+<div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+<div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 326</span><span>Supplies the detailed CECL expected credit loss measurement methodology this Topic cross-references</span></div>
+<div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 606</span><span>Governs the underlying revenue recognition that gives rise to most trade receivables</span></div>
+<div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 825</span><span>Financial Instruments — supplies broader classification and fair value option guidance intersecting with receivables held for sale</span></div>
+</div>
+</div>
+<div class="card cn"><div class="ctitle cn">Quick-reference glossary preview</div>
+<div class="glossary-item"><div class="glossary-term">CECL (Current Expected Credit Loss)</div><div class="glossary-def">The post-2016 US GAAP credit loss model requiring immediate recognition of lifetime expected credit losses at origination or acquisition of a financial asset.</div></div>
+<div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">PCD asset</div><div class="glossary-def">A purchased financial asset with more-than-insignificant credit deterioration since origination, receiving specific initial measurement treatment.</div></div>
+</div>
+</div>
+
+<div class="section-header" id="s15"><span class="num">15</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cn span2">
+<div class="glossary-item"><div class="glossary-term">Troubled debt restructuring (TDR)</div><div class="glossary-def">A concession granted by a creditor to a debtor experiencing financial difficulty — recognition/measurement guidance eliminated for CECL adopters by ASU 2022-02, replaced by enhanced disclosure.</div></div>
+<div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Nonrefundable loan origination fee</div><div class="glossary-def">A fee charged to a borrower at loan origination that the lender does not have to return, deferred and recognised as a yield adjustment over the loan's life.</div></div>
+</div>
+</div>
+
+<div class="legend"><div class="ltitle">Financial statement key (US GAAP native terminology)</div><div class="lrow"><span class="badge bs">BS</span> Balance Sheet <span class="badge bp">IS</span> Income Statement <span class="badge bo">OCI</span> Other Comprehensive Income <span class="badge be">SE</span> Statement of Shareholders' Equity <span class="badge bc">SCF</span> Statement of Cash Flows</div></div>
+
+<div class="footer-note">ASC 310 — Receivables · Extended Reference Poster · Self-contained, no internet connection required</div>
+</div></body></html>
