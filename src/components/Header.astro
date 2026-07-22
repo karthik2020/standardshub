@@ -24,6 +24,7 @@ const {
 } = Astro.props;
 
 const frameworkConfig = getFramework(framework) ?? defaultFramework;
+const isHome = code.toLowerCase() === "home";
 ---
 
 <header class="site-header">
@@ -41,7 +42,7 @@ const frameworkConfig = getFramework(framework) ?? defaultFramework;
                 <span>Home</span>
             </a>
 
-            {code.toLowerCase() !== frameworkConfig.code.toLowerCase() && (
+            {!isHome && code.toLowerCase() !== frameworkConfig.code.toLowerCase() && (
                 <>
                     <span class="breadcrumb-separator" aria-hidden="true">❯</span>
 
@@ -54,7 +55,7 @@ const frameworkConfig = getFramework(framework) ?? defaultFramework;
                 </>
             )}
 
-            {code.toLowerCase() !== "home" && (
+            {!isHome && (
                 <>
                     <span class="breadcrumb-separator" aria-hidden="true">❯</span>
 
@@ -63,7 +64,7 @@ const frameworkConfig = getFramework(framework) ?? defaultFramework;
                             {code}
                         </span>
 
-                        {code.toLowerCase() !== frameworkConfig.code.toLowerCase() && (
+                        {!isHome && code.toLowerCase() !== frameworkConfig.code.toLowerCase() && (
                             <>
                                 <span class="breadcrumb-dot"> • </span>
 

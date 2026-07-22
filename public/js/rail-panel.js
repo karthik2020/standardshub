@@ -1,3 +1,11 @@
+function resolveActiveFramework(pathname) {
+  if (pathname.startsWith("/ifrs") || pathname.startsWith("/ifric") || pathname.startsWith("/sic")) return "ifrs";
+  if (pathname.startsWith("/ias")) return "ias";
+  if (pathname.startsWith("/indas")) return "indas";
+  if (pathname.startsWith("/usgaap")) return "usgaap";
+  return "home";
+}
+
 function initRailPanel() {
 
     const rail = document.querySelector("[data-rail]");
@@ -31,29 +39,28 @@ function initRailPanel() {
 
     }
 
+    function syncFromUrl() {
+        const framework = resolveActiveFramework(window.location.pathname);
+        setActive(framework, true);
+    }
+
     rail.querySelectorAll("[data-rail-item]").forEach((item) => {
 
         item.addEventListener("click", (event) => {
 
-            // Rail items are real <a> links (so direct URLs and no-JS
-            // still work). Intercept the click to switch panels instantly
-            // instead of doing a full navigation, unless the user is
-            // opening it in a new tab.
             if (event.metaKey || event.ctrlKey || event.shiftKey || event.button !== 0) {
                 return;
             }
 
             const id = item.dataset.railItem;
 
-            // If we're already on that framework's page, just switch the
-            // panel. Otherwise let the browser navigate normally so the
-            // main content area updates too, but still switch the panel
-            // immediately for a snappier feel.
             setActive(id);
 
         });
 
     });
+
+    window.addEventListener("popstate", syncFromUrl);
 
     // Restore whichever framework the panel was serverside-resolved to
     // (from the current URL) rather than a stale localStorage value, so
