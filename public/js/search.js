@@ -9,9 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const placeholder = wrapper.querySelector(".search-placeholder");
         const button = wrapper.querySelector(".search-action");
-        const container = wrapper.querySelector(".search-input");
 
-        if (!placeholder || !button || !container) return;
+        if (!placeholder || !button) return;
 
         const suggestions = [
             "Search IAS 16...",
@@ -83,13 +82,13 @@ document.addEventListener("DOMContentLoaded", () => {
         scheduleNext();
 
         input.addEventListener("focus", () => {
-            container.classList.add("focused");
+            wrapper.classList.add("focused");
             updateClearButton();
         });
 
         input.addEventListener("blur", () => {
             if (input.value.trim() === "") {
-                container.classList.remove("focused");
+                wrapper.classList.remove("focused");
 
                 index = 0;
                 firstRotation = true;

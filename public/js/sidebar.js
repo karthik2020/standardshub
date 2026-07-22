@@ -101,7 +101,7 @@ function initSidebar() {
     const filterInput =
         document.getElementById("standard-search");
     const filterContainer =
-        document.querySelector(".search-input");
+        document.querySelector(".search-input-wrapper");
     const clearButton =
         document.getElementById("search-action");
     const emptyState =
