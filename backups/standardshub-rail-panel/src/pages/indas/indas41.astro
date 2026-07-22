@@ -1,0 +1,249 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import metadata from "../../data/standards/indas/indas41.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  bannerNotice={metadata.bannerNotice}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope & Applicability" },
+        { id: "s3", label: "Biological Assets vs Agricultural Produce vs Bearer Plants" },
+        { id: "s4", label: "Fair Value Less Costs to Sell Measurement" },
+        { id: "s5", label: "Gains and Losses on Initial Recognition" },
+        { id: "s6", label: "The Bearer Plant Carve-Out" },
+        { id: "s7", label: "Indian Plantation, Dairy & Poultry Sector Context" },
+        { id: "s8", label: "Government Grants Related to Biological Assets" },
+        { id: "s9", label: "Disclosure" },
+        { id: "s10", label: "Critical Judgments & Estimates" },
+        { id: "s11", label: "Ind AS 41 vs IAS 41 — Full Comparison" },
+        { id: "s12", label: "Statement Mapping" },
+        { id: "s13", label: "Related Standards" },
+        { id: "s14", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <!-- ============ SECTION 1 — CONCEPTUAL FRAMEWORK LINK ============ -->
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Identical fair value philosophy to IAS 41</div>
+        <div class="principle">Ind AS 41 applies the IDENTICAL principle as IAS 41 — biological assets and agricultural produce at the POINT OF HARVEST are measured at FAIR VALUE LESS COSTS TO SELL, reflecting the BIOLOGICAL TRANSFORMATION (growth, degeneration, procreation) that generates value, rather than a historical cost approach.</div>
+        <div class="elabel">HOW IND AS 41 MAPS TO THE FRAMEWORK</div>
+        <div class="check-list">
+          <span><strong>Relevance</strong> — fair value better reflects the economic substance of biological transformation than historical cost — identical to IAS 41</span>
+          <span><strong>Bearer plants carve-out</strong> — MATURE, self-regenerating plants used SOLELY to grow produce over multiple periods (e.g. tea bushes, rubber trees) are scoped OUT of Ind AS 41 and into Ind AS 16's cost model, IDENTICAL to the corresponding IAS 41/IAS 16 amendment</span>
+        </div>
+        <div class="note">Ind AS 41 introduced NO substantive change to the fair value model relative to IAS 41 — its Indian relevance is most pronounced for the PLANTATION, dairy, and poultry sectors' fair value estimation practices.</div>
+      </div>
+      <div class="card cs">
+        <div class="ctitle cs">The core measurement formula — identical to IAS 41</div>
+        <div class="formula-box formula-box--chip"><div class="f-eq">Biological asset / agricultural produce = Fair value LESS costs to sell (at each reporting date and at point of harvest)</div></div>
+        <div class="callout info callout--chip callout--flush">ℹ️ IDENTICAL formula to IAS 41, with a rebuttable presumption fair value can be measured reliably.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 2 — SCOPE & DEFINITIONS ============ -->
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What Ind AS 41 covers</div>
+        <div class="principle">Ind AS 41 applies to biological assets, agricultural produce at the point of harvest, and government grants related to biological assets — IDENTICAL scope to IAS 41, EXCLUDING bearer plants (Ind AS 16) and land (Ind AS 16/40).</div>
+        <div class="note">Relevant for Indian plantation (tea, coffee, rubber), dairy, poultry, aquaculture, and forestry companies.</div>
+      </div>
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions you must know</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Biological asset</div>
+          <div class="glossary-def">IDENTICAL definition to IAS 41 — a living animal or plant.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Bearer plant</div>
+          <div class="glossary-def">A living plant used SOLELY to grow produce over multiple periods, with remote likelihood of being sold — scoped into Ind AS 16, identical to IAS 41/IAS 16.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 3 — THREE CATEGORY FRAMEWORK (worked example) ============ -->
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Biological Assets vs Agricultural Produce vs Bearer Plants</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Identical three-category framework to IAS 41</div>
+        <div class="worked worked--flush">
+          <div class="wk-title">Example 1: Classifying items on an Indian tea plantation</div>
+          <div class="wk-body">An Indian tea plantation company has mature tea bushes (used to grow tea leaves over many years), unharvested tea leaves growing on the bushes, and harvested green tea leaves ready for processing.</div>
+          <div class="wk-answer">
+            Mature tea bushes: <strong>BEARER PLANT</strong> — governed by Ind AS 16 (cost model)<br>
+            Unharvested tea leaves: <strong>BIOLOGICAL ASSET</strong> — Ind AS 41, fair value less costs to sell<br>
+            Harvested green tea leaves: <strong>AGRICULTURAL PRODUCE</strong> — Ind AS 41 at point of harvest, then Ind AS 2 (inventory) thereafter<br>
+            An IDENTICAL classification framework to how IAS 41/IAS 16 would treat the same tea plantation assets globally.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 4 — FAIR VALUE LESS COSTS TO SELL ============ -->
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Fair Value Less Costs to Sell Measurement</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Identical to IAS 41</div>
+        <div class="text-supporting">Measured at EACH reporting date and at the POINT OF HARVEST, using quoted market prices where available, or present value of expected net cash flows where no active market exists — IDENTICAL to IAS 41.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 5 — GAINS/LOSSES INITIAL RECOGNITION ============ -->
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Gains and Losses on Initial Recognition</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Identical to IAS 41</div>
+        <div class="text-supporting">Gains/losses on initial recognition and subsequent fair value remeasurement are recognised IMMEDIATELY in P&amp;L — IDENTICAL to IAS 41, with NO deferral mechanism.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 6 — BEARER PLANT CARVE-OUT ============ -->
+    <div class="section-header" id="s6"><span class="num">6</span><h2>The Bearer Plant Carve-Out</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Identical to IAS 41/IAS 16</div>
+        <div class="text-supporting">Bearer plants (e.g. tea bushes, rubber trees, grapevines) are accounted for under Ind AS 16's COST model, like PPE — IDENTICAL carve-out to IAS 41's own corresponding amendment, RELEVANT for India's substantial tea, coffee, and rubber plantation sectors.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 7 — INDIAN SECTOR CONTEXT ============ -->
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Indian Plantation, Dairy &amp; Poultry Sector Context</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">A practically prominent Indian application area</div>
+        <div class="text-supporting">India's SUBSTANTIAL agricultural, plantation (tea, coffee, rubber), dairy, and poultry sectors make Ind AS 41's fair value model GENUINELY significant for companies of sufficient size/listing status to apply Ind AS (many smaller agricultural entities remain outside Ind AS's mandatory applicability thresholds under the Companies Act). Fair value estimation for livestock (dairy cattle, poultry) and standing crops OFTEN requires REFERENCE to active local agricultural commodity markets or, absent such markets, discounted cash flow techniques — an IDENTICAL measurement approach to IAS 41 applied in the Indian agricultural market context.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 8 — GOVERNMENT GRANTS ============ -->
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Government Grants Related to Biological Assets</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Identical to IAS 41</div>
+        <div class="text-supporting">Unconditional government grants related to biological assets measured at fair value are recognised in P&amp;L when the grant becomes RECEIVABLE — IDENTICAL to IAS 41, DISTINCT from Ind AS 20's own deferred income model (see Ind AS 20 poster) which applies to grants related to COST-measured assets instead.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 9 — DISCLOSURE ============ -->
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Identical disclosure requirements to IAS 41</div>
+        <div class="check-list">
+          <span>Aggregate gain/loss on initial recognition and fair value changes</span>
+          <span>Description of each group of biological assets</span>
+          <span>Methods and significant assumptions applied in fair value determination</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 10 — JUDGMENTS & ESTIMATES ============ -->
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where management judgement matters most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Bearer plant vs biological asset classification</span>
+              <span>Whether fair value can be measured reliably (rebutting the presumption)</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>Fair value of livestock/standing crops absent an active local market</span>
+              <span>Costs to sell estimation</span>
+            </div>
+          </div>
+        </div>
+        <div class="callout warn callout--chip callout--warn-flush">⚠️ Indian agricultural commodity markets can be FRAGMENTED regionally, requiring careful judgement in selecting the most representative reference market/price for fair value determination.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 11 — IND AS 41 vs IAS 41 ============ -->
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Ind AS 41 vs IAS 41 — Full Comparison</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comprehensive comparison table</div>
+        <div class="td-table">
+          <div class="th cols-12-1-1"><span>Feature</span><span>IAS 41</span><span>Ind AS 41</span></div>
+          <div class="tr cols-12-1-1"><span>Fair value model, bearer plant carve-out, gain/loss recognition</span><span>Standard model</span><span>IDENTICAL — no substantive divergence</span></div>
+          <div class="tr alt cols-12-1-1"><span>Practical application context</span><span>Varies by jurisdiction/agricultural sector</span><span>Especially relevant to India's plantation, dairy, and poultry sectors</span></div>
+        </div>
+        <div class="note">Ind AS 41 is essentially IDENTICAL to IAS 41 in substance — its distinctive Indian relevance lies in the SECTOR CONTEXT of plantation/dairy/poultry companies applying Ind AS, not any accounting divergence.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 12 — STATEMENT MAPPING ============ -->
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Comprehensive event-to-statement mapping table</div>
+        <div class="td-table">
+          <div class="th cols-16-1-14"><span>Event / transaction</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr cols-16-1-14"><span>Fair value gain/loss on biological asset</span><span><span class="badge bp">P&amp;L</span></span><span>Identical to IAS 41, recognised immediately</span></div>
+          <div class="tr alt cols-16-1-14"><span>Biological asset carrying amount</span><span><span class="badge bs">Balance Sheet</span></span><span>At fair value less costs to sell</span></div>
+          <div class="tr cols-16-1-14"><span>Bearer plant carrying amount</span><span><span class="badge bs">Balance Sheet</span></span><span>At cost under Ind AS 16, NOT fair value</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 13 — RELATED STANDARDS ============ -->
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Cross-reference map</div>
+        <div class="td-table">
+          <div class="th cols-08-2"><span>Standard</span><span>Connection</span></div>
+          <div class="tr cols-08-2"><span>IAS 41</span><span>The global counterpart standard, near-identically converged</span></div>
+          <div class="tr alt cols-08-2"><span>Ind AS 16</span><span>Governs bearer plants (carved out of Ind AS 41) using the cost model</span></div>
+          <div class="tr cols-08-2"><span>Ind AS 2</span><span>Governs agricultural produce AFTER the point of harvest, once it becomes inventory</span></div>
+        </div>
+      </div>
+      <div class="card cn">
+        <div class="ctitle cn">Quick-reference glossary</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Agricultural produce</div>
+          <div class="glossary-def">The harvested product of an entity's biological assets, measured at fair value less costs to sell AT the point of harvest — identical to IAS 41.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Biological transformation</div>
+          <div class="glossary-def">The processes of growth, degeneration, production, and procreation causing qualitative/quantitative changes in a biological asset — identical to IAS 41.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 14 — GLOSSARY ============ -->
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Agricultural produce", definition: "The harvested product of an entity's biological assets, measured at fair value less costs to sell AT the point of harvest — identical to IAS 41." },
+      { term: "Biological transformation", definition: "The processes of growth, degeneration, production, and procreation causing qualitative/quantitative changes in a biological asset — identical to IAS 41." },
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+</StandardPageLayout>

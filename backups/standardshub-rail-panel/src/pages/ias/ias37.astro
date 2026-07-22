@@ -1,0 +1,420 @@
+---
+/*
+  StandardsHub Standard Page Template
+
+  Steps:
+  1. Copy this file and rename (e.g. ias37.astro)
+  2. Import metadata
+  3. Import Reference Guide
+  4. Import History
+  5. Define TOC
+*/
+
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/ias/ias37.json";
+
+---
+
+<StandardPageLayout {...metadata}>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        {
+          id: "s1",
+          label: "Conceptual Framework Linkage",
+        },
+        {
+          id: "s2",
+          label: "Scope & Definitions",
+        },
+        {
+          id: "s3",
+          label: "The Provision Recognition Test",
+        },
+        {
+          id: "s4",
+          label: "Present Obligation — Legal vs Constructive",
+        },
+        {
+          id: "s5",
+          label: "Measuring a Provision",
+        },
+        {
+          id: "s6",
+          label: "Specific Applications — Restructuring & Onerous Contracts",
+        },
+        {
+          id: "s7",
+          label: "Contingent Liabilities",
+        },
+        {
+          id: "s8",
+          label: "Contingent Assets",
+        },
+        {
+          id: "s9",
+          label: "Reimbursements & Changes in Provisions",
+        },
+        {
+          id: "s10",
+          label: "Disclosure",
+        },
+        {
+          id: "s11",
+          label: "Judgments & Estimates",
+        },
+        {
+          id: "s12",
+          label: "IFRS vs US GAAP",
+        },
+        {
+          id: "s13",
+          label: "Statement Mapping",
+        },
+        {
+          id: "s14",
+          label: "Related Standards & Glossary",
+        },
+        {
+          id: "history",
+          label: "History & Development",
+        },
+      ]}
+    />
+  </Fragment>
+
+  <div class="wrap">
+    <!-- ============ SECTION 1 ============ -->
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Why a provision is a genuine liability, and a contingency is not</div>
+        <div class="principle">The Conceptual Framework defines a liability as a PRESENT obligation to transfer an economic resource as a result of PAST events. IAS 37 operationalises exactly this boundary — a provision is a liability of UNCERTAIN timing or amount that meets the Framework's definition; a contingent liability is something that has NOT yet crossed that threshold, and so is disclosed rather than recognised.</div>
+        <div class="elabel">HOW IAS 37 MAPS TO THE FRAMEWORK</div>
+        <div class="check-list">
+          <span><strong style="font-weight:600">Present obligation</strong> — must exist NOW, as a result of a PAST event, not merely a probable future cost</span>
+          <span><strong style="font-weight:600">Probable outflow</strong> — economic benefits must probably need to be given up to settle the obligation</span>
+          <span><strong style="font-weight:600">Reliable estimate</strong> — the amount of the obligation must be capable of reliable estimation, even if it involves a range or expected value</span>
+        </div>
+        <div class="note">IAS 37 was historically introduced specifically to STOP entities recognising "big bath" provisions for future operating losses or vague future costs that did not yet represent genuine present obligations — it is, in many respects, an anti-abuse standard as much as a recognition standard.</div>
+      </div>
+
+      <div class="card cs">
+        <div class="ctitle cs">Measurement principles applied</div>
+        <div class="principle">A provision is measured at the BEST ESTIMATE of the expenditure required to settle the obligation — a genuinely probability-weighted concept, not simply the most likely single outcome.</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.3fr 1fr;"><span>Scenario</span><span>Best estimate approach</span></div>
+          <div class="tr" style="grid-template-columns:1.3fr 1fr;"><span>Large population of items (e.g. warranty claims)</span><span>EXPECTED VALUE — weighting all possible outcomes by their probability</span></div>
+          <div class="tr alt" style="grid-template-columns:1.3fr 1fr;"><span>Single obligation</span><span>The MOST LIKELY outcome may be the best estimate, though other possible outcomes are also considered</span></div>
+        </div>
+        <div class="callout info callout--chip" style="margin-bottom:0;">ℹ️ <strong style="font-weight:600">Qualitative characteristics in action:</strong> using a probability-weighted expected value rather than a single "best guess" figure reflects <strong style="font-weight:600">faithful representation</strong> — it captures the genuine range of uncertainty rather than an arbitrary point estimate.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 2 ============ -->
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope & Applicability</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What IAS 37 covers</div>
+        <div class="principle">IAS 37 applies to all provisions, contingent liabilities, and contingent assets, EXCEPT those resulting from executory contracts (unless the contract is ONEROUS), and those covered by another Standard.</div>
+        <div class="elabel">SCOPE EXCLUSIONS — GOVERNED BY OTHER STANDARDS</div>
+        <div class="cross-list">
+          <span>Financial instruments (including guarantees) within IFRS 9's scope</span>
+          <span>Executory contracts, UNLESS onerous</span>
+          <span>Provisions specifically dealt with by another Standard — e.g. construction contracts (IFRS 15), income taxes (IAS 12), leases (IFRS 16), employee benefits (IAS 19), insurance contracts (IFRS 17)</span>
+        </div>
+        <div class="note">"Executory contracts" are contracts under which NEITHER party has performed any of its obligations, or both parties have partially performed to an equal extent — these are generally outside IAS 37 UNLESS they become onerous (Section 6).</div>
+      </div>
+
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions you must know</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Provision</div>
+          <div class="glossary-def">A liability of UNCERTAIN timing or amount.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Contingent liability</div>
+          <div class="glossary-def">EITHER (a) a possible obligation arising from past events, whose existence will be confirmed only by the occurrence/non-occurrence of uncertain future events not wholly within the entity's control; OR (b) a present obligation not recognised because it is NOT PROBABLE an outflow will be required, or the amount cannot be measured reliably.</div>
+        </div>
+        <div class="glossary-item" style="border-bottom:none;">
+          <div class="glossary-term">Contingent asset</div>
+          <div class="glossary-def">A possible asset arising from past events, whose existence will be confirmed only by the occurrence/non-occurrence of uncertain future events not wholly within the entity's control.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 3 ============ -->
+    <div class="section-header" id="s3"><span class="num">3</span><h2>The Provision Recognition Test — Three Conditions</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">All three conditions must be met</div>
+        <div class="two-col">
+          <div class="spec-box" style="margin-bottom:0;">
+            <div class="spec-title" style="color:var(--color-text-success);">1. Present obligation</div>
+            <div style="font-size:13px;color:var(--color-text-secondary);line-height:1.5;">A present obligation (legal or constructive) exists as a result of a PAST event.</div>
+          </div>
+          <div class="spec-box" style="margin-bottom:0;">
+            <div class="spec-title" style="color:var(--color-text-success);">2. Probable outflow</div>
+            <div style="font-size:13px;color:var(--color-text-secondary);line-height:1.5;">It is PROBABLE (more likely than not, generally interpreted as >50%) that an outflow of economic benefit-embodying resources will be required to settle the obligation.</div>
+          </div>
+        </div>
+        <div class="spec-box" style="margin-top:7px;margin-bottom:0;">
+          <div class="spec-title" style="color:var(--color-text-success);">3. Reliable estimate</div>
+          <div style="font-size:13px;color:var(--color-text-secondary);line-height:1.5;">A reliable estimate can be made of the amount of the obligation.</div>
+        </div>
+        <div class="callout warn callout--chip" style="margin-top:8px;margin-bottom:0;">⚠️ If ANY of these three conditions is NOT met, no provision is recognised — the item is instead assessed as a possible contingent liability (Section 7), disclosed rather than recognised, unless the possibility of an outflow is REMOTE, in which case no disclosure is even required.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 4 ============ -->
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Present Obligation — Legal vs Constructive (with worked example)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs">
+        <div class="ctitle cs">Two types of obligation</div>
+        <div class="dot-list">
+          <span><strong style="font-weight:600">Legal obligation</strong> — derives from a contract, legislation, or other operation of law</span>
+          <span><strong style="font-weight:600">Constructive obligation</strong> — derives from an entity's actions where: (a) by an established pattern of past practice, published policies, or a sufficiently specific current statement, it has indicated to other parties it will accept certain responsibilities; AND (b) as a result, it has created a valid expectation on the part of those other parties that it will discharge those responsibilities</span>
+        </div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Worked example — a constructive obligation</div>
+        <div class="worked">
+          <div class="wk-title">Example 1: Store's returns policy creates a constructive obligation</div>
+          <div class="wk-body">
+            A retailer has NO legal obligation to accept returns of faulty goods beyond the statutory minimum, but has a well-known, widely publicised policy of accepting returns for any reason within 90 days, and has consistently honoured this for years. At year end, based on past experience, the retailer estimates $85,000 of goods sold in the last 90 days will be returned.
+          </div>
+          <div class="wk-answer">
+            A CONSTRUCTIVE obligation exists — the retailer's established practice and published policy have created a valid customer expectation, satisfying the present obligation test even without a strict legal requirement. A provision of $85,000 is recognised, based on the reliably estimable expected returns.
+          </div>
+        </div>
+        <div class="note">This is a classic exam scenario testing whether students recognise that "no legal requirement" does NOT automatically mean "no provision" — constructive obligations are just as real under IAS 37.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 5 ============ -->
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Measuring a Provision (with worked example)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Key measurement principles</div>
+        <div class="dot-list" style="margin-bottom:9px;">
+          <span>Risks and uncertainties surrounding events/circumstances are taken into account in reaching the best estimate — but uncertainty does NOT justify creating EXCESSIVE provisions or deliberately overstating liabilities</span>
+          <span>Where the effect of the time value of money is MATERIAL, the provision is DISCOUNTED to present value, using a pre-tax rate reflecting current market assessments and risks specific to the liability</span>
+          <span>Future events (e.g. changes in law, new technology) are reflected in the amount of a provision ONLY where there is sufficient objective evidence they will occur</span>
+          <span>Gains from the EXPECTED disposal of assets are NOT taken into account in measuring a provision, even if the expected disposal is closely linked to the event giving rise to the provision</span>
+        </div>
+      </div>
+
+      <div class="card cn">
+        <div class="ctitle cn">Worked example — expected value calculation</div>
+        <div class="worked">
+          <div class="wk-title">Example 2: Warranty provision using expected value</div>
+          <div class="wk-body">
+            A manufacturer sells products with a 1-year warranty. Based on past experience: 75% of products have no defects (nil cost), 20% have minor defects (average repair cost $40/unit), and 5% have major defects (average repair cost $200/unit). 10,000 units were sold during the year.
+          </div>
+          <div class="wk-answer">
+            <strong>Expected cost per unit</strong> = (75% × 0) + (20% × 40) + (5% × 200) = 0 + 8 + 10 = $18/unit<br>
+            <strong>Total warranty provision</strong> = 10,000 × $18 = <strong style="color:var(--color-text-info);">$180,000</strong>
+          </div>
+        </div>
+        <div class="entry"><span class="dr">Dr</span><div class="etxt">Warranty expense $180,000<div class="badges"><span class="badge bp">SOPL</span></div></div></div>
+        <div class="entry"><span class="cr">Cr</span><div class="etxt">Warranty provision $180,000<div class="badges"><span class="badge bs">SOFP</span></div></div></div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 6 ============ -->
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Specific Applications — Restructuring & Onerous Contracts</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Restructuring provisions — a strict recognition timing test</div>
+        <div style="font-size:13px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:9px;">A constructive obligation for restructuring arises ONLY when an entity: (a) has a DETAILED FORMAL PLAN identifying the business/part concerned, principal locations affected, function/approximate number of employees to be compensated, expenditures involved, and when the plan will be implemented; AND (b) has raised a VALID EXPECTATION in those affected that it will carry out the restructuring, by starting to implement the plan OR announcing its main features to those affected.</div>
+        <div class="callout danger callout--chip" style="margin-bottom:0;">✕ <strong style="font-weight:600">A mere BOARD DECISION to restructure, without communication to those affected, does NOT create a constructive obligation</strong> — this is one of the single most heavily tested points in IAS 37.</div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Onerous contracts — worked example</div>
+        <div class="formula-box formula-box--chip">
+          <div class="f-label">DEFINITION</div>
+          <div class="f-eq">A contract in which the UNAVOIDABLE costs of meeting the obligations under it EXCEED the economic benefits expected to be received under it</div>
+        </div>
+        <div class="worked" style="margin-bottom:0;">
+          <div class="wk-title">Example 3: Onerous lease provision</div>
+          <div class="wk-body">An entity has a non-cancellable lease on a warehouse it no longer uses, with 2 years remaining at $60,000/year, and no realistic prospect of sub-letting.</div>
+          <div class="wk-answer">
+            <strong>Provision</strong> = present value of unavoidable lease payments over the remaining term = <strong style="color:var(--color-text-info);">≈$114,000</strong> (discounted), recognised in full immediately.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 7 ============ -->
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Contingent Liabilities — Recognition vs Disclosure</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">The three-tier probability spectrum</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1fr 1.4fr;"><span>Probability of outflow</span><span>Accounting treatment</span></div>
+          <div class="tr" style="grid-template-columns:1fr 1.4fr;"><span>PROBABLE (more likely than not) + reliably estimable</span><span>RECOGNISE a provision</span></div>
+          <div class="tr alt" style="grid-template-columns:1fr 1.4fr;"><span>POSSIBLE, but not probable</span><span>DISCLOSE as a contingent liability (nature, estimate of financial effect, uncertainties)</span></div>
+          <div class="tr" style="grid-template-columns:1fr 1.4fr;"><span>REMOTE</span><span>NO disclosure required</span></div>
+        </div>
+        <div class="note">This spectrum is one of the most fundamental frameworks in the whole of IFRS and is tested extensively across ACCA/professional exams — "probable," "possible," and "remote" each trigger genuinely different treatment.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 8 ============ -->
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Contingent Assets</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">The mirror-image, more cautious approach</div>
+        <div class="principle">A contingent asset is NOT recognised, since this could result in the recognition of income that may NEVER be realised. A contingent asset IS disclosed where an inflow of economic benefits is PROBABLE. When the realisation of income is VIRTUALLY CERTAIN, the related asset is no longer a contingent asset — it is recognised as a genuine asset (not a contingency at all).</div>
+        <div class="callout warn callout--chip" style="margin-bottom:0;">⚠️ Note the ASYMMETRIC thresholds: LIABILITIES are recognised at "PROBABLE"; ASSETS require "VIRTUALLY CERTAIN" before recognition — a direct, deliberate application of prudence within neutral, unbiased reporting.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 9 ============ -->
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Reimbursements & Subsequent Changes in Provisions</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Reimbursements — separate asset recognition, gross presentation</div>
+        <div style="font-size:13px;color:var(--color-text-secondary);line-height:1.6;">Where some or all of the expenditure to settle a provision is expected to be REIMBURSED by another party (e.g. an insurer), the reimbursement is recognised ONLY when it is VIRTUALLY CERTAIN to be received, as a SEPARATE ASSET — the provision and the reimbursement asset are presented GROSS in the SOFP, NOT netted against each other, though the expense MAY be presented net of the reimbursement in the SOPL.</div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Review and use of provisions</div>
+        <div class="dot-list">
+          <span>Provisions are REVIEWED at each reporting date, and adjusted to reflect the current best estimate</span>
+          <span>If it is no longer probable an outflow will be required, the provision is REVERSED</span>
+          <span>A provision is used ONLY for expenditures for which it was ORIGINALLY recognised — a provision for restructuring, for example, cannot be applied against unrelated general expenses</span>
+        </div>
+        <div class="note">The unwinding of the discount on a provision measured at present value is recognised as a finance/borrowing cost, NOT re-measured as a change in the underlying provision estimate.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 10 ============ -->
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Required disclosures</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">FOR EACH CLASS OF PROVISION</div>
+            <div class="check-list">
+              <span>Opening and closing carrying amount; additional provisions made; amounts used (i.e. incurred and charged against the provision); unused amounts reversed; the increase during the period from the unwinding of discount and any effect of a change in the discount rate</span>
+              <span>A brief description of the nature of the obligation and expected timing of any resulting outflows</span>
+              <span>An indication of the uncertainties about the amount/timing of those outflows</span>
+              <span>The amount of any expected reimbursement, stating the amount of any asset recognised for that reimbursement</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">CONTINGENT LIABILITIES / ASSETS</div>
+            <div class="check-list">
+              <span>For each class of contingent liability: a brief description, an estimate of its financial effect, an indication of uncertainties, and the possibility of any reimbursement</span>
+              <span>Where an inflow of economic benefits is probable, a brief description of the nature of contingent assets at the reporting date, and an estimate of their financial effect</span>
+            </div>
+          </div>
+        </div>
+        <div class="callout warn callout--chip" style="margin-top:8px;margin-bottom:0;">⚠️ In EXTREMELY RARE cases, disclosure of some/all of this information can be expected to seriously PREJUDICE the entity's position in a dispute with other parties (e.g. active litigation) — in such cases, disclosure is not required, but the general nature of the dispute must still be disclosed, together with the fact that, and reason why, the information has not been disclosed.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 11 ============ -->
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Critical Judgments & Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where management judgement matters most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Whether a present obligation (legal or constructive) genuinely exists at the reporting date</span>
+              <span>Whether an outflow is "probable" (i.e. more likely than not) versus merely "possible"</span>
+              <span>Whether a restructuring plan has been sufficiently communicated to create a valid expectation</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>The expected value or most likely outcome used to measure a provision</span>
+              <span>The discount rate applied where the time value of money is material</span>
+              <span>Litigation outcome probabilities, often relying on legal counsel's assessment</span>
+            </div>
+          </div>
+        </div>
+        <div class="callout warn callout--chip" style="margin-top:8px;margin-bottom:0;">⚠️ Litigation-related provisions are a particularly sensitive area — management must exercise considerable judgement in balancing genuine best-estimate disclosure against the narrow "prejudicial disclosure" exemption, which is intended to be used only in truly exceptional cases.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 12 ============ -->
+    <div class="section-header" id="s12"><span class="num">12</span><h2>IFRS vs US GAAP — Key Differences</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — IAS 37 vs US GAAP (ASC 450)</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Feature</span><span style="color:var(--color-text-info);">IFRS (IAS 37)</span><span style="color:var(--color-text-warning);">US GAAP</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Probability threshold for recognition</span><span>"Probable" generally interpreted as MORE LIKELY THAN NOT (>50%)</span><span>"Probable" is a HIGHER threshold under US GAAP, generally interpreted as a more stringent likelihood standard than IFRS's >50% reading</span></div>
+          <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Measurement when a range exists, no best estimate within the range</span><span>Uses the MID-POINT of the range as the best estimate</span><span>Uses the LOW END of the range if no amount within it is a better estimate than any other</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Restructuring provisions</span><span>Recognised once a detailed plan exists AND has been communicated/started, creating a valid expectation</span><span>Generally requires the LIABILITY to be incurred, often a somewhat stricter/later recognition point in some fact patterns (e.g. certain employee termination costs recognised only when specific US GAAP criteria under ASC 420 are met)</span></div>
+          <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Contingent assets</span><span>Recognised only when virtually certain; otherwise disclosed if probable</span><span>Generally NOT recognised until realised or realisable — similarly conservative but with its own specific guidance</span></div>
+        </div>
+        <div class="note">The "probable" threshold difference and the range-estimate convention (mid-point under IFRS vs low-end under US GAAP where no single best estimate exists) are the most frequently cited practical divergences between the two frameworks for provisions.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 13 ============ -->
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Statement Mapping — Where Every Provision/Contingency Event Lands</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Comprehensive event-to-statement mapping table</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event / transaction</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Recognition of a new provision (present obligation, probable, reliably estimable)</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Expense/liability recognised in full</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Unwinding of discount on a present-valued provision</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Presented as a finance cost, increasing the provision</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Provision used (expenditure incurred against it)</span><span><span class="badge bs">SOFP</span></span><span>Reduces the provision; no further SOPL charge for the amount already provided</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Provision no longer required — reversed</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Credited back to profit or loss</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Reimbursement virtually certain</span><span><span class="badge bs">SOFP</span></span><span>Recognised as a SEPARATE asset, presented gross against the provision</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Contingent liability — possible but not probable</span><span>—</span><span>Not recognised; disclosed in notes only</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Contingent liability — remote</span><span>—</span><span>Neither recognised nor disclosed</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Contingent asset — probable inflow</span><span>—</span><span>Not recognised; disclosed in notes</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Contingent asset — virtually certain</span><span><span class="badge bs">SOFP</span> <span class="badge bp">SOPL</span></span><span>No longer contingent; recognised as a genuine asset/income</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Cash payment against a provision</span><span><span class="badge bs">Cash Flow Statement</span></span><span>Operating activities outflow</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Provision movement analysis, contingency descriptions</span><span><span class="badge bp">Notes</span></span><span>Mandatory reconciliation and disclosure for each class</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 14 ============ -->
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Related Standards & Glossary</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Related standards — cross-reference map</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Standard</span><span>Connection</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 10</span><span>Events after the reporting period can be ADJUSTING evidence for a provision's existence/measurement at year end</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 19</span><span>Termination benefits arising from a restructuring are recognised alongside the related IAS 37 restructuring provision</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 8</span><span>Changes in provision estimates are treated as changes in accounting estimate, applied prospectively</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 16 / IAS 38</span><span>Provisions for decommissioning/restoration obligations are capitalised as part of the related asset's cost, then depreciated</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 3</span><span>Contingent liabilities of an ACQUIREE are recognised at fair value in a business combination even if they wouldn't independently meet IAS 37's recognition criteria</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 15</span><span>Onerous revenue contracts interact with IAS 37's onerous contract provisions where unavoidable costs exceed expected benefits</span></div>
+        </div>
+      </div>
+<Glossary entries={[
+      { term: "Executory contract", definition: "A contract under which neither party has performed any of its obligations, or both have partially performed to an equal extent — generally outside IAS 37's scope unless onerous." },
+      { term: "Onerous contract", definition: "A contract in which the unavoidable costs of meeting the obligations exceed the economic benefits expected to be received." },
+      { term: "Constructive obligation", definition: "An obligation derived from an entity's actions, established pattern of practice, or published policies, creating a valid expectation in others that it will discharge certain responsibilities." }
+    ]} title="Quick-reference glossary" />
+    </div>
+
+<FinancialStatementKey />
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.IAS37} />
+  </section>
+</StandardPageLayout>

@@ -1,0 +1,109 @@
+---
+/*
+StandardsPanel
+
+Wide right column of the two-part standards sidebar. Renders every core
+framework's list up front (server-side, so it works with JS disabled and
+is fully crawlable) inside a hidden [data-framework-panel]; rail-panel.js
+toggles visibility to match the rail selection, and lifts the "hidden"
+restriction entirely while a search term is active so results surface
+across all frameworks at once.
+*/
+
+import standards from "../data/standards.json";
+import StandardGroup from "./StandardGroup.astro";
+import { FRAMEWORK_CONFIG } from "../data/frameworks";
+import { Search, X, Home } from "@lucide/astro";
+
+const currentPath = Astro.url.pathname;
+
+function resolveActiveFramework(pathname: string) {
+  if (pathname.startsWith("/ifrs") || pathname.startsWith("/ifric") || pathname.startsWith("/sic")) return "ifrs";
+  if (pathname.startsWith("/ias")) return "ias";
+  if (pathname.startsWith("/indas")) return "indas";
+  if (pathname.startsWith("/usgaap")) return "usgaap";
+  return "home";
+}
+const active = resolveActiveFramework(currentPath);
+
+const codeToKey = (code: string) => {
+  if (code === "Ind AS") return "IndAS";
+  if (code === "IFRS Sustainability") return "IFRSSustainability";
+  if (code === "IFRS Publications") return "IFRSPublications";
+  if (code === "IFRS for SMEs") return "IFRSForSMEs";
+  if (code === "IFRIC") return "IFRIC";
+  if (code === "SIC") return "SIC";
+  if (code === "US GAAP") return "USGAAP";
+  return code;
+};
+
+const itemsFor = (id: string) => standards[codeToKey(FRAMEWORK_CONFIG[id].code)] ?? [];
+
+const IFRS_SUBFOLDERS = ["ifrssustainability", "ifrspublications", "ifrsforsmes", "ifric", "sic"] as const;
+---
+
+<div class="standards-panel" data-panel data-active-framework={active}>
+  <div class="sidebar-search">
+    <div class="search-box">
+      <div class="search-input-wrapper">
+        <Search size={15} class="search-icon" />
+        <div class="search-placeholder" id="search-placeholder"></div>
+        <input
+          class="search-input"
+          id="standard-search"
+          type="text"
+          placeholder=""
+          aria-label="Filter standards"
+          autocomplete="off"
+        />
+        <button class="search-action" id="search-action" type="button" aria-label="Clear filter" title="Clear filter">
+          <X size={15} />
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar-scroll">
+    <div class="fw-panel" data-framework-panel="home">
+      <div class="panel-home-empty">
+        <Home size={26} strokeWidth={1.6} />
+        <p>Select a framework on the left to browse its standards.</p>
+      </div>
+    </div>
+
+    <div class="fw-panel" data-framework-panel="ias">
+      <StandardGroup items={itemsFor("ias")} sectionId="ias" />
+    </div>
+
+    <div class="fw-panel" data-framework-panel="indas">
+      <StandardGroup items={itemsFor("indas")} sectionId="indas" />
+    </div>
+
+    <div class="fw-panel" data-framework-panel="usgaap">
+      <StandardGroup items={itemsFor("usgaap")} sectionId="usgaap" categories={FRAMEWORK_CONFIG.usgaap.categories} />
+    </div>
+
+    <div class="fw-panel" data-framework-panel="ifrs">
+      <StandardGroup items={itemsFor("ifrs")} sectionId="ifrs" label="IFRS Standards" />
+      {
+        IFRS_SUBFOLDERS.map((id) => (
+          <StandardGroup items={itemsFor(id)} sectionId={id} label={FRAMEWORK_CONFIG[id].displayName} />
+        ))
+      }
+    </div>
+
+    <div class="sidebar-empty" id="sidebar-empty" hidden>
+      <div class="sidebar-empty-title">No matching standards</div>
+      <div class="sidebar-empty-text">Try another standard number or keyword.</div>
+      <div class="sidebar-empty-examples">
+        <span>IAS 16</span>
+        <span>Revenue</span>
+        <span>Lease</span>
+      </div>
+    </div>
+  </div>
+
+  <footer class="sidebar-footer">
+    <!-- Reserved for upgrade / promo content later -->
+  </footer>
+</div>

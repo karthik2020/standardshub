@@ -1,0 +1,253 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc205.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        {
+          id: "s1",
+          label: "Conceptual Framework Linkage",
+        },
+        {
+          id: "s2",
+          label: "Scope & Applicability",
+        },
+        {
+          id: "s3",
+          label: "Complete Set of Financial Statements",
+        },
+        {
+          id: "s4",
+          label: "No \"True and Fair Override\" in US GAAP",
+        },
+        {
+          id: "s5",
+          label: "Going Concern (205-40)",
+        },
+        {
+          id: "s6",
+          label: "Discontinued Operations (205-20)",
+        },
+        {
+          id: "s7",
+          label: "Liquidation Basis of Accounting (205-30)",
+        },
+        {
+          id: "s8",
+          label: "Comparative Periods — ASC vs SEC Rules",
+        },
+        {
+          id: "s9",
+          label: "Worked Example — Going Concern Assessment",
+        },
+        {
+          id: "s10",
+          label: "Worked Example — Discontinued Operations Classification",
+        },
+        {
+          id: "s11",
+          label: "Worked Example — Liquidation Basis Transition",
+        },
+        {
+          id: "s12",
+          label: "Disclosure Requirements",
+        },
+        {
+          id: "s13",
+          label: "Critical Judgments & Estimates",
+        },
+        {
+          id: "s14",
+          label: "ASC 205 vs IAS 1 / IFRS 5",
+        },
+        {
+          id: "s15",
+          label: "Statement Mapping",
+        },
+        {
+          id: "s16",
+          label: "Related Topics",
+        },
+        {
+          id: "s17",
+          label: "Glossary",
+        },
+        {
+          id: "history",
+          label: "History & Development",
+        },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card ci"><div class="ctitle ci">The organising topic for the entire Presentation area</div><div class="principle">ASC 205 supplies the OVERALL requirements for a complete set of financial statements, plus three specialised bodies of guidance folded into the same Topic: going concern assessment, discontinued operations classification, and the liquidation basis of accounting. It plays a role broadly analogous to IAS 1, but — true to the Codification's structure — several matters IAS 1 addresses directly (e.g. classified balance sheet presentation) are instead split out into their own dedicated Topics (ASC 210, 215, 225, 230).</div></div>
+    <div class="card cs"><div class="ctitle cs">Faithful representation under genuine going-concern uncertainty</div><div class="principle">The going-concern subtopic in particular reflects a Conceptual Framework-level concern: financial statements prepared on a going-concern basis implicitly represent that the reporting entity will continue operating — ASC 205-40 exists to ensure that representation is EXPLICITLY tested and disclosed when substantial doubt genuinely exists, rather than left as an unstated assumption.</div></div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">What ASC 205 covers</div><div class="principle">ASC 205 applies to ALL entities preparing financial statements under US GAAP. The going-concern guidance (205-40) applies to EVERY reporting entity, for BOTH annual and interim periods. The discontinued operations guidance (205-20) applies whenever a component or group of components has been disposed of or is classified as held for sale. The liquidation basis guidance (205-30) applies only once liquidation becomes IMMINENT (a specifically defined threshold, see Section 7).</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Complete Set of Financial Statements</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">What US GAAP requires, by cross-reference across Topics</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:1fr 1.4fr 1.4fr;"><span>Statement</span><span style="color:var(--color-text-warning);">US GAAP name / Topic</span><span style="color:var(--color-text-info);">IFRS equivalent</span></div>
+    <div class="tr" style="grid-template-columns:1fr 1.4fr 1.4fr;"><span>Position statement</span><span>Balance Sheet — ASC 210</span><span>Statement of Financial Position (SOFP)</span></div>
+    <div class="tr alt" style="grid-template-columns:1fr 1.4fr 1.4fr;"><span>Performance statement</span><span>Income Statement — ASC 225</span><span>Statement of Profit or Loss (SOPL)</span></div>
+    <div class="tr" style="grid-template-columns:1fr 1.4fr 1.4fr;"><span>Comprehensive income</span><span>Statement of Comprehensive Income — ASC 220</span><span>Statement of P&amp;L and OCI</span></div>
+    <div class="tr alt" style="grid-template-columns:1fr 1.4fr 1.4fr;"><span>Equity movements</span><span>Statement of Shareholders' Equity — ASC 215</span><span>Statement of Changes in Equity</span></div>
+    <div class="tr" style="grid-template-columns:1fr 1.4fr 1.4fr;"><span>Cash flows</span><span>Statement of Cash Flows — ASC 230</span><span>Statement of Cash Flows</span></div>
+    <div class="tr alt" style="grid-template-columns:1fr 1.4fr 1.4fr;"><span>Notes</span><span>Notes to Financial Statements — ASC 235</span><span>Notes</span></div>
+    </div>
+    <div class="note">Unlike IAS 1, which bundles all of this into ONE standard, ASC 205 is essentially the "umbrella" Topic that ties these separately-numbered Topics together into a complete set.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>No "True and Fair Override" in US GAAP</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">A structural divergence worth knowing early</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">IAS 1 contains a rare "override" provision permitting departure from a specific IFRS requirement, in EXTREMELY rare circumstances, if compliance would be so misleading it conflicts with the objective of financial statements. <strong>US GAAP has NO equivalent override mechanism.</strong> An entity applying US GAAP must comply with the Codification's requirements as written — there is no codified escape hatch for a rare conflict between a specific rule and "fair presentation" in the way IAS 1 provides. This reflects a more RULES-BASED character to US GAAP relative to IFRS's more PRINCIPLES-BASED orientation, though both frameworks are, in practice, a blend of both approaches.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Going Concern (205-40)</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cs"><div class="ctitle cs">Management's explicit, codified responsibility</div><div class="principle">ASC 205-40 (added by ASU 2014-15) requires MANAGEMENT to assess, for BOTH annual and interim periods, whether conditions or events raise SUBSTANTIAL DOUBT about the entity's ability to continue as a going concern for ONE YEAR from the date the financial statements are ISSUED (or available to be issued, for nonpublic entities) — a defined, codified "look-forward" period.</div></div>
+    <div class="card cd"><div class="ctitle cd">Two-step process</div><div class="principle"><strong>Step 1:</strong> Assess, based on RELEVANT conditions/events known (or reasonably knowable) as of the issuance date, without regard to management's plans, whether substantial doubt exists.<br><strong>Step 2:</strong> If substantial doubt exists, evaluate whether management's PLANS to mitigate that doubt will alleviate it. Disclosure is required EITHER WAY once substantial doubt is initially identified — the required disclosures simply differ depending on whether the doubt is alleviated by the plans or not.</div></div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Discontinued Operations (205-20)</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">A narrowed, 2014-revised definition</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">A disposal of a component (or group of components) of an entity is reported as a DISCONTINUED OPERATION only if the disposal represents a STRATEGIC SHIFT that has (or will have) a MAJOR effect on the entity's operations and financial results — for example, a disposal of a major geographic area, a major line of business, or a major equity method investment. This definition (from ASU 2014-08) is deliberately NARROWER than the pre-2014 US GAAP definition, and was adopted specifically to converge more closely with IFRS 5's own "major line of business or geographical area" discontinued-operation threshold.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Liquidation Basis of Accounting (205-30)</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">A distinctly US GAAP concept — no direct IFRS counterpart standard</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">When LIQUIDATION becomes IMMINENT — defined as either (a) a liquidation plan has been APPROVED by the person(s) with authority and the likelihood is remote that execution will be blocked by other parties, or (b) a liquidation plan is being IMPOSED by other forces (e.g. involuntary bankruptcy) and it is remote that the entity will return to a going-concern basis — the entity switches from the going-concern basis to the LIQUIDATION basis of accounting. Under this basis, assets are measured at the ESTIMATED AMOUNT of cash or other consideration expected to be collected in settling/converting those assets in liquidation, and the entity ACCRUES the costs it expects to incur, and income it expects to earn, through the end of the liquidation.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Comparative Periods — ASC vs SEC Rules</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cn span2"><div class="ctitle cn">Comparatives driven by SEC rules, not the Codification itself</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">The Codification itself does not mandate a minimum number of comparative periods for private companies (one year of comparatives is common practice but not strictly required by ASC 205 for non-SEC filers). PUBLIC companies, however, must follow SEC Regulation S-X, which requires TWO years of comparative Balance Sheets and THREE years of comparative Income Statements, Statements of Comprehensive Income, and Statements of Cash Flows in most cases — a more prescriptive comparative-period requirement than IAS 1's general one-comparative-year default.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Worked Example — Going Concern Assessment</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">Substantial doubt, alleviated by management's plans</div>
+    <div class="worked"><div class="wk-title">Example: A covenant breach with a credible refinancing plan</div><div class="wk-body">At year end, an entity has breached a debt covenant, making $15,000,000 of long-term debt callable on demand, while the entity holds only $3,000,000 of unrestricted cash. Before the issuance date of the financial statements, management has SIGNED a binding refinancing agreement replacing the callable debt with new long-term financing on customary terms.</div><div class="wk-answer"><strong>Step 1:</strong> The covenant breach and resulting demand-callable debt, considered without regard to management's plans, DOES raise substantial doubt about the entity's ability to continue as a going concern for one year from issuance.<br><strong>Step 2:</strong> Because the refinancing agreement is already SIGNED and binding (not merely a plan or intention), it is probable the plans will be effectively implemented and will mitigate the conditions — substantial doubt is ALLEVIATED. Disclosure is still required describing the conditions that raised the doubt and how management's plans alleviated it, but no "going concern" qualification of the type auditors historically flagged is needed in the financial statement notes themselves (though the AUDIT report may still reference the disclosure).</div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Worked Example — Discontinued Operations Classification</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card ci span2"><div class="ctitle ci">Testing against the "strategic shift, major effect" threshold</div>
+    <div class="worked"><div class="wk-title">Example: Sale of one of three reporting segments</div><div class="wk-body">A diversified entity with three reporting segments (Consumer Products, Industrial Equipment, and Specialty Chemicals) sells its entire Specialty Chemicals segment, which represented 35% of consolidated revenue and 40% of consolidated operating income.</div><div class="wk-answer">The Specialty Chemicals segment represents a MAJOR LINE OF BUSINESS with a MAJOR effect on the entity's operations and financial results (35–40% of key metrics), and its disposal constitutes a genuine STRATEGIC SHIFT for the remaining two-segment entity. This QUALIFIES for discontinued operations presentation under ASC 205-20 — the segment's results are presented separately, net of tax, below income from continuing operations, for all periods presented.</div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Worked Example — Liquidation Basis Transition</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cn span2"><div class="ctitle cn">Switching bases mid-year</div>
+    <div class="worked"><div class="wk-title">Example: Board-approved liquidation plan</div><div class="wk-body">An entity's board of directors approves a plan of complete liquidation on 1 September, with no realistic possibility of the plan being blocked by shareholders or creditors. Liquidation is expected to conclude within 18 months.</div><div class="wk-answer">Liquidation becomes IMMINENT on 1 September (board approval, remote likelihood of blockage). From that date, the entity SWITCHES to the liquidation basis: assets are remeasured to the estimated cash amount expected to be realised in liquidation (rather than historical cost or fair value under going-concern GAAP), and a liability/accrual is recognised for estimated costs to be incurred (e.g. wind-down costs, employee termination costs) through the expected 18-month liquidation period.</div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">Key disclosures across the four subtopics</div><div class="check-list"><span>Going concern: principal conditions/events raising substantial doubt, management's evaluation, and (if applicable) management's plans and their effect</span><span>Discontinued operations: major classes of line items constituting the discontinued operation's pre-tax profit/loss, and major categories of related assets/liabilities</span><span>Liquidation basis: a statement that the liquidation basis has been adopted, the liquidation plan's key assumptions, and a statement of net assets in liquidation together with a statement of changes in net assets in liquidation</span></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+    <div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Whether identified conditions/events, in the aggregate, raise SUBSTANTIAL doubt (a defined but still judgemental threshold)</span><span>Whether a disposal genuinely represents a "strategic shift" with a "major effect," versus a routine portfolio adjustment</span><span>Whether liquidation has become "imminent" under the specific defined criteria</span></div></div>
+    <div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Estimated net realisable amounts of assets and accrued costs under the liquidation basis</span><span>Pre-tax profit/loss and related assets/liabilities attributable to a discontinued operation</span></div></div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>ASC 205 vs IAS 1 / IFRS 5</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card ci span2"><div class="ctitle ci">Comparison — ASC 205 vs IAS 1 (going concern) and IFRS 5 (discontinued operations)</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">US GAAP (ASC 205)</span><span style="color:var(--color-text-info);">IFRS (IAS 1 / IFRS 5)</span></div>
+    <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Going concern look-forward period</span><span>Explicitly defined: 1 year from the FINANCIAL STATEMENT ISSUANCE date</span><span>IAS 1 requires assessment for a period of at least 12 months from the END OF THE REPORTING PERIOD — a subtly different (and typically shorter) window than the US GAAP issuance-date anchor</span></div>
+    <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Explicit "substantial doubt" threshold and two-step process</span><span>Yes — codified in detail (ASC 205-40)</span><span>IAS 1 requires an assessment but is less prescriptive about a specific "substantial doubt" threshold and formal two-step process</span></div>
+    <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Discontinued operations threshold</span><span>Strategic shift with a major effect on operations/results (post-2014, converged toward IFRS)</span><span>IFRS 5: a component representing a separate major line of business or geographical area of operations — broadly converged following the 2014 US GAAP narrowing</span></div>
+    <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Liquidation basis of accounting</span><span>Dedicated, codified guidance (ASC 205-30)</span><span>NO dedicated IFRS standard — an entity in liquidation applies general Conceptual Framework and IAS 1 going-concern-departure principles without an equivalent specific measurement model</span></div>
+    <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Override for misleading compliance</span><span>None — no override mechanism exists</span><span>IAS 1 contains a rare, narrowly available true-and-fair override provision</span></div>
+    </div>
+    <div class="note">The liquidation basis of accounting is one of the more genuinely UNIQUE features of US GAAP relative to IFRS — IFRS entities facing liquidation must work from general principles rather than a dedicated, detailed measurement model.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s15"><span class="num">15</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cs span2"><div class="ctitle cs">Where every ASC 205 event lands</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+    <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Substantial doubt disclosure (alleviated or not)</span><span>Notes only</span><span>No direct recognition impact from the disclosure itself</span></div>
+    <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Classification of a discontinued operation</span><span><span class="badge bp">IS</span> <span class="badge bs">BS</span></span><span>Separate presentation, net of tax, below continuing operations; related assets/liabilities separately classified</span></div>
+    <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Adoption of the liquidation basis</span><span><span class="badge bs">BS</span></span><span>Balance sheet replaced by a Statement of Net Assets in Liquidation</span></div>
+    <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Subsequent changes in estimated liquidation value</span><span><span class="badge bc">SCF</span></span><span>Reflected in the Statement of Changes in Net Assets in Liquidation, the liquidation-basis substitute for a conventional income statement</span></div>
+    </div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s16"><span class="num">16</span><h2>Related Topics</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd"><div class="ctitle cd">Cross-reference map</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+    <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 210</span><span>Governs the Balance Sheet itself, one of the statements within the complete set ASC 205 frames</span></div>
+    <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 230</span><span>Governs the Statement of Cash Flows, including cash flow presentation for discontinued operations</span></div>
+    <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 250</span><span>Governs accounting changes and error corrections, relevant to comparative-period restatement mechanics</span></div>
+    <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 852</span><span>Reorganizations — interacts with the liquidation basis guidance in bankruptcy/reorganisation contexts</span></div>
+    </div>
+    </div>
+    <div class="card cn"><div class="ctitle cn">Quick-reference glossary preview</div>
+    <div class="glossary-item"><div class="glossary-term">Imminent (liquidation)</div><div class="glossary-def">A defined threshold under ASC 205-30 — either an approved liquidation plan with remote likelihood of blockage, or an externally imposed liquidation plan with remote likelihood of returning to going-concern status.</div></div>
+    <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Substantial doubt</div><div class="glossary-def">The defined threshold under ASC 205-40 triggering going-concern disclosure — assessed without regard to management's mitigating plans in the first instance.</div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s17"><span class="num">17</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  
+
+    <Glossary entries={[
+      { term: "Component of an entity", definition: "Operations and cash flows that can be clearly distinguished, operationally and for financial reporting purposes, from the rest of the entity — the unit of account for discontinued operations analysis." },
+      { term: "Imminent (liquidation)", definition: "A defined threshold under ASC 205-30 — either an approved liquidation plan with remote likelihood of blockage, or an externally imposed liquidation plan with remote likelihood of returning to going-concern status." },
+      { term: "Net assets in liquidation", definition: "The liquidation-basis equivalent of total equity — the excess of estimated liquidation-basis assets over estimated liabilities, presented in a dedicated Statement of Net Assets in Liquidation." },
+      { term: "Substantial doubt", definition: "The defined threshold under ASC 205-40 triggering going-concern disclosure — assessed without regard to management's mitigating plans in the first instance." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.ASC205} />
+  </section>
+</StandardPageLayout>

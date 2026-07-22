@@ -1,0 +1,347 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/ifrs/ifrs3.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope & Applicability" },
+        { id: "s3", label: "Identifying the Acquirer & Acquisition Date" },
+        { id: "s4", label: "The Acquisition Method — Four Steps" },
+        { id: "s5", label: "Recognising Identifiable Assets & Liabilities" },
+        { id: "s6", label: "Consideration Transferred" },
+        { id: "s7", label: "Goodwill & Bargain Purchase Gains" },
+        { id: "s8", label: "Non-Controlling Interests — Two Measurement Options" },
+        { id: "s9", label: "Measurement Period Adjustments" },
+        { id: "s10", label: "Disclosure" },
+        { id: "s11", label: "IFRS vs US GAAP" },
+        { id: "s12", label: "Statement Mapping" },
+        { id: "s13", label: "Related Standards" },
+        { id: "s14", label: "Glossary" },
+        { id: "history", label: "History & Development" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <!-- ============ SECTION 1 ============ -->
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Why acquisitions are measured at fair value, not historical cost</div>
+        <div class="principle">The Conceptual Framework's asset/liability definitions require FAITHFUL REPRESENTATION of what an entity actually controls after a business combination. IFRS 3's acquisition method achieves this by recognising the acquiree's identifiable assets and liabilities at their FAIR VALUE at the acquisition date — a genuinely NEW measurement basis for the combined entity, distinct from the acquiree's own historical carrying amounts.</div>
+        <div class="elabel">HOW IFRS 3 MAPS TO THE FRAMEWORK</div>
+        <div class="check-list">
+          <span><strong>Fresh-start measurement</strong> — the ACQUIRER'S financial statements reflect what it PAID and ACQUIRED at fair value, not the acquiree's own historical cost basis, since a genuinely new economic transaction has occurred</span>
+          <span><strong>Goodwill as a residual</strong> — goodwill represents future economic benefits from assets NOT individually identifiable/separately recognisable (e.g. synergies, workforce), captured as the RESIDUAL after all identifiable items are fair-valued</span>
+          <span><strong>Control as the recognition trigger</strong> — the entire acquisition method is triggered by the ACQUIRER obtaining CONTROL, directly invoking the Framework's control-based definition of a reporting entity's boundary</span>
+        </div>
+        <div class="note">IFRS 3's acquisition method is one of the clearest applications of the Framework's "faithful representation over historical continuity" principle — a business combination is treated as a genuinely NEW transaction, not merely a combination of two sets of pre-existing book values.</div>
+      </div>
+
+      <div class="card cs">
+        <div class="ctitle cs">Measurement principles applied by IFRS 3</div>
+        <div class="principle">IFRS 3 applies fair value measurement almost universally at the acquisition date — one of the most comprehensive applications of fair value anywhere in IFRS.</div>
+        <div class="formula-box">
+          <div class="f-eq">Goodwill = Consideration transferred + Fair value of any NCI + Fair value of previously held equity interest (if any) − Fair value of net identifiable assets acquired</div>
+        </div>
+        <div class="callout info callout--flush">ℹ️ <strong>Qualitative characteristics in action:</strong> measuring virtually EVERYTHING at fair value on the SAME date reflects <strong>comparability</strong> — a consistent measurement basis across the entire transaction, rather than a patchwork of historical costs from different original acquisition dates.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 2 ============ -->
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What IFRS 3 covers</div>
+        <div class="principle">IFRS 3 applies to a transaction or other event in which an acquirer obtains CONTROL of one or more BUSINESSES — the definition of "business" itself is critical, since IFRS 3 applies ONLY to acquisitions meeting this threshold.</div>
+        <div class="elabel">SCOPE EXCLUSIONS</div>
+        <div class="cross-list">
+          <span>Formation of a JOINT ARRANGEMENT (IFRS 11) in the financial statements of the joint arrangement itself</span>
+          <span>Acquisition of an asset or group of assets that does NOT constitute a business (an ordinary ASSET acquisition, accounted for by allocating cost to individual assets/liabilities based on relative fair values — NO goodwill arises)</span>
+          <span>Combinations of entities under COMMON CONTROL (e.g. group reorganisations) — outside IFRS 3's scope, though the IASB has published separate guidance</span>
+        </div>
+        <div class="callout warn callout--flush">⚠️ <strong>Whether a transaction is a "business" or merely an "asset acquisition" is one of the most consequential judgements in the whole standard</strong> — a business combination applies the fair value acquisition method and can generate goodwill; an asset acquisition allocates cost proportionately and NEVER generates goodwill.</div>
+      </div>
+
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions you must know</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Business combination</div>
+          <div class="glossary-def">A transaction or other event in which an acquirer obtains control of one or more businesses.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Business</div>
+          <div class="glossary-def">An integrated set of activities and assets that is capable of being conducted and managed to provide a return to investors/other owners, members, or participants — assessed via the "outputs" test and "substantive process" screening test.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Acquisition date</div>
+          <div class="glossary-def">The date the acquirer obtains CONTROL of the acquiree — normally the CLOSING date, though it can be earlier or later if control is obtained on a different date by agreement.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Non-controlling interest (NCI)</div>
+          <div class="glossary-def">The equity in a subsidiary NOT attributable, directly or indirectly, to a parent.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 3 ============ -->
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Identifying the Acquirer &amp; Acquisition Date</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Determining WHO is the acquirer, and WHEN</div>
+        <div class="principle">For EVERY business combination, one of the combining entities must be identified as the ACQUIRER — using IFRS 10's control guidance, and, if unclear, additional indicators (relative size, which entity issues equity, which party initiated the combination, which entity's former management dominates the combined entity).</div>
+        <div class="elabel">REVERSE ACQUISITIONS</div>
+        <div class="text-supporting">In a "reverse acquisition," the LEGAL acquirer (e.g. the entity issuing shares) may be identified as the ACCOUNTING ACQUIREE, and vice versa, if the SUBSTANCE of the transaction indicates the legally acquired entity's former owners/management actually control the COMBINED entity — a classic example is a private company "acquiring" a smaller public shell company to obtain a stock exchange listing.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 4 ============ -->
+    <div class="section-header" id="s4"><span class="num">4</span><h2>The Acquisition Method — Four Steps</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">The mandatory sequence</div>
+        <div class="check-list">
+          <span><strong>Step 1</strong> — Identify the ACQUIRER</span>
+          <span><strong>Step 2</strong> — Determine the ACQUISITION DATE</span>
+          <span><strong>Step 3</strong> — Recognise and measure the IDENTIFIABLE assets acquired, liabilities assumed, and any NCI in the acquiree</span>
+          <span><strong>Step 4</strong> — Recognise and measure GOODWILL or a gain from a BARGAIN PURCHASE</span>
+        </div>
+        <div class="note">Every business combination is accounted for by applying this SAME four-step sequence — a genuinely consistent, universal method REGARDLESS of the specific structure or industry involved.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 5 ============ -->
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Recognising Identifiable Assets &amp; Liabilities (with worked example)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Recognition and measurement principles</div>
+        <div class="formula-box">
+          <div class="f-eq">Identifiable assets acquired and liabilities assumed are measured at their ACQUISITION-DATE FAIR VALUES</div>
+        </div>
+        <div class="text-supporting">To qualify for RECOGNITION, an item must meet the Framework's asset/liability definitions at the acquisition date — the acquirer's INTENTIONS for future use are NOT relevant to recognition, only whether a genuine present asset/liability exists.</div>
+        <div class="callout warn callout--warn-flush">⚠️ A CONTINGENT LIABILITY of the acquiree is RECOGNISED at fair value at the acquisition date, EVEN IF it would not otherwise meet IAS 37's normal "probable" recognition threshold — a specific IFRS 3 override, since the acquirer has effectively PAID for it as part of the purchase price.</div>
+      </div>
+
+      <div class="card cn">
+        <div class="ctitle cn">Worked example — intangibles not on the acquiree's own books</div>
+        <div class="worked">
+          <div class="wk-title">Example 1: Customer relationships recognised only on acquisition</div>
+          <div class="wk-body">
+            A target company has never recognised its customer relationships as an intangible asset (since internally generated customer relationships are prohibited from recognition under IAS 38). On acquisition, the acquirer's valuation specialists determine these customer relationships have an acquisition-date fair value of $2,400,000.
+          </div>
+          <div class="wk-answer">
+            The $2,400,000 customer relationship intangible IS recognised SEPARATELY in the consolidated accounts at fair value, even though it NEVER appeared on the acquiree's own standalone balance sheet — this is a classic example of IFRS 3 recognising items that IAS 38's internal-generation prohibition would otherwise exclude.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 6 ============ -->
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Consideration Transferred (with worked example)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Fair value of everything given up — including contingent consideration</div>
+        <div class="principle">Consideration transferred is measured at FAIR VALUE, calculated as the sum of the acquisition-date fair values of assets transferred, liabilities incurred, and equity instruments issued by the acquirer — PLUS the fair value of any CONTINGENT CONSIDERATION.</div>
+        <div class="worked worked--flush">
+          <div class="wk-title">Example 2: Consideration with cash, shares, and contingent consideration</div>
+          <div class="wk-body">
+            An acquirer pays $8,000,000 cash, issues 500,000 of its own shares (fair value $6 each), and agrees to pay an additional $1,500,000 if the acquiree achieves a specific profit target within 2 years (fair value of this contingent consideration at acquisition date, discounted for probability and time value: $900,000).
+          </div>
+          <div class="wk-answer">
+            <strong>Total consideration transferred</strong> = 8,000,000 (cash) + 3,000,000 (500,000 × $6 shares) + 900,000 (contingent consideration) = <strong>$11,900,000</strong>
+          </div>
+        </div>
+        <div class="callout warn callout--flush">⚠️ Contingent consideration classified as a LIABILITY is REMEASURED each period through PROFIT OR LOSS (per IFRS 9), NOT as a subsequent adjustment to goodwill — only measurement PERIOD adjustments (Section 9) affect goodwill; changes after the measurement period ends go through SOPL.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 7 ============ -->
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Goodwill &amp; Bargain Purchase Gains (with worked example)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">The full goodwill formula, applied</div>
+        <div class="worked worked--flush">
+          <div class="wk-title">Example 3: Calculating goodwill</div>
+          <div class="wk-body">
+            Continuing Example 2: total consideration transferred was $11,900,000, for 80% of the acquiree. The acquirer elects to measure NCI at its PROPORTIONATE SHARE of net identifiable assets (Section 8). The fair value of net identifiable assets acquired is $12,000,000.
+          </div>
+          <div class="wk-answer">
+            <strong>NCI at proportionate share</strong> = 12,000,000 × 20% = $2,400,000<br>
+            <strong>Goodwill</strong> = 11,900,000 (consideration) + 2,400,000 (NCI) − 12,000,000 (net identifiable assets) = <strong>$2,300,000</strong>
+          </div>
+        </div>
+        <div class="callout danger callout--flush">✕ <strong>A "bargain purchase" (negative goodwill)</strong> arises RARELY, when the fair value of net identifiable assets EXCEEDS the total of consideration transferred plus NCI plus any previously held interest. Before recognising a bargain purchase GAIN in profit or loss, the acquirer MUST REASSESS whether it has correctly identified ALL assets acquired/liabilities assumed and correctly MEASURED all amounts — only after this reassessment confirms the excess is genuine is the gain recognised, since bargain purchases are inherently unusual and often signal a measurement error rather than a true economic gain.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 8 ============ -->
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Non-Controlling Interests — Two Measurement Options (with worked example)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">The full goodwill vs partial goodwill method — a genuine choice</div>
+        <div class="principle">For EACH business combination, the acquirer elects to measure any NCI in the acquiree EITHER: (a) at FAIR VALUE ("full goodwill" method — this INCLUDES NCI's share of goodwill); OR (b) at NCI's PROPORTIONATE SHARE of the acquiree's identifiable net assets ("partial goodwill" method — goodwill relates ONLY to the parent's controlling interest).</div>
+        <div class="worked worked--flush">
+          <div class="wk-title">Example 4: Comparing the two NCI measurement methods</div>
+          <div class="wk-body">
+            Same facts as Example 3, but suppose the FAIR VALUE of the 20% NCI (based on quoted market price or valuation techniques) is instead determined to be $2,700,000, rather than the $2,400,000 proportionate share.
+          </div>
+          <div class="wk-answer">
+            <strong>Full goodwill method</strong> (NCI at fair value): Goodwill = 11,900,000 + 2,700,000 − 12,000,000 = <strong>$2,600,000</strong> (HIGHER — includes NCI's implied share of goodwill)<br>
+            <strong>Partial goodwill method</strong> (NCI at proportionate share, from Example 3): Goodwill = <strong>$2,300,000</strong> (LOWER — excludes NCI's share of goodwill)<br>
+            The election is made SEPARATELY for EACH business combination, but MUST be applied CONSISTENTLY within that single transaction.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 9 ============ -->
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Measurement Period Adjustments</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">The 12-month window for retrospective adjustment</div>
+        <div class="principle">If the initial accounting for a business combination is INCOMPLETE by the end of the reporting period in which the combination occurs, the acquirer reports PROVISIONAL amounts. During the "MEASUREMENT PERIOD" (a period NOT EXCEEDING ONE YEAR from the acquisition date), the acquirer RETROSPECTIVELY adjusts the provisional amounts to reflect new information about facts/circumstances that EXISTED AT the acquisition date, had they been known at that date — with a CORRESPONDING adjustment to GOODWILL.</div>
+        <div class="callout warn callout--flush">⚠️ Adjustments MADE AFTER the measurement period ends, or resulting from EVENTS occurring AFTER the acquisition date (rather than clarifying acquisition-date facts), are accounted for as CORRECTIONS OF ERRORS (IAS 8) or as ORDINARY period changes in estimate — NOT as adjustments to goodwill.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 10 ============ -->
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Required disclosures</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">FOR EACH MATERIAL BUSINESS COMBINATION</div>
+            <div class="check-list">
+              <span>Name and description of the acquiree, acquisition date, percentage of voting equity acquired, and primary reasons for the combination</span>
+              <span>Fair value of total consideration transferred, and the fair value of each major class of consideration</span>
+              <span>Amounts recognised for each major class of assets acquired and liabilities assumed</span>
+              <span>Amount of goodwill (or bargain purchase gain), and a QUALITATIVE description of the factors making up goodwill</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">FURTHER DISCLOSURES</div>
+            <div class="check-list">
+              <span>NCI measurement basis chosen for each combination, and the amount recognised</span>
+              <span>Revenue and profit/loss of the acquiree since the acquisition date included in the group's results (and, if practicable, what group revenue/profit would have been had the acquisition occurred at the start of the period)</span>
+              <span>Details of measurement period adjustments made during the reporting period</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 11 ============ -->
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where management judgement matters most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Whether an acquisition constitutes a "business" (goodwill possible) or merely an asset acquisition (no goodwill)</span>
+              <span>Identifying the accounting acquirer, especially in reverse acquisitions and mergers of equals</span>
+              <span>Which NCI measurement method to elect for each combination</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>Fair value of identifiable intangible assets not previously recognised by the acquiree (e.g. customer relationships, brands, technology)</span>
+              <span>Fair value of contingent consideration, and its probability-weighted future payment</span>
+              <span>Fair value of NCI, where the fair value method is elected</span>
+            </div>
+          </div>
+        </div>
+        <div class="callout warn callout--warn-flush">⚠️ Purchase price allocation (PPA) — the process of identifying and fair-valuing every acquired asset and assumed liability — is one of the most JUDGEMENT- and specialist-VALUATION-intensive exercises in all of IFRS, frequently requiring external valuation experts for intangibles and contingent liabilities.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 12 ============ -->
+    <div class="section-header" id="s12"><span class="num">12</span><h2>IFRS vs US GAAP — Key Differences</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — IFRS 3 vs US GAAP (ASC 805)</div>
+        <div class="td-table">
+          <div class="th cols-12-1-1"><span>Feature</span><span>IFRS (IFRS 3)</span><span>US GAAP</span></div>
+          <div class="tr cols-12-1-1"><span>NCI measurement</span><span>CHOICE: fair value OR proportionate share of net identifiable assets</span><span>MANDATORY fair value only — no proportionate share option available</span></div>
+          <div class="tr alt cols-12-1-1"><span>Bargain purchase gain</span><span>Recognised in profit or loss after reassessment</span><span>Also recognised in earnings, broadly converged in substance</span></div>
+          <div class="tr cols-12-1-1"><span>Measurement period</span><span>Up to 1 year from acquisition date</span><span>Also up to 1 year, largely converged</span></div>
+          <div class="tr alt cols-12-1-1"><span>Acquisition-related costs (legal, advisory fees)</span><span>EXPENSED as incurred</span><span>Also EXPENSED as incurred, converged</span></div>
+          <div class="tr cols-12-1-1"><span>"Business" definition</span><span>Refined by a 2018 amendment adding a "concentration test" screening step</span><span>Similar refinement made via ASU 2017-01, broadly converged following coordinated efforts</span></div>
+        </div>
+        <div class="note">IFRS 3 and ASC 805 are substantially converged following coordinated joint standard-setting — the CLEAREST remaining difference is the NCI measurement choice, which IFRS uniquely offers but US GAAP does not.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 13 ============ -->
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Statement Mapping — Where Every Business Combination Event Lands</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Comprehensive event-to-statement mapping table</div>
+        <div class="td-table">
+          <div class="th cols-16-1-14"><span>Event / transaction</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr cols-16-1-14"><span>Recognition of identifiable assets/liabilities at fair value</span><span><span class="badge bs">SOFP</span></span><span>At acquisition-date fair value, replacing acquiree's historical carrying amounts</span></div>
+          <div class="tr alt cols-16-1-14"><span>Goodwill recognised</span><span><span class="badge bs">SOFP</span></span><span>Residual, tested annually for impairment (IAS 36), never amortised</span></div>
+          <div class="tr cols-16-1-14"><span>Bargain purchase gain</span><span><span class="badge bp">SOPL</span></span><span>Recognised immediately, after reassessment confirms it is genuine</span></div>
+          <div class="tr alt cols-16-1-14"><span>Acquisition-related costs (legal, advisory)</span><span><span class="badge bp">SOPL</span></span><span>Expensed as incurred, never capitalised</span></div>
+          <div class="tr cols-16-1-14"><span>NCI recognised at acquisition</span><span><span class="badge be">Equity</span></span><span>Fair value or proportionate share, per the elected method</span></div>
+          <div class="tr alt cols-16-1-14"><span>Contingent consideration remeasurement (liability-classified)</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Per IFRS 9, not adjusted through goodwill after the measurement period</span></div>
+          <div class="tr cols-16-1-14"><span>Measurement period adjustment</span><span><span class="badge bs">SOFP</span></span><span>Retrospective adjustment to provisional amounts and goodwill, within 1 year</span></div>
+          <div class="tr alt cols-16-1-14"><span>Cash paid to acquire the business</span><span><span class="badge bs">Cash Flow Statement</span></span><span>Investing activities outflow, net of cash acquired</span></div>
+          <div class="tr cols-16-1-14"><span>Consideration, goodwill factors, NCI method, PPA details</span><span><span class="badge bp">Notes</span></span><span>Extensive mandatory disclosure per acquisition</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 14 ============ -->
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Glossary &amp; Related Standards</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Related standards — cross-reference map</div>
+        <div class="td-table">
+          <div class="th cols-08-2"><span>Standard</span><span>Connection</span></div>
+          <div class="tr cols-08-2"><span>IFRS 10</span><span>Supplies the "control" definition determining WHO the acquirer is and WHEN the combination occurs</span></div>
+          <div class="tr alt cols-08-2"><span>IAS 36</span><span>Governs mandatory annual goodwill impairment testing at the CGU level following the acquisition</span></div>
+          <div class="tr cols-08-2"><span>IFRS 13</span><span>Supplies the fair value measurement framework used almost universally throughout the acquisition method</span></div>
+          <div class="tr alt cols-08-2"><span>IFRS 9</span><span>Governs subsequent remeasurement of liability-classified contingent consideration through profit or loss</span></div>
+          <div class="tr cols-08-2"><span>IAS 12</span><span>Deferred tax is recognised on temporary differences arising from fair value adjustments made at acquisition</span></div>
+          <div class="tr alt cols-08-2"><span>IFRS 1</span><span>Provides an optional exemption allowing first-time adopters to avoid full retrospective restatement of pre-transition business combinations</span></div>
+        </div>
+      </div>
+      <div class="card cn">
+        <div class="ctitle cn">Quick-reference glossary</div>
+        <div class="glossary-item"><div class="glossary-term">Contingent consideration</div><div class="glossary-def">An obligation of the acquirer to transfer additional assets/equity interests to the former owners of an acquiree, if specified future events occur or conditions are met.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Measurement period</div><div class="glossary-def">The period after the acquisition date, not exceeding one year, during which the acquirer may retrospectively adjust provisional amounts recognised for a business combination.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Bargain purchase</div><div class="glossary-def">A business combination where the fair value of net identifiable assets acquired exceeds the sum of consideration transferred, NCI, and any previously held equity interest — recognised as a gain, after mandatory reassessment.</div></div>
+      </div>
+    </div>
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.IFRS3} />
+  </section>
+</StandardPageLayout>

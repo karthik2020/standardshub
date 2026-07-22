@@ -1,0 +1,65 @@
+---
+import { SITE } from "../config/site";
+import { resolveSeo, buildJsonLd, type SeoPageType } from "../utils/seo";
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  robots?: string;
+  ogType?: string;
+  ogImage?: string;
+  twitterCard?: string;
+  /** Standard page context used to auto-generate the description. */
+  standard?: { code: string; title: string; dateModified?: string };
+  /** Structured-data schema for this page, or null/undefined for none. */
+  seoType?: SeoPageType;
+  /** When true, also emits the viewport meta tag (for pages that own <head>). */
+  viewport?: boolean;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  robots,
+  ogType,
+  ogImage,
+  twitterCard,
+  standard,
+  seoType,
+  viewport = false,
+} = Astro.props;
+
+const seo = resolveSeo(
+  { title, description, canonical, robots, ogType, ogImage, twitterCard, standard },
+  Astro.url.pathname
+);
+
+const jsonLd = buildJsonLd(seoType ?? null, seo, standard);
+---
+
+<title>{seo.title}</title>
+<meta name="description" content={seo.description} />
+<link rel="canonical" href={seo.canonical} />
+<meta name="robots" content={seo.robots} />
+<meta name="author" content={SITE.author} />
+<meta name="application-name" content={SITE.applicationName} />
+{viewport && <meta name="viewport" content="width=device-width, initial-scale=1.0" />}
+<meta name="theme-color" content={SITE.themeColor} />
+
+<!-- Open Graph -->
+<meta property="og:title" content={seo.title} />
+<meta property="og:description" content={seo.description} />
+<meta property="og:type" content={seo.ogType} />
+<meta property="og:url" content={seo.canonical} />
+<meta property="og:site_name" content={SITE.name} />
+<meta property="og:image" content={seo.ogImage} />
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content={seo.twitterCard} />
+<meta name="twitter:title" content={seo.title} />
+<meta name="twitter:description" content={seo.description} />
+<meta name="twitter:image" content={seo.ogImage} />
+
+{jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}

@@ -1,0 +1,57 @@
+---
+/*
+History timeline
+
+Expandable timeline of a standard's development history.
+
+Props:
+- title (optional, defaults to "History & Development")
+- items
+
+Renders a <details> list of dated developments with optional comments. Hidden when items array is empty.
+*/
+
+interface Item {
+    development: string;
+    comment?: string;
+}
+
+interface Props {
+    title?: string;
+    items: Item[];
+}
+
+const { title = "History & Development", items = [] } = Astro.props;
+---
+
+{
+    items.length > 0 && (
+        <details class="history-timeline">
+            <summary>{title}</summary>
+
+            <div class="history-items">
+                {items.map((item) => (
+                    <div class="history-item">
+                        <div class="history-date">{item.date}</div>
+
+                        <div class="history-content">
+                            <div class="history-dot" />
+
+                            <div class="history-text">
+                                <div class="history-development">
+                                    {item.development}
+                                </div>
+
+                                {item.comment && (
+                                    <div class="history-comment">
+                                        {item.comment}
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </details>
+    )
+}

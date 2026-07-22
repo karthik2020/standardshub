@@ -1,0 +1,196 @@
+/* ======================================================
+   PROTOTYPE 2 — Corner chip / tab callouts
+   ------------------------------------------------------
+   Fully isolated under the `.pc2-` prefix. Does NOT
+   modify the first (bead) prototype, any accounting
+   page, or any existing stylesheet.
+
+   Concept: the icon lives in a small chip that is
+   anchored to the TOP-LEFT corner of the panel, flush
+   against the border (no gap) so it grows out of the
+   border and merges with it. The chip has an asymmetric
+   shape (rounded only on the top-left and bottom-right)
+   so it reads as a continuation of the panel. The text
+   block starts BELOW the chip and uses the full width
+   from the very first line (no indent).
+
+   Two colour variants are demonstrated:
+     A) Outlined chip  — same fill/border/icon as panel
+     B) Filled chip    — accent fill, white icon
+   ====================================================== */
+
+.pc2-callout {
+  position: relative;
+  border: 1px solid;
+  border-radius: 6px;
+  padding: 6px 9px;
+  font-size: 12.5px;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+/* Chip = block anchored in the top-left corner.
+   Negative margins pull it onto the panel border so its
+   top/left edges coincide with the panel's top/left
+   border (no gap, merges with the border).
+   margin-bottom gives the 12–16px gap to the text below. */
+.pc2-chip {
+  float: left;                /* first "character": text wraps beside, then under */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border: 1px solid;          /* same thickness as the panel */
+  /* asymmetric shape: rounded only where it meets the
+     panel corner; square where it meets the straight
+     border and the panel interior. */
+  border-top-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+  margin: -7px 8px 0 -10px;   /* callout: -(padTop+1) / -(padLeft+1); 8px gap, no gap below */
+}
+
+.pc2-chip svg {
+  width: 13px;
+  height: 13px;
+  display: block;
+}
+
+/* Text block sits below the chip, full width, no indent. */
+.pc2-body {
+  display: block;
+}
+
+/* ---------- Variant colours (existing tokens) ---------- */
+
+.pc2-callout--info {
+  background: color-mix(in srgb, #3b82f6 5%, transparent);
+  border-color: #3b82f6;
+  color: #2563eb;
+}
+.pc2-callout--info .pc2-chip {
+  background: color-mix(in srgb, #3b82f6 5%, transparent);
+  border-color: #3b82f6;
+  color: #2563eb;
+}
+
+.pc2-callout--warn {
+  background: color-mix(in srgb, #f59e0b 5%, transparent);
+  border-color: #f59e0b;
+  color: #b45309;
+}
+.pc2-callout--warn .pc2-chip {
+  background: color-mix(in srgb, #f59e0b 5%, transparent);
+  border-color: #f59e0b;
+  color: #b45309;
+}
+
+.pc2-callout--suc {
+  background: color-mix(in srgb, #22c55e 5%, transparent);
+  border-color: #22c55e;
+  color: #16a34a;
+}
+.pc2-callout--suc .pc2-chip {
+  background: color-mix(in srgb, #22c55e 5%, transparent);
+  border-color: #22c55e;
+  color: #16a34a;
+}
+
+.pc2-callout--danger {
+  background: color-mix(in srgb, #ef4444 5%, transparent);
+  border-color: #ef4444;
+  color: #dc2626;
+}
+.pc2-callout--danger .pc2-chip {
+  background: color-mix(in srgb, #ef4444 5%, transparent);
+  border-color: #ef4444;
+  color: #dc2626;
+}
+
+/* Formula / Key Concept box keeps its distinct yellow
+   treatment but inherits the same corner chip. */
+.pc2-callout--formula {
+  background: #fffbeb;
+  border-color: #fde68a;
+  color: #374151;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 13px;
+  line-height: 1.8;
+}
+.pc2-callout--formula .pc2-chip {
+  background: #fffbeb;
+  border-color: #fde68a;
+  color: #b45309;
+  /* match the formula panel's larger radius + padding */
+  border-top-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  margin: -9px 8px 0 -13px;   /* formula: -(padTop+1) / -(padLeft+1); 8px gap, no gap below */
+}
+
+/* ---------- Variant B — Filled chip ---------- */
+
+.pc2-callout--info.pc2-callout--b .pc2-chip {
+  background: #3b82f6;
+  border-color: #3b82f6;
+  color: #ffffff;
+}
+.pc2-callout--warn.pc2-callout--b .pc2-chip {
+  background: #f59e0b;
+  border-color: #f59e0b;
+  color: #ffffff;
+}
+.pc2-callout--suc.pc2-callout--b .pc2-chip {
+  background: #22c55e;
+  border-color: #22c55e;
+  color: #ffffff;
+}
+.pc2-callout--danger.pc2-callout--b .pc2-chip {
+  background: #ef4444;
+  border-color: #ef4444;
+  color: #ffffff;
+}
+.pc2-callout--formula.pc2-callout--b .pc2-chip {
+  background: #b45309;
+  border-color: #b45309;
+  color: #ffffff;
+}
+
+/* ---------- Prototype layout (side-by-side) ---------- */
+
+.pc2-section-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #111827;
+  margin: 22px 0 4px;
+}
+
+.pc2-sub {
+  font-size: 12px;
+  color: #52617a;
+  margin: 0 0 10px;
+}
+
+.pc2-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 18px;
+  align-items: start;
+}
+
+.pc2-cell-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #52617a;
+  margin-bottom: 6px;
+}
+
+@media (max-width: 640px) {
+  .pc2-grid {
+    grid-template-columns: 1fr;
+  }
+}

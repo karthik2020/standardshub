@@ -1,0 +1,386 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/ias/ias23.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        {
+          id: "s1",
+          label: "Conceptual Framework Linkage",
+        },
+        {
+          id: "s2",
+          label: "Scope & Applicability",
+        },
+        {
+          id: "s3",
+          label: "Qualifying Assets",
+        },
+        {
+          id: "s4",
+          label: "Specific Borrowings",
+        },
+        {
+          id: "s5",
+          label: "General Borrowings Pool",
+        },
+        {
+          id: "s6",
+          label: "Commencement, Suspension & Cessation",
+        },
+        {
+          id: "s7",
+          label: "Investment Income Offset",
+        },
+        {
+          id: "s8",
+          label: "Carrying Amount vs Recoverable Amount",
+        },
+        {
+          id: "s9",
+          label: "Disclosure Requirements",
+        },
+        {
+          id: "s10",
+          label: "Critical Judgments & Estimates",
+        },
+        {
+          id: "s11",
+          label: "IFRS vs US GAAP",
+        },
+        {
+          id: "s12",
+          label: "Statement Mapping",
+        },
+        {
+          id: "s13",
+          label: "Related Standards",
+        },
+        {
+          id: "s14",
+          label: "Quick-Reference Glossary",
+        },
+        {
+          id: "history",
+          label: "History & Development",
+        },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <!-- ============ SECTION 1 ============ -->
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Why some borrowing costs become part of an asset's cost</div>
+        <div class="principle">The Conceptual Framework defines the cost of an asset as everything necessary to bring it to its intended condition and location for use. For assets that take a SUBSTANTIAL period to construct, the interest cost of financing that construction is genuinely part of getting the asset ready — not merely a cost of financing operations generally.</div>
+        <div class="elabel">HOW IAS 23 MAPS TO THE FRAMEWORK</div>
+        <div class="check-list">
+          <span><strong style="font-weight:600">Directly attributable costs</strong> — borrowing costs directly attributable to a qualifying asset's construction are, by their nature, as much a part of "bringing the asset to its intended use" as materials and labour</span>
+          <span><strong style="font-weight:600">Matching over the construction period</strong> — capitalisation defers the interest expense from the construction period into the FUTURE periods the asset will generate benefits, via depreciation</span>
+          <span><strong style="font-weight:600">All other borrowing costs</strong> — expensed as incurred, since they relate to the general financing of the entity's activities, not to bringing a specific asset to use</span>
+        </div>
+        <div class="note">IAS 23's core rule is deceptively narrow: capitalisation applies ONLY to qualifying assets under construction — it is NOT a general election to capitalise financing costs, and the 2007 revision eliminated the "expense immediately" option that previously existed as an alternative treatment.</div>
+      </div>
+
+      <div class="card cs">
+        <div class="ctitle cs">Measurement principles applied</div>
+        <div class="principle">IAS 23 measures capitalised borrowing cost by reference to ACTUAL cost incurred, using either a direct trace (specific borrowings) or a weighted-average approach (general borrowings) — never an estimate of hypothetical financing cost.</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.3fr 1fr;"><span>Borrowing type</span><span>Capitalisation basis</span></div>
+          <div class="tr" style="grid-template-columns:1.3fr 1fr;"><span>Specific borrowings</span><span>Actual costs incurred, LESS any investment income earned on temporary investment of unused funds</span></div>
+          <div class="tr alt" style="grid-template-columns:1.3fr 1fr;"><span>General borrowings pool</span><span>Weighted average capitalisation rate applied to expenditure on the qualifying asset</span></div>
+        </div>
+        <div class="callout info callout--chip" style="margin-bottom:0;">ℹ️ <strong style="font-weight:600">Qualitative characteristics in action:</strong> the requirement to offset investment income from temporarily investing unused specific borrowing proceeds reflects <strong style="font-weight:600">faithful representation</strong> — only the NET cost of financing genuinely attributable to the asset should be capitalised.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 2 ============ -->
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What IAS 23 covers</div>
+        <div class="principle">IAS 23 requires capitalisation of borrowing costs directly attributable to the acquisition, construction, or production of a QUALIFYING ASSET as part of the cost of that asset — mandatory, not optional, since the 2007 revision.</div>
+        <div class="elabel">SCOPE EXCLUSIONS</div>
+        <div class="cross-list">
+          <span>Qualifying assets measured at FAIR VALUE (e.g. biological assets under IAS 41) — no need to capitalise since fair value already reflects economic reality</span>
+          <span>Inventories manufactured, or otherwise produced, in LARGE QUANTITIES on a REPETITIVE basis, even if they take a substantial period to get ready — a specific carve-out</span>
+        </div>
+        <div class="note">Borrowing costs INCLUDE interest expense calculated using the effective interest method (IFRS 9), finance charges on IFRS 16 lease liabilities, and exchange differences arising from foreign currency borrowings to the extent they are regarded as an adjustment to interest costs.</div>
+      </div>
+
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions you must know</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Qualifying asset</div>
+          <div class="glossary-def">An asset that necessarily takes a SUBSTANTIAL PERIOD OF TIME to get ready for its intended use or sale.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Borrowing costs</div>
+          <div class="glossary-def">Interest and other costs an entity incurs in connection with the borrowing of funds.</div>
+        </div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Capitalisation rate</div>
+          <div class="glossary-def">The weighted average of borrowing costs applicable to the general borrowings outstanding during the period, OTHER than borrowings made specifically for the purpose of obtaining a qualifying asset.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 3 ============ -->
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Qualifying Assets — Identifying What Counts</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Typical examples</div>
+        <div class="check-list">
+          <span>Inventories requiring a substantial period to bring to a saleable condition (e.g. maturing whisky, wine)</span>
+          <span>Manufacturing plants and power generation facilities under construction</span>
+          <span>Investment property under construction (IAS 40)</span>
+          <span>"Bearer plants" during their development period (IAS 41 carve-out to IAS 16)</span>
+          <span>Intangible assets under development, if construction takes a substantial period (e.g. certain internally developed software)</span>
+        </div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">What is NOT a qualifying asset</div>
+        <div class="cross-list">
+          <span>Financial assets, and inventories manufactured/produced repetitively in large quantities over a short period</span>
+          <span>Assets that are ready for their intended use or sale WHEN ACQUIRED</span>
+          <span>Assets measured at fair value (e.g. biological assets under IAS 41)</span>
+        </div>
+        <div class="note">"Substantial period" is deliberately undefined by a bright-line time threshold in IAS 23 — it is a matter of judgement based on the specific circumstances, though many entities apply a rule of thumb of around 12 months as a starting point for assessment.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 4 ============ -->
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Capitalisation — Specific Borrowings</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs">
+        <div class="ctitle cs">The specific borrowing formula</div>
+        <div class="formula-box formula-box--chip">
+          <div class="f-eq">Capitalised amount = Actual borrowing costs incurred on the specific loan − Investment income earned on temporary investment of the unused loan proceeds</div>
+        </div>
+        <div class="text-supporting">Where funds are borrowed SPECIFICALLY for a qualifying asset, the entity can directly trace the actual costs incurred — but any surplus funds not yet spent, temporarily invested, generate investment income that must be DEDUCTED before capitalisation.</div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Worked example — specific loan with temporary investment</div>
+        <div class="worked">
+          <div class="wk-title">Example 1: Specific borrowing for a factory build</div>
+          <div class="wk-body">
+            An entity borrows $2,000,000 specifically to fund construction of a new factory, at 6% p.a. interest, on 1 January. Construction commences immediately. The full amount is drawn down at once, but only $1,200,000 is spent on construction in the first 3 months; the remaining $800,000 is temporarily invested at 3% p.a. for those 3 months before being fully utilised.
+          </div>
+          <div class="wk-answer">
+            <strong>Interest incurred on the loan (full year)</strong> = 2,000,000 × 6% = $120,000<br>
+            <strong>Investment income earned</strong> = 800,000 × 3% × 3/12 = <strong style="color:var(--color-text-success);">$6,000</strong><br>
+            <strong>Net amount capitalised</strong> = 120,000 − 6,000 = <strong style="color:var(--color-text-info);">$114,000</strong>
+          </div>
+        </div>
+        <div class="entry"><span class="dr">Dr</span><div class="etxt">PPE — factory under construction $114,000<div class="badges"><span class="badge bs">SOFP</span></div></div></div>
+        <div class="entry"><span class="cr">Cr</span><div class="etxt">Interest expense / cash $114,000<div class="badges"><span class="badge bp">SOPL offset</span></div></div></div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 5 ============ -->
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Capitalisation — General Borrowings Pool</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Weighted average capitalisation rate — with worked example</div>
+        <div class="principle">When funds are borrowed GENERALLY and used, at least in part, for a qualifying asset, the entity applies a CAPITALISATION RATE (the weighted average of all general borrowings outstanding during the period) to the expenditure on the asset. The amount capitalised in a period must NOT exceed the total borrowing costs actually incurred during that period.</div>
+        <div class="worked" style="margin-bottom:0;">
+          <div class="wk-title">Example 2: General borrowings pool</div>
+          <div class="wk-body">
+            An entity has two general borrowings outstanding throughout the year: a $3,000,000 loan at 5% and a $1,500,000 loan at 7%. Qualifying asset expenditure averaged $1,000,000 during the year (weighted for timing of spend).
+          </div>
+          <div class="wk-answer">
+            <strong>Weighted average capitalisation rate</strong> = [(3,000,000 × 5%) + (1,500,000 × 7%)] ÷ (3,000,000 + 1,500,000)<br>
+            = (150,000 + 105,000) ÷ 4,500,000 = 255,000 ÷ 4,500,000 = <strong style="color:var(--color-text-info);">5.67%</strong><br>
+            <strong>Borrowing costs capitalised</strong> = 1,000,000 × 5.67% = <strong style="color:var(--color-text-info);">$56,700</strong> (capped at total borrowing costs incurred in the period, if lower)
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 6 ============ -->
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Commencement, Suspension &amp; Cessation of Capitalisation</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">The three conditions for commencement</div>
+        <div class="principle">Capitalisation COMMENCES on the date the entity FIRST meets ALL of the following:</div>
+        <div class="check-list">
+          <span>It incurs expenditures for the asset</span>
+          <span>It incurs borrowing costs</span>
+          <span>It undertakes activities necessary to prepare the asset for its intended use or sale (includes technical/administrative work before physical construction, e.g. obtaining permits — but NOT merely holding an asset with no development activity)</span>
+        </div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Suspension &amp; cessation</div>
+        <div class="dot-list" style="margin-bottom:9px;">
+          <span><strong style="font-weight:600">Suspension</strong> — capitalisation is SUSPENDED during EXTENDED periods in which active development is interrupted (does NOT apply to brief, normal delays or delays that are a NECESSARY part of the process, e.g. concrete curing time)</span>
+          <span><strong style="font-weight:600">Cessation</strong> — capitalisation CEASES when substantially all activities necessary to prepare the asset for intended use/sale are complete — even if minor finishing work remains, or a section is not yet fully occupied</span>
+        </div>
+        <div class="note">For assets completed in PARTS capable of being used while other parts continue under construction (e.g. a business park built in phases), capitalisation ceases for each part as it becomes ready for use, even if the overall project continues.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 7 ============ -->
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Investment Income Offset — Recap &amp; Deeper Example</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">When the offset does — and doesn't — apply</div>
+        <div class="text-supporting" style="margin-bottom:9px;">The investment-income deduction rule (Section 4) applies ONLY to SPECIFIC borrowings, where temporarily unused funds from that SAME specific loan are invested. It does NOT apply to the general borrowings pool — no similar deduction is made against the weighted-average capitalisation rate calculation for surplus general funds invested elsewhere.</div>
+        <div class="callout warn callout--chip" style="margin-bottom:0;">⚠️ A common exam trap: students sometimes try to net investment income against the GENERAL pool capitalisation rate — the netting rule is EXCLUSIVE to specific, traceable borrowings.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 8 ============ -->
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Carrying Amount vs Recoverable Amount</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">The impairment interaction</div>
+        <div class="text-supporting">When the carrying amount, or the expected ultimate cost, of a qualifying asset EXCEEDS its recoverable amount or net realisable value, the carrying amount is WRITTEN DOWN or written off in accordance with the requirements of OTHER Standards (typically IAS 36 for PPE/intangibles, or IAS 2 for inventories) — capitalised borrowing costs do NOT escape the normal impairment testing rules simply because they represent financing cost rather than construction cost.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 9 ============ -->
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Required disclosures</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">MANDATORY DISCLOSURES</div>
+            <div class="check-list">
+              <span>Amount of borrowing costs capitalised during the period</span>
+              <span>The capitalisation rate used to determine the amount of borrowing costs eligible for capitalisation (where general borrowings are used)</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">CONTEXT FOR USERS</div>
+            <div class="text-supporting">These disclosures allow users to assess how much of an entity's reported PPE/inventory cost reflects financing cost versus direct construction cost, and to compare capitalisation policies across entities with genuinely different funding structures.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 10 ============ -->
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where management judgement matters most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Whether an asset "necessarily" takes a substantial period to prepare — no bright-line threshold is prescribed</span>
+              <span>Distinguishing genuine "active development" pauses (continue capitalising) from suspension periods (pause capitalising)</span>
+              <span>Determining the point at which "substantially all" activities to prepare the asset are complete</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>The weighted average capitalisation rate calculation for the general borrowings pool</span>
+              <span>Allocating expenditure and borrowing costs when a mix of specific and general borrowings fund the same qualifying asset</span>
+            </div>
+          </div>
+        </div>
+        <div class="callout warn callout--chip" style="margin-top:8px;margin-bottom:0;">⚠️ Where an entity borrows specific funds but also has GENERAL borrowings, and spends MORE on the qualifying asset than the specific loan covers, the EXCESS expenditure is treated as financed by the general pool, using the weighted average capitalisation rate on that excess — a frequently tested combined scenario.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 11 ============ -->
+    <div class="section-header" id="s11"><span class="num">11</span><h2>IFRS vs US GAAP — Key Differences</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — IAS 23 vs US GAAP (ASC 835-20)</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Feature</span><span style="color:var(--color-text-info);">IFRS (IAS 23)</span><span style="color:var(--color-text-warning);">US GAAP</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Capitalisation requirement</span><span>MANDATORY for qualifying assets — no policy choice</span><span>Also mandatory, largely converged in substance</span></div>
+          <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Investment income offset</span><span>Required — investment income on temporarily invested specific borrowing proceeds is DEDUCTED</span><span>Generally NOT required — investment income is typically NOT netted against interest cost eligible for capitalisation</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Repetitively manufactured inventories</span><span>Explicitly excluded from qualifying asset definition</span><span>Similar exclusion in substance, though phrased differently</span></div>
+          <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Assets measured at fair value</span><span>Explicitly excluded (e.g. biological assets)</span><span>Similar practical outcome, though the exclusion is not framed identically</span></div>
+        </div>
+        <div class="note">The investment income offset requirement is the clearest substantive difference — IFRS's netting rule for specific borrowings can result in a LOWER capitalised amount than an equivalent US GAAP calculation, where surplus fund investment income is typically NOT required to be deducted.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 12 ============ -->
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping — Where Every Borrowing Cost Event Lands</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Comprehensive event-to-statement mapping table</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event / transaction</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Borrowing costs capitalised during active construction</span><span><span class="badge bs">SOFP</span></span><span>Added to the qualifying asset's carrying amount</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Borrowing costs NOT eligible for capitalisation (ordinary financing)</span><span><span class="badge bp">SOPL</span></span><span>Expensed as incurred</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Investment income on temporarily invested specific loan proceeds</span><span><span class="badge bp">SOPL offset</span></span><span>Deducted from the capitalised amount, not shown as separate investment income</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Capitalisation suspended (extended interruption)</span><span><span class="badge bp">SOPL</span></span><span>Borrowing costs during suspension are expensed, not capitalised</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Capitalisation ceases (asset substantially complete)</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Future borrowing costs expensed; asset begins depreciating per IAS 16</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Carrying amount exceeds recoverable amount</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Written down per IAS 36/IAS 2, including previously capitalised borrowing costs</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Cash interest paid</span><span><span class="badge bs">Cash Flow Statement</span></span><span>Classified per the entity's interest classification policy (IAS 7) regardless of capitalisation</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Capitalised borrowing costs within investing activities</span><span><span class="badge bs">Cash Flow Statement</span></span><span>Cash paid for the qualifying asset (including capitalised interest) presented as investing outflow</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Amount capitalised, capitalisation rate used</span><span><span class="badge bp">Notes</span></span><span>Mandatory disclosure</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 13 ============ -->
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">How IAS 23 connects across the IFRS body of literature</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 16</span><span>Most qualifying assets are self-constructed items of PPE; capitalised borrowing costs form part of the asset's cost base for subsequent depreciation</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 2</span><span>Inventories requiring a substantial period to bring to saleable condition (e.g. maturing spirits) can be qualifying assets — but repetitively manufactured inventory is explicitly excluded</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 40</span><span>Investment property under construction is a qualifying asset while under construction, before being remeasured under IAS 40's fair value or cost model once complete</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 41</span><span>Biological assets measured at fair value less costs to sell are explicitly EXCLUDED from qualifying asset treatment, since fair value already captures economic reality</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 9</span><span>Supplies the effective interest method used to determine the amount of "borrowing costs" incurred on financial liabilities eligible for capitalisation</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 16</span><span>Finance charges on lease liabilities are included within "borrowing costs" and may be capitalised if the leased asset is itself a qualifying asset under construction</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 36</span><span>Determines whether a qualifying asset's carrying amount (including capitalised borrowing costs) must be written down to recoverable amount</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 21</span><span>Exchange differences on foreign currency borrowings, to the extent regarded as an adjustment to interest cost, are included within "borrowing costs" eligible for capitalisation</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 14 ============ -->
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+<Glossary entries={[
+      { term: "Specific borrowings", definition: "Funds borrowed SPECIFICALLY for the purpose of obtaining a particular qualifying asset — allows direct tracing of actual borrowing costs." },
+      { term: "General borrowings", definition: "Funds borrowed for general corporate purposes, not tied to any specific asset — requires the weighted-average capitalisation rate approach." },
+      { term: "Substantial period", definition: "The undefined time threshold that determines whether an asset qualifies for capitalisation — a matter of judgement based on facts and circumstances, not a bright-line rule." },
+      { term: "Active development", definition: "Physical construction or substantial administrative/technical work needed to prepare an asset for use — its interruption (beyond normal, necessary delays) triggers suspension of capitalisation." },
+      { term: "Effective interest method", definition: "The IFRS 9 method of allocating interest expense over the relevant period, used to determine the \"borrowing cost\" figure IAS 23 requires for capitalisation." },
+      { term: "Capitalisation rate", definition: "The weighted average interest rate applicable to the general borrowings pool, applied to qualifying asset expenditure to determine the capitalised amount." }
+    ]} />
+
+<FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.IAS23} />
+  </section>
+</StandardPageLayout>
+
+
+

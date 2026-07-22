@@ -1,0 +1,85 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/sic/sic27.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "What SIC-27 Addressed (Historical)" },
+        { id: "s2", label: "The Conclusion It Reached (Historical)" },
+        { id: "s3", label: "Where This Guidance Lives Today" },
+        { id: "s4", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="historical-reference"
+    explanation="SIC-27 was withdrawn in January 2016 when the IASB issued IFRS 16 Leases, which superseded SIC-27 by replacing IAS 17 and restructuring lease scope guidance, including the evaluation of substance in lease-like transactions."
+    historical="This page is retained for historical and comparative reference. Entities should refer to the current standard that superseded this interpretation for authoritative guidance."
+    link="/ifrs/ifrs16"
+    linkText="IFRS 16 Leases"
+  />
+
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>What SIC-27 Addressed (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">What SIC-27 addressed</div>
+        <div class="principle">SIC-27 addressed how to evaluate transactions that involve the legal form of a lease but may lack economic substance. It considered whether fees and obligations embedded in such arrangements should be unbundled and accounted for separately based on their economic substance rather than their legal form under IAS 17.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>The Conclusion It Reached (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">The conclusion it reached</div>
+        <div class="principle">SIC-27 concluded that transactions involving the legal form of a lease but lacking economic substance should be unbundled. The entity should account for the individual components based on their substantive nature, applying IFRSs relevant to each component. Fees that are not for the use of an asset should not be included in minimum lease payments, and obligations that do not relate to the right to use the asset should be accounted for as separate contracts.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Where This Guidance Lives Today</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card">
+        <div class="ctitle">Where this guidance lives today</div>
+        <div class="td-table">
+          <div class="tr"><span>Superseded by</span><span>IFRS 16 Leases</span></div>
+          <div class="tr alt"><span>Why withdrawn</span><span>The 2016 standard replaced IAS 17 and restructured lease scope guidance</span></div>
+          <div class="tr"><span>Current status</span><span>Superseded</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><h2>Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Economic substance", definition: "The underlying economic reality of an arrangement, which may differ from its legal form, requiring analysis under SIC-27." },
+      { term: "Bundling", definition: "Combining multiple components with different economic natures into a single lease arrangement, which SIC-27 required to be unbundled when substance differed from form." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.SIC27} />
+  </section>
+</StandardPageLayout>

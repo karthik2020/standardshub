@@ -1,0 +1,255 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/ifric/ifric2.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework" },
+        { id: "s2", label: "Scope & Definitions" },
+        { id: "s3", label: "The Default Classification" },
+        { id: "s4", label: "Unconditional Right to Refuse" },
+        { id: "s5", label: "Prohibitions Imposed by Law or Charter" },
+        { id: "s6", label: "Partial Equity / Partial Liability Splits" },
+        { id: "s7", label: "Reclassification Triggers" },
+        { id: "s8", label: "Members' Shares Above a Fixed Amount" },
+        { id: "s9", label: "Disclosure" },
+        { id: "s10", label: "Judgments & Estimates" },
+        { id: "s11", label: "IFRIC 2 vs US GAAP" },
+        { id: "s12", label: "Statement Mapping" },
+        { id: "s13", label: "Related Standards" },
+        { id: "s14", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Why a puttable instrument needs its own interpretation</div>
+        <div class="principle">IAS 32's liability/equity distinction turns on whether an entity has an unconditional right to avoid delivering cash. Co-operative members' shares are often redeemable ON DEMAND by the member — a feature that, applied literally, would push most co-operative capital into liability classification. IFRIC 2 works through the practical consequences of that logic for genuine mutual/co-operative structures.</div>
+      </div>
+      <div class="card cs">
+        <div class="ctitle cs">Substance over the "share" label</div>
+        <div class="principle">IFRIC 2 reinforces that the LEGAL FORM of an instrument as a "share" does not override IAS 32's substance-based classification test. A redeemable-on-demand members' share behaves economically like a liability unless a genuine, unconditional restriction on redemption exists.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope & Definitions</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What IFRIC 2 covers</div>
+        <div class="principle">IFRIC 2 applies to financial instruments within the scope of IAS 32, including members' shares in co-operative entities, that give the holder the right to request redemption for cash or another financial asset.</div>
+        <div class="elabel">TYPICAL ENTITIES IN SCOPE</div>
+        <div class="dot-list">
+          <span>Co-operative banks and credit unions</span>
+          <span>Agricultural and consumer co-operatives</span>
+          <span>Mutual insurance and building society-type entities</span>
+        </div>
+      </div>
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Members' shares</div>
+          <div class="glossary-def">Instruments that establish membership in a co-operative entity, typically representing an interest in members' equity and sometimes redeemable on demand.</div>
+        </div>
+        <div class="glossary-item" style="border-bottom:none;">
+          <div class="glossary-term">Redeemable on demand</div>
+          <div class="glossary-def">A feature that entitles the holder to require the entity to redeem the instrument, at or before a specified time, for an amount of cash or another financial asset.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>The Default Classification</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">The starting point: liability, unless proven otherwise</div>
+        <div class="principle">Members' shares that are redeemable on demand are, by default, FINANCIAL LIABILITIES — the entity has a contractual obligation to deliver cash or another financial asset that it cannot avoid. IFRIC 2 then sets out the two narrow circumstances in which such shares can instead be classified, wholly or partly, as EQUITY.</div>
+        <div class="callout danger callout--flush">✕ The mere fact that redemption is subject to co-operative bylaws, is at management's discretion in practice, or has historically never been exercised does NOT by itself change the default liability classification — only an unconditional, enforceable restriction does.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Unconditional Right to Refuse Redemption</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs">
+        <div class="ctitle cs">Path 1 to equity classification</div>
+        <div class="principle">If the entity has an UNCONDITIONAL right to refuse redemption of members' shares, those shares are equity. The right must be genuinely unconditional — a right that is conditional on, for example, maintaining minimum liquidity or regulatory capital is NOT unconditional for this purpose.</div>
+      </div>
+      <div class="card cw">
+        <div class="ctitle cw">Worked example — a governing charter with discretion</div>
+        <div class="worked">
+          <div class="wk-title">Example: Board discretion clause</div>
+          <div class="wk-body">A co-operative's charter states the board "may, at its sole and unconditional discretion, decline any redemption request, without condition or limitation."</div>
+          <div class="wk-answer">This is a genuine unconditional right to refuse. The members' shares are classified as EQUITY in their entirety.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Prohibitions Imposed by Law, Regulation, or Charter</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Path 2 to equity classification</div>
+        <div class="principle">Local law, regulation, or the entity's own governing charter can impose a PROHIBITION on redemption. To the extent such a prohibition exists, the shares subject to it are equity.</div>
+        <div class="elabel">TWO FORMS OF PROHIBITION RECOGNISED</div>
+        <div class="check-list">
+          <span>Unconditional prohibition — e.g. redemption is simply not permitted under the applicable law</span>
+          <span>Conditional prohibition based on liquidity or a specified financial criterion</span>
+        </div>
+      </div>
+      <div class="card ci">
+        <div class="ctitle ci">Worked example — liquidity-based statutory prohibition</div>
+        <div class="worked">
+          <div class="wk-title">Example: Regulatory minimum capital floor</div>
+          <div class="wk-body">Banking regulation prohibits a co-operative bank from redeeming members' shares if doing so would reduce regulatory capital below a mandated minimum. The co-operative currently holds capital of $12.0 million against a $10.0 million minimum.</div>
+          <div class="wk-answer">Only $2.0 million of members' shares may be classified as a financial LIABILITY; the remaining shares up to the $10.0 million floor are effectively subject to the prohibition and classified as EQUITY.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Partial Equity / Partial Liability Splits</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Reassessed at every reporting date</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Because a liquidity-based prohibition depends on a figure that moves — such as available regulatory capital or total members' shares outstanding — the SPLIT between the equity and liability portions is reassessed at each reporting date. A change in the amount subject to the prohibition results in a transfer between the liability and equity components, without gain or loss recognition on the transfer itself.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Reclassification Triggers</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">Events that move the classification line</div>
+        <div class="td-table">
+          <div class="th cols-14-16"><span>Trigger event</span><span>Effect</span></div>
+          <div class="tr cols-14-16"><span>Amendment of the governing charter removing/adding an unconditional refusal right</span><span>Reclassification between liability and equity from the date of the amendment</span></div>
+          <div class="tr alt cols-14-16"><span>Change in the regulatory minimum capital threshold</span><span>Reassessment of the liability/equity split at the reporting date the change takes effect</span></div>
+          <div class="tr cols-14-16"><span>Member gives notice of resignation / redemption request</span><span>From the point the entity has a present obligation it cannot avoid, the corresponding amount is reclassified to liability</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Members' Shares Above a Fixed Amount</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Where the charter caps redemption in monetary terms</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Some governing charters prohibit redemption of members' shares beyond a specified NUMBER of shares or fixed MONETARY amount. The same logic as Section 5 applies: shares subject to the fixed prohibition are equity, and shares that could still be redeemed (i.e. below the cap) are liabilities.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">What IFRIC 2 layers onto IAS 32/IFRS 7</div>
+        <div class="check-list">
+          <span>Basis for classifying members' shares as equity, liability, or split between the two</span>
+          <span>Nature and terms of any redemption restrictions relied upon</span>
+          <span>Amount and terms of any reclassification between components during the period</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments & Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where judgement matters most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Whether a stated refusal right is genuinely unconditional, or effectively conditional in substance</span>
+              <span>Interpreting local co-operative law and regulatory capital requirements</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>Amount of regulatory capital or liquidity headroom available for redemption at each reporting date</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>IFRIC 2 vs US GAAP</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — IFRIC 2 vs ASC 480 (Distinguishing Liabilities from Equity)</div>
+        <div class="td-table">
+          <div class="th cols-12-1-1"><span>Feature</span><span>IFRIC 2 (IFRS)</span><span>US GAAP (ASC 480)</span></div>
+          <div class="tr cols-12-1-1"><span>Mandatorily/on-demand redeemable shares</span><span>Liability by default; equity carve-out available</span><span>Generally classified as a liability, with a narrower set of exceptions</span></div>
+          <div class="tr alt cols-12-1-1"><span>Co-operative-specific guidance</span><span>Dedicated interpretation (IFRIC 2)</span><span>No equivalent dedicated interpretation</span></div>
+          <div class="tr cols-12-1-1"><span>Reassessment of the equity/liability split</span><span>Required at each reporting date where criteria-based</span><span>Generally reassessed only when triggering events occur</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Where every IFRIC 2 event lands</div>
+        <div class="td-table">
+          <div class="th cols-16-1-14"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr cols-16-1-14"><span>Members' shares classified as liability</span><span><span class="badge bs">SOFP</span></span><span>Presented as a financial liability</span></div>
+          <div class="tr alt cols-16-1-14"><span>Members' shares classified as equity</span><span><span class="badge be">Equity</span></span><span>No subsequent remeasurement through profit or loss</span></div>
+          <div class="tr cols-16-1-14"><span>Reassessment of the liability/equity split</span><span><span class="badge bs">SOFP</span> <span class="badge be">Equity</span></span><span>Transfer between components; no gain or loss recognised</span></div>
+          <div class="tr alt cols-16-1-14"><span>Interest/dividend on the liability-classified portion</span><span><span class="badge bp">SOPL</span></span><span>Treated as a finance cost</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Cross-reference map</div>
+        <div class="td-table">
+          <div class="th cols-08-2"><span>Standard</span><span>Connection</span></div>
+          <div class="tr cols-08-2"><span>IAS 32</span><span>Supplies the core liability/equity classification principle</span></div>
+          <div class="tr alt cols-08-2"><span>IFRS 7</span><span>Governs disclosure of the financial risk characteristics</span></div>
+          <div class="tr cols-08-2"><span>IFRS 9</span><span>Governs subsequent measurement of the liability-classified portion</span></div>
+        </div>
+      </div>
+      <div class="card cn">
+        <div class="ctitle cn">Quick-reference glossary</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Puttable instrument</div>
+          <div class="glossary-def">A financial instrument that gives the holder the right to put the instrument back to the issuer for cash or another financial asset.</div>
+        </div>
+        <div class="glossary-item" style="border-bottom:none;">
+          <div class="glossary-term">Mutual entity</div>
+          <div class="glossary-def">An entity, such as a co-operative, owned by its members/customers rather than by external investors, typically financed substantially through redeemable member capital.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Unconditional right to refuse", definition: "A contractual or charter-based right of the entity to decline a redemption request that is not subject to any condition, event, or criterion that could cause the right to lapse." },
+      { term: "Liquidity-based prohibition", definition: "A restriction on redemption tied to a measurable financial criterion, such as a minimum capital or liquidity ratio." },
+      { term: "Puttable instrument", definition: "A financial instrument that gives the holder the right to put the instrument back to the issuer for cash or another financial asset." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.IFRIC2} />
+  </section>
+</StandardPageLayout>

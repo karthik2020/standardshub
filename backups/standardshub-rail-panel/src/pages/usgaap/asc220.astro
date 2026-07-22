@@ -1,0 +1,180 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc220.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope & Applicability" },
+        { id: "s3", label: "Components of Other Comprehensive Income" },
+        { id: "s4", label: "No Equity-Security FVOCI Category in US GAAP" },
+        { id: "s5", label: "Presentation Options — One or Two Statements" },
+        { id: "s6", label: "Reclassification Adjustments — the ASU 2013-02 Tabular Format" },
+        { id: "s7", label: "Tax Effects of Each OCI Component" },
+        { id: "s8", label: "Worked Example — Two-Statement Presentation" },
+        { id: "s9", label: "Worked Example — Reclassification Out of AOCI" },
+        { id: "s10", label: "Disclosure Requirements" },
+        { id: "s11", label: "Critical Judgments & Estimates" },
+        { id: "s12", label: "ASC 220 vs IAS 1 — the Equity FVOCI Divergence" },
+        { id: "s13", label: "Statement Mapping" },
+        { id: "s14", label: "Related Topics" },
+        { id: "s15", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card ci"><div class="ctitle ci">Capturing value changes net income alone misses</div><div class="principle">Net income does not capture every economic gain or loss an entity experiences in a period — certain items (foreign currency translation, certain pension remeasurements, cash flow hedge gains/losses, available-for-sale debt security fair value changes) are recognised OUTSIDE net income, in OTHER COMPREHENSIVE INCOME (OCI), while remaining part of the entity's TOTAL comprehensive income for the period. ASC 220 governs how this broader picture is reported.</div></div>
+    <div class="card cs"><div class="ctitle cs">A presentation Topic, not a recognition Topic</div><div class="principle">ASC 220 does NOT itself determine WHICH items go through OCI versus net income — that determination is made by the specific Topic governing each transaction type (e.g. ASC 815 for cash flow hedges, ASC 715 for pension remeasurements, ASC 830 for foreign currency translation). ASC 220 governs only how those OCI items, once identified elsewhere, are PRESENTED and RECLASSIFIED.</div></div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">Applies to all entities with OCI items</div><div class="principle">ASC 220 applies to any entity that reports items of other comprehensive income. An entity with NO OCI items in a given period is not required to report comprehensive income separately from net income — though most entities of any size have at least occasional pension or foreign currency translation activity bringing them within scope.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Components of Other Comprehensive Income</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">The recognised OCI categories under current US GAAP</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:1.4fr 1.6fr;"><span>Component</span><span>Governing Topic</span></div>
+    <div class="tr" style="grid-template-columns:1.4fr 1.6fr;"><span>Foreign currency translation adjustments</span><span>ASC 830, Foreign Currency Matters</span></div>
+    <div class="tr alt" style="grid-template-columns:1.4fr 1.6fr;"><span>Unrealised gains/losses on available-for-sale DEBT securities</span><span>ASC 320, Investments—Debt and Equity Securities</span></div>
+    <div class="tr" style="grid-template-columns:1.4fr 1.6fr;"><span>Gains/losses on cash flow hedges (effective portion)</span><span>ASC 815, Derivatives and Hedging</span></div>
+    <div class="tr alt" style="grid-template-columns:1.4fr 1.6fr;"><span>Certain pension and other postretirement benefit plan remeasurements</span><span>ASC 715, Compensation—Retirement Benefits</span></div>
+    <div class="tr" style="grid-template-columns:1.4fr 1.6fr;"><span>Certain gains/losses on net investment hedges</span><span>ASC 815-35, Net Investment Hedges</span></div>
+    </div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>No Equity-Security FVOCI Category in US GAAP</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">A significant divergence from IFRS 9</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Under ASC 321 (Investments—Equity Securities), equity securities are measured at FAIR VALUE with changes recognised THROUGH NET INCOME — there is NO US GAAP equivalent to IFRS 9's irrevocable FVOCI ELECTION for equity instruments. This means, unlike under IFRS, a US GAAP preparer holding a long-term strategic equity stake has NO option to route fair value changes through OCI instead of net income — every equity security fair value change flows through the income statement, full stop.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Presentation Options — One or Two Statements</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cs span2"><div class="ctitle cs">The same structural choice IFRS offers</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">An entity may present comprehensive income EITHER (a) in a SINGLE CONTINUOUS STATEMENT, with net income as a subtotal followed immediately by OCI components and a total comprehensive income figure, OR (b) in TWO SEPARATE BUT CONSECUTIVE STATEMENTS — an Income Statement immediately followed by a Statement of Comprehensive Income beginning with net income — mirroring IAS 1's own single-statement/two-statement choice almost exactly.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Reclassification Adjustments — the ASU 2013-02 Tabular Format</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">A specific, prescribed disclosure format</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">When an amount previously recognised in OCI is RECLASSIFIED into net income (e.g. a cash flow hedge gain realised when the hedged transaction occurs, or an available-for-sale security sold), ASC 220 (as amended by ASU 2013-02) requires a SPECIFIC, DETAILED tabular disclosure showing, BY COMPONENT of accumulated OCI: the amount reclassified, and the specific INCOME STATEMENT LINE ITEM it was reclassified into. This is a more prescriptive, standardised format than IAS 1's more general reclassification adjustment disclosure requirement.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Tax Effects of Each OCI Component</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cn span2"><div class="ctitle cn">Presented net of tax, or gross with a single aggregate tax line</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">An entity may present each component of OCI either NET OF related tax effects, or presented BEFORE related tax effects with ONE aggregate income tax line shown for the total of all OCI items — with the tax effect of EACH component disclosed either on the face of the statement or in the notes either way. This mirrors IAS 1's own equivalent flexibility for presenting OCI items net of tax or gross with an aggregate tax line.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Worked Example — Two-Statement Presentation</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">Illustrating the structure</div>
+    <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Building the second statement from net income</div><div class="wk-body">An entity reports net income of $12,000,000 for the year. During the year it recognises a $900,000 favourable foreign currency translation adjustment and a $350,000 unrealised loss on available-for-sale debt securities, both net of tax.</div><div class="wk-answer"><strong>Statement of Comprehensive Income:</strong> Net income $12,000,000 + Foreign currency translation adjustment $900,000 − Unrealised loss on AFS debt securities $350,000 = <strong>Total comprehensive income $12,550,000</strong>. This second statement follows immediately after the Income Statement (which independently arrives at the $12,000,000 net income figure) under the two-statement approach.</div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Worked Example — Reclassification Out of AOCI</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card ci span2"><div class="ctitle ci">A cash flow hedge gain realised into net income</div>
+    <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: A commodity hedge settling into cost of goods sold</div><div class="wk-body">An entity previously deferred a $500,000 gain on an effective cash flow hedge of forecasted raw material purchases in accumulated OCI. During the current period, the hedged purchases occur and are subsequently sold as finished goods.</div><div class="wk-answer">The $500,000 is RECLASSIFIED out of accumulated OCI and into NET INCOME, specifically within <strong>Cost of Goods Sold</strong> — the tabular disclosure required by ASC 220 shows this $500,000 reclassification, by component (cash flow hedges) and by the SPECIFIC income statement line it landed in, exactly the level of specificity ASU 2013-02's format requires.</div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">What ASC 220 requires</div><div class="check-list"><span>Total comprehensive income for the period, and its components</span><span>Reclassification adjustments, by component of accumulated OCI, and the specific net income line item affected</span><span>Tax effects allocated to each component of OCI, either on the face or in the notes</span><span>Accumulated balances of each component of accumulated OCI, generally as part of the equity reconciliation (ASC 215)</span></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+    <div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>One-statement vs two-statement presentation choice</span><span>Net-of-tax vs gross-with-aggregate-tax-line presentation for each OCI component</span></div></div>
+    <div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Tax effects attributable to each individual OCI component, particularly where multiple components interact within a single tax jurisdiction</span></div></div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>ASC 220 vs IAS 1 — the Equity FVOCI Divergence</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card ci span2"><div class="ctitle ci">Comparison — ASC 220 vs IAS 1's OCI presentation requirements</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">US GAAP (ASC 220 / ASC 321)</span><span style="color:var(--color-text-info);">IFRS (IAS 1 / IFRS 9)</span></div>
+    <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Equity securities — OCI option</span><span>NONE — always through net income (ASC 321)</span><span>Irrevocable FVOCI election available for equity instruments not held for trading, per IFRS 9</span></div>
+    <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Recycling of equity OCI gains on disposal</span><span>Not applicable — no equity OCI category exists to recycle</span><span>NEVER recycled to profit or loss even on disposal, if the FVOCI election was made — a "permanent OCI" treatment</span></div>
+    <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Presentation format (one vs two statements)</span><span>Free choice, per ASC 220</span><span>Free choice, per IAS 1 — fully converged</span></div>
+    <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Reclassification disclosure specificity</span><span>Highly prescriptive tabular format (ASU 2013-02)</span><span>General principle-based disclosure requirement, less rigidly formatted</span></div>
+    </div>
+    <div class="note">The equity-instrument OCI divergence is one of the more consequential differences between the frameworks for entities holding long-term strategic equity stakes — identical economics can produce materially different reported net income VOLATILITY purely due to this classification difference.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cs span2"><div class="ctitle cs">Where every ASC 220 event lands</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+    <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Recognition of an OCI item (e.g. cash flow hedge gain)</span><span><span class="badge bo">OCI</span></span><span>Recognised in OCI, not net income, in the period it arises</span></div>
+    <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Reclassification out of accumulated OCI</span><span><span class="badge bo">OCI</span> <span class="badge bp">IS</span></span><span>Removed from OCI, recognised in the specific IS line disclosed</span></div>
+    <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Fair value change on an equity security</span><span><span class="badge bp">IS</span></span><span>Always through net income under ASC 321 — never OCI</span></div>
+    <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Ending accumulated OCI balance</span><span><span class="badge bs">BS</span> <span class="badge be">SE</span></span><span>A component of total equity, reconciled in the Statement of Shareholders' Equity</span></div>
+    </div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Related Topics</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd"><div class="ctitle cd">Cross-reference map</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+    <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 215</span><span>Accumulated OCI is reconciled as a component within the Statement of Shareholders' Equity</span></div>
+    <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 830</span><span>Supplies foreign currency translation adjustments, one of the largest OCI components for multinational entities</span></div>
+    <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 815</span><span>Supplies cash flow and net investment hedge OCI components</span></div>
+    <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 715</span><span>Supplies pension/postretirement remeasurement OCI components</span></div>
+    </div>
+    </div>
+    <div class="card cn"><div class="ctitle cn">Quick-reference glossary preview</div>
+    <div class="glossary-item"><div class="glossary-term">Reclassification adjustment</div><div class="glossary-def">An amount reclassified from accumulated OCI into net income in the current period, to avoid double-counting the item in total comprehensive income across periods.</div></div>
+    <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Accumulated other comprehensive income (AOCI)</div><div class="glossary-def">The cumulative balance of OCI items recognised over time, a distinct component of total equity.</div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s15"><span class="num">15</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    
+
+    <Glossary entries={[
+      { term: "Reclassification adjustment", definition: "An amount reclassified from accumulated OCI into net income in the current period, to avoid double-counting the item in total comprehensive income across periods." },
+      { term: "Accumulated other comprehensive income (AOCI)", definition: "The cumulative balance of OCI items recognised over time, a distinct component of total equity." },
+      { term: "Comprehensive income", definition: "The change in equity of an entity during a period from transactions and other events/circumstances from non-owner sources — net income plus other comprehensive income." },
+      { term: "Two-statement approach", definition: "Presenting the Income Statement and the Statement of Comprehensive Income as two separate but consecutive statements, rather than combining them into one continuous statement." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.ASC220} />
+  </section>
+</StandardPageLayout>

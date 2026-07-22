@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IAS 17 — Leases (Superseded) | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+
+  .superseded-banner { background: var(--color-background-danger); border: 1.5px solid var(--color-border-danger); border-radius: var(--border-radius-md); padding: 10px 16px; margin: 10px 0 6px; text-align: center; font-size: 11.5px; color: var(--color-text-danger); line-height: 1.6; }
+  .superseded-banner strong { font-weight: 700; }
+
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .entry { display: flex; align-items: flex-start; gap: 4px; margin-bottom: 4px; }
+  .dr { font-size: 11px; font-weight: 500; color: var(--color-text-info);   min-width: 14px; padding-top: 1px; }
+  .cr { font-size: 11px; font-weight: 500; color: var(--color-text-danger); min-width: 14px; padding-top: 1px; padding-left: 6px; }
+  .etxt { font-size: 11px; color: var(--color-text-primary); flex: 1; line-height: 1.4; }
+  .badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">IAS 17 — Leases</div>
+      <div class="hub-sub">Extended reference poster · Historical standard · Finance vs operating lease classification · Worked examples · Mapping to IFRS 16</div>
+    </div>
+  </div>
+
+  <div class="superseded-banner">
+    ⚠️ <strong>SUPERSEDED STANDARD</strong> — IAS 17 was withdrawn and replaced by <strong>IFRS 16 Leases</strong>, effective for periods beginning on or after 1 January 2019. It is retained here for historical reference and because its finance/operating lease classification logic still governs LESSOR accounting under IFRS 16. For current lease accounting (especially lessee accounting), always apply IFRS 16.
+  </div>
+
+  <div class="toc">
+    <a href="#s1">1. Conceptual Framework</a>
+    <a href="#s2">2. Scope &amp; Definitions</a>
+    <a href="#s3">3. Finance vs Operating Lease Classification</a>
+    <a href="#s4">4. Lessee Accounting — Finance Leases</a>
+    <a href="#s5">5. Lessee Accounting — Operating Leases</a>
+    <a href="#s6">6. Lessor Accounting — Finance Leases</a>
+    <a href="#s7">7. Lessor Accounting — Operating Leases</a>
+    <a href="#s8">8. Sale and Leaseback Transactions</a>
+    <a href="#s9">9. Disclosure</a>
+    <a href="#s10">10. Judgments &amp; Estimates</a>
+    <a href="#s11">11. IAS 17 vs IFRS 16 — What Changed</a>
+    <a href="#s12">12. Statement Mapping</a>
+    <a href="#s13">13. Related Standards</a>
+    <a href="#s14">14. Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Why lease classification was a substance-over-form exercise</div>
+      <div class="principle">A lease transfers the RIGHT to use an asset, but not always legal ownership. The Conceptual Framework's substance-over-form principle asks whether the SUBSTANCE of a specific lease transfers substantially all the risks and rewards of ownership — if so, the Framework's asset/liability recognition criteria are met, even without a change in legal title.</div>
+      <div class="elabel">HOW IAS 17 MAPPED TO THE FRAMEWORK</div>
+      <div class="check-list">
+        <span><strong style="font-weight:500">Substance over form</strong> — a finance lease was recognised as an ASSET and LIABILITY of the lessee, because the lessee bore substantially all risks/rewards of ownership, REGARDLESS of legal title remaining with the lessor</span>
+        <span><strong style="font-weight:500">Faithful representation</strong> — treating a finance lease as merely an operating expense (off-balance-sheet) would materially understate a lessee's assets and liabilities</span>
+        <span><strong style="font-weight:500">The historic "bright-line" weakness</strong> — IAS 17's classification test relied heavily on JUDGEMENT-BASED indicators rather than a single quantitative threshold, which critics argued allowed structuring of operating leases specifically to keep them off-balance-sheet</span>
+      </div>
+      <div class="note">The perceived weakness of IAS 17's operating lease "off-balance-sheet" treatment — allowing genuinely significant long-term obligations to remain undisclosed on the face of the SOFP — was the PRIMARY driver behind IFRS 16's eventual replacement of the entire lessee accounting model.</div>
+    </div>
+
+    <div class="card cs">
+      <div class="ctitle cs">Measurement principles applied by IAS 17</div>
+      <div class="principle">IAS 17 measured finance leases similarly to a purchase financed by debt, while operating leases were treated as a simple rental expense.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1fr;"><span>Lease type</span><span>Measurement approach</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1fr;"><span>Finance lease (lessee)</span><span>Asset and liability recognised at the LOWER of fair value and present value of minimum lease payments</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1fr;"><span>Operating lease (lessee)</span><span>NO asset or liability recognised; lease payments expensed straight-line over the lease term</span></div>
+      </div>
+      <div class="callout info" style="margin-bottom:0;">ℹ️ <strong style="font-weight:500">Qualitative characteristics in action:</strong> the finance/operating BINARY split reflected an attempt to balance <strong style="font-weight:500">faithful representation</strong> against <strong style="font-weight:500">cost constraints</strong> — but the binary nature of the test (rather than a spectrum) is precisely what IFRS 16 later abandoned for lessees.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability (Historical)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw">
+      <div class="ctitle cw">What IAS 17 covered</div>
+      <div class="principle">IAS 17 applied to accounting for all leases, other than specific exclusions (leases to explore for or use minerals/oil/natural gas/similar non-regenerative resources; licensing agreements for films, videos, plays, patents, copyrights; and lease agreements to use land classified as investment property under IAS 40, measured at fair value).</div>
+      <div class="note">This general scope structure, and most of its exclusions, was carried forward largely unchanged into IFRS 16.</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Key definitions you must know</div>
+      <div class="glossary-item">
+        <div class="glossary-term">Finance lease</div>
+        <div class="glossary-def">A lease that transfers substantially all the risks and rewards incidental to ownership of an asset — title may or may not eventually be transferred.</div>
+      </div>
+      <div class="glossary-item">
+        <div class="glossary-term">Operating lease</div>
+        <div class="glossary-def">A lease OTHER than a finance lease — the lessor retains substantially all the risks and rewards of ownership.</div>
+      </div>
+      <div class="glossary-item" style="border-bottom:none;">
+        <div class="glossary-term">Minimum lease payments</div>
+        <div class="glossary-def">The payments over the lease term the lessee is/can be required to make, excluding contingent rent, costs for services, and taxes to be paid/reimbursed to the lessor.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Finance vs Operating Lease Classification</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Classification indicators — judgement based, not bright-line</div>
+      <div class="principle">Whether a lease is a finance or operating lease depended on the SUBSTANCE of the transaction, not merely its legal form. IAS 17 provided INDICATORS, individually or in combination, that would normally lead to a lease being classified as a finance lease.</div>
+      <div class="check-list">
+        <span>The lease TRANSFERS OWNERSHIP of the asset to the lessee by the end of the lease term</span>
+        <span>The lessee has the OPTION to purchase the asset at a price expected to be sufficiently lower than fair value at the date the option becomes exercisable, such that it is reasonably certain the option will be exercised (a "bargain purchase option")</span>
+        <span>The lease term is for the MAJOR PART of the economic life of the asset, even if title is not transferred</span>
+        <span>At inception, the present value of minimum lease payments amounts to at least SUBSTANTIALLY ALL of the fair value of the leased asset</span>
+        <span>The leased assets are of such a specialised nature that ONLY the lessee can use them without major modifications</span>
+      </div>
+      <div class="note">These indicators were deliberately NOT bright-line percentage tests (e.g. no fixed "75% of economic life" or "90% of fair value" threshold was mandated by IAS 17 itself, though such thresholds were common as PRACTICAL rules of thumb in various jurisdictions) — genuine judgement of the overall substance was always required.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Lessee Accounting — Finance Leases (with worked example)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs">
+      <div class="ctitle cs">Initial and subsequent measurement</div>
+      <div class="formula-box">
+        <div class="f-eq">Initial recognition = LOWER of fair value of the leased asset and the present value of minimum lease payments</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">The asset was then DEPRECIATED consistently with owned assets (IAS 16/38), and the LIABILITY apportioned between finance charge and reduction of the outstanding liability, using the EFFECTIVE INTEREST METHOD (constant periodic rate of return on the remaining balance).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Worked example — finance lease amortisation</div>
+      <div class="worked">
+        <div class="wk-title">Example 1: Finance lease liability reduction</div>
+        <div class="wk-body">
+          A lessee recognises a finance lease liability of $100,000 at an implicit interest rate of 8%. Annual lease payments of $25,046 are made in arrears.
+        </div>
+        <div class="wk-answer">
+          <strong>Year 1 interest</strong> = 100,000 × 8% = $8,000<br>
+          <strong>Year 1 principal reduction</strong> = 25,046 − 8,000 = $17,046<br>
+          <strong>Closing liability</strong> = 100,000 − 17,046 = <strong style="color:var(--color-text-info);">$82,954</strong>
+        </div>
+      </div>
+      <div class="note">This effective interest allocation mechanic is IDENTICAL to how IFRS 16 now measures ALL lease liabilities (both what were previously finance AND operating leases) for lessees.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Lessee Accounting — Operating Leases (Historical)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Off-balance-sheet treatment — the feature IFRS 16 eliminated</div>
+      <div class="principle">Lease payments under an operating lease were recognised as an EXPENSE on a STRAIGHT-LINE basis over the lease term (unless another systematic basis was more representative of the time pattern of the user's benefit) — NO asset or liability was recognised on the lessee's SOFP.</div>
+      <div class="callout danger" style="margin-bottom:0;">✕ <strong style="font-weight:600">This complete absence of any SOFP recognition for operating leases is precisely what IFRS 16 abolished</strong> — under IFRS 16, virtually ALL leases (with narrow short-term/low-value exemptions) now result in a right-of-use asset and lease liability for the lessee, eliminating the finance/operating distinction entirely from lessee accounting.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Lessor Accounting — Finance Leases</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">A net investment in the lease, replacing the physical asset</div>
+      <div class="principle">A lessor recognised assets held under a finance lease as a RECEIVABLE, at an amount equal to the NET INVESTMENT IN THE LEASE — the leased asset itself was DERECOGNISED from the lessor's own SOFP. Finance income was recognised based on a pattern reflecting a CONSTANT PERIODIC RATE OF RETURN on the lessor's net investment.</div>
+      <div class="note">This lessor accounting model was carried forward LARGELY UNCHANGED into IFRS 16 — one of the clearest continuities between the old and new standards (Section 11).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Lessor Accounting — Operating Leases</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Retaining the asset, recognising rental income</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Under an operating lease, the lessor CONTINUED to recognise the leased asset on its own SOFP (per IAS 16/IAS 40/IAS 38, depending on the asset type), depreciating it in the normal way. Lease income was recognised on a STRAIGHT-LINE basis over the lease term, unless another systematic basis better represented the pattern of benefit.</div>
+      <div class="note">This lessor operating lease model was ALSO carried forward essentially unchanged into IFRS 16 — lessor accounting overall changed far less than lessee accounting when the new standard was introduced.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Sale and Leaseback Transactions (Historical)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Treatment depended on the resulting leaseback's classification</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">If a sale and leaseback resulted in a FINANCE lease, any excess of sale proceeds over the carrying amount was NOT immediately recognised as income by the seller-lessee — it was DEFERRED and amortised over the lease term. If the resulting leaseback was an OPERATING lease, and the transaction was established at FAIR VALUE, any gain/loss was recognised IMMEDIATELY (subject to specific rules if the sale price was above or below fair value).</div>
+      <div class="note">IFRS 16 fundamentally changed this area too — since virtually all leases now create a lessee liability, sale-and-leaseback gain recognition under IFRS 16 depends on the specific proportion of the asset's rights transferred, a materially different (and generally more restrictive) mechanism than IAS 17's deferred-gain approach for finance leasebacks.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure Requirements (Historical)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Required disclosures</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">LESSEE DISCLOSURES</div>
+          <div class="check-list">
+            <span>For finance leases: net carrying amount of leased assets by class, a reconciliation of minimum lease payments to their present value, and future minimum sublease income</span>
+            <span>For operating leases: total future minimum lease payments under non-cancellable leases, analysed by maturity band</span>
+          </div>
+        </div>
+        <div>
+          <div class="elabel">LESSOR DISCLOSURES</div>
+          <div class="check-list">
+            <span>For finance leases: a reconciliation of gross investment to the present value of minimum lease payments receivable, and unearned finance income</span>
+            <span>For operating leases: future minimum lease payments receivable, analysed by maturity band, and a general description of leasing arrangements</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments &amp; Estimates (Historical)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Where management judgement mattered most</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+          <div class="dot-list">
+            <span>Overall assessment of whether a lease's SUBSTANCE transferred substantially all risks/rewards of ownership</span>
+            <span>Whether an interest rate implicit in the lease could be reliably determined, or the lessee's incremental borrowing rate should be used instead</span>
+          </div>
+        </div>
+        <div>
+          <div class="elabel">SIGNIFICANT ESTIMATES</div>
+          <div class="dot-list">
+            <span>Fair value of the leased asset and estimated useful/economic life, feeding into the classification indicators</span>
+            <span>Unguaranteed residual value estimates used by lessors in calculating the net investment in the lease</span>
+          </div>
+        </div>
+      </div>
+      <div class="callout warn" style="margin-top:8px;margin-bottom:0;">⚠️ The judgement-heavy, indicator-based classification test was widely criticised for enabling "lease structuring" — deliberately drafting lease terms to fall just short of the finance lease indicators, keeping obligations off-balance-sheet — a key motivation for IFRS 16's wholesale reform.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>IAS 17 vs IFRS 16 — What Changed</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — the transition from IAS 17 to IFRS 16</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Feature</span><span style="color:var(--color-text-info);">IAS 17 (superseded)</span><span style="color:var(--color-text-warning);">IFRS 16 (current)</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Lessee model</span><span>DUAL model — finance leases on-balance-sheet, operating leases off-balance-sheet</span><span>SINGLE model — virtually ALL leases create a right-of-use asset and lease liability (narrow short-term/low-value exemptions only)</span></div>
+        <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Lessee classification test</span><span>Indicator-based finance vs operating judgement, prone to structuring</span><span>No lessee classification needed at all — the dual model is eliminated entirely for lessees</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Lessor model</span><span>Dual model (finance/operating), based on risk/reward transfer</span><span>LARGELY UNCHANGED — lessors still classify leases as finance or operating, using very similar indicators to IAS 17</span></div>
+        <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Sale and leaseback</span><span>Finance leaseback gains deferred; operating leaseback gains often immediate</span><span>Gain recognition now depends on the proportion of rights transferred, a more restrictive, formula-driven approach</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Effective date</span><span>Withdrawn for periods beginning on/after 1 January 2019</span><span>Effective for periods beginning on/after 1 January 2019</span></div>
+      </div>
+      <div class="note">The MOST significant change was entirely on the LESSEE side — IAS 17's off-balance-sheet operating lease treatment, long criticised by analysts and regulators for understating corporate leverage, was completely abolished. Lessor accounting, by contrast, changed comparatively little.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping — Where Every Lease Event Landed (Historical, Under IAS 17)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Comprehensive event-to-statement mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event / transaction</span><span>Statement(s) affected</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Finance lease inception (lessee)</span><span><span class="badge bs">SOFP</span></span><span>Asset and liability both recognised at lower of fair value and PV of minimum lease payments</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Finance lease depreciation (lessee)</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>As for owned assets under IAS 16/38</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Finance lease interest (lessee)</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Effective interest method, reducing the liability</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Operating lease payments (lessee)</span><span><span class="badge bp">SOPL</span></span><span>Straight-line expense; NO SOFP asset or liability</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Finance lease inception (lessor)</span><span><span class="badge bs">SOFP</span></span><span>Leased asset derecognised; receivable (net investment) recognised instead</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Finance lease income (lessor)</span><span><span class="badge bp">SOPL</span></span><span>Recognised at a constant periodic rate of return on the net investment</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Operating lease income (lessor)</span><span><span class="badge bp">SOPL</span></span><span>Straight-line over the lease term; asset remains on lessor's SOFP</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Sale and finance leaseback gain</span><span><span class="badge bs">SOFP</span></span><span>Deferred and amortised over the lease term, not recognised immediately</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Cash lease payments</span><span><span class="badge bs">Cash Flow Statement</span></span><span>Finance leases split principal (financing) and interest (per policy); operating lease payments generally operating outflow</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Minimum lease payment maturity analysis</span><span><span class="badge bp">Notes</span></span><span>Mandatory disclosure for both finance and operating leases</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How IAS 17's legacy connects across the IFRS body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 16</span><span>The DIRECT successor standard — abolished the lessee dual model entirely, but retained IAS 17's lessor accounting model largely unchanged</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 16 / IAS 38 / IAS 40</span><span>Governed depreciation and subsequent measurement of finance-leased assets recognised by the lessee, and of leased assets retained by an operating lessor</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 23</span><span>Interest expense on a finance lease liability could form part of "borrowing costs" eligible for capitalisation if the leased asset was itself a qualifying asset</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 36</span><span>Governed impairment testing of finance-leased assets recognised on the lessee's SOFP, and of assets retained by an operating lessor</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 1</span><span>Provided a specific transition relief allowing first-time adopters to measure lease liabilities using the incremental borrowing rate at the transition date, rather than full retrospective reconstruction — carried forward into IFRS 16 transitions too</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Net investment in the lease</div><div class="glossary-def">The lessor's gross investment in a finance lease, discounted at the interest rate implicit in the lease.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Interest rate implicit in the lease</div><div class="glossary-def">The discount rate causing the aggregate present value of minimum lease payments and unguaranteed residual value to equal the fair value of the leased asset plus initial direct costs.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Unguaranteed residual value</div><div class="glossary-def">The portion of the estimated residual value of a leased asset the realisation of which is NOT assured, or is guaranteed only by a party related to the lessor.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Initial direct costs</div><div class="glossary-def">Incremental costs directly attributable to negotiating and arranging a lease, EXCLUDING such costs incurred by manufacturer/dealer lessors.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Contingent rent</div><div class="glossary-def">A portion of lease payments not fixed in amount, based instead on a future factor other than the passage of time (e.g. percentage of sales, future price indices) — excluded from minimum lease payments.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Non-cancellable lease</div><div class="glossary-def">A lease cancellable only upon the occurrence of some remote contingency, with permission of the lessor, if the lessee enters a new lease for the same/equivalent asset, or upon payment of an additional amount such that continuation is reasonably certain at inception.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bs">SOFP</span> Statement of financial position (balance sheet)
+      <span class="badge bp">SOPL</span> Statement of profit or loss (income statement)
+      <span class="badge bo">OCI</span> Other comprehensive income
+      <span class="badge be">Equity</span> Statement of changes in equity
+    </div>
+  </div>
+
+  <div class="footer-note">IAS 17 — Leases (Superseded by IFRS 16, effective 1 Jan 2019) · Extended Reference Poster · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

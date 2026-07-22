@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASC 810 — Consolidation | Extended Reference</title>
+<style>
+  :root { --color-background-secondary:#f9fafb;--color-background-tertiary:#f3f4f6;--color-background-info:#eff6ff;--color-background-success:#f0fdf4;--color-background-warning:#fffbeb;--color-background-danger:#fff1f2;--color-border-secondary:#e5e7eb;--color-border-tertiary:#e5e7eb;--color-border-info:#3b82f6;--color-border-success:#22c55e;--color-border-warning:#f59e0b;--color-border-danger:#ef4444;--color-text-primary:#111827;--color-text-secondary:#374151;--color-text-tertiary:#9ca3af;--color-text-info:#2563eb;--color-text-success:#16a34a;--color-text-warning:#b45309;--color-text-danger:#dc2626;--border-radius-lg:10px;--border-radius-md:8px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#fff;color:#111827;margin:0;padding:0;}
+  body{padding:20px;max-width:1180px;margin:0 auto;}*{box-sizing:border-box;}.wrap{padding:1rem 0 .5rem;}
+  .hub{display:flex;justify-content:center;margin-bottom:8px;}.hub-box{padding:12px 28px;background:var(--color-background-secondary);border:1.5px solid var(--color-border-secondary);border-radius:var(--border-radius-lg);text-align:center;}
+  .hub-title{font-size:17px;font-weight:600;color:var(--color-text-primary);}.hub-sub{font-size:11px;color:var(--color-text-tertiary);margin-top:3px;}
+  .toc{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin:14px 0 26px;}.toc a{font-size:10.5px;font-weight:500;padding:4px 11px;border-radius:14px;background:var(--color-background-tertiary);color:var(--color-text-secondary);text-decoration:none;border:1px solid var(--color-border-tertiary);}
+  .section-header{display:flex;align-items:center;gap:8px;margin:30px 0 12px;}.section-header .num{font-size:11px;font-weight:700;color:#fff;background:var(--color-text-info);width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .section-header h2{font-size:14px;font-weight:600;color:var(--color-text-primary);margin:0;}.section-header .line{flex:1;height:1px;background:var(--color-border-tertiary);}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start;}.span2{grid-column:span 2;}
+  .card{border-radius:var(--border-radius-lg);border:1px solid var(--color-border-tertiary);padding:13px 14px;background:var(--color-background-secondary);}
+  .card.ci{border-left:3px solid var(--color-border-info);}.card.cs{border-left:3px solid var(--color-border-success);}.card.cw{border-left:3px solid var(--color-border-warning);}.card.cd{border-left:3px solid var(--color-border-danger);}.card.cn{border-left:3px solid var(--color-border-secondary);}
+  .ctitle{font-size:13px;font-weight:500;margin-bottom:7px;}.ctitle.ci{color:var(--color-text-info);}.ctitle.cs{color:var(--color-text-success);}.ctitle.cw{color:var(--color-text-warning);}.ctitle.cd{color:var(--color-text-danger);}.ctitle.cn{color:var(--color-text-primary);}
+  .principle{font-size:11px;color:var(--color-text-secondary);margin-bottom:9px;line-height:1.55;padding:6px 8px;background:var(--color-background-tertiary);border-radius:6px;}
+  .elabel{font-size:10px;font-weight:500;color:var(--color-text-tertiary);margin-bottom:5px;letter-spacing:.03em;}
+  .note{font-size:10px;color:var(--color-text-tertiary);font-style:italic;line-height:1.5;margin-top:4px;}
+  .callout{font-size:11px;line-height:1.5;padding:6px 9px;border-radius:6px;margin-bottom:8px;}
+  .callout.info{background:var(--color-background-info);color:var(--color-text-info);border:1px solid var(--color-border-info);}
+  .callout.warn{background:var(--color-background-warning);color:var(--color-text-warning);border:1px solid var(--color-border-warning);}
+  .callout.danger{background:var(--color-background-danger);color:var(--color-text-danger);border:1px solid var(--color-border-danger);}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start;}
+  .dot-list span,.check-list span,.cross-list span{display:block;padding-left:14px;position:relative;font-size:11px;color:var(--color-text-secondary);line-height:1.75;}
+  .dot-list span::before{content:"·";position:absolute;left:1px;color:var(--color-text-tertiary);}
+  .check-list span::before{content:"✓";position:absolute;left:0;color:var(--color-text-success);font-size:10px;top:2px;font-weight:700;}
+  .cross-list span::before{content:"✕";position:absolute;left:0;color:var(--color-text-danger);font-size:10px;top:2px;}
+  .td-table{border:1px solid var(--color-border-tertiary);border-radius:8px;overflow:hidden;font-size:10px;margin-bottom:8px;}
+  .td-table .th{display:grid;background:var(--color-background-tertiary);padding:5px 8px;font-weight:500;color:var(--color-text-secondary);}
+  .td-table .tr{display:grid;padding:4px 8px;border-top:1px solid var(--color-border-tertiary);color:var(--color-text-secondary);}.td-table .tr.alt{background:var(--color-background-tertiary);}
+  .worked{border:1px solid var(--color-border-info);border-radius:8px;padding:10px 12px;background:var(--color-background-info);margin-bottom:9px;}
+  .worked .wk-title{font-size:11px;font-weight:600;color:var(--color-text-info);margin-bottom:5px;}.worked .wk-body{font-size:11px;color:var(--color-text-secondary);line-height:1.6;}
+  .worked .wk-answer{margin-top:6px;padding-top:6px;border-top:1px dashed var(--color-border-info);font-size:11px;color:var(--color-text-primary);}
+  .glossary-item{padding:7px 0;border-bottom:1px solid var(--color-border-tertiary);}.glossary-term{font-size:11.5px;font-weight:600;color:var(--color-text-primary);}.glossary-def{font-size:11px;color:var(--color-text-secondary);line-height:1.5;margin-top:2px;}
+  .legend{margin-top:20px;padding:12px 16px;background:var(--color-background-secondary);border:1px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);}
+  .lrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:11px;color:var(--color-text-secondary);margin-top:4px;}.ltitle{font-size:11px;font-weight:500;color:var(--color-text-primary);}
+  .badge{font-size:9px;font-weight:500;padding:1px 5px;border-radius:4px;}.bs{background:var(--color-background-info);color:var(--color-text-info);}.bp{background:var(--color-background-danger);color:var(--color-text-danger);}.bo{background:var(--color-background-success);color:var(--color-text-success);}.be{background:var(--color-background-warning);color:var(--color-text-warning);}.bc{background:#ede9fe;color:#6d28d9;}
+  .footer-note{margin-top:24px;padding:12px 16px;background:var(--color-background-tertiary);border-radius:var(--border-radius-md);font-size:10.5px;color:var(--color-text-tertiary);text-align:center;}
+  @media (max-width:640px){.grid,.two-col{grid-template-columns:1fr;}.span2{grid-column:span 1;}}
+</style></head>
+<body><div class="wrap">
+
+<div class="hub"><div class="hub-box"><div class="hub-title">ASC 810 — Consolidation</div><div class="hub-sub">Extended reference poster · US GAAP · Subtopic: 810-10 Overall (Voting Interest Entity model + Variable Interest Entity model) · Counterpart of IFRS 10 · USD examples</div></div></div>
+
+<div class="toc">
+<a href="#s1">1. Conceptual Framework Linkage</a><a href="#s2">2. Scope &amp; Applicability</a><a href="#s3">3. The Voting Interest Entity (VOE) Model</a>
+<a href="#s4">4. The Variable Interest Entity (VIE) Model — a Second, Parallel Framework</a><a href="#s5">5. Why the VIE Model Exists — the Enron-Era Origin</a>
+<a href="#s6">6. Primary Beneficiary Determination</a><a href="#s7">7. IFRS 10's Single Unified Control Model</a>
+<a href="#s8">8. Noncontrolling Interest Presentation</a><a href="#s9">9. Changes in Ownership While Retaining Control</a>
+<a href="#s10">10. Loss of Control</a><a href="#s11">11. Worked Example — VOE vs VIE Model Application</a>
+<a href="#s12">12. Worked Example — Primary Beneficiary Determination</a><a href="#s13">13. Disclosure Requirements</a>
+<a href="#s14">14. Critical Judgments &amp; Estimates</a><a href="#s15">15. ASC 810 vs IFRS 10 — Comprehensive Comparison</a>
+<a href="#s16">16. Statement Mapping</a><a href="#s17">17. Related Topics</a><a href="#s18">18. Glossary</a>
+</div>
+
+<div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card ci"><div class="ctitle ci">Presenting a group of entities as a single economic unit</div><div class="principle">When one entity CONTROLS another, consolidated financial statements present the group as though it were a SINGLE economic reporting entity — reflecting the reality that the controlling party directs the controlled entity's activities and bears the economic consequences of doing so, regardless of the entities' separate legal forms.</div></div>
+<div class="card cs"><div class="ctitle cs">A genuinely distinctive dual-model structure</div><div class="principle">Unlike IFRS 10's SINGLE, unified control model applying uniformly to all entities, US GAAP maintains TWO PARALLEL consolidation frameworks — the traditional VOTING INTEREST ENTITY (VOE) model, and a SEPARATE VARIABLE INTEREST ENTITY (VIE) model for entities where voting rights aren't the primary indicator of control. This dual-model structure (Sections 3-5) is one of the most structurally distinctive features of the entire US GAAP framework.</div>
+</div>
+</div>
+
+<div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cw span2"><div class="ctitle cw">Which model applies to which entity</div><div class="principle">ASC 810 first requires determining whether an entity being evaluated is a VARIABLE INTEREST ENTITY (subject to the VIE model) or NOT (subject to the traditional VOE model) — a threshold screening question that must be answered BEFORE applying either specific consolidation test.</div>
+</div>
+</div>
+
+<div class="section-header" id="s3"><span class="num">3</span><h2>The Voting Interest Entity (VOE) Model</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">Control through majority voting rights — the traditional model</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">For entities NOT determined to be VIEs, control is generally assessed through MAJORITY VOTING INTEREST — typically, ownership of MORE THAN 50% of an entity's voting shares indicates control and REQUIRES consolidation, unless substantive PARTICIPATING or PROTECTIVE rights held by other parties genuinely overcome that presumption.</div>
+</div>
+</div>
+
+<div class="section-header" id="s4"><span class="num">4</span><h2>The Variable Interest Entity (VIE) Model — a Second, Parallel Framework</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cw span2"><div class="ctitle cw">A distinctly US structural feature with no direct IFRS equivalent</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Some entities are structured such that VOTING RIGHTS are NOT the primary indicator of control — for example, an entity with insufficient EQUITY AT RISK to finance its activities without additional subordinated financial support, or where equity holders LACK certain characteristics of a controlling financial interest (e.g. the ability to make key decisions, or genuine exposure to the entity's losses/returns). Such an entity is a <strong>VARIABLE INTEREST ENTITY (VIE)</strong>, and is consolidated NOT by whoever holds majority voting rights, but by whoever is its <strong>"PRIMARY BENEFICIARY"</strong> (Section 6) — an ENTIRELY SEPARATE, parallel consolidation test running alongside the traditional VOE model.</div>
+</div>
+</div>
+
+<div class="section-header" id="s5"><span class="num">5</span><h2>Why the VIE Model Exists — the Enron-Era Origin</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">A direct regulatory response to off-balance-sheet special purpose entities</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">The VIE framework (originally FIN 46, now codified in ASC 810) emerged as a DIRECT response to the early-2000s Enron-era accounting scandals, in which companies used "special purpose entities" structured to AVOID triggering the traditional voting-interest consolidation test — keeping substantial liabilities and risks OFF the sponsoring company's balance sheet despite the sponsor genuinely bearing the underlying economic risk. The VIE model closes this gap by looking PAST voting rights to the underlying ECONOMIC substance of control and risk exposure.</div>
+</div>
+</div>
+
+<div class="section-header" id="s6"><span class="num">6</span><h2>Primary Beneficiary Determination</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cs span2"><div class="ctitle cs">A two-part test — power plus economics, held by the same party</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">A reporting entity is the PRIMARY BENEFICIARY of a VIE — and therefore consolidates it — if it has BOTH: (a) the POWER to direct the activities that MOST SIGNIFICANTLY impact the VIE's economic performance, AND (b) the OBLIGATION to absorb LOSSES, or the RIGHT to receive BENEFITS, that COULD BE SIGNIFICANT to the VIE. Both criteria must be held by the SAME party (subject to related-party and de facto agent considerations that can attribute interests across affiliated parties).</div>
+</div>
+</div>
+
+<div class="section-header" id="s7"><span class="num">7</span><h2>IFRS 10's Single Unified Control Model</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cw span2"><div class="ctitle cw">One test, applied to every entity</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">IFRS 10 uses a SINGLE, UNIFIED definition of control, applying UNIFORMLY to all types of investees regardless of structure: an investor controls an investee if it has (a) POWER over the investee, (b) EXPOSURE to variable RETURNS from its involvement, and (c) the ABILITY to USE its power to AFFECT the amount of those returns. There is NO SEPARATE, parallel framework for structured/special-purpose-type entities the way ASC 810's VIE model provides — IFRS 10 simply applies this single control definition to EVERY entity, structured or otherwise, adapting the underlying analysis (particularly around power in the absence of majority voting rights) as needed within the ONE unified test rather than switching to an entirely different model.</div>
+</div>
+</div>
+
+<div class="section-header" id="s8"><span class="num">8</span><h2>Noncontrolling Interest Presentation</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">Converged with IFRS 10</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Noncontrolling interest (NCI) is presented WITHIN EQUITY on the consolidated balance sheet, SEPARATELY from the parent's own equity — the same presentation principle IFRS 10 requires, reflecting NCI as a genuine equity claim on the CONSOLIDATED group, not a liability.</div>
+</div>
+</div>
+
+<div class="section-header" id="s9"><span class="num">9</span><h2>Changes in Ownership While Retaining Control</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cs span2"><div class="ctitle cs">Treated as equity transactions</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">If a parent's ownership percentage CHANGES (e.g. buying additional shares from NCI, or selling a partial stake) while CONTROL is retained throughout, the transaction is accounted for as an EQUITY transaction — NO gain or loss is recognised in the income statement, since the group's assets and liabilities remain unchanged and control is maintained — the same treatment IFRS 10 requires.</div>
+</div>
+</div>
+
+<div class="section-header" id="s10"><span class="num">10</span><h2>Loss of Control</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cw span2"><div class="ctitle cw">Remeasure any retained investment at fair value</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">When a parent LOSES control of a subsidiary, it DERECOGNISES the subsidiary's assets, liabilities, and any NCI, and RECOGNISES a GAIN OR LOSS reflecting the difference between the fair value of consideration received PLUS the fair value of any RETAINED investment, versus the carrying amount of the former subsidiary's net assets and NCI — with any retained investment REMEASURED to fair value at that date. The same loss-of-control remeasurement approach applies under IFRS 10.</div>
+</div>
+</div>
+
+<div class="section-header" id="s11"><span class="num">11</span><h2>Worked Example — VOE vs VIE Model Application</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cw span2"><div class="ctitle cw">Same 40% ownership stake, different consolidation conclusions</div>
+<div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Two entities with identical ownership percentages, different outcomes</div><div class="wk-body">Entity Alpha holds 40% of the voting shares of Company X, an ordinary operating company with sufficient equity at risk and normal governance. Entity Beta also holds a 40% interest in Company Y, a thinly-capitalised special purpose leasing entity with insufficient equity at risk to finance its activities without Beta's ongoing financial support.</div><div class="wk-answer">Company X is analysed under the VOE model — 40% voting interest is BELOW the majority threshold, so Alpha does NOT consolidate (likely applying equity method under ASC 323 instead, assuming significant influence). Company Y, by contrast, is a VARIABLE INTEREST ENTITY given its insufficient equity at risk — the consolidation question shifts ENTIRELY to whether Beta is the PRIMARY BENEFICIARY (power + economics), REGARDLESS of Beta's mere 40% voting/ownership percentage — Beta could well be REQUIRED to consolidate Company Y despite holding a MINORITY interest, if it holds the power to direct Company Y's key activities and absorbs potentially significant losses/benefits.</div></div>
+</div>
+</div>
+
+<div class="section-header" id="s12"><span class="num">12</span><h2>Worked Example — Primary Beneficiary Determination</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card ci span2"><div class="ctitle ci">Applying the power-plus-economics test</div>
+<div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: A securitisation vehicle's servicer/sponsor</div><div class="wk-body">A bank sponsors and services a securitisation vehicle (a VIE) holding a pool of loans, retaining the power to manage delinquent loans (the activity most significantly affecting the VIE's performance) and holding a subordinated residual interest exposing it to potentially significant losses and returns.</div><div class="wk-answer">The bank holds BOTH required elements: POWER (managing the loans that most significantly affect performance) AND ECONOMICS (a subordinated interest exposing it to potentially significant losses/benefits) — the bank is the <strong>PRIMARY BENEFICIARY</strong> and must CONSOLIDATE the securitisation vehicle, even though it may hold no traditional "voting" interest in the vehicle at all.</div></div>
+</div>
+</div>
+
+<div class="section-header" id="s13"><span class="num">13</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">What ASC 810 requires</div><div class="check-list"><span>Judgements made in determining whether an entity is a VIE, and whether the reporting entity is the primary beneficiary</span><span>Nature of restrictions on consolidated assets, and nature of financial support provided to VIEs</span><span>Carrying amounts and classification of consolidated VIE assets/liabilities</span><span>Nature of NCI and changes in ownership interests during the period</span></div>
+</div>
+</div>
+
+<div class="section-header" id="s14"><span class="num">14</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+<div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Whether an entity is a VIE (sufficiency of equity at risk, characteristics of equity holders)</span><span>Identifying the activities most significantly impacting a VIE's economic performance</span><span>Whether related-party or de facto agent relationships attribute interests across affiliated parties</span></div></div>
+<div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Fair value of retained investments upon loss of control</span><span>Expected losses/benefits a variable interest exposes the holder to</span></div></div></div>
+</div>
+</div>
+
+<div class="section-header" id="s15"><span class="num">15</span><h2>ASC 810 vs IFRS 10 — Comprehensive Comparison</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card ci span2"><div class="ctitle ci">Comparison — ASC 810 vs IFRS 10</div>
+<div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">US GAAP (ASC 810)</span><span style="color:var(--color-text-info);">IFRS (IFRS 10)</span></div>
+<div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Model structure</span><span>TWO PARALLEL models — VOE (voting-based) and VIE (primary beneficiary-based)</span><span>ONE unified control model applying to all entities</span></div>
+<div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Consolidation trigger for structured entities</span><span>Separate VIE screening test, then primary beneficiary determination</span><span>Same unified power/returns/ability-to-affect-returns test, adapted for structured entities within one framework</span></div>
+<div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>NCI presentation</span><span>Within equity, separately presented</span><span>Same — converged</span></div>
+<div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Ownership changes retaining control</span><span>Equity transaction, no gain/loss</span><span>Same — converged</span></div>
+<div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Loss of control</span><span>Remeasure retained investment at fair value, recognise gain/loss</span><span>Same — converged</span></div>
+</div>
+<div class="callout warn" style="margin-bottom:0;">⚠️ The dual VOE/VIE structure is arguably THE single most distinctive structural feature separating US GAAP consolidation from IFRS — a genuinely different ARCHITECTURE for solving the same underlying problem, born directly out of a US-specific regulatory response to a US-specific accounting scandal.</div>
+</div>
+</div>
+
+<div class="section-header" id="s16"><span class="num">16</span><h2>Statement Mapping</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cs span2"><div class="ctitle cs">Where every ASC 810 event lands</div>
+<div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+<div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Consolidation of a VOE (majority voting control)</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Full line-by-line consolidation</span></div>
+<div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Consolidation of a VIE by its primary beneficiary</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Full consolidation, regardless of voting/ownership percentage</span></div>
+<div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Ownership change retaining control</span><span><span class="badge be">SE</span></span><span>Equity transaction, no income statement impact</span></div>
+<div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Loss of control</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Gain/loss recognised, retained investment remeasured</span></div>
+</div>
+</div>
+</div>
+
+<div class="section-header" id="s17"><span class="num">17</span><h2>Related Topics</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd"><div class="ctitle cd">Cross-reference map</div>
+<div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+<div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 323</span><span>Applies instead where significant influence exists without control</span></div>
+<div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 805</span><span>Governs the initial accounting when consolidation results from a business combination</span></div>
+<div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 710</span><span>Rabbi trust consolidation reflects a related, narrower application of consolidation principles</span></div>
+</div>
+</div>
+<div class="card cn"><div class="ctitle cn">Quick-reference glossary preview</div>
+<div class="glossary-item"><div class="glossary-term">Variable interest entity (VIE)</div><div class="glossary-def">An entity where voting rights are not the primary indicator of control, typically due to insufficient equity at risk or equity holders lacking key controlling characteristics.</div></div>
+<div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Primary beneficiary</div><div class="glossary-def">The party required to consolidate a VIE, holding both the power to direct its most significant activities and exposure to potentially significant losses/benefits.</div></div>
+</div>
+</div>
+
+<div class="section-header" id="s18"><span class="num">18</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cn span2">
+<div class="glossary-item"><div class="glossary-term">Equity at risk</div><div class="glossary-def">Equity investment genuinely exposed to an entity's losses, used to assess whether an entity has sufficient equity to finance its activities without additional subordinated support.</div></div>
+<div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">De facto agent</div><div class="glossary-def">A party whose interests may be attributed to another party for VIE analysis purposes, due to a close relationship limiting its ability to act independently.</div></div>
+</div>
+</div>
+
+<div class="legend"><div class="ltitle">Financial statement key (US GAAP native terminology)</div><div class="lrow"><span class="badge bs">BS</span> Balance Sheet <span class="badge bp">IS</span> Income Statement <span class="badge bo">OCI</span> Other Comprehensive Income <span class="badge be">SE</span> Statement of Shareholders' Equity <span class="badge bc">SCF</span> Statement of Cash Flows</div></div>
+
+<div class="footer-note">ASC 810 — Consolidation · Extended Reference Poster · Self-contained, no internet connection required</div>
+</div></body></html>

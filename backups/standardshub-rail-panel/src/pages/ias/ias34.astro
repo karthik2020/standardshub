@@ -1,0 +1,383 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/ias/ias34.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        {
+          id: "s1",
+          label: "Conceptual Framework Linkage",
+        },
+        {
+          id: "s2",
+          label: "Scope & Applicability",
+        },
+        {
+          id: "s3",
+          label: "Minimum Components",
+        },
+        {
+          id: "s4",
+          label: "Discrete vs Integral Debate",
+        },
+        {
+          id: "s5",
+          label: "Recognition & Measurement",
+        },
+        {
+          id: "s6",
+          label: "Seasonal & Cyclical Revenue",
+        },
+        {
+          id: "s7",
+          label: "Costs, Tax & Impairment",
+        },
+        {
+          id: "s8",
+          label: "Use of Estimates",
+        },
+        {
+          id: "s9",
+          label: "Disclosure Requirements",
+        },
+        {
+          id: "s10",
+          label: "Critical Judgments & Estimates",
+        },
+        {
+          id: "s11",
+          label: "IFRS vs US GAAP",
+        },
+        {
+          id: "s12",
+          label: "Statement Mapping",
+        },
+        {
+          id: "s13",
+          label: "Related Standards",
+        },
+        {
+          id: "s14",
+          label: "Quick-Reference Glossary",
+        },
+        {
+          id: "history",
+          label: "History & Development",
+        },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <!-- ============ SECTION 1 ============ -->
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Why interim reporting needs its own timing rules</div>
+        <div class="principle">The Conceptual Framework's TIMELINESS characteristic favours more frequent reporting, since information is more useful the sooner it reaches decision-makers. But shortening the reporting period creates genuine measurement challenges — many costs, taxes, and estimates are naturally calculated on an ANNUAL basis. IAS 34 resolves this tension.</div>
+        <div class="elabel">HOW IAS 34 MAPS TO THE FRAMEWORK</div>
+        <div class="check-list">
+          <span><strong style="font-weight:600">Timeliness</strong> — the very existence of interim reporting reflects the Framework's recognition that decision-usefulness DEGRADES the longer users must wait for information</span>
+          <span><strong style="font-weight:600">Faithful representation</strong> — IAS 34 adopts the view that each interim period is a DISCRETE reporting period in its own right, using the SAME recognition and measurement principles as annual reporting, rather than treating the interim period as merely a fraction of the annual estimate</span>
+          <span><strong style="font-weight:600">Comparability</strong> — consistent recognition/measurement principles across interim and annual periods ensure interim reports are genuinely comparable to the eventual annual statements</span>
+        </div>
+        <div class="note">IAS 34's central conceptual choice — the "discrete period" view over the "integral part of the annual period" view — is explicitly and deliberately resolved in the standard itself (Section 4), ending a long-running historical debate in accounting theory.</div>
+      </div>
+
+      <div class="card cs">
+        <div class="ctitle cs">Measurement principles applied</div>
+        <div class="principle">IAS 34 requires the SAME recognition and measurement principles to be applied in interim reports as would be applied in annual financial statements — no special "interim-only" measurement basis exists.</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.3fr 1fr;"><span>Framework basis</span><span>Used by IAS 34 for…</span></div>
+          <div class="tr" style="grid-template-columns:1.3fr 1fr;"><span>Same measurement bases as annual statements</span><span>Every recognised item — no interim-specific override of cost, fair value, or amortised cost rules</span></div>
+          <div class="tr alt" style="grid-template-columns:1.3fr 1fr;"><span>Year-to-date figures</span><span>Measurements made on a YEAR-TO-DATE basis, so the frequency of reporting does NOT affect the measurement of annual results</span></div>
+        </div>
+        <div class="callout info callout--chip" style="margin-bottom:0;">ℹ️ <strong style="font-weight:600">Qualitative characteristics in action:</strong> requiring interim measurements to be made on a <strong style="font-weight:600">year-to-date basis</strong> preserves <strong style="font-weight:600">faithful representation</strong> of the ANNUAL result, ensuring frequent reporting doesn't itself distort the full-year figure through artificial smoothing or estimation shortcuts.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 2 ============ -->
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What IAS 34 covers</div>
+        <div class="principle">IAS 34 does NOT mandate WHICH entities must publish interim financial reports, how frequently, or how soon after the end of an interim period — this is left to national governments, securities regulators, stock exchanges, and accountancy bodies. IAS 34 prescribes the MINIMUM CONTENT of an interim financial report, and the recognition/measurement principles to apply, WHEN an entity IS required (or chooses) to publish one.</div>
+        <div class="elabel">ENCOURAGED, NOT MANDATED</div>
+        <div class="text-supporting">IAS 34 ENCOURAGES publicly traded entities to provide interim financial reports at least at the end of the first half of their financial year, and to make them available NOT LATER than 60 days after the end of the interim period — but this is an encouragement, not a mandatory requirement of the standard itself.</div>
+        <div class="note">In practice, LOCAL regulation (e.g. stock exchange listing rules) is almost always what actually MANDATES interim reporting frequency — IAS 34 only governs the CONTENT once that obligation exists.</div>
+      </div>
+
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions you must know</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Interim period</div>
+          <div class="glossary-def">A financial reporting period SHORTER than a full financial year.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Interim financial report</div>
+          <div class="glossary-def">A financial report containing either a complete set of financial statements (per IAS 1) or a set of CONDENSED financial statements, for an interim period.</div>
+        </div>
+        <div class="glossary-item" style="border-bottom:none;">
+          <div class="glossary-term">Year-to-date measurement</div>
+          <div class="glossary-def">Measuring results cumulatively from the beginning of the financial year to the end of the interim period, ensuring the frequency of reporting doesn't distort the measurement of annual results.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 3 ============ -->
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Minimum Components of an Interim Financial Report</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">The condensed set — minimum components</div>
+        <div class="check-list">
+          <span>A condensed statement of financial position</span>
+          <span>A condensed statement of profit or loss and other comprehensive income (single or two-statement approach, per IAS 1)</span>
+          <span>A condensed statement of changes in equity</span>
+          <span>A condensed statement of cash flows</span>
+          <span>Selected explanatory notes</span>
+        </div>
+        <div class="note">An entity MAY choose to publish a COMPLETE set of financial statements (per IAS 1) rather than a condensed set for its interim report — if it does, the recognition/measurement principles of IAS 34 STILL apply.</div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Comparative periods required — the four-way test</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.4fr 1fr;"><span>Statement</span><span>Comparative period required</span></div>
+          <div class="tr" style="grid-template-columns:1.4fr 1fr;"><span>SOFP</span><span>END of the immediately preceding financial year (NOT the interim period a year ago)</span></div>
+          <div class="tr alt" style="grid-template-columns:1.4fr 1fr;"><span>SOPL/OCI</span><span>Cumulative for the current financial year to date, AND for the comparable interim period (and year-to-date period) of the immediately preceding financial year</span></div>
+          <div class="tr" style="grid-template-columns:1.4fr 1fr;"><span>Statement of changes in equity</span><span>Cumulative for the current financial year to date, compared with the comparable year-to-date period of the preceding year</span></div>
+          <div class="tr alt" style="grid-template-columns:1.4fr 1fr;"><span>Statement of cash flows</span><span>Cumulative for the current financial year to date, compared with the comparable year-to-date period of the preceding year</span></div>
+        </div>
+        <div class="callout warn callout--chip" style="margin-bottom:0;">⚠️ <strong style="font-weight:600">A very commonly tested point:</strong> the SOFP comparative is the END of the PRIOR FULL YEAR, not the equivalent interim date a year earlier — this differs from the SOPL/OCI/equity/cash flow comparatives, which DO use the equivalent prior-year interim period.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 4 ============ -->
+    <div class="section-header" id="s4"><span class="num">4</span><h2>The Discrete vs Integral Debate — Resolved</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">IAS 34 firmly adopts the "discrete period" view</div>
+        <div class="principle">Historically, two competing views existed on how to measure interim results: the "DISCRETE" view (each interim period is a distinct accounting period in its own right, using the same principles as an annual period) versus the "INTEGRAL" view (each interim period is simply a fraction of the annual period, and costs/revenues should be smoothed/allocated to reflect the expected FULL YEAR pattern). IAS 34 EXPLICITLY adopts the DISCRETE view.</div>
+        <div class="worked" style="margin-bottom:0;">
+          <div class="wk-title">Example 1: Discrete view in practice — an annual bonus provision</div>
+          <div class="wk-body">
+            An entity has a legal or constructive obligation to pay an annual bonus, contingent on full-year performance. Halfway through the year (interim period 2 of 4 quarters), it is reasonably certain the annual bonus target will be met, with an estimated total annual bonus cost of $800,000.
+          </div>
+          <div class="wk-answer">
+            Under the DISCRETE view actually required by IAS 34, the bonus provision is recognised progressively as the obligation is INCURRED and the underlying conditions are satisfied during the year — NOT deferred entirely to Q4, and NOT smoothed evenly across all four quarters regardless of actual progress toward the target. The SAME recognition criteria used at year end (IAS 37/IAS 19) apply at each interim date.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 5 ============ -->
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Recognition &amp; Measurement Principles</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">The core rule</div>
+        <div class="formula-box formula-box--chip">
+          <div class="f-eq">An entity applies the SAME accounting policies in its interim financial statements as are applied in its annual financial statements — EXCEPT for a policy change made after the most recent annual statements, to be reflected in the current financial year</div>
+        </div>
+        <div class="text-supporting">Measurements for interim reporting purposes are made on a YEAR-TO-DATE basis, so that the frequency of an entity's reporting (annual, half-yearly, quarterly) does NOT affect the measurement of its annual results.</div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Worked example — inventory write-down reversal</div>
+        <div class="worked">
+          <div class="wk-title">Example 2: NRV write-down reversed in a later interim period</div>
+          <div class="wk-body">
+            At the end of Q1, an entity writes down inventory to NRV, recognising a $150,000 loss due to a temporary market price decline. By the end of Q2, market prices have recovered, and the same inventory (still unsold) would now be measured at an NRV higher than its original cost basis had the write-down not occurred.
+          </div>
+          <div class="wk-answer">
+            Consistent with IAS 2's own reversal rules (applied on a YEAR-TO-DATE basis, per IAS 34), the write-down can be REVERSED in Q2, capped at the amount originally written down ($150,000) — the SAME recognition/measurement principles from IAS 2 that would apply at annual year end apply equally at each interim date.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 6 ============ -->
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Seasonal, Cyclical &amp; Occasional Revenue</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">No anticipation or deferral of revenue that wouldn't otherwise qualify</div>
+        <div class="principle">Revenue that is received SEASONALLY, CYCLICALLY, or OCCASIONALLY within a financial year is NOT anticipated or deferred as of an interim date if anticipation or deferral would NOT be appropriate at the end of the financial year — a direct, strict application of the discrete-period principle from Section 4.</div>
+        <div class="callout danger callout--chip" style="margin-bottom:0;">✕ <strong style="font-weight:600">A common misapplication:</strong> a retailer earning 60% of its annual sales in Q4 (holiday season) does NOT smooth or "allocate" a portion of that anticipated Q4 revenue back into Q1–Q3 — each interim period's revenue is recognised strictly according to when the IFRS 15 performance obligations are actually satisfied within THAT period, however uneven the resulting quarterly pattern looks.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 7 ============ -->
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Costs Incurred Unevenly, Income Tax &amp; Impairment</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs">
+        <div class="ctitle cs">Costs incurred unevenly during the year</div>
+        <div class="text-supporting">Costs that are incurred UNEVENLY during a financial year are anticipated or deferred for interim reporting purposes ONLY IF it is ALSO appropriate to anticipate or defer that type of cost at the end of the financial year — e.g. a major planned annual maintenance shutdown cost genuinely incurred in Q3 is NOT smoothed across all four quarters, unless a provision genuinely existed and met recognition criteria earlier.</div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Income tax — the estimated annual effective rate</div>
+        <div class="formula-box formula-box--chip">
+          <div class="f-eq">Interim tax expense = Year-to-date pre-tax profit × Best estimate of the WEIGHTED AVERAGE annual effective tax rate expected for the full financial year</div>
+        </div>
+        <div class="text-supporting">This is a specific, unique exception to the strict "discrete period" principle — tax IS estimated using an ANNUAL effective rate applied to year-to-date profit, rather than being computed as if the interim period were entirely standalone.</div>
+        <div class="note">Impairment losses recognised in an earlier interim period for goodwill are NEVER reversed in a subsequent interim period, consistent with the permanent prohibition on goodwill impairment reversal under IAS 36.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 8 ============ -->
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Use of Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Greater reliance on estimation is explicitly acceptable</div>
+        <div class="text-supporting">The measurement procedures followed in an interim financial report are designed to ensure the resulting information is reliable, and that all material financial information relevant to understanding the entity's financial position/performance is appropriately disclosed. While measurements in both annual and interim reports are OFTEN based on reasonable estimates, preparing interim reports GENERALLY requires a GREATER use of estimation methods than annual reports — a deliberate, explicit acknowledgement of the practical time constraints of interim reporting cycles.</div>
+        <div class="note">IAS 34 provides illustrative examples (e.g. full physical inventory counts may not be necessary at every interim date; estimation techniques may be used) — this doesn't lower the RELIABILITY bar, but does acknowledge cost-benefit trade-offs are reasonable given the shorter reporting cycle.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 9 ============ -->
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Required disclosures</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SELECTED EXPLANATORY NOTES — TYPICAL CONTENT</div>
+            <div class="check-list">
+              <span>A statement that the same accounting policies are followed as in the most recent annual financial statements, or a description of any changes and their effect</span>
+              <span>Explanatory comments about the seasonality or cyclicality of interim operations</span>
+              <span>Nature and amount of items affecting assets, liabilities, equity, net income, or cash flows that are UNUSUAL because of their nature, size, or incidence</span>
+              <span>Nature and amount of changes in estimates of amounts reported in prior interim periods of the current financial year, or prior financial years</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">FURTHER DISCLOSURES</div>
+            <div class="check-list">
+              <span>Issuances, repurchases, and repayments of debt and equity securities</span>
+              <span>Dividends paid (aggregate or per share) separately for ordinary shares and other shares</span>
+              <span>Segment information (if the entity is required to disclose it under IFRS 8)</span>
+              <span>Material events after the interim period that have not been reflected in the interim financial statements (per IAS 10 principles)</span>
+              <span>Effect of changes in the composition of the entity during the interim period (business combinations, disposals, restructurings)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 10 ============ -->
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where management judgement matters most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Whether a specific cost or revenue item would genuinely be anticipated/deferred at annual year end, the test that determines interim treatment too</span>
+              <span>Whether an interim measurement genuinely relies on reasonable estimation techniques (acceptable) versus falling short of the reliability threshold IAS 34 still requires</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>The best estimate of the weighted average annual effective tax rate applied to year-to-date profit</span>
+              <span>Estimation techniques used for inventory quantities, provisions, and other balances at interim dates where full annual-style procedures aren't practical</span>
+            </div>
+          </div>
+        </div>
+        <div class="callout warn callout--chip" style="margin-top:8px;margin-bottom:0;">⚠️ A change in ESTIMATE recognised during an interim period is disclosed in the SAME period it changes, per the IAS 34 disclosure requirement above — this is closely linked to, but distinct from, the general IAS 8 change-in-estimate rules applied at annual year end.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 11 ============ -->
+    <div class="section-header" id="s11"><span class="num">11</span><h2>IFRS vs US GAAP — Key Differences</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — IAS 34 vs US GAAP (ASC 270)</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Feature</span><span style="color:var(--color-text-info);">IFRS (IAS 34)</span><span style="color:var(--color-text-warning);">US GAAP</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Fundamental philosophy</span><span>DISCRETE period view — each interim period stands alone using annual recognition principles</span><span>Historically closer to an "INTEGRAL" view in some respects (e.g. certain cost allocation practices), though converged substantially in most areas</span></div>
+          <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>SEC quarterly reporting mandate</span><span>IAS 34 itself does not mandate frequency; local regulation does</span><span>SEC rules MANDATE quarterly reporting (Form 10-Q) for public companies — a much more prescriptive external requirement layered on top of ASC 270</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Income tax — annual effective rate</span><span>Estimated annual effective tax rate applied to year-to-date profit</span><span>Similar estimated annual effective tax rate approach, broadly converged</span></div>
+          <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Goodwill impairment testing frequency</span><span>Tested whenever an indicator arises, including at interim dates, following IAS 36's general trigger-based approach</span><span>Similarly requires interim impairment testing if a triggering event occurs between annual tests</span></div>
+        </div>
+        <div class="note">Despite converging significantly over time, the SEC's more PRESCRIPTIVE quarterly filing mandate (Form 10-Q) for US public companies is the most practically significant structural difference — IAS 34 itself is deliberately silent on frequency, leaving this to be dictated by local securities regulation around the world.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 12 ============ -->
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping — Where Every Interim Reporting Concept Lands</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Comprehensive event-to-statement mapping table</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event / transaction</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Seasonal/cyclical revenue earned within the interim period</span><span><span class="badge bp">Condensed SOPL</span></span><span>Recognised strictly per IFRS 15; never smoothed or anticipated across periods</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Costs genuinely incurred unevenly (not previously accrued)</span><span><span class="badge bp">Condensed SOPL</span></span><span>Recognised in the period actually incurred, unless annual-basis deferral/anticipation would also be appropriate</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Interim income tax expense</span><span><span class="badge bp">Condensed SOPL</span></span><span>Estimated annual effective rate applied to year-to-date profit</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Inventory NRV write-down and reversal (year-to-date)</span><span><span class="badge bp">Condensed SOPL</span> <span class="badge bs">Condensed SOFP</span></span><span>Same IAS 2 rules applied at each interim date</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Goodwill impairment loss at an interim date</span><span><span class="badge bp">Condensed SOPL</span> <span class="badge bs">Condensed SOFP</span></span><span>NEVER reversed in a later interim period, consistent with IAS 36</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Change in estimate identified during the interim period</span><span><span class="badge bp">Condensed SOPL</span></span><span>Recognised prospectively; disclosed in the period the change occurs</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Dividends paid, share issuances/repurchases</span><span><span class="badge be">Condensed Equity Statement</span></span><span>Disclosed per the standard's specific requirements</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Cash flow movements year-to-date</span><span><span class="badge bs">Condensed Cash Flow Statement</span></span><span>Compared with the equivalent prior-year year-to-date period</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>SOFP at interim date</span><span><span class="badge bs">Condensed SOFP</span></span><span>Compared against the END of the prior full financial year, not the equivalent interim date</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Unusual items, seasonality commentary, segment information</span><span><span class="badge bp">Notes</span></span><span>Mandatory selected explanatory disclosures</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 13 ============ -->
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">How IAS 34 connects across the IFRS body of literature</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 1</span><span>Supplies the full annual statement structure that IAS 34's "condensed" format is deliberately abbreviated FROM; an entity may also choose to present a COMPLETE IAS 1-compliant set instead of condensed statements</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 2</span><span>Inventory NRV write-down/reversal rules apply identically at interim dates, per IAS 34's year-to-date measurement principle</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 8</span><span>Governs the treatment and disclosure of changes in accounting estimates identified during an interim period, applied prospectively</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 10</span><span>Events after the interim reporting period follow the same adjusting/non-adjusting classification logic as annual reporting</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 36</span><span>Goodwill and other asset impairment testing applies at interim dates if an indicator arises; goodwill impairment reversal remains permanently prohibited</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 12</span><span>Supplies the annual effective tax rate concept applied to year-to-date profit for interim tax expense estimation</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 8</span><span>Requires segment information disclosure within interim reports for entities that report segment information annually</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 5</span><span>Discontinued operations and assets held for sale identified at an interim date are presented consistently with annual reporting requirements</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 14 ============ -->
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+<Glossary entries={[
+      { term: "Condensed financial statements", definition: "An abbreviated version of a complete set of financial statements, containing at minimum each of the headings and subtotals included in the most recent annual statements, plus selected explanatory notes." },
+      { term: "Discrete period view", definition: "The view, adopted by IAS 34, that each interim period should be treated as a separate accounting period in its own right, applying annual recognition/measurement principles." },
+      { term: "Integral view", definition: "The alternative (NOT adopted by IAS 34) that treats each interim period as merely a fraction of the annual period, smoothing/allocating costs and revenues to match an expected full-year pattern." },
+      { term: "Estimated annual effective tax rate", definition: "The best estimate of the weighted average tax rate expected for the FULL financial year, applied to year-to-date pre-tax profit to determine interim tax expense." },
+      { term: "Year-to-date basis", definition: "Measurement cumulatively from the start of the financial year through to the end of the current interim period." },
+      { term: "Materiality (in the interim context)", definition: "In deciding how to recognise, measure, classify, or disclose an item for interim reporting purposes, materiality is assessed in relation to the INTERIM period financial data, not the annual data." }
+    ]} />
+
+<FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.IAS34} />
+  </section>
+</StandardPageLayout>
+

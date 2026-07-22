@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IFRS 8 — Operating Segments | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span { display: block; padding-left: 14px; position: relative; font-size: 11px; color: var(--color-text-secondary); line-height: 1.75; }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+  @media (max-width: 640px) { .grid, .two-col, .three-col { grid-template-columns: 1fr; } .span2 { grid-column: span 1; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">IFRS 8 — Operating Segments</div>
+      <div class="hub-sub">Extended reference poster · Conceptual framework link · The management approach &amp; quantitative thresholds · Worked examples · Statement mapping</div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <a href="#s1">1. Conceptual Framework</a>
+    <a href="#s2">2. Scope &amp; Definitions</a>
+    <a href="#s3">3. Identifying Operating Segments</a>
+    <a href="#s4">4. Aggregation of Segments</a>
+    <a href="#s5">5. The Quantitative Thresholds — 10% Tests</a>
+    <a href="#s6">6. The 75% Reporting Sufficiency Test</a>
+    <a href="#s7">7. Measurement of Segment Information</a>
+    <a href="#s8">8. Reconciliations to Consolidated Totals</a>
+    <a href="#s9">9. Entity-Wide Disclosures</a>
+    <a href="#s10">10. Judgments &amp; Estimates</a>
+    <a href="#s11">11. IFRS vs US GAAP</a>
+    <a href="#s12">12. Statement Mapping</a>
+    <a href="#s13">13. Related Standards</a>
+    <a href="#s14">14. Glossary</a>
+  </div>
+
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Why segment reporting uses "the management approach"</div>
+      <div class="principle">The Conceptual Framework values information that helps users understand a business the way MANAGEMENT itself does. IFRS 8 adopts this "MANAGEMENT APPROACH" directly: segments are defined by how the entity is ACTUALLY organised and managed internally, not by an externally imposed classification scheme.</div>
+      <div class="elabel">HOW IFRS 8 MAPS TO THE FRAMEWORK</div>
+      <div class="check-list">
+        <span><strong style="font-weight:500">Relevance</strong> — reporting segments the way management ACTUALLY monitors them gives users the SAME lens management uses to run the business</span>
+        <span><strong style="font-weight:500">Faithful representation</strong> — externally imposed, standardised segment categories risk distorting how the business is genuinely structured and managed</span>
+        <span><strong style="font-weight:500">Cost constraint</strong> — segment information is DERIVED from data management ALREADY produces internally</span>
+      </div>
+      <div class="note">IFRS 8 replaced IAS 14's earlier "business/geographical segment" model specifically to align segment reporting more closely with how entities are ACTUALLY managed.</div>
+    </div>
+    <div class="card cs">
+      <div class="ctitle cs">Measurement principles applied by IFRS 8</div>
+      <div class="principle">Unlike most IFRS Standards, IFRS 8 does NOT prescribe how segment items are measured — it requires reporting the SAME measures management ITSELF uses internally, even if those measures differ from IFRS.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1fr;"><span>Framework concept</span><span>IFRS 8's application</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1fr;"><span>Measurement basis</span><span>WHATEVER basis management uses internally — may differ from IFRS</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1fr;"><span>Reconciliation requirement</span><span>Mandatory reconciliation of segment totals to consolidated IFRS totals</span></div>
+      </div>
+      <div class="callout info" style="margin-bottom:0;">ℹ️ Permitting NON-IFRS internal measures, but requiring a mandatory reconciliation, balances <strong style="font-weight:500">relevance</strong> against <strong style="font-weight:500">comparability</strong>.</div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw">
+      <div class="ctitle cw">What IFRS 8 covers</div>
+      <div class="principle">IFRS 8 applies to the SEPARATE or INDIVIDUAL financial statements of an entity, and the CONSOLIDATED financial statements of a group with a parent, whose DEBT or EQUITY instruments are traded in a public market (or that FILES its financial statements with a regulatory organisation for the purpose of issuing such instruments).</div>
+      <div class="note">Unlike most IFRS Standards, IFRS 8's scope is EXPLICITLY tied to PUBLIC ACCOUNTABILITY — private entities without publicly traded instruments are generally NOT required to apply IFRS 8.</div>
+    </div>
+    <div class="card cd">
+      <div class="ctitle cd">Key definitions you must know</div>
+      <div class="glossary-item"><div class="glossary-term">Operating segment</div><div class="glossary-def">A component engaging in business activities generating revenues/expenses, whose results are REGULARLY REVIEWED by the CODM, with DISCRETE financial information available.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Chief operating decision maker (CODM)</div><div class="glossary-def">A FUNCTION, not necessarily a job title — allocates resources to, and assesses performance of, operating segments.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Reportable segment</div><div class="glossary-def">An operating segment (or aggregation) meeting one of the quantitative thresholds, or voluntarily reported.</div></div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Identifying Operating Segments (with worked example)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">The three-part definition, applied</div>
+      <div class="principle">A component is an operating segment ONLY if it meets ALL THREE conditions: (1) engages in business activities generating revenue/expenses; (2) results REGULARLY reviewed by the CODM; and (3) DISCRETE financial information is available.</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 1: Identifying operating segments via internal reporting</div>
+        <div class="wk-body">A diversified group's CEO (the CODM) receives monthly reports broken into three divisions: Electronics, Textiles, and Logistics — each with discrete revenue/expense/profit figures. A fourth cost centre, "Corporate HQ," generates no revenue and is not reviewed for resource allocation.</div>
+        <div class="wk-answer">Electronics, Textiles, and Logistics EACH qualify as operating segments. Corporate HQ does NOT (no revenue-generating activity, not assessed for resource allocation).</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Aggregation of Segments</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Combining similar segments — a strict five-factor test</div>
+      <div class="principle">Two or more operating segments MAY be aggregated if consistent with IFRS 8's core principles, with SIMILAR ECONOMIC CHARACTERISTICS, and similar in EACH respect:</div>
+      <div class="check-list">
+        <span>Nature of products and services</span>
+        <span>Nature of the production processes</span>
+        <span>Type or class of customer</span>
+        <span>Methods used to distribute products/services</span>
+        <span>Nature of the regulatory environment, if applicable</span>
+      </div>
+      <div class="note">Aggregation is genuine JUDGEMENT, not mechanical calculation.</div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s5"><span class="num">5</span><h2>The Quantitative Thresholds — 10% Tests (with worked example)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Reportable if it meets ANY ONE of three 10% tests</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 1.6fr;"><span>Test</span><span>Threshold</span></div>
+        <div class="tr" style="grid-template-columns:1fr 1.6fr;"><span>Revenue test</span><span>Reported revenue (external + intersegment) is 10%+ of COMBINED revenue of all segments</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 1.6fr;"><span>Profit or loss test</span><span>Absolute profit/loss is 10%+ of the GREATER of (a) combined profit of profit-making segments, (b) combined loss of loss-making segments</span></div>
+        <div class="tr" style="grid-template-columns:1fr 1.6fr;"><span>Assets test</span><span>Segment assets are 10%+ of combined assets of all segments</span></div>
+      </div>
+      <div class="worked" style="margin-top:8px;margin-bottom:0;">
+        <div class="wk-title">Example 2: Applying the profit/loss 10% test</div>
+        <div class="wk-body">4 segments: A ($800k profit), B ($600k profit) → combined profits $1,400,000. C ($300k loss), D ($900k loss) → combined losses $1,200,000.</div>
+        <div class="wk-answer">Benchmark = GREATER of $1,400,000 and $1,200,000 = <strong style="color:var(--color-text-info);">$1,400,000</strong>. 10% threshold = $140,000. Segment D's $900,000 loss exceeds this → REPORTABLE.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s6"><span class="num">6</span><h2>The 75% Reporting Sufficiency Test (with worked example)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">A backstop ensuring adequate overall coverage</div>
+      <div class="principle">If TOTAL EXTERNAL REVENUE reported by operating segments is LESS THAN 75% of total consolidated external revenue, ADDITIONAL segments must be added as reportable until 75% is reached.</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 3: Applying the 75% test</div>
+        <div class="wk-body">Total external revenue $50,000,000. Segments meeting 10% thresholds account for $34,000,000 (68%).</div>
+        <div class="wk-answer">68% is below 75% — additional segments must be added until at least $37,500,000 (75%) is captured.</div>
+      </div>
+      <div class="note">Segments not separately reportable are combined in "ALL OTHER SEGMENTS," with revenue sources described.</div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Measurement of Segment Information</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Reported "the way management sees it" — including non-IFRS figures</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Each segment item is measured as REPORTED TO THE CODM — this can be a NON-IFRS measure, provided the basis and any differences from consolidated totals are EXPLAINED.</div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ Segment figures may NOT be directly comparable ACROSS different entities, even in the same industry.</div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Reconciliations to Consolidated Totals</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Bridging segment figures back to the consolidated financial statements</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Reconciliations required: total segment revenues to entity revenue; total segment profit/loss to entity profit/loss before tax; total segment assets/liabilities to entity totals; and other material items.</div>
+      <div class="note">These mandatory reconciliations make the management approach work alongside comparability.</div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Entity-Wide Disclosures</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Required regardless of segment structure — a final backstop</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">PRODUCTS/SERVICES &amp; GEOGRAPHY</div>
+          <div class="check-list">
+            <span>Revenue from external customers by product/service, even if segments organised differently</span>
+            <span>Revenue attributed to country of domicile vs all foreign countries in total</span>
+            <span>Non-current assets located in domicile vs foreign countries in total</span>
+          </div>
+        </div>
+        <div>
+          <div class="elabel">MAJOR CUSTOMERS</div>
+          <div class="check-list">
+            <span>If revenue from a SINGLE customer is 10%+ of total revenue, disclose that fact, the amount, and the segment(s) involved</span>
+          </div>
+        </div>
+      </div>
+      <div class="callout warn" style="margin-top:8px;margin-bottom:0;">⚠️ These apply EVEN IF the entity has only ONE reportable segment.</div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Where management judgement matters most</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+          <div class="dot-list">
+            <span>Identifying the CODM function correctly in complex structures</span>
+            <span>Whether operating segments meet the five-factor aggregation criteria</span>
+          </div>
+        </div>
+        <div>
+          <div class="elabel">SIGNIFICANT ESTIMATES</div>
+          <div class="dot-list">
+            <span>Allocating shared/corporate costs between segments</span>
+            <span>Estimating revenue attributable to a customer's parent for concentration disclosure</span>
+          </div>
+        </div>
+      </div>
+      <div class="callout warn" style="margin-top:8px;margin-bottom:0;">⚠️ Changes to internal reporting structures can trigger CHANGES in reportable segments year over year.</div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s11"><span class="num">11</span><h2>IFRS vs US GAAP</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — IFRS 8 vs US GAAP (ASC 280)</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Feature</span><span style="color:var(--color-text-info);">IFRS (IFRS 8)</span><span style="color:var(--color-text-warning);">US GAAP</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Management approach</span><span>Adopted, modelled on US GAAP</span><span>ASC 280 was the ORIGINAL source</span></div>
+        <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>10% thresholds &amp; 75% test</span><span>Same mechanics</span><span>Same mechanics, converged</span></div>
+      </div>
+      <div class="note">IFRS 8 and ASC 280 are among the MOST CONVERGED standards in IFRS/US GAAP.</div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Disclosure-to-location mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Disclosure item</span><span>Location</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Segment revenue, profit/loss, assets, liabilities</span><span><span class="badge bp">Notes</span></span><span>May use non-IFRS internal measures</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Reconciliation to consolidated totals</span><span><span class="badge bp">Notes</span></span><span>Mandatory bridging disclosure</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Entity-wide product/geography disclosures</span><span><span class="badge bp">Notes</span></span><span>Required regardless of segment structure</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Major customer concentration</span><span><span class="badge bp">Notes</span></span><span>10%+ of total revenue</span></div>
+      </div>
+      <div class="note">IFRS 8 is entirely a DISCLOSURE standard — no effect on recognised SOFP/SOPL/OCI/Equity figures.</div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Cross-reference map</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Standard</span><span>Connection</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 34</span><span>Requires segment information in interim reports</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 5</span><span>Segments must be identified for held-for-sale/discontinued operations</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 3</span><span>Goodwill CGUs often align with, though not identical to, operating segments</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 7</span><span>Financial instrument risk disclosures may follow segment structure</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn"><div class="glossary-item"><div class="glossary-term">Management approach</div><div class="glossary-def">Defining segments based on internal management structure, not an external classification.</div></div></div>
+    <div class="card cn"><div class="glossary-item"><div class="glossary-term">All other segments</div><div class="glossary-def">Residual category combining non-reportable operating segments.</div></div></div>
+    <div class="card cn"><div class="glossary-item"><div class="glossary-term">Intersegment transactions</div><div class="glossary-def">Transactions between segments within the same entity, included in the 10% revenue test.</div></div></div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bs">SOFP</span> Statement of financial position
+      <span class="badge bp">SOPL</span> Statement of profit or loss
+      <span class="badge bo">OCI</span> Other comprehensive income
+      <span class="badge be">Equity</span> Statement of changes in equity
+    </div>
+  </div>
+
+  <div class="footer-note">IFRS 8 — Operating Segments · Extended Reference Poster · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

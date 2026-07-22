@@ -1,0 +1,85 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/sic/sic24.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "What SIC-24 Addressed (Historical)" },
+        { id: "s2", label: "The Conclusion It Reached (Historical)" },
+        { id: "s3", label: "Where This Guidance Lives Today" },
+        { id: "s4", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="historical-reference"
+    explanation="SIC-24 was withdrawn in March 2003 when the IASB issued a revised IAS 33 Earnings Per Share, which superseded SIC-24 by incorporating the share-settlement presumption directly into the diluted EPS calculation guidance."
+    historical="This page is retained for historical and comparative reference. Entities should refer to the current standard that superseded this interpretation for authoritative guidance."
+    link="/ias/ias33"
+    linkText="IAS 33 Earnings Per Share"
+  />
+
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>What SIC-24 Addressed (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">What SIC-24 addressed</div>
+        <div class="principle">SIC-24 addressed how to treat contracts that may be settled in shares or cash when computing diluted earnings per share. It considered whether the assumption about share settlement should affect the calculation of the profit or loss attributable to ordinary shareholders and whether the contract should be included in diluted EPS.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>The Conclusion It Reached (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">The conclusion it reached</div>
+        <div class="principle">SIC-24 concluded that contracts that may be settled in shares or cash should be assumed to be settled in shares for the purpose of computing diluted EPS, unless there is clear evidence that a cash settlement is expected. This presumption of share settlement should be applied consistently, and the profit or loss attributable to ordinary shareholders should be adjusted for any dividends or interest relating to the assumed share settlement.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Where This Guidance Lives Today</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card">
+        <div class="ctitle">Where this guidance lives today</div>
+        <div class="td-table">
+          <div class="tr"><span>Superseded by</span><span>IAS 33 Earnings Per Share</span></div>
+          <div class="tr alt"><span>Why withdrawn</span><span>The 2003 revision incorporated the share-settlement presumption directly into diluted EPS calculation guidance</span></div>
+          <div class="tr"><span>Current status</span><span>Withdrawn</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><h2>Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Diluted EPS", definition: "Earnings per share calculated by assuming the conversion of dilutive potential ordinary shares, including contracts that may be settled in shares." },
+      { term: "Share settlement", definition: "A method of settling a contract by delivering shares rather than cash, assumed for diluted EPS calculations under SIC-24's rebuttable presumption." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.SIC24} />
+  </section>
+</StandardPageLayout>

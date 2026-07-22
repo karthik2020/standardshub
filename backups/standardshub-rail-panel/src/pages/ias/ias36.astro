@@ -1,0 +1,573 @@
+---
+/*
+  StandardsHub Standard Page Template
+
+  Steps:
+  1. Copy this file and rename (e.g. ias36.astro)
+  2. Import metadata
+  3. Import Reference Guide
+  4. Import History
+  5. Define TOC
+*/
+
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/ias/ias36.json";
+
+---
+
+<StandardPageLayout {...metadata}>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        {
+          id: "s1",
+          label: "Conceptual Framework Linkage",
+        },
+        {
+          id: "s2",
+          label: "Scope & Applicability",
+        },
+        {
+          id: "s3",
+          label: "Impairment Test Trigger",
+        },
+        {
+          id: "s4",
+          label: "Recoverable Amount",
+        },
+        {
+          id: "s5",
+          label: "Cash-Generating Units",
+        },
+        {
+          id: "s6",
+          label: "Impairment Recognition",
+        },
+        {
+          id: "s7",
+          label: "Impairment Reversal",
+        },
+        {
+          id: "s8",
+          label: "Disclosure Requirements",
+        },
+        {
+          id: "s9",
+          label: "Critical Judgments & Estimates",
+        },
+        {
+          id: "s10",
+          label: "IFRS vs US GAAP",
+        },
+        {
+          id: "s11",
+          label: "Statement Mapping",
+        },
+        {
+          id: "s12",
+          label: "Related Standards",
+        },
+        {
+          id: "s13",
+          label: "Glossary",
+        },
+        {
+          id: "history",
+          label: "History & Development",
+        },
+      ]}
+    />
+  </Fragment>
+
+  <div class="wrap">
+    <!-- ============ SECTION 1 — CONCEPTUAL FRAMEWORK LINKAGE ============ -->
+    <div class="section-header" id="s1">
+      <span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span>
+    </div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">
+          Asset measurement under the Framework
+        </div>
+        <div class="principle">
+          IAS 36 ensures assets are not carried at more than their recoverable amount, upholding the Framework's principle that financial statements should faithfully represent economic reality — an overvalued asset violates faithful representation.
+        </div>
+        <div class="elabel">
+          HOW IMPAIRMENT PRESERVES FAITHFUL REPRESENTATION
+        </div>
+        <div class="check-list">
+          <span><strong style="font-weight:600">Measurement basis</strong> — assets must be measured at no more than recoverable amount (higher of FVLCD or VIU)</span>
+          <span><strong style="font-weight:600">Timeliness</strong> — impairment losses recognised as soon as indicators appear, not deferred</span>
+          <span><strong style="font-weight:600">Prudence</strong> — losses recognised, gains deferred (no upward revaluation unless reversal rules)</span>
+        </div>
+        <div class="note">
+          The Framework's "relevance" characteristic demands impairment testing when indicators exist — ignoring deterioration would make statements irrelevant to users.
+        </div>
+      </div>
+
+      <div class="card cs">
+        <div class="ctitle cs">Recoverable amount defined by Framework</div>
+        <div class="principle">
+          Recoverable amount = Higher of Fair Value Less Costs of Disposal (FVLCD) and Value in Use (VIU) — both are current-value measurement bases permitted by the Framework.
+        </div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.3fr 1fr;">
+            <span>Framework basis</span><span>IAS 36 use</span>
+          </div>
+          <div class="tr" style="grid-template-columns:1.3fr 1fr;">
+            <span>Fair value less costs of disposal</span><span>Market-based valuation (if available)</span>
+          </div>
+          <div class="tr alt" style="grid-template-columns:1.3fr 1fr;">
+            <span>Value in use</span><span>Entity-specific present value of future cash flows</span>
+          </div>
+        </div>
+        <div class="callout info callout--chip" style="margin-bottom:0;">
+          ℹ️ <strong style="font-weight:600">Substance over form:</strong> IAS 36 looks beyond legal ownership to economic reality — a CGU may include assets not legally owned by the entity if they contribute to cash flows.
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 2 — SCOPE & APPLICABILITY ============ -->
+    <div class="section-header" id="s2">
+      <span class="num">2</span><h2>Scope & Applicability</h2><span class="line"></span>
+    </div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">Which assets IAS 36 applies to</div>
+        <div class="principle">
+          IAS 36 applies to ALL assets except those explicitly excluded — this includes PPE (IAS 16), Intangibles (IAS 38), Investment property (IAS 40), and many others.
+        </div>
+        <div class="elabel">
+          SCOPE EXCLUSIONS — SPECIFIC STANDARDS GOVERN
+        </div>
+        <div class="cross-list">
+          <span>Inventories → <strong style="font-weight:600">IAS 2</strong> (lower of cost and NRV)</span>
+          <span>Construction contracts → <strong style="font-weight:600">IAS 11</strong></span>
+          <span>Deferred tax assets → <strong style="font-weight:600">IAS 12</strong></span>
+          <span>Financial instruments → <strong style="font-weight:600">IFRS 9</strong></span>
+          <span>Assets arising from insurance contracts → <strong style="font-weight:600">IFRS 4</strong></span>
+          <span>Non‑current assets held for sale → <strong style="font-weight:600">IFRS 5</strong> (measured at lower of carrying amount and FVLCS)</span>
+        </div>
+        <div class="note">
+          Goodwill acquired in a business combination is ALWAYS tested for impairment under IAS 36 (annual mandatory test), even though recognised under IFRS 3.
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 3 — IMPAIRMENT TEST TRIGGER ============ -->
+    <div class="section-header" id="s3">
+      <span class="num">3</span><h2>Impairment Test Trigger</h2><span class="line"></span>
+    </div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Mandatory annual testing (no indicators needed)</div>
+        <div class="principle">
+          Certain assets MUST be tested annually regardless of whether impairment indicators exist.
+        </div>
+        <div class="elabel">
+          ASSETS SUBJECT TO ANNUAL TESTING
+        </div>
+        <div class="check-list">
+          <span>Goodwill (allocated to a CGU)</span>
+          <span>Intangible assets with an indefinite useful life</span>
+          <span>Intangible assets not yet available for use</span>
+        </div>
+        <div class="callout danger callout--chip" style="margin-bottom:0;">
+          ✕ <strong style="font-weight:600">Not optional:</strong> Annual testing is compulsory for these assets — failure to test constitutes non‑compliance.
+        </div>
+      </div>
+
+      <div class="card cs">
+        <div class="ctitle cs">Indicator‑based testing</div>
+        <div class="principle">
+          For other assets, impairment testing is required ONLY when there is an indicator that the asset may be impaired.
+        </div>
+        <div class="elabel">
+          EXTERNAL INDICATORS OF IMPAIRMENT
+        </div>
+        <div class="dot-list">
+          <span>Market value decline significantly below carrying amount</span>
+          <span>Significant adverse changes in technology, markets, economy, or law</span>
+          <span>Increase in market interest rates affecting discount rates</span>
+          <span>Carrying amount of net assets exceeds market capitalisation</span>
+        </div>
+        <div class="elabel">
+          INTERNAL INDICATORS OF IMPAIRMENT
+        </div>
+        <div class="dot-list" style="margin-bottom:0;">
+          <span>Evidence of obsolescence or physical damage</span>
+          <span>Significant adverse changes in how asset is used (idle, restructuring)</span>
+          <span>Worse‑than‑expected operating or cash flow performance</span>
+          <span>Evidence from internal reporting that asset underperforms expectations</forma>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 4 — RECOVERABLE AMOUNT ============ -->
+    <div class="section-header" id="s4">
+      <span class="num">4</span><h2>Recoverable Amount</h2><span class="line"></span>
+    </div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">Recoverable amount = Higher of FVLCD and VIU</div>
+        <div class="principle">
+          The recoverable amount is the higher of Fair Value Less Costs of Disposal (FVLCD) and Value in Use (VIU). Impairment loss = Carrying amount − Recoverable amount.
+        </div>
+        <div class="two-col">
+          <div class="spec-box" style="margin-bottom:0;">
+            <div class="spec-title" style="color:var(--color-text-success);">
+              Fair Value Less Costs of Disposal (FVLCD)
+            </div>
+            <div style="font-size:13px;color:var(--color-text-secondary);line-height:1.5;">
+              The amount obtainable from selling the asset in an orderly transaction between market participants, minus direct incremental costs of disposal.
+            </div>
+          </div>
+          <div class="spec-box" style="margin-bottom:0;">
+            <div class="spec-title" style="color:var(--color-text-success);">
+              Value in Use (VIU)
+            </div>
+            <div style="font-size:13px;color:var(--color-text-secondary);line-height:1.5;">
+              Present value of future cash flows expected from continuing use of asset and its disposal at end of useful life.
+            </div>
+          </div>
+        </div>
+        <div class="callout warn callout--chip" style="margin-top:8px;margin-bottom:0;">
+          ⚠️ If recoverable amount cannot be determined for an individual asset, test the CGU to which the asset belongs. VIU calculations exclude cash flows from future restructuring or improvements not yet committed.
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 5 — CASH‑GENERATING UNITS ============ -->
+    <div class="section-header" id="s5">
+      <span class="num">5</span><h2>Cash‑Generating Units</h2><span class="line"></span>
+    </div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">CGU definition and allocation</div>
+        <div class="principle">
+          A CGU is the smallest identifiable group of assets that generates cash inflows largely independent of other assets/groups. Goodwill is allocated to CGUs for impairment testing.
+        </div>
+        <div class="elabel">
+          CGU IDENTIFICATION RULES
+        </div>
+        <div class="check-list">
+          <span>Cash inflows must be largely independent of other assets/groups</span>
+          <span>If internal transfer pricing exists, cash flows considered at market prices</span>
+          <span>CGU should not be larger than an operating segment as defined by IFRS 8</span>
+          <span>Assets that cannot be individually tested must belong to a CGU</span>
+        </div>
+        <div class="note">
+          Goodwill is allocated to CGUs (or groups of CGUs) at acquisition — subsequent impairment testing must consider this allocation.
+        </div>
+      </div>
+
+      <div class="card cn">
+        <div class="ctitle cn">Worked example — CGU with goodwill</div>
+        <div class="worked">
+          <div class="wk-title">Example: Acquired business unit</div>
+          <div class="wk-body">
+            Entity acquires Business X for $10m. Net identifiable assets = $7m, goodwill = $3m. Business X comprises two CGUs: Division A (VIU = $4m, CA = $3m) and Division B (VIU = $3m, CA = $4m). Goodwill allocated equally.
+          </div>
+          <div class="wk-answer">
+            <strong>CGU A recoverable amount</strong> = $4m (VIU)<br />
+            <strong>CGU A carrying amount</strong> = $3m + $1.5m goodwill = $4.5m<br />
+            <strong>CGU A impairment</strong> = $4.5m − $4m = $0.5m<br />
+            Loss allocated first to goodwill ($1.5m), then to other assets ($0m left).
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 6 — IMPAIRMENT RECOGNITION ============ -->
+    <div class="section-header" id="s6">
+      <span class="num">6</span><h2>Impairment Recognition</h2><span class="line"></span>
+    </div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Journal entries and allocation</div>
+        <div class="principle">
+          Impairment losses are recognised immediately in profit or loss (except for revalued assets where loss reverses previous revaluation surplus).
+        </div>
+        <div class="elabel">
+          IMPAIRMENT ALLOCATION ORDER
+        </div>
+        <div class="check-list">
+          <span>First, reduce any remaining revaluation surplus for that asset (if revaluation model used)</span>
+          <span>Then, recognise impairment loss in profit or loss</span>
+          <span>For CGUs with goodwill, allocate loss first to goodwill, then to other assets pro‑rata based on carrying amounts</span>
+        </div>
+        <div class="entry">
+          <span class="dr">Dr</span><div class="etxt">
+            Impairment loss<div class="badges">
+              <span class="badge bp">SOPL</span>
+            </div>
+          </div>
+        </div>
+        <div class="entry">
+          <span class="cr">Cr</span><div class="etxt">
+            Accumulated impairment<div class="badges">
+              <span class="badge bs">SOFP — asset ↓</span>
+            </div>
+          </div>
+        </div>
+        <div class="callout info callout--chip" style="margin-bottom:0;">
+          ℹ️ Impairment losses on goodwill can NEVER be reversed — once written down, goodwill stays reduced.
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 7 — IMPAIRMENT REVERSAL ============ -->
+    <div class="section-header" id="s7">
+      <span class="num">7</span><h2>Impairment Reversal</h2><span class="line"></span>
+    </div>
+    <div class="grid">
+      <div class="card cs">
+        <div class="ctitle cs">Reversal conditions and limits</div>
+        <div class="principle">
+          An impairment loss may be reversed ONLY if there has been a change in estimates used to determine recoverable amount (excluding goodwill).
+        </div>
+        <div class="elabel">
+          REVERSAL LIMITATIONS
+        </div>
+        <div class="cross-list">
+          <span>Goodwill impairment NEVER reversed</span>
+          <span>Reversal cannot increase CA above what it would have been had no impairment occurred (original CA minus normal depreciation/amortisation)</span>
+          <span>Reversal recognised in profit or loss (except for revalued assets where reversal goes to revaluation surplus)</span>
+        </div>
+        <div class="entry">
+          <span class="dr">Dr</span><div class="etxt">
+            Asset (reversal)<div class="badges">
+              <span class="badge bs">SOFP</span>
+            </div>
+          </div>
+        </div>
+        <div class="entry">
+          <span class="cr">Cr</span><div class="etxt">
+            Reversal of impairment loss<div class="badges">
+              <span class="badge bp">SOPL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Worked example — reversal</div>
+        <div class="worked">
+          <div class="wk-title">Example: Machinery impairment reversal</div>
+          <div class="wk-body">
+            Machinery originally cost $100k, depreciated $20k to CA $80k. Impaired to $60k. Two years later, estimates improve and recoverable amount rises to $75k. Normal depreciation over two years would have been $10k.
+          </div>
+          <div class="wk-answer">
+            <strong>Original CA without impairment</strong> = $80k − $10k = $70k<br />
+            <strong>Maximum reversal</strong> = $70k − $60k = $10k<br />
+            <strong>Actual reversal</strong> = min($75k − $60k, $10k) = $10k<br />
+            New CA = $60k + $10k = $70k.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 8 — DISCLOSURE REQUIREMENTS ============ -->
+    <div class="section-header" id="s8">
+      <span class="num">8</span><h2>Disclosure Requirements</h2><span class="line"></span>
+    </div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Mandatory disclosures for each class of assets</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">
+              FOR IMPAIRMENT LOSSES RECOGNISED/RECOVERED
+            </div>
+            <div class="check-list">
+              <span>Amount of impairment losses recognised in profit or loss</span>
+              <span>Amount of reversals of impairment losses recognised in profit or loss</span>
+              <span>Line item(s) in statement of profit or loss where losses/reversals included</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">
+              FOR ASSETS TESTED
+            </div>
+            <div class="check-list">
+              <span>Events/circumstances leading to impairment/reversal</span>
+              <span>Description of assets/CGU(s) affected</span>
+              <span>Recoverable amount determination basis (FVLCD or VIU)</span>
+              <span>Key assumptions used in VIU calculations (growth rates, discount rates)</span>
+            </div>
+          </div>
+        </div>
+        <div class="note">
+          For goodwill and indefinite‑life intangibles, disclosure includes a description of CGU(s), carrying amount of goodwill/intangible, and basis for recoverable amount.
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 9 — CRITICAL JUDGMENTS & ESTIMATES ============ -->
+    <div class="section-header" id="s9">
+      <span class="num">9</span><h2>Critical Judgments & Estimates</h2><span class="line"></span>
+    </div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where management judgement matters most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">
+              SIGNIFICANT ESTIMATES (IAS 8 — reviewed annually)
+            </div>
+            <div class="dot-list">
+              <span>Future cash flow projections for VIU calculations</span>
+              <span>Discount rates reflecting current market assessments</span>
+              <span>Growth rates used in cash flow projections</span>
+              <span>Useful lives and residual values of assets in CGUs</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Identifying CGUs and allocating goodwill to CGUs</span>
+              <span>Determining whether impairment indicators exist</span>
+              <span>Assessing whether active market exists for FVLCD</span>
+              <span>Determining appropriate discount rate for VIU</span>
+            </div>
+          </div>
+        </div>
+        <div class="callout warn callout--chip" style="margin-top:8px;margin-bottom:0;">
+          ⚠️ Changes in estimates (e.g., cash flow projections, discount rates) trigger impairment testing — not just external indicators.
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 10 — IFRS vs US GAAP ============ -->
+    <div class="section-header" id="s10">
+      <span class="num">10</span><h2>IFRS vs US GAAP — Key Differences</h2><span class="line"></span>
+    </div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">
+          Comparison — IAS 36 vs US GAAP (ASC 350 / ASC 360)
+        </div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.2fr 1fr 1fr;">
+            <span>Feature</span><span style="color:var(--color-text-info);">IFRS (IAS 36)</span><span style="color:var(--color-text-warning);">US GAAP</span>
+          </div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;">
+            <span>Impairment model</span><span>Recoverable amount model (higher of FVLCD and VIU)</span><span>Fair value model (ASC 350) or undiscounted cash flow test (ASC 360)</span>
+          </div>
+          <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;">
+            <span>Impairment reversal</span><span>Permitted (except for goodwill)</span><span>Prohibited — never reversed</span>
+          </div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;">
+            <span>CGU level</span><span>Cash-generating unit (smallest identifiable cash inflow group)</span><span>Reporting unit (operating segment or one level below)</span>
+          </div>
+          <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;">
+            <span>Annual testing</span><span>Required for goodwill, indefinite-life intangibles, intangibles not yet available for use</span><span>Required for goodwill and indefinite-lived intangibles</span>
+          </div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;">
+            <span>Discount rate</span><span>Pre-tax rate reflecting current market assessments</span><span>Entity's incremental borrowing rate or other appropriate rate</span>
+          </div>
+        </div>
+        <div class="note">
+          The most significant difference is impairment reversal — under IFRS, reversal is permitted (except for goodwill) when conditions improve; under US GAAP, impairments are permanent.
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 11 — STATEMENT MAPPING ============ -->
+    <div class="section-header" id="s11">
+      <span class="num">11</span><h2>Statement Mapping — Where Impairment Events Land</h2><span class="line"></span>
+    </div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">
+          Comprehensive event-to-statement mapping table
+        </div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;">
+            <span>Event / transaction</span><span>Statement(s) affected</span><span>Notes</span>
+          </div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;">
+            <span>Impairment loss recognised (PPE, finite-life intangibles)</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Expense in SOPL; accumulated impairment reduces SOFP carrying amount</span>
+          </div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;">
+            <span>Impairment loss on revalued asset</span><span><span class="badge bo">OCI</span> (to extent of revaluation surplus) then <span class="badge bp">SOPL</span></span><span>First reduces revaluation surplus in OCI, excess to SOPL</span>
+          </div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;">
+            <span>Impairment reversal (except goodwill)</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Income in SOPL; accumulated impairment reduced in SOFP</span>
+          </div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;">
+            <span>Goodwill impairment</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Never reversed; tested annually at CGU level</span>
+          </div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;">
+            <span>Unwinding of discount on provision</span><span><span class="badge bp">SOPL</span> (finance cost)</span><span>Increases provision liability; recognised as finance cost</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 12 — RELATED STANDARDS ============ -->
+    <div class="section-header" id="s12">
+      <span class="num">12</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span>
+    </div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">
+          How IAS 36 connects across the IFRS body of literature
+        </div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:0.8fr 2fr;">
+            <span>Standard</span><span>Nature of the connection</span>
+          </div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;">
+            <span>IAS 16</span><span>PPE impairment testing — IAS 36 provides the impairment mechanics for PPE measured under cost or revaluation model</span>
+          </div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;">
+            <span>IAS 38</span><span>Intangible asset impairment — IAS 36 provides mandatory annual testing for indefinite-life intangibles and those not yet available for use</span>
+          </div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;">
+            <span>IFRS 3</span><span>Goodwill impairment — goodwill acquired in business combinations tested annually under IAS 36 at CGU level</span>
+          </div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;">
+            <span>IAS 28</span><span>Investments in associates/joint ventures — impairment tested under IAS 36 after applying equity method</span>
+          </div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;">
+            <span>IAS 40</span><span>Investment property impairment — IAS 36 applies to investment property measured at cost (fair value model uses fair value directly)</span>
+          </div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;">
+            <span>IAS 2</span><span>Inventories excluded — measured at lower of cost and NRV under IAS 2, not IAS 36</span>
+          </div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;">
+            <span>IFRS 5</span><span>Assets held for sale — measured at lower of carrying amount and FVLCS, not IAS 36 recoverable amount</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 13 — GLOSSARY ============ -->
+    <div class="section-header" id="s13">
+      <span class="num">13</span><h2>Quick-Reference Glossary</h2><span class="line"></span>
+    </div>
+<Glossary entries={[
+      { term: "Recoverable amount", definition: "Higher of fair value less costs of disposal (FVLCD) and value in use (VIU)." },
+      { term: "Value in use (VIU)", definition: "Present value of future cash flows expected from continuing use of asset and its disposal at end of useful life." },
+      { term: "Cash-generating unit (CGU)", definition: "Smallest identifiable group of assets that generates cash inflows largely independent of other assets/groups." },
+      { term: "Goodwill", definition: "Future economic benefits from assets not individually identified/recognised separately; tested for impairment annually at CGU level." },
+      { term: "Impairment loss", definition: "Amount by which carrying amount exceeds recoverable amount." },
+      { term: "Carrying amount", definition: "Amount at which asset is recognised after deducting accumulated depreciation/amortisation and impairment losses." }
+    ]} />
+
+<FinancialStatementKey />
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.IAS36} />
+  </section>
+</StandardPageLayout>
+
+

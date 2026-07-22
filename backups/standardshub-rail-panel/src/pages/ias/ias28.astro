@@ -1,0 +1,401 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/ias/ias28.json";
+
+---
+
+<StandardPageLayout {...metadata}>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        {
+          id: "s1",
+          label: "Conceptual Framework",
+        },
+        {
+          id: "s2",
+          label: "Scope & Definitions",
+        },
+        {
+          id: "s3",
+          label: "Significant Influence",
+        },
+        {
+          id: "s4",
+          label: "The Equity Method — Mechanics",
+        },
+        {
+          id: "s5",
+          label: "Upstream/Downstream Transactions",
+        },
+        {
+          id: "s6",
+          label: "Losses Exceeding the Investment",
+        },
+        {
+          id: "s7",
+          label: "Impairment of Equity-Accounted Investments",
+        },
+        {
+          id: "s8",
+          label: "Cessation of Significant Influence/Joint Control",
+        },
+        {
+          id: "s9",
+          label: "Disclosure",
+        },
+        {
+          id: "s10",
+          label: "Judgments & Estimates",
+        },
+        {
+          id: "s11",
+          label: "IFRS vs US GAAP",
+        },
+        {
+          id: "s12",
+          label: "Statement Mapping",
+        },
+        {
+          id: "s13",
+          label: "Related Standards",
+        },
+        {
+          id: "s14",
+          label: "Glossary",
+        },
+        {
+          id: "history",
+          label: "History & Development",
+        },
+      ]}
+    />
+  </Fragment>
+
+  <div class="wrap">
+    <!-- ============ SECTION 1 ============ -->
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Why the equity method sits between cost and consolidation</div>
+        <div class="principle">The Conceptual Framework recognises different degrees of INVOLVEMENT justify different accounting treatments. Full control (consolidation) treats the investee as part of the same economic entity; NO influence (a passive investment) uses fair value or cost. Significant influence — real but not controlling power — calls for something in between: the equity method.</div>
+        <div class="elabel">HOW IAS 28 MAPS TO THE FRAMEWORK</div>
+        <div class="check-list">
+          <span><strong style="font-weight:600">Substance over form</strong> — the equity method recognises the investor's SHARE of the investee's net assets and performance changes each period, reflecting genuine economic involvement without claiming full control</span>
+          <span><strong style="font-weight:600">Relevance</strong> — a single "cost" figure for a significant-influence investment would badly understate how the investor's wealth actually changes as the investee performs</span>
+          <span><strong style="font-weight:600">One-line consolidation</strong> — the equity method is sometimes called this because it captures the ECONOMIC effect of the investee's performance within a SINGLE line item on the investor's SOFP and SOPL, without the line-by-line combination of full consolidation</span>
+        </div>
+        <div class="note">The equity method is a genuinely unique measurement basis in IFRS — neither pure historical cost nor pure fair value, but a "one-line consolidation" reflecting the investor's proportionate economic interest in the investee's changing net assets.</div>
+      </div>
+
+      <div class="card cs">
+        <div class="ctitle cs">Measurement principles applied</div>
+        <div class="principle">The equity method continuously updates the investment's carrying amount to reflect the investor's SHARE of the investee's underlying changes — a dynamic measurement basis distinct from historical cost.</div>
+        <div class="formula-box formula-box--chip">
+          <div class="f-label">CORE EQUITY METHOD FORMULA</div>
+          <div class="f-eq">Carrying amount = Cost + Investor's share of post-acquisition profit/loss + Investor's share of post-acquisition OCI − Dividends received − Impairment</div>
+        </div>
+        <div class="callout info callout--chip" style="margin-bottom:0;">ℹ️ <strong style="font-weight:600">Qualitative characteristics in action:</strong> the equity method's continuous share-of-profit updates preserve <strong style="font-weight:600">relevance</strong> — the carrying amount genuinely tracks the investor's changing stake in the investee's net assets, unlike a static cost figure.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 2 ============ -->
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope & Applicability</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What IAS 28 covers</div>
+        <div class="principle">IAS 28 shall be applied by all entities that are investors with joint control of, or significant influence over, an investee — prescribing the application of the equity method when accounting for investments in associates and joint ventures.</div>
+        <div class="elabel">EXEMPTIONS FROM APPLYING THE EQUITY METHOD</div>
+        <div class="check-list">
+          <span>Venture capital organisations, mutual funds, unit trusts, and similar entities MAY elect to measure investments in associates/joint ventures at FVTPL under IFRS 9, if this election is made at initial recognition, measured for each investment separately</span>
+          <span>An entity NOT required to present consolidated financial statements (e.g. a wholly owned subsidiary meeting specific conditions) may be exempt, similar to the IFRS 10 consolidation exemption</span>
+          <span>When an investment is classified as held for sale under IFRS 5, it is accounted for under IFRS 5 instead</span>
+        </div>
+      </div>
+
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions you must know</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Associate</div>
+          <div class="glossary-def">An entity over which the investor has SIGNIFICANT INFLUENCE.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Joint venture</div>
+          <div class="glossary-def">A joint arrangement whereby the parties that have JOINT CONTROL of the arrangement have rights to the NET ASSETS of the arrangement (per IFRS 11).</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Significant influence</div>
+          <div class="glossary-def">The power to participate in the financial and operating policy decisions of the investee, but is NOT control or joint control over those policies.</div>
+        </div>
+        <div class="glossary-item" style="border-bottom:none;">
+          <div class="glossary-term">Equity method</div>
+          <div class="glossary-def">A method of accounting whereby the investment is initially recognised at cost, and adjusted thereafter for the post-acquisition change in the investor's SHARE of net assets of the investee.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 3 ============ -->
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Significant Influence — Identifying It</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">The rebuttable 20% presumption and other indicators</div>
+        <div class="principle">If an investor holds, directly or indirectly (e.g. through subsidiaries), 20% or more of the voting power of the investee, it is PRESUMED to have significant influence, UNLESS it can be clearly demonstrated otherwise. Conversely, if the investor holds LESS than 20%, it is presumed NOT to have significant influence, unless such influence can be clearly demonstrated.</div>
+        <div class="elabel">OTHER INDICATORS OF SIGNIFICANT INFLUENCE (BEYOND SHAREHOLDING %)</div>
+        <div class="check-list">
+          <span>Representation on the board of directors or equivalent governing body</span>
+          <span>Participation in policy-making processes, including participation in decisions about dividends or other distributions</span>
+          <span>Material transactions between the investor and investee</span>
+          <span>Interchange of managerial personnel</span>
+          <span>Provision of essential technical information</span>
+        </div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Worked example — rebutting the 20% presumption</div>
+        <div class="worked">
+          <div class="wk-title">Example 1: 25% shareholding with no genuine influence</div>
+          <div class="wk-body">
+            An investor holds 25% of the voting shares in a company but has NO board representation, no participation in policy decisions, and the remaining 75% is held by a single dominant shareholder who exercises unilateral control over all operating and financial decisions, actively excluding the minority investor from any meaningful input.
+          </div>
+          <div class="wk-answer">
+            Despite exceeding the 20% threshold, the PRESUMPTION of significant influence is REBUTTED by clear evidence the investor has no genuine ability to participate in policy decisions — the investment is instead accounted for as a financial asset under IFRS 9, NOT using the equity method.
+          </div>
+        </div>
+        <div class="note">This rebuttable presumption cuts both ways — a sub-20% holding CAN still qualify for equity accounting if genuine influence (e.g. via board representation) is demonstrated.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 4 ============ -->
+    <div class="section-header" id="s4"><span class="num">4</span><h2>The Equity Method — Full Worked Mechanics</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Complete worked example — from acquisition to year-end carrying amount</div>
+        <div class="worked" style="margin-bottom:0;">
+          <div class="wk-title">Example 2: Associate acquired mid-year, with fair value adjustment and dividend</div>
+          <div class="wk-body">
+            On 1 January, an investor acquires 30% of an associate for $900,000 cash. At acquisition, the associate's identifiable net assets had a fair value of $2,700,000 (30% share = $810,000), giving rise to $90,000 of goodwill embedded within the investment. During the year, the associate reports profit after tax of $400,000 and other comprehensive income (revaluation gain) of $60,000, and pays a total dividend of $150,000 to all shareholders.
+          </div>
+          <div class="wk-answer">
+            <strong>Investment at acquisition</strong> = $900,000 (embedded goodwill of $90,000 not separately tested under IAS 36's goodwill rules — the WHOLE investment is tested for impairment as a single asset instead, see Section 7)<br>
+            <strong>+ Share of profit</strong> = 400,000 × 30% = <strong style="color:var(--color-text-success);">+$120,000</strong> (SOPL)<br>
+            <strong>+ Share of OCI</strong> = 60,000 × 30% = <strong style="color:var(--color-text-success);">+$18,000</strong> (OCI)<br>
+            <strong>− Dividend received</strong> = 150,000 × 30% = <strong style="color:var(--color-text-danger);">−$45,000</strong> (reduces the investment; NOT recognised as separate dividend income under the equity method)<br>
+            <strong>Closing carrying amount</strong> = 900,000 + 120,000 + 18,000 − 45,000 = <strong style="color:var(--color-text-info);">$993,000</strong>
+          </div>
+        </div>
+        <div class="entry"><span class="dr">Dr</span><div class="etxt">Investment in associate $120,000<div class="badges"><span class="badge bs">SOFP</span></div></div></div>
+        <div class="entry"><span class="cr">Cr</span><div class="etxt">Share of profit of associate $120,000<div class="badges"><span class="badge bp">SOPL</span></div></div></div>
+        <div class="div"></div>
+        <div class="entry"><span class="dr">Dr</span><div class="etxt">Cash (dividend received) $45,000<div class="badges"><span class="badge bs">SOFP</span></div></div></div>
+        <div class="entry"><span class="cr">Cr</span><div class="etxt">Investment in associate $45,000<div class="badges"><span class="badge bs">SOFP</span></div></div></div>
+        <div class="note">CRITICAL: dividends received from an associate REDUCE the investment's carrying amount under the equity method — they are NOT recognised as investment income in profit or loss (unlike the cost method under IAS 27).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 5 ============ -->
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Upstream & Downstream Transactions — Unrealised Profit Elimination</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">The elimination principle</div>
+        <div style="font-size:13px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:9px;">Profits/losses from "upstream" transactions (associate to investor) and "downstream" transactions (investor to associate) are recognised in the investor's financial statements ONLY to the extent of UNRELATED investors' interests in the associate — the investor's OWN share of unrealised profit still sitting in inventory/assets held by the counterparty is ELIMINATED.</div>
+        <div class="formula-box formula-box--chip">
+          <div class="f-eq">Unrealised profit eliminated = Investor's ownership % × Profit margin embedded in the year-end unsold inventory/asset</div>
+        </div>
+      </div>
+
+      <div class="card cn">
+        <div class="ctitle cn">Worked example — downstream sale with unsold inventory</div>
+        <div class="worked">
+          <div class="wk-title">Example 3: Investor sells goods to its 40%-owned associate</div>
+          <div class="wk-body">
+            An investor sells goods to its associate (40% owned) for $500,000, at a 20% gross margin. At year end, the associate still holds $150,000 (at selling price) of these goods, unsold, in its inventory.
+          </div>
+          <div class="wk-answer">
+            <strong>Unrealised profit in year-end inventory</strong> = 150,000 × 20% = $30,000<br>
+            <strong>Investor's share to eliminate</strong> = 30,000 × 40% = <strong style="color:var(--color-text-danger);">$12,000</strong><br>
+            The investor's share of the associate's profit (used in the equity method calculation) is REDUCED by $12,000 to eliminate its own unrealised profit share — this adjustment is made TO THE INVESTOR'S share of profit, not to the associate's own reported figures.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 6 ============ -->
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Losses Exceeding the Investment — The Zero Floor</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">Stopping equity accounting at zero — with worked example</div>
+        <div class="principle">If the investor's share of losses of an associate/joint venture EQUALS OR EXCEEDS its interest in the associate/joint venture, the investor DISCONTINUES recognising its share of further losses — the investment (including any long-term interests that, in substance, form part of the net investment) is reduced to ZERO. Additional losses are recognised, and a liability is recognised, ONLY to the extent the investor has incurred LEGAL or CONSTRUCTIVE obligations, or made payments on behalf of the associate.</div>
+        <div class="worked" style="margin-bottom:0;">
+          <div class="wk-title">Example 4: Associate losses wiping out the investment</div>
+          <div class="wk-body">An investor's 35%-owned associate carrying amount is $80,000 at the start of the year. The associate incurs a loss of $300,000 for the year (investor's 35% share = $105,000). The investor has provided no guarantees and made no further payments on the associate's behalf.</div>
+          <div class="wk-answer">
+            <strong>Loss recognised</strong> = capped at $80,000 (reducing the investment to NIL), NOT the full $105,000 share<br>
+            <strong>Unrecognised excess</strong> = 105,000 − 80,000 = $25,000, tracked in memorandum only, and recognised in FUTURE periods only once the associate returns to profit and the investor's share of those future profits exceeds the unrecognised losses
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 7 ============ -->
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Impairment of Equity-Accounted Investments</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">The investment is tested as a SINGLE asset — not goodwill separately</div>
+        <div style="font-size:13px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:9px;">After application of the equity method (including recognising the associate's/JV's losses per Section 6), the entity applies IAS 36 to determine whether it is necessary to recognise any ADDITIONAL impairment loss with respect to its net investment in the associate/joint venture. Because any goodwill relating to an associate/JV is included in the carrying amount of the investment (and NOT separately recognised), it is NOT tested for impairment separately in accordance with IAS 36's goodwill requirements — the WHOLE investment is tested as a single asset by comparing its recoverable amount with its carrying amount.</div>
+        <div class="callout warn callout--chip" style="margin-bottom:0;">⚠️ <strong style="font-weight:600">A common exam trap:</strong> students sometimes try to isolate and impairment-test the "goodwill" embedded within an equity-accounted investment separately, as if it were IFRS 3 goodwill within a subsidiary — this is INCORRECT. The entire investment is tested as one unit.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 8 ============ -->
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Cessation of Significant Influence or Joint Control</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs">
+        <div class="ctitle cs">Discontinuing the equity method</div>
+        <div style="font-size:13px;color:var(--color-text-secondary);line-height:1.6;">An entity discontinues use of the equity method from the date its investment CEASES to be an associate or joint venture. Any RETAINED interest is measured at FAIR VALUE at that date, and this fair value is regarded as the retained investment's fair value on initial recognition as a financial asset under IFRS 9.</div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Reclassification of gains/losses previously in OCI</div>
+        <div style="font-size:13px;color:var(--color-text-secondary);line-height:1.6;">The entity RECLASSIFIES to profit or loss the gain/loss previously recognised in OCI relating to the associate/JV, on the SAME basis as if the associate/JV had directly disposed of the related assets/liabilities itself — i.e. amounts that would be reclassified to SOPL on disposal (e.g. FX translation differences) ARE reclassified; amounts that would NOT be reclassified (e.g. revaluation surplus-type OCI) are transferred DIRECTLY to retained earnings instead.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 9 ============ -->
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Required disclosures (summary — full detail also required by IFRS 12)</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">GENERAL DISCLOSURES</div>
+            <div class="check-list">
+              <span>The fact that the equity method is used, and the measurement basis for investments where the FVTPL election has been made</span>
+              <span>Summarised financial information of associates/joint ventures (assets, liabilities, revenues, profit/loss)</span>
+              <span>The nature and extent of any significant restrictions on the ability of associates/joint ventures to transfer funds to the investor</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SPECIFIC DISCLOSURES</div>
+            <div class="check-list">
+              <span>Unrecognised share of losses of an associate/joint venture, both for the period and cumulatively, if the investor has discontinued recognising its share of losses</span>
+              <span>The investor's share of contingent liabilities of associates/joint ventures incurred jointly with other investors</span>
+            </div>
+          </div>
+        </div>
+        <div class="note">Most detailed related-entity disclosures now sit primarily within IFRS 12, with IAS 28 focused on the equity method accounting mechanics themselves.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 10 ============ -->
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments & Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where management judgement matters most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Whether the 20% presumption of significant influence should be rebutted, either upward or downward, based on the qualitative indicators</span>
+              <span>Whether long-term interests (e.g. preference shares, long-term loans) form, in substance, part of the net investment for purposes of the loss-absorption floor</span>
+              <span>Identifying impairment indicators specific to an equity-accounted investment</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>Fair value of identifiable net assets at acquisition, to determine embedded goodwill within the investment</span>
+              <span>Recoverable amount of the investment as a single asset under IAS 36</span>
+              <span>Unrealised profit calculations on upstream/downstream transactions where margin data must be estimated</span>
+            </div>
+          </div>
+        </div>
+        <div class="callout warn callout--chip" style="margin-top:8px;margin-bottom:0;">⚠️ Unlike a subsidiary, an associate's/joint venture's OWN financial statements are not directly consolidated line-by-line — errors or aggressive accounting policies within the associate's OWN statements flow through only via the single "share of profit" line, which can obscure underlying issues from a surface-level review.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 11 ============ -->
+    <div class="section-header" id="s11"><span class="num">11</span><h2>IFRS vs US GAAP — Key Differences</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — IAS 28 vs US GAAP (ASC 323)</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Feature</span><span style="color:var(--color-text-info);">IFRS (IAS 28)</span><span style="color:var(--color-text-warning);">US GAAP</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Significant influence threshold</span><span>20% presumption, rebuttable both ways</span><span>Also a 20% presumption, broadly converged</span></div>
+          <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Goodwill embedded in the investment</span><span>NOT separately tested; whole investment tested as one asset under IAS 36</span><span>Similarly not separately tested — the investment as a whole is assessed for other-than-temporary impairment</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Impairment reversal</span><span>Permitted, subject to IAS 36's general reversal rules for the investment as a single asset</span><span>Generally NOT reversed once an other-than-temporary impairment is recognised</span></div>
+          <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Uniform accounting policies</span><span>Adjustments made if the associate's accounting policies differ from the investor's</span><span>Similar requirement to conform accounting policies, broadly converged</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>FVTPL election for venture capital-type entities</span><span>Explicit election available under IAS 28</span><span>Similar fair value option available under specific US GAAP guidance for certain qualifying entities</span></div>
+        </div>
+        <div class="note">IAS 28 and its US GAAP counterpart are substantially converged on the core equity method mechanics — the clearest divergence is impairment REVERSAL, which IFRS permits (subject to IAS 36) but US GAAP generally prohibits once an other-than-temporary impairment has been recognised.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 12 ============ -->
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping — Where Every Equity-Accounted Event Lands</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Comprehensive event-to-statement mapping table</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event / transaction</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Initial acquisition of an associate/JV interest</span><span><span class="badge bs">SOFP</span></span><span>Recognised at cost (including embedded goodwill)</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Investor's share of the investee's profit</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Single-line "share of profit of associates/JVs"; investment carrying amount increases</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Investor's share of the investee's OCI</span><span><span class="badge bo">OCI</span> <span class="badge bs">SOFP</span></span><span>Follows the investee's own OCI classification (recycling or not)</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Dividend received from the associate/JV</span><span><span class="badge bs">SOFP</span></span><span>REDUCES the investment; not recognised as SOPL income</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Unrealised profit on upstream/downstream transactions</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Eliminated to the extent of the investor's own interest</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Losses reducing the investment to nil</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Capped at the investment's carrying amount; excess tracked off-balance-sheet</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Impairment of the equity-accounted investment</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Investment tested as a single asset per IAS 36; goodwill not isolated</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Cessation of significant influence / joint control</span><span><span class="badge bp">SOPL</span> <span class="badge bo">OCI</span> <span class="badge bs">SOFP</span></span><span>Retained interest remeasured to fair value; reclassification of prior OCI per disposal-basis logic</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Dividends received (cash)</span><span><span class="badge bs">Cash Flow Statement</span></span><span>Investing activities inflow, per IAS 7</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Share of profit/loss (non-cash)</span><span><span class="badge bs">Cash Flow Statement</span></span><span>Deducted/added back within operating activities under the indirect method</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Summarised investee financial information</span><span><span class="badge bp">Notes</span></span><span>Mandatory disclosure per IAS 28/IFRS 12</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 13 ============ -->
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">How IAS 28 connects across the IFRS body of literature</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 10</span><span>Supplies the "control" boundary — an investee that IS controlled falls out of IAS 28's scope entirely and into IFRS 10 consolidation instead</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 11</span><span>Supplies the "joint control" definition and distinguishes joint ventures (equity method, IAS 28) from joint operations (each party accounts for its own share of assets/liabilities directly)</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 3</span><span>Supplies acquisition accounting concepts (fair value of identifiable net assets, goodwill calculation) used at initial recognition of the investment</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 36</span><span>Governs impairment testing of the equity-accounted investment as a SINGLE asset, since embedded goodwill is not separately tested</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 5</span><span>Investments classified as held for sale are reclassified out of equity method accounting and into IFRS 5's measurement rules</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 9</span><span>Governs measurement once the equity method ceases (retained interest reclassified as a financial asset), and the FVTPL election available to qualifying venture capital-type entities</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 12</span><span>Supplies the more extensive disclosure requirements about interests in associates/joint ventures that supplement IAS 28's accounting mechanics</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 27</span><span>Offers the equity method as one of the three permitted measurement options for investments in a PARENT's own separate financial statements</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 14 ============ -->
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+<Glossary entries={[
+      { term: "One-line consolidation", definition: "A colloquial description of the equity method, reflecting the fact that it captures the investee's economic performance within a single SOFP/SOPL line item rather than full line-by-line combination." },
+      { term: "Joint control", definition: "The contractually agreed sharing of control of an arrangement, existing only when decisions about relevant activities require unanimous consent of the parties sharing control." },
+      { term: "Upstream transaction", definition: "A transaction from the associate/joint venture TO the investor (e.g. the associate sells goods to the investor)." },
+      { term: "Downstream transaction", definition: "A transaction from the investor TO the associate/joint venture (e.g. the investor sells goods to the associate)." },
+      { term: "Net investment", definition: "The carrying amount of the investment under the equity method, together with any long-term interests that, in substance, form part of the investor's net investment in the associate/JV." },
+      { term: "Venture capital organisation", definition: "An entity that may elect to measure investments in associates/JVs at fair value through profit or loss instead of applying the equity method, per IAS 28's specific exemption." }
+    ]} />
+
+<FinancialStatementKey />
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.IAS28} />
+  </section>
+</StandardPageLayout>
+
+
+
+

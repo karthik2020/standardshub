@@ -1,0 +1,262 @@
+---
+/*
+  BannerNotice — reusable, full-width semantic notice banner.
+
+  A modern, solid-colour banner with a subtle diagonal stripe overlay,
+  a left icon, a bold uppercase title and a supporting paragraph.
+
+  Metadata-driven API — pages declare ONLY the semantic variant, a title
+  and body text. The component alone maps each variant to its icon,
+  colour, stripe style and typography. Pages never specify icons or colours.
+
+  Usage (via page metadata):
+    <BannerNotice
+      variant="warning"
+      title="Ind AS — Converged with IAS 1, but with a divergence"
+      body="Supporting paragraph text…"
+    />
+
+  Or with slotted body content (equivalent, for richer markup):
+    <BannerNotice variant="info" title="New Standard">
+      Supporting paragraph text…
+    </BannerNotice>
+
+  Props:
+  - variant: "success" | "warning" | "danger" | "info"  (required)
+      success — standards substantially converged with IAS / IFRS   (green)
+      warning — standards with significant national modifications    (amber)
+      danger  — withdrawn / superseded / historical standards        (red)
+      info    — newly issued / recently issued standards             (blue)
+  - title:  string  (required) — rendered bold + uppercase
+  - body?:  string  — supporting paragraph. If omitted, the default slot is used.
+  - action?: { label, code, title, href }
+      Optional, generic call-to-action footer. When provided, a full-row link
+      is rendered: an uppercase `label` heading (e.g. "Current Standard",
+      "Replaced By", "See Also", "Read Next", "Related Standard") above a
+      "{code} — {title} →" row that links to `href`. Omitted entirely when absent.
+      This generic shape supports many future scenarios without component changes.
+
+  Reusable across IAS, IFRS and Ind AS (current, historical, and future
+  standards such as IFRS 18/19/20 and future amendments) with no component
+  changes — only the variant/title/body metadata differs.
+*/
+
+import { icon } from "@fortawesome/fontawesome-svg-core";
+import {
+  faCircleCheck,
+  faTriangleExclamation,
+  faCircleXmark,
+  faCircleInfo,
+  faArrowRight,
+} from "@fortawesome/free-solid-svg-icons";
+
+type Variant = "success" | "warning" | "danger" | "info";
+
+interface BannerAction {
+  label: string;
+  code: string;
+  title: string;
+  href: string;
+}
+
+interface Props {
+  variant: Variant;
+  title: string;
+  body?: string;
+  action?: BannerAction;
+}
+
+const { variant, title, body, action } = Astro.props;
+
+// The variant is the single source of truth: it determines the icon,
+// colour, stripe style and typography. Pages never choose these.
+const iconByVariant: Record<Variant, typeof faCircleCheck> = {
+  success: faCircleCheck, // circle-check
+  warning: faTriangleExclamation, // triangle-exclamation
+  danger: faCircleXmark, // circle-xmark
+  info: faCircleInfo, // circle-info
+};
+
+const iconSvg = icon(iconByVariant[variant]).html.join("");
+const arrowSvg = icon(faArrowRight).html.join("");
+---
+
+<aside class={`banner-notice banner-notice--${variant}`} role="note">
+  <div class="banner-notice__row">
+    <span class="banner-notice__icon" aria-hidden="true" set:html={iconSvg} />
+    <div class="banner-notice__content">
+      <p class="banner-notice__title">{title}</p>
+      <p class="banner-notice__body">{body ?? <slot />}</p>
+    </div>
+  </div>
+
+  {action && (
+    <a class="banner-notice__action" href={action.href}>
+      <span class="banner-notice__action-label">{action.label}</span>
+      <span class="banner-notice__action-main">
+        <span class="banner-notice__action-text">
+          {action.code} — {action.title}
+        </span>
+        <span class="banner-notice__action-arrow" aria-hidden="true" set:html={arrowSvg} />
+      </span>
+    </a>
+  )}
+</aside>
+
+<style>
+  .banner-notice {
+    /* Full width */
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 16px 20px;
+    border-radius: 12px; /* rounded corners */
+
+    color: #ffffff; /* white text */
+
+    /* Solid colour + subtle diagonal stripe overlay (no glossy gradient) */
+    background-color: var(--bn-bg);
+    background-image: repeating-linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.06) 0px,
+      rgba(255, 255, 255, 0.06) 2px,
+      rgba(255, 255, 255, 0) 2px,
+      rgba(255, 255, 255, 0) 12px
+    );
+
+    box-shadow: none; /* no shadow */
+  }
+
+  .banner-notice__row {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .banner-notice__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    /* Nudge to align optically with the title's cap height */
+    margin-top: 1px;
+  }
+
+  .banner-notice__icon :global(svg) {
+    width: 22px;
+    height: 22px;
+    fill: currentColor;
+    display: block;
+  }
+
+  .banner-notice__content {
+    min-width: 0;
+  }
+
+  .banner-notice__title {
+    margin: 0;
+    font-weight: 700; /* bold heading (~700) */
+    text-transform: uppercase;
+    font-size: 17.5px; /* ~17–18px */
+    line-height: 1.3;
+    letter-spacing: 0.01em;
+  }
+
+  .banner-notice__body {
+    margin: 6px 0 0;
+    font-weight: 400; /* regular */
+    font-size: 14.5px; /* ~14–15px */
+    line-height: 1.55; /* comfortable line height (~1.5–1.6) */
+    color: rgba(255, 255, 255, 0.94);
+  }
+
+  /* ===== Optional generic action footer (full-row link) ===== */
+  .banner-notice__action {
+    display: block;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.35);
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  .banner-notice__action-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 4px;
+  }
+
+  .banner-notice__action-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .banner-notice__action-text {
+    font-size: 14.5px;
+    font-weight: 600;
+    line-height: 1.4;
+    min-width: 0;
+  }
+
+  .banner-notice__action-arrow {
+    display: inline-flex;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+
+  .banner-notice__action-arrow :global(svg) {
+    width: 15px;
+    height: 15px;
+    fill: currentColor;
+    display: block;
+  }
+
+  .banner-notice__action:hover,
+  .banner-notice__action:focus-visible {
+    text-decoration: underline;
+  }
+
+  .banner-notice__action:hover .banner-notice__action-arrow,
+  .banner-notice__action:focus-visible .banner-notice__action-arrow {
+    transform: translateX(4px);
+  }
+
+  /* ===== Variant colours (solid) ===== */
+  .banner-notice--success {
+    --bn-bg: #16a34a; /* green */
+  }
+  .banner-notice--warning {
+    --bn-bg: #d97706; /* amber */
+  }
+  .banner-notice--danger {
+    --bn-bg: #dc2626; /* red */
+  }
+  .banner-notice--info {
+    --bn-bg: #2563eb; /* blue */
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 520px) {
+    .banner-notice {
+      padding: 14px 16px;
+      gap: 12px;
+    }
+    .banner-notice__title {
+      font-size: 16.5px;
+    }
+    .banner-notice__body {
+      font-size: 14px;
+    }
+    .banner-notice__icon :global(svg) {
+      width: 20px;
+      height: 20px;
+    }
+  }
+</style>

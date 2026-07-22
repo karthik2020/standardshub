@@ -1,0 +1,150 @@
+/* ======================================================
+   PROTOTYPE — Integrated-border icon callouts
+   ------------------------------------------------------
+   Fully isolated under the `.pc-` prefix.
+   Does NOT modify any existing callouts, pages, or styles.
+   Colours, spacing, typography, and border thickness are
+   copied 1:1 from the existing `.callout` / `.formula-box`
+   rules in src/styles/extended.css — only the emoji/header
+   treatment is replaced by a Lucide icon that interrupts
+   the top border.
+   ====================================================== */
+
+.pc-callout {
+  position: relative;
+  border: 1px solid;
+  border-radius: 6px;
+  padding: 6px 9px;
+  font-size: 12.5px;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+/* The bead: a small solid accent circle threaded onto the
+   top border. Its vertical centre sits on the border line,
+   so the border appears to pass behind it and continue on
+   either side. No shadow, no gradient, no animation. */
+.pc-callout__bead {
+  position: absolute;
+  top: 0;
+  left: 14px;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 21px;
+  height: 21px;
+  border-radius: 50%;
+  color: #ffffff; /* white Lucide glyph */
+}
+
+.pc-callout__bead svg {
+  width: 13px;
+  height: 13px;
+  display: block;
+}
+
+/* ---------- Variant colours (existing tokens) ---------- */
+
+.pc-callout--info {
+  background: color-mix(in srgb, #3b82f6 5%, transparent);
+  border-color: #3b82f6;
+  color: #2563eb;
+}
+
+.pc-callout--warn {
+  background: color-mix(in srgb, #f59e0b 5%, transparent);
+  border-color: #f59e0b;
+  color: #b45309;
+}
+
+.pc-callout--suc {
+  background: color-mix(in srgb, #22c55e 5%, transparent);
+  border-color: #22c55e;
+  color: #16a34a;
+}
+
+.pc-callout--danger {
+  background: color-mix(in srgb, #ef4444 5%, transparent);
+  border-color: #ef4444;
+  color: #dc2626;
+}
+
+/* Formula / Key Concept box keeps its distinct yellow
+   treatment but inherits the same integrated icon. */
+.pc-callout--formula {
+  background: color-mix(in srgb, #b45309 5%, transparent);
+  border-color: #fde68a;
+  color: #374151;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* The bead uses the panel's accent colour. */
+.pc-callout--info .pc-callout__bead {
+  background: #3b82f6;
+}
+
+.pc-callout--warn .pc-callout__bead {
+  background: #f59e0b;
+}
+
+.pc-callout--suc .pc-callout__bead {
+  background: #22c55e;
+}
+
+.pc-callout--danger .pc-callout__bead {
+  background: #ef4444;
+}
+
+/* Formula bead uses amber to sit within its yellow family. */
+.pc-callout--formula .pc-callout__bead {
+  background: #b45309;
+}
+
+/* ---------- Formula inner typography ---------- */
+
+.pc-formula-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #52617a;
+  margin-bottom: 4px;
+}
+
+.pc-formula-eq {
+  font-weight: 500;
+  color: #111827;
+}
+
+/* ---------- Prototype layout (side-by-side) ---------- */
+
+.pc-section-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #111827;
+  margin: 22px 0 10px;
+}
+
+.pc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 18px;
+  align-items: start;
+}
+
+.pc-cell-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #52617a;
+  margin-bottom: 6px;
+}
+
+@media (max-width: 640px) {
+  .pc-grid {
+    grid-template-columns: 1fr;
+  }
+}

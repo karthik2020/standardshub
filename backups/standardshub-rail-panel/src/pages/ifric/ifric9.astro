@@ -1,0 +1,241 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/ifric/ifric9.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework (Historical)" },
+        { id: "s2", label: "Scope & Definitions (Historical)" },
+        { id: "s3", label: "The General Prohibition on Reassessment (Historical)" },
+        { id: "s4", label: "The Significant Modification Exception (Historical)" },
+        { id: "s5", label: "Business Combinations & Reassessment (Historical)" },
+        { id: "s6", label: "Interaction with the Host Contract Classification" },
+        { id: "s7", label: "How This Guidance Became Part of IFRS 9" },
+        { id: "s8", label: "Common Historical Application Areas" },
+        { id: "s9", label: "Disclosure (Historical)" },
+        { id: "s10", label: "Judgments & Estimates (Historical)" },
+        { id: "s11", label: "IFRIC 9 vs Current IFRS 9 Approach" },
+        { id: "s12", label: "Statement Mapping (Historical)" },
+        { id: "s13", label: "Related Standards" },
+        { id: "s14", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="withdrawn"
+    explanation="IFRIC 9 clarified WHEN an entity must reassess whether an embedded derivative should be separated from its host contract, generally prohibiting reassessment UNLESS there was a change in contract terms significantly modifying cash flows. This guidance was withdrawn and absorbed directly into IFRS 9's own embedded derivative requirements."
+    historical="This poster is retained for historical and comparative reference. For current embedded derivative requirements, always apply IFRS 9."
+    link="/ifrs/ifrs9"
+    linkText="IFRS 9 Financial Instruments"
+  />
+
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">A stability-focused clarification, later absorbed into the standard itself</div>
+        <div class="principle">IFRIC 9 addressed WHEN an entity should REASSESS whether an embedded derivative required separate accounting after INITIAL recognition of the host contract. It concluded that reassessment was GENERALLY PROHIBITED, UNLESS there was a CHANGE in the terms of the contract that SIGNIFICANTLY MODIFIED the cash flows — providing STABILITY against continual re-evaluation as market conditions fluctuated.</div>
+        <div class="elabel">WHY THIS ABSORPTION HAPPENED</div>
+        <div class="check-list">
+          <span><strong>Preventing artificial volatility</strong> — WITHOUT this "no reassessment" default rule, entities might have continually reclassified embedded derivatives as market conditions changed</span>
+          <span><strong>Conceptual continuity</strong> — when IFRS 9 was developed to replace IAS 39's financial instruments framework entirely, this reassessment logic was considered CORE enough to embed directly within the new standard</span>
+        </div>
+        <div class="note">IFRIC 9 is a genuinely INSTRUCTIVE example, alongside IFRIC 4 and IFRIC 8, of an interpretation whose SUBSTANCE was absorbed almost entirely into its successor standard.</div>
+      </div>
+      <div class="card cs">
+        <div class="ctitle cs">The core reassessment rule IFRIC 9 established</div>
+        <div class="formula-box">
+          <div class="f-eq">Reassess separation ONLY IF: contract terms change AND that change significantly modifies expected cash flows</div>
+        </div>
+        <div class="callout info callout--flush">ℹ️ This exact "no reassessment absent significant modification" default is preserved within IFRS 9's own embedded derivative framework.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope & Definitions (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What IFRIC 9 covered</div>
+        <div class="principle">IFRIC 9 applied to hybrid contracts containing embedded derivatives, addressing the TIMING question of when the separation assessment (originally required under IAS 39) needed to be REVISITED after initial recognition.</div>
+      </div>
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions (historical)</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Embedded derivative</div>
+          <div class="glossary-def">A component of a hybrid contract that ALSO includes a non-derivative host contract, with cash flows varying similarly to a standalone derivative.</div>
+        </div>
+        <div class="glossary-item" style="border-bottom:none;">
+          <div class="glossary-term">Significant modification of cash flows</div>
+          <div class="glossary-def">A change in contract terms substantial enough to TRIGGER reassessment under IFRIC 9's exception — a threshold concept preserved in current guidance.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>The General Prohibition on Reassessment (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Stability as the default position</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">The DEFAULT rule was NO reassessment after initial recognition — an entity's ORIGINAL determination of whether an embedded derivative required separation generally STOOD for the life of the contract, preventing continual reclassification as market prices or conditions moved.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>The Significant Modification Exception (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Historical illustration</div>
+        <div class="worked">
+          <div class="wk-title">Example 1: A loan agreement amendment triggering reassessment</div>
+          <div class="wk-body">A company held a foreign currency-denominated loan (a hybrid contract). At initial recognition, this embedded feature did NOT require separation (closely related to the host). Two years later, the loan was AMENDED, converting the repayment basis to a commodity-price-linked formula UNRELATED to the original host contract terms.</div>
+          <div class="wk-answer">This amendment represented a SIGNIFICANT MODIFICATION of the loan's cash flows, TRIGGERING a fresh reassessment under IFRIC 9 of whether the NEW embedded feature required separation from the host — an analysis that would reach the SAME conclusion under IFRS 9's current absorbed reassessment guidance today.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Business Combinations & Reassessment (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">A specific carve-out addressed by a later amendment</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">A LATER amendment to IFRIC 9 (2009) clarified that embedded derivatives in contracts ACQUIRED in a business combination, business combination under common control, or joint venture formation, were EXCLUDED from IFRIC 9's scope at the date of acquisition — this exclusion logic is ALSO preserved within IFRS 9's current framework.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Interaction with the Host Contract Classification</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Identical to the current approach</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">IFRIC 9's reassessment logic applied REGARDLESS of the host contract's own classification, focusing SOLELY on whether the embedded derivative's SEPARATION assessment needed revisiting — a distinction PRESERVED in IFRS 9's current framework.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>How This Guidance Became Part of IFRS 9</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">A genuinely instructive absorption case</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">When IFRS 9 was developed to REPLACE IAS 39's financial instruments framework in its entirety, the IASB determined IFRIC 9's reassessment logic remained VALID and should be incorporated DIRECTLY into IFRS 9 itself. IFRIC 9 was formally WITHDRAWN as IFRS 9 became effective.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Common Historical Application Areas</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where this analysis was most frequently applied</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Structured notes and convertible bonds with embedded conversion features, commodity-linked supply or purchase contracts, foreign currency-linked loan agreements, and contracts acquired in business combinations — ALL contexts where IFRS 9's current absorbed reassessment guidance remains equally relevant today.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Historical disclosure expectations</div>
+        <div class="check-list">
+          <span>Nature of embedded derivatives reassessed following significant contract modifications</span>
+          <span>Basis for concluding whether separation was required upon reassessment</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Judgments & Estimates (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where judgement historically mattered most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Whether a contract amendment constituted a "significant modification" of cash flows</span>
+              <span>Whether an embedded feature remained "closely related" to the host upon reassessment</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>Fair value of a newly separated embedded derivative upon reassessment</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>IFRIC 9 vs Current IFRS 9 Approach</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comprehensive historical-to-current comparison</div>
+        <div class="td-table">
+          <div class="th cols-12-1-1"><span>Feature</span><span>IFRIC 9 (historical)</span><span>IFRS 9 (current)</span></div>
+          <div class="tr cols-12-1-1"><span>Core reassessment rule</span><span>No reassessment unless significant cash flow modification</span><span>SUBSTANTIALLY PRESERVED, embedded directly in the standard's own requirements</span></div>
+          <div class="tr alt cols-12-1-1"><span>Location of guidance</span><span>Separate interpretation</span><span>Absorbed directly into IFRS 9 itself</span></div>
+        </div>
+        <div class="note">IFRIC 9 stands out, alongside IFRIC 4 and IFRIC 8, as a withdrawn interpretation whose CORE LOGIC survives almost entirely intact within its successor standard.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Where IFRIC 9 determinations historically fed into</div>
+        <div class="td-table">
+          <div class="th cols-16-1-14"><span>Item</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr cols-16-1-14"><span>Separated embedded derivative upon reassessment</span><span><span class="badge bs">SOFP</span> <span class="badge bp">P&L</span></span><span>Recognised at fair value, changes through P&L</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Cross-reference map</div>
+        <div class="td-table">
+          <div class="th cols-08-2"><span>Standard</span><span>Connection</span></div>
+          <div class="tr cols-08-2"><span>IFRS 9</span><span>The CURRENT standard, absorbing IFRIC 9's reassessment logic directly</span></div>
+          <div class="tr alt cols-08-2"><span>IAS 39</span><span>The predecessor financial instruments standard IFRIC 9 originally supported</span></div>
+          <div class="tr cols-08-2"><span>IFRS 3</span><span>Governs the business combination context relevant to IFRIC 9's acquisition-date exclusion</span></div>
+        </div>
+      </div>
+      <div class="card cn">
+        <div class="ctitle cn">Quick-reference glossary</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Hybrid contract</div>
+          <div class="glossary-def">A contract combining a non-derivative host with an embedded derivative feature — identical concept preserved in IFRS 9.</div>
+        </div>
+        <div class="glossary-item" style="border-bottom:none;">
+          <div class="glossary-term">Closely related</div>
+          <div class="glossary-def">The threshold test for whether an embedded derivative's economic characteristics align with the host, determining whether separation is required.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Embedded derivative", definition: "A component of a hybrid contract that also includes a non-derivative host contract, with cash flows varying similarly to a standalone derivative." },
+      { term: "Significant modification of cash flows", definition: "A change in contract terms substantial enough to trigger reassessment under IFRIC 9's exception." },
+      { term: "Hybrid contract", definition: "A contract combining a non-derivative host with an embedded derivative feature." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.IFRIC9} />
+  </section>
+</StandardPageLayout>

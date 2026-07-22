@@ -1,0 +1,240 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/ifric/ifric8.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework (Historical)" },
+        { id: "s2", label: "Scope & Definitions (Historical)" },
+        { id: "s3", label: "The Core Clarification (Historical)" },
+        { id: "s4", label: "Identifiable vs Unidentifiable Consideration (Historical)" },
+        { id: "s5", label: "Transactions with Non-Employees (Historical)" },
+        { id: "s6", label: "Measurement When Consideration Appears Insufficient (Historical)" },
+        { id: "s7", label: "How This Guidance Became Part of IFRS 2" },
+        { id: "s8", label: "Common Historical Application Areas" },
+        { id: "s9", label: "Disclosure (Historical)" },
+        { id: "s10", label: "Judgments & Estimates (Historical)" },
+        { id: "s11", label: "IFRIC 8 vs Current IFRS 2 Scope" },
+        { id: "s12", label: "Statement Mapping (Historical)" },
+        { id: "s13", label: "Related Standards" },
+        { id: "s14", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="withdrawn"
+    explanation="IFRIC 8 clarified that IFRS 2's scope extends to transactions where identifiable consideration received appears less than the fair value of equity instruments granted, indicating unidentifiable goods or services were also received. This clarification was withdrawn and folded directly into IFRS 2's own scope paragraphs via amendment."
+    historical="This poster is retained for historical and comparative reference. For current share-based payment scope requirements, always apply IFRS 2."
+    link="/ifrs/ifrs2"
+    linkText="IFRS 2 Share-based Payment"
+  />
+
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">A scope clarification later absorbed into the standard itself</div>
+        <div class="principle">IFRIC 8 addressed a genuine practical question: IF an entity grants equity instruments and the IDENTIFIABLE consideration received (if any) appears to be LESS than the fair value of those instruments, does IFRS 2 STILL apply? IFRIC 8 CONFIRMED it does — the shortfall indicates that OTHER (unidentifiable) consideration, typically employee or supplier SERVICES, must also have been received.</div>
+        <div class="elabel">WHY THIS ABSORPTION HAPPENED</div>
+        <div class="check-list">
+          <span><strong>Closing a scope loophole</strong> — WITHOUT this clarification, entities could have argued IFRS 2 did not apply to certain equity-settled arrangements simply because NO explicit employee or supplier service was identified</span>
+          <span><strong>Conceptual continuity</strong> — the IASB later concluded this clarification was FUNDAMENTAL enough to IFRS 2's own scope that it belonged IN the standard itself</span>
+        </div>
+        <div class="note">IFRIC 8 is a genuinely INSTRUCTIVE example of an interpretation whose entire SUBSTANCE was absorbed almost verbatim into its parent standard's scope section.</div>
+      </div>
+      <div class="card cs">
+        <div class="ctitle cs">The core clarifying logic IFRIC 8 established</div>
+        <div class="formula-box">
+          <div class="f-eq">Identifiable consideration received < Fair value of equity instruments granted → IFRS 2 applies to the shortfall as unidentifiable goods or services received</div>
+        </div>
+        <div class="callout info callout--flush">ℹ️ This exact logic is now embedded DIRECTLY within IFRS 2's own scope paragraphs.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope & Definitions (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What IFRIC 8 covered</div>
+        <div class="principle">IFRIC 8 applied to transactions where an entity made SHARE-BASED PAYMENTS for apparently NIL or INSUFFICIENT identifiable consideration, requiring assessment of whether unidentifiable goods or services had ALSO been received.</div>
+      </div>
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions (historical)</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Identifiable consideration</div>
+          <div class="glossary-def">Consideration EXPLICITLY specified or documented in an arrangement — the concept IFRIC 8 required comparing against fair value.</div>
+        </div>
+        <div class="glossary-item" style="border-bottom:none;">
+          <div class="glossary-term">Unidentifiable goods or services</div>
+          <div class="glossary-def">Value received by the entity NOT explicitly documented, inferred from a shortfall between identifiable consideration and fair value.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>The Core Clarification (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Closing a scope interpretation gap</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">IFRIC 8 confirmed IFRS 2's scope was NOT limited to arrangements with EXPLICITLY identified employee or supplier services — a shortfall between identifiable consideration and grant-date fair value was ITSELF sufficient evidence that additional, unidentifiable consideration had been (or would be) received, bringing the arrangement within IFRS 2's scope.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Identifiable vs Unidentifiable Consideration (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Historical illustration</div>
+        <div class="worked">
+          <div class="wk-title">Example 1: Shares issued to a strategic business partner</div>
+          <div class="wk-body">A company issued equity shares with a fair value of $500,000 to a strategic business partner, with the documented consideration being ONLY a vague "strategic cooperation" commitment with no specific identifiable services or cash contribution.</div>
+          <div class="wk-answer">Under IFRIC 8, the ENTIRE $500,000 fair value would be assessed for IFRS 2 recognition — since NO clearly identifiable consideration matched the fair value granted, the SHORTFALL itself was treated as evidence of unidentifiable goods or services received.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Transactions with Non-Employees (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Extending beyond typical employee stock compensation</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">IFRIC 8 was particularly significant for NON-EMPLOYEE arrangements (e.g. shares issued to consultants, business partners, or in connection with acquisitions of INTANGIBLE items not otherwise recognisable), where the absence of a traditional "service agreement" might otherwise have been argued to place the arrangement OUTSIDE IFRS 2's scope.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Measurement When Consideration Appears Insufficient (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Fair value of equity instruments as the measurement anchor</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Consistent with IFRS 2's general measurement hierarchy, the FAIR VALUE of the equity instruments granted was used to measure the transaction where the value of the unidentifiable goods or services could not itself be reliably estimated — IDENTICAL to IFRS 2's own general "cannot estimate fair value of goods or services" fallback.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>How This Guidance Became Part of IFRS 2</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">A genuinely instructive absorption case</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">The IASB concluded IFRIC 8's clarification was so INTEGRAL to correctly applying IFRS 2's scope that it should be stated DIRECTLY within the standard, rather than requiring practitioners to cross-reference a separate interpretation. IFRIC 8 was formally WITHDRAWN in 2009, with its substance incorporated into IFRS 2's own scope paragraphs.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Common Historical Application Areas</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where this analysis was most frequently applied</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Shares issued to consultants or advisors for below-market or nominal consideration, shares issued in connection with acquisitions where part of the consideration related to future services, and shares issued to charitable organisations or as sponsorship arrangements — ALL contexts where IFRS 2's current absorbed scope guidance remains equally relevant today.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Historical disclosure expectations</div>
+        <div class="check-list">
+          <span>Nature of arrangements where identifiable consideration was less than fair value granted</span>
+          <span>Basis for estimating the value of unidentifiable goods or services received</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Judgments & Estimates (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where judgement historically mattered most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Whether identifiable consideration genuinely fell short of grant-date fair value</span>
+              <span>Nature or timing of the unidentifiable goods or services implied by the shortfall</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>Fair value of the equity instruments granted, per IFRS 2's general measurement approach</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>IFRIC 8 vs Current IFRS 2 Scope</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comprehensive historical-to-current comparison</div>
+        <div class="td-table">
+          <div class="th cols-12-1-1"><span>Feature</span><span>IFRIC 8 (historical)</span><span>IFRS 2 (current)</span></div>
+          <div class="tr cols-12-1-1"><span>Core scope clarification</span><span>Shortfall = unidentifiable goods or services received</span><span>SUBSTANTIALLY PRESERVED, embedded directly in the standard's scope paragraphs</span></div>
+          <div class="tr alt cols-12-1-1"><span>Location of guidance</span><span>Separate interpretation</span><span>Absorbed directly into IFRS 2's own scope section</span></div>
+        </div>
+        <div class="note">IFRIC 8 stands out, like IFRIC 4, as a withdrawn interpretation whose CORE LOGIC survives almost entirely intact within its parent standard.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Where IFRIC 8 determinations historically fed into</div>
+        <div class="td-table">
+          <div class="th cols-16-1-14"><span>Item</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr cols-16-1-14"><span>Share-based payment expense (unidentifiable services)</span><span><span class="badge bp">P&L</span> <span class="badge be">Equity</span></span><span>Under IFRS 2's general recognition model</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Cross-reference map</div>
+        <div class="td-table">
+          <div class="th cols-08-2"><span>Standard</span><span>Connection</span></div>
+          <div class="tr cols-08-2"><span>IFRS 2</span><span>The CURRENT standard, absorbing IFRIC 8's scope clarification directly</span></div>
+          <div class="tr alt cols-08-2"><span>IFRIC 11</span><span>A related historical interpretation on group or treasury share transactions, also absorbed into IFRS 2</span></div>
+        </div>
+      </div>
+      <div class="card cn">
+        <div class="ctitle cn">Quick-reference glossary</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Grant-date fair value</div>
+          <div class="glossary-def">The measurement anchor used in IFRS 2's general model, and the benchmark against which identifiable consideration was compared under IFRIC 8.</div>
+        </div>
+        <div class="glossary-item" style="border-bottom:none;">
+          <div class="glossary-term">Equity-settled share-based payment</div>
+          <div class="glossary-def">The transaction type IFRIC 8's scope clarification most commonly addressed.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Identifiable consideration", definition: "Consideration explicitly specified or documented in an arrangement — the concept IFRIC 8 required comparing against fair value." },
+      { term: "Unidentifiable goods or services", definition: "Value received by the entity not explicitly documented, inferred from a shortfall between identifiable consideration and fair value." },
+      { term: "Grant-date fair value", definition: "The measurement anchor used in IFRS 2's general model, and the benchmark against which identifiable consideration was compared." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.IFRIC8} />
+  </section>
+</StandardPageLayout>

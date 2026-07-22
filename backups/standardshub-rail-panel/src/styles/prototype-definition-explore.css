@@ -1,0 +1,247 @@
+/* ======================================================
+   PROTOTYPE — Definition visual identity exploration
+   ------------------------------------------------------
+   Fully isolated under the `.dex-` prefix. Does NOT modify
+   the production Definition component, any page, or any
+   existing stylesheet.
+
+   Three conceptual directions are compared:
+     A) Reference Card      — calm neutral card
+     B) Dictionary Style    — borderless, type-led
+     C) StandardsHub Defn    — native neutral "tab" marker
+
+   Reuses existing tokens only:
+     --color-background-tertiary / -secondary
+     --color-border-secondary
+     --color-text-primary / -secondary / -tertiary
+     --border-radius-md
+
+   No gradients, heavy shadows, bright colours, or
+   decorative effects.
+   ====================================================== */
+
+.dex-intro {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin: 0 0 24px;
+}
+
+.dex-intro strong {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+/* ---------- Concept block scaffolding ---------- */
+
+.dex-concept {
+  margin: 0 0 34px;
+}
+
+.dex-concept__title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 4px;
+}
+
+.dex-concept__desc {
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--color-text-tertiary);
+  margin: 0 0 16px;
+}
+
+.dex-list {
+  display: block;
+}
+
+.dex-sep {
+  margin: 18px 0 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--color-border-secondary);
+}
+
+/* ======================================================
+   CONCEPT A — Reference Card
+   Calm, neutral, textbook-like card.
+   ====================================================== */
+
+.dex-a {
+  background: var(--color-background-tertiary);
+  border: 1px solid var(--color-border-secondary);
+  border-radius: var(--border-radius-md);
+  padding: 13px 15px;
+  margin: 0 0 12px;
+}
+
+.dex-a__head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 9px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid var(--color-border-secondary);
+}
+
+.dex-a__label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+
+.dex-a__term {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 4px;
+}
+
+.dex-a__body {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* ======================================================
+   CONCEPT B — Dictionary Style
+   Borderless, type-led, generous whitespace.
+   ====================================================== */
+
+.dex-b__label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  margin: 0 0 6px;
+}
+
+.dex-b__entry {
+  padding: 13px 0;
+  border-bottom: 1px solid var(--color-border-secondary);
+}
+
+.dex-b__entry:first-of-type {
+  border-top: 1px solid var(--color-border-secondary);
+}
+
+.dex-b__term {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 3px;
+}
+
+.dex-b__body {
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* ======================================================
+   CONCEPT C — StandardsHub Definition
+   Native neutral "tab" marker (inspired by, NOT copied
+   from, the callout chip). Asymmetric corners echo the
+   StandardsHub chip language but stay neutral + text-only.
+   ====================================================== */
+
+.dex-c {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid var(--color-border-secondary);
+  border-radius: var(--border-radius-md);
+  padding: 22px 16px 14px;
+  margin: 14px 0 12px;
+}
+
+/* Neutral tab anchored at top-left, overlapping the
+   card's top border — reads as a section marker / folder
+   tab in a manual. No colour, no icon. */
+.dex-c__tab {
+  position: absolute;
+  top: 0;
+  left: 14px;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  background: var(--color-background-tertiary);
+  border: 1px solid var(--color-border-secondary);
+  /* asymmetric corners mirror the StandardsHub chip
+     language (rounded where it meets the panel corner,
+     square where it meets the straight border). */
+  border-top-left-radius: var(--border-radius-md);
+  border-bottom-right-radius: var(--border-radius-md);
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+  padding: 3px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+
+.dex-c__term {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 4px;
+}
+
+.dex-c__body {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* ======================================================
+   Evaluation
+   ====================================================== */
+
+.dex-eval {
+  margin: 36px 0 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--color-border-secondary);
+}
+
+.dex-eval h2 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 12px;
+}
+
+.dex-eval h3 {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 16px 0 6px;
+}
+
+.dex-eval p {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+  margin: 0 0 8px;
+}
+
+.dex-eval strong {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+@media (max-width: 520px) {
+  .dex-a,
+  .dex-c {
+    padding: 11px 13px;
+  }
+  .dex-c {
+    padding: 22px 13px 12px;
+  }
+}

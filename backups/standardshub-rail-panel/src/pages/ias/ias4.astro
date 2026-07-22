@@ -1,0 +1,256 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import metadata from "../../data/standards/ias/ias4.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope & Applicability" },
+        { id: "s3", label: "The Systematic Allocation Principle" },
+        { id: "s4", label: "Depreciation Methods Recognised" },
+        { id: "s5", label: "Reviewing Useful Life and Method" },
+        { id: "s6", label: "Land — The Non-Depreciable Exception" },
+        { id: "s7", label: "Change in Estimate" },
+        { id: "s8", label: "Why IAS 4 Was Absorbed into IAS 16" },
+        { id: "s9", label: "Disclosure Requirements" },
+        { id: "s10", label: "Critical Judgments & Estimates" },
+        { id: "s11", label: "IAS 4 vs Modern IAS 16/38" },
+        { id: "s12", label: "Statement Mapping" },
+        { id: "s13", label: "Related Standards" },
+        { id: "s14", label: "Quick-Reference Glossary" },
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="withdrawn"
+    explanation="IAS 4 (issued 1976) established the original principle that depreciable assets should be depreciated systematically over their useful lives. It was effectively superseded as its content was absorbed into and refined by IAS 16 Property, Plant and Equipment and IAS 38 Intangible Assets, and formally withdrawn in 1999 upon IAS 16's revision."
+    historical="It is retained here for historical reference and because its core systematic allocation principle survives essentially unchanged as the foundation of IAS 16 and IAS 38 today. For current depreciation/amortisation requirements, always apply IAS 16 or IAS 38."
+    link="/ias/ias16"
+    linkText="IAS 16 Property, Plant and Equipment"
+  />
+
+  <div class="wrap">
+    <!-- ============ SECTION 1 ============ -->
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Matching cost to the economic benefit consumed</div>
+        <div class="principle">Even in 1976, the fundamental Framework idea was clear: as a long-lived asset is used up over time, an expense should be recognised reflecting that consumption of economic benefit — rather than expensing the full cost at purchase (overstating early losses) or never expensing it at all (overstating asset values indefinitely). IAS 4 was the IASC's first codification of this systematic allocation principle.</div>
+        <div class="elabel">HOW IAS 4 MAPPED TO THE FRAMEWORK</div>
+        <div class="check-list">
+          <span><strong style="font-weight:500">Matching / systematic allocation</strong> — depreciation expense should be recognised on a systematic basis over an asset's useful life, matching cost to the periods benefiting from the asset's use</span>
+          <span><strong style="font-weight:500">Faithful representation</strong> — failing to depreciate a wasting asset would overstate its carrying amount relative to its true remaining service potential</span>
+          <span><strong style="font-weight:500">An early, less prescriptive standard</strong> — IAS 4 established the principle but left significant detail (component depreciation, residual value review frequency, etc.) to be developed much later by IAS 16</span>
+        </div>
+        <div class="note">IAS 4's core principle — systematic depreciation over useful life — has never been abandoned; it survives essentially unchanged as the foundation of IAS 16 and IAS 38's own depreciation/amortisation requirements today.</div>
+      </div>
+
+      <div class="card cs">
+        <div class="ctitle cs">What IAS 4 established vs what came later</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.3fr 1fr;"><span>Concept</span><span>Status</span></div>
+          <div class="tr" style="grid-template-columns:1.3fr 1fr;"><span>Systematic depreciation over useful life</span><span>Established by IAS 4; unchanged today</span></div>
+          <div class="tr alt" style="grid-template-columns:1.3fr 1fr;"><span>Component depreciation (separate parts)</span><span>Not addressed by IAS 4; introduced later by IAS 16</span></div>
+          <div class="tr" style="grid-template-columns:1.3fr 1fr;"><span>Revaluation model interaction</span><span>Not addressed by IAS 4; developed later by IAS 16</span></div>
+        </div>
+        <div class="callout info" style="margin-bottom:0;">ℹ️ IAS 4 established the principle; IAS 16 later supplied the far more detailed mechanics.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 2 ============ -->
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What IAS 4 covered</div>
+        <div class="principle">IAS 4 applied to depreciation accounting generally, establishing that depreciable assets should be depreciated systematically over their useful economic lives, applicable across all types of depreciable assets an entity held.</div>
+        <div class="note">This general, asset-type-agnostic scope was later split — IAS 16 now governs tangible PPE depreciation specifically, and IAS 38 governs intangible asset amortisation specifically.</div>
+      </div>
+
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions you must know (historical)</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Depreciation (original)</div>
+          <div class="glossary-def">The allocation of the depreciable amount of an asset over its estimated useful life.</div>
+        </div>
+        <div class="glossary-item" style="border-bottom:none;">
+          <div class="glossary-term">Useful life (original)</div>
+          <div class="glossary-def">The period over which a depreciable asset is expected to be used by the entity.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 3 ============ -->
+    <div class="section-header" id="s3"><span class="num">3</span><h2>The Systematic Allocation Principle</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">The core requirement, largely unchanged today</div>
+        <div class="formula-box">
+          <div class="f-eq">Depreciation expense = Depreciable amount ÷ Useful life, allocated on a systematic basis reflecting the pattern of economic benefit consumption</div>
+        </div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">IAS 4 required depreciation to be recognised even if an asset's fair value exceeded its carrying amount — a principle that survives, essentially unchanged, in IAS 16 today (depreciation continues regardless of value increases, unless the asset is idle and specific circumstances apply).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 4 ============ -->
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Depreciation Methods Recognised</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Straight-line, diminishing balance, and units of production</div>
+        <div class="check-list">
+          <span>Straight-line method — equal expense each period over the useful life</span>
+          <span>Diminishing (reducing) balance method — a constant percentage applied to a declining carrying amount, front-loading expense</span>
+          <span>Units of production method — depreciation based on actual usage/output in the period</span>
+        </div>
+        <div class="note">These three methods, first codified by IAS 4, remain the same three core methods permitted under IAS 16 today — a striking example of a nearly 50-year-old principle surviving completely intact.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 5 ============ -->
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Reviewing Useful Life and Method</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Periodic review — a principle established early, refined later</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">IAS 4 recognised that useful life and depreciation method estimates should be reviewed periodically, and revised if expectations differ significantly from previous estimates — though it did not specify the annual review requirement IAS 16 later mandated explicitly.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 6 ============ -->
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Land — The Non-Depreciable Exception</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">An exception established from the very beginning</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">IAS 4 recognised that land normally has an unlimited useful life and is therefore not depreciated (unless subject to depletion, e.g. quarries, or specific circumstances reduce its useful life) — a principle carried forward identically into IAS 16 today, including the requirement to depreciate any building on the land separately from the land itself.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 7 ============ -->
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Change in Estimate — Prospective Treatment</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">An early ancestor of IAS 8's prospective treatment</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">IAS 4 indicated that a revised estimate of useful life should be applied prospectively — spreading the remaining depreciable amount over the revised remaining useful life, rather than restating prior periods. This principle is identical to IAS 8's current treatment of changes in accounting estimates, decades before IAS 8 itself formalised the general rule.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 8 ============ -->
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Why IAS 4 Was Absorbed into IAS 16</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Consolidation into a comprehensive PPE standard</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">As the IASC (and later IASB) developed a far more comprehensive standard for property, plant and equipment overall (IAS 16), it made sense to fold depreciation guidance directly into that single standard, rather than maintaining a separate, freestanding "depreciation accounting" standard — IAS 4 was formally withdrawn once IAS 16's 1998 revision comprehensively covered the same ground, with intangible asset amortisation later addressed separately by IAS 38.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 9 ============ -->
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure Requirements (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Required disclosures under IAS 4</div>
+        <div class="check-list">
+          <span>Depreciation methods used, and the depreciation charge for the period</span>
+          <span>Useful lives or depreciation rates used, by asset class</span>
+          <span>Accumulated depreciation at the reporting date</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 10 ============ -->
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments &amp; Estimates (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where management judgement mattered most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Selecting the depreciation method best reflecting the pattern of economic benefit consumption</span>
+              <span>Whether land was subject to depletion, requiring depreciation as an exception to the general rule</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>Useful life and residual value of depreciable assets</span>
+            </div>
+          </div>
+        </div>
+        <div class="callout warn" style="margin-top:8px;margin-bottom:0;">⚠️ IAS 4 lacked IAS 16's later, far more granular component depreciation requirement — under IAS 4, entities more commonly depreciated an asset as a single unit rather than splitting it into significant parts with different useful lives.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 11 ============ -->
+    <div class="section-header" id="s11"><span class="num">11</span><h2>IAS 4 vs Modern IAS 16/38</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — IAS 4 (1976) vs current IAS 16/38</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Feature</span><span style="color:var(--color-text-info);">IAS 4 (withdrawn)</span><span style="color:var(--color-text-warning);">Current (IAS 16/38)</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Core principle</span><span>Systematic allocation over useful life</span><span>Same principle, essentially unchanged</span></div>
+          <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Component depreciation</span><span>Not addressed</span><span>Mandatory for significant parts with different useful lives (IAS 16)</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Review frequency</span><span>Periodic, not specified as annual</span><span>Explicit annual review requirement (IAS 16)</span></div>
+          <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Coverage of intangibles</span><span>Not separately addressed</span><span>Dedicated IAS 38, including indefinite-life intangibles (no amortisation, annual impairment test instead)</span></div>
+        </div>
+        <div class="note">IAS 4's core principle proved remarkably durable — the main evolution has been in detail and rigour (component depreciation, mandatory annual review), not in the fundamental concept itself.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 12 ============ -->
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping (Historical, Under IAS 4)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Comprehensive event-to-statement mapping table</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event / transaction</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Periodic depreciation charge</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Systematic allocation, per the chosen method</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Change in useful life estimate</span><span><span class="badge bp">SOPL</span></span><span>Prospective adjustment, spread over remaining useful life</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Land held (non-depreciable)</span><span>—</span><span>No depreciation, unless subject to depletion</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 13 ============ -->
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">How IAS 4's legacy connects across the IFRS body of literature</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 16</span><span>The direct successor for tangible asset depreciation, with far greater detail</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 38</span><span>Successor for intangible asset amortisation</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 8</span><span>Governs the prospective treatment of changes in useful life/method estimates, a principle IAS 4 anticipated</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 36</span><span>Supplies impairment testing, complementing depreciation as the two mechanisms limiting an asset's carrying amount</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 14 ============ -->
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Depreciable amount", definition: "Cost (or revalued amount) less residual value — the amount systematically allocated over useful life." },
+      { term: "Diminishing balance method", definition: "A depreciation method applying a constant rate to a declining carrying amount, front-loading expense recognition." },
+      { term: "Residual value", definition: "The estimated amount an entity would currently obtain from disposal of an asset, net of estimated costs of disposal, if the asset were already at the age and condition expected at the end of its useful life." },
+      { term: "Useful life", definition: "The period over which a depreciable asset is expected to be used by the entity, or the number of production units expected to be obtained from the asset." },
+      { term: "Depletion", definition: "The allocation of the cost of a natural resource over the period it is extracted and consumed — an exception to the general rule that land is not depreciated." }
+    ]} />
+
+    <FinancialStatementKey />
+  </div>
+</StandardPageLayout>

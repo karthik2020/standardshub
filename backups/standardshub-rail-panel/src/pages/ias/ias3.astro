@@ -1,0 +1,256 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import metadata from "../../data/standards/ias/ias3.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope & Applicability" },
+        { id: "s3", label: "The Original Control Test" },
+        { id: "s4", label: "Consolidation Procedures" },
+        { id: "s5", label: "Minority Interest" },
+        { id: "s6", label: "Exclusion from Consolidation" },
+        { id: "s7", label: "Equity Method for Associates" },
+        { id: "s8", label: "Why IAS 3 Was Split" },
+        { id: "s9", label: "Disclosure Requirements" },
+        { id: "s10", label: "Critical Judgments & Estimates" },
+        { id: "s11", label: "IAS 3 vs the Modern Consolidation Suite" },
+        { id: "s12", label: "Statement Mapping" },
+        { id: "s13", label: "Related Standards" },
+        { id: "s14", label: "Quick-Reference Glossary" },
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="superseded"
+    explanation="IAS 3 (issued 1976) was the IASC's original consolidation standard. It was effectively superseded in 1989 by the split into IAS 27 Consolidated and Separate Financial Statements and IAS 28 Investments in Associates, which were themselves later superseded by IFRS 10, IFRS 11, IFRS 12, and the revised IAS 28."
+    historical="It is retained here for historical reference because its basic consolidation mechanics — combining assets, liabilities, income, and expenses line by line — remain essentially unchanged today. For current group accounting, always apply IFRS 10, IFRS 11, IFRS 12, and IAS 27/28."
+    link="/ifrs/ifrs10"
+    linkText="IFRS 10 Consolidated Financial Statements"
+  />
+
+  <div class="wrap">
+    <!-- ============ SECTION 1 ============ -->
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">The first attempt to define the "group" reporting entity</div>
+        <div class="principle">Even in 1976, the core Framework question was the same as today: what does a parent genuinely CONTROL, and should the group's financial statements reflect that combined economic entity rather than each legal entity separately? IAS 3 was the IASC's FIRST attempt to codify this — establishing that a parent with a MAJORITY of voting power (or otherwise exercising control) should consolidate its subsidiaries' financial statements LINE BY LINE.</div>
+        <div class="elabel">HOW IAS 3 MAPPED TO THE FRAMEWORK</div>
+        <div class="check-list">
+          <span><strong style="font-weight:500">Substance over form</strong> — even in its earliest form, the standard recognised that a group of legally separate entities under common control represented a single economic entity for reporting purposes</span>
+          <span><strong style="font-weight:500">Faithful representation</strong> — full consolidation (rather than reporting only the parent's own legal-entity accounts) was seen as necessary to fairly present the group's combined resources and obligations</span>
+          <span><strong style="font-weight:500">An early, voting-rights-centric control test</strong> — IAS 3's control definition relied heavily on legal/voting majority, a limitation that decades of later standards (culminating in IFRS 10's power/returns/linkage model) progressively refined</span>
+        </div>
+        <div class="note">IAS 3's basic consolidation mechanics — combining assets, liabilities, income, expenses line by line, eliminating intragroup transactions — have remained essentially UNCHANGED in substance through every subsequent iteration (IAS 27, then IFRS 10) even as the control definition itself has been repeatedly refined.</div>
+      </div>
+
+      <div class="card cs">
+        <div class="ctitle cs">The evolution of the "group" concept over time</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1fr 1.6fr;"><span>Era</span><span>Governing standard</span></div>
+          <div class="tr" style="grid-template-columns:1fr 1.6fr;"><span>1976–1989</span><span>IAS 3 — the original, single consolidation standard</span></div>
+          <div class="tr alt" style="grid-template-columns:1fr 1.6fr;"><span>1989–2013</span><span>IAS 27 (consolidation) + IAS 28 (associates) + IAS 31 (joint ventures)</span></div>
+          <div class="tr" style="grid-template-columns:1fr 1.6fr;"><span>2013–present</span><span>IFRS 10 (control) + IFRS 11 (joint arrangements) + IFRS 12 (disclosure) + IAS 28 (revised, associates &amp; JVs)</span></div>
+        </div>
+        <div class="callout info" style="margin-bottom:0;">ℹ️ This progression reflects the Framework's ongoing refinement toward substance over form — each iteration closed loopholes the previous control definition allowed.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 2 ============ -->
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What IAS 3 covered</div>
+        <div class="principle">IAS 3 applied to the preparation and presentation of consolidated financial statements for a GROUP of companies under the control of a parent.</div>
+        <div class="note">Its scope architecture — parent, subsidiary, group — established terminology still used today, even though the detailed control test has been repeatedly refined.</div>
+      </div>
+
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions you must know (historical)</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Subsidiary (original)</div>
+          <div class="glossary-def">A company controlled by another company (the parent), largely through ownership of more than half the voting power.</div>
+        </div>
+        <div class="glossary-item" style="border-bottom:none;">
+          <div class="glossary-term">Minority interest (original term)</div>
+          <div class="glossary-def">The portion of a subsidiary's net assets/profit attributable to shareholders other than the parent — the direct ancestor of today's "non-controlling interest" (NCI) terminology.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 3 ============ -->
+    <div class="section-header" id="s3"><span class="num">3</span><h2>The Original Control Test</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">A voting-majority-centric definition</div>
+        <div class="principle">IAS 3's control test was largely based on holding MORE THAN 50% of voting power, or otherwise having the power to govern financial and operating policies so as to obtain benefits — a relatively simple test compared to IFRS 10's later, far more elaborate power/returns/linkage framework (which explicitly addresses de facto control, structured entities, and principal/agent scenarios that IAS 3 never contemplated).</div>
+        <div class="note">The gap between IAS 3's simple voting test and IFRS 10's sophisticated model reflects nearly 40 years of standard-setting responding to increasingly complex corporate structures — including the special purpose/structured entities that proliferated in the decades after IAS 3's issuance.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 4 ============ -->
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Consolidation Procedures (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">The mechanics that survive to this day</div>
+        <div class="check-list">
+          <span>Combine like items of assets, liabilities, income, and expenses line by line</span>
+          <span>Eliminate the parent's investment against its share of subsidiary equity</span>
+          <span>Eliminate intragroup balances and transactions in full</span>
+        </div>
+        <div class="note">These THREE mechanical steps are essentially identical to IFRS 10's own consolidation procedures today — the enduring procedural core of consolidation accounting, unaffected by decades of control-definition refinement.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 5 ============ -->
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Minority Interest (Original Terminology)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">From "minority interest" to "non-controlling interest"</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">IAS 3 used the term "minority interest" for the portion of a subsidiary not owned by the parent — this terminology persisted for decades until IFRS 3 (2008 revision) and IAS 27 (2008 revision) formally replaced it with "non-controlling interest" (NCI), a deliberate shift acknowledging that a "minority" stake is not always small, and framing the concept in terms of control rather than mere ownership proportion.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 6 ============ -->
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Exclusion from Consolidation (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Early, now-abolished exclusion grounds</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">IAS 3 (and its immediate successor IAS 27) originally permitted excluding a subsidiary from consolidation if control was intended to be temporary, or if the subsidiary operated under severe long-term restrictions impairing its ability to transfer funds to the parent. These exclusion grounds were later removed — modern IFRS 10 contains no such exclusions; all controlled subsidiaries must be consolidated (subject only to the narrow investment entities exception).</div>
+        <div class="callout warn" style="margin-bottom:0;">⚠️ This is a genuinely important historical difference — the "temporary control" and "severe restrictions" exclusions no longer exist under current IFRS, a significant narrowing of permissible non-consolidation grounds over time.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 7 ============ -->
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Equity Method for Associates (Historical Origin)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">The seed of what became IAS 28</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Even before IAS 28 existed as a separate standard, early consolidation guidance recognised that investments where the investor had significant influence (but not control) warranted a different treatment than either full consolidation or simple cost/fair value measurement — the basic equity method concept (recognising a share of the investee's profit, adjusting the investment's carrying amount) traces its roots to this same era, later formalised and refined in IAS 28.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 8 ============ -->
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Why IAS 3 Was Split</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Growing complexity demanded specialisation</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">By the late 1980s, the IASC recognised that consolidation (control), associates (significant influence), and joint ventures (joint control) each raised sufficiently distinct issues to warrant separate, more detailed standards — leading to IAS 3's replacement by IAS 27 (consolidation) and IAS 28 (associates), with joint ventures addressed by the later IAS 31. This pattern of increasing specialisation repeated again in 2011 with the IFRS 10/11/12 package.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 9 ============ -->
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure Requirements (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Required disclosures under IAS 3</div>
+        <div class="check-list">
+          <span>A list of significant subsidiaries, including name, country of incorporation, and proportion of ownership</span>
+          <span>The reason(s) for excluding any subsidiary from consolidation (temporary control, severe restrictions — grounds later abolished)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 10 ============ -->
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments &amp; Estimates (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where management judgement mattered most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Whether voting majority genuinely conferred practical control</span>
+              <span>Whether a subsidiary's control was genuinely "temporary" (a now-abolished exclusion ground)</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>Fair value of consideration and net assets at acquisition (predating IFRS 3's later, far more detailed acquisition method)</span>
+            </div>
+          </div>
+        </div>
+        <div class="callout warn" style="margin-top:8px;margin-bottom:0;">⚠️ IAS 3's relatively simple voting-majority test would be considered significantly under-developed by today's standards — it had no answer for de facto control, structured entities, or principal/agent scenarios that IFRS 10 now directly addresses.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 11 ============ -->
+    <div class="section-header" id="s11"><span class="num">11</span><h2>IAS 3 vs the Modern Consolidation Suite</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — IAS 3 (1976) vs IFRS 10/11/12 (current)</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Feature</span><span style="color:var(--color-text-info);">IAS 3 (withdrawn)</span><span style="color:var(--color-text-warning);">Current (IFRS 10/11/12)</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Control test</span><span>Largely voting-majority based</span><span>Power + variable returns + linkage, covering de facto control and structured entities</span></div>
+          <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Non-consolidation grounds</span><span>Temporary control, severe long-term restrictions</span><span>Abolished — no such exclusions exist (only the narrow investment entities exception)</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Joint ventures</span><span>Not separately addressed</span><span>Dedicated IFRS 11, with joint operation/joint venture split</span></div>
+          <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Disclosure</span><span>Basic subsidiary listing</span><span>Extensive IFRS 12 disclosures, including judgements and structured entity exposure</span></div>
+        </div>
+        <div class="note">The direction of travel across nearly 50 years has been consistently toward more substance-based, judgement-requiring control tests, and toward narrowing (not widening) permissible grounds for non-consolidation.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 12 ============ -->
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping (Historical, Under IAS 3)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Comprehensive event-to-statement mapping table</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event / transaction</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Line-by-line combination of subsidiary items</span><span><span class="badge bs">SOFP</span> <span class="badge bp">SOPL</span></span><span>Mechanically identical to current consolidation procedures</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Elimination of intragroup transactions</span><span><span class="badge bs">SOFP</span> <span class="badge bp">SOPL</span></span><span>Same underlying principle as today</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Minority interest allocation</span><span><span class="badge bp">SOPL</span> <span class="badge be">Equity</span></span><span>Ancestor of today's NCI presentation</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Exclusion of a "temporarily controlled" subsidiary</span><span><span class="badge bs">SOFP</span></span><span>Ground now abolished under IFRS 10</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 13 ============ -->
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">How IAS 3's legacy connects across the IFRS body of literature</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 10</span><span>The ultimate successor for consolidation and the control definition</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 11</span><span>Successor for joint arrangements, not separately addressed by IAS 3</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 28</span><span>Successor for associates and the equity method</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 12</span><span>Successor for disclosure of interests in other entities</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 3</span><span>Governs business combination accounting, a topic IAS 3 predated in its modern form</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 14 ============ -->
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Minority interest", definition: "The historical term for what is now called 'non-controlling interest' (NCI)." },
+      { term: "Temporary control exclusion", definition: "A now-abolished ground for excluding a subsidiary from consolidation, based on an intention to dispose of it in the near term." },
+      { term: "Line-by-line consolidation", definition: "The mechanical process of combining like items of assets, liabilities, income, and expenses from a subsidiary into the parent's financial statements." },
+      { term: "Subsidiary", definition: "An entity controlled by another entity (the parent), originally defined largely through ownership of more than half the voting power." },
+      { term: "Intragroup elimination", definition: "The requirement to eliminate balances and transactions between group entities in full, to prevent double-counting in consolidated financial statements." }
+    ]} />
+
+    <FinancialStatementKey />
+  </div>
+</StandardPageLayout>

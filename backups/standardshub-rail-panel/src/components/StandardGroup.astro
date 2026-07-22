@@ -1,0 +1,94 @@
+---
+/*
+StandardGroup
+
+Renders the Active / Historical standard list for a single framework or
+IFRS subfolder. Extracted from the original Sidebar.astro accordion body
+so the same grouping logic can be reused inside the new two-column rail
++ panel layout without duplicating it per framework.
+
+Props:
+- items: standards.json entries for this framework/subfolder
+- sectionId: id used for data-section / localStorage keys (e.g. "ias", "ifric")
+- categories: optional list of category labels (US GAAP only) to sub-group by
+- label: optional heading shown above the list (used for IFRS subfolders)
+*/
+
+import NavLink from "./NavLink.astro";
+
+interface Props {
+  items: any[];
+  sectionId: string;
+  categories?: readonly string[];
+  label?: string;
+}
+
+const { items, sectionId, categories, label } = Astro.props;
+
+const activeItems = items.filter((item: any) => !item.status);
+const historicalItems = items.filter((item: any) => item.status);
+---
+
+<div class="section" data-section={sectionId}>
+  {label && <div class="sidebar-subfolder-label">{label}</div>}
+
+  {
+    categories ? (
+      categories.map((category) => {
+        const catActive = activeItems.filter((item: any) => item.category === category);
+        const catHistorical = historicalItems.filter((item: any) => item.category === category);
+        if (catActive.length === 0 && catHistorical.length === 0) return null;
+        return (
+          <Fragment>
+            <div class="sidebar-category-label">{category}</div>
+            <ul class="sidebar-items">
+              {catActive.map((item: any) => (
+                <li>
+                  <NavLink href={item.url} title={item.title} section={sectionId} code={item.code} standardTitle={item.title}>
+                    {item.code}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+            {catHistorical.length > 0 && (
+              <ul class="sidebar-items">
+                <li class="sidebar-group-label">Historical Standards</li>
+                {catHistorical.map((item: any) => (
+                  <li>
+                    <NavLink href={item.url} title={item.title} section={sectionId} code={item.code} standardTitle={item.title}>
+                      {item.code}
+                    </NavLink>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </Fragment>
+        );
+      })
+    ) : (
+      <Fragment>
+        <ul class="sidebar-items">
+          {activeItems.map((item: any) => (
+            <li>
+              <NavLink href={item.url} title={item.title} section={sectionId} code={item.code} standardTitle={item.title}>
+                {item.code}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+        {historicalItems.length > 0 && (
+          <ul class="sidebar-items">
+            <li class="sidebar-group-label">Historical Standards</li>
+            {historicalItems.map((item: any) => (
+              <li>
+                <NavLink href={item.url} title={item.title} section={sectionId} code={item.code} standardTitle={item.title}>
+                  {item.code}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+        )}
+      </Fragment>
+    )
+  }
+</div>

@@ -1,0 +1,321 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/ifrs/ifrs5.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope & Applicability" },
+        { id: "s3", label: "Held for Sale — The Highly Probable Criteria" },
+        { id: "s4", label: "Measurement of Held-for-Sale Assets" },
+        { id: "s5", label: "Disposal Groups" },
+        { id: "s6", label: "Discontinued Operations" },
+        { id: "s7", label: "Changes to a Plan of Sale" },
+        { id: "s8", label: "Presentation on the Face of the Statements" },
+        { id: "s9", label: "Disclosure" },
+        { id: "s10", label: "Critical Judgments & Estimates" },
+        { id: "s11", label: "IFRS vs US GAAP" },
+        { id: "s12", label: "Statement Mapping" },
+        { id: "s13", label: "Related Standards" },
+        { id: "s14", label: "Glossary" },
+        { id: "history", label: "History & Development" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <!-- ============ SECTION 1 ============ -->
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Why assets held for sale need a distinct measurement basis</div>
+        <div class="principle">Once an asset is genuinely being SOLD rather than USED, its economic benefits are best represented by what it will realise on SALE, not by continued depreciation reflecting ongoing use. IFRS 5 operationalises this Framework insight: when the recovery of an asset's carrying amount will occur principally through SALE rather than continuing use, its measurement basis must change to reflect that.</div>
+        <div class="elabel">HOW IFRS 5 MAPS TO THE FRAMEWORK</div>
+        <div class="check-list">
+          <span><strong>Faithful representation</strong> — continuing to depreciate an asset genuinely being marketed for imminent sale would misrepresent how the entity actually expects to recover its value</span>
+          <span><strong>Relevance</strong> — separately presenting discontinued operations' results helps users forecast FUTURE performance based only on operations that will continue, directly serving the Framework's predictive value objective</span>
+          <span><strong>The "highly probable" threshold</strong> — a deliberately HIGH recognition bar (not merely "probable" or "possible") ensures the measurement change only applies once a sale is GENUINELY imminent, preserving reliability</span>
+        </div>
+        <div class="note">IFRS 5 directly addressed the KEY WEAKNESS of its predecessor, IAS 35 — the complete absence of any measurement consequence for a decision to discontinue. IFRS 5's held-for-sale classification is a genuine MEASUREMENT event, not merely a disclosure trigger.</div>
+      </div>
+
+      <div class="card cs">
+        <div class="ctitle cs">Measurement principles applied by IFRS 5</div>
+        <div class="principle">IFRS 5 applies a strict LOWER-OF measurement rule once classification criteria are met — asymmetric by design, since it never allows an UPWARD remeasurement above original carrying amount.</div>
+        <div class="formula-box">
+          <div class="f-eq">Carrying amount post-classification = LOWER of carrying amount and fair value less costs to sell (FVLCTS)</div>
+        </div>
+        <div class="callout info callout--flush">ℹ️ <strong>Qualitative characteristics in action:</strong> the strict lower-of rule reflects <strong>prudence</strong> — an asset being sold should never be carried above the amount genuinely expected to be realised, while depreciation CEASING once held-for-sale reflects that continued use is no longer the recovery path.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 2 ============ -->
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What IFRS 5 covers</div>
+        <div class="principle">IFRS 5 applies to ALL recognised non-current assets, and disposal groups, of an entity — specifying accounting for assets HELD FOR SALE, and presentation and disclosure of DISCONTINUED OPERATIONS.</div>
+        <div class="elabel">MEASUREMENT SCOPE EXCLUSIONS</div>
+        <div class="text-supporting" style="margin-bottom:var(--space-sm);">The MEASUREMENT provisions of IFRS 5 (the lower-of rule) do NOT apply to: deferred tax assets (IAS 12); assets arising from employee benefits (IAS 19); financial assets within IFRS 9's scope; investment property measured at fair value (IAS 40); biological assets measured at fair value less costs to sell (IAS 41); and contractual rights under insurance contracts.</div>
+        <div class="note">These items, EVEN IF classified as "held for sale" for PRESENTATION purposes, continue to be measured under their OWN applicable Standard, not IFRS 5's lower-of rule — a narrow but important scope carve-out.</div>
+      </div>
+
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions you must know</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Held for sale</div>
+          <div class="glossary-def">The classification of a non-current asset (or disposal group) whose carrying amount will be recovered PRINCIPALLY through a sale transaction rather than through continuing use.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Disposal group</div>
+          <div class="glossary-def">A group of assets to be disposed of, by sale or otherwise, together as a group in a single transaction, and liabilities directly associated with those assets that will be transferred in the transaction.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Discontinued operation</div>
+          <div class="glossary-def">A component of an entity that either has been disposed of, or is classified as held for sale, AND represents a separate major line of business or geographical area of operations, is part of a single coordinated plan to dispose of a separate major line of business or geographical area, OR is a subsidiary acquired exclusively with a view to resale.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Fair value less costs to sell (FVLCTS)</div>
+          <div class="glossary-def">Fair value (per IFRS 13), less the incremental costs directly attributable to the disposal, excluding finance costs and income tax expense.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 3 ============ -->
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Held for Sale — The "Highly Probable" Criteria</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">All conditions must be met — a genuinely high bar</div>
+        <div class="check-list">
+          <span>Management is COMMITTED to a plan to sell the asset (or disposal group)</span>
+          <span>The asset is available for IMMEDIATE sale in its present condition, subject only to terms usual and customary for such sales</span>
+          <span>An ACTIVE PROGRAMME to locate a buyer and complete the plan has been INITIATED</span>
+          <span>The sale is HIGHLY PROBABLE — significantly MORE LIKELY THAN "probable" — and expected to qualify for recognition as a completed sale WITHIN ONE YEAR from the classification date (with limited exceptions for events/circumstances beyond the entity's control)</span>
+          <span>The asset is being ACTIVELY MARKETED for sale at a price that is REASONABLE in relation to its current fair value</span>
+          <span>Actions required to complete the plan indicate it is UNLIKELY significant changes to the plan will be made, or that it will be withdrawn</span>
+        </div>
+        <div class="callout warn callout--flush">⚠️ <strong>"Highly probable" is a materially HIGHER threshold than "probable"</strong> (the recognition threshold used elsewhere in IFRS, e.g. IAS 37) — a genuinely committed, active, imminent sale is required; a mere INTENTION or a plan still subject to significant uncertainty does NOT qualify for held-for-sale classification.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 4 ============ -->
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Measurement of Held-for-Sale Assets (with worked example)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs">
+        <div class="ctitle cs">The write-down mechanics, and cessation of depreciation</div>
+        <div class="formula-box">
+          <div class="f-eq">Impairment loss = Carrying amount − FVLCTS (recognised only if FVLCTS is LOWER)</div>
+        </div>
+        <div class="text-supporting">From the date of classification, DEPRECIATION AND AMORTISATION CEASE entirely on the asset — a direct consequence of no longer recovering value through continued use. A SUBSEQUENT increase in fair value less costs to sell can be recognised, but ONLY UP TO the cumulative impairment loss previously recognised (never above original carrying amount).</div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Worked example — held-for-sale write-down</div>
+        <div class="worked">
+          <div class="wk-title">Example 1: Classifying a machine as held for sale</div>
+          <div class="wk-body">
+            A machine has a carrying amount of $850,000 at the date all IFRS 5 criteria are first met. Its fair value is $760,000, with estimated costs to sell of $40,000.
+          </div>
+          <div class="wk-answer">
+            <strong>FVLCTS</strong> = 760,000 − 40,000 = $720,000<br>
+            <strong>Impairment loss</strong> = 850,000 − 720,000 = <strong>$130,000</strong>, recognised immediately in profit or loss<br>
+            <strong>Revised carrying amount</strong> = <strong>$720,000</strong> — depreciation on this asset now STOPS entirely, even though it remains physically on the SOFP until sold.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 5 ============ -->
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Disposal Groups</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Treating a group of assets and liabilities as a single unit</div>
+        <div class="principle">Where the assets classified as held for sale include a GROUP of assets (and associated liabilities), the same held-for-sale criteria and measurement rules apply to the DISPOSAL GROUP AS A WHOLE — the FVLCTS-vs-carrying-amount comparison is made for the GROUP in aggregate, then any resulting write-down is ALLOCATED across the NON-CURRENT assets within the group (similar in spirit to IAS 36's CGU impairment allocation), NOT to the group's current assets, financial assets, or other scope-excluded items.</div>
+        <div class="callout warn callout--flush">⚠️ Assets and liabilities within a disposal group are generally NOT OFFSET — they are presented SEPARATELY as single amounts on the face of the SOFP (total held-for-sale assets, total held-for-sale liabilities), never netted against each other.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 6 ============ -->
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Discontinued Operations (with worked example)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">The presentation consequence — a single line item</div>
+        <div class="principle">An entity presents a SINGLE AMOUNT on the face of the SOPL comprising the total of: the post-tax profit or loss of discontinued operations; and the post-tax gain/loss recognised on the measurement to FVLCTS (or on disposal) of the assets/disposal group constituting the discontinued operation.</div>
+        <div class="worked worked--flush">
+          <div class="wk-title">Example 2: Discontinued operation results presentation</div>
+          <div class="wk-body">
+            A division qualifying as a discontinued operation reports pre-tax operating profit of $600,000 for the period, with related tax expense of $120,000. It also incurs a $200,000 pre-tax loss on remeasurement to FVLCTS, with a related tax benefit of $40,000.
+          </div>
+          <div class="wk-answer">
+            <strong>Post-tax operating profit</strong> = 600,000 − 120,000 = $480,000<br>
+            <strong>Post-tax loss on remeasurement</strong> = (200,000) − (40,000) = ($160,000)<br>
+            <strong>Single line item presented on the face of the SOPL</strong> = 480,000 − 160,000 = <strong>$320,000 profit from discontinued operations</strong>, with a detailed analysis (revenue, expenses, tax, and the components above) required either on the face or in the notes.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 7 ============ -->
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Changes to a Plan of Sale</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Reclassification back to continuing use</div>
+        <div class="text-supporting">If an entity NO LONGER meets the held-for-sale criteria (e.g. a plan to sell is abandoned), the asset CEASES to be classified as held for sale. It is measured at the LOWER of: (a) its carrying amount BEFORE it was classified as held for sale, adjusted for any depreciation/amortisation/revaluations that WOULD have been recognised had it never been so classified; and (b) its RECOVERABLE AMOUNT at the date of the decision NOT to sell. The adjustment is recognised in PROFIT OR LOSS from CONTINUING operations, in the period the criteria are no longer met.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 8 ============ -->
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Presentation on the Face of the Statements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">SOFP presentation</div>
+        <div class="text-supporting">An entity presents assets classified as held for sale, and assets of a disposal group classified as held for sale, SEPARATELY from other assets on the face of the SOFP — and, similarly, liabilities of a disposal group classified as held for sale are presented separately from other liabilities. These are NOT reclassified/re-presented in COMPARATIVE SOFP figures for prior periods.</div>
+      </div>
+
+      <div class="card cn">
+        <div class="ctitle cn">SOPL presentation</div>
+        <div class="text-supporting">Comparative income statement/OCI information for PRIOR periods IS restated so discontinued operation disclosures relate to ALL operations that HAVE been discontinued by the END of the reporting period for the LATEST period presented — a genuine restatement requirement, unlike the SOFP's non-restatement rule above.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 9 ============ -->
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Required disclosures</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">DISCONTINUED OPERATIONS</div>
+            <div class="check-list">
+              <span>Analysis of the single discontinued operations line item into revenue, expenses, pre-tax profit/loss, related tax expense, and the gain/loss on measurement/disposal (and related tax)</span>
+              <span>Net cash flows attributable to operating, investing, and financing activities of discontinued operations</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">HELD FOR SALE ASSETS</div>
+            <div class="check-list">
+              <span>A description of the non-current asset/disposal group, and the facts/circumstances of the sale (or leading to the expected disposal), including expected timing</span>
+              <span>Any impairment loss (and reversal) recognised, and where it's presented in the SOPL</span>
+              <span>Applicable operating segment(s), if the entity reports segment information under IFRS 8</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 10 ============ -->
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where management judgement matters most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Whether a sale is genuinely "highly probable," and all six classification criteria are met</span>
+              <span>Whether a component qualifies as a "separate major line of business or geographical area" for discontinued operation classification</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>Fair value less costs to sell of the held-for-sale asset/disposal group</span>
+              <span>Allocation of a disposal group's write-down across its non-current assets</span>
+            </div>
+          </div>
+        </div>
+        <div class="callout warn callout--warn-flush">⚠️ A one-year expected disposal timeline is a firm indicator against classification — if a sale is genuinely expected to take LONGER than one year, held-for-sale classification is generally NOT appropriate, unless the delay is caused by events/circumstances GENUINELY beyond the entity's control.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 11 ============ -->
+    <div class="section-header" id="s11"><span class="num">11</span><h2>IFRS vs US GAAP — Key Differences</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — IFRS 5 vs US GAAP (ASC 205-20 / ASC 360)</div>
+        <div class="td-table">
+          <div class="th cols-12-1-1"><span>Feature</span><span>IFRS (IFRS 5)</span><span>US GAAP</span></div>
+          <div class="tr cols-12-1-1"><span>Discontinued operation threshold</span><span>Separate major line of business or geographical area</span><span>Represents a STRATEGIC SHIFT that has, or will have, a MAJOR EFFECT on operations/financial results — a more restrictive, higher threshold following a 2014 amendment</span></div>
+          <div class="tr alt cols-12-1-1"><span>Held-for-sale measurement</span><span>Lower of carrying amount and FVLCTS</span><span>Similar lower-of-carrying-amount-and-fair-value-less-costs-to-sell approach, largely converged</span></div>
+          <div class="tr cols-12-1-1"><span>Depreciation cessation</span><span>Ceases on classification as held for sale</span><span>Also ceases, converged</span></div>
+          <div class="tr alt cols-12-1-1"><span>Comparative SOFP restatement</span><span>NOT restated for prior periods</span><span>Also generally not restated for held-for-sale assets, converged</span></div>
+        </div>
+        <div class="note">The most significant remaining divergence is the DISCONTINUED OPERATION threshold itself — US GAAP's 2014 narrowing to require a genuine "strategic shift" is somewhat MORE restrictive than IFRS 5's "separate major line of business or geographical area" test.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 12 ============ -->
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping — Where Every Held-for-Sale/Discontinued Event Lands</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Comprehensive event-to-statement mapping table</div>
+        <div class="td-table">
+          <div class="th cols-16-1-14"><span>Event / transaction</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr cols-16-1-14"><span>Classification as held for sale — write-down to FVLCTS</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Impairment loss recognised immediately</span></div>
+          <div class="tr alt cols-16-1-14"><span>Depreciation/amortisation on the held-for-sale asset</span><span>—</span><span>CEASES entirely from classification date</span></div>
+          <div class="tr cols-16-1-14"><span>Subsequent increase in FVLCTS</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Recognised, capped at cumulative impairment previously recognised</span></div>
+          <div class="tr alt cols-16-1-14"><span>Held-for-sale assets/liabilities presentation</span><span><span class="badge bs">SOFP</span></span><span>Separate line items; not offset against each other; not restated in comparatives</span></div>
+          <div class="tr cols-16-1-14"><span>Discontinued operation post-tax profit/loss + gain/loss on disposal</span><span><span class="badge bp">SOPL</span></span><span>Single net line, further analysed in notes; comparatives ARE restated</span></div>
+          <div class="tr alt cols-16-1-14"><span>Reversal — asset no longer held for sale</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Remeasured at the lower of adjusted historical carrying amount and recoverable amount; adjustment through CONTINUING operations</span></div>
+          <div class="tr cols-16-1-14"><span>Final disposal — gain/loss on sale</span><span><span class="badge bp">SOPL</span></span><span>Included within the discontinued operations line if applicable</span></div>
+          <div class="tr alt cols-16-1-14"><span>Cash flows attributable to discontinued operations</span><span><span class="badge bs">Cash Flow Statement</span></span><span>Separately disclosed by operating/investing/financing category</span></div>
+          <div class="tr cols-16-1-14"><span>Description, timing, impairment, segment information</span><span><span class="badge bp">Notes</span></span><span>Mandatory disclosure</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 13 ============ -->
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">How IFRS 5 connects across the IFRS body of literature</div>
+        <div class="td-table">
+          <div class="th cols-08-2"><span>Standard</span><span>Nature of the connection</span></div>
+          <div class="tr cols-08-2"><span>IAS 16 / IAS 38 / IAS 40</span><span>Supply the carrying amount at the point of classification; depreciation/amortisation under these standards ceases once IFRS 5 applies</span></div>
+          <div class="tr alt cols-08-2"><span>IAS 36</span><span>Supplied recoverable amount concepts relevant when an asset is reclassified back to continuing use</span></div>
+          <div class="tr cols-08-2"><span>IFRS 13</span><span>Supplies the fair value measurement framework underlying FVLCTS</span></div>
+          <div class="tr alt cols-08-2"><span>IFRS 10</span><span>A subsidiary acquired exclusively with a view to resale can itself qualify as a discontinued operation under IFRS 5's specific criterion</span></div>
+          <div class="tr cols-08-2"><span>IAS 33</span><span>Requires separate EPS disclosure for discontinued operations, alongside continuing operations and total EPS</span></div>
+          <div class="tr alt cols-08-2"><span>IFRS 8</span><span>Segment disclosures interact with discontinued operation disclosures, requiring the applicable operating segment to be identified</span></div>
+          <div class="tr cols-08-2"><span>IAS 12</span><span>Deferred tax on assets reclassified as held for sale continues to be measured under IAS 12's normal rules, unaffected by IFRS 5's own measurement scope exclusion for deferred tax assets</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 14 ============ -->
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+<Glossary entries={[
+      { term: "Component of an entity", definition: "Operations and cash flows that can be clearly distinguished, operationally and for financial reporting purposes, from the rest of the entity." },
+      { term: "Costs to sell", definition: "Incremental costs directly attributable to the disposal of an asset (or disposal group), excluding finance costs and income tax expense." },
+      { term: "Recoverable amount", definition: "The higher of fair value less costs of disposal and value in use (IAS 36) — used as a ceiling if an asset is reclassified out of held-for-sale status." },
+      { term: "Highly probable", definition: "A significantly higher likelihood threshold than 'probable' — the standard used to determine whether the held-for-sale classification criteria are met." },
+      { term: "Abandonment", definition: "Ceasing use of an asset without a sale — an asset to be abandoned does NOT meet the held-for-sale criteria, though it may still qualify as a discontinued operation if other criteria are met." },
+      { term: "Strategic shift", definition: "The US GAAP concept requiring a major operational effect for discontinued operation classification — a somewhat stricter test than IFRS 5's own threshold." }
+    ]} />
+
+<FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.IFRS5} />
+  </section>
+</StandardPageLayout>
