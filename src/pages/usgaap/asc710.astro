@@ -1,0 +1,124 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc710.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope & Applicability" },
+        { id: "s3", label: "Compensated Absences — the Four-Part Accrual Test" },
+        { id: "s4", label: "Sick Pay — a Two-Part Alternative" },
+        { id: "s5", label: "Worked Example — Vacation Accrual Calculation" },
+        { id: "s6", label: "Disclosure Requirements" },
+        { id: "s7", label: "Critical Judgments & Estimates" },
+        { id: "s8", label: "ASC 710 vs IAS 19 — Compensation Alignment" },
+        { id: "s9", label: "Statement Mapping" },
+        { id: "s10", label: "Related Topics" },
+        { id: "s11", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="hub"><div class="hub-box"><div class="hub-title">ASC 710 — Compensation—General</div><div class="hub-sub">Extended reference poster · US GAAP · Subtopic: 710-10 Overall · Compensated absences including vacation, sick leave, and other paid time off · USD examples</div></div></div>
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Compensation earned but not yet taken</div><div class="principle">ASC 710 addresses compensation that employees have earned through services rendered but have not yet received in the form of paid time off. This creates a present obligation to the employee even though the cash outflow will occur in the future when the employee takes the leave, making it a classic accrued liability under the Conceptual Framework's definition of a present obligation.</div></div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope & Applicability</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Paid absences across all entities</div><div class="principle">ASC 710 applies to all entities with compensated absences, including vacation pay, sick leave, holiday pay, and other forms of paid time off that employees earn based on services rendered. It does not apply to postemployment benefits (governed by ASC 715) or postemployment benefits other than retirement (governed by ASC 712).</div></div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Compensated Absences — the Four-Part Accrual Test</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">When compensated absences must be accrued</div><div class="principle">A liability for compensated absences is accrued when ALL FOUR of the following conditions are met: (1) the employee's right to receive compensation for future absences is attributable to services ALREADY rendered; (2) the right vests or accumulates; (3) payment of the compensation is probable; and (4) the amount can be reasonably estimated. This four-part test ensures that only genuine employee entitlements are recognised as liabilities.</div></div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Sick Pay — a Two-Part Alternative</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">A simplified test for sick pay</div><div class="principle">Sick pay benefits may be accrued using a SIMPLIFIED two-part test rather than the full four-part test: (1) sick pay benefits are attributable to services ALREADY rendered, and (2) sick pay benefits vest or accumulate. ASC 710 eliminates the probable and reasonably estimable tests for sick pay specifically, implicitly accepting that sick pay is inherently probable and estimable once it vests.</div></div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Worked Example — Vacation Accrual Calculation</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Accruing vacation pay</div>
+      <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Year-end vacation accrual</div><div class="wk-body">A company has 50 employees, each earning 10 days of paid vacation per year. Average daily salary is $400. At year end, employees have earned 6 days of vacation each but have taken only 3 days on average. Unused vacation vests and carries forward.</div><div class="wk-answer">Accrued vacation liability = 50 employees × 3 unused days × $400/day = <strong>$60,000</strong>. This represents the obligation for vacation time earned but not yet taken, accrued as a current liability on the Balance Sheet.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">What ASC 710 requires</div><div class="check-list"><span>Policy describing the method used to accrue compensated absences</span><span>Accrued liability for compensated absences, or if not reasonably estimable, the reason why</span><span>Material changes in the accrued compensated absences liability during the period</span></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Critical Judgments & Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+      <div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Whether sick pay benefits vest or accumulate, triggering accrual under the two-part test</span><span>Determining whether compensation is attributable to services already rendered versus future services</span></div></div>
+      <div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Amount of accrued compensated absences, particularly where utilisation patterns are uncertain</span><span>Expected timing of payment for accumulated absences</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>ASC 710 vs IAS 19 — Compensation Alignment</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Comparison — ASC 710 vs IAS 19</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">US GAAP (ASC 710)</span><span style="color:var(--color-text-info);">IFRS (IAS 19)</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Scope</span><span>Short-term compensated absences</span><span>Short-term employee benefits broadly</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Accrual trigger</span><span>Four-part test (vest/accumulate + probable + estimable)</span><span>Substantively similar recognition when benefits vest</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Sick pay simplification</span><span>Two-part simplified test for sick pay</span><span>No explicit two-part simplification</span></div>
+      </div>
+      <div class="note">IAS 19 and ASC 710 are broadly converged on short-term compensated absences, with the sick pay simplification being a minor US-specific practical expedient.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Where every ASC 710 event lands</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Accrual of compensated absences</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Liability on BS; expense recognised when earned</span></div>
+      <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Payment of accrued absences</span><span><span class="badge bs">BS</span> <span class="badge bc">SCF</span></span><span>Liability reduced; cash outflow in operating activities</span></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Related Topics</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd"><div class="ctitle cd">Cross-reference map</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 715</span><span>Compensation—Retirement Benefits — governs pension and other retirement benefits</span></div>
+      <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 712</span><span>Nonretirement Postemployment Benefits — governs postemployment benefits other than retirement</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 19</span><span>Employee Benefits — IFRS counterpart covering short-term employee benefits</span></div>
+      </div>
+      </div>
+    </div>
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.ASC710 || []} />
+  </section>
+</StandardPageLayout>

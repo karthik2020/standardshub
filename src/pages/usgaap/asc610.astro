@@ -1,0 +1,131 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc610.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope — Sales of Nonfinancial Assets to Non-Customers" },
+        { id: "s3", label: "Why ASC 610-20 Exists" },
+        { id: "s4", label: "Sale-Leaseback Interaction With ASC 842" },
+        { id: "s5", label: "Partial Sales of Nonfinancial Assets" },
+        { id: "s6", label: "Worked Example — Gain Recognition on a Nonfinancial Asset Sale" },
+        { id: "s7", label: "Disclosure Requirements" },
+        { id: "s8", label: "Critical Judgments & Estimates" },
+        { id: "s9", label: "ASC 610 vs IFRS — Dispersed Comparison" },
+        { id: "s10", label: "Statement Mapping" },
+        { id: "s11", label: "Related Topics" },
+        { id: "s12", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="hub"><div class="hub-box"><div class="hub-title">ASC 610 — Other Income</div><div class="hub-sub">Extended reference poster · US GAAP · Subtopic: 610-20 Other Income — Gains and Losses From Extinguishment of Debt · USD examples</div></div></div>
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Income that falls outside the ordinary revenue model</div><div class="principle">ASC 610 addresses income that does NOT arise from the entity's ordinary revenue-producing activities—most notably gains and losses from the sale of nonfinancial assets to non-customers. The Conceptual Framework treats these outcomes as separate from revenue from contracts with customers, because the buyer is not a customer purchasing goods or services in the ordinary course of business.</div></div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope — Sales of Nonfinancial Assets to Non-Customers</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">A narrow but important scope</div><div class="principle">ASC 610 primarily addresses gains and losses from the sale of nonfinancial assets to parties who are NOT customers in the ordinary revenue model sense—such as the sale of a building, equipment, or an entire business segment. Revenue from ordinary contracts with customers falls squarely within ASC 606, leaving ASC 610 to govern these peripheral, non-ordinary-course transactions.</div></div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Why ASC 610-20 Exists</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">A focused subtopic for a specific transaction type</div><div class="principle">ASC 610-20 was created to provide guidance specifically on gains and losses from the extinguishment of debt, including the recognition and measurement of gains or losses when debt is settled before maturity. This narrow provision ensures that debt extinguishment gains and losses are properly accounted for when they occur, rather than being spread over time.</div></div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Sale-Leaseback Interaction With ASC 842</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">A significant practical intersection</div><div class="principle">Sale-leaseback transactions involve the sale of an asset and the immediate leaseback of the same asset. Under US GAAP, the seller-lessee must determine whether the sale qualifies for recognition under ASC 606, and then separately account for the leaseback under ASC 842. This creates a complex interaction where the gain or loss on the sale component may need to be deferred and amortised over the lease term under certain conditions.</div></div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Partial Sales of Nonfinancial Assets</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">When only part of an asset is sold</div><div class="principle">When an entity sells a portion of a nonfinancial asset, the gain or loss is measured based on the carrying amount of the portion sold relative to the total asset. This requires careful allocation of the asset's carrying amount between the portion sold and the portion retained, ensuring that the gain or loss recognised accurately reflects the economics of the transaction.</div></div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Worked Example — Gain Recognition on a Nonfinancial Asset Sale</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Recognising a gain on equipment disposal</div>
+      <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Sale of manufacturing equipment</div><div class="wk-body">An entity sells a piece of manufacturing equipment with a carrying amount of $500,000 for $650,000 cash. The equipment has no remaining useful life to the entity.</div><div class="wk-answer">The entity recognises a <strong>gain of $150,000</strong> ($650,000 proceeds – $500,000 carrying amount) in the income statement under "Other income" — separate from revenue from contracts with customers under ASC 606.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">What ASC 610 requires</div><div class="check-list"><span>Nature and amount of significant gains and losses from sales of nonfinancial assets</span><span>Circumstances giving rise to the gain or loss</span><span>For sale-leaseback transactions, the terms and conditions of the arrangement</span></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Critical Judgments & Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+      <div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Whether the buyer qualifies as a non-customer, placing the transaction in ASC 610 rather than ASC 606</span><span>Whether a transaction constitutes a sale-leaseback requiring dual assessment under ASC 606 and ASC 842</span></div></div>
+      <div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Allocation of carrying amount between portions sold and retained in a partial sale</span><span>Determination of fair value of the consideration received</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>ASC 610 vs IFRS — Dispersed Comparison</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Comparison — ASC 610 vs IFRS</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">US GAAP (ASC 610)</span><span style="color:var(--color-text-info);">IFRS</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Scope</span><span>Sales of nonfinancial assets to non-customers</span><span>Similar concept addressed under general IFRS principles</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Sale-leaseback</span><span>Specific guidance interacting with ASC 842</span><span>IFRS 16 provides the leaseback framework</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Gain recognition</span><span>Generally recognised immediately</span><span>Similar immediate recognition pattern</span></div>
+      </div>
+      <div class="note">IFRS does not have a direct equivalent ASC 610 Topic; the equivalent income recognition is handled through general principles within IFRS 15 and IFRIC 17 for nonfinancial assets.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Where every ASC 610 event lands</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Gain on sale of nonfinancial asset</span><span><span class="badge bp">IS</span></span><span>Presented as other income, separate from revenue</span></div>
+      <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Loss on sale of nonfinancial asset</span><span><span class="badge bp">IS</span></span><span>Presented as other expense or loss</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Sale-leaseback gain (partial)</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Gain may be deferred and amortised</span></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Related Topics</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd"><div class="ctitle cd">Cross-reference map</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 606</span><span>Governs revenue from contracts with customers—the primary distinction from ASC 610 transactions</span></div>
+      <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 842</span><span>Leases — governs the leaseback component of sale-leaseback transactions</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 15</span><span>IFRS revenue from contracts with customers — parallel to ASC 606 scope boundary</span></div>
+      </div>
+      </div>
+    </div>
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.ASC610 || []} />
+  </section>
+</StandardPageLayout>

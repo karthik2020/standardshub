@@ -1,0 +1,218 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc606.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope & Applicability" },
+        { id: "s3", label: "The Five-Step Model — Overview" },
+        { id: "s4", label: "Step 1 — Identify the Contract" },
+        { id: "s5", label: "Step 2 — Identify Performance Obligations" },
+        { id: "s6", label: "Step 3 — Determine the Transaction Price" },
+        { id: "s7", label: "The Variable Consideration Constraint" },
+        { id: "s8", label: "Significant financing components" },
+        { id: "s9", label: "Step 4 — Allocate the Transaction Price" },
+        { id: "s10", label: "Step 5 — Recognise Revenue" },
+        { id: "s11", label: "Licensing — Right to Access vs Right to Use" },
+        { id: "s12", label: "Principal vs Agent Considerations" },
+        { id: "s13", label: "Warranties — Assurance-Type vs Service-Type" },
+        { id: "s14", label: "Contract Costs — Cross-Reference to ASC 340-40" },
+        { id: "s15", label: "Worked Example — the Variable Consideration Constraint" },
+        { id: "s16", label: "Worked Example — Over-Time Recognition" },
+        { id: "s17", label: "Worked Example — Principal vs Agent" },
+        { id: "s18", label: "Disclosure Requirements" },
+        { id: "s19", label: "Critical Judgments & Estimates" },
+        { id: "s20", label: "ASC 606 vs IFRS 15 — the Rare Remaining Differences" },
+        { id: "s21", label: "Statement Mapping" },
+        { id: "s22", label: "Related Topics" },
+        { id: "s23", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="hub"><div class="hub-box"><div class="hub-title">ASC 606 — Revenue From Contracts With Customers</div><div class="hub-sub">Extended reference poster · US GAAP · The joint FASB-IASB converged revenue standard, twin of IFRS 15 · USD examples</div></div></div>
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci"><div class="ctitle ci">Revenue depicting the transfer of control</div><div class="principle">ASC 606's core principle: an entity recognises revenue to depict the TRANSFER of promised goods or services to customers in an amount that reflects the CONSIDERATION the entity expects to be entitled to in exchange — a genuinely control-based, single unified model replacing the older, more fragmented industry-specific approach that preceded it.</div></div>
+      <div class="card cs"><div class="ctitle cs">The single most converged major standard in this entire library</div><div class="principle">ASC 606 and IFRS 15 emerged from a genuine JOINT FASB-IASB project, issued SIMULTANEOUSLY in 2014 with substantively IDENTICAL wording and structure. This makes ASC 606 the clearest example anywhere in the Codification of TRUE convergence — the comparison section is correspondingly SHORT, since there is very little to compare.</div></div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope & Applicability</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Contracts with customers, broadly</div><div class="principle">ASC 606 applies to all contracts with CUSTOMERS to transfer goods or services in exchange for consideration — EXCLUDING leases (ASC 842), insurance contracts, financial instruments, guarantees (other than product/service warranties), and certain nonmonetary exchanges between entities in the same line of business to facilitate sales to third parties.</div></div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>The Five-Step Model — Overview</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">The complete revenue recognition framework in five steps</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:0.3fr 2.7fr;"><span>Step</span><span>Description</span></div>
+      <div class="tr" style="grid-template-columns:0.3fr 2.7fr;"><span>1</span><span>Identify the contract with a customer</span></div>
+      <div class="tr alt" style="grid-template-columns:0.3fr 2.7fr;"><span>2</span><span>Identify the performance obligations in the contract</span></div>
+      <div class="tr" style="grid-template-columns:0.3fr 2.7fr;"><span>3</span><span>Determine the transaction price</span></div>
+      <div class="tr alt" style="grid-template-columns:0.3fr 2.7fr;"><span>4</span><span>Allocate the transaction price to the performance obligations</span></div>
+      <div class="tr" style="grid-template-columns:0.3fr 2.7fr;"><span>5</span><span>Recognise revenue when (or as) each performance obligation is satisfied</span></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Step 1 — Identify the Contract</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">A contract exists when all five criteria are met</div><div class="principle">A contract exists only when: (1) the parties have APPROVED the contract and are committed to perform; (2) each party's rights can be IDENTIFIED; (3) payment terms are IDENTIFIABLE; (4) the contract has COMMERCIAL SUBSTANCE; and (5) it is PROBABLE that consideration will be collected. If any criterion is NOT met, the contract does not exist under ASC 606 and no revenue can be recognised until the criterion is satisfied.</div></div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Step 2 — Identify Performance Obligations</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">Distinct goods or services promised</div><div class="principle">A performance obligation is a PROMISE to transfer a DISTINCT good or service. A good or service is distinct if: (1) the customer can benefit from it on its own or together with other readily available resources; and (2) the promise to transfer it is separately identifiable from other promises in the contract. A bundle of goods or services that are not distinct is combined into a SINGLE performance obligation.</div></div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Step 3 — Determine the Transaction Price</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">The amount of consideration expected</div><div class="principle">The TRANSACTION PRICE is the amount of consideration an entity expects to be entitled to in exchange for transferring the promised goods or services. It includes fixed amounts, variable amounts (subject to the constraint in Section 7), significant financing components (Section 8), non-cash consideration, and consideration payable to the customer.</div></div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>The Variable Consideration Constraint</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">Only include amounts expected to be entitled</div><div class="principle">When consideration is VARIABLE (e.g., rebates, refunds, incentives, performance bonuses), the entity estimates the amount it expects to be entitled to — INCLUDING only amounts that are NOT likely to be significantly reversed when uncertainty resolves. This "CONSTRAINT" prevents premature recognition of revenue that may need to be repaid to the customer.</div></div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Significant Financing components</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">When payment timing creates a financing arrangement</div><div class="principle">If the contract includes a SIGNIFICANT financing component — where the customer pays significantly before or after the entity transfers the goods or services — the entity adjusts the transaction price for the TIME VALUE OF MONEY. The entity discounts the promised consideration to its present value if the customer pays in advance, or accretes the promised consideration if the customer pays after delivery.</div></div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Step 4 — Allocate the Transaction Price</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Proportionally to standalone selling prices</div><div class="principle">The transaction price is ALLOCATED to each performance obligation based on that obligation's RELATIVE STANDALONE SELLING PRICE — the price at which the entity would sell the good or service separately to a customer. When standalone selling prices are not directly observable, the entity estimates them using adjusted market assessment, expected cost plus margin, or residual approach methods.</div></div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Step 5 — Recognise Revenue</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">When or as the customer obtains control</div><div class="principle">Revenue is recognised WHEN (at a point in time) or AS (over time) the customer obtains CONTROL of the promised good or service. Control transfers over time if any of three criteria are met: (1) the customer simultaneously receives and consumes the benefits as the entity performs; (2) the entity's performance creates or enhances an asset that the customer controls as it is created; or (3) the entity's performance does not create an asset with alternative use and has an enforceable right to payment for performance completed to date.</div></div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Licensing — Right to Access vs Right to Use</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">A specific license recognition model</div><div class="principle">Licenses are classified as either a RIGHT TO ACCESS the intellectual property (recognised over time, because the customer simultaneously receives and consumes the benefit) or a RIGHT TO USE the intellectual property (recognised at a point in time, because the customer obtains control at the license transfer date). This distinction is specific to ASC 606 and IFRS 15 and was central to the convergence project.</div></div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Principal vs Agent Considerations</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">Whether the entity controls the good before transfer</div><div class="principle">An entity must determine whether it acts as a PRINCIPAL (controls the good/service before transfer — recognises GROSS revenue) or as an AGENT (facilitates transfer on behalf of another party — recognises NET revenue equal to the fee or commission retained). This determination requires evaluating who controls the promised good or service — the entity or the customer — before it is transferred to the customer.</div></div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Warranties — Assurance-Type vs Service-Type</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Two types of warranties under ASC 606</div><div class="principle">ASSURANCE-TYPE warranties are promises that the product or service conforms to agreed-upon specifications — these are NOT separate performance obligations, and the cost of providing them is accounted for under ASC 460/ASC 326. SERVICE-TYPE warranties are promises to provide additional services beyond assurance — these ARE separate performance obligations, and a portion of the transaction price is allocated to them and recognised as revenue over the warranty period as services are provided.</div></div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Contract Costs — Cross-Reference to ASC 340-40</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">Costs to obtain and fulfil contracts</div><div class="principle">ASC 606 cross-references ASC 340-40 for the treatment of costs to OBTAIN a contract (such as sales commissions) and costs to FULFIL a contract (such as setup or installation costs). Incremental costs of obtaining a contract are capitalised if expected to be recovered; costs of fulfilling a contract are capitalised if they relate directly to a contract, generate or enhance resources that will be used in satisfying future performance obligations, and are expected to be recovered.</div></div>
+    </div>
+
+    <div class="section-header" id="s15"><span class="num">15</span><h2>Worked Example — the Variable Consideration Constraint</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Estimating a rebate obligation</div>
+      <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Volume rebate constraint</div><div class="wk-body">An entity sells $2,000,000 of products to a customer during the year. The contract includes a 3% rebate if total annual purchases exceed $1,800,000. The entity estimates an 80% probability of achieving the rebate threshold.</div><div class="wk-answer">Variable consideration = $2,000,000 × 3% = $60,000. Applying the CONSTRAINED estimate at the expected value ($60,000 × 80%) = <strong>$48,000</strong> included in the transaction price. Total transaction price = $2,000,000 − $48,000 = <strong>$1,952,000</strong>. The remaining $12,000 is not recognised until uncertainty resolves.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s16"><span class="num">16</span><h2>Worked Example — Over-Time Recognition</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Revenue recognised as work progresses</div>
+      <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Construction contract recognised over time</div><div class="wk-body">An entity has a $3,000,000 construction contract with a customer. The contract meets the over-time criteria because the customer controls the asset as it is constructed. By year-end, the entity has completed 35% of the work. Input method (costs-to-cost): costs incurred to date are $840,000; total estimated costs are $2,400,000.</div><div class="wk-answer">Percentage complete = $840,000 / $2,400,000 = 35%. Revenue recognised to date = $3,000,000 × 35% = <strong>$1,050,000</strong>. The entity recognises this $1,050,000 as revenue in the current period, even though the asset is not yet complete or transferred to the customer.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s17"><span class="num">17</span><h2>Worked Example — Principal vs Agent</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Determining gross vs net revenue presentation</div>
+      <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: E-commerce platform</div><div class="wk-body">An e-commerce platform sells products from third-party merchants. The platform sets the price to the customer, takes possession of the goods briefly for fulfilment, but has NO inventory risk. The platform retains a 10% commission from each sale.</div><div class="wk-answer">The platform acts as an AGENT, not a PRINCIPAL — it does NOT control the goods before transfer. Revenue recognised = the 10% COMMISSION FEE only (NET revenue). The gross amount collected from customers is NOT recognised as revenue; it is included in the settlement of the payable to the merchant.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s18"><span class="num">18</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">What ASC 606 requires</div><div class="check-list"><span>Disaggregation of revenue by category (geography, product, timing of recognition)</span><span>Contract balances: receivables, contract liabilities, contract assets</span><span>Performance obligations description and transaction price allocation</span><span>Remaining performance obligations and when revenue will be recognised</span><span>Significant judgments and estimates in applying the five-step model</span></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s19"><span class="num">19</span><h2>Critical Judgments & Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+      <div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Identification of performance obligations within bundled arrangements</span><span>Principal vs agent determination</span><span>Whether the contract meets Step 1 existence criteria</span><span>Classification of licenses as right to access or right to use</span></div></div>
+      <div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Standalone selling prices for allocation</span><span>Variable consideration and the constraint</span><span>Progress measurement for over-time recognition</span><span>Transaction price including financing components</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s20"><span class="num">20</span><h2>ASC 606 vs IFRS 15 — the Rare Remaining Differences</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Comparison — ASC 606 vs IFRS 15</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">US GAAP (ASC 606)</span><span style="color:var(--color-text-info);">IFRS (IFRS 15)</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Core model</span><span>Identical five-step model</span><span>Identical five-step model</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Exposure draft differences</span><span>Nearly eliminated through joint project</span><span>Same converged outcome</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Practical differences</span><span>Minimal — primarily in effective date transition provisions</span><span>Same minimal differences</span></div>
+      </div>
+      <div class="note">ASC 606 and IFRS 15 are SUBSTANTIVELY IDENTICAL. The few remaining differences are primarily transitional provisions and minor scope nuances, not substantive recognition or measurement differences.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s21"><span class="num">21</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Where every ASC 606 event lands</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Point-in-time revenue recognition</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Contract asset/liability; revenue recognised</span></div>
+      <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Over-time revenue recognition</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Contract asset for work in progress</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Variable consideration refund</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Contract liability adjustment; refund expense</span></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s22"><span class="num">22</span><h2>Related Topics</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd"><div class="ctitle cd">Cross-reference map</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 605</span><span>Legacy revenue recognition — superseded by ASC 606 except for limited transitional arrangements</span></div>
+      <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 340</span><span>Other Assets — contract costs capitalisation under ASC 340-40</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 15</span><span>IFRS Revenue from Contracts with Customers — the converged twin of ASC 606</span></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s23"><span class="num">23</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+      <div class="glossary-item"><div class="glossary-term">Performance obligation</div><div class="glossary-def">A promise in a contract to transfer a distinct good or service to the customer.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Contract asset</div><div class="glossary-def">An entity's right to consideration in exchange for goods or services transferred to the customer when that right is conditional on something other than the passage of time.</div></div>
+      </div>
+    </div>
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.ASC606 || []} />
+  </section>
+</StandardPageLayout>

@@ -1,0 +1,124 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc705.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope — an Umbrella Presentation Topic" },
+        { id: "s3", label: "Gross Profit — the Headline Presentation Requirement" },
+        { id: "s4", label: "Cost Formulas and COGS" },
+        { id: "s5", label: "Worked Example — FIFO vs LIFO COGS Presentation" },
+        { id: "s6", label: "Disclosure Requirements" },
+        { id: "s7", label: "Critical Judgments & Estimates" },
+        { id: "s8", label: "ASC 705 vs IFRS — IFRIC 1 and IAS 2 Interaction" },
+        { id: "s9", label: "Statement Mapping" },
+        { id: "s10", label: "Related Topics" },
+        { id: "s11", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="hub"><div class="hub-box"><div class="hub-title">ASC 705 — Cost of Sales and Services</div><div class="hub-sub">Extended reference poster · US GAAP · Subtopic: 705-10 Overall · Presentation and classification of cost of sales, cost of services, and gross profit · USD examples</div></div></div>
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Presenting the cost of generating revenue</div><div class="principle">ASC 705 governs the PRESENTATION of costs of sales and services — the expenses directly tied to generating revenue from ordinary activities. The Conceptual Framework treats these costs as separate from other expenses because they are directly linked to specific revenue-generating transactions, allowing the important analytical measure of gross profit (revenue minus cost of sales) to be presented.</div></div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope — an Umbrella Presentation Topic</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Broad coverage across industries</div><div class="principle">ASC 705 covers cost of sales and cost of services across all industries, providing general guidance on classification and presentation. It addresses when costs should be classified as cost of sales versus operating expenses, and how to present gross profit when it is a meaningful measure of performance.</div></div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Gross Profit — the Headline Presentation Requirement</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">When gross profit must be presented</div><div class="principle">ASC 705 requires entities to present the DEDUCTION of cost of sales from revenue to arrive at gross profit when it is a MEANINGFUL measure of performance — which is the case for most entities engaged in manufacturing, merchandising, or service provision. The determination of whether to present gross profit depends on whether cost of sales can be objectively determined from the entity's accounting records.</div></div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Cost Formulas and COGS</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Linking cost formulas to cost of sales</div><div class="principle">ASC 705 interacts with ASC 330's cost formulas (FIFO, LIFO, weighted-average, specific identification) to determine which inventory costs flow through cost of sales. The choice of cost formula directly affects the amount recognised as cost of sales and, consequently, gross profit.</div></div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Worked Example — FIFO vs LIFO COGS Presentation</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">How cost formula choice flows through to gross profit</div>
+      <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Inventory cost formula and COGS</div><div class="wk-body">An entity has beginning inventory of $200,000, purchases of $800,000, and ending inventory of $250,000 under FIFO. Under LIFO, ending inventory would be $180,000.</div><div class="wk-answer">FIFO COGS = $200,000 + $800,000 − $250,000 = <strong>$750,000</strong>. LIFO COGS = $200,000 + $800,000 − $180,000 = <strong>$820,000</strong>. The FIFO method produces LOWER cost of sales and HIGHER gross profit than LIFO in an inflationary environment.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">What ASC 705 requires</div><div class="check-list"><span>Classification of cost of sales and cost of services in the income statement</span><span>Significant components of cost of sales, if separately disclosed</span><span>Method of inventory costing (FIFO, LIFO, weighted-average, etc.)</span><span>LIFO reserve, if applicable</span></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Critical Judgments & Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+      <div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Determining whether costs qualify as cost of sales versus operating expenses</span><span>Whether gross profit is a meaningful measure requiring separate presentation</span></div></div>
+      <div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Normal capacity for fixed overhead allocation</span><span>Allocation of shared costs between cost of sales and operating expenses</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>ASC 705 vs IFRS — IFRIC 1 and IAS 2 Interaction</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Comparison — ASC 705 vs IFRS</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">US GAAP (ASC 705)</span><span style="color:var(--color-text-info);">IFRS</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Gross profit presentation</span><span>Required when meaningful</span><span>No specific requirement</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Cost formulas</span><span>FIFO, LIFO, weighted-average, specific ID</span><span>FIFO, weighted-average, specific ID (LIFO prohibited)</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>LIFO reserve</span><span>Required disclosure for LIFO users</span><span>Not applicable — LIFO prohibited</span></div>
+      </div>
+      <div class="note">The cost formula divergence between ASC 705 and IAS 2/LIFO is one of the most significant presentation differences between US GAAP and IFRS.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Where every ASC 705 event lands</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Cost of sales recognition</span><span><span class="badge bp">IS</span></span><span>Deducted from revenue to arrive at gross profit</span></div>
+      <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Inventory write-down</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Reduces inventory carrying amount and increases COGS</span></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Related Topics</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd"><div class="ctitle cd">Cross-reference map</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 330</span><span>Inventory — supplies the cost formula that determines which costs flow through COGS</span></div>
+      <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 606</span><span>Revenue from Contracts with Customers — the revenue side of the gross profit equation</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 2</span><span>IFRS Inventories — governs cost formulas under IFRS</span></div>
+      </div>
+      </div>
+    </div>
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.ASC705 || []} />
+  </section>
+</StandardPageLayout>
