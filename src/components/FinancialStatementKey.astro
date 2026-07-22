@@ -5,7 +5,7 @@ Financial statement key legend.
 Props:
 - entries (optional)
 
-Renders abbreviated statement labels (SOFP, SOPL, OCI, Equity) in responsive badge rows. Defaults to the core four statements if no entries are provided.
+Renders abbreviated statement labels (BS, IS, SE, OCI, SCF) in responsive badge rows. Defaults to the core US GAAP statements if no entries are provided.
 */
 
 interface Entry {
@@ -20,10 +20,11 @@ interface Props {
 
 const {
   entries = [
-    { abbreviation: 'SOFP', fullName: 'Statement of financial position (balance sheet)', variant: 'bs' },
-    { abbreviation: 'SOPL', fullName: 'Statement of profit or loss (income statement)', variant: 'bp' },
+    { abbreviation: 'BS', fullName: 'Balance sheet', variant: 'bs' },
+    { abbreviation: 'IS', fullName: 'Income statement', variant: 'bp' },
+    { abbreviation: 'SE', fullName: 'Statement of changes in equity', variant: 'be' },
     { abbreviation: 'OCI', fullName: 'Other comprehensive income', variant: 'bo' },
-    { abbreviation: 'Equity', fullName: 'Statement of changes in equity', variant: 'be' },
+    { abbreviation: 'SCF', fullName: 'Statement of cash flows', variant: 'bc' },
   ],
 } = Astro.props;
 ---
