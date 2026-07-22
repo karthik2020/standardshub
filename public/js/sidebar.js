@@ -39,13 +39,15 @@ function initSidebar() {
 
         const key = `section-${section.dataset.section}`;
 
-        const saved = localStorage.getItem(key);
+        const hasActive = !!section.querySelector(".nav-link.active");
 
-        if (saved !== null) {
-            return saved === "open";
+        if (hasActive) {
+            return true;
         }
 
-        return !!section.querySelector(".nav-link.active");
+        const saved = localStorage.getItem(key);
+
+        return saved !== null ? saved === "open" : false;
 
     }
 
