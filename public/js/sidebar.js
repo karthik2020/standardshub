@@ -325,6 +325,10 @@ window.syncSidebarFromUrl = function(pathname) {
         requestAnimationFrame(() => {
             activeLink.scrollIntoView({ block: "nearest" });
         });
+    } else {
+        sections.forEach(section => {
+            setSectionState(section, getSavedState(section));
+        });
     }
 
     const filterInput = document.getElementById("standard-search");

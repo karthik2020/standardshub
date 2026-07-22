@@ -65,6 +65,7 @@ function initRailPanel() {
     });
 
     window.addEventListener("popstate", syncFromUrl);
+    window.addEventListener("pageshow", syncFromUrl);
 
     // Restore whichever framework the panel was serverside-resolved to
     // (from the current URL) rather than a stale localStorage value, so
