@@ -1,0 +1,210 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc420.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        {
+          id: "s1",
+          label: "Conceptual Framework Linkage",
+        },
+        {
+          id: "s2",
+          label: "Scope & Applicability",
+        },
+        {
+          id: "s3",
+          label: "Recognition Timing — the Headline Divergence from IAS 37",
+        },
+        {
+          id: "s4",
+          label: "Why ASC 420 Rejects the \"Commitment to a Plan\" Trigger",
+        },
+        {
+          id: "s5",
+          label: "One-Time Termination Benefits",
+        },
+        {
+          id: "s6",
+          label: "Contract Termination Costs",
+        },
+        {
+          id: "s7",
+          label: "Other Associated Costs",
+        },
+        {
+          id: "s8",
+          label: "Worked Example — Contrasting Recognition Timing (US GAAP vs IFRS)",
+        },
+        {
+          id: "s9",
+          label: "Worked Example — One-Time Termination Benefit With a Future Service Requirement",
+        },
+        {
+          id: "s10",
+          label: "Disclosure Requirements",
+        },
+        {
+          id: "s11",
+          label: "Critical Judgments & Estimates",
+        },
+        {
+          id: "s12",
+          label: "ASC 420 vs IAS 37 — the Constructive Obligation Divergence",
+        },
+        {
+          id: "s13",
+          label: "Statement Mapping",
+        },
+        {
+          id: "s14",
+          label: "Related Topics",
+        },
+        {
+          id: "s15",
+          label: "Glossary",
+        },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="hub"><div class="hub-box"><div class="hub-title">ASC 420 — Exit or Disposal Cost Obligations</div><div class="hub-sub">Extended reference poster · US GAAP · Subtopic: 420-10 Overall · Counterpart of IAS 37's restructuring provisions · USD examples</div></div></div>
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci"><div class="ctitle ci">Restructuring costs still need a genuine present obligation</div><div class="principle">A restructuring or exit plan, by itself, is simply a management INTENTION until specific triggering events occur that create a genuine present obligation to a third party. ASC 420 takes a firm position on WHEN that obligation genuinely arises — deliberately rejecting the idea that merely committing to a plan is itself enough, in favour of requiring each SPECIFIC cost item to independently meet the liability recognition criteria.</div></div>
+      <div class="card cs"><div class="ctitle cs">The most heavily tested recognition-timing divergence in this area</div><div class="principle">ASC 420's recognition philosophy stands in DIRECT, well-known contrast to IAS 37's CONSTRUCTIVE OBLIGATION approach for restructuring provisions — producing a genuinely different, heavily tested TIMING outcome for economically identical restructuring plans (Section 12).</div></div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope & Applicability</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Costs associated with exit or disposal activities</div><div class="principle">ASC 420 applies to costs associated with EXIT or DISPOSAL activities, including ONE-TIME employee termination benefits, CONTRACT termination costs, and OTHER costs to consolidate facilities or relocate employees — covering the typical components of a corporate restructuring plan.</div></div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Recognition Timing — the Headline Divergence from IAS 37</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">A liability recognised when INCURRED, not when a plan is approved</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">A liability for a cost associated with an exit or disposal activity is recognised and measured at FAIR VALUE in the period in which the liability is INCURRED — meaning the SPECIFIC cost item itself meets the definition of a liability (generally, the event OBLIGATING the entity has occurred) — NOT merely when management COMMITS to, or approves, an exit or restructuring plan. Committing to a plan, by itself, does NOT create a liability under ASC 420.</div></div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Why ASC 420 Rejects the \"Commitment to a Plan\" Trigger</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">A deliberate policy choice, contrasted with IAS 37</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">ASC 420 was issued (as SFAS 146) specifically to REPLACE an earlier, more permissive US standard that had allowed liability recognition upon a mere commitment to an exit plan — the FASB concluded that a commitment ALONE does not create a present obligation to OTHERS, since management can always change its mind before specific binding actions are taken. <strong>IAS 37, by contrast, permits (and historically has emphasised) recognising a restructuring PROVISION once management has a sufficiently DETAILED FORMAL PLAN and has raised a VALID EXPECTATION in those affected</strong> (typically by announcing or beginning to implement the plan) — a CONSTRUCTIVE obligation arising from the announcement itself, without necessarily any individual cost item independently meeting ASC 420's stricter "incurred" test yet.</div></div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>One-Time Termination Benefits</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Timing depends on whether future service is required</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">If employees are REQUIRED to render service until termination beyond a "MINIMUM RETENTION PERIOD" to receive the one-time termination benefit, the liability is recognised RATABLY over the FUTURE SERVICE PERIOD. If NO significant future service is required, the liability is recognised at the COMMUNICATION DATE — the date employees are informed of the plan's specific terms (which employees are affected, benefit amounts, and timing).</div></div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Contract Termination Costs</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Recognised upon termination or cessation of use</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">A liability for terminating a CONTRACT (other than a lease, now separately addressed under ASC 842) is recognised when the entity TERMINATES the contract in accordance with its terms. For a contract the entity will CONTINUE to use but that no longer provides economic benefit, the liability is recognised when the entity CEASES using the right conveyed by the contract — both measured at fair value at the relevant trigger date, not upon the broader restructuring plan's approval.</div></div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Other Associated Costs</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">Recognised in the period incurred</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Other costs associated with an exit or disposal activity — such as costs to CONSOLIDATE or CLOSE facilities, or to RELOCATE employees — are recognised as a liability in the period the costs are INCURRED (not upon commitment to the overall plan), measured at fair value.</div></div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Worked Example — Contrasting Recognition Timing (US GAAP vs IFRS)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">The same restructuring announcement, two different recognition dates</div>
+      <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: A plant closure announcement</div><div class="wk-body">On 1 November, a company's board APPROVES a detailed plan to close a manufacturing plant, and PUBLICLY ANNOUNCES the closure the same day, including the specific plant, the number of affected employees, and the expected timeline. Actual employee terminations and facility exit costs will not be legally triggered/incurred until several months later, in the following fiscal year.</div><div class="wk-answer"><strong>Under IAS 37:</strong> the PUBLIC ANNOUNCEMENT of a sufficiently detailed plan on 1 November creates a CONSTRUCTIVE obligation — a restructuring PROVISION is recognised IMMEDIATELY, in the CURRENT year, for the estimated exit costs.<br><strong>Under ASC 420:</strong> NO liability is recognised on 1 November merely because the board approved and announced the plan — recognition is DEFERRED until each SPECIFIC cost item (e.g. employee termination benefits at the communication date, contract termination costs when contracts are actually terminated) independently meets its own incurred/recognition criteria, likely pushing MOST of the expense recognition into the FOLLOWING fiscal year instead.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Worked Example — One-Time Termination Benefit With a Future Service Requirement</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Recognising a benefit ratably over a required retention period</div>
+      <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: A 6-month retention requirement</div><div class="wk-body">On 1 March, a company communicates a restructuring plan to 50 affected employees, offering a total of $2,500,000 in termination benefits, CONDITIONAL on each employee continuing to work until their termination date on 1 September (a 6-month future service requirement, exceeding the "minimum retention period" threshold).</div><div class="wk-answer">Because significant FUTURE SERVICE is required, the $2,500,000 liability is recognised RATABLY over the 6-month service period from 1 March to 1 September — approximately $416,667 per month — rather than the full amount being recognised immediately at the 1 March communication date.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">What ASC 420 requires</div><div class="check-list"><span>Description of the exit or disposal activity, including the facts and circumstances leading to it and the expected completion date</span><span>Total costs expected to be incurred, by major cost type (termination benefits, contract termination costs, other associated costs)</span><span>Reconciliation of the liability's beginning and ending balance, showing costs incurred, cash paid, and any adjustments</span></div></div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Critical Judgments & Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+      <div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Whether employees are required to render "significant" future service, determining ratable versus point-in-time recognition</span><span>Identifying the specific trigger event (communication date, termination date, cessation of contract use) for each cost component</span></div></div>
+      <div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Fair value of termination benefits, contract termination costs, and other associated costs</span><span>Total expected costs of the exit or disposal activity</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>ASC 420 vs IAS 37 — the Constructive Obligation Divergence</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Comparison — ASC 420 vs IAS 37's restructuring provisions</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">US GAAP (ASC 420)</span><span style="color:var(--color-text-info);">IFRS (IAS 37)</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Trigger for recognition</span><span>Each SPECIFIC cost item independently meets liability criteria ("incurred")</span><span>A sufficiently detailed, ANNOUNCED plan creates a CONSTRUCTIVE obligation for the WHOLE restructuring</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Board approval/commitment alone</span><span>NOT sufficient to recognise a liability</span><span>Can be SUFFICIENT, combined with a public announcement raising valid expectations</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Typical overall timing effect</span><span>Recognition tends to be LATER, spread across multiple trigger events</span><span>Recognition tends to be EARLIER, often as a single upfront provision upon announcement</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>One-time termination benefits with future service</span><span>Ratable recognition over the required service period</span><span>IAS 37/IAS 19 principles generally align on spreading benefits requiring future service, though the overall restructuring provision itself may still be recognised earlier</span></div>
+      </div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ This recognition-TIMING divergence is one of the most consequential and frequently tested differences in restructuring accounting — the SAME board-approved, publicly announced restructuring plan can result in a full upfront expense under IFRS in the year of announcement, while US GAAP defers most of that expense to later periods as individual cost items are actually incurred.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Where every ASC 420 event lands</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Board approval/announcement of an exit plan alone</span><span>None</span><span>No liability recognised under US GAAP at this stage</span></div>
+      <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>One-time termination benefit, no future service required</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Recognised at the communication date</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>One-time termination benefit, future service required</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Recognised ratably over the service period</span></div>
+      <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Contract termination cost</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Recognised at actual termination or cessation of use</span></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Related Topics</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd"><div class="ctitle cd">Cross-reference map</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 450</span><span>Contingencies — supplies the general probable/estimable liability recognition threshold this Topic's specific triggers build on</span></div>
+      <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 842</span><span>Leases — now governs lease-related "cease-use" scenarios previously addressed more generally here</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 712</span><span>Compensation—Nonretirement Postemployment Benefits — governs termination benefits provided under an ONGOING plan, distinct from this Topic's "one-time" benefits</span></div>
+      </div>
+      </div>
+      <div class="card cn"><div class="ctitle cn">Quick-reference glossary preview</div>
+      <div class="glossary-item"><div class="glossary-term">One-time termination benefit</div><div class="glossary-def">A termination benefit provided under a plan that applies to a specific restructuring event, distinct from benefits under an ongoing severance plan.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Communication date</div><div class="glossary-def">The date affected employees are informed of a plan's specific terms, a key recognition trigger for one-time termination benefits with no future service requirement.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s15"><span class="num">15</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+      <div class="glossary-item"><div class="glossary-term">Minimum retention period</div><div class="glossary-def">The threshold period of required future service beyond which one-time termination benefit recognition must be spread ratably rather than recognised at the communication date.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Constructive obligation (IFRS concept)</div><div class="glossary-def">An obligation arising from an entity's own actions (such as announcing a detailed restructuring plan) that creates a valid expectation in others, sufficient to trigger provision recognition under IAS 37 — a concept with no equivalent recognition trigger under ASC 420.</div></div>
+      </div>
+    </div>
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.ASC420} />
+  </section>
+</StandardPageLayout>

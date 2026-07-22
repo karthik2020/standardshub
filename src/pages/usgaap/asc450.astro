@@ -1,0 +1,254 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc450.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        {
+          id: "s1",
+          label: "Conceptual Framework Linkage",
+        },
+        {
+          id: "s2",
+          label: "Scope & Applicability",
+        },
+        {
+          id: "s3",
+          label: "The Three Probability Tiers",
+        },
+        {
+          id: "s4",
+          label: "Loss Contingencies — Recognition Criteria",
+        },
+        {
+          id: "s5",
+          label: "Measuring a Range of Loss — the Minimum-of-Range Rule",
+        },
+        {
+          id: "s6",
+          label: "Gain Contingencies — Not Recognised Until Realised",
+        },
+        {
+          id: "s7",
+          label: "Litigation Contingencies",
+        },
+        {
+          id: "s8",
+          label: "Unasserted Claims",
+        },
+        {
+          id: "s9",
+          label: "Insurance Recoveries",
+        },
+        {
+          id: "s10",
+          label: "Worked Example — Loss Contingency at the Minimum of a Range",
+        },
+        {
+          id: "s11",
+          label: "Worked Example — a Gain Contingency Left Unrecognised",
+        },
+        {
+          id: "s12",
+          label: "Disclosure Requirements",
+        },
+        {
+          id: "s13",
+          label: "Critical Judgments & Estimates",
+        },
+        {
+          id: "s14",
+          label: "ASC 450 vs IAS 37 — Comprehensive Comparison",
+        },
+        {
+          id: "s15",
+          label: "Statement Mapping",
+        },
+        {
+          id: "s16",
+          label: "Related Topics",
+        },
+        {
+          id: "s17",
+          label: "Glossary",
+        },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="hub"><div class="hub-box"><div class="hub-title">ASC 450 — Contingencies</div><div class="hub-sub">Extended reference poster · US GAAP · Subtopics: 450-20 Loss Contingencies, 450-30 Gain Contingencies · Counterpart of IAS 37 · USD examples</div></div></div>
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">The linchpin Topic linking the conceptual framework to real-world uncertainty</div><div class="principle">ASC 450 is the most practically consequential Liability Topic in the 400s — it governs what happens when an entity faces a UNCERTAIN future outflow (or inflow) of resources. Drawing directly on the CON 6/CON 8 liability/asset definitions, ASC 450 operationalises the recognition threshold by establishing PROBABILITY-BASED rules: losses are recognised when PROBABLE and reasonably estimable; gains are never recognised until realised. It thus serves as the bridge between the Conceptual Framework's abstract liability criterion and the messy reality of lawsuits, warranties, guarantees, and environmental claims.</div></div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope & Applicability</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Broadly applies to all loss and gain contingencies</div><div class="principle">ASC 450 applies to ALL nongovernmental entities and encompasses virtually every type of contingency, including loss contingencies (ASC 450-20) and gain contingencies (ASC 450-30). It does NOT address: (a) contingencies arising from business combinations (ASC 805), (b) employee benefit plan contingencies (ASC 715), (c) contingencies related to uncertainties in income taxes (ASC 740), (d) commitments (ASC 440), or (e) contingencies covered by other specific Topics. Those are handled by their respective sections — ASC 450 covers the RESIDUAL contingency population.</div></div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>The Three Probability Tiers</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">The language of probability that drives every recognition decision</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1fr 1fr 1.5fr;"><span>Probability tier</span><span>Meaning</span><span>ASC 450 consequence</span></div>
+      <div class="tr" style="grid-template-columns:1fr 1fr 1.5fr;"><span>Probable</span><span>The future event or events are likely to occur</span><span>If the loss amount can be reasonably estimated, recognise a LIABILITY in the financial statements; disclose if not reasonably estimable</span></div>
+      <div class="tr alt" style="grid-template-columns:1fr 1fr 1.5fr;"><span>Reasonably possible</span><span>The chance of the future event is more than remote but less than probable</span><span>Disclose the nature and an estimate of the possible loss or range of loss; do NOT recognise</span></div>
+      <div class="tr" style="grid-template-columns:1fr 1fr 1.5fr"><span>Remote</span><span>The chance of the future event is slight</span><span>Neither recognise nor disclose — no balance sheet or note entry required</span></div>
+      </div>
+      <div class="callout warn callout--chip">⚠️ The "probable" threshold under US GAAP is a SUBSTANTIVELY HIGHER bar than the "more likely than not" (>50%) threshold under IAS 37 — this is one of the most practically significant differences between the two frameworks, and it directly affects which loss contingencies appear on each framework's balance sheet.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Loss Contingencies — Recognition Criteria</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">The two-part test: probability AND reasonable estimability</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">A loss contingency is RECOGNISED as a liability when BOTH of the following are met: (1) it is PROBABLE that a liability has been incurred as of the balance sheet date — meaning the underlying event or condition has occurred (or the obligating event has happened), AND (2) the amount of the loss can be REASONABLY ESTIMATED. If EITHER condition fails, the contingency is NOT recognised — but if at least "reasonably possible," disclosure is required (Section 3). The "probable" threshold is deliberately high — it requires more than a 50% likelihood and accommodates both quantitative evidence (actuarial studies, settlement history) and qualitative evidence (case law trends, legal counsel opinions).</div></div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Measuring a Range of Loss — the Minimum-of-Range Rule</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">When no single best estimate exists, use the floor of the range</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">If the estimated loss is expressed as a RANGE (e.g. $2M–$5M based on different litigation scenarios), and no amount within the range is a BETTER estimate than any other, ASC 450-20 REQUIRES the entity to recognise the MINIMUM of the range. If one amount within the range IS a better estimate (e.g. $3.5M based on the most likely court outcome), that amount is recognised instead. This "minimum of range" rule is a distinctive US GAAP mechanic with no exact IAS 37 equivalent — IAS 37 requires the BEST ESTIMATE of the expenditure required, which may be somewhere in the middle of the range or weighted by probability, not necessarily the minimum.</div></div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Gain Contingencies — Not Recognised Until Realised</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">A one-way door: gains can never be anticipated</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">ASC 450-30 explicitly prohibits the RECOGNITION of gains from contingent transactions until the gain is REALISED or REALISABLE — even if the gain is probable. This reflects the CONSERVATISM principle deeply embedded in US GAAP: anticipated revenues are never recognised. Examples of gain contingencies include: (a) possible tax refunds being contested by a tax authority, (b) anticipated proceeds from a not-yet-closed sale of a business segment, (c) possible insurance recoveries where a claim is not yet settled. These are disclosed in the notes if material, but NEVER recognised as assets before realisation.</div></div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Litigation Contingencies</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Informed legal opinion undergirds the probable/range assessment</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">For litigation contingencies, a loss is accrued when: (1) it is probable that an unfavourable outcome will occur, AND (2) the amount can be reasonably estimated. Crucially, ASC 450 does NOT require absolute certainty — an entity need NOT await a final court judgment before accruing; the accrual can be based on the most likely outcome or the minimum of an estimated range. CHARGE-OFFS are typically based on the LOWEST amount in the range when no better estimate exists, LEAVING POTENTIAL UPSIDE UNRECOGNISED — consistent with the conservatism constraint. Legal counsel letters documenting the assessment are a standard disclosure accompaniment.</div></div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Unasserted Claims</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Disclosed only when a claim is probable of being asserted</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">An UNASSERTED CLAIM — one where no formal litigation, demand, or investigation has yet been filed — does NOT trigger disclosure merely because management is aware of a potential exposure. Disclosure of an unasserted claim is required ONLY IF: (a) it is PROBABLE that the claim will be asserted, AND (b) receipt of an adverse outcome is probable if the claim is asserted, AND (c) the amount is reasonably estimable. This is a HIGH threshold — it prevents speculative note disclosures for every vaguely potential legal exposure. If the threshold is met, disclosure should include the nature of the claim, the expected timing, and an estimate of the possible loss or range.</div></div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Insurance Recoveries</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd"><div class="ctitle cd">Loss gross — recovery separate</div><div class="principle">ASC 450 requires the LOSS to be recognised on a GROSS basis — the full amount of the estimated loss is recorded as a liability, and insurance coverage is NOT netted off. The separate INSURANCE RECOVERABLE is recognised as an ASSET only when: (a) the insurance settlement is PROBABLE of being received, AND (b) the amount is reasonably estimable — typically evidenced by an insurer's partial or full acknowledgement of the claim. This gross-recognition approach mirrors IAS 37's treatment almost exactly.</div></div>
+      <div class="card cn"><div class="ctitle cn">A subtle distinction with ASC 410-30</div><div class="principle">While ASC 450 governs insurance recoveries in the general loss-contingency context, ASC 410-30 specifically addresses insurance in the environmental remediation context — a subtle but important distinction. Insurance recoveries for environmental remediation under ASC 410-30 must be treated in the SAME gross manner, with the recovery separately recognised as an asset, consistent with the broader ASC 450 principle but within the more prescriptive environmental context.</div></div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Worked Example — Loss Contingency at the Minimum of a Range</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Litigation with a quantified loss range</div>
+      <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: A patent infringement suit with a $3M–$10M loss range</div><div class="wk-body">A product company is sued for patent infringement. Legal counsel estimates the following outcomes: (a) full dismissal — 20% probability, no loss; (b) partial damages verdict of $3M — 30% probability; (c) partial damages verdict of $6M — 30% probability; (d) full damages verdict of $10M — 20% probability. Total probability-weighted damage = $5.6M. Management concludes the likelihood of an unfavourable outcome is PROBABLE. No single verdict outcome is a "better estimate" than any other.</div><div class="wk-answer">Since no amount in the $3M–$10M range is a better estimate, ASC 450 requires accruing the MINIMUM: $3M. Debit Litigation loss $3M / Credit Litigation liability $3M. The note disclosure then reveals the $10M upper bound to financial statement users. If management had concluded $6M was the most likely verdict, the $6M "best estimate" (not the minimum) would have been used, illustrating the lever management has in reaching this judgement.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Worked Example — a Gain Contingency Left Unrecognised</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">A probable tax refund that cannot be recognised</div>
+      <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: A disputed tax position with a probable refund</div><div class="wk-body">A company has filed a protest against a $4M additional tax assessment from the tax authority. Legal counsel rates the likelihood of a successful outcome at 75% (probable). The company expects to recover approximately $3.5M.</div><div class="wk-answer">ZERO is recognised in the financial statements. ASC 450-30 PROHIBITS recognising any gain from a gain contingency, even when probable — only realised or realizable gains are recognised. The $3.5M expected refund is DISCLOSED in the notes (nature of the dispute, amount sought, expected timing). Once the tax authority formally agrees (or the court rules in the company's favour), the gain is recognised in the period of settlement: Debit Cash $3.5M / Credit Income tax recovery $3.5M.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">What ASC 450 requires</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.5fr 1.5fr;"><span>Category</span><span>Disclosure requirement</span></div>
+      <div class="tr" style="grid-template-columns:1.5fr 1.5fr;"><span>Accrued loss contingencies</span><span>Nature of the contingency; the amount accrued; any separate insurance recovery amount recognised</span></div>
+      <div class="tr alt" style="grid-template-columns:1.5fr 1.5fr;"><span>Loss contingencies NOT accrued but reasonably possible</span><span>Nature; an estimate of the possible loss or range; if no estimate can be made, a statement to that effect</span></div>
+      <div class="tr" style="grid-template-columns:1.5fr 1.5fr"><span>Gain contingencies</span><span>Nature only if material — NO amount disclosed for the gain itself, to avoid giving misleading impressions of recognising them</span></div>
+      <div class="tr alt" style="grid-template-columns:1.5fr 1.5fr;"><span>Reasonable estimation possible</span><span>ACCRUE the loss at the minimum of the range (Section 5); disclose the full range including the upper limit</span></div>
+      </div>
+      <div class="note">The asymmetric disclosure requirements — losses disclosed in full, gains disclosed only by nature — are a direct application of the CONSERVATISM constraint and are arguably the most practically significant feature of ASC 450.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Critical Judgments & Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+      <div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Is the outcome "probable" vs "reasonably possible" — this threshold judgement is the single most consequential decision under ASC 450</span><span>Whether a claim is "unasserted" — i.e. whether a probable assertion threshold is met, triggering disclosure</span><span>Whether an insurance recovery is probable and reasonably estimable, permitting the offsetting asset</span></div></div>
+      <div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>The loss amount or range for litigation and warranty claims, often determined by legal counsel and acturial analysis</span><span>Whether a particular point estimate is a "better estimate" than the minimum of the range, triggering different accrual mechanics</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>ASC 450 vs IAS 37 — Comprehensive Comparison</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Side-by-side — the most practically significant US GAAP vs IFRS divergence</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">US GAAP (ASC 450-20/30)</span><span style="color:var(--color-text-info);">IFRS (IAS 37)</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Loss recognition threshold</span><span>PROBABLE (higher bar, closer to "likely")</span><span>POSSIBLE or MORE LIKELY THAN NOT (>50% probability)</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Range measurement</span><span>Accrue the MINIMUM of the range when no point estimate is better</span><span>Best estimate (expected value or most likely outcome); can use probability-weighted average</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Gain contingencies</span><span>Never recognised when realised or realisable AND the inflow is virtually certain; disclosed by nature only</span><span>Recognised when virtually certain — a HIGHER bar than the loss threshold, making the asymmetry explicitly asymmetrical under IAS 37 too</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Insurance recoveries</span><span>Gross recognition — recoverable recognised as separate asset when both probable and estimable</span><span>IAS 37.66 equivalent — gross treatment consistent; IFRS 17 for insurance contracts add further complexity</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Unasserted claims</span><span>Disclose if probable assertion is expected AND an unfavorable outcome is probable</span><span>IAS 37 requires disclosure if an outflow is more likely than not — lower threshold may force more disclosures</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Risk-adjusted discounting</span><span>NOT permitted for long-term provisions — discounting is effectively prohibited in practice</span><span>IAS 37.45 REQUIRES discounting for long-term provisions when the time value of money is material — using a pre-tax discount rate reflecting current market assessments</span></div>
+      </div>
+      <div class="note">The probability threshold for loss recognition is largely a practice divergence — merger accounting and cross-listed entities often reconcile the two, but the difference is genuinely significant for segment reporting (certain litigation items and warranty costs may appear under IFRS but not under US GAAP on the same entity). The discounting prohibition is arguably the single most technically distinct difference — IAS 37-revised provisions are explicitly discounted while US GAAP generally preserves the face value of provision estimates.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s15"><span class="num">15</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Where every ASC 450 event lands</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr"><span>Loss contingency accrued — litigation</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Liability on BS; expense in IS; discontinued operations are excluded</span></div>
+      <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr"><span>Loss contingency accrued — warranty</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Accrued warranty liability; cost recognised when related revenue is recognised</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr"><span>Insurance recovery recognised</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Separate asset; may be offset against loss if gain is realised in same period</span></div>
+      <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr"><span>Gain contingency realised</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Recognised only when realised or realisable; prior disclosures updated</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr"><span>Loss contingency disclosed only (not accrued)</span><span><span class="badge bs">BS</span> — notes only</span><span>Reasonably possible losses: recognised in notes; no balance sheet entry</span></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s16"><span class="num">16</span><h2>Related Topics</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd"><div class="ctitle cd">Cross-reference map</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 410</span><span>Asset Retirement and Environmental Obligations — environmental remediation losses may simultaneously fall under ASC 410-30 and ASC 450</span></div>
+      <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 420</span><span>Exit and Disposal Cost Obligations — severance and restructuring costs overlap with loss-contingency recognition</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 715</span><span>Compensation — Retirement Benefits — defined benefit plan deficits are a long-term, probability-weighted element of the broader contingency landscape</span></div>
+      <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 740</span><span>Income Taxes — uncertain tax positions are governed by ASC 740's own "more likely than not" threshold, distinct from ASC 450's probable threshold</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 440</span><span>Commitments — provides the disclosure framework for commitments when no ASC 450 recognition threshold is crossed</span></div>
+      </div>
+      </div>
+      <div class="card cn"><div class="ctitle cn">Quick-reference glossary preview</div>
+      <div class="glossary-item"><div class="glossary-term">Contingency</div><div class="glossary-def">An existing condition, situation, or set of circumstances involving a significant degree of uncertainty that may be resolved when one or more future events occur or fail to occur.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Unasserted claim</div><div class="glossary-def">A contingency where no formal demand, legal action, or investigation has yet been initiated, but the circumstances suggest one may be forthcoming — disclosure is only triggered when assertion is probable.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s17"><span class="num">17</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+
+    <Glossary entries={[
+      { term: "Accrued loss contingency", definition: "A loss contingency that meets both the probable and reasonably estimable thresholds, recognised as a liability in the balance sheet and an expense in the income statement." },
+      { term: "Best estimate (IAS 37 equivalent)", definition: "The amount an entity would rationally pay to settle the obligation at the balance sheet date — IAS 37's preferred measurement approach, distinct from ASC 450's minimum-of-range rule when no best estimate exists." },
+      { term: "Executory contract", definition: "A contract under which the required performance of both parties is not yet complete; such contracts generally do not give rise to a present obligation under ASC 450 or IAS 37." },
+      { term: "Gain contingency", definition: "An existing situation involving uncertainty about future events that will be resolved when one or more future events occur — gains from gain contingencies are recognised only when realised or realisable, and only when virtually certain." },
+      { term: "Minimum-of-range rule", definition: "ASC 450-20's distinctive measurement requirement — when a loss estimate is expressed as a range and no amount within the range is a better estimate, accrue the MINIMUM of the range." },
+      { term: "Probable (US GAAP)", definition: "The highest of ASC 450's three probability thresholds — indicating the future event or events are likely to occur. This is a HIGHER bar than IAS 37's 'more likely than not' (>50%), and does not require a majority likelihood but does require more than a remote chance." },
+      { term: "Reasonably possible", definition: "The middle probability tier under ASC 450 — more likely than remote but less likely than probable. Loss contingencies at this tier are disclosed in the notes but NOT recognised in the financial statements." },
+      { term: "Remote", definition: "The lowest probability tier under ASC 450 — the chance of the future event occurring is slight. Neither recognition nor disclosure is required for remote contingencies." },
+      { term: "Self-insurance", definition: "A risk management strategy where an entity retains its own risk rather than purchasing insurance; ASC 450 generally requires a liability only for events that have already occurred and are probable — self-insurance reserves for future events are generally NOT recognised as liabilities if no past triggering event has occurred." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.ASC450 || []} />
+  </section>
+</StandardPageLayout>
