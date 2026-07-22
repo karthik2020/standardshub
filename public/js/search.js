@@ -108,6 +108,12 @@ document.addEventListener("DOMContentLoaded", () => {
             input.focus();
         });
 
+        input.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                button.click();
+            }
+        });
+
     });
 
 });

@@ -166,6 +166,9 @@ function initSidebar() {
                     section.classList.add("expanded");
                     items.classList.remove("collapsed");
                     items.style.maxHeight = items.scrollHeight + "px";
+                    if (section.tagName === "DETAILS") {
+                        section.open = true;
+                    }
                 }
 
             }
@@ -179,7 +182,12 @@ function initSidebar() {
         }
 
         if (filterInput) {
-            sessionStorage.setItem(FILTER_KEY, filterInput.value);
+            const term = filterInput.value.trim();
+            if (term) {
+                sessionStorage.setItem(FILTER_KEY, term);
+            } else {
+                sessionStorage.removeItem(FILTER_KEY);
+            }
         }
 
     }
@@ -332,7 +340,13 @@ window.syncSidebarFromUrl = function(pathname) {
     }
 
     const filterInput = document.getElementById("standard-search");
-    if (filterInput) filterInput.value = "";
+    if (filterInput) {
+        filterInput.value = "";
+        const wrapper = filterInput.closest(".search-input-wrapper");
+        if (wrapper) {
+            wrapper.classList.remove("has-value", "focused");
+        }
+    }
     const clearButton = document.getElementById("search-action");
     if (clearButton) clearButton.classList.remove("visible");
     const emptyState = document.getElementById("sidebar-empty");
@@ -344,8 +358,25 @@ window.syncSidebarFromUrl = function(pathname) {
         const items = s.querySelector(".section-items");
         if (items) items.classList.remove("collapsed");
     });
+    sessionStorage.removeItem(FILTER_KEY);
 
-};
+    // ==========================================================
+    // Navigation sync
+    // ==========================================================
+
+    window.addEventListener("popstate", () => {
+        if (typeof window.syncSidebarFromUrl === "function") {
+            window.syncSidebarFromUrl(window.location.pathname);
+        }
+    });
+
+    window.addEventListener("pageshow", () => {
+        if (typeof window.syncSidebarFromUrl === "function") {
+            window.syncSidebarFromUrl(window.location.pathname);
+        }
+    });
+
+}
 
 // Restore synchronously when the sidebar is already in the DOM (the normal
 // case: this script sits at the end of <body>). Fall back to DOMContentLoaded
