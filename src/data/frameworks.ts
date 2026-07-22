@@ -31,6 +31,8 @@ export interface FrameworkConfig {
   lucideIcon: string;
   /** Font Awesome icon name for framework badges and cards. */
   faIcon: string;
+  /** ASC Codification categories (US GAAP only). */
+  categories?: readonly string[];
   /** Framework status. */
   status: "active" | "planned" | "historical";
 }
@@ -132,22 +134,33 @@ export const FRAMEWORK_CONFIG: Record<string, FrameworkConfig> = {
     faIcon: "building",
     status: "active",
   },
-  usgaap: {
-    id: "usgaap",
-    code: "US GAAP",
-    displayName: "US GAAP",
-    fullName: "U.S. Generally Accepted Accounting Principles",
-    description:
-      "U.S. Generally Accepted Accounting Principles (US GAAP) are the accounting standards issued by the FASB for nongovernmental entities in the United States, organised within the FASB Accounting Standards Codification.",
-    route: "/usgaap",
-    primary: "#0F172A",
-    light: "#F8FAFC",
-    soft: "#F1F5F9",
-    dark: "#1E293B",
-    lucideIcon: "BookText",
-    faIcon: "book-open",
-    status: "active",
-  },
+   usgaap: {
+      id: "usgaap",
+      code: "US GAAP",
+      displayName: "US GAAP",
+      fullName: "U.S. Generally Accepted Accounting Principles",
+      description:
+        "U.S. Generally Accepted Accounting Principles (US GAAP) are the accounting standards issued by the FASB for nongovernmental entities in the United States, organised within the FASB Accounting Standards Codification.",
+      route: "/usgaap",
+      primary: "#0F172A",
+      light: "#F8FAFC",
+      soft: "#F1F5F9",
+      dark: "#1E293B",
+      lucideIcon: "BookText",
+      faIcon: "book-open",
+      categories: [
+        "General Principles",
+        "Presentation",
+        "Assets",
+        "Liabilities",
+        "Equity",
+        "Revenue",
+        "Expenses",
+        "Broad Transactions",
+        "Industry",
+      ],
+      status: "active",
+    },
   ifric: {
     id: "ifric",
     code: "IFRIC",

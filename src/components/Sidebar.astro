@@ -7,7 +7,7 @@ Primary navigation sidebar for the standards library.
 Props:
 - none (uses Astro.url.pathname for active state)
 
-Renders collapsible sections for IAS, IFRS, and Ind AS with live search, count badges, and footer shortcuts. Active section expands automatically based on the current route.
+ Renders collapsible sections for IAS, IFRS, Ind AS, and US GAAP with live search, count badges, and footer shortcuts. Active section expands automatically based on the current route.
 */
 
 import standards from "../data/standards.json";
@@ -78,6 +78,7 @@ const currentPath = Astro.url.pathname;
           if (code === "IFRS for SMEs") return "IFRSForSMEs";
           if (code === "IFRIC") return "IFRIC";
           if (code === "SIC") return "SIC";
+          if (code === "US GAAP") return "USGAAP";
           return code;
         };
         const sectionStandards = standards[codeToKey(framework.code)] ?? [];
@@ -88,7 +89,9 @@ const currentPath = Astro.url.pathname;
             <summary class="sidebar-section-header">
               <div class="section-title">
                 {IconComponent && <IconComponent size={17} strokeWidth={2} />}
-                <span>{framework.displayName}</span>
+                <a href={framework.route} class="sidebar-framework-link">
+                  <span>{framework.displayName}</span>
+                </a>
               </div>
 
               <div class="section-actions">
@@ -101,41 +104,105 @@ const currentPath = Astro.url.pathname;
             </summary>
 
             <div class="section-items">
-              <ul class="sidebar-items">
-                {
-                  sectionStandards.filter((item: any) => !item.status).map((item: any) => (
-                    <li>
-                      <NavLink
-                        href={item.url}
-                        title={item.title}
-                        section={framework.id}
-                        code={item.code}
-                        standardTitle={item.title}
-                      >
-                        {item.code}
-                      </NavLink>
-                    </li>
-                  ))
-                }
-              </ul>
-              <ul class="sidebar-items">
-                <li class="sidebar-group-label">Historical Standards</li>
-                {
-                  sectionStandards.filter((item: any) => item.status).map((item: any) => (
-                    <li>
-                      <NavLink
-                        href={item.url}
-                        title={item.title}
-                        section={framework.id}
-                        code={item.code}
-                        standardTitle={item.title}
-                      >
-                        {item.code}
-                      </NavLink>
-                    </li>
-                  ))
-                }
-              </ul>
+              {
+                framework.categories
+                  ? framework.categories.map((category) => {
+                      const activeItems = sectionStandards.filter(
+                        (item: any) => !item.status && item.category === category
+                      );
+                      const historicalItems = sectionStandards.filter(
+                        (item: any) => item.status && item.category === category
+                      );
+                      if (activeItems.length === 0 && historicalItems.length === 0) {
+                        return null;
+                      }
+                      return (
+                        <Fragment>
+                          <li class="sidebar-category-label">
+                            {category}
+                          </li>
+                          <ul class="sidebar-items">
+                            {
+                              activeItems.map((item: any) => (
+                                <li>
+                                  <NavLink
+                                    href={item.url}
+                                    title={item.title}
+                                    section={framework.id}
+                                    code={item.code}
+                                    standardTitle={item.title}
+                                  >
+                                    {item.code}
+                                  </NavLink>
+                                </li>
+                              ))
+                            }
+                          </ul>
+                          {
+                            historicalItems.length > 0 && (
+                              <ul class="sidebar-items">
+                                <li class="sidebar-group-label">Historical Standards</li>
+                                {
+                                  historicalItems.map((item: any) => (
+                                    <li>
+                                      <NavLink
+                                        href={item.url}
+                                        title={item.title}
+                                        section={framework.id}
+                                        code={item.code}
+                                        standardTitle={item.title}
+                                      >
+                                        {item.code}
+                                      </NavLink>
+                                    </li>
+                                  ))
+                                }
+                              </ul>
+                            )
+                          }
+                        </Fragment>
+                      );
+                    })
+                  : (
+                    <>
+                      <ul class="sidebar-items">
+                        {
+                          sectionStandards.filter((item: any) => !item.status).map((item: any) => (
+                            <li>
+                              <NavLink
+                                href={item.url}
+                                title={item.title}
+                                section={framework.id}
+                                code={item.code}
+                                standardTitle={item.title}
+                              >
+                                {item.code}
+                              </NavLink>
+                            </li>
+                          ))
+                        }
+                      </ul>
+                      <ul class="sidebar-items">
+                        <li class="sidebar-group-label">Historical Standards</li>
+                        {
+                          sectionStandards.filter((item: any) => item.status).map((item: any) => (
+                            <li>
+                              <NavLink
+                                href={item.url}
+                                title={item.title}
+                                section={framework.id}
+                                code={item.code}
+                                standardTitle={item.title}
+                              >
+                                {item.code}
+                              </NavLink>
+                            </li>
+                          ))
+                        }
+                      </ul>
+                    </>
+                  )
+              }
             </div>
           </details>
         );

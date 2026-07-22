@@ -75,6 +75,10 @@ function initSidebar() {
 
         header.addEventListener("click", (event) => {
 
+            if ((event.target as HTMLElement).closest("a")) {
+                return;
+            }
+
             event.preventDefault();
 
             const open =
