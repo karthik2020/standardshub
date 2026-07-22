@@ -13,7 +13,7 @@ across all frameworks at once.
 import standards from "../data/standards.json";
 import StandardGroup from "./StandardGroup.astro";
 import { FRAMEWORK_CONFIG } from "../data/frameworks";
-import { Search, X, Home, Leaf, BookOpen, Building2, ScrollText } from "@lucide/astro";
+import { Search, X, Home, Leaf, BookOpen, Building2, ScrollText, ChevronRight } from "@lucide/astro";
 
 const currentPath = Astro.url.pathname;
 
@@ -80,19 +80,27 @@ const ICON_MAP: Record<string, any> = {
     </div>
 
     <div class="fw-panel" data-framework-panel="ias">
-      <StandardGroup items={itemsFor("ias")} sectionId="ias" />
+      <div class="section" data-section="ias">
+        <StandardGroup items={itemsFor("ias")} sectionId="ias" />
+      </div>
     </div>
 
     <div class="fw-panel" data-framework-panel="indas">
-      <StandardGroup items={itemsFor("indas")} sectionId="indas" />
+      <div class="section" data-section="indas">
+        <StandardGroup items={itemsFor("indas")} sectionId="indas" />
+      </div>
     </div>
 
     <div class="fw-panel" data-framework-panel="usgaap">
-      <StandardGroup items={itemsFor("usgaap")} sectionId="usgaap" categories={FRAMEWORK_CONFIG.usgaap.categories} />
+      <div class="section" data-section="usgaap">
+        <StandardGroup items={itemsFor("usgaap")} sectionId="usgaap" categories={FRAMEWORK_CONFIG.usgaap.categories} />
+      </div>
     </div>
 
     <div class="fw-panel" data-framework-panel="ifrs">
-      <StandardGroup items={itemsFor("ifrs")} sectionId="ifrs" label="IFRS Standards" />
+      <div class="section" data-section="ifrs">
+        <StandardGroup items={itemsFor("ifrs")} sectionId="ifrs" label="IFRS Standards" />
+      </div>
       {
         IFRS_SUBFOLDERS.map((id) => (
           <details class={`section section-${id}`} data-section={id}>
@@ -101,8 +109,14 @@ const ICON_MAP: Record<string, any> = {
                 {ICON_MAP[id] && <ICON_MAP[id] size={17} strokeWidth={2} />}
                 <span>{FRAMEWORK_CONFIG[id].displayName}</span>
               </div>
+              <div class="section-actions">
+                <span class="count-badge">{itemsFor(id).length}</span>
+                <ChevronRight class="section-chevron" size={16} strokeWidth={2.4} />
+              </div>
             </summary>
-            <StandardGroup items={itemsFor(id)} sectionId={id} label={FRAMEWORK_CONFIG[id].displayName} />
+            <div class="section-items">
+              <StandardGroup items={itemsFor(id)} sectionId={id} />
+            </div>
           </details>
         ))
       }
