@@ -4,6 +4,45 @@
 // the list appears already at the correct offset on the very first paint —
 // no scroll jump and no hide/show blink. (The scroll restore must happen
 // after the filter restore, which can change the list height.)
+function setSectionState(section, open) {
+
+    const items = section.querySelector(".section-items");
+
+    if (!items) return;
+
+    section.classList.toggle("expanded", open);
+
+    if (open) {
+        section.setAttribute("open", "");
+        items.style.maxHeight = items.scrollHeight + "px";
+    } else {
+        section.removeAttribute("open");
+        items.style.maxHeight = "0px";
+    }
+
+    localStorage.setItem(
+        `section-${section.dataset.section}`,
+        open ? "open" : "closed"
+    );
+
+}
+
+function getSavedState(section) {
+
+    const key = `section-${section.dataset.section}`;
+
+    const hasActive = !!section.querySelector(".nav-link.active");
+
+    if (hasActive) {
+        return true;
+    }
+
+    const saved = localStorage.getItem(key);
+
+    return saved !== null ? saved === "open" : false;
+
+}
+
 function initSidebar() {
 
     // ==========================================================
@@ -11,45 +50,6 @@ function initSidebar() {
     // ==========================================================
 
     const sections = [...document.querySelectorAll(".section")];
-
-    function setSectionState(section, open) {
-
-        const items = section.querySelector(".section-items");
-
-        if (!items) return;
-
-        section.classList.toggle("expanded", open);
-
-        if (open) {
-            section.setAttribute("open", "");
-            items.style.maxHeight = items.scrollHeight + "px";
-        } else {
-            section.removeAttribute("open");
-            items.style.maxHeight = "0px";
-        }
-
-        localStorage.setItem(
-            `section-${section.dataset.section}`,
-            open ? "open" : "closed"
-        );
-
-    }
-
-    function getSavedState(section) {
-
-        const key = `section-${section.dataset.section}`;
-
-        const hasActive = !!section.querySelector(".nav-link.active");
-
-        if (hasActive) {
-            return true;
-        }
-
-        const saved = localStorage.getItem(key);
-
-        return saved !== null ? saved === "open" : false;
-
-    }
 
     // ==========================================================
     // Initial state
@@ -292,6 +292,56 @@ function initSidebar() {
     }
 
 }
+
+// ==========================================================
+// Browser history sync
+// ==========================================================
+// Reconstructs the entire sidebar state from the current URL
+// so Back/Forward navigation shows the correct framework panel,
+// expanded section, and highlighted standard.
+
+window.syncSidebarFromUrl = function(pathname) {
+
+    const sections = [...document.querySelectorAll(".section")];
+
+    sections.forEach(section => {
+        setSectionState(section, false);
+    });
+
+    document.querySelectorAll(".nav-link").forEach(link => {
+        link.classList.remove("active");
+    });
+
+    const activeLink = [...document.querySelectorAll(".nav-link")].find(
+        link => link.getAttribute("href") === pathname
+    );
+
+    if (activeLink) {
+        activeLink.classList.add("active");
+        const section = activeLink.closest(".section");
+        if (section) {
+            setSectionState(section, true);
+        }
+        requestAnimationFrame(() => {
+            activeLink.scrollIntoView({ block: "nearest" });
+        });
+    }
+
+    const filterInput = document.getElementById("standard-search");
+    if (filterInput) filterInput.value = "";
+    const clearButton = document.getElementById("search-action");
+    if (clearButton) clearButton.classList.remove("visible");
+    const emptyState = document.getElementById("sidebar-empty");
+    if (emptyState) emptyState.hidden = true;
+    const panel = document.querySelector(".standards-panel");
+    if (panel) panel.classList.remove("searching");
+    document.querySelectorAll(".section").forEach(s => {
+        s.style.display = "";
+        const items = s.querySelector(".section-items");
+        if (items) items.classList.remove("collapsed");
+    });
+
+};
 
 // Restore synchronously when the sidebar is already in the DOM (the normal
 // case: this script sits at the end of <body>). Fall back to DOMContentLoaded

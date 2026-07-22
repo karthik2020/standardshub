@@ -40,8 +40,12 @@ function initRailPanel() {
     }
 
     function syncFromUrl() {
-        const framework = resolveActiveFramework(window.location.pathname);
+        const pathname = window.location.pathname;
+        const framework = resolveActiveFramework(pathname);
         setActive(framework, true);
+        if (typeof window.syncSidebarFromUrl === "function") {
+            window.syncSidebarFromUrl(pathname);
+        }
     }
 
     rail.querySelectorAll("[data-rail-item]").forEach((item) => {
