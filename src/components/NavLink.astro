@@ -19,9 +19,11 @@ interface Props {
   section?: string;
   code?: string;
   standardTitle?: string;
+  badge?: string;
+  badgeVariant?: "upcoming" | "retired";
 }
 
-const { href, title, section, code, standardTitle } = Astro.props;
+const { href, title, section, code, standardTitle, badge, badgeVariant } = Astro.props;
 
 const currentPath = Astro.url.pathname;
 const isActive = currentPath === href;
@@ -40,4 +42,5 @@ const isActive = currentPath === href;
   <span class="nav-label">
     <slot />
   </span>
+  {badge && <span class:list={["status-badge", `status-badge-${badgeVariant}`]}>{badge}</span>}
 </a>

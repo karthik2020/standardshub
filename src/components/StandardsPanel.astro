@@ -13,7 +13,7 @@ across all frameworks at once.
 import standards from "../data/standards.json";
 import StandardGroup from "./StandardGroup.astro";
 import { FRAMEWORK_CONFIG } from "../data/frameworks";
-import { Search, X, Home } from "@lucide/astro";
+import { Search, X, Home, Leaf, BookOpen, Building2, ScrollText } from "@lucide/astro";
 
 const currentPath = Astro.url.pathname;
 
@@ -40,6 +40,14 @@ const codeToKey = (code: string) => {
 const itemsFor = (id: string) => standards[codeToKey(FRAMEWORK_CONFIG[id].code)] ?? [];
 
 const IFRS_SUBFOLDERS = ["ifrssustainability", "ifrspublications", "ifrsforsmes", "ifric", "sic"] as const;
+
+const ICON_MAP: Record<string, any> = {
+  ifrssustainability: Leaf,
+  ifrspublications: BookOpen,
+  ifrsforsmes: Building2,
+  ifric: ScrollText,
+  sic: ScrollText,
+};
 ---
 
 <div class="standards-panel" data-panel data-active-framework={active}>
@@ -87,7 +95,15 @@ const IFRS_SUBFOLDERS = ["ifrssustainability", "ifrspublications", "ifrsforsmes"
       <StandardGroup items={itemsFor("ifrs")} sectionId="ifrs" label="IFRS Standards" />
       {
         IFRS_SUBFOLDERS.map((id) => (
-          <StandardGroup items={itemsFor(id)} sectionId={id} label={FRAMEWORK_CONFIG[id].displayName} />
+          <details class={`section section-${id}`} data-section={id}>
+            <summary class="sidebar-section-header">
+              <div class="section-title">
+                {ICON_MAP[id] && <ICON_MAP[id] size={17} strokeWidth={2} />}
+                <span>{FRAMEWORK_CONFIG[id].displayName}</span>
+              </div>
+            </summary>
+            <StandardGroup items={itemsFor(id)} sectionId={id} label={FRAMEWORK_CONFIG[id].displayName} />
+          </details>
         ))
       }
     </div>

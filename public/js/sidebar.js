@@ -212,10 +212,10 @@ function initSidebar() {
             sessionStorage.getItem("sidebar-scroll");
 
         if (saved) {
-
-            sidebar.scrollTop =
-                Number(saved);
-
+            requestAnimationFrame(() => {
+                sidebar.scrollTop =
+                    Number(saved);
+            });
         }
 
         sidebar.addEventListener("scroll", () => {
@@ -225,6 +225,12 @@ function initSidebar() {
                 sidebar.scrollTop
             );
 
+        });
+
+        document.querySelectorAll(".nav-link").forEach((link) => {
+            link.addEventListener("click", () => {
+                sessionStorage.setItem("sidebar-scroll", sidebar.scrollTop);
+            });
         });
 
     }

@@ -553,7 +553,7 @@ body {
 .sidebar-scroll {
     flex: 1;
     min-height: 0;
-    overflow-y: scroll;
+    overflow-y: auto;
     padding: 0px 0;
     scrollbar-gutter: stable;
 }
@@ -572,6 +572,13 @@ body {
     border-radius: var(--radius-pill);
     border: 2px solid transparent;
     background-clip: padding-box;
+    opacity: 0;
+    transition: opacity 150ms ease;
+}
+
+.sidebar-scroll:hover::-webkit-scrollbar-thumb,
+.sidebar-scroll:focus-within::-webkit-scrollbar-thumb {
+    opacity: 1;
 }
 
 .sidebar-scroll::-webkit-scrollbar-thumb:hover {
@@ -761,6 +768,34 @@ section li:last-child {
 .nav-link.active {
     font-weight: 600;
     color: var(--text);
+}
+
+.nav-label {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.status-badge {
+    font-size: 10px;
+    font-weight: var(--weight-semibold);
+    padding: 1px 7px;
+    border-radius: var(--radius-pill);
+    margin-left: auto;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.status-badge-upcoming {
+    background: #FEF3C7;
+    color: #92400E;
+}
+
+.status-badge-retired {
+    background: var(--surface-hover);
+    color: var(--text-muted);
 }
 
 .search-help {
@@ -3082,7 +3117,7 @@ section li:last-child {
     padding: 14px 0;
     background: var(--rail-bg, var(--surface));
     border-right: 1px solid var(--border);
-    transition: background var(--duration-normal) var(--ease);
+    transition: none;
     height: 100%;
 }
 
@@ -3249,45 +3284,45 @@ section li:last-child {
 /* Scoped to .standards-sidebar rather than the whole document, since the
    rest of the site doesn't have a dark theme yet. */
 
-.standards-sidebar[data-theme="dark"] {
+html[data-sidebar-theme="dark"] .standards-sidebar {
     background: #16181c;
     border-right-color: rgba(255, 255, 255, 0.08);
 }
 
-.standards-sidebar[data-theme="dark"] .framework-rail {
+html[data-sidebar-theme="dark"] .standards-sidebar .framework-rail {
     background: var(--rail-accent, #1f2937);
     border-right-color: rgba(255, 255, 255, 0.08);
 }
 
-.standards-sidebar[data-theme="dark"] .rail-item,
-.standards-sidebar[data-theme="dark"] .rail-icon-btn,
-.standards-sidebar[data-theme="dark"] .rail-logo {
+html[data-sidebar-theme="dark"] .standards-sidebar .rail-item,
+html[data-sidebar-theme="dark"] .standards-sidebar .rail-icon-btn,
+html[data-sidebar-theme="dark"] .standards-sidebar .rail-logo {
     color: rgba(255, 255, 255, 0.85);
 }
 
-.standards-sidebar[data-theme="dark"] .rail-item:hover,
-.standards-sidebar[data-theme="dark"] .rail-icon-btn:hover {
+html[data-sidebar-theme="dark"] .standards-sidebar .rail-item:hover,
+html[data-sidebar-theme="dark"] .standards-sidebar .rail-icon-btn:hover {
     background: rgba(255, 255, 255, 0.12);
     color: #fff;
 }
 
-.standards-sidebar[data-theme="dark"] .rail-item.active {
+html[data-sidebar-theme="dark"] .standards-sidebar .rail-item.active {
     background: rgba(255, 255, 255, 0.18);
     color: #fff;
 }
 
-.standards-sidebar[data-theme="dark"] .rail-divider {
+html[data-sidebar-theme="dark"] .standards-sidebar .rail-divider {
     background: rgba(255, 255, 255, 0.15);
 }
 
-.standards-sidebar[data-theme="dark"] .standards-panel {
+html[data-sidebar-theme="dark"] .standards-sidebar .standards-panel {
     background: #1c1e22;
     color: rgba(255, 255, 255, 0.85);
 }
 
-.standards-sidebar[data-theme="dark"] .theme-icon-sun {
+html[data-sidebar-theme="dark"] .standards-sidebar .theme-icon-sun {
     display: none;
 }
-.standards-sidebar[data-theme="dark"] .theme-icon-moon {
+html[data-sidebar-theme="dark"] .standards-sidebar .theme-icon-moon {
     display: block;
 }

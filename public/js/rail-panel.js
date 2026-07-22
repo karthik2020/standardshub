@@ -105,10 +105,9 @@ function initRailPanel() {
 
     const themeBtn = document.getElementById("rail-theme-toggle");
     const THEME_KEY = "rail-theme";
-    const sidebarRoot = document.querySelector(".standards-sidebar") || rail.parentElement;
 
     function applyTheme(theme) {
-        if (sidebarRoot) sidebarRoot.dataset.theme = theme;
+        document.documentElement.dataset.sidebarTheme = theme;
         if (themeBtn) themeBtn.setAttribute("aria-pressed", String(theme === "dark"));
     }
 
@@ -117,7 +116,7 @@ function initRailPanel() {
 
     if (themeBtn) {
         themeBtn.addEventListener("click", () => {
-            const next = sidebarRoot?.dataset.theme === "dark" ? "light" : "dark";
+            const next = document.documentElement.dataset.sidebarTheme === "dark" ? "light" : "dark";
             applyTheme(next);
             localStorage.setItem(THEME_KEY, next);
         });
