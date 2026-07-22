@@ -208,14 +208,22 @@ function initSidebar() {
 
     if (sidebar) {
 
-        const saved =
-            sessionStorage.getItem("sidebar-scroll");
+        const activeLink = sidebar.querySelector(".nav-link.active");
 
-        if (saved) {
+        if (activeLink) {
             requestAnimationFrame(() => {
-                sidebar.scrollTop =
-                    Number(saved);
+                activeLink.scrollIntoView({ block: "nearest" });
             });
+        } else {
+            const saved =
+                sessionStorage.getItem("sidebar-scroll");
+
+            if (saved) {
+                requestAnimationFrame(() => {
+                    sidebar.scrollTop =
+                        Number(saved);
+                });
+            }
         }
 
         sidebar.addEventListener("scroll", () => {
