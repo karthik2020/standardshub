@@ -161,6 +161,23 @@ function initSidebar() {
                 if (items) items.classList.remove("collapsed");
                 setSectionState(section, getSavedState(section));
 
+                const container = items || section;
+
+                container.querySelectorAll("ul.sidebar-items").forEach(ul => {
+                    ul.style.display = "";
+                });
+                container.querySelectorAll("li.sidebar-category-label").forEach(label => {
+                    label.style.display = "";
+                });
+                container.querySelectorAll(".sidebar-category-group").forEach(group => {
+                    group.style.display = "";
+                });
+                container.querySelectorAll("li.sidebar-group-label").forEach(label => {
+                    label.style.display = "";
+                    const parentUl = label.closest("ul.sidebar-items");
+                    if (parentUl) parentUl.style.display = "";
+                });
+
             } else {
 
                 section.style.display = visible ? "" : "none";
@@ -173,6 +190,35 @@ function initSidebar() {
                         section.open = true;
                     }
                 }
+
+                const container = items || section;
+
+                container.querySelectorAll("ul.sidebar-items").forEach(ul => {
+                    const hasVisible = [...ul.querySelectorAll(".nav-link")].some(link => link.style.display !== "none");
+                    ul.style.display = hasVisible ? "" : "none";
+                });
+
+                container.querySelectorAll("li.sidebar-category-label").forEach(label => {
+                    const nextUl = label.nextElementSibling;
+                    if (!nextUl || !nextUl.classList.contains("sidebar-items")) return;
+                    const hasVisible = [...nextUl.querySelectorAll(".nav-link")].some(link => link.style.display !== "none");
+                    label.style.display = hasVisible ? "" : "none";
+                });
+
+                container.querySelectorAll(".sidebar-category-group").forEach(group => {
+                    const ul = group.querySelector("ul.sidebar-items");
+                    const hasVisible = ul ? [...ul.querySelectorAll(".nav-link")].some(link => link.style.display !== "none") : false;
+                    group.style.display = hasVisible ? "" : "none";
+                });
+
+                container.querySelectorAll("li.sidebar-group-label").forEach(label => {
+                    const parentUl = label.closest("ul.sidebar-items");
+                    if (parentUl) {
+                        const hasVisible = [...parentUl.querySelectorAll(".nav-link")].some(link => link.style.display !== "none");
+                        parentUl.style.display = hasVisible ? "" : "none";
+                        label.style.display = hasVisible ? "" : "none";
+                    }
+                });
 
             }
 
@@ -327,6 +373,28 @@ function initSidebar() {
 
 window.syncSidebarFromUrl = function(pathname) {
 
+    const filterInput = document.getElementById("standard-search");
+    const hasFilter = filterInput && filterInput.value.trim() !== "";
+
+    if (hasFilter) {
+        document.querySelectorAll(".nav-link").forEach(link => {
+            link.classList.remove("active");
+        });
+
+        const activeLink = [...document.querySelectorAll(".nav-link")].find(
+            link => link.getAttribute("href") === pathname
+        );
+
+        if (activeLink) {
+            activeLink.classList.add("active");
+            requestAnimationFrame(() => {
+                activeLink.scrollIntoView({ block: "nearest" });
+            });
+        }
+
+        return;
+    }
+
     const sections = [...document.querySelectorAll(".section")];
 
     sections.forEach(section => {
@@ -355,6 +423,30 @@ window.syncSidebarFromUrl = function(pathname) {
             setSectionState(section, getSavedState(section));
         });
     }
+
+    document.querySelectorAll(".section").forEach(s => {
+        s.querySelectorAll(".nav-link").forEach(link => {
+            link.style.display = "";
+            const li = link.closest("li");
+            if (li) li.style.display = "";
+        });
+        const items = s.querySelector(".section-items");
+        const container = items || s;
+        container.querySelectorAll("ul.sidebar-items").forEach(ul => {
+            ul.style.display = "";
+        });
+        container.querySelectorAll("li.sidebar-category-label").forEach(label => {
+            label.style.display = "";
+        });
+        container.querySelectorAll(".sidebar-category-group").forEach(group => {
+            group.style.display = "";
+        });
+        container.querySelectorAll("li.sidebar-group-label").forEach(label => {
+            label.style.display = "";
+            const parentUl = label.closest("ul.sidebar-items");
+            if (parentUl) parentUl.style.display = "";
+        });
+    });
 
     // ==========================================================
     // Navigation sync
