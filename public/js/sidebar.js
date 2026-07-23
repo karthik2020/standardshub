@@ -302,6 +302,20 @@ function initSidebar() {
 
     }
 
+    // ==========================================================
+    // Restore persisted search
+    // ==========================================================
+
+    const savedFilter = sessionStorage.getItem(FILTER_KEY);
+    if (savedFilter && filterInput) {
+        filterInput.value = savedFilter;
+        const panel = document.querySelector(".standards-panel");
+        if (panel) panel.classList.toggle("searching", savedFilter.trim() !== "");
+        if (filterContainer) filterContainer.classList.add("has-value");
+        if (clearButton) clearButton.classList.add("visible");
+        applyFilter(savedFilter);
+    }
+
 }
 
 // ==========================================================
@@ -341,32 +355,6 @@ window.syncSidebarFromUrl = function(pathname) {
             setSectionState(section, getSavedState(section));
         });
     }
-
-    const filterInput = document.getElementById("standard-search");
-    if (filterInput) {
-        filterInput.value = "";
-        const wrapper = filterInput.closest(".search-input-wrapper");
-        if (wrapper) {
-            wrapper.classList.remove("has-value", "focused");
-        }
-    }
-    const clearButton = document.getElementById("search-action");
-    if (clearButton) clearButton.classList.remove("visible");
-    const emptyState = document.getElementById("sidebar-empty");
-    if (emptyState) emptyState.hidden = true;
-    const panel = document.querySelector(".standards-panel");
-    if (panel) panel.classList.remove("searching");
-    document.querySelectorAll(".section").forEach(s => {
-        s.style.display = "";
-        const items = s.querySelector(".section-items");
-        if (items) items.classList.remove("collapsed");
-        s.querySelectorAll(".nav-link").forEach(link => {
-            link.style.display = "";
-            const li = link.closest("li");
-            if (li) li.style.display = "";
-        });
-    });
-    sessionStorage.removeItem(FILTER_KEY);
 
     // ==========================================================
     // Navigation sync
