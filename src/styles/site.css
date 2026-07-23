@@ -70,6 +70,26 @@
     --usgaap-soft: #F1F5F9;
     --usgaap-light: #F8FAFC;
     --usgaap-dark: #1E293B;
+    --ifric: #4F46E5;
+    --ifric-soft: #EEF2FF;
+    --ifric-light: #E0E7FF;
+    --ifric-dark: #3730A3;
+    --sic: #0369A1;
+    --sic-soft: #ECFEFF;
+    --sic-light: #CFFAFE;
+    --sic-dark: #155E75;
+    --ifrssustainability: #059669;
+    --ifrssustainability-soft: #ECFDF5;
+    --ifrssustainability-light: #D1FAE5;
+    --ifrssustainability-dark: #065F46;
+    --ifrspublications: #7C3AED;
+    --ifrspublications-soft: #F5F3FF;
+    --ifrspublications-light: #EDE9FE;
+    --ifrspublications-dark: #6D28D9;
+    --ifrsforsmes: #0891B2;
+    --ifrsforsmes-soft: #ECFEFF;
+    --ifrsforsmes-light: #CFFAFE;
+    --ifrsforsmes-dark: #155E75;
     /* ====================================================== Shadows ====================================================== */
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, .05);
     --shadow-md: 0 4px 12px rgba(0, 0, 0, .08);
@@ -1494,20 +1514,20 @@ section li:last-child {
 
 /* IAS */
 .breadcrumbs-ias {
-    background: #eff6ff;
-    color: #2563eb;
+    background: var(--ias-soft);
+    color: var(--ias);
 }
 
 /* IFRS */
 .breadcrumbs-ifrs {
-    background: #f0fdf4;
-    color: #16a34a;
+    background: var(--ifrs-soft);
+    color: var(--ifrs);
 }
 
 /* Ind AS */
 .breadcrumbs-indas {
-    background: #fff7ed;
-    color: #ea580c;
+    background: var(--indas-soft);
+    color: var(--indas);
 }
 
 .breadcrumbs a {
@@ -1574,19 +1594,19 @@ section li:last-child {
 .breadcrumb-framework.ias {
     background: var(--ias-soft);
     color: var(--ias);
-    border-color: rgba(37, 99, 235, .18);
+    border-color: color-mix(in srgb, var(--ias) 18%, transparent);
 }
 
 .breadcrumb-framework.ifrs {
     background: var(--ifrs-soft);
     color: var(--ifrs);
-    border-color: rgba(22, 163, 74, .18);
+    border-color: color-mix(in srgb, var(--ifrs) 18%, transparent);
 }
 
 .breadcrumb-framework.indas {
     background: var(--indas-soft);
     color: var(--indas);
-    border-color: rgba(234, 88, 12, .18);
+    border-color: color-mix(in srgb, var(--indas) 18%, transparent);
 }
 
 .crumb-separator {
@@ -1733,7 +1753,7 @@ section li:last-child {
     height: 12px;
     border-radius: 4px;
     background: linear-gradient(135deg, var(--ias), #60A5FA);
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, .12);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--ias) 12%, transparent);
 }
 
 .logo-mark {
@@ -2047,6 +2067,36 @@ section li:last-child {
     --section-accent: var(--usgaap);
 }
 
+.content[data-framework="ifric"] {
+    --toc-active: var(--ifric);
+    --toc-active-soft: var(--ifric-soft);
+    --section-accent: var(--ifric);
+}
+
+.content[data-framework="sic"] {
+    --toc-active: var(--sic);
+    --toc-active-soft: var(--sic-soft);
+    --section-accent: var(--sic);
+}
+
+.content[data-framework="ifrssustainability"] {
+    --toc-active: var(--ifrssustainability);
+    --toc-active-soft: var(--ifrssustainability-soft);
+    --section-accent: var(--ifrssustainability);
+}
+
+.content[data-framework="ifrspublications"] {
+    --toc-active: var(--ifrspublications);
+    --toc-active-soft: var(--ifrspublications-soft);
+    --section-accent: var(--ifrspublications);
+}
+
+.content[data-framework="ifrsforsmes"] {
+    --toc-active: var(--ifrsforsmes);
+    --toc-active-soft: var(--ifrsforsmes-soft);
+    --section-accent: var(--ifrsforsmes);
+}
+
 .page-content {
     min-width: 0;
 }
@@ -2220,7 +2270,7 @@ section li:last-child {
 }
 
 .hero-ias::before {
-    background: linear-gradient(135deg, rgba(37, 99, 235, .10) 0%, rgba(37, 99, 235, .05) 35%, transparent 75%);
+    background: linear-gradient(135deg, color-mix(in srgb, var(--ias) 10%, transparent) 0%, color-mix(in srgb, var(--ias) 5%, transparent) 35%, transparent 75%);
 }
 
 .hero-ifrs {
@@ -2228,7 +2278,7 @@ section li:last-child {
 }
 
 .hero-ifrs::before {
-    background: linear-gradient(135deg, rgba(22, 163, 74, .10) 0%, rgba(22, 163, 74, .05) 35%, transparent 75%);
+    background: linear-gradient(135deg, color-mix(in srgb, var(--ifrs) 10%, transparent) 0%, color-mix(in srgb, var(--ifrs) 5%, transparent) 35%, transparent 75%);
 }
 
 .hero-indas {
@@ -2236,7 +2286,7 @@ section li:last-child {
 }
 
 .hero-indas::before {
-    background: linear-gradient(135deg, rgba(234, 88, 12, .10) 0%, rgba(234, 88, 12, .05) 35%, transparent 75%);
+    background: linear-gradient(135deg, color-mix(in srgb, var(--indas) 10%, transparent) 0%, color-mix(in srgb, var(--indas) 5%, transparent) 35%, transparent 75%);
 }
 
 .app-shell {
@@ -2512,19 +2562,19 @@ section li:last-child {
 .crumb.framework.ias {
     background: var(--ias-soft);
     color: var(--ias);
-    border-color: rgba(37, 99, 235, .18);
+    border-color: color-mix(in srgb, var(--ias) 18%, transparent);
 }
 
 .crumb.framework.ifrs {
     background: var(--ifrs-soft);
     color: var(--ifrs);
-    border-color: rgba(22, 163, 74, .18);
+    border-color: color-mix(in srgb, var(--ifrs) 18%, transparent);
 }
 
 .crumb.framework.indas {
     background: var(--indas-soft);
     color: var(--indas);
-    border-color: rgba(234, 88, 12, .18);
+    border-color: color-mix(in srgb, var(--indas) 18%, transparent);
 }
 
 .crumb.active {
@@ -2534,19 +2584,19 @@ section li:last-child {
 .crumb.active.ias {
     background: var(--ias-soft);
     color: var(--ias);
-    border-color: rgba(37, 99, 235, .22);
+    border-color: color-mix(in srgb, var(--ias) 22%, transparent);
 }
 
 .crumb.active.ifrs {
     background: var(--ifrs-soft);
     color: var(--ifrs);
-    border-color: rgba(22, 163, 74, .22);
+    border-color: color-mix(in srgb, var(--ifrs) 22%, transparent);
 }
 
 .crumb.active.indas {
     background: var(--indas-soft);
     color: var(--indas);
-    border-color: rgba(234, 88, 12, .22);
+    border-color: color-mix(in srgb, var(--indas) 22%, transparent);
 }
 
 .crumb-dot {
