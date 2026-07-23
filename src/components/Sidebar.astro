@@ -82,7 +82,7 @@ const currentPath = Astro.url.pathname;
           return code;
         };
         const sectionStandards = standards[codeToKey(framework.code)] ?? [];
-        const IconComponent = lucideIconMap[framework.lucideIcon];
+        const IconComponent = lucideIconMap[framework.lucideIcon] ?? BookText;
 
         return (
           <details class={`section section-${framework.id}`} data-section={framework.id} open={currentPath.startsWith(framework.route)}>
