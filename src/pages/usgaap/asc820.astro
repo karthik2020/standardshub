@@ -1,0 +1,161 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc820.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  bannerNotice={metadata.bannerNotice}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope & Applicability" },
+        { id: "s3", label: "The Fair Value Definition" },
+        { id: "s4", label: "The Fair Value Hierarchy — Level 1, 2, and 3 Inputs" },
+        { id: "s5", label: "Valuation Techniques and Inputs" },
+        { id: "s6", label: "Market Participant Assumptions" },
+        { id: "s7", label: "Principal Market and Most Advantageous Market" },
+        { id: "s8", label: "Liabilities and Own Equity Instruments" },
+        { id: "s9", label: "Worked Example — Fair Value Hierarchy Classification" },
+        { id: "s10", label: "Disclosure Requirements" },
+        { id: "s11", label: "Critical Judgments & Estimates" },
+        { id: "s12", label: "ASC 820 vs IFRS 13 — Comprehensive Comparison" },
+        { id: "s13", label: "Statement Mapping" },
+        { id: "s14", label: "Related Topics" },
+        { id: "s15", label: "Quick-Reference Glossary" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci"><div class="ctitle ci">Fair value as an exit price — the converged foundation</div><div class="principle">ASC 820 defines fair value as the price that would be received to sell an asset or paid to transfer a liability in an orderly transaction between market participants at the measurement date. This is an EXIT PRICE concept, not an entry price — it focuses on what the market would pay, not what the entity originally paid. This definition is fully converged with IFRS 13 and represents one of the most significant and durable convergence achievements between US GAAP and IFRS.</div></div>
+      <div class="card cs"><div class="ctitle cs">A principles-based measurement standard</div><div class="principle">ASC 820 is a principles-based measurement standard that applies whenever another US GAAP standard requires or permits fair value measurement. It does not prescribe when fair value must be used — that decision lives in the relevant subject-matter standard (e.g. ASC 815 for derivatives, ASC 350 for goodwill). Instead, ASC 820 answers the question: once fair value is required, how do you determine it?</div></div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope & Applicability</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Applies whenever fair value is required or permitted</div><div class="principle">ASC 820 applies to all fair value measurements required or permitted by other US GAAP standards. It covers assets, liabilities, and equity instruments — both those recognised in the financial statements and those disclosed in the notes. The scope is intentionally broad: any time an entity uses fair value, ASC 820's definition, hierarchy, and disclosure requirements apply, whether the measurement is for initial recognition, subsequent measurement, or impairment testing.</div></div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>The Fair Value Definition</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">An orderly transaction between market participants at the measurement date</div><div class="principle">The ASC 820 fair value definition has FOUR key components: (1) an ORDERLY TRANSACTION — not a forced or distressed sale; (2) between MARKET PARTICIPANTS — not the entity itself; (3) at the MEASUREMENT DATE — fair value reflects conditions at that specific date; and (4) the transaction is the SALE of an asset or TRANSFER of a liability. This four-part definition is identical in substance to IFRS 13's definition and is the foundation for all subsequent measurement guidance.</div></div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>The Fair Value Hierarchy — Level 1, 2, and 3 Inputs</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Prioritising observable market data</div><div class="principle">The fair value hierarchy prioritises inputs used in valuation techniques into three levels: <strong>Level 1</strong> — quoted prices in active markets for identical assets or liabilities; <strong>Level 2</strong> — observable inputs other than Level 1 prices, including quoted prices for similar assets, observable market data, and model-derived inputs; <strong>Level 3</strong> — unobservable inputs reflecting the entity's own assumptions about what market participants would use. The hierarchy does not determine the measurement itself — it governs DISCLOSURE, requiring entities to disclose the extent to which fair value measurements rely on each level.</div></div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Valuation Techniques and Inputs</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Market, income, and cost approaches</div><div class="principle">Three broad valuation techniques are used under ASC 820: the <strong>market approach</strong> — using prices and other relevant information from market transactions involving identical or comparable assets or liabilities; the <strong>income approach</strong> — converting future cash flows to a single discounted present value; and the <strong>cost approach</strong> — reflecting the amount currently required to replace the service capacity of an asset. Entities must use valuation techniques appropriate for the circumstances and for which sufficient data are available, and must maximise the use of relevant observable inputs and minimise unobservable inputs.</div></div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Market Participant Assumptions</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">Assume market participants have the same characteristics and act in their economic best interest</div><div class="principle">Fair value is determined from the perspective of a market participant, not the reporting entity itself. Market participants are assumed to: (a) act in their economic best interest; (b) have the same characteristics as a typical market participant for the asset or liability; and (c) be willing and able to enter into a transaction for the asset or liability. This means an entity cannot use its own unique operating plans or synergies when measuring fair value — it must assume the market participant faces the same risks and opportunities as any other buyer.</div></div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Principal Market and Most Advantageous Market</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">The most relevant market for measuring fair value</div><div class="principle">The principal market is the market with the greatest volume and level of activity for the asset or liability. If no principal market exists, the entity uses the most advantageous market — the market that maximises the price that would be received to sell the asset or minimises the price that would be paid to transfer the liability, after transaction costs. ASC 820 does not require the entity to be able to sell the asset in that market on the measurement date — only that the market exists and would be the most advantageous.</div></div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Liabilities and Own Equity Instruments</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2"><div class="ctitle cn">The same fair value definition applies to liabilities</div><div class="principle">When a quoted price for the transfer of an identical liability is not available, ASC 820 requires valuing the liability from the perspective of a market participant who holds the identical item as an asset. This 'corridor' approach uses observable market data for the asset to inform the liability measurement. For own equity instruments, fair value is measured using the same framework — the key question is whether the instrument is treated as an asset or liability from the market participant's perspective.</div></div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Worked Example — Fair Value Hierarchy Classification</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Classifying inputs in the fair value hierarchy</div>
+      <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Fair value measurement of a privately traded debt security</div><div class="wk-body">An entity holds a $10 million corporate bond that is NOT quoted in an active market. The valuation uses: (1) the bond's credit spread over the risk-free rate, derived from recent trades of similar issuers (Level 2); (2) the entity's own credit-adjusted discount rate, reflecting its own view of the bond's liquidity risk (Level 3); and (3) a quoted Treasury yield for the same maturity (Level 1).</div><div class="wk-answer">The Treasury yield is <strong>Level 1</strong> (quoted in an active market). The credit spread from similar issuers is <strong>Level 2</strong> (observable market data, though not for the identical bond). The entity's own credit-adjusted rate is <strong>Level 3</strong> (unobservable, entity-specific assumption). The final fair value is a weighted combination: Level 1 inputs are prioritised, Level 2 inputs supplement where observable markets exist, and Level 3 inputs are used only when observable inputs are not available. Disclosure must separately disclose the portion of fair value attributable to each level.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">What ASC 820 requires</div><div class="check-list"><span>Fair value measurement at the reporting date, by class of asset or liability</span><span>Level within the fair value hierarchy (Level 1, 2, or 3) for each class</span><span>For Level 3 measurements: reconciliation of beginning and ending balances, including total gains or losses, purchases, sales, and transfers</span><span>Valuation techniques and inputs used, including changes in technique and the reasons for those changes</span><span>For non-financial assets measured at fair value: highest and best use and the valuation technique(s) used</span></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Critical Judgments & Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+      <div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Determining whether an active market exists for an asset or liability</span><span>Selecting the appropriate valuation technique(s) for a given asset or liability</span><span>Determining the principal market or most advantageous market</span></div></div>
+      <div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Level 3 unobservable inputs, including discount rates, growth assumptions, and correlation assumptions</span><span>Credit spread adjustments for debt securities where observable spreads are not available</span><span>Fair value of derivatives or complex financial instruments without quoted market prices</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>ASC 820 vs IFRS 13 — Comprehensive Comparison</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Comparison — ASC 820 vs IFRS 13</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">US GAAP (ASC 820)</span><span style="color:var(--color-text-info);">IFRS (IFRS 13)</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Fair value definition</span><span>Exit price in an orderly transaction between market participants</span><span>Identical definition — fully converged</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Fair value hierarchy</span><span>Level 1, 2, and 3 inputs, same prioritisation</span><span>Identical hierarchy — fully converged</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Valuation techniques</span><span>Market, income, and cost approaches permitted</span><span>Same approaches permitted — fully converged</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Disclosure</span><span>Extensive disclosures for fair value measurements</span><span>Identical disclosure requirements — fully converged</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Liabilities — own credit risk</span><span>Changes in own credit risk recognised in earnings</span><span>IFRS 13 also requires own credit risk changes in earnings, but presentation may differ</span></div>
+      </div>
+      <div class="note">ASC 820 and IFRS 13 are the most fully converged standards in the US GAAP/IFRS landscape. The few remaining differences relate to presentation of credit risk changes and specific disclosure formatting, not to substance.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Where every ASC 820 event lands</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Fair value measurement — asset</span><span><span class="badge bs">BS</span></span><span>Reported at fair value on balance sheet</span></div>
+      <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Fair value measurement — liability</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Changes in fair value typically through earnings</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Level 3 input changes</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span> <span class="badge bo">OCI</span></span><span>Depends on the underlying asset class</span></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Related Topics</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd"><div class="ctitle cd">Cross-reference map</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 715</span><span>Compensation—Retirement Benefits — fair value of plan assets</span></div>
+      <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 718</span><span>Compensation—Stock Compensation — fair value of equity awards</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 805</span><span>Business Combinations — fair value of acquired assets and liabilities</span></div>
+      <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 13</span><span>Fair Value Measurement — IFRS counterpart</span></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s15"><span class="num">15</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+      <div class="glossary-item"><div class="glossary-term">Fair value</div><div class="glossary-def">The price that would be received to sell an asset or paid to transfer a liability in an orderly transaction between market participants at the measurement date.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Exit price</div><div class="glossary-def">The price that would be received to sell an asset or paid to transfer a liability — the perspective from which fair value is always measured.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Most advantageous market</div><div class="glossary-def">The market that maximises the price that would be received to sell an asset (or minimises the price to transfer a liability) when no principal market exists.</div></div>
+      </div>
+    </div>
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.ASC820 || []} />
+  </section>
+</StandardPageLayout>

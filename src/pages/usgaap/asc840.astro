@@ -1,0 +1,162 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc840.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  bannerNotice={metadata.bannerNotice}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope & Applicability" },
+        { id: "s3", label: "The Capital vs Operating Lease Distinction — Lessee" },
+        { id: "s4", label: "The Four Capital Lease Criteria" },
+        { id: "s5", label: "Lessee Accounting — Capital Leases" },
+        { id: "s6", label: "Lessee Accounting — Operating Leases" },
+        { id: "s7", label: "Lessor Accounting — Sales-Type, Direct Financing, and Operating Leases" },
+        { id: "s8", label: "Sale-Leaseback Transactions" },
+        { id: "s9", label: "Leveraged Leases" },
+        { id: "s10", label: "Worked Example — Capital vs Operating Lease Classification" },
+        { id: "s11", label: "Disclosure Requirements" },
+        { id: "s12", label: "ASC 840 vs ASC 842 — Comprehensive Comparison" },
+        { id: "s13", label: "Statement Mapping" },
+        { id: "s14", label: "Related Topics" },
+        { id: "s15", label: "Quick-Reference Glossary" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci"><div class="ctitle ci">A substance-based approach buried under form-based rules</div><div class="principle">ASC 840 was US GAAP's lease accounting standard from 1977 until its supersession by ASC 842. Its defining characteristic was the capital/operating lease dichotomy: leases that transferred substantially all the risks and rewards of ownership were treated as capital leases and recognised on the balance sheet; leases that did not were treated as operating leases and generally kept off-balance-sheet. The standard's form-based classification criteria created opportunities for structured lease transactions to avoid balance-sheet recognition — a structural weakness that ultimately motivated the FASB's 2016 overhaul.</div></div>
+      <div class="card cs"><div class="ctitle cs">Superseded but still relevant for historical comparison</div><div class="principle">ASC 840 is no longer the authoritative guidance for new lease transactions, but it remains important for understanding the evolution of US GAAP lease accounting, for comparative periods before ASC 842 adoption, and for certain legacy transactions. The contrast between ASC 840 and ASC 842 is one of the most dramatic standard-setting changes in US GAAP history — converting what was largely an off-balance-sheet arrangement for lessees into a fully recognised asset and liability for virtually all leases.</div></div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope & Applicability</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">All leases except those specifically excluded</div><div class="principle">ASC 840 applied to all leases of property, plant, and equipment — but not to leases of natural resources, leases specifically addressed by other standards (such as leases of financial instruments under ASC 815), or leases to explore for or use natural resources. The standard distinguished between the LESSEE (the party obtaining the right to use the asset) and the LESSOR (the party providing the right to use the asset), applying fundamentally different accounting models to each side of the lease contract.</div></div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>The Capital vs Operating Lease Distinction — Lessee</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">A bright-line test for balance-sheet recognition</div><div class="principle">For lessees, ASC 840 required a capital lease to be recognised on the balance sheet as both an asset (the leased asset) and a liability (the present value of minimum lease payments). An operating lease was NOT recognised on the balance sheet — lease payments were simply expensed as incurred on a straight-line basis over the lease term. This binary classification created a structural incentive for lessees to structure leases to avoid meeting any of the four capital lease criteria, keeping the obligation off the balance sheet.</div></div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>The Four Capital Lease Criteria</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs"><div class="ctitle cs">Transfer of ownership at the end of the lease</div><div class="principle">If the lease transfers ownership of the asset to the lessee by the end of the lease term, the lease is automatically classified as a capital lease. This criterion is unambiguous and rarely ambiguous in practice — the lease either conveys title or it does not.</div></div>
+      <div class="card cw"><div class="ctitle cw">Bargain purchase option</div><div class="principle">If the lease contains a bargain purchase option — an option to purchase the leased asset at a price expected to be sufficiently lower than the expected fair value at the date the option becomes exercisable — the lease is a capital lease. The bargain purchase option creates a constructive obligation to acquire the asset, effectively making the lease a financed purchase.</div></div>
+      <div class="card cd"><div class="ctitle cd">Lease term equals 75% or more of economic life</div><div class="principle">If the lease term is equal to 75% or more of the estimated economic life of the leased asset, the lease is a capital lease. This 'bright line' was intended to identify leases that were effectively equivalent to ownership. However, the 75% threshold was arbitrary and could be avoided by structuring a lease for 74% of the asset's life.</div></div>
+      <div class="card cn"><div class="ctitle cn">Present value of payments equals 90% or more of fair value</div><div class="principle">If the present value of the minimum lease payments at the beginning of the lease term equals 90% or more of the fair value of the leased asset, the lease is a capital lease. This criterion identified leases where the lessee was effectively financing the purchase of the asset. Like the 75% term test, the 90% threshold was arbitrary and could be structured around.</div></div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Lessee Accounting — Capital Leases</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Asset and liability recognition at commencement</div><div class="principle">At the commencement date, the lessee records the leased asset at the lower of: (1) the present value of the minimum lease payments during the lease term, or (2) the fair value of the leased asset. A corresponding lease liability is recorded for the present value of the minimum lease payments. The leased asset is depreciated over the lease term (or useful life if ownership transfers or a bargain purchase option exists). Lease payments are allocated between interest expense and reduction of the lease liability using the effective interest method — the same allocation used for a financed purchase.</div></div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Lessee Accounting — Operating Leases</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">Rent expense on a straight-line basis, no balance-sheet recognition</div><div class="principle">Operating leases were accounted for by recognising rent expense on a STRAIGHT-LINE basis over the lease term. If the lease contained scheduled rent increases or decreases (escalation clauses), the total rent was allocated on a straight-line basis, with the difference between actual cash rent and straight-line rent recorded as a deferred rent liability or asset. The leased asset was NOT recognised on the balance sheet, and no lease liability was recorded — meaning the full economic obligation of the lease was invisible to financial statement users.</div></div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Lessor Accounting — Sales-Type, Direct Financing, and Operating Leases</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Three models for the lessor side</div><div class="principle">Lessor accounting under ASC 840 had three classifications: <strong>sales-type leases</strong> — where the lessor's profit is recognised at the lease's inception, similar to a normal sale; <strong>direct financing leases</strong> — where the lessor's profit is recognised over the lease term as interest income (used when the lessor's cost approximates fair value, leaving little initial profit); and <strong>operating leases</strong> — where the lessor continues to recognise the underlying asset and recognises lease revenue on a straight-line basis. This three-model lessor framework was retained in ASC 842 because IFRS 16's single-lessor model was considered a fundamental departure from US GAAP principles.</div></div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Sale-Leaseback Transactions</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Seller-lessee defers gain and amortises over lease term</div><div class="principle">A sale-leaseback occurs when a seller transfers an asset to a buyer and simultaneously leases back the same asset. Under ASC 840, the seller-lessee had to determine whether the lease was a capital or operating lease. If it was a capital lease, any gain on the sale was DEFERRED and amortised over the lease term — not recognised immediately. If it was an operating lease, the gain was recognised immediately unless the lease term was for a major part of the asset's remaining economic life, in which case the gain was also deferred. This deferral ensured that the gain was matched with the continued use of the asset.</div></div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Leveraged Leases</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2"><div class="ctitle cn">A unique US GAAP lease structure</div><div class="principle">Leveraged leases were a distinctive feature of ASC 840 — a type of direct financing lease where the lessor's net investment in the lease was leveraged with non-recourse debt. Leveraged leases required three parties: a lessee, a lessor (equity participant), and a long-term creditor (debt participant). The lessor's net investment was split between the equity and debt components, with cash flows allocated between them. ASC 840 and ASC 842 required leveraged leases to be accounted for using a specific model that recognised the lessor's net investment as a single asset and apportioned cash flows between the equity and debt components. ASC 842 effectively eliminated new leveraged leases but grandfathered existing ones.</div></div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Worked Example — Capital vs Operating Lease Classification</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Applying the four capital lease criteria</div>
+      <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Evaluating a 7-year equipment lease</div><div class="wk-body">A lessee enters a 7-year lease for equipment with an estimated economic life of 10 years and a fair value of $100,000. The lease contains no transfer of ownership and no bargain purchase option. Minimum lease payments have a present value of $78,000 at a 7% implicit rate.</div><div class="wk-answer"><strong>Criterion 1 — Transfer of ownership:</strong> NO — title does not transfer.<br><strong>Criterion 2 — Bargain purchase option:</strong> NO — no BPO exists.<br><strong>Criterion 3 — Lease term / economic life:</strong> 7 years / 10 years = <strong>70%</strong> — does NOT meet the 75% threshold.<br><strong>Criterion 4 — PV of payments / fair value:</strong> $78,000 / $100,000 = <strong>78%</strong> — does NOT meet the 90% threshold.<br><strong>Conclusion:</strong> NONE of the four criteria are met. The lease is classified as an OPERATING lease under ASC 840. The lessee does NOT recognise the asset or liability on the balance sheet but instead recognises rent expense on a straight-line basis over the 7-year term.<br><strong>Under ASC 842:</strong> The same lease would be classified as a FINANCE lease if it meets any of the new ASC 842 criteria; otherwise, it is an operating lease — but EITHER way, the lessee recognises a right-of-use asset and lease liability.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">What ASC 840 required</div><div class="check-list"><span>For capital leases: the cost or carrying amount of leased assets by major class, accumulated amortisation, and amortisation expense</span><span>Future minimum lease payments for each of the next five years and thereafter, separately for capital and operating leases</span><span>For operating leases: total minimum rentals, sublease rentals, and contingent rentals</span><span>For sale-leaseback transactions: the terms, including duration, renewal options, and any restrictions on dividends or additional debt</span><span>For leveraged leases: descriptions of the leased property, terms of the leveraged structure, and cash flows allocable to the equity and debt participants</span></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>ASC 840 vs ASC 842 — Comprehensive Comparison</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Comparison — Legacy ASC 840 vs Current ASC 842</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">US GAAP (ASC 840)</span><span style="color:var(--color-text-info);">US GAAP (ASC 842)</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Lessee balance-sheet recognition</span><span>Capital leases only; operating leases off-balance-sheet</span><span>ALL leases >12 months recognised on balance sheet</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Lessee classification</span><span>Capital / operating binary</span><span>Finance / operating binary (similar effect with different labels)</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Lessor classification</span><span>Sales-type / direct financing / operating (three models)</span><span>Same three models retained — converged with US practice</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Bright-line criteria</span><span>75% term, 90% PV, BPO, transfer of ownership</span><span>No bright-line tests; control-based model</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Short-term lease exemption</span><span>Not available</span><span>Available for leases ≤12 months</span></div>
+      </div>
+      <div class="note">ASC 842's single lessee model — recognising right-of-use assets and lease liabilities for virtually all leases — is the most significant change to US GAAP lease accounting since ASC 840's original issuance in 1977. The lessor dual model was retained specifically to preserve a difference from IFRS 16's single lessor model.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Where every ASC 840 event lands</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Capital lease — commencement</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Asset and liability recognised; depreciation and interest expense</span></div>
+      <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Operating lease — lessee</span><span><span class="badge bp">IS</span></span><span>Straight-line rent expense; NO balance-sheet impact</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Sale-leaseback — gain deferral</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Gain deferred over lease term; reduces depreciation expense</span></div>
+      <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Leveraged lease — lessor</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Net investment recorded; income allocated between equity and debt participants</span></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Related Topics</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd"><div class="ctitle cd">Cross-reference map</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 842</span><span>Leases — current standard superseding ASC 840</span></div>
+      <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 360</span><span>Property, Plant, and Equipment — leased assets depreciated over useful life or lease term</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 470</span><span>Debt — classification of lease liabilities and related covenants</span></div>
+      <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 16</span><span>Leases — IFRS counterpart with single lessee and lessor models</span></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s15"><span class="num">15</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+      <div class="glossary-item"><div class="glossary-term">Capital lease</div><div class="glossary-def">A lease that meets any of ASC 840's four criteria (transfer of ownership, bargain purchase option, 75% of economic life, or 90% of fair value), requiring balance-sheet recognition.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Operating lease</div><div class="glossary-def">A lease that does not meet any capital lease criterion; under ASC 840, not recognised on the balance sheet by the lessee.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Minimum lease payments</div><div class="glossary-def">The minimum rental payments, any bargain purchase option, and any guaranteed residual value, used to measure the capital lease asset and liability.</div></div>
+      </div>
+    </div>
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.ASC840 || []} />
+  </section>
+</StandardPageLayout>
