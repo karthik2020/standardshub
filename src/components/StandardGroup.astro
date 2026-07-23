@@ -1,8 +1,9 @@
 ---
 import NavLink from "./NavLink.astro";
+import type { StandardSummary } from "../data/standards";
 
 interface Props {
-  items: any[];
+  items: StandardSummary[];
   sectionId: string;
   categories?: readonly string[];
   label?: string;
@@ -10,21 +11,21 @@ interface Props {
 
 const { items, sectionId, categories, label } = Astro.props;
 
-function orderItems(list: any[]) {
+function orderItems(list: StandardSummary[]) {
   const primary = list.filter(
-    (item: any) => !item.status || item.status === "Upcoming"
+    (item) => !item.status || item.status === "Upcoming"
   );
   const retired = list.filter(
-    (item: any) => item.status && item.status !== "Upcoming"
+    (item) => item.status && item.status !== "Upcoming"
   );
   return [...primary, ...retired];
 }
 
-function badgeFor(item: any) {
+function badgeFor(item: StandardSummary) {
   return item.status || undefined;
 }
 
-function badgeVariantFor(item: any) {
+function badgeVariantFor(item: StandardSummary) {
   if (!item.status) return undefined;
   return item.status === "Upcoming" ? "upcoming" : "retired";
 }
@@ -35,13 +36,12 @@ const categoryGroups = categories
   ? categories
       .map((category: string) => {
         const inCategory = items.filter(
-          (item: any) => item.category === category
+          (item) => item.category === category
         );
         return { category, items: orderItems(inCategory) };
       })
       .filter((group) => group.items.length > 0)
   : [];
-
 ---
 
 <Fragment>
@@ -52,7 +52,7 @@ const categoryGroups = categories
       <div class="sidebar-category-group">
         <div class="sidebar-category-label">{group.category}</div>
         <ul class="sidebar-items">
-          {group.items.map((item: any) => (
+          {group.items.map((item) => (
             <li>
               <NavLink
                 href={item.url}
@@ -73,7 +73,7 @@ const categoryGroups = categories
 
   {!categories && (
     <ul class="sidebar-items">
-      {orderedItems.map((item: any) => (
+      {orderedItems.map((item) => (
         <li>
           <NavLink
             href={item.url}

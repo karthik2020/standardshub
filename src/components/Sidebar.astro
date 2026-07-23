@@ -11,6 +11,7 @@ Props:
 */
 
 import standards from "../data/standards.json";
+import type { StandardSummary } from "../data/standards";
 import NavLink from "./NavLink.astro";
 import {
   Search,
@@ -81,7 +82,7 @@ const currentPath = Astro.url.pathname;
           if (code === "US GAAP") return "USGAAP";
           return code;
         };
-        const sectionStandards = standards[codeToKey(framework.code)] ?? [];
+        const sectionStandards: StandardSummary[] = standards[codeToKey(framework.code)] ?? [];
         const IconComponent = lucideIconMap[framework.lucideIcon] ?? BookText;
 
         return (
@@ -108,10 +109,10 @@ const currentPath = Astro.url.pathname;
                 framework.categories
                   ? framework.categories.map((category) => {
                       const activeItems = sectionStandards.filter(
-                        (item: any) => !item.status && item.category === category
+                        (item) => !item.status && item.category === category
                       );
                       const historicalItems = sectionStandards.filter(
-                        (item: any) => item.status && item.category === category
+                        (item) => item.status && item.category === category
                       );
                       if (activeItems.length === 0 && historicalItems.length === 0) {
                         return null;
@@ -123,7 +124,7 @@ const currentPath = Astro.url.pathname;
                           </li>
                           <ul class="sidebar-items">
                             {
-                              activeItems.map((item: any) => (
+                               activeItems.map((item) => (
                                 <li>
                                   <NavLink
                                     href={item.url}
@@ -143,7 +144,7 @@ const currentPath = Astro.url.pathname;
                               <ul class="sidebar-items">
                                 <li class="sidebar-group-label">Historical Standards</li>
                                 {
-                                  historicalItems.map((item: any) => (
+                                   historicalItems.map((item) => (
                                     <li>
                                       <NavLink
                                         href={item.url}
@@ -167,7 +168,7 @@ const currentPath = Astro.url.pathname;
                     <>
                       <ul class="sidebar-items">
                         {
-                          sectionStandards.filter((item: any) => !item.status).map((item: any) => (
+                           sectionStandards.filter((item) => !item.status).map((item) => (
                             <li>
                               <NavLink
                                 href={item.url}
@@ -185,7 +186,7 @@ const currentPath = Astro.url.pathname;
                       <ul class="sidebar-items">
                         <li class="sidebar-group-label">Historical Standards</li>
                         {
-                          sectionStandards.filter((item: any) => item.status).map((item: any) => (
+                          sectionStandards.filter((item) => item.status).map((item) => (
                             <li>
                               <NavLink
                                 href={item.url}

@@ -1,4 +1,5 @@
 import { icon } from "@fortawesome/fontawesome-svg-core";
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import {
   faChartPie,
   faBoxesStacked,
@@ -59,7 +60,7 @@ import {
   faScaleUnbalancedFlip,
 } from "@fortawesome/free-solid-svg-icons";
 
-const iconMap: Record<string, any> = {
+const iconMap: Record<string, IconDefinition> = {
   chartPie: faChartPie,
   boxesStacked: faBoxesStacked,
   moneyBillTransfer: faMoneyBillTransfer,

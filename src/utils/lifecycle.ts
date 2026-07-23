@@ -7,7 +7,7 @@ export interface LifecycleCountdown {
   showCountdown: boolean;
 }
 
-export function getLifecycleCountdown(eventDate?: string | null): LifecycleCountdown {
+export function getLifecycleCountdown(eventDate?: string): LifecycleCountdown {
   const result: LifecycleCountdown = {
     validDate: false,
     daysRemaining: null,
