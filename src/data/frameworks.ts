@@ -142,10 +142,10 @@ export const FRAMEWORK_CONFIG: Record<string, FrameworkConfig> = {
       description:
         "U.S. Generally Accepted Accounting Principles (US GAAP) are the accounting standards issued by the FASB for nongovernmental entities in the United States, organised within the FASB Accounting Standards Codification.",
       route: "/usgaap",
-      primary: "#0F172A",
-      light: "#F8FAFC",
-      soft: "#F1F5F9",
-      dark: "#1E293B",
+      primary: "#8E44AD",
+      light: "#FAF5FF",
+      soft: "#F3E8FF",
+      dark: "#6D28D9",
       lucideIcon: "BookText",
       faIcon: "book-open",
       categories: [
