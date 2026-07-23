@@ -148,6 +148,9 @@ function initSidebar() {
 
                 link.style.display = match ? "" : "none";
 
+                const li = link.closest("li");
+                if (li) li.style.display = match ? "" : "none";
+
                 if (match) visible++;
 
             });
@@ -357,6 +360,11 @@ window.syncSidebarFromUrl = function(pathname) {
         s.style.display = "";
         const items = s.querySelector(".section-items");
         if (items) items.classList.remove("collapsed");
+        s.querySelectorAll(".nav-link").forEach(link => {
+            link.style.display = "";
+            const li = link.closest("li");
+            if (li) li.style.display = "";
+        });
     });
     sessionStorage.removeItem(FILTER_KEY);
 
