@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASC 840 — Leases (Legacy) | Extended Reference</title>
+<style>
+  :root { --color-background-secondary:#f9fafb;--color-background-tertiary:#f3f4f6;--color-background-info:#eff6ff;--color-background-success:#f0fdf4;--color-background-warning:#fffbeb;--color-background-danger:#fff1f2;--color-border-secondary:#e5e7eb;--color-border-tertiary:#e5e7eb;--color-border-info:#3b82f6;--color-border-success:#22c55e;--color-border-warning:#f59e0b;--color-border-danger:#ef4444;--color-text-primary:#111827;--color-text-secondary:#374151;--color-text-tertiary:#9ca3af;--color-text-info:#2563eb;--color-text-success:#16a34a;--color-text-warning:#b45309;--color-text-danger:#dc2626;--border-radius-lg:10px;--border-radius-md:8px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#fff;color:#111827;margin:0;padding:0;}
+  body{padding:20px;max-width:1180px;margin:0 auto;}*{box-sizing:border-box;}.wrap{padding:1rem 0 .5rem;}
+  .hub{display:flex;justify-content:center;margin-bottom:8px;}.hub-box{padding:12px 28px;background:var(--color-background-secondary);border:1.5px solid var(--color-border-secondary);border-radius:var(--border-radius-lg);text-align:center;}
+  .hub-title{font-size:17px;font-weight:600;color:var(--color-text-primary);}.hub-sub{font-size:11px;color:var(--color-text-tertiary);margin-top:3px;}
+  .toc{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin:14px 0 26px;}.toc a{font-size:10.5px;font-weight:500;padding:4px 11px;border-radius:14px;background:var(--color-background-tertiary);color:var(--color-text-secondary);text-decoration:none;border:1px solid var(--color-border-tertiary);}
+  .section-header{display:flex;align-items:center;gap:8px;margin:30px 0 12px;}.section-header .num{font-size:11px;font-weight:700;color:#fff;background:var(--color-text-info);width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .section-header h2{font-size:14px;font-weight:600;color:var(--color-text-primary);margin:0;}.section-header .line{flex:1;height:1px;background:var(--color-border-tertiary);}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start;}.span2{grid-column:span 2;}
+  .card{border-radius:var(--border-radius-lg);border:1px solid var(--color-border-tertiary);padding:13px 14px;background:var(--color-background-secondary);}
+  .card.ci{border-left:3px solid var(--color-border-info);}.card.cs{border-left:3px solid var(--color-border-success);}.card.cw{border-left:3px solid var(--color-border-warning);}.card.cd{border-left:3px solid var(--color-border-danger);}.card.cn{border-left:3px solid var(--color-border-secondary);}
+  .ctitle{font-size:13px;font-weight:500;margin-bottom:7px;}.ctitle.ci{color:var(--color-text-info);}.ctitle.cs{color:var(--color-text-success);}.ctitle.cw{color:var(--color-text-warning);}.ctitle.cd{color:var(--color-text-danger);}.ctitle.cn{color:var(--color-text-primary);}
+  .principle{font-size:11px;color:var(--color-text-secondary);margin-bottom:9px;line-height:1.55;padding:6px 8px;background:var(--color-background-tertiary);border-radius:6px;}
+  .elabel{font-size:10px;font-weight:500;color:var(--color-text-tertiary);margin-bottom:5px;letter-spacing:.03em;}
+  .note{font-size:10px;color:var(--color-text-tertiary);font-style:italic;line-height:1.5;margin-top:4px;}
+  .callout{font-size:11px;line-height:1.5;padding:6px 9px;border-radius:6px;margin-bottom:8px;}
+  .callout.info{background:var(--color-background-info);color:var(--color-text-info);border:1px solid var(--color-border-info);}
+  .callout.warn{background:var(--color-background-warning);color:var(--color-text-warning);border:1px solid var(--color-border-warning);}
+  .callout.danger{background:var(--color-background-danger);color:var(--color-text-danger);border:1px solid var(--color-border-danger);}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start;}
+  .dot-list span,.check-list span,.cross-list span{display:block;padding-left:14px;position:relative;font-size:11px;color:var(--color-text-secondary);line-height:1.75;}
+  .dot-list span::before{content:"·";position:absolute;left:1px;color:var(--color-text-tertiary);}
+  .check-list span::before{content:"✓";position:absolute;left:0;color:var(--color-text-success);font-size:10px;top:2px;font-weight:700;}
+  .cross-list span::before{content:"✕";position:absolute;left:0;color:var(--color-text-danger);font-size:10px;top:2px;}
+  .td-table{border:1px solid var(--color-border-tertiary);border-radius:8px;overflow:hidden;font-size:10px;margin-bottom:8px;}
+  .td-table .th{display:grid;background:var(--color-background-tertiary);padding:5px 8px;font-weight:500;color:var(--color-text-secondary);}
+  .td-table .tr{display:grid;padding:4px 8px;border-top:1px solid var(--color-border-tertiary);color:var(--color-text-secondary);}.td-table .tr.alt{background:var(--color-background-tertiary);}
+  .worked{border:1px solid var(--color-border-info);border-radius:8px;padding:10px 12px;background:var(--color-background-info);margin-bottom:9px;}
+  .worked .wk-title{font-size:11px;font-weight:600;color:var(--color-text-info);margin-bottom:5px;}.worked .wk-body{font-size:11px;color:var(--color-text-secondary);line-height:1.6;}
+  .worked .wk-answer{margin-top:6px;padding-top:6px;border-top:1px dashed var(--color-border-info);font-size:11px;color:var(--color-text-primary);}
+  .glossary-item{padding:7px 0;border-bottom:1px solid var(--color-border-tertiary);}.glossary-term{font-size:11.5px;font-weight:600;color:var(--color-text-primary);}.glossary-def{font-size:11px;color:var(--color-text-secondary);line-height:1.5;margin-top:2px;}
+  .legend{margin-top:20px;padding:12px 16px;background:var(--color-background-secondary);border:1px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);}
+  .lrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:11px;color:var(--color-text-secondary);margin-top:4px;}.ltitle{font-size:11px;font-weight:500;color:var(--color-text-primary);}
+  .badge{font-size:9px;font-weight:500;padding:1px 5px;border-radius:4px;}.bs{background:var(--color-background-info);color:var(--color-text-info);}.bp{background:var(--color-background-danger);color:var(--color-text-danger);}.bo{background:var(--color-background-success);color:var(--color-text-success);}.be{background:var(--color-background-warning);color:var(--color-text-warning);}.bc{background:#ede9fe;color:#6d28d9;}
+  .footer-note{margin-top:24px;padding:12px 16px;background:var(--color-background-tertiary);border-radius:var(--border-radius-md);font-size:10.5px;color:var(--color-text-tertiary);text-align:center;}
+  @media (max-width:640px){.grid,.two-col{grid-template-columns:1fr;}.span2{grid-column:span 1;}}
+</style></head>
+<body><div class="wrap">
+
+<div class="hub"><div class="hub-box"><div class="hub-title">ASC 840 — Leases (Legacy Standard)</div><div class="hub-sub">Extended reference poster · US GAAP · SUPERSEDED by ASC 842 · Retained for historical/comparative reference · Counterpart of the (also superseded) IAS 17 · USD examples</div></div></div>
+
+<div class="callout warn" style="max-width:900px;margin:0 auto 20px;text-align:center;">SUPERSEDED STATUS: ASC 840 was superseded by ASC 842 for fiscal years beginning after December 15, 2018 (public entities) and December 15, 2021 (most private entities). This poster is retained for historical reference, legacy contract analysis, and understanding the "before" picture behind ASC 842's headline change.</div>
+
+<div class="toc">
+<a href="#s1">1. Conceptual Framework Linkage</a><a href="#s2">2. Scope</a><a href="#s3">3. Lease Classification — the Capital Lease Criteria</a>
+<a href="#s4">4. Capital Lease Accounting (Lessee)</a><a href="#s5">5. Operating Lease Accounting (Lessee) — the Off-Balance-Sheet Result</a>
+<a href="#s6">6. Lessor Accounting</a><a href="#s7">7. Sale-Leaseback Transactions</a><a href="#s8">8. Worked Example — Capital Lease Classification</a>
+<a href="#s9">9. Worked Example — Operating Lease Straight-Line Expense</a><a href="#s10">10. Disclosure Requirements</a>
+<a href="#s11">11. Critical Judgments &amp; Estimates</a><a href="#s12">12. ASC 840 vs IAS 17 — Comparison</a>
+<a href="#s13">13. Statement Mapping</a><a href="#s14">14. Related Topics</a>
+</div>
+
+<div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card ci span2"><div class="ctitle ci">The old world: a binary on/off-balance-sheet test</div><div class="principle">ASC 840's central feature — the one ASC 842 was specifically designed to FIX — was a binary CLASSIFICATION test that determined whether a lease appeared on the LESSEE's balance sheet at all. Leases meeting specific criteria were CAPITAL leases (on balance sheet, asset + liability); everything else was an OPERATING lease, disclosed only in the notes with NO balance sheet recognition — enabling substantial "off-balance-sheet financing" that became a major source of criticism, ultimately driving the joint FASB-IASB lease project that produced ASC 842 and IFRS 16.</div>
+</div>
+</div>
+
+<div class="section-header" id="s2"><span class="num">2</span><h2>Scope</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cw span2"><div class="ctitle cw">Leases of property, plant, and equipment</div><div class="principle">ASC 840 applied to agreements conveying the RIGHT to use property, plant, or equipment for a stated period in exchange for consideration — covering both LESSEE and LESSOR accounting.</div>
+</div>
+</div>
+
+<div class="section-header" id="s3"><span class="num">3</span><h2>Lease Classification — the Capital Lease Criteria</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">Meeting ANY ONE of four bright-line criteria required capital lease treatment</div>
+<div class="td-table"><div class="th" style="grid-template-columns:1.4fr 2fr;"><span>Criterion</span><span>Bright-line test</span></div>
+<div class="tr" style="grid-template-columns:1.4fr 2fr;"><span>Transfer of ownership</span><span>Ownership transfers to the lessee by the end of the lease term</span></div>
+<div class="tr alt" style="grid-template-columns:1.4fr 2fr;"><span>Bargain purchase option</span><span>The lease contains an option to purchase at a price low enough that exercise is reasonably assured</span></div>
+<div class="tr" style="grid-template-columns:1.4fr 2fr;"><span>Lease term test</span><span>Lease term is 75% or more of the asset's remaining economic life</span></div>
+<div class="tr alt" style="grid-template-columns:1.4fr 2fr;"><span>Present value test</span><span>Present value of minimum lease payments is 90% or more of the asset's fair value</span></div>
+</div>
+<div class="note">Meeting ANY ONE of these four RIGID, BRIGHT-LINE criteria triggered CAPITAL lease treatment; meeting NONE of them meant OPERATING lease treatment — a genuinely binary, all-or-nothing outcome that created strong incentives to structure leases just outside these thresholds (e.g. a lease term of 74% of economic life, deliberately avoiding capital lease treatment).</div>
+</div>
+</div>
+
+<div class="section-header" id="s4"><span class="num">4</span><h2>Capital Lease Accounting (Lessee)</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cs span2"><div class="ctitle cs">Asset and liability recognised, similar to a financed purchase</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">A CAPITAL lease was recorded by the lessee as an ASSET and a corresponding LIABILITY, both at the PRESENT VALUE of minimum lease payments (capped at fair value) — the asset was then DEPRECIATED, and the liability amortised using the EFFECTIVE INTEREST method, producing a FRONT-LOADED total expense pattern (higher interest expense early, declining over time) — economically, the lease was treated much like a FINANCED PURCHASE of the underlying asset.</div>
+</div>
+</div>
+
+<div class="section-header" id="s5"><span class="num">5</span><h2>Operating Lease Accounting (Lessee) — the Off-Balance-Sheet Result</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">No balance sheet recognition, straight-line rent expense</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">An OPERATING lease resulted in NO asset or liability recognition on the lessee's balance sheet — lease payments were simply expensed on a STRAIGHT-LINE basis over the lease term (regardless of the actual cash payment pattern), with future minimum lease payment commitments disclosed only in the NOTES. This was the central criticism that led to ASC 842 — enormous aggregate lease commitments (retail store leases, aircraft leases, etc.) sat entirely OFF the face of the balance sheet.</div>
+</div>
+</div>
+
+<div class="section-header" id="s6"><span class="num">6</span><h2>Lessor Accounting</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cw span2"><div class="ctitle cw">Sales-type, direct financing, and operating lease categories</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Lessors classified leases into SALES-TYPE leases (where the lessor is effectively a manufacturer/dealer, recognising profit at lease inception), DIRECT FINANCING leases (a pure financing arrangement with no dealer profit), or OPERATING leases (the lessor retains substantially all risks/rewards, continues carrying the asset, and recognises rental income over time) — largely mirroring, in a broad classification sense, the criteria used for lessee capital lease classification.</div>
+</div>
+</div>
+
+<div class="section-header" id="s7"><span class="num">7</span><h2>Sale-Leaseback Transactions</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">Deferred gain recognition, contingent on leaseback classification</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">In a SALE-LEASEBACK transaction, an entity sold an asset and simultaneously leased it back — under ASC 840, any GAIN on the sale was generally DEFERRED and amortised over the leaseback term (rather than recognised immediately), particularly where the leaseback qualified as a CAPITAL lease, reflecting that the transaction was substantively more like a FINANCING arrangement than a genuine sale.</div>
+</div>
+</div>
+
+<div class="section-header" id="s8"><span class="num">8</span><h2>Worked Example — Capital Lease Classification</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cw span2"><div class="ctitle cw">Applying the bright-line tests</div>
+<div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: A 6-year equipment lease</div><div class="wk-body">A lessee enters a 6-year lease for equipment with a 7-year remaining economic life and a $2,000,000 fair value. The present value of minimum lease payments is $1,850,000. There's no ownership transfer or bargain purchase option.</div><div class="wk-answer">Lease term test: 6 ÷ 7 = 85.7% ≥ 75% → <strong>CRITERION MET</strong>. Present value test: $1,850,000 ÷ $2,000,000 = 92.5% ≥ 90% → <strong>CRITERION MET</strong>. Since AT LEAST ONE criterion is met (in fact two), this is classified as a <strong>CAPITAL LEASE</strong> — recognised on the lessee's balance sheet as an asset and liability at $1,850,000.</div></div>
+</div>
+</div>
+
+<div class="section-header" id="s9"><span class="num">9</span><h2>Worked Example — Operating Lease Straight-Line Expense</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card ci span2"><div class="ctitle ci">Smoothing uneven payments</div>
+<div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: An escalating-payment operating lease</div><div class="wk-body">A 3-year operating lease has annual payments of $100,000, $110,000, and $120,000 in years 1, 2, and 3 respectively (total: $330,000).</div><div class="wk-answer">Total lease payments $330,000 ÷ 3 years = <strong>$110,000 straight-line rent expense per year</strong>, regardless of the actual cash paid each year. In year 1, the entity expenses $110,000 but pays only $100,000, recognising a $10,000 deferred rent LIABILITY; in year 3 the reverse occurs.</div></div>
+</div>
+</div>
+
+<div class="section-header" id="s10"><span class="num">10</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">What ASC 840 required</div><div class="check-list"><span>Future minimum lease payments for capital and operating leases, by year for the next 5 years and in aggregate thereafter</span><span>General description of leasing arrangements</span><span>Assets recorded under capital leases, by major asset class</span></div>
+</div>
+</div>
+
+<div class="section-header" id="s11"><span class="num">11</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cn span2"><div class="ctitle cn">Where judgement mattered most</div>
+<div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Applying the four bright-line classification criteria, particularly around structuring incentives</span><span>Determining minimum lease payments, including renewal options reasonably assured of exercise</span></div></div>
+<div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Incremental borrowing rate used to discount minimum lease payments</span><span>Asset's remaining economic life and fair value</span></div></div></div>
+</div>
+</div>
+
+<div class="section-header" id="s12"><span class="num">12</span><h2>ASC 840 vs IAS 17 — Comparison</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card ci span2"><div class="ctitle ci">Comparison — ASC 840 vs IAS 17 (both now superseded)</div>
+<div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">US GAAP (ASC 840)</span><span style="color:var(--color-text-info);">IFRS (IAS 17)</span></div>
+<div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Classification test</span><span>Four RIGID bright-line criteria (75%, 90% thresholds)</span><span>Similar concept ("finance" vs "operating" lease) but more PRINCIPLES-BASED, no fixed bright-line percentages</span></div>
+<div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Off-balance-sheet operating leases</span><span>Permitted — no lessee balance sheet recognition</span><span>Also permitted under IAS 17 — broadly converged outcome (the shared flaw both ASC 842 and IFRS 16 were designed to fix)</span></div>
+</div>
+<div class="note">Both legacy standards shared the SAME fundamental flaw (off-balance-sheet operating leases) — which is precisely why the FASB-IASB pursued a JOINT lease project, though it ultimately produced two standards with a genuine remaining divergence (see the ASC 842 poster, Section 6).</div>
+</div>
+</div>
+
+<div class="section-header" id="s13"><span class="num">13</span><h2>Statement Mapping</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cs span2"><div class="ctitle cs">Where every ASC 840 event landed</div>
+<div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+<div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Capital lease recognition</span><span><span class="badge bs">BS</span></span><span>Asset and liability recognised at present value of minimum lease payments</span></div>
+<div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Operating lease payments</span><span><span class="badge bp">IS</span></span><span>Straight-line rent expense, no balance sheet recognition</span></div>
+</div>
+</div>
+</div>
+
+<div class="section-header" id="s14"><span class="num">14</span><h2>Related Topics</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">Cross-reference map</div>
+<div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+<div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 842</span><span>Successor standard — see the companion poster for the current lease accounting model and its comparison to IFRS 16</span></div>
+<div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 360</span><span>Property, Plant &amp; Equipment — governed depreciation of capital lease assets</span></div>
+</div>
+</div>
+</div>
+
+<div class="legend"><div class="ltitle">Financial statement key (US GAAP native terminology)</div><div class="lrow"><span class="badge bs">BS</span> Balance Sheet <span class="badge bp">IS</span> Income Statement <span class="badge bo">OCI</span> Other Comprehensive Income <span class="badge be">SE</span> Statement of Shareholders' Equity <span class="badge bc">SCF</span> Statement of Cash Flows</div></div>
+
+<div class="footer-note">ASC 840 — Leases (Legacy Standard, Superseded by ASC 842) · Extended Reference Poster · Self-contained, no internet connection required</div>
+</div></body></html>

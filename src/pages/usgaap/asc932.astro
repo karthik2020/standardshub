@@ -1,0 +1,194 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc932.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  bannerNotice={metadata.bannerNotice}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "1. Conceptual Framework Linkage" },
+        { id: "s2", label: "2. Scope" },
+        { id: "s3", label: "3. THE DUAL METHOD CHOICE — Successful Efforts vs Full Cost" },
+        { id: "s4", label: "4. Successful Efforts Method Mechanics" },
+        { id: "s5", label: "5. Full Cost Method Mechanics" },
+        { id: "s6", label: "6. THE KEY DIVERGENCE — Method Prevalence vs IFRS's Practice Under IFRS 6" },
+        { id: "s7", label: "7. The Ceiling Test (Full Cost) — an SEC-Mandated Formula" },
+        { id: "s8", label: "8. Impairment Under Successful Efforts" },
+        { id: "s9", label: "9. Asset Retirement Obligations" },
+        { id: "s10", label: "10. Worked Example — Successful Efforts Dry Hole Expensing" },
+        { id: "s11", label: "11. Worked Example — Full Cost Capitalization of the Same Dry Hole" },
+        { id: "s12", label: "12. Worked Example — a Ceiling Test Computation" },
+        { id: "s13", label: "13. Disclosure Requirements" },
+        { id: "s14", label: "14. Critical Judgments &amp; Estimates" },
+        { id: "s15", label: "15. ASC 932 vs IFRS 6 / IAS 36 — Comprehensive Comparison" },
+        { id: "s16", label: "16. Statement Mapping" },
+        { id: "s17", label: "17. Related Topics" },
+        { id: "s18", label: "18. Glossary" }
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card ci"><div class="ctitle ci">A famous, genuine policy choice affecting reported earnings volatility</div><div class="principle">Oil and gas exploration inherently involves DRILLING wells that sometimes find NOTHING commercially viable ("DRY HOLES"). ASC 932 offers oil and gas companies a genuine, EXPLICIT choice between TWO fundamentally different accounting methods for exploration costs — SUCCESSFUL EFFORTS and FULL COST (Section 3) — one of the most well-known dual-method choices anywhere in US GAAP, with materially different effects on reported earnings VOLATILITY.</div></div>
+    <div class="card cd"><div class="ctitle cd">A distinctly SEC-shaped regulatory landscape</div><div class="principle">Given the SEC's direct oversight of oil and gas reporting (Regulation S-X Rule 4-10), this Topic is unusually SHAPED by SEC-specific mechanics — most notably the FORMULAIC "ceiling test" (Section 7) required under the full cost method, a construct without a precise IFRS parallel.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">Oil and gas exploration, development, and production entities</div><div class="principle">ASC 932 applies to entities engaged in the exploration, development, and production of OIL and NATURAL GAS reserves.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>THE DUAL METHOD CHOICE — Successful Efforts vs Full Cost</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">Both methods are permitted alternatives under US GAAP</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:1fr 2fr;"><span>Method</span><span>Core principle</span></div>
+    <div class="tr" style="grid-template-columns:1fr 2fr;"><span>Successful efforts</span><span>Only costs directly associated with SUCCESSFUL exploration efforts (wells that find commercially viable reserves) are CAPITALISED; costs of UNSUCCESSFUL ("dry hole") exploratory wells are EXPENSED immediately</span></div>
+    <div class="tr alt" style="grid-template-columns:1fr 2fr;"><span>Full cost</span><span>ALL exploration costs — successful AND unsuccessful — within a large cost center (typically a country-wide pool) are CAPITALISED and amortised against TOTAL proved reserves in that cost center</span></div>
+    </div>
+    <div class="note">Both methods are EXPLICITLY sanctioned as acceptable ALTERNATIVES under US GAAP — a genuine, significant accounting POLICY choice (applied consistently once elected), broadly analogous in spirit to ASC 908's major-maintenance method choice, but far more consequential given the materially different EARNINGS VOLATILITY each method produces.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Successful Efforts Method Mechanics</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cs span2"><div class="ctitle cs">Dry holes hit the income statement immediately</div><div class="principle">Under SUCCESSFUL EFFORTS, exploratory well costs are INITIALLY capitalised pending determination of whether the well found commercially viable reserves. If the well is determined to be UNSUCCESSFUL (a dry hole), the capitalised costs are EXPENSED IMMEDIATELY. If SUCCESSFUL, the costs REMAIN capitalised and are subsequently DEPLETED using the units-of-production method as reserves are extracted. This produces a MORE VOLATILE earnings pattern, since dry hole write-offs hit the income statement directly in the period they're determined to be unsuccessful.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Full Cost Method Mechanics</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">Dry hole costs are absorbed into a large capitalised pool</div><div class="principle">Under FULL COST, ALL exploration and development costs within a defined COST CENTER (often as large as an entire country) are CAPITALISED — INCLUDING dry hole costs — and collectively DEPLETED against the cost center's TOTAL proved reserves using a units-of-production calculation. This produces a SMOOTHER earnings pattern, since individual dry hole write-offs are absorbed into the broader capitalised pool rather than hitting the income statement directly — subject, however, to the SEPARATE "ceiling test" limitation (Section 7).</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>THE KEY DIVERGENCE — Method Prevalence vs IFRS's Practice Under IFRS 6</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">IFRS doesn't explicitly prohibit full cost, but successful-efforts-like practice dominates internationally</div><div class="principle">IFRS does NOT mandate a specific method for oil and gas exploration cost accounting — like mining, exploration and evaluation costs fall under IFRS 6's permissive, POLICY-CONTINUATION framework (see the companion ASC 930 poster, Section 4), with subsequent development costs governed by general IAS 16/IAS 38 principles. IFRS 6 does NOT explicitly PROHIBIT a full-cost-style approach — but in PRACTICE, SUCCESSFUL-EFFORTS-LIKE accounting (capitalising only successful well costs) is far more WIDELY used internationally, since full cost's specific large-cost-center, SEC-defined mechanics (Section 7) are a distinctly US regulatory construct without the same codified counterpart or prevalence elsewhere. This is a genuine PRACTICAL divergence — not a case where IFRS explicitly bars full cost, but one where the specific, formulaic FULL COST method as US GAAP defines it (with its SEC-mandated ceiling test) simply isn't a comparably codified or prevalent choice under IFRS.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>The Ceiling Test (Full Cost) — an SEC-Mandated Formula</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">A specific, formulaic impairment limitation unique to full cost</div><div class="principle">Under the FULL COST method, capitalised costs within a cost center CANNOT EXCEED a "CEILING" — computed as the PRESENT VALUE (discounted at a MANDATED 10% rate) of ESTIMATED FUTURE NET REVENUES from PROVED reserves, PLUS the cost of unproved properties (not subject to amortisation), using SEC-MANDATED PRICING (generally a TRAILING 12-MONTH average of first-day-of-month prices). If capitalised costs EXCEED this ceiling, the EXCESS is written off IMMEDIATELY as an impairment — a specific, FORMULAIC, SEC-driven mechanical test with NO precise IFRS counterpart of the same construction.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Impairment Under Successful Efforts</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">Normal long-lived asset impairment principles, not the ceiling test formula</div><div class="principle">Under SUCCESSFUL EFFORTS, capitalised oil and gas properties are tested for impairment using the GENERAL long-lived asset framework (ASC 360) — the standard undiscounted-cash-flow recoverability test, followed by fair-value-based impairment measurement if that test fails — rather than the full cost method's specific ceiling test formula.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Asset Retirement Obligations</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cs span2"><div class="ctitle cs">Well decommissioning under the general ASC 410 framework</div><div class="principle">Legal obligations to DECOMMISSION wells and related facilities (plugging and abandonment) are recognised as asset retirement obligations under the GENERAL ASC 410 framework, applied consistently regardless of which of the two exploration cost methods (successful efforts or full cost) is elected.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Worked Example — Successful Efforts Dry Hole Expensing</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">An immediate income statement hit</div>
+    <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: A dry exploratory well under successful efforts</div><div class="wk-body">A company using the SUCCESSFUL EFFORTS method drills an exploratory well costing $18,000,000, which is subsequently determined to be a DRY HOLE (no commercially viable reserves found).</div><div class="wk-answer">The FULL $18,000,000 is <strong>EXPENSED IMMEDIATELY</strong> in the period the well is determined to be unsuccessful — directly reducing net income by $18,000,000 in that single period, illustrating the earnings VOLATILITY successful efforts can produce.</div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Worked Example — Full Cost Capitalization of the Same Dry Hole</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card ci span2"><div class="ctitle ci">Absorbed into the pool, no immediate income statement hit</div>
+    <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: The same dry hole, under full cost</div><div class="wk-body">The SAME company, using the FULL COST method instead, drills the same $18,000,000 dry exploratory well within a cost center holding $400,000,000 of total capitalised costs and 60,000,000 barrels of total proved reserves.</div><div class="wk-answer">The $18,000,000 dry hole cost is simply <strong>ADDED to the $400,000,000 cost center pool</strong> (now $418,000,000) — NO immediate expense is recognised. Instead, the cost is recovered gradually through UNITS-OF-PRODUCTION depletion against the cost center's total 60,000,000 barrels of proved reserves, spreading the cost over MANY future periods — SUBJECT to the ceiling test limitation (Section 7) potentially triggering a write-off if total capitalised costs exceed the computed ceiling.</div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Worked Example — a Ceiling Test Computation</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cn span2"><div class="ctitle cn">Testing whether capitalised costs exceed the formulaic ceiling</div>
+    <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Applying the ceiling test to a full cost pool</div><div class="wk-body">A full cost company's cost center has $418,000,000 of net capitalised costs. The present value (at the mandated 10% discount rate) of estimated future net revenues from proved reserves, using trailing-12-month average SEC pricing, is calculated at $370,000,000, plus $20,000,000 of unproved property costs excluded from amortisation.</div><div class="wk-answer">Ceiling = $370,000,000 + $20,000,000 = <strong>$390,000,000</strong>. Since capitalised costs of $418,000,000 EXCEED the $390,000,000 ceiling, the company must record an IMMEDIATE impairment write-off of <strong>$28,000,000</strong> ($418,000,000 − $390,000,000) — a mechanical, formula-driven result distinct from the judgement-based impairment test used under successful efforts.</div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">What ASC 932 requires</div><div class="check-list"><span>Method elected (successful efforts or full cost), applied consistently</span><span>Extensive supplemental reserve disclosures — proved reserve quantities, standardized measure of discounted future net cash flows</span><span>Costs incurred in exploration, development, and acquisition activities</span><span>Results of operations for oil- and gas-producing activities</span></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+    <div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Method selection (successful efforts vs full cost), a foundational and consequential accounting policy choice</span><span>Determining whether a well is successful or a dry hole</span></div></div>
+    <div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Proved reserve quantities, the basis for units-of-production depletion under both methods</span><span>Future net revenues used in the full cost ceiling test computation</span></div></div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s15"><span class="num">15</span><h2>ASC 932 vs IFRS 6 / IAS 36 — Comprehensive Comparison</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card ci span2"><div class="ctitle ci">Comparison — ASC 932 vs IFRS 6 / IAS 36</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">US GAAP (ASC 932)</span><span style="color:var(--color-text-info);">IFRS (IFRS 6 / IAS 36)</span></div>
+    <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Method prescription</span><span>Explicit choice: successful efforts OR full cost, both codified and sanctioned</span><span>No prescribed method — IFRS 6 permits continuing pre-existing policy; successful-efforts-like practice dominates in PRACTICE</span></div>
+    <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Full cost ceiling test</span><span>Specific, SEC-mandated formula (10% discount, trailing-12-month pricing)</span><span>NO equivalent formulaic construct — full cost as codified isn't a comparably prevalent IFRS practice</span></div>
+    <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Impairment (successful efforts-style)</span><span>ASC 360 two-step undiscounted/fair value test</span><span>IAS 36 recoverable amount (higher of fair value less costs to sell and value in use)</span></div>
+    </div>
+    <div class="note">This is one of the more STRUCTURALLY unusual comparisons in the library — the divergence isn't a differing rule applied to the same practice, but a difference in whether a specific, HIGHLY formulaic method (full cost with its SEC ceiling test) is a codified, common alternative at all.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s16"><span class="num">16</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cs span2"><div class="ctitle cs">Where every ASC 932 event lands</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+    <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Dry hole cost (successful efforts)</span><span><span class="badge bp">IS</span></span><span>Expensed immediately</span></div>
+    <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Dry hole cost (full cost)</span><span><span class="badge bs">BS</span></span><span>Capitalised into the cost center pool</span></div>
+    <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Ceiling test write-off</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Immediate impairment for excess over the computed ceiling</span></div>
+    </div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s17"><span class="num">17</span><h2>Related Topics</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">Cross-reference map</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+    <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 410</span><span>Supplies the general asset retirement obligation framework for well decommissioning</span></div>
+    <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 360</span><span>Supplies the general impairment framework for successful-efforts-method properties</span></div>
+    <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 930</span><span>Extractive Activities—Mining — a related industry Topic with parallel exploration cost capitalisation issues</span></div>
+    </div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s18"><span class="num">18</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cn span2">
+    <div class="glossary-item"><div class="glossary-term">Successful efforts method</div><div class="glossary-def">A method capitalising only costs of successful exploration efforts, expensing dry hole costs immediately.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Full cost method</div><div class="glossary-def">A method capitalising all exploration costs — successful and unsuccessful — within a large cost center, depleted against total proved reserves.</div></div>
+    <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Ceiling test</div><div class="glossary-def">The SEC-mandated formulaic limit on capitalised full cost pool costs, based on the present value of estimated future net revenues from proved reserves.</div></div>
+    </div>
+    </div>
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.asc932 || []} />
+  </section>
+</StandardPageLayout>

@@ -1,0 +1,157 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc940.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  bannerNotice={metadata.bannerNotice}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "1. Conceptual Framework Linkage" },
+        { id: "s2", label: "2. Scope" },
+        { id: "s3", label: "3. Trade Date vs Settlement Date Accounting" },
+        { id: "s4", label: "4. Trading Securities — Universal Fair Value Through Earnings" },
+        { id: "s5", label: "5. Receivables From and Payables To Customers and Broker-Dealers" },
+        { id: "s6", label: "6. Fails to Deliver / Fails to Receive" },
+        { id: "s7", label: "7. Customer Protection — Segregation of Assets" },
+        { id: "s8", label: "8. Worked Example — Trade Date Recognition" },
+        { id: "s9", label: "9. Worked Example — a Fail-to-Deliver Position" },
+        { id: "s10", label: "10. Disclosure Requirements" },
+        { id: "s11", label: "11. Critical Judgments &amp; Estimates" },
+        { id: "s12", label: "12. No Dedicated IFRS Broker-Dealer Standard — Discussion" },
+        { id: "s13", label: "13. Statement Mapping" },
+        { id: "s14", label: "14. Related Topics" },
+        { id: "s15", label: "15. Glossary" }
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card ci span2"><div class="ctitle ci">A trading-first business model, reflected in trading-first accounting</div><div class="principle">Broker-dealers exist to TRADE securities — buying and selling on their own account and on behalf of customers, often within the SAME trading day. ASC 940 reflects this by recognising transactions at TRADE DATE (not settlement date) and by measuring virtually ALL trading securities at FAIR VALUE through earnings, rather than applying the tiered AFS/HTM/amortised-cost classification scheme used by most other entities holding financial instruments.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">Registered broker-dealers in securities</div><div class="principle">ASC 940 applies to entities registered as BROKER-DEALERS under securities laws, engaging in the purchase and sale of securities for their own account and as agent for customers.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Trade Date vs Settlement Date Accounting</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">Recognition at the moment of the trade, not settlement</div><div class="principle">Broker-dealers record securities transactions on a <strong>TRADE DATE</strong> basis — recognising the purchase/sale (and any resulting gain/loss) on the date the TRANSACTION is EXECUTED, rather than waiting for the later SETTLEMENT date (typically 1-2 business days later) when cash and securities actually change hands. This reflects that economic exposure to price movements begins at the moment of the trade itself.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Trading Securities — Universal Fair Value Through Earnings</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cs span2"><div class="ctitle cs">No AFS/HTM tiering — trading securities are simply marked to market</div><div class="principle">Broker-dealers' securities held for TRADING purposes are measured at FAIR VALUE, with changes recognised DIRECTLY in EARNINGS — WITHOUT the tiered available-for-sale/held-to-maturity classification framework other entities apply under ASC 320/321. This reflects the fundamentally TRADING-oriented nature of a broker-dealer's securities inventory, which exists to be actively bought and sold rather than held for yield or long-term investment purposes.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Receivables From and Payables To Customers and Broker-Dealers</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">Reflecting the mechanics of clearing and settlement</div><div class="principle">Receivables from and payables to CUSTOMERS (e.g. margin balances) and other BROKER-DEALERS (amounts arising from unsettled trades, clearing organization deposits) are separately presented, reflecting the distinctive counterparty structure of the securities clearing and settlement process.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Fails to Deliver / Fails to Receive</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">Unsettled trades where the counterparty hasn't yet performed</div><div class="principle">A "FAIL TO DELIVER" arises when a broker-dealer has SOLD securities but has not yet DELIVERED them to the buyer by the expected settlement date; a "FAIL TO RECEIVE" arises when it has BOUGHT securities but not yet RECEIVED them. These are presented as RECEIVABLES/PAYABLES reflecting the unsettled trade position, requiring ongoing monitoring given regulatory settlement requirements.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Customer Protection — Segregation of Assets</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cs span2"><div class="ctitle cs">Regulatory-driven asset segregation, reflected in presentation</div><div class="principle">Broker-dealers are subject to regulatory requirements (e.g. SEC Rule 15c3-3) to SEGREGATE customer cash and securities from the firm's OWN proprietary assets, to protect customers in the event of the broker-dealer's insolvency — this segregation is reflected in the presentation and disclosure of customer-related assets and liabilities.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Worked Example — Trade Date Recognition</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">Recognising the trade before settlement occurs</div>
+    <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: A securities purchase executed near period-end</div><div class="wk-body">A broker-dealer executes a $5,000,000 securities purchase on December 30 (trade date), with settlement not occurring until January 2 (settlement date) of the following year.</div><div class="wk-answer">The broker-dealer recognises the $5,000,000 securities purchase and corresponding payable on <strong>December 30</strong> (trade date) — INCLUDED in the CURRENT year's balance sheet — even though cash and securities won't actually change hands until January 2 of the following year.</div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Worked Example — a Fail-to-Deliver Position</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card ci span2"><div class="ctitle ci">An unsettled sale</div>
+    <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Securities sold but not yet delivered</div><div class="wk-body">A broker-dealer sells $2,000,000 of securities to a counterparty, but due to a settlement delay, has not yet delivered the securities by the expected settlement date.</div><div class="wk-answer">The broker-dealer records a <strong>$2,000,000 receivable</strong> representing the "FAIL TO DELIVER" position — reflecting that it has sold the securities (and is owed payment) but has not yet completed physical/electronic delivery, requiring ongoing monitoring until the fail is resolved.</div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">What ASC 940 requires</div><div class="check-list"><span>Nature and amounts of receivables from and payables to customers and broker-dealers</span><span>Fails to deliver and fails to receive positions</span><span>Regulatory net capital requirements and compliance status</span></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+    <div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Classification of receivables/payables between customer and broker-dealer counterparties</span></div></div>
+    <div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Fair value of trading securities, particularly less liquid positions</span></div></div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>No Dedicated IFRS Broker-Dealer Standard — Discussion</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card ci span2"><div class="ctitle ci">General IFRS 9 FVTPL classification achieves a similar outcome</div><div class="principle">IFRS has NO dedicated broker-dealer industry standard. A broker-dealer reporting under IFRS would classify trading securities as measured at FAIR VALUE THROUGH PROFIT OR LOSS (FVTPL) under GENERAL IFRS 9 classification principles (since they are held for trading, they fail the "hold to collect" business model tests) — arriving at a BROADLY similar practical outcome to ASC 940's universal fair-value-through-earnings treatment, without a dedicated industry standard on either side. Trade date vs settlement date accounting is ALSO addressed under general IFRS 9 principles, which explicitly permit EITHER trade date or settlement date accounting as an accounting POLICY choice — broadly converged, though IFRS 9 offers this as an explicit choice rather than the closer-to-mandatory trade date convention common in US broker-dealer practice.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cs span2"><div class="ctitle cs">Where every ASC 940 event lands</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+    <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Trade date recognition</span><span><span class="badge bs">BS</span></span><span>Recognised at execution, not settlement</span></div>
+    <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Trading securities fair value change</span><span><span class="badge bp">IS</span></span><span>Recognised directly in earnings</span></div>
+    </div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Related Topics</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">Cross-reference map</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+    <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 820</span><span>Supplies the fair value measurement framework for trading securities</span></div>
+    <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 860</span><span>Governs derecognition principles relevant to securities lending and repo arrangements common in broker-dealer operations</span></div>
+    </div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s15"><span class="num">15</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cn span2">
+    <div class="glossary-item"><div class="glossary-term">Trade date accounting</div><div class="glossary-def">Recognition of a securities transaction on the date the trade is executed, rather than the later settlement date.</div></div>
+    <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Fail to deliver / fail to receive</div><div class="glossary-def">An unsettled securities trade where the broker-dealer has not yet delivered securities sold, or received securities purchased, by the expected settlement date.</div></div>
+    </div>
+    </div>
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.asc940 || []} />
+  </section>
+</StandardPageLayout>

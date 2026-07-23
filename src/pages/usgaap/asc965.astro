@@ -1,0 +1,143 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc965.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  bannerNotice={metadata.bannerNotice}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "1. Conceptual Framework Linkage" },
+        { id: "s2", label: "2. Scope" },
+        { id: "s3", label: "3. Statement of Net Assets Available for Benefits" },
+        { id: "s4", label: "4. Statement of Changes in Net Assets Available for Benefits and Benefit Obligations" },
+        { id: "s5", label: "5. Benefit Obligations for Postretirement Health/Welfare Benefits" },
+        { id: "s6", label: "6. Claims Incurred But Not Reported (IBNR) Liability" },
+        { id: "s7", label: "7. Worked Example — an IBNR Claims Liability Estimation" },
+        { id: "s8", label: "8. Disclosure Requirements" },
+        { id: "s9", label: "9. Critical Judgments &amp; Estimates" },
+        { id: "s10", label: "10. ASC 965 vs IFRS — a Narrower Correspondence" },
+        { id: "s11", label: "11. Statement Mapping" },
+        { id: "s12", label: "12. Related Topics" },
+        { id: "s13", label: "13. Glossary" }
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card ci span2"><div class="ctitle ci">A genuinely different obligation shape — claims, not accumulated benefits</div><div class="principle">A HEALTH AND WELFARE plan (providing medical, dental, life, or disability benefits) presents a fundamentally different measurement challenge than a pension plan: its obligation isn't a long-term ACCUMULATED benefit promise, but rather a stream of relatively SHORT-TERM CLAIMS — many of which have already been INCURRED by plan participants but not yet REPORTED to (or paid by) the plan. ASC 965 addresses the plan's OWN net asset statements, PLUS the distinctive CLAIMS-based liability estimation this creates (Section 6).</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">Health, life, and disability welfare benefit plans</div><div class="principle">ASC 965 applies to the separate financial statements of PLANS providing medical, dental, life, disability, and other WELFARE (non-pension) benefits.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Statement of Net Assets Available for Benefits</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">The same fair-value-forward orientation as other plan accounting Topics</div><div class="principle">Consistent with ASC 960/962, the plan's primary statement presents investments (where the plan holds any, e.g. a self-funded plan's reserve assets) at FAIR VALUE, less liabilities, resulting in net assets available for benefits.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Statement of Changes in Net Assets Available for Benefits and Benefit Obligations</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cs span2"><div class="ctitle cs">Premiums/contributions in, claims paid out</div><div class="principle">This statement shows EMPLOYER and PARTICIPANT contributions/premiums received, investment activity, LESS BENEFITS (claims) PAID and administrative expenses — for plans providing POSTRETIREMENT health/welfare benefits, a PARALLEL statement of changes in benefit obligations may ALSO be required, given the longer-term nature of that specific obligation category.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Benefit Obligations for Postretirement Health/Welfare Benefits</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">A plan-level parallel to the employer's own APBO under ASC 715-60</div><div class="principle">For plans providing POSTRETIREMENT (rather than active-employee) health/welfare benefits, ASC 965 requires disclosure of the plan's OWN benefit OBLIGATION — conceptually PARALLEL to the sponsoring employer's own "accumulated postretirement benefit obligation" (APBO) reported under ASC 715-60 at the EMPLOYER level — but again representing the PLAN's own separate reporting perspective, analogous to how ASC 960's accumulated plan benefits disclosure parallels (but is measured somewhat differently from) the employer's own PBO/ABO.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Claims Incurred But Not Reported (IBNR) Liability</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">Estimating claims that have happened but haven't yet been submitted</div><div class="principle">A distinctive, significant liability for health and welfare plans is the "INCURRED BUT NOT REPORTED" (IBNR) claims reserve — an ESTIMATE of claims for services ALREADY RENDERED to participants (e.g. a medical procedure already performed) that have NOT YET been SUBMITTED to, or PROCESSED by, the plan as of the reporting date. This requires actuarial/statistical ESTIMATION techniques similar in spirit to INSURANCE claim reserving (see the companion ASC 944 poster) — based on historical claims lag patterns and processing timelines.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Worked Example — an IBNR Claims Liability Estimation</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">Estimating unsubmitted claims based on historical lag patterns</div>
+    <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: A self-funded medical plan's year-end IBNR estimate</div><div class="wk-body">A self-funded health plan's actuary estimates, based on historical claims submission LAG patterns, that approximately $2,400,000 of medical claims for services already rendered in the current period have NOT yet been submitted or processed as of year-end.</div><div class="wk-answer">The plan recognises a <strong>$2,400,000 IBNR claims liability</strong> at year-end — an ESTIMATE of claims genuinely INCURRED (services already provided) but not yet REPORTED — ensuring the plan's financial statements reflect its TRUE obligation as of the reporting date, not merely the claims already submitted and processed.</div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">What ASC 965 requires</div><div class="check-list"><span>Net assets available for benefits, by major category at fair value</span><span>IBNR claims liability and the estimation methodology used</span><span>Benefit obligations for postretirement health/welfare benefits, where applicable</span></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+    <div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Selecting an appropriate actuarial/statistical methodology for estimating IBNR claims</span></div></div>
+    <div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>IBNR claims liability, based on historical claims lag patterns</span><span>Postretirement health/welfare benefit obligations, where applicable</span></div></div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>ASC 965 vs IFRS — a Narrower Correspondence</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card ci span2"><div class="ctitle ci">A less developed area of direct correspondence than pension plan accounting</div><div class="principle">While IAS 26 addresses RETIREMENT benefit plans broadly (providing a reasonably close counterpart for ASC 960/962), dedicated INTERNATIONAL guidance specifically for HEALTH AND WELFARE benefit PLAN-level financial reporting (as opposed to insurance company accounting under IFRS 17, or general employee benefit accounting under IAS 19 at the EMPLOYER level) is LESS developed — meaning ASC 965's specific IBNR claims reserve methodology and plan-level welfare benefit obligation disclosures don't have as CLOSE or as WIDELY-recognised a direct IFRS counterpart as ASC 960/962 do through IAS 26.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cs span2"><div class="ctitle cs">Where every ASC 965 event lands (plan-level statements)</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+    <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>IBNR claims liability</span><span>Net assets statement</span><span>Reduces net assets available for benefits</span></div>
+    <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Premiums/contributions received</span><span>Changes in net assets statement</span><span>Increases net assets available for benefits</span></div>
+    </div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Related Topics</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">Cross-reference map</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+    <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 715</span><span>Governs the sponsoring employer's own postretirement benefit accounting (APBO), a parallel employer-level obligation</span></div>
+    <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 944</span><span>Financial Services—Insurance — shares similar claims reserve/IBNR estimation concepts</span></div>
+    <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 960</span><span>Plan Accounting—Defined Benefit Pension Plans — a related plan-level Topic with similar net assets statement structure</span></div>
+    </div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cn span2">
+    <div class="glossary-item"><div class="glossary-term">Incurred but not reported (IBNR)</div><div class="glossary-def">An estimated liability for claims already incurred by plan participants but not yet submitted to or processed by the plan.</div></div>
+    <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Postretirement health/welfare benefit obligation (plan-level)</div><div class="glossary-def">A health and welfare plan's own disclosed obligation for postretirement benefits, paralleling but distinct from the sponsoring employer's APBO under ASC 715-60.</div></div>
+    </div>
+    </div>
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.asc965 || []} />
+  </section>
+</StandardPageLayout>

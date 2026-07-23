@@ -1,0 +1,162 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc855.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  bannerNotice={metadata.bannerNotice}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "1. Conceptual Framework Linkage" },
+        { id: "s2", label: "2. Scope" },
+        { id: "s3", label: "3. The Evaluation Period — Issued vs Available to Be Issued" },
+        { id: "s4", label: "4. Type I (Recognized) Subsequent Events" },
+        { id: "s5", label: "5. Type II (Non-Recognized) Subsequent Events" },
+        { id: "s6", label: "6. Reissued Financial Statements — the Reevaluation Requirement" },
+        { id: "s7", label: "7. Worked Example — a Type I Subsequent Event" },
+        { id: "s8", label: "8. Worked Example — a Type II Subsequent Event" },
+        { id: "s9", label: "9. Disclosure Requirements" },
+        { id: "s10", label: "10. Critical Judgments &amp; Estimates" },
+        { id: "s11", label: "11. ASC 855 vs IAS 10 — Comprehensive Comparison" },
+        { id: "s12", label: "12. Statement Mapping" },
+        { id: "s13", label: "13. Related Topics" },
+        { id: "s14", label: "14. Glossary" }
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card ci span2"><div class="ctitle ci">Did new information exist at the balance sheet date, or arise afterward?</div><div class="principle">Between the BALANCE SHEET date and the date financial statements are actually FINALISED, new information often comes to light. ASC 855 draws a sharp distinction based on WHEN the underlying CONDITION actually existed: if the condition existed AT the balance sheet date (just not yet fully known), the financial statements themselves should be ADJUSTED to reflect it; if the condition arose AFTER the balance sheet date, the statements are NOT adjusted, but material events may still require DISCLOSURE.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">Events between the balance sheet date and issuance</div><div class="principle">ASC 855 applies to events or transactions occurring AFTER the balance sheet date but BEFORE the financial statements are issued (or available to be issued) — covering both public and private entities.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>The Evaluation Period — Issued vs Available to Be Issued</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">A two-tier evaluation date depending on entity type</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:1fr 2fr;"><span>Entity type</span><span>Evaluation period ends when...</span></div>
+    <div class="tr" style="grid-template-columns:1fr 2fr;"><span>SEC filers ("issued")</span><span>The financial statements are WIDELY DISTRIBUTED to shareholders and other financial statement users in a form and format that complies with GAAP</span></div>
+    <div class="tr alt" style="grid-template-columns:1fr 2fr;"><span>All other entities ("available to be issued")</span><span>The financial statements are COMPLETE in a form and format that complies with GAAP, and ALL necessary approvals for issuance (e.g. management, board) have been obtained</span></div>
+    </div>
+    <div class="note">ASC 855 REQUIRES disclosure of the SPECIFIC DATE through which subsequent events were evaluated, and whether that date represents the date the statements were ISSUED or the date they were AVAILABLE to be issued — a genuinely PRESCRIPTIVE, mandatory disclosure element specific to this two-tier US GAAP construct.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Type I (Recognized) Subsequent Events</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cs span2"><div class="ctitle cs">Adjust the financial statements</div><div class="principle">A TYPE I subsequent event provides ADDITIONAL EVIDENCE about CONDITIONS that EXISTED at the balance sheet date — for example, a customer's bankruptcy filing shortly after year-end confirming that a receivable was ALREADY uncollectible as of year-end. Type I events REQUIRE the financial statements to be <strong>ADJUSTED</strong> to reflect the new information, since the underlying condition was already present at the balance sheet date.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Type II (Non-Recognized) Subsequent Events</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">Disclose, but do not adjust</div><div class="principle">A TYPE II subsequent event reflects a CONDITION that arose ENTIRELY AFTER the balance sheet date — for example, a major fire destroying a facility, or a significant business combination completed after year-end. Type II events do <strong>NOT</strong> require adjusting the recognised amounts in the financial statements — but if the event is of such significance that NONDISCLOSURE would make the financial statements MISLEADING, it must be DISCLOSED (including, in some cases, supplemental PRO FORMA financial data).</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Reissued Financial Statements — the Reevaluation Requirement</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">No reassessment for previously issued statements, but a fresh evaluation upon reissuance</div><div class="principle">An entity that has ALREADY issued financial statements generally does NOT need to reassess subsequent events for that ORIGINAL issuance as new information emerges. However, if those financial statements are subsequently REISSUED (e.g. included in a later registration statement), the entity must evaluate whether any NEW subsequent events have occurred requiring disclosure or adjustment through the REISSUANCE date — though generally without revising conclusions about events evaluated as of the original issuance date, absent restatement circumstances.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Worked Example — a Type I Subsequent Event</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">A condition confirmed after year-end, but existing at year-end</div>
+    <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: A major customer's bankruptcy filing</div><div class="wk-body">A calendar-year entity has a $500,000 receivable outstanding from a major customer at December 31. On January 20 (before the financial statements are issued), the customer files for bankruptcy, and it becomes clear the customer had been insolvent since at least mid-December.</div><div class="wk-answer">Since the customer's financial distress (the underlying CONDITION) EXISTED at December 31 — the bankruptcy filing merely CONFIRMS a condition that was already present — this is a <strong>TYPE I event</strong>. The entity must <strong>ADJUST</strong> its December 31 financial statements, recording a bad debt allowance/write-down for the $500,000 receivable, even though the bankruptcy filing itself occurred after year-end.</div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Worked Example — a Type II Subsequent Event</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card ci span2"><div class="ctitle ci">A condition arising entirely after year-end</div>
+    <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: A factory fire in January</div><div class="wk-body">The same calendar-year entity's main manufacturing facility is destroyed by a fire on January 25, an event entirely unrelated to any condition existing at December 31.</div><div class="wk-answer">Since the fire — and the resulting loss — arose ENTIRELY after the balance sheet date, with NO condition existing at December 31, this is a <strong>TYPE II event</strong>. The entity does <strong>NOT adjust</strong> its December 31 financial statements for this loss, but given its likely material significance, must <strong>DISCLOSE</strong> the nature of the event and an estimate of its financial effect (or a statement that such an estimate cannot yet be made).</div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">What ASC 855 requires</div><div class="check-list"><span>The date through which subsequent events were evaluated, and whether that represents the issuance date or the date available to be issued</span><span>Nature of material Type II events and an estimate of their financial effect, or a statement that an estimate cannot be made</span><span>For revised financial statements, the circumstances requiring revision and the date through which subsequent events were re-evaluated</span></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+    <div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Whether an event's underlying condition existed at the balance sheet date (Type I) or arose afterward (Type II)</span><span>Whether a Type II event is significant enough that nondisclosure would be misleading</span></div></div>
+    <div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Estimated financial effect of a disclosed Type II event, where reasonably estimable</span></div></div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>ASC 855 vs IAS 10 — Comprehensive Comparison</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card ci span2"><div class="ctitle ci">Comparison — ASC 855 vs IAS 10</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">US GAAP (ASC 855)</span><span style="color:var(--color-text-info);">IFRS (IAS 10)</span></div>
+    <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Terminology for Type I / Type II</span><span>Type I (recognized) / Type II (non-recognized)</span><span>ADJUSTING events / NON-ADJUSTING events — same substance, different labels</span></div>
+    <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Core adjust-vs-disclose principle</span><span>Condition existed at balance sheet date → adjust; arose after → disclose only</span><span>Same core principle — converged</span></div>
+    <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Mandatory disclosure of evaluation date</span><span>REQUIRED, with the specific "issued vs available to be issued" two-tier distinction</span><span>Authorisation-for-issue date disclosed, but WITHOUT the same prescriptive two-tier "issued vs available to be issued" construct</span></div>
+    </div>
+    <div class="note">The underlying adjust-vs-disclose principle is genuinely converged — the more prescriptive US GAAP-specific element is the mandated two-tier evaluation-date disclosure construct itself, which doesn't have a precisely matching structure under IAS 10.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cs span2"><div class="ctitle cs">Where every ASC 855 event lands</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+    <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Type I event</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Financial statements adjusted to reflect the condition existing at balance sheet date</span></div>
+    <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Type II event</span><span>Notes only</span><span>No adjustment; disclosed if material</span></div>
+    </div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Topics</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">Cross-reference map</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+    <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 250</span><span>Governs restatements, which may intersect with reissued financial statement subsequent event reevaluation</span></div>
+    <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 450</span><span>Contingencies — often supplies the recognition/measurement framework for Type I loss contingency adjustments</span></div>
+    </div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cn span2">
+    <div class="glossary-item"><div class="glossary-term">Type I (recognized) subsequent event</div><div class="glossary-def">An event providing additional evidence about conditions that existed at the balance sheet date, requiring adjustment of the financial statements.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Type II (non-recognized) subsequent event</div><div class="glossary-def">An event whose underlying condition arose after the balance sheet date, not requiring adjustment but potentially requiring disclosure.</div></div>
+    <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Available to be issued</div><div class="glossary-def">The date financial statements are complete in a form that complies with GAAP and all necessary approvals for issuance have been obtained, relevant for entities other than SEC filers.</div></div>
+    </div>
+    </div>
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.asc855 || []} />
+  </section>
+</StandardPageLayout>

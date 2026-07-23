@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASC 915 — Development Stage Entities (Legacy) | Extended Reference</title>
+<style>
+  :root { --color-background-secondary:#f9fafb;--color-background-tertiary:#f3f4f6;--color-background-info:#eff6ff;--color-background-success:#f0fdf4;--color-background-warning:#fffbeb;--color-background-danger:#fff1f2;--color-border-secondary:#e5e7eb;--color-border-tertiary:#e5e7eb;--color-border-info:#3b82f6;--color-border-success:#22c55e;--color-border-warning:#f59e0b;--color-border-danger:#ef4444;--color-text-primary:#111827;--color-text-secondary:#374151;--color-text-tertiary:#9ca3af;--color-text-info:#2563eb;--color-text-success:#16a34a;--color-text-warning:#b45309;--color-text-danger:#dc2626;--border-radius-lg:10px;--border-radius-md:8px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#fff;color:#111827;margin:0;padding:0;}
+  body{padding:20px;max-width:1180px;margin:0 auto;}*{box-sizing:border-box;}.wrap{padding:1rem 0 .5rem;}
+  .hub{display:flex;justify-content:center;margin-bottom:8px;}.hub-box{padding:12px 28px;background:var(--color-background-secondary);border:1.5px solid var(--color-border-secondary);border-radius:var(--border-radius-lg);text-align:center;}
+  .hub-title{font-size:17px;font-weight:600;color:var(--color-text-primary);}.hub-sub{font-size:11px;color:var(--color-text-tertiary);margin-top:3px;}
+  .toc{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin:14px 0 26px;}.toc a{font-size:10.5px;font-weight:500;padding:4px 11px;border-radius:14px;background:var(--color-background-tertiary);color:var(--color-text-secondary);text-decoration:none;border:1px solid var(--color-border-tertiary);}
+  .section-header{display:flex;align-items:center;gap:8px;margin:30px 0 12px;}.section-header .num{font-size:11px;font-weight:700;color:#fff;background:var(--color-text-info);width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .section-header h2{font-size:14px;font-weight:600;color:var(--color-text-primary);margin:0;}.section-header .line{flex:1;height:1px;background:var(--color-border-tertiary);}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start;}.span2{grid-column:span 2;}
+  .card{border-radius:var(--border-radius-lg);border:1px solid var(--color-border-tertiary);padding:13px 14px;background:var(--color-background-secondary);}
+  .card.ci{border-left:3px solid var(--color-border-info);}.card.cs{border-left:3px solid var(--color-border-success);}.card.cw{border-left:3px solid var(--color-border-warning);}.card.cd{border-left:3px solid var(--color-border-danger);}.card.cn{border-left:3px solid var(--color-border-secondary);}
+  .ctitle{font-size:13px;font-weight:500;margin-bottom:7px;}.ctitle.ci{color:var(--color-text-info);}.ctitle.cs{color:var(--color-text-success);}.ctitle.cw{color:var(--color-text-warning);}.ctitle.cd{color:var(--color-text-danger);}.ctitle.cn{color:var(--color-text-primary);}
+  .principle{font-size:11px;color:var(--color-text-secondary);margin-bottom:9px;line-height:1.55;padding:6px 8px;background:var(--color-background-tertiary);border-radius:6px;}
+  .elabel{font-size:10px;font-weight:500;color:var(--color-text-tertiary);margin-bottom:5px;letter-spacing:.03em;}
+  .note{font-size:10px;color:var(--color-text-tertiary);font-style:italic;line-height:1.5;margin-top:4px;}
+  .callout{font-size:11px;line-height:1.5;padding:6px 9px;border-radius:6px;margin-bottom:8px;}
+  .callout.info{background:var(--color-background-info);color:var(--color-text-info);border:1px solid var(--color-border-info);}
+  .callout.warn{background:var(--color-background-warning);color:var(--color-text-warning);border:1px solid var(--color-border-warning);}
+  .callout.danger{background:var(--color-background-danger);color:var(--color-text-danger);border:1px solid var(--color-border-danger);}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start;}
+  .dot-list span,.check-list span,.cross-list span{display:block;padding-left:14px;position:relative;font-size:11px;color:var(--color-text-secondary);line-height:1.75;}
+  .dot-list span::before{content:"·";position:absolute;left:1px;color:var(--color-text-tertiary);}
+  .check-list span::before{content:"✓";position:absolute;left:0;color:var(--color-text-success);font-size:10px;top:2px;font-weight:700;}
+  .cross-list span::before{content:"✕";position:absolute;left:0;color:var(--color-text-danger);font-size:10px;top:2px;}
+  .td-table{border:1px solid var(--color-border-tertiary);border-radius:8px;overflow:hidden;font-size:10px;margin-bottom:8px;}
+  .td-table .th{display:grid;background:var(--color-background-tertiary);padding:5px 8px;font-weight:500;color:var(--color-text-secondary);}
+  .td-table .tr{display:grid;padding:4px 8px;border-top:1px solid var(--color-border-tertiary);color:var(--color-text-secondary);}.td-table .tr.alt{background:var(--color-background-tertiary);}
+  .worked{border:1px solid var(--color-border-info);border-radius:8px;padding:10px 12px;background:var(--color-background-info);margin-bottom:9px;}
+  .worked .wk-title{font-size:11px;font-weight:600;color:var(--color-text-info);margin-bottom:5px;}.worked .wk-body{font-size:11px;color:var(--color-text-secondary);line-height:1.6;}
+  .worked .wk-answer{margin-top:6px;padding-top:6px;border-top:1px dashed var(--color-border-info);font-size:11px;color:var(--color-text-primary);}
+  .glossary-item{padding:7px 0;border-bottom:1px solid var(--color-border-tertiary);}.glossary-term{font-size:11.5px;font-weight:600;color:var(--color-text-primary);}.glossary-def{font-size:11px;color:var(--color-text-secondary);line-height:1.5;margin-top:2px;}
+  .legend{margin-top:20px;padding:12px 16px;background:var(--color-background-secondary);border:1px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);}
+  .lrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:11px;color:var(--color-text-secondary);margin-top:4px;}.ltitle{font-size:11px;font-weight:500;color:var(--color-text-primary);}
+  .badge{font-size:9px;font-weight:500;padding:1px 5px;border-radius:4px;}.bs{background:var(--color-background-info);color:var(--color-text-info);}.bp{background:var(--color-background-danger);color:var(--color-text-danger);}.bo{background:var(--color-background-success);color:var(--color-text-success);}.be{background:var(--color-background-warning);color:var(--color-text-warning);}.bc{background:#ede9fe;color:#6d28d9;}
+  .footer-note{margin-top:24px;padding:12px 16px;background:var(--color-background-tertiary);border-radius:var(--border-radius-md);font-size:10.5px;color:var(--color-text-tertiary);text-align:center;}
+  @media (max-width:640px){.grid,.two-col{grid-template-columns:1fr;}.span2{grid-column:span 1;}}
+</style></head>
+<body><div class="wrap">
+
+<div class="hub"><div class="hub-box"><div class="hub-title">ASC 915 — Development Stage Entities (Legacy)</div><div class="hub-sub">Extended reference poster · US GAAP · Reporting requirements ELIMINATED by ASU 2014-10 · Retained for historical/comparative reference · USD examples</div></div></div>
+
+<div class="callout warn" style="max-width:900px;margin:0 auto 20px;text-align:center;">SUPERSEDED STATUS: ASU 2014-10 ("Development Stage Entities: Elimination of Certain Financial Reporting Requirements") removed the special inception-to-date reporting requirements described below, effective for annual periods beginning after December 15, 2014 (early application permitted). Development stage entities now simply apply NORMAL GAAP, supplemented by the general going concern disclosure framework in ASC 205-40. This poster is retained for historical reference and legacy-filing comparability.</div>
+
+<div class="toc">
+<a href="#s1">1. Conceptual Framework Linkage</a><a href="#s2">2. Scope — What Qualified as a Development Stage Entity</a><a href="#s3">3. The Elimination — ASU 2014-10</a>
+<a href="#s4">4. What Used to Be Required — Inception-to-Date Cumulative Reporting</a><a href="#s5">5. What Used to Be Required — Additional Disclosures</a>
+<a href="#s6">6. Current Treatment — Normal GAAP Plus ASC 205-40 Going Concern</a><a href="#s7">7. Worked Example — Historical Inception-to-Date Presentation</a>
+<a href="#s8">8. Disclosure Requirements (Current, Post-Elimination)</a><a href="#s9">9. Critical Judgments &amp; Estimates</a>
+<a href="#s10">10. No Direct IFRS Equivalent Existed, Even Historically</a><a href="#s11">11. Statement Mapping</a><a href="#s12">12. Related Topics</a><a href="#s13">13. Glossary</a>
+</div>
+
+<div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card ci span2"><div class="ctitle ci">Extra transparency for pre-revenue entities — since eliminated as unnecessary</div><div class="principle">A "DEVELOPMENT STAGE ENTITY" was one devoting substantially all its efforts to establishing a NEW business, with either NO significant revenue yet, or revenue insufficient to be considered an established operating business. ASC 915 historically required such entities to provide SUPPLEMENTAL cumulative "INCEPTION-TO-DATE" financial information, on the theory that investors in pre-revenue companies would benefit from seeing the FULL cumulative history of the enterprise, not just the current period. The FASB later concluded this supplemental reporting provided LIMITED incremental value relative to its preparation cost, and ELIMINATED the requirement via ASU 2014-10 (Section 3).</div>
+</div>
+</div>
+
+<div class="section-header" id="s2"><span class="num">2</span><h2>Scope — What Qualified as a Development Stage Entity</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cw span2"><div class="ctitle cw">Planned principal operations not yet commenced, or generating insignificant revenue</div><div class="principle">An entity qualified as a DEVELOPMENT STAGE ENTITY if either: its PLANNED PRINCIPAL operations had NOT yet commenced, OR its planned principal operations HAD commenced but there was NO significant revenue from them — common examples included pre-revenue biotech/pharmaceutical companies, exploration-stage mining companies, and early-stage technology startups.</div>
+</div>
+</div>
+
+<div class="section-header" id="s3"><span class="num">3</span><h2>The Elimination — ASU 2014-10</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">A deliberate simplification, removing a reporting requirement seen as low-value</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">ASU 2014-10 eliminated the requirement to (a) present INCEPTION-TO-DATE cumulative financial statement columns, (b) LABEL the entity as a "development stage entity" in the financial statements, and (c) disclose a description of the entity's development stage ACTIVITIES — effective for annual reporting periods beginning after DECEMBER 15, 2014, with EARLY application PERMITTED. The FASB's stated rationale was that this supplemental information had become of QUESTIONABLE incremental USEFULNESS to investors relative to its PREPARATION COST — part of a broader FASB SIMPLIFICATION initiative during this period.</div>
+</div>
+</div>
+
+<div class="section-header" id="s4"><span class="num">4</span><h2>What Used to Be Required — Inception-to-Date Cumulative Reporting</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cs span2"><div class="ctitle cs">An extra cumulative column, on top of normal current/prior period columns</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Historically, a development stage entity's INCOME STATEMENT, STATEMENT OF CASH FLOWS, and STATEMENT OF STOCKHOLDERS' EQUITY each required an ADDITIONAL cumulative column presenting amounts from the entity's INCEPTION through the current balance sheet date — layered on top of (not replacing) the normal current-period and prior-period comparative columns otherwise required.</div>
+</div>
+</div>
+
+<div class="section-header" id="s5"><span class="num">5</span><h2>What Used to Be Required — Additional Disclosures</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cw span2"><div class="ctitle cw">Identification and description requirements</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Development stage entities were historically also required to DESCRIBE the nature of their development stage activities, and to identify themselves AS a "development stage entity" prominently within the financial statements — signalling to readers that normal historical trend analysis (e.g. year-over-year revenue growth) would be of limited use given the entity's pre-operational status.</div>
+</div>
+</div>
+
+<div class="section-header" id="s6"><span class="num">6</span><h2>Current Treatment — Normal GAAP Plus ASC 205-40 Going Concern</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">No special reporting category anymore — general principles now apply</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Following ASU 2014-10, a development-stage (pre-revenue) entity now simply prepares its financial statements under NORMAL GAAP, exactly like any other reporting entity — with NO special inception-to-date cumulative columns and NO special "development stage entity" labelling. Where genuine doubt exists about the entity's ability to CONTINUE as a going concern (a common circumstance for cash-burning, pre-revenue entities), the GENERAL going concern evaluation and disclosure framework in ASC 205-40 applies instead — a framework applicable to ALL entities, not one specific to development-stage companies.</div>
+</div>
+</div>
+
+<div class="section-header" id="s7"><span class="num">7</span><h2>Worked Example — Historical Inception-to-Date Presentation</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cw span2"><div class="ctitle cw">How the old cumulative column used to look</div>
+<div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: A pre-revenue biotech company's historical income statement (pre-2014)</div><div class="wk-body">A biotech company incorporated in 2011 had cumulative research and development expenses since inception of $12,000,000 through the current year-end, with $3,000,000 incurred in the CURRENT year alone.</div><div class="wk-answer">Under the OLD ASC 915 requirements, the income statement would present THREE columns: the CURRENT year ($3,000,000 R&amp;D expense), the PRIOR year (comparative), and a CUMULATIVE "INCEPTION (2011) THROUGH [current year-end]" column showing the full $12,000,000. Under CURRENT guidance (post-ASU 2014-10), only the normal current and prior year columns would be presented — the $12,000,000 cumulative column is simply NO LONGER required.</div></div>
+</div>
+</div>
+
+<div class="section-header" id="s8"><span class="num">8</span><h2>Disclosure Requirements (Current, Post-Elimination)</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">What applies today instead</div><div class="check-list"><span>Normal GAAP financial statement presentation, with no special development-stage columns or labels</span><span>ASC 205-40 going concern disclosures, where substantial doubt exists about the entity's ability to continue operating</span></div>
+</div>
+</div>
+
+<div class="section-header" id="s9"><span class="num">9</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cn span2"><div class="ctitle cn">Where judgement matters most (historically and today)</div>
+<div class="two-col"><div><div class="elabel">HISTORICAL JUDGEMENTS</div><div class="dot-list"><span>Whether an entity's revenue was "significant" enough to no longer qualify as development stage</span></div></div>
+<div><div class="elabel">CURRENT JUDGEMENTS</div><div class="dot-list"><span>Whether substantial doubt exists about the entity's ability to continue as a going concern under ASC 205-40</span></div></div></div>
+</div>
+</div>
+
+<div class="section-header" id="s10"><span class="num">10</span><h2>No Direct IFRS Equivalent Existed, Even Historically</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card ci span2"><div class="ctitle ci">A US GAAP-specific reporting category from the start</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">IFRS never had a DISTINCT "development stage entity" reporting category, even BEFORE ASU 2014-10's elimination — pre-revenue entities reporting under IFRS have always simply applied GENERAL IFRS principles, with no separate inception-to-date cumulative reporting requirement of the kind ASC 915 historically imposed. This makes ASC 915 a case where a genuinely US GAAP-SPECIFIC requirement was later eliminated, converging the two frameworks' treatment of pre-revenue entities even FURTHER — both now rely on general principles plus going concern disclosure, without any special development-stage reporting category on either side.</div>
+</div>
+</div>
+
+<div class="section-header" id="s11"><span class="num">11</span><h2>Statement Mapping</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cs span2"><div class="ctitle cs">Where ASC 915-related presentation used to land</div>
+<div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected (historically)</span><span>Notes</span></div>
+<div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Inception-to-date cumulative column</span><span><span class="badge bp">IS</span> <span class="badge bc">SCF</span> <span class="badge be">SE</span></span><span>ELIMINATED by ASU 2014-10 — no longer required</span></div>
+</div>
+</div>
+</div>
+
+<div class="section-header" id="s12"><span class="num">12</span><h2>Related Topics</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">Cross-reference map</div>
+<div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+<div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 205-40</span><span>Successor framework — supplies the general going concern evaluation and disclosure requirements now applicable to all entities, including former development stage entities</span></div>
+</div>
+</div>
+</div>
+
+<div class="section-header" id="s13"><span class="num">13</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cn span2">
+<div class="glossary-item"><div class="glossary-term">Development stage entity (historical term)</div><div class="glossary-def">An entity devoting substantially all its efforts to establishing a new business, with no or insignificant revenue, historically subject to special cumulative reporting requirements now eliminated.</div></div>
+<div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Inception-to-date column</div><div class="glossary-def">A cumulative financial statement column, formerly required for development stage entities, presenting amounts since the entity's inception — eliminated by ASU 2014-10.</div></div>
+</div>
+</div>
+
+<div class="legend"><div class="ltitle">Financial statement key (US GAAP native terminology)</div><div class="lrow"><span class="badge bs">BS</span> Balance Sheet <span class="badge bp">IS</span> Income Statement <span class="badge bo">OCI</span> Other Comprehensive Income <span class="badge be">SE</span> Statement of Shareholders' Equity <span class="badge bc">SCF</span> Statement of Cash Flows</div></div>
+
+<div class="footer-note">ASC 915 — Development Stage Entities (Legacy, Reporting Requirements Eliminated by ASU 2014-10) · Extended Reference Poster · Self-contained, no internet connection required</div>
+</div></body></html>

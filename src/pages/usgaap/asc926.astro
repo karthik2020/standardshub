@@ -1,0 +1,158 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc926.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  bannerNotice={metadata.bannerNotice}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "1. Conceptual Framework Linkage" },
+        { id: "s2", label: "2. Scope" },
+        { id: "s3", label: "3. Film Cost Capitalization — What Costs Qualify" },
+        { id: "s4", label: "4. Ultimate Revenue Estimation and the Individual-Film-Forecast Method" },
+        { id: "s5", label: "5. Participations and Residuals" },
+        { id: "s6", label: "6. Impairment of Film Costs" },
+        { id: "s7", label: "7. Worked Example — Film Cost Amortization Using the Ultimate Revenue Ratio" },
+        { id: "s8", label: "8. Worked Example — a Participations Accrual" },
+        { id: "s9", label: "9. Disclosure Requirements" },
+        { id: "s10", label: "10. Critical Judgments &amp; Estimates" },
+        { id: "s11", label: "11. ASC 926 vs IFRS — Comparison" },
+        { id: "s12", label: "12. Statement Mapping" },
+        { id: "s13", label: "13. Related Topics" },
+        { id: "s14", label: "14. Glossary" }
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card ci span2"><div class="ctitle ci">Matching film costs to the pattern of revenue they generate</div><div class="principle">A film generates revenue over an EXTENDED, often UNPREDICTABLE period — theatrical release, home video, streaming licensing, television syndication — sometimes stretching YEARS or even DECADES after production. ASC 926 addresses how to CAPITALISE film production costs and, critically, how to AMORTISE them in a pattern that genuinely matches the film's REVENUE-GENERATING lifecycle, using the "ULTIMATE REVENUE" concept (Section 4) as its central mechanism.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">Film and television production/distribution entities</div><div class="principle">ASC 926 applies to entities that PRODUCE or ACQUIRE and DISTRIBUTE films for theatrical, home entertainment, streaming, or television exhibition.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Film Cost Capitalization — What Costs Qualify</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">Development, direct production, and allocable overhead/interest costs</div><div class="principle">CAPITALISABLE film costs include DEVELOPMENT costs (story rights, screenplay costs) once a film is deemed likely to be produced, DIRECT PRODUCTION costs (cast and crew compensation, set construction, location costs), production OVERHEAD allocable to specific film projects, and CAPITALISED INTEREST on production financing during the production period (per ASC 835's qualifying asset principles) — accumulated as an intangible/other asset (UNAMORTISED film costs) until the film is RELEASED and begins generating revenue.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Ultimate Revenue Estimation and the Individual-Film-Forecast Method</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cs span2"><div class="ctitle cs">Amortising in proportion to revenue actually earned relative to total expected revenue</div><div class="principle">Under the INDIVIDUAL-FILM-FORECAST method, film costs are AMORTISED (and participations/residuals accrued) in the SAME RATIO that CURRENT PERIOD revenue bears to the entity's ESTIMATE of the film's TOTAL "ULTIMATE REVENUE" — the total revenue expected to be recognised from ALL sources (theatrical, home entertainment, licensing) over the film's ENTIRE useful life (subject to a MAXIMUM look-forward period, generally capped at 10 years for estimation purposes). This directly TIES cost recognition to the PACE at which the film is actually generating value, rather than to an arbitrary time-based schedule.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Participations and Residuals</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">Contingent compensation, accrued using the same ultimate revenue ratio</div><div class="principle">PARTICIPATIONS (contingent compensation payable to actors, directors, or writers based on the film's financial performance) and RESIDUALS (additional compensation required under industry guild agreements for subsequent exhibition, e.g. television reruns or streaming) are ACCRUED using the SAME ultimate-revenue-ratio methodology as film cost amortisation — recognised as an expense in proportion to the revenue recognised in the period relative to total ultimate revenue.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Impairment of Film Costs</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">Fair value assessment triggered by specific indicators</div><div class="principle">Unamortised film costs are tested for IMPAIRMENT when INDICATORS suggest the film's FAIR VALUE may have fallen below its unamortised cost — such as significantly reduced revenue estimates, an unfavourable market reception, or a significant delay in release. If the film's FAIR VALUE is determined to be BELOW its unamortised cost, an impairment LOSS is recognised for the difference — WRITTEN DOWN to fair value, with NO subsequent reversal permitted even if the film's prospects later improve.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Worked Example — Film Cost Amortization Using the Ultimate Revenue Ratio</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">Tying amortisation to actual revenue performance</div>
+    <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: A film's first-year theatrical release</div><div class="wk-body">A studio capitalises $80,000,000 of film costs. Total ULTIMATE REVENUE (theatrical, streaming, licensing, over the film's full useful life) is estimated at $200,000,000. In its first year, the film generates $60,000,000 of actual revenue.</div><div class="wk-answer">Amortisation ratio = $60,000,000 ÷ $200,000,000 = <strong>30%</strong>. Film cost amortisation for the year = 30% × $80,000,000 = <strong>$24,000,000</strong> — directly proportional to the revenue actually earned relative to the film's total estimated ultimate revenue, NOT based on a fixed time schedule.</div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Worked Example — a Participations Accrual</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card ci span2"><div class="ctitle ci">Accruing contingent talent compensation using the same ratio</div>
+    <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: A lead actor's profit participation</div><div class="wk-body">Continuing the prior example, the film's lead actor has a contractual participation entitling them to compensation totalling $15,000,000 over the film's full ultimate revenue life, contingent on the film's financial performance.</div><div class="wk-answer">Using the SAME 30% ultimate revenue ratio, the studio accrues participation expense of 30% × $15,000,000 = <strong>$4,500,000</strong> in the first year — consistent with the same revenue-proportional pattern used for film cost amortisation itself.</div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">What ASC 926 requires</div><div class="check-list"><span>Components of unamortised film costs, and expected amortisation for each of the next 3 years</span><span>Impairment charges recognised on film costs during the period</span><span>Nature of participation and residual liabilities</span></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+    <div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Whether impairment indicators are present, warranting a fair value assessment</span></div></div>
+    <div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Estimated ultimate revenue — the single most consequential estimate in this Topic, driving both amortisation and participations accrual patterns, and subject to regular revision as actual results and market conditions evolve</span></div></div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>ASC 926 vs IFRS — Comparison</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card ci span2"><div class="ctitle ci">Comparison — ASC 926 vs general IFRS treatment of films (IAS 38 / IAS 2)</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">US GAAP (ASC 926)</span><span style="color:var(--color-text-info);">IFRS (General Principles)</span></div>
+    <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Dedicated film industry standard</span><span>YES — a codified, named methodology</span><span>NONE — films treated as an intangible asset (IAS 38) or inventory (IAS 2) under GENERAL principles</span></div>
+    <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Amortisation basis</span><span>Individual-film-forecast method, tied explicitly to ultimate revenue ratio</span><span>General principle: amortise in the pattern reflecting the consumption of expected economic benefits — conceptually similar, but WITHOUT a codified "ultimate revenue" methodology of the same name/specificity</span></div>
+    <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Impairment reversal</span><span>NOT permitted, once written down</span><span>IAS 36 impairment reversals ARE generally permitted for most assets if indicators improve (though not for goodwill) — a potential divergence depending on classification</span></div>
+    </div>
+    <div class="note">The underlying PRINCIPLE — match cost recognition to the pattern of economic benefit consumption — is broadly SHARED, but ASC 926 provides a far more SPECIFIC, codified methodology (the ultimate revenue ratio) than IFRS's general intangible asset/inventory guidance offers for this industry.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cs span2"><div class="ctitle cs">Where every ASC 926 event lands</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+    <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Film cost amortisation</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Recognised per the ultimate revenue ratio</span></div>
+    <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Participations/residuals accrual</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Accrued using the same ratio methodology</span></div>
+    <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Impairment</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Written down to fair value, no subsequent reversal</span></div>
+    </div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Topics</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">Cross-reference map</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+    <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 835</span><span>Supplies the interest capitalisation framework applied to production financing during the production period</span></div>
+    <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 928</span><span>Entertainment—Music — shares similar royalty/participation accrual concepts</span></div>
+    </div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cn span2">
+    <div class="glossary-item"><div class="glossary-term">Ultimate revenue</div><div class="glossary-def">The total revenue an entity expects to recognise from a film over its entire useful life, subject to a maximum look-forward period, driving amortisation and participations accrual.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Individual-film-forecast method</div><div class="glossary-def">The methodology amortising film costs in the same ratio that current-period revenue bears to estimated ultimate revenue.</div></div>
+    <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Participations and residuals</div><div class="glossary-def">Contingent compensation payable to talent based on a film's financial performance, or required under industry guild agreements for subsequent exhibition.</div></div>
+    </div>
+    </div>
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.asc926 || []} />
+  </section>
+</StandardPageLayout>

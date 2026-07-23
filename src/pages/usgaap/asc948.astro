@@ -1,0 +1,153 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc948.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  bannerNotice={metadata.bannerNotice}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "1. Conceptual Framework Linkage" },
+        { id: "s2", label: "2. Scope" },
+        { id: "s3", label: "3. Mortgage Loans Held for Sale — Measurement" },
+        { id: "s4", label: "4. Interest Rate Lock Commitments (IRLCs) — Derivative Treatment" },
+        { id: "s5", label: "5. Forward Loan Sale Commitments" },
+        { id: "s6", label: "6. Mortgage Servicing Rights — Cross-Reference to ASC 860" },
+        { id: "s7", label: "7. Worked Example — IRLC Fair Value Measurement" },
+        { id: "s8", label: "8. Worked Example — Lower of Cost or Fair Value for Held-for-Sale Loans" },
+        { id: "s9", label: "9. Disclosure Requirements" },
+        { id: "s10", label: "10. Critical Judgments &amp; Estimates" },
+        { id: "s11", label: "11. No Dedicated IFRS Mortgage Banking Standard — Discussion" },
+        { id: "s12", label: "12. Statement Mapping" },
+        { id: "s13", label: "13. Related Topics" },
+        { id: "s14", label: "14. Glossary" }
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card ci span2"><div class="ctitle ci">A pipeline business with genuine derivative exposure before a loan even closes</div><div class="principle">Mortgage banking involves a distinctive PIPELINE of activity: a borrower LOCKS an interest rate before the loan even closes, the lender then originates and typically SELLS the loan into the secondary market, often while retaining SERVICING rights. ASC 948 addresses the measurement of loans HELD FOR SALE, and — notably — treats the interest RATE LOCK COMMITMENT itself as a DERIVATIVE, since the lender is genuinely exposed to interest rate risk from the moment of the lock, well before the loan is even funded.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">Entities engaged in mortgage loan origination and sale</div><div class="principle">ASC 948 applies to entities engaged in MORTGAGE BANKING activities — originating residential (or commercial) mortgage loans with the intent to SELL them, rather than hold them for long-term investment.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Mortgage Loans Held for Sale — Measurement</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">Lower of cost or fair value, or the fair value option</div><div class="principle">Mortgage loans HELD FOR SALE are measured at the LOWER OF COST OR FAIR VALUE (LOCOM), UNLESS the entity elects the FAIR VALUE OPTION (under ASC 825, see the companion poster) for the loans — in which case they are measured entirely at FAIR VALUE, with changes recognised directly in earnings. Many mortgage bankers elect the fair value option specifically to achieve a natural ECONOMIC OFFSET against the fair-value-measured IRLCs and forward sale commitments associated with the same loans (Sections 4-5).</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Interest Rate Lock Commitments (IRLCs) — Derivative Treatment</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cs span2"><div class="ctitle cs">A derivative from the moment the rate is locked</div><div class="principle">An INTEREST RATE LOCK COMMITMENT (IRLC) — the lender's commitment to originate a mortgage loan at a SPECIFIED interest rate, made to a prospective borrower before the loan actually closes — meets the DEFINITION of a derivative under ASC 815 (an underlying interest rate, no/minimal initial investment, net settlement provisions) and is recognised as a DERIVATIVE ASSET or LIABILITY, measured at FAIR VALUE, with changes recognised in EARNINGS from the DATE OF THE LOCK — well BEFORE the loan itself is even funded.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Forward Loan Sale Commitments</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">Best-efforts vs mandatory delivery — a meaningful distinction</div><div class="principle">A "BEST EFFORTS" forward sale commitment (the lender agrees to sell a loan ONLY IF it actually closes) is generally NOT considered a derivative, since it lacks the requisite net settlement characteristics and the lender bears no obligation if the underlying loan fails to close. A "MANDATORY DELIVERY" commitment (the lender is OBLIGATED to deliver loans regardless, potentially requiring PAIR-OFF fees if it cannot) generally DOES meet the derivative definition and is measured at FAIR VALUE — a meaningful DISTINCTION in commitment TYPE driving genuinely different accounting outcomes.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Mortgage Servicing Rights — Cross-Reference to ASC 860</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">Recognised under the general transfers and servicing framework</div><div class="principle">Where a mortgage banker SELLS loans but RETAINS the right to service them, a MORTGAGE SERVICING RIGHT (MSR) asset (or liability) is recognised under the GENERAL servicing asset/liability framework in ASC 860 — measured initially at fair value, with a subsequent measurement method (fair value or amortisation) elected by class, exactly as described in the companion ASC 860 poster.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Worked Example — IRLC Fair Value Measurement</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">Recognising derivative exposure at the moment of the lock</div>
+    <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: A rate lock ahead of loan closing</div><div class="wk-body">A lender locks a $400,000 mortgage rate for a borrower on March 1, with the loan expected to close on April 15. Between March 1 and period-end (March 31), market mortgage rates decline, making the locked rate MORE valuable relative to current market pricing — an estimated $6,000 fair value gain on the IRLC.</div><div class="wk-answer">The lender recognises a <strong>$6,000 derivative asset</strong> (the IRLC) with a corresponding <strong>$6,000 gain</strong> in earnings at March 31 — reflecting the lender's genuine economic exposure to interest rate movements from the DATE OF THE LOCK, even though the loan itself hasn't closed or funded yet.</div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Worked Example — Lower of Cost or Fair Value for Held-for-Sale Loans</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card ci span2"><div class="ctitle ci">Writing down loans where fair value has fallen below cost</div>
+    <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: A pool of originated loans awaiting sale</div><div class="wk-body">A mortgage bank originates $50,000,000 of loans held for sale (not electing the fair value option), with current market fair value of $49,200,000 due to a rise in market interest rates since origination.</div><div class="wk-answer">Since fair value ($49,200,000) is BELOW cost ($50,000,000) and the fair value option was NOT elected, the loans are written down to the LOWER value — recognising an <strong>$800,000 loss</strong> ($50,000,000 − $49,200,000) — reflecting LOCOM's inherently conservative, one-directional write-down approach.</div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">What ASC 948 requires</div><div class="check-list"><span>Measurement basis elected for loans held for sale (LOCOM or fair value option)</span><span>Nature and fair value of IRLCs and forward sale commitments outstanding</span><span>Mortgage servicing rights balances and the subsequent measurement method elected</span></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+    <div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Whether a forward sale commitment is best-efforts or mandatory delivery, driving derivative classification</span></div></div>
+    <div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Fair value of IRLCs, incorporating pull-through (loan closing probability) assumptions</span><span>Fair value of mortgage servicing rights, sensitive to prepayment speed assumptions</span></div></div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>No Dedicated IFRS Mortgage Banking Standard — Discussion</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card ci span2"><div class="ctitle ci">General IFRS 9 principles achieve broadly similar outcomes</div><div class="principle">IFRS has NO dedicated mortgage banking industry standard. A mortgage lender reporting under IFRS would apply GENERAL IFRS 9 principles — classifying loans held for sale based on the business model test (likely FVTPL if held for sale rather than "hold to collect"), and evaluating rate lock commitments and forward sale commitments under IFRS 9's general derivative definition, which is SUBSTANTIALLY similar to ASC 815's — arriving at BROADLY similar practical outcomes to ASC 948's specific mortgage banking guidance, without a dedicated industry standard on either side.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cs span2"><div class="ctitle cs">Where every ASC 948 event lands</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+    <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>IRLC fair value change</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Recognised from the date of the rate lock</span></div>
+    <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Held-for-sale loans (LOCOM)</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Written down when fair value falls below cost</span></div>
+    <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Mortgage servicing rights</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Recognised at fair value, per ASC 860</span></div>
+    </div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Topics</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">Cross-reference map</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+    <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 815</span><span>Supplies the general derivative definition and measurement framework applied to IRLCs and mandatory forward sale commitments</span></div>
+    <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 860</span><span>Supplies the general servicing asset/liability recognition and measurement framework for mortgage servicing rights</span></div>
+    <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 825</span><span>Supplies the fair value option that many mortgage bankers elect for loans held for sale</span></div>
+    </div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cn span2">
+    <div class="glossary-item"><div class="glossary-term">Interest rate lock commitment (IRLC)</div><div class="glossary-def">A lender's commitment to originate a mortgage loan at a specified rate, treated as a derivative from the date of the lock.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Mandatory delivery commitment</div><div class="glossary-def">A forward loan sale commitment obligating delivery regardless of whether underlying loans close, generally meeting the derivative definition.</div></div>
+    <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Best efforts commitment</div><div class="glossary-def">A forward loan sale commitment to sell a loan only if it closes, generally not meeting the derivative definition.</div></div>
+    </div>
+    </div>
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.asc948 || []} />
+  </section>
+</StandardPageLayout>

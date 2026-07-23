@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASC 985 — Software | Extended Reference</title>
+<style>
+  :root { --color-background-secondary:#f9fafb;--color-background-tertiary:#f3f4f6;--color-background-info:#eff6ff;--color-background-success:#f0fdf4;--color-background-warning:#fffbeb;--color-background-danger:#fff1f2;--color-border-secondary:#e5e7eb;--color-border-tertiary:#e5e7eb;--color-border-info:#3b82f6;--color-border-success:#22c55e;--color-border-warning:#f59e0b;--color-border-danger:#ef4444;--color-text-primary:#111827;--color-text-secondary:#374151;--color-text-tertiary:#9ca3af;--color-text-info:#2563eb;--color-text-success:#16a34a;--color-text-warning:#b45309;--color-text-danger:#dc2626;--border-radius-lg:10px;--border-radius-md:8px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#fff;color:#111827;margin:0;padding:0;}
+  body{padding:20px;max-width:1180px;margin:0 auto;}*{box-sizing:border-box;}.wrap{padding:1rem 0 .5rem;}
+  .hub{display:flex;justify-content:center;margin-bottom:8px;}.hub-box{padding:12px 28px;background:var(--color-background-secondary);border:1.5px solid var(--color-border-secondary);border-radius:var(--border-radius-lg);text-align:center;}
+  .hub-title{font-size:17px;font-weight:600;color:var(--color-text-primary);}.hub-sub{font-size:11px;color:var(--color-text-tertiary);margin-top:3px;}
+  .toc{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin:14px 0 26px;}.toc a{font-size:10.5px;font-weight:500;padding:4px 11px;border-radius:14px;background:var(--color-background-tertiary);color:var(--color-text-secondary);text-decoration:none;border:1px solid var(--color-border-tertiary);}
+  .section-header{display:flex;align-items:center;gap:8px;margin:30px 0 12px;}.section-header .num{font-size:11px;font-weight:700;color:#fff;background:var(--color-text-info);width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .section-header h2{font-size:14px;font-weight:600;color:var(--color-text-primary);margin:0;}.section-header .line{flex:1;height:1px;background:var(--color-border-tertiary);}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start;}.span2{grid-column:span 2;}
+  .card{border-radius:var(--border-radius-lg);border:1px solid var(--color-border-tertiary);padding:13px 14px;background:var(--color-background-secondary);}
+  .card.ci{border-left:3px solid var(--color-border-info);}.card.cs{border-left:3px solid var(--color-border-success);}.card.cw{border-left:3px solid var(--color-border-warning);}.card.cd{border-left:3px solid var(--color-border-danger);}.card.cn{border-left:3px solid var(--color-border-secondary);}
+  .ctitle{font-size:13px;font-weight:500;margin-bottom:7px;}.ctitle.ci{color:var(--color-text-info);}.ctitle.cs{color:var(--color-text-success);}.ctitle.cw{color:var(--color-text-warning);}.ctitle.cd{color:var(--color-text-danger);}.ctitle.cn{color:var(--color-text-primary);}
+  .principle{font-size:11px;color:var(--color-text-secondary);margin-bottom:9px;line-height:1.55;padding:6px 8px;background:var(--color-background-tertiary);border-radius:6px;}
+  .elabel{font-size:10px;font-weight:500;color:var(--color-text-tertiary);margin-bottom:5px;letter-spacing:.03em;}
+  .note{font-size:10px;color:var(--color-text-tertiary);font-style:italic;line-height:1.5;margin-top:4px;}
+  .callout{font-size:11px;line-height:1.5;padding:6px 9px;border-radius:6px;margin-bottom:8px;}
+  .callout.info{background:var(--color-background-info);color:var(--color-text-info);border:1px solid var(--color-border-info);}
+  .callout.warn{background:var(--color-background-warning);color:var(--color-text-warning);border:1px solid var(--color-border-warning);}
+  .callout.danger{background:var(--color-background-danger);color:var(--color-text-danger);border:1px solid var(--color-border-danger);}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start;}
+  .dot-list span,.check-list span,.cross-list span{display:block;padding-left:14px;position:relative;font-size:11px;color:var(--color-text-secondary);line-height:1.75;}
+  .dot-list span::before{content:"·";position:absolute;left:1px;color:var(--color-text-tertiary);}
+  .check-list span::before{content:"✓";position:absolute;left:0;color:var(--color-text-success);font-size:10px;top:2px;font-weight:700;}
+  .cross-list span::before{content:"✕";position:absolute;left:0;color:var(--color-text-danger);font-size:10px;top:2px;}
+  .td-table{border:1px solid var(--color-border-tertiary);border-radius:8px;overflow:hidden;font-size:10px;margin-bottom:8px;}
+  .td-table .th{display:grid;background:var(--color-background-tertiary);padding:5px 8px;font-weight:500;color:var(--color-text-secondary);}
+  .td-table .tr{display:grid;padding:4px 8px;border-top:1px solid var(--color-border-tertiary);color:var(--color-text-secondary);}.td-table .tr.alt{background:var(--color-background-tertiary);}
+  .worked{border:1px solid var(--color-border-info);border-radius:8px;padding:10px 12px;background:var(--color-background-info);margin-bottom:9px;}
+  .worked .wk-title{font-size:11px;font-weight:600;color:var(--color-text-info);margin-bottom:5px;}.worked .wk-body{font-size:11px;color:var(--color-text-secondary);line-height:1.6;}
+  .worked .wk-answer{margin-top:6px;padding-top:6px;border-top:1px dashed var(--color-border-info);font-size:11px;color:var(--color-text-primary);}
+  .glossary-item{padding:7px 0;border-bottom:1px solid var(--color-border-tertiary);}.glossary-term{font-size:11.5px;font-weight:600;color:var(--color-text-primary);}.glossary-def{font-size:11px;color:var(--color-text-secondary);line-height:1.5;margin-top:2px;}
+  .legend{margin-top:20px;padding:12px 16px;background:var(--color-background-secondary);border:1px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);}
+  .lrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:11px;color:var(--color-text-secondary);margin-top:4px;}.ltitle{font-size:11px;font-weight:500;color:var(--color-text-primary);}
+  .badge{font-size:9px;font-weight:500;padding:1px 5px;border-radius:4px;}.bs{background:var(--color-background-info);color:var(--color-text-info);}.bp{background:var(--color-background-danger);color:var(--color-text-danger);}.bo{background:var(--color-background-success);color:var(--color-text-success);}.be{background:var(--color-background-warning);color:var(--color-text-warning);}.bc{background:#ede9fe;color:#6d28d9;}
+  .footer-note{margin-top:24px;padding:12px 16px;background:var(--color-background-tertiary);border-radius:var(--border-radius-md);font-size:10.5px;color:var(--color-text-tertiary);text-align:center;}
+  @media (max-width:640px){.grid,.two-col{grid-template-columns:1fr;}.span2{grid-column:span 1;}}
+</style></head>
+<body><div class="wrap">
+
+<div class="hub"><div class="hub-box"><div class="hub-title">ASC 985 — Software</div><div class="hub-sub">Extended reference poster · US GAAP · Subtopics: 985-605 Revenue, 985-20 Costs of Software to Be Sold/Leased/Marketed · Cross-ref ASC 350-40 · Contrasted with IAS 38 · USD examples</div></div></div>
+
+<div class="toc">
+<a href="#s1">1. Conceptual Framework Linkage</a><a href="#s2">2. Scope</a><a href="#s3">3. Software Revenue Recognition — Now Under ASC 606</a>
+<a href="#s4">4. Costs of Software to Be Sold, Leased, or Marketed Externally</a><a href="#s5">5. Costs of Internal-Use Software — Cross-Reference to ASC 350-40</a>
+<a href="#s6">6. THE KEY DIVERGENCE — Bifurcated US GAAP Frameworks vs IAS 38's Unified Criteria</a><a href="#s7">7. Worked Example — External-Use Software Cost Capitalization</a>
+<a href="#s8">8. Worked Example — Internal-Use Software Cost Capitalization</a><a href="#s9">9. Disclosure Requirements</a>
+<a href="#s10">10. Critical Judgments &amp; Estimates</a><a href="#s11">11. ASC 985 vs IAS 38 — Comprehensive Comparison</a>
+<a href="#s12">12. Statement Mapping</a><a href="#s13">13. Related Topics</a><a href="#s14">14. Glossary</a>
+</div>
+
+<div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card ci"><div class="ctitle ci">A genuine bifurcation based on the software's ultimate purpose</div><div class="principle">US GAAP treats software COST capitalisation DIFFERENTLY depending on WHY the software was developed: software developed for EXTERNAL sale, lease, or licensing to customers follows ASC 985-20's OWN specific framework, TRIGGERED by "technological feasibility"; software developed SOLELY for the entity's OWN INTERNAL use follows a SEPARATE framework under ASC 350-40, triggered by completion of the "PRELIMINARY PROJECT STAGE." This genuine BIFURCATION — two distinct capitalisation frameworks, each with its OWN specific triggering event — is a distinctive feature of US GAAP software accounting.</div></div>
+<div class="card cd"><div class="ctitle cd">IAS 38 applies a single, unified development cost framework</div><div class="principle">IAS 38 does NOT maintain this same external-use/internal-use BIFURCATION — it applies its OWN GENERAL intangible asset development cost capitalisation criteria UNIFORMLY to software, regardless of whether it's developed for external sale or internal use (Section 6).</div>
+</div>
+</div>
+
+<div class="section-header" id="s2"><span class="num">2</span><h2>Scope</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cw span2"><div class="ctitle cw">Software developers, licensors, and internal-use software developers</div><div class="principle">ASC 985 applies to entities that DEVELOP or ACQUIRE software for external SALE, LICENSE, or LEASE to customers, and (via cross-reference) entities developing software SOLELY for their OWN internal operational use.</div>
+</div>
+</div>
+
+<div class="section-header" id="s3"><span class="num">3</span><h2>Software Revenue Recognition — Now Under ASC 606</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">VSOE is gone — replaced by general standalone selling price estimation</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">PRIOR to ASC 606, software revenue recognition required "VENDOR-SPECIFIC OBJECTIVE EVIDENCE" (VSOE) of fair value to allocate consideration among multiple elements (license, maintenance, services) in a bundled arrangement — a SPECIFIC, often RESTRICTIVE requirement UNIQUE to software. Under CURRENT ASC 606, VSOE is <strong>NO LONGER REQUIRED</strong> — software arrangements are now analysed under the GENERAL revenue recognition model, allocating the transaction price based on RELATIVE STANDALONE SELLING PRICE (estimated using various acceptable methods, not requiring VSOE specifically), with software LICENSES analysed under the functional/symbolic IP framework (see the ASC 928 poster) to determine POINT-IN-TIME vs OVER-TIME recognition.</div>
+</div>
+</div>
+
+<div class="section-header" id="s4"><span class="num">4</span><h2>Costs of Software to Be Sold, Leased, or Marketed Externally</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cs span2"><div class="ctitle cs">Capitalised only after technological feasibility is established</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Costs of developing software intended for EXTERNAL sale/lease/licensing are EXPENSED as incurred (as research and development) UNTIL "TECHNOLOGICAL FEASIBILITY" is established — generally evidenced by completion of a DETAILED PROGRAM DESIGN or a WORKING MODEL confirming the product can be produced to meet its design specifications. AFTER technological feasibility is established, subsequent COSTS (coding, testing) are CAPITALISED, until the product is available for GENERAL RELEASE to customers, at which point capitalised costs are AMORTISED (generally on a straight-line or, if greater, a units/revenue-based method) over the product's estimated economic life.</div>
+</div>
+</div>
+
+<div class="section-header" id="s5"><span class="num">5</span><h2>Costs of Internal-Use Software — Cross-Reference to ASC 350-40</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">A different triggering event — completion of the preliminary project stage</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">For software developed SOLELY for the entity's OWN internal use (with NO substantive plan to market it externally), ASC 350-40 applies a DIFFERENT framework with its OWN distinct triggering event: costs are EXPENSED during the "PRELIMINARY PROJECT STAGE" (conceptual formulation, evaluating alternatives, vendor selection), then CAPITALISED during the "APPLICATION DEVELOPMENT STAGE" (design, coding, testing, installation) once management has AUTHORISED and COMMITTED funding and it is PROBABLE the project will be completed and used for its intended function — with POST-IMPLEMENTATION/OPERATION stage costs (training, routine maintenance) again EXPENSED.</div>
+</div>
+</div>
+
+<div class="section-header" id="s6"><span class="num">6</span><h2>THE KEY DIVERGENCE — Bifurcated US GAAP Frameworks vs IAS 38's Unified Criteria</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">Two distinct, purpose-dependent US GAAP triggers vs one general IFRS test</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">US GAAP maintains TWO SEPARATE software cost capitalisation frameworks — EACH with its OWN SPECIFIC triggering event ("technological feasibility" for external-use software; "completion of the preliminary project stage" for internal-use software) — depending ENTIRELY on the software's INTENDED USE. IAS 38, by contrast, applies its OWN GENERAL intangible asset development cost criteria (the "PIRATE" criteria: Probability of future benefit, Intention to complete and use/sell, Resources adequate to complete, Ability to use/sell, Technical feasibility, Expenditure reliably measurable) UNIFORMLY to ALL software development — WITHOUT a comparable EXTERNAL-USE/INTERNAL-USE BIFURCATION or the SAME SPECIFICALLY NAMED triggering events. This is a genuine STRUCTURAL divergence: identical software development activity could, in principle, be analysed under TWO DIFFERENT specific US GAAP frameworks depending on its intended use, whereas IFRS applies a SINGLE, unified test regardless of that same distinction.</div>
+</div>
+</div>
+
+<div class="section-header" id="s7"><span class="num">7</span><h2>Worked Example — External-Use Software Cost Capitalization</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cw span2"><div class="ctitle cw">Capitalising after technological feasibility</div>
+<div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Developing a commercial software product</div><div class="wk-body">A software company spends $2,000,000 on initial research and a working prototype BEFORE technological feasibility is established, then spends an ADDITIONAL $3,500,000 on coding and testing AFTER a detailed program design confirms the product can meet its specifications, before the product's general release.</div><div class="wk-answer">The initial $2,000,000 is EXPENSED as research and development. The subsequent $3,500,000 (incurred AFTER technological feasibility) is <strong>CAPITALISED</strong> — to be AMORTISED once the product is released for sale, over its estimated economic life.</div></div>
+</div>
+</div>
+
+<div class="section-header" id="s8"><span class="num">8</span><h2>Worked Example — Internal-Use Software Cost Capitalization</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card ci span2"><div class="ctitle ci">Capitalising after the preliminary project stage</div>
+<div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Developing an internal ERP system</div><div class="wk-body">A company spends $500,000 evaluating vendor options and conceptual approaches for a new internal ERP system (preliminary project stage), then, after management authorises the project and commits funding, spends $4,000,000 on system design, coding, and testing (application development stage).</div><div class="wk-answer">The $500,000 preliminary project stage cost is EXPENSED as incurred. The $4,000,000 application development stage cost is <strong>CAPITALISED</strong> — to be AMORTISED once the system is placed into service, generally on a straight-line basis over its estimated useful life.</div></div>
+</div>
+</div>
+
+<div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">What ASC 985 requires</div><div class="check-list"><span>Amounts capitalised as software development costs during the period</span><span>Amortisation method and periods used for capitalised software costs</span><span>Unamortised computer software costs and any impairment write-downs</span></div>
+</div>
+</div>
+
+<div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+<div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Determining the point of technological feasibility for external-use software</span><span>Determining completion of the preliminary project stage for internal-use software</span><span>Classifying software as functional vs symbolic IP for licensing revenue purposes</span></div></div>
+<div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Estimated economic life used to amortise capitalised software costs</span><span>Standalone selling price of bundled software elements</span></div></div></div>
+</div>
+</div>
+
+<div class="section-header" id="s11"><span class="num">11</span><h2>ASC 985 vs IAS 38 — Comprehensive Comparison</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card ci span2"><div class="ctitle ci">Comparison — ASC 985 vs IAS 38</div>
+<div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">US GAAP (ASC 985 / 350-40)</span><span style="color:var(--color-text-info);">IFRS (IAS 38)</span></div>
+<div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>External-use vs internal-use bifurcation</span><span>YES — two distinct frameworks</span><span>NO — a single, unified development cost framework</span></div>
+<div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Triggering event (external-use)</span><span>"Technological feasibility"</span><span>General PIRATE criteria, no identically named trigger</span></div>
+<div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Triggering event (internal-use)</span><span>Completion of the "preliminary project stage"</span><span>Same general PIRATE criteria applied uniformly</span></div>
+<div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Revenue recognition for software licenses</span><span>ASC 606, functional/symbolic IP framework</span><span>IFRS 15, same functional/symbolic IP framework — converged</span></div>
+</div>
+<div class="note">Software REVENUE recognition is genuinely converged (both frameworks share the same joint-project IP licensing model) — the more STRUCTURAL divergence lies specifically in software cost CAPITALISATION, where US GAAP's purpose-dependent bifurcation has no IAS 38 parallel.</div>
+</div>
+</div>
+
+<div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cs span2"><div class="ctitle cs">Where every ASC 985 event lands</div>
+<div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+<div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Pre-technological-feasibility costs</span><span><span class="badge bp">IS</span></span><span>Expensed as R&amp;D</span></div>
+<div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Post-technological-feasibility costs</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Capitalised, amortised after release</span></div>
+<div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Internal-use software (application development stage)</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Capitalised, amortised once placed in service</span></div>
+</div>
+</div>
+</div>
+
+<div class="section-header" id="s13"><span class="num">13</span><h2>Related Topics</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">Cross-reference map</div>
+<div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+<div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 350-40</span><span>Supplies the specific internal-use software cost capitalisation framework</span></div>
+<div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 606</span><span>Supplies the general revenue recognition and IP licensing framework for software arrangements</span></div>
+<div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 730</span><span>Research and Development — supplies the general R&amp;D expensing principle applied before technological feasibility</span></div>
+</div>
+</div>
+</div>
+
+<div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cn span2">
+<div class="glossary-item"><div class="glossary-term">Technological feasibility</div><div class="glossary-def">The point (evidenced by a detailed program design or working model) after which external-use software development costs may be capitalised.</div></div>
+<div class="glossary-item"><div class="glossary-term">Preliminary project stage</div><div class="glossary-def">The initial phase of internal-use software development (conceptual formulation, vendor evaluation) during which costs are expensed.</div></div>
+<div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Vendor-specific objective evidence (VSOE) — legacy term</div><div class="glossary-def">A former software-specific requirement for allocating revenue among bundled elements, eliminated under ASC 606 in favor of general standalone selling price estimation.</div></div>
+</div>
+</div>
+
+<div class="legend"><div class="ltitle">Financial statement key (US GAAP native terminology)</div><div class="lrow"><span class="badge bs">BS</span> Balance Sheet <span class="badge bp">IS</span> Income Statement <span class="badge bo">OCI</span> Other Comprehensive Income <span class="badge be">SE</span> Statement of Shareholders' Equity <span class="badge bc">SCF</span> Statement of Cash Flows</div></div>
+
+<div class="footer-note">ASC 985 — Software · Extended Reference Poster · Self-contained, no internet connection required</div>
+</div></body></html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASC 980 — Regulated Operations | Extended Reference</title>
+<style>
+  :root { --color-background-secondary:#f9fafb;--color-background-tertiary:#f3f4f6;--color-background-info:#eff6ff;--color-background-success:#f0fdf4;--color-background-warning:#fffbeb;--color-background-danger:#fff1f2;--color-border-secondary:#e5e7eb;--color-border-tertiary:#e5e7eb;--color-border-info:#3b82f6;--color-border-success:#22c55e;--color-border-warning:#f59e0b;--color-border-danger:#ef4444;--color-text-primary:#111827;--color-text-secondary:#374151;--color-text-tertiary:#9ca3af;--color-text-info:#2563eb;--color-text-success:#16a34a;--color-text-warning:#b45309;--color-text-danger:#dc2626;--border-radius-lg:10px;--border-radius-md:8px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#fff;color:#111827;margin:0;padding:0;}
+  body{padding:20px;max-width:1180px;margin:0 auto;}*{box-sizing:border-box;}.wrap{padding:1rem 0 .5rem;}
+  .hub{display:flex;justify-content:center;margin-bottom:8px;}.hub-box{padding:12px 28px;background:var(--color-background-secondary);border:1.5px solid var(--color-border-secondary);border-radius:var(--border-radius-lg);text-align:center;}
+  .hub-title{font-size:17px;font-weight:600;color:var(--color-text-primary);}.hub-sub{font-size:11px;color:var(--color-text-tertiary);margin-top:3px;}
+  .toc{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin:14px 0 26px;}.toc a{font-size:10.5px;font-weight:500;padding:4px 11px;border-radius:14px;background:var(--color-background-tertiary);color:var(--color-text-secondary);text-decoration:none;border:1px solid var(--color-border-tertiary);}
+  .section-header{display:flex;align-items:center;gap:8px;margin:30px 0 12px;}.section-header .num{font-size:11px;font-weight:700;color:#fff;background:var(--color-text-info);width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .section-header h2{font-size:14px;font-weight:600;color:var(--color-text-primary);margin:0;}.section-header .line{flex:1;height:1px;background:var(--color-border-tertiary);}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start;}.span2{grid-column:span 2;}
+  .card{border-radius:var(--border-radius-lg);border:1px solid var(--color-border-tertiary);padding:13px 14px;background:var(--color-background-secondary);}
+  .card.ci{border-left:3px solid var(--color-border-info);}.card.cs{border-left:3px solid var(--color-border-success);}.card.cw{border-left:3px solid var(--color-border-warning);}.card.cd{border-left:3px solid var(--color-border-danger);}.card.cn{border-left:3px solid var(--color-border-secondary);}
+  .ctitle{font-size:13px;font-weight:500;margin-bottom:7px;}.ctitle.ci{color:var(--color-text-info);}.ctitle.cs{color:var(--color-text-success);}.ctitle.cw{color:var(--color-text-warning);}.ctitle.cd{color:var(--color-text-danger);}.ctitle.cn{color:var(--color-text-primary);}
+  .principle{font-size:11px;color:var(--color-text-secondary);margin-bottom:9px;line-height:1.55;padding:6px 8px;background:var(--color-background-tertiary);border-radius:6px;}
+  .elabel{font-size:10px;font-weight:500;color:var(--color-text-tertiary);margin-bottom:5px;letter-spacing:.03em;}
+  .note{font-size:10px;color:var(--color-text-tertiary);font-style:italic;line-height:1.5;margin-top:4px;}
+  .callout{font-size:11px;line-height:1.5;padding:6px 9px;border-radius:6px;margin-bottom:8px;}
+  .callout.info{background:var(--color-background-info);color:var(--color-text-info);border:1px solid var(--color-border-info);}
+  .callout.warn{background:var(--color-background-warning);color:var(--color-text-warning);border:1px solid var(--color-border-warning);}
+  .callout.danger{background:var(--color-background-danger);color:var(--color-text-danger);border:1px solid var(--color-border-danger);}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start;}
+  .dot-list span,.check-list span,.cross-list span{display:block;padding-left:14px;position:relative;font-size:11px;color:var(--color-text-secondary);line-height:1.75;}
+  .dot-list span::before{content:"·";position:absolute;left:1px;color:var(--color-text-tertiary);}
+  .check-list span::before{content:"✓";position:absolute;left:0;color:var(--color-text-success);font-size:10px;top:2px;font-weight:700;}
+  .cross-list span::before{content:"✕";position:absolute;left:0;color:var(--color-text-danger);font-size:10px;top:2px;}
+  .td-table{border:1px solid var(--color-border-tertiary);border-radius:8px;overflow:hidden;font-size:10px;margin-bottom:8px;}
+  .td-table .th{display:grid;background:var(--color-background-tertiary);padding:5px 8px;font-weight:500;color:var(--color-text-secondary);}
+  .td-table .tr{display:grid;padding:4px 8px;border-top:1px solid var(--color-border-tertiary);color:var(--color-text-secondary);}.td-table .tr.alt{background:var(--color-background-tertiary);}
+  .worked{border:1px solid var(--color-border-info);border-radius:8px;padding:10px 12px;background:var(--color-background-info);margin-bottom:9px;}
+  .worked .wk-title{font-size:11px;font-weight:600;color:var(--color-text-info);margin-bottom:5px;}.worked .wk-body{font-size:11px;color:var(--color-text-secondary);line-height:1.6;}
+  .worked .wk-answer{margin-top:6px;padding-top:6px;border-top:1px dashed var(--color-border-info);font-size:11px;color:var(--color-text-primary);}
+  .glossary-item{padding:7px 0;border-bottom:1px solid var(--color-border-tertiary);}.glossary-term{font-size:11.5px;font-weight:600;color:var(--color-text-primary);}.glossary-def{font-size:11px;color:var(--color-text-secondary);line-height:1.5;margin-top:2px;}
+  .legend{margin-top:20px;padding:12px 16px;background:var(--color-background-secondary);border:1px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);}
+  .lrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:11px;color:var(--color-text-secondary);margin-top:4px;}.ltitle{font-size:11px;font-weight:500;color:var(--color-text-primary);}
+  .badge{font-size:9px;font-weight:500;padding:1px 5px;border-radius:4px;}.bs{background:var(--color-background-info);color:var(--color-text-info);}.bp{background:var(--color-background-danger);color:var(--color-text-danger);}.bo{background:var(--color-background-success);color:var(--color-text-success);}.be{background:var(--color-background-warning);color:var(--color-text-warning);}.bc{background:#ede9fe;color:#6d28d9;}
+  .footer-note{margin-top:24px;padding:12px 16px;background:var(--color-background-tertiary);border-radius:var(--border-radius-md);font-size:10.5px;color:var(--color-text-tertiary);text-align:center;}
+  @media (max-width:640px){.grid,.two-col{grid-template-columns:1fr;}.span2{grid-column:span 1;}}
+</style></head>
+<body><div class="wrap">
+
+<div class="hub"><div class="hub-box"><div class="hub-title">ASC 980 — Regulated Operations</div><div class="hub-sub">Extended reference poster · US GAAP · Subtopic: 980-340 Regulatory Assets, 980-405 Regulatory Liabilities · Contrasted with IFRS 14 · USD examples</div></div></div>
+
+<div class="toc">
+<a href="#s1">1. Conceptual Framework Linkage</a><a href="#s2">2. Scope — Rate-Regulated Entities</a><a href="#s3">3. Regulatory Assets — the Three-Part Recognition Test</a>
+<a href="#s4">4. Regulatory Liabilities</a><a href="#s5">5. Discontinuation of Regulatory Asset Recognition</a>
+<a href="#s6">6. THE KEY DIVERGENCE — IFRS 14's Narrow, Interim, Non-Universal Standard</a><a href="#s7">7. Worked Example — Regulatory Asset Recognition</a>
+<a href="#s8">8. Worked Example — Regulatory Liability Recognition</a><a href="#s9">9. Worked Example — Discontinuation of Regulatory Accounting</a>
+<a href="#s10">10. Disclosure Requirements</a><a href="#s11">11. Critical Judgments &amp; Estimates</a>
+<a href="#s12">12. ASC 980 vs IFRS 14 — Comprehensive Comparison</a><a href="#s13">13. Statement Mapping</a><a href="#s14">14. Related Topics</a><a href="#s15">15. Glossary</a>
+</div>
+
+<div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card ci"><div class="ctitle ci">The regulator's decisions create genuine economic assets and liabilities</div><div class="principle">A RATE-REGULATED entity (a utility) doesn't set its own prices — a REGULATOR does, through a formal rate-setting process. When a regulator allows a utility to RECOVER a specific cost from FUTURE ratepayers (through future rates), that regulatory decision creates a genuine, PROBABLE future economic benefit — a REGULATORY ASSET — even though the cost wouldn't be capitalisable as an asset under NORMAL GAAP principles applicable to unregulated entities. ASC 980 recognises this GENUINE economic reality of rate regulation.</div></div>
+<div class="card cd"><div class="ctitle cd">A comprehensive US GAAP framework, without a comparably robust IFRS counterpart</div><div class="principle">US GAAP has developed a MATURE, comprehensive regulatory asset/liability recognition framework spanning DECADES of practice. IFRS's equivalent — IFRS 14 — is a deliberately NARROW, TEMPORARY, TRANSITIONAL standard, NOT universally endorsed by all jurisdictions (notably NOT endorsed for use within the EU) — representing one of the more SIGNIFICANT, well-recognised divergences in the entire Codification (Section 6).</div>
+</div>
+</div>
+
+<div class="section-header" id="s2"><span class="num">2</span><h2>Scope — Rate-Regulated Entities</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cw span2"><div class="ctitle cw">Entities whose rates are set by an independent regulator</div><div class="principle">ASC 980 applies to entities whose RATES for regulated services are ESTABLISHED or APPROVED by an independent, THIRD-PARTY REGULATOR (e.g. a state public utility commission) — typically electric, gas, water, and telecommunications utilities — where those rates are DESIGNED to recover the SPECIFIC costs of providing the regulated service, INCLUDING a reasonable return.</div>
+</div>
+</div>
+
+<div class="section-header" id="s3"><span class="num">3</span><h2>Regulatory Assets — the Three-Part Recognition Test</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">ALL THREE conditions must be met</div>
+<div class="td-table"><div class="th" style="grid-template-columns:0.4fr 2.6fr;"><span>Condition</span><span>Requirement</span></div>
+<div class="tr" style="grid-template-columns:0.4fr 2.6fr;"><span>1</span><span>It is PROBABLE that future REVENUE, in an amount AT LEAST EQUAL to the capitalised cost, will result from INCLUDING that cost in ALLOWABLE costs for rate-making purposes</span></div>
+<div class="tr alt" style="grid-template-columns:0.4fr 2.6fr;"><span>2</span><span>The REGULATOR can require RECOVERY of the specific cost through a SEPARATE rate-making mechanism (rather than the cost being buried within a broader, less clearly identifiable general rate)</span></div>
+<div class="tr" style="grid-template-columns:0.4fr 2.6fr;"><span>3</span><span>Given the DEMAND for the regulated service, it is REASONABLE to assume that rates SET at levels sufficient to recover the cost can actually be CHARGED and COLLECTED from customers</span></div>
+</div>
+<div class="note">ALL THREE conditions must be satisfied for a REGULATORY ASSET to be recognised — reflecting a genuinely PROBABLE, SPECIFIC, and COLLECTIBLE future economic benefit flowing directly from the regulator's own rate-setting actions.</div>
+</div>
+</div>
+
+<div class="section-header" id="s4"><span class="num">4</span><h2>Regulatory Liabilities</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cs span2"><div class="ctitle cs">Refund obligations and amounts collected for future costs</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">A REGULATORY LIABILITY is recognised when the REGULATOR requires the entity to REFUND amounts previously collected from customers (e.g. if actual costs turn out LOWER than amounts already billed), OR when the entity is CURRENTLY collecting amounts from customers intended to fund costs NOT YET incurred but EXPECTED to be incurred in the FUTURE (e.g. advance collection for a future decommissioning cost) — mirroring the regulatory asset concept but in the OPPOSITE direction.</div>
+</div>
+</div>
+
+<div class="section-header" id="s5"><span class="num">5</span><h2>Discontinuation of Regulatory Asset Recognition</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">Write-off required if recovery is no longer probable</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">If it is NO LONGER probable that a previously recognised regulatory asset will be RECOVERED through future rates (e.g. the regulator disallows recovery, or competitive/deregulatory pressures make future rate increases impractical), the regulatory asset must be WRITTEN OFF — recognised as an EXPENSE — reflecting that the underlying economic benefit no longer meets the recognition criteria.</div>
+</div>
+</div>
+
+<div class="section-header" id="s6"><span class="num">6</span><h2>THE KEY DIVERGENCE — IFRS 14's Narrow, Interim, Non-Universal Standard</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">A deliberately temporary compromise, not a general recognition framework</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">IFRS 14 (Regulatory Deferral Accounts) is a DELIBERATELY NARROW, INTERIM standard permitting ONLY FIRST-TIME ADOPTERS of IFRS (entities transitioning from their PREVIOUS national GAAP TO IFRS for the first time) to CONTINUE recognising regulatory deferral account balances they had PREVIOUSLY recognised under their PRIOR GAAP — it is <strong>NOT a general standard available to ALL entities</strong>, and does NOT permit an entity to BEGIN recognising regulatory assets/liabilities for the FIRST time simply because it believes the ASC 980-style economic argument applies. Moreover, IFRS 14 was <strong>NOT ENDORSED for use within the European Union</strong> and has seen LIMITED global adoption even where technically available — reflecting the IASB's continued, still-UNFINISHED broader project on rate-regulated activities, which has not yet produced a FINAL, comprehensive, general-purpose standard comparable to ASC 980. This makes the treatment of regulatory assets/liabilities one of the MOST SIGNIFICANT, well-recognised divergences in the ENTIRE Codification — not a difference in MECHANICS applied to a shared concept, but a case where US GAAP has a MATURE, comprehensive, universally-available framework and IFRS simply does NOT have an equivalent general standard at all.</div>
+</div>
+</div>
+
+<div class="section-header" id="s7"><span class="num">7</span><h2>Worked Example — Regulatory Asset Recognition</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cw span2"><div class="ctitle cw">Capitalising a cost that would otherwise be expensed</div>
+<div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Storm restoration costs</div><div class="wk-body">A regulated electric utility incurs $40,000,000 of unusual storm restoration costs following a major hurricane. The state public utility commission issues an order specifically authorising the utility to recover these costs from customers over the next 5 years through a dedicated rate rider.</div><div class="wk-answer">Since (1) future revenue recovery is PROBABLE (the regulator has explicitly authorised it), (2) the regulator has established a SPECIFIC, separate rate-recovery mechanism (the rider), and (3) collection is reasonably assured given ongoing customer demand for electric service, the utility recognises a <strong>$40,000,000 REGULATORY ASSET</strong> — rather than expensing the storm costs immediately, as an UNREGULATED entity would be required to do.</div></div>
+</div>
+</div>
+
+<div class="section-header" id="s8"><span class="num">8</span><h2>Worked Example — Regulatory Liability Recognition</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card ci span2"><div class="ctitle ci">Recognising a refund obligation</div>
+<div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: An over-collection due to a fuel cost decline</div><div class="wk-body">A gas utility's rates included an estimated fuel cost component. Actual fuel costs come in $8,000,000 LOWER than what was collected from customers, and the regulator requires the utility to refund this over-collection through future bill credits.</div><div class="wk-answer">The utility recognises an <strong>$8,000,000 REGULATORY LIABILITY</strong> — reflecting its genuine obligation to REFUND the over-collected amount to customers through future rate credits, mirroring the regulatory asset concept in the opposite direction.</div></div>
+</div>
+</div>
+
+<div class="section-header" id="s9"><span class="num">9</span><h2>Worked Example — Discontinuation of Regulatory Accounting</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cn span2"><div class="ctitle cn">Writing off a regulatory asset no longer probable of recovery</div>
+<div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: A regulator disallows planned recovery</div><div class="wk-body">A utility had previously recognised a $15,000,000 regulatory asset for costs associated with a since-cancelled power plant project. The regulator subsequently rules that these costs are NOT recoverable from ratepayers, given the plant was never completed.</div><div class="wk-answer">Since recovery is NO LONGER probable, the utility must <strong>WRITE OFF the entire $15,000,000 regulatory asset</strong> immediately as an EXPENSE — the asset no longer meets ASC 980's three-part recognition criteria.</div></div>
+</div>
+</div>
+
+<div class="section-header" id="s10"><span class="num">10</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">What ASC 980 requires</div><div class="check-list"><span>Nature and amounts of regulatory assets and liabilities recognised, by category</span><span>Rate-recovery period and the regulatory basis supporting continued recognition</span><span>Effects of any recent regulatory actions on previously recognised regulatory assets/liabilities</span></div>
+</div>
+</div>
+
+<div class="section-header" id="s11"><span class="num">11</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+<div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Whether all three regulatory asset recognition criteria are met, particularly probability of future recovery</span><span>Whether continued recognition remains appropriate given evolving regulatory and competitive conditions</span></div></div>
+<div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Expected recovery period for regulatory assets</span><span>Amounts subject to future refund for regulatory liabilities</span></div></div></div>
+</div>
+</div>
+
+<div class="section-header" id="s12"><span class="num">12</span><h2>ASC 980 vs IFRS 14 — Comprehensive Comparison</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card ci span2"><div class="ctitle ci">Comparison — ASC 980 vs IFRS 14</div>
+<div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">US GAAP (ASC 980)</span><span style="color:var(--color-text-info);">IFRS (IFRS 14)</span></div>
+<div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>General availability</span><span>Available to ALL qualifying rate-regulated entities</span><span>Available ONLY to first-time IFRS adopters continuing PRIOR GAAP treatment</span></div>
+<div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>New recognition permitted</span><span>YES — entities newly meeting the criteria may recognise regulatory assets/liabilities</span><span>NO — cannot begin recognising regulatory deferral accounts for the first time</span></div>
+<div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Jurisdictional endorsement</span><span>N/A (a single national standard-setter)</span><span>NOT endorsed within the EU; limited global adoption</span></div>
+<div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Standard maturity</span><span>Mature, decades of established practice</span><span>Explicitly INTERIM, pending a still-unfinished comprehensive IASB project</span></div>
+</div>
+<div class="note">This is one of the STARKEST divergences in the entire library — not a difference in mechanics, but a case where one framework has a robust, universally-available recognition model and the other has, at best, a narrow, transitional placeholder.</div>
+</div>
+</div>
+
+<div class="section-header" id="s13"><span class="num">13</span><h2>Statement Mapping</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cs span2"><div class="ctitle cs">Where every ASC 980 event lands</div>
+<div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+<div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Regulatory asset recognition</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Capitalised instead of expensed, given probable future recovery</span></div>
+<div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Regulatory liability recognition</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Recognised for refund obligations or advance collections</span></div>
+<div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Discontinued regulatory asset</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Written off as an expense if recovery is no longer probable</span></div>
+</div>
+</div>
+</div>
+
+<div class="section-header" id="s14"><span class="num">14</span><h2>Related Topics</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">Cross-reference map</div>
+<div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+<div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 360</span><span>Supplies the general long-lived asset framework that regulatory assets are layered on top of/instead of</span></div>
+<div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 410</span><span>Asset Retirement Obligations — often intersects with regulatory recovery of decommissioning-related costs</span></div>
+</div>
+</div>
+</div>
+
+<div class="section-header" id="s15"><span class="num">15</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cn span2">
+<div class="glossary-item"><div class="glossary-term">Regulatory asset</div><div class="glossary-def">An asset recognised when a regulator's rate-setting actions make future cost recovery from ratepayers probable, specific, and collectible.</div></div>
+<div class="glossary-item"><div class="glossary-term">Regulatory liability</div><div class="glossary-def">A liability recognised for amounts a regulated entity must refund to customers, or amounts collected in advance for future costs.</div></div>
+<div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Regulatory deferral account (IFRS 14 term)</div><div class="glossary-def">The IFRS 14 analogue to a regulatory asset/liability, available only to first-time IFRS adopters continuing prior GAAP treatment.</div></div>
+</div>
+</div>
+
+<div class="legend"><div class="ltitle">Financial statement key (US GAAP native terminology)</div><div class="lrow"><span class="badge bs">BS</span> Balance Sheet <span class="badge bp">IS</span> Income Statement <span class="badge bo">OCI</span> Other Comprehensive Income <span class="badge be">SE</span> Statement of Shareholders' Equity <span class="badge bc">SCF</span> Statement of Cash Flows</div></div>
+
+<div class="footer-note">ASC 980 — Regulated Operations · Extended Reference Poster · Self-contained, no internet connection required</div>
+</div></body></html>
