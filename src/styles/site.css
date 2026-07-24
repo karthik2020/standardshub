@@ -2148,7 +2148,17 @@ section li:last-child {
     overflow-y: auto;
 }
 
-.toc-fade {
+.toc {
+    position: relative;
+    padding: var(--space-lg);
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+}
+
+.toc::before,
+.toc::after {
+    content: "";
     position: sticky;
     left: 0;
     right: 0;
@@ -2160,34 +2170,34 @@ section li:last-child {
     flex-shrink: 0;
 }
 
-.toc-fade--top {
+.toc::before {
     top: 0;
     background: linear-gradient(to bottom, var(--surface-alt), transparent);
 }
 
-.toc-fade--bottom {
+.toc::after {
     bottom: 0;
     background: linear-gradient(to top, var(--surface-alt), transparent);
 }
 
-.page-toc--scroll-top .toc-fade--top {
+.page-toc--scroll-top .toc::before {
     opacity: 0;
 }
 
-.page-toc--scroll-top .toc-fade--bottom {
+.page-toc--scroll-top .toc::after {
     opacity: 1;
 }
 
-.page-toc--scroll-middle .toc-fade--top,
-.page-toc--scroll-middle .toc-fade--bottom {
+.page-toc--scroll-middle .toc::before,
+.page-toc--scroll-middle .toc::after {
     opacity: 1;
 }
 
-.page-toc--scroll-bottom .toc-fade--top {
+.page-toc--scroll-bottom .toc::before {
     opacity: 1;
 }
 
-.page-toc--scroll-bottom .toc-fade--bottom {
+.page-toc--scroll-bottom .toc::after {
     opacity: 0;
 }
 
