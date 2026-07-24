@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const tocContainer = document.querySelector(".toc ul");
-    const links = Array.from(document.querySelectorAll(".toc a[data-section]"));
+    const pageToc = document.querySelector(".page-toc");
+    const tocContainer = pageToc ? pageToc.querySelector(".toc ul") : null;
+    const links = pageToc
+        ? Array.from(pageToc.querySelectorAll(".toc a[data-section]"))
+        : [];
 
     // Build the heading -> link map once. Each TOC link carries the real
     // section id in `data-section`; the heading element is the element with
@@ -142,8 +145,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // --- TOC scroll fade indicators -----------------------------------------
-    const pageToc = document.querySelector(".page-toc");
-
     function updateTocFade() {
         if (!pageToc) return;
 
