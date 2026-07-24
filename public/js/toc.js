@@ -118,6 +118,47 @@ document.addEventListener("DOMContentLoaded", () => {
         keepActiveInView(activeLinks);
     }
 
+    // --- TOC scroll fade indicators -----------------------------------------
+    const pageToc = document.querySelector(".page-toc");
+
+    function updateTocFade() {
+        if (!pageToc) return;
+
+        const scrollTop = pageToc.scrollTop;
+        const scrollHeight = pageToc.scrollHeight;
+        const clientHeight = pageToc.clientHeight;
+
+        // Remove all state classes first.
+        pageToc.classList.remove(
+            "page-toc--scroll-top",
+            "page-toc--scroll-middle",
+            "page-toc--scroll-bottom"
+        );
+
+        if (scrollHeight <= clientHeight) {
+            // TOC is not scrollable — no fades.
+            return;
+        }
+
+        const tolerance = 1;
+        const atTop = scrollTop <= tolerance;
+        const atBottom = scrollTop + clientHeight >= scrollHeight - tolerance;
+
+        if (atTop) {
+            pageToc.classList.add("page-toc--scroll-top");
+        } else if (atBottom) {
+            pageToc.classList.add("page-toc--scroll-bottom");
+        } else {
+            pageToc.classList.add("page-toc--scroll-middle");
+        }
+    }
+
+    if (pageToc) {
+        pageToc.addEventListener("scroll", updateTocFade, { passive: true });
+        window.addEventListener("resize", updateTocFade, { passive: true });
+        requestAnimationFrame(updateTocFade);
+    }
+
     // --- Click handling without flicker ------------------------------------
     //
     // A click should activate the *target* immediately and hold it while the

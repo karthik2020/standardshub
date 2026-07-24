@@ -2148,6 +2148,49 @@ section li:last-child {
     overflow-y: auto;
 }
 
+.toc-fade {
+    position: sticky;
+    left: 0;
+    right: 0;
+    height: 24px;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    flex-shrink: 0;
+}
+
+.toc-fade--top {
+    top: 0;
+    background: linear-gradient(to bottom, var(--surface-alt), transparent);
+}
+
+.toc-fade--bottom {
+    bottom: 0;
+    background: linear-gradient(to top, var(--surface-alt), transparent);
+}
+
+.page-toc--scroll-top .toc-fade--top {
+    opacity: 0;
+}
+
+.page-toc--scroll-top .toc-fade--bottom {
+    opacity: 1;
+}
+
+.page-toc--scroll-middle .toc-fade--top,
+.page-toc--scroll-middle .toc-fade--bottom {
+    opacity: 1;
+}
+
+.page-toc--scroll-bottom .toc-fade--top {
+    opacity: 1;
+}
+
+.page-toc--scroll-bottom .toc-fade--bottom {
+    opacity: 0;
+}
+
 @media (max-width:1400px) {
     .page-body {
         grid-template-columns: 1fr;
