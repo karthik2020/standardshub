@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        const tocRect = tocContainer.getBoundingClientRect();
+        const tocRect = pageToc.getBoundingClientRect();
         const linkRect = activeLink.getBoundingClientRect();
 
         if (linkRect.top < tocRect.top || linkRect.bottom > tocRect.bottom) {
