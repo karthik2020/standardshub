@@ -2157,52 +2157,6 @@ section li:last-child {
     border-radius: var(--radius-md);
 }
 
-.toc::before,
-.toc::after {
-    content: "";
-    display: block;
-    position: sticky;
-    left: 0;
-    right: 0;
-    height: 24px;
-    pointer-events: none;
-    z-index: 1;
-    opacity: 0;
-    transition: opacity 0.15s ease;
-    flex-shrink: 0;
-}
-
-.toc::before {
-    top: 0;
-    background: linear-gradient(to bottom, var(--surface-alt), transparent);
-}
-
-.toc::after {
-    bottom: 0;
-    background: linear-gradient(to top, var(--surface-alt), transparent);
-}
-
-.page-toc--scroll-top .toc::before {
-    opacity: 0;
-}
-
-.page-toc--scroll-top .toc::after {
-    opacity: 1;
-}
-
-.page-toc--scroll-middle .toc::before,
-.page-toc--scroll-middle .toc::after {
-    opacity: 1;
-}
-
-.page-toc--scroll-bottom .toc::before {
-    opacity: 1;
-}
-
-.page-toc--scroll-bottom .toc::after {
-    opacity: 0;
-}
-
 @media (max-width:1400px) {
     .page-body {
         grid-template-columns: 1fr;
@@ -2213,21 +2167,36 @@ section li:last-child {
     }
 }
 
-.toc {
-    position: relative;
-    padding: var(--space-lg);
-    background: var(--surface-alt);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
+.page-toc::-webkit-scrollbar {
+    width: 6px;
+}
+
+.page-toc::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.page-toc::-webkit-scrollbar-thumb {
+    background: var(--framework-accent);
+    border-radius: var(--radius-pill);
+    background-clip: padding-box;
+}
+
+.page-toc {
+    scrollbar-width: thin;
+    scrollbar-color: var(--framework-accent) transparent;
 }
 
 .toc-title {
+    position: sticky;
+    top: 0;
+    background: var(--surface-alt);
     font-size: var(--text-xs);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: .06em;
     color: var(--text-muted);
     margin-bottom: var(--space-lg);
+    z-index: 1;
 }
 
 .toc ul {
