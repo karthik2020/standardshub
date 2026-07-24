@@ -61,9 +61,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const MIN_BAND = 140; // keep the band usable on short viewports
 
     // Keeps the TOC list scrolled so the active item stays in view.
-    function keepActiveInView(activeLinks) {
+    function keepActiveInView(activeLinks, force = false) {
         const activeLink = activeLinks[0];
         if (!activeLink || !tocContainer) return;
+
+        if (!force && pageToc && pageToc.classList.contains("page-toc--user-scrolling")) {
+            return;
+        }
 
         const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         const tocRect = tocContainer.getBoundingClientRect();
@@ -72,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (linkRect.top < tocRect.top || linkRect.bottom > tocRect.bottom) {
             activeLink.scrollIntoView({
                 behavior: prefersReducedMotion ? "auto" : "smooth",
-                block: "center",
+                block: "nearest",
                 inline: "nearest",
             });
         }
@@ -118,6 +122,25 @@ document.addEventListener("DOMContentLoaded", () => {
         keepActiveInView(activeLinks);
     }
 
+    // --- Intelligent TOC scrolling ------------------------------------------
+    //
+    // When the user manually scrolls the TOC, pause automatic follow for a
+    // short period so the implementation does not fight their interaction.
+    // Clicking a TOC link always forces the active item into view.
+
+    let userTocScrollTimeout = null;
+    const USER_TOC_SCROLL_PAUSE = 1500;
+
+    function onUserTocScroll() {
+        if (!pageToc) return;
+        pageToc.classList.add("page-toc--user-scrolling");
+        if (userTocScrollTimeout) clearTimeout(userTocScrollTimeout);
+        userTocScrollTimeout = setTimeout(() => {
+            pageToc.classList.remove("page-toc--user-scrolling");
+            userTocScrollTimeout = null;
+        }, USER_TOC_SCROLL_PAUSE);
+    }
+
     // --- TOC scroll fade indicators -----------------------------------------
     const pageToc = document.querySelector(".page-toc");
 
@@ -155,6 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (pageToc) {
         pageToc.addEventListener("scroll", updateTocFade, { passive: true });
+        pageToc.addEventListener("scroll", onUserTocScroll, { passive: true });
         window.addEventListener("resize", updateTocFade, { passive: true });
         requestAnimationFrame(updateTocFade);
     }
@@ -185,7 +209,7 @@ document.addEventListener("DOMContentLoaded", () => {
             it.link.classList.toggle("active", isActive);
             if (isActive) activeLinks.push(it.link);
         }
-        keepActiveInView(activeLinks);
+        keepActiveInView(activeLinks, true);
     }
 
     links.forEach((link) => {
