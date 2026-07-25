@@ -74,6 +74,7 @@ import {
   faDice,
   faOilWell,
   faUserSecret,
+  faRightLeft,
 } from "@fortawesome/free-solid-svg-icons";
 
 const iconMap: Record<string, IconDefinition> = {
@@ -150,6 +151,7 @@ const iconMap: Record<string, IconDefinition> = {
   dice: faDice,
   oilWell: faOilWell,
   userSecret: faUserSecret,
+  rightLeft: faRightLeft,
 };
 
 export function getIconHtml(name: string): string {
@@ -281,6 +283,9 @@ export const standardIcons: Record<string, string> = {
   "ASC 274": "buildingUser",
   "ASC 275": "moneyBillTrendUp",
   "ASC 280": "sitemap",
+  "ASC 818": "leaf",
+  "ASC 832": "landmark",
+  "ASC 848": "rightLeft",
   "ASC 305": "wallet",
   "ASC 310": "fileInvoiceDollar",
   "ASC 320": "chartLine",

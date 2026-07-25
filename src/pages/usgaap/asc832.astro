@@ -1,0 +1,178 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc832.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  bannerNotice={metadata.bannerNotice}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope — Business Entities, Not Not-for-Profits" },
+        { id: "s3", label: "What Falls Outside the Scope" },
+        { id: "s4", label: "No Recognition or Measurement Guidance — By Design" },
+        { id: "s5", label: "How Entities Fill the Gap in Practice" },
+        { id: "s6", label: "The Three Core Disclosure Requirements" },
+        { id: "s7", label: "Why Disclosure-Only Guidance Was Chosen" },
+        { id: "s8", label: "Effective Date and Early Application" },
+        { id: "s9", label: "Worked Example — Disclosing a Payroll Tax Credit Program" },
+        { id: "s10", label: "Worked Example — Disclosing a Cash Grant Analogized to IAS 20" },
+        { id: "s11", label: "Disclosure Requirements (Detailed)" },
+        { id: "s12", label: "Critical Judgments &amp; Estimates" },
+        { id: "s13", label: "Comparison to IAS 20 / ASBE 16" },
+        { id: "s14", label: "Statement Mapping" },
+        { id: "s15", label: "Related Topics" },
+        { id: "s16", label: "Glossary" }
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+<div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card ci span2"><div class="ctitle ci">Transparency about government assistance, without a prescribed accounting model</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 832 REQUIRES business ENTITIES to DISCLOSE information ABOUT certain TYPES of government ASSISTANCE they RECEIVE — but, GENUINELY unlike MOST other ASC topics, it DOES NOT establish ANY recognition, MEASUREMENT, or PRESENTATION requirements FOR that assistance. THE standard EXISTS purely to IMPROVE transparency, LEAVING the UNDERLYING accounting TREATMENT to WHATEVER other GAAP guidance an ENTITY reasonably APPLIES.</div>
+</div>
+</div>
+
+<div class="section-header" id="s2"><span class="num">2</span><h2>Scope — Business Entities, Not Not-for-Profits</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cw span2"><div class="ctitle cw">A gap that specifically targeted for-profit entities</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 832 applies to BUSINESS entities that ACCOUNT for a TRANSACTION with a GOVERNMENT by APPLYING a GRANT or CONTRIBUTION accounting MODEL by ANALOGY (e.g. ANALOGIZING to IAS 20 internationally, or to the CONTRIBUTIONS guidance in ASC 958-605) — REFLECTING that, BEFORE this Standard, US GAAP had NO SPECIFIC authoritative GUIDANCE for BUSINESS entities receiving GOVERNMENT assistance (NOT-for-profit entities ALREADY had DEDICATED contribution ACCOUNTING guidance under ASC 958).</div>
+</div>
+</div>
+
+<div class="section-header" id="s3"><span class="num">3</span><h2>What Falls Outside the Scope</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">Transactions already governed by other specific GAAP</div><div style="font-size: var(--text-small);color:var(--color-text-secondary);line-height:1.6;">TRANSACTIONS ALREADY within the SCOPE of OTHER specific TOPICS — SUCH as INCOME tax ACCOUNTING (ASC 740) or REVENUE from CONTRACTS with GOVERNMENT customers (ASC 606) — REMAIN governed by THOSE topics, and are OUTSIDE ASC 832'S scope.</div>
+</div>
+</div>
+
+<div class="section-header" id="s4"><span class="num">4</span><h2>No Recognition or Measurement Guidance — By Design</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cw span2"><div class="ctitle cw">A deliberate, narrow scope limitation</div><div style="font-size: var(--text-small);color:var(--color-text-secondary);line-height:1.6;">THE FASB DELIBERATELY chose to LIMIT ASC 832 to DISCLOSURE ONLY — NOT attempting to PRESCRIBE a SINGLE recognition or MEASUREMENT model for GOVERNMENT assistance. THIS was a NARROWER, faster-to-ISSUE response, RATHER than UNDERTAKING the FAR more SUBSTANTIAL project of DEVELOPING a COMPREHENSIVE recognition MODEL (SUCH as IAS 20's OWN deferred-income APPROACH, or ASBE 16'S equivalent) FROM scratch.</div>
+</div>
+</div>
+
+<div class="section-header" id="s5"><span class="num">5</span><h2>How Entities Fill the Gap in Practice</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">Diversity in practice remains, even after ASC 832</div><div style="font-size: var(--text-small);color:var(--color-text-secondary);line-height:1.6;">IN the ABSENCE of DEDICATED recognition GUIDANCE, entities COMMONLY analogize TO one of SEVERAL existing MODELS — MOST frequently IAS 20 (RECOGNIZING assistance as DEFERRED income, MATCHED to related COSTS or amortized OVER an asset's USEFUL life), or the NOT-for-profit CONTRIBUTIONS guidance in ASC 958-605. BECAUSE ASC 832 does NOT mandate ANY single approach, GENUINE diversity in PRACTICE remains EVEN after its ADOPTION — the STANDARD improves TRANSPARENCY about WHICH policy an ENTITY has chosen, WITHOUT standardizing the CHOICE itself.</div>
+</div>
+</div>
+
+<div class="section-header" id="s6"><span class="num">6</span><h2>The Three Core Disclosure Requirements</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cw span2"><div class="ctitle cw">Nature, financial statement effects, and terms/conditions</div>
+<div class="td-table"><div class="th" style="grid-template-columns:1fr 2fr;"><span>Requirement</span><span>Description</span></div>
+<div class="tr" style="grid-template-columns:1fr 2fr;"><span>Nature of the transactions</span><span>The NATURE of the ASSISTANCE received, and the RELATED accounting POLICY used to ACCOUNT for it</span></div>
+<div class="tr alt" style="grid-template-columns:1fr 2fr;"><span>Financial statement effects</span><span>LINE items in the BALANCE Sheet and INCOME Statement AFFECTED, and the AMOUNTS applicable to EACH line item</span></div>
+<div class="tr" style="grid-template-columns:1fr 2fr;"><span>Significant terms and conditions</span><span>KEY terms and CONDITIONS of the TRANSACTIONS, INCLUDING commitments and CONTINGENCIES</span></div>
+</div>
+</div>
+</div>
+
+<div class="section-header" id="s7"><span class="num">7</span><h2>Why Disclosure-Only Guidance Was Chosen</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">Responding to a specific, urgent transparency gap</div><div style="font-size: var(--text-small);color:var(--color-text-secondary);line-height:1.6;">THE PROJECT that BECAME ASC 832 GAINED urgency FOLLOWING large-SCALE government ASSISTANCE programs (SUCH as PANDEMIC-related RELIEF measures), WHICH highlighted a GENUINE gap in TRANSPARENCY about HOW businesses were ACCOUNTING for, and REPORTING, government ASSISTANCE received. THE FASB PRIORITIZED closing this DISCLOSURE gap QUICKLY, RATHER than WAITING for a FULL recognition-and-MEASUREMENT project to CONCLUDE.</div>
+</div>
+</div>
+
+<div class="section-header" id="s8"><span class="num">8</span><h2>Effective Date and Early Application</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cw span2"><div class="ctitle cw">A single effective date for all entities</div><div style="font-size: var(--text-small);color:var(--color-text-secondary);line-height:1.6;">ASC 832 is EFFECTIVE for FISCAL years BEGINNING after DECEMBER 15, 2021, for ALL entities (WITH NO distinction BETWEEN public and PRIVATE companies, UNLIKE the STAGGERED effective DATES common ELSEWHERE in US GAAP) — EARLY application IS permitted.</div>
+</div>
+</div>
+
+<div class="section-header" id="s9"><span class="num">9</span><h2>Worked Example — Disclosing a Payroll Tax Credit Program</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cw span2"><div class="ctitle cw">Disclosure without a prescribed recognition model</div>
+<div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: A refundable payroll tax credit</div><div class="wk-body">A company receives $1,200,000 through a government payroll tax credit program during the year, recognized as a reduction of payroll tax expense within operating expenses.</div><div class="wk-answer">The company DISCLOSES the NATURE of the PROGRAM, the FACT that it RECOGNIZED the $1,200,000 as a REDUCTION of PAYROLL tax EXPENSE, the SIGNIFICANT terms and CONDITIONS of the PROGRAM (e.g. ELIGIBILITY requirements), and ANY commitments or CONTINGENCIES — but ASC 832 ITSELF does NOT dictate WHETHER this $1,200,000 SHOULD have been RECOGNIZED as a REDUCTION of expense, OTHER income, or ANOTHER treatment.</div></div>
+</div>
+</div>
+
+<div class="section-header" id="s10"><span class="num">10</span><h2>Worked Example — Disclosing a Cash Grant Analogized to IAS 20</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card ci span2"><div class="ctitle ci">A company's own chosen accounting policy, made transparent</div>
+<div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: A capital investment grant</div><div class="wk-body">A manufacturer receives a $5,000,000 government cash grant tied to the construction of a new production facility, which the company elects to account for by analogy to IAS 20 — recognizing the grant as deferred income, amortized over the facility's 20-year useful life.</div><div class="wk-answer">The company DISCLOSES that it APPLIED an IAS 20-BASED accounting POLICY by ANALOGY (SINCE no SPECIFIC US GAAP recognition MODEL exists), the $5,000,000 amount, the DEFERRED income LINE item on the BALANCE Sheet, and the $250,000 ANNUAL amortization ($5,000,000 ÷ 20 YEARS) recognized WITHIN the INCOME Statement — WITH ASC 832 REQUIRING this TRANSPARENCY, but NOT itself REQUIRING the IAS 20 ANALOGY specifically.</div></div>
+</div>
+</div>
+
+<div class="section-header" id="s11"><span class="num">11</span><h2>Disclosure Requirements (Detailed)</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">What ASC 832 requires, in full</div><div class="check-list"><span>Nature of the government assistance transactions, including a general description and the form in which assistance is received</span><span>Accounting policy used to account for the transactions</span><span>Line items in the balance sheet and income statement affected, and the amounts applicable to each</span><span>Significant terms and conditions, including commitments and contingencies</span></div>
+</div>
+</div>
+
+<div class="section-header" id="s12"><span class="num">12</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cn span2"><div class="ctitle cn">Where judgment matters most</div>
+<div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGMENTS</div><div class="dot-list"><span>Which recognition and measurement model to apply by analogy, since ASC 832 provides none directly</span><span>Whether a transaction is genuinely a "government assistance" transaction within this Topic's scope</span></div></div>
+<div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>None specific to ASC 832 itself — estimates follow whichever accounting model the entity has chosen to apply by analogy</span></div></div></div>
+</div>
+</div>
+
+<div class="section-header" id="s13"><span class="num">13</span><h2>Comparison to IAS 20 / ASBE 16</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card ci span2"><div class="ctitle ci">Comparison — ASC 832 vs IAS 20 / ASBE 16</div>
+<div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">ASC 832</span><span style="color:var(--color-text-info);">IAS 20 / ASBE 16</span></div>
+<div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Recognition/measurement guidance</span><span>NONE — disclosure only</span><span>Full recognition and measurement model (deferred income approach)</span></div>
+<div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Diversity in practice</span><span>Genuinely remains, given no mandated model</span><span>Minimal — a single, prescribed model applies</span></div>
+</div>
+<div class="note">THE MOST significant CROSS-framework DIVERGENCE in THIS entire library'S government-ASSISTANCE coverage — US GAAP TAKES a fundamentally DIFFERENT, transparency-FOCUSED (rather than PRESCRIPTIVE) approach.</div>
+</div>
+</div>
+
+<div class="section-header" id="s14"><span class="num">14</span><h2>Statement Mapping</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cs span2"><div class="ctitle cs">Where every government assistance disclosure lands</div>
+<div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+<div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Government assistance disclosures</span><span>Notes only</span><span>Primary statement treatment follows whatever model the entity applies by analogy, outside ASC 832 itself</span></div>
+</div>
+</div>
+</div>
+
+<div class="section-header" id="s15"><span class="num">15</span><h2>Related Topics</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">Cross-reference map</div>
+<div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+<div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 958-605</span><span>Not-for-profit contributions guidance, commonly analogized to by business entities in the absence of a dedicated recognition model</span></div>
+<div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 740, Income Taxes</span><span>Governs government assistance delivered through the tax system, outside ASC 832's own scope</span></div>
+</div>
+</div>
+</div>
+
+<div class="section-header" id="s16"><span class="num">16</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cn span2">
+<div class="glossary-item"><div class="glossary-term">Government assistance</div><div class="glossary-def">Assistance provided by a government to a business entity, including cash grants, tax credits, and other forms of support, subject only to ASC 832's disclosure requirements.</div></div>
+<div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Disclosure-only standard</div><div class="glossary-def">A standard requiring transparency about a topic without prescribing its recognition, measurement, or presentation treatment.</div></div>
+</div>
+</div>
+
+    <Glossary entries={[
+      { term: "Government assistance", definition: "Assistance provided by a government to a business entity, including cash grants, tax credits, and other forms of support, subject only to ASC 832's disclosure requirements." },
+      { term: "Disclosure-only standard", definition: "A standard requiring transparency about a topic without prescribing its recognition, measurement, or presentation treatment." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.asc832 || []} />
+  </section>
+</StandardPageLayout>
