@@ -167,6 +167,7 @@ export const FRAMEWORK_CONFIG: Record<string, FrameworkConfig> = {
         "Real Estate",
         "Regulated Operations",
         "Software",
+        "U.S. Steamship Entities"
       ],
       status: "active",
     },
