@@ -108,12 +108,10 @@ const seoType = detectSeoType({ code, framework, standard, hideFramework });
       )}
 
       <div class="app-body" data-framework={frameworkConfig.id}>
-        <aside class="app-sidebar" id="appSidebar">
-          <div class="standards-sidebar">
-            <FrameworkRail />
-            <StandardsPanel />
-          </div>
-        </aside>
+        <div class="standards-sidebar sidebar">
+          <FrameworkRail />
+          <StandardsPanel />
+        </div>
 
         <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
@@ -123,14 +121,15 @@ const seoType = detectSeoType({ code, framework, standard, hideFramework });
               <div class="page-content">
                 <slot />
               </div>
-              <Footer />
             </div>
+
+            <aside class="page-toc">
+              <slot name="toc" />
+            </aside>
+
+            <Footer />
           </div>
         </main>
-
-        <aside class="app-toc">
-          <slot name="toc" />
-        </aside>
       </div>
     </div>
 

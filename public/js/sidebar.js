@@ -310,7 +310,7 @@ function initSidebar() {
         document.getElementById("mobileMenuBtn");
 
     const sidebarEl =
-        document.querySelector(".app-sidebar");
+        document.querySelector(".sidebar");
 
     const overlay =
         document.getElementById("sidebarOverlay");
