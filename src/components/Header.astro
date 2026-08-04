@@ -12,7 +12,7 @@ Props:
 Renders the StandardsHub logo, framework breadcrumbs, current standard identity, and an optional print button. Slot available for toolbar actions.
 */
 
-import { House, PanelLeft } from "@lucide/astro";
+import { House, PanelLeft, Search, Sun, Moon, User } from "@lucide/astro";
 import { getFramework } from "../data/frameworks";
 
 const defaultFramework = getFramework("ias")!;
@@ -77,21 +77,57 @@ const isHome = code.toLowerCase() === "home";
                 </>
             )}
         </nav>
+
+        <div class="header-mobile-left">
+            <div class="header-main-row">
+                <div class="header-context">
+                    <button class="toolbar-btn mobile-menu-btn" id="mobileMenuBtn" title="Menu" aria-label="Open menu" aria-expanded="false">
+                        <PanelLeft size={20} strokeWidth={2} />
+                    </button>
+
+                    <span class="header-mobile-code" data-framework={frameworkConfig.id}>{code}</span>
+                </div>
+
+                <div class="header-actions">
+                    <button class="toolbar-btn" aria-label="Search" title="Search">
+                        <Search size={18} strokeWidth={2} />
+                        <span class="toolbar-label">Search</span>
+                    </button>
+
+                    <button class="toolbar-btn mobile-theme-btn" data-theme-toggle aria-label="Toggle theme" title="Theme">
+                        <Sun size={16} strokeWidth={2} class="theme-icon theme-icon-sun" />
+                        <Moon size={16} strokeWidth={2} class="theme-icon theme-icon-moon" />
+                        <span class="toolbar-label">Theme</span>
+                    </button>
+
+                    <button class="toolbar-btn" aria-label="Account" title="Account">
+                        <User size={18} strokeWidth={2} />
+                        <span class="toolbar-label">Account</span>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="header-right">
-        <button class="toolbar-btn mobile-menu-btn" id="mobileMenuBtn" title="Menu" aria-label="Open menu" aria-expanded="false">
-            <PanelLeft size={20} strokeWidth={2} />
-        </button>
-
         <slot />
 
-        <button class="toolbar-btn" id="printBtn" title="Print" aria-label="Print this page"> 🖨 </button>
+        <div class="header-mobile-right">
+            <button class="toolbar-btn" aria-label="Search" title="Search">
+                <Search size={18} strokeWidth={2} />
+                <span class="toolbar-label">Search</span>
+            </button>
+
+            <button class="toolbar-btn mobile-theme-btn" data-theme-toggle aria-label="Toggle theme" title="Theme">
+                <Sun size={16} strokeWidth={2} class="theme-icon theme-icon-sun" />
+                <Moon size={16} strokeWidth={2} class="theme-icon theme-icon-moon" />
+                <span class="toolbar-label">Theme</span>
+            </button>
+
+            <button class="toolbar-btn" aria-label="Account" title="Account">
+                <User size={18} strokeWidth={2} />
+                <span class="toolbar-label">Account</span>
+            </button>
+        </div>
     </div>
 </header>
-
-<script>
-    document.getElementById("printBtn")?.addEventListener("click", () => {
-        window.print();
-    });
-</script>

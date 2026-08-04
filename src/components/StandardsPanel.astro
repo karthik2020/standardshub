@@ -13,7 +13,7 @@ across all frameworks at once.
 import standards from "../data/standards.json";
 import StandardGroup from "./StandardGroup.astro";
 import { FRAMEWORK_CONFIG } from "../data/frameworks";
-import { Search, X, Home, Leaf, BookOpen, Building2, ScrollText, ChevronRight } from "@lucide/astro";
+import { Search, X, Home, Leaf, BookOpen, Building2, ScrollText, ChevronRight, ArrowUpRight } from "@lucide/astro";
 
 const currentPath = Astro.url.pathname;
 
@@ -73,6 +73,11 @@ const ICON_MAP: Record<string, any> = {
 
   <div class="sidebar-scroll">
     <div class="fw-panel" data-framework-panel="home">
+      <a href="/" class="panel-overview-link">
+        <Home size={14} strokeWidth={2} />
+        <span>Framework Overview</span>
+        <ArrowUpRight size={12} strokeWidth={2} class="panel-overview-arrow" />
+      </a>
       <div class="panel-home-empty">
         <Home size={26} strokeWidth={1.6} />
         <p>Select a framework on the left to browse its standards.</p>
@@ -80,24 +85,40 @@ const ICON_MAP: Record<string, any> = {
     </div>
 
     <div class="fw-panel" data-framework-panel="ias">
+      <a href={FRAMEWORK_CONFIG.ias.route} class="panel-overview-link">
+        <span>Framework Overview</span>
+        <ArrowUpRight size={12} strokeWidth={2} class="panel-overview-arrow" />
+      </a>
       <div class="section" data-section="ias">
         <StandardGroup items={itemsFor("ias")} sectionId="ias" />
       </div>
     </div>
 
     <div class="fw-panel" data-framework-panel="indas">
+      <a href={FRAMEWORK_CONFIG.indas.route} class="panel-overview-link">
+        <span>Framework Overview</span>
+        <ArrowUpRight size={12} strokeWidth={2} class="panel-overview-arrow" />
+      </a>
       <div class="section" data-section="indas">
         <StandardGroup items={itemsFor("indas")} sectionId="indas" />
       </div>
     </div>
 
     <div class="fw-panel" data-framework-panel="usgaap">
+      <a href={FRAMEWORK_CONFIG.usgaap.route} class="panel-overview-link">
+        <span>Framework Overview</span>
+        <ArrowUpRight size={12} strokeWidth={2} class="panel-overview-arrow" />
+      </a>
       <div class="section" data-section="usgaap">
         <StandardGroup items={itemsFor("usgaap")} sectionId="usgaap" categories={FRAMEWORK_CONFIG.usgaap.categories} />
       </div>
     </div>
 
     <div class="fw-panel" data-framework-panel="ifrs">
+      <a href={FRAMEWORK_CONFIG.ifrs.route} class="panel-overview-link">
+        <span>Framework Overview</span>
+        <ArrowUpRight size={12} strokeWidth={2} class="panel-overview-arrow" />
+      </a>
       <div class="section" data-section="ifrs">
         <StandardGroup items={itemsFor("ifrs")} sectionId="ifrs" label="IFRS Standards" />
       </div>

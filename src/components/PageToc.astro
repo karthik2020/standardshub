@@ -8,6 +8,8 @@ Props:
 Renders a linked list of sections for the current page. Section numbers are extracted from item IDs matching the pattern s<N>. Labels are slugified for URL hashes.
 */
 
+import { X } from "@lucide/astro";
+
 interface Item {
     id: string;
 
@@ -25,6 +27,18 @@ const slugify = (text: string) =>
 ---
 
 <nav class="toc" aria-label="Table of contents">
+    <div class="toc-sheet-header">
+      <span class="toc-sheet-header-title">Contents</span>
+      <button
+        class="toc-sheet-close"
+        id="tocSheetClose"
+        aria-label="Close table of contents"
+        aria-expanded="false"
+        aria-controls="mobileTocSheet"
+      >
+        <X size="20" stroke-width="2" absoluteStrokeWidth />
+      </button>
+    </div>
     <div class="toc-title">Contents</div>
     <ul>
         {
