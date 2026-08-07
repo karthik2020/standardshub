@@ -175,6 +175,27 @@ export const FRAMEWORK_CONFIG: Record<string, FrameworkConfig> = {
       ],
       status: "active",
     },
+   ukgaap: {
+      id: "ukgaap",
+      code: "UK GAAP",
+      displayName: "UK GAAP",
+      fullName: "UK Generally Accepted Accounting Practice",
+      description:
+        "UK Generally Accepted Accounting Practice (UK GAAP) comprises the financial reporting standards applicable in the United Kingdom and Republic of Ireland, including FRS 100–105 and SORPs.",
+      route: "/ukgaap",
+      primary: "#0891B2",
+      light: "#CFFAFE",
+      soft: "#CFFAFE",
+      dark: "#0E7490",
+      lucideIcon: "Landmark",
+      faIcon: "landmark",
+      categories: [
+        "Framework",
+        "Standards",
+        "SORPs",
+      ],
+      status: "active",
+    },
   ifric: {
     id: "ifric",
     code: "IFRIC",
@@ -209,7 +230,7 @@ export const FRAMEWORK_CONFIG: Record<string, FrameworkConfig> = {
   },
 };
 
-export const FRAMEWORK_ORDER = ["ias", "ifrs", "indas", "ifrssustainability", "ifrspublications", "ifrsforsmes", "usgaap", "ifric", "sic"] as const;
+export const FRAMEWORK_ORDER = ["ias", "ifrs", "indas", "ifrssustainability", "ifrspublications", "ifrsforsmes", "usgaap", "ukgaap", "ifric", "sic"] as const;
 
 export type FrameworkId = keyof typeof FRAMEWORK_CONFIG;
 

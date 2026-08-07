@@ -22,6 +22,7 @@ function resolveActiveFramework(pathname: string) {
   if (pathname.startsWith("/ias")) return "ias";
   if (pathname.startsWith("/indas")) return "indas";
   if (pathname.startsWith("/usgaap")) return "usgaap";
+  if (pathname.startsWith("/ukgaap")) return "ukgaap";
   return "home";
 }
 const active = resolveActiveFramework(currentPath);
@@ -34,6 +35,7 @@ const codeToKey = (code: string) => {
   if (code === "IFRIC") return "IFRIC";
   if (code === "SIC") return "SIC";
   if (code === "US GAAP") return "USGAAP";
+  if (code === "UK GAAP") return "UKGAAP";
   return code;
 };
 
@@ -111,6 +113,16 @@ const ICON_MAP: Record<string, any> = {
       </a>
       <div class="section" data-section="usgaap">
         <StandardGroup items={itemsFor("usgaap")} sectionId="usgaap" categories={FRAMEWORK_CONFIG.usgaap.categories} />
+      </div>
+    </div>
+
+    <div class="fw-panel" data-framework-panel="ukgaap">
+      <a href={FRAMEWORK_CONFIG.ukgaap.route} class="panel-overview-link">
+        <span>Framework Overview</span>
+        <ArrowUpRight size={12} strokeWidth={2} class="panel-overview-arrow" />
+      </a>
+      <div class="section" data-section="ukgaap">
+        <StandardGroup items={itemsFor("ukgaap")} sectionId="ukgaap" categories={FRAMEWORK_CONFIG.ukgaap.categories} />
       </div>
     </div>
 

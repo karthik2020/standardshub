@@ -25,6 +25,7 @@ import {
   Leaf,
   Building2,
   ScrollText,
+  Landmark,
 } from "@lucide/astro";
 import { FRAMEWORK_CONFIG, FRAMEWORK_ORDER } from "../data/frameworks";
 
@@ -36,6 +37,7 @@ const lucideIconMap: Record<string, any> = {
   BookOpen,
   Building2,
   ScrollText,
+  Landmark,
 };
 
 const currentPath = Astro.url.pathname;
@@ -80,6 +82,7 @@ const currentPath = Astro.url.pathname;
           if (code === "IFRIC") return "IFRIC";
           if (code === "SIC") return "SIC";
           if (code === "US GAAP") return "USGAAP";
+          if (code === "UK GAAP") return "UKGAAP";
           return code;
         };
         const sectionStandards: StandardSummary[] = standards[codeToKey(framework.code)] ?? [];

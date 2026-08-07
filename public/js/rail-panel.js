@@ -3,6 +3,7 @@ function resolveActiveFramework(pathname) {
   if (pathname.startsWith("/ias")) return "ias";
   if (pathname.startsWith("/indas")) return "indas";
   if (pathname.startsWith("/usgaap")) return "usgaap";
+  if (pathname.startsWith("/ukgaap")) return "ukgaap";
   return "home";
 }
 
