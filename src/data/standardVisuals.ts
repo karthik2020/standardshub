@@ -370,6 +370,14 @@ export const standardIcons: Record<string, string> = {
   "ASC 980": "gears",
   "ASC 985": "microchip",
   "ASC 995": "anchor",
+  "FRS 100": "sitemap",
+  "FRS 101": "shieldHeart",
+  "FRS 102": "bookBookmark",
+  "FRS 103": "shieldHeart",
+  "FRS 104": "calendarMinus",
+  "FRS 105": "users",
+  "FRSSE": "clockRotateLeft",
+  "SORPs": "usersGear",
 };
 
 export const fallbackIcon = "bookOpen";
