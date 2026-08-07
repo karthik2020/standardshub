@@ -7,6 +7,8 @@ import { FRAMEWORK_CONFIG, getFramework } from "../../data/frameworks";
 
 const framework = getFramework("aspe")!;
 
+const displayCode = (code: string) => code.replace("Section ", "");
+
 const groupedASPE = /** @type {Record<string, any[]>} */ ({});
 
 for (const item of standards.ASPE) {
@@ -49,7 +51,7 @@ for (const item of standards.ASPE) {
 
             <StandardCard
               href={item.url}
-              code={item.code}
+              code={item.code} displayCode={displayCode(item.code)}
               title={item.title}
               framework={framework.id}
               theme={palette[index % palette.length]}
@@ -72,7 +74,7 @@ for (const item of standards.ASPE) {
 
             <StandardCard
               href={item.url}
-              code={item.code}
+              code={item.code} displayCode={displayCode(item.code)}
               title={item.title}
               framework={framework.id}
               status={item.status}
@@ -110,7 +112,7 @@ for (const item of standards.ASPE) {
 
               <StandardCard
                 href={item.url}
-                code={item.code}
+                code={item.code} displayCode={displayCode(item.code)}
                 title={item.title}
                 framework={framework.id}
                 theme={palette[index % palette.length]}
@@ -134,7 +136,7 @@ for (const item of standards.ASPE) {
 
                         <StandardCard
                           href={item.url}
-                          code={item.code}
+                          code={item.code} displayCode={displayCode(item.code)}
                           title={item.title}
                           framework={framework.id}
                           status={item.status}

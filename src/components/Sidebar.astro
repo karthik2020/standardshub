@@ -129,7 +129,7 @@ const currentPath = Astro.url.pathname;
                           </li>
                           <ul class="sidebar-items">
                             {
-                               activeItems.map((item) => (
+                              activeItems.map((item) => (
                                 <li>
                                   <NavLink
                                     href={item.url}
@@ -138,7 +138,7 @@ const currentPath = Astro.url.pathname;
                                     code={item.code}
                                     standardTitle={item.title}
                                   >
-                                    {item.code}
+                                    {framework.id === "aspe" ? item.code.replace("Section ", "") : item.code}
                                   </NavLink>
                                 </li>
                               ))
@@ -149,19 +149,19 @@ const currentPath = Astro.url.pathname;
                               <ul class="sidebar-items">
                                 <li class="sidebar-group-label">Historical Standards</li>
                                 {
-                                   historicalItems.map((item) => (
-                                    <li>
-                                      <NavLink
-                                        href={item.url}
-                                        title={item.title}
-                                        section={framework.id}
-                                        code={item.code}
-                                        standardTitle={item.title}
-                                      >
-                                        {item.code}
-                                      </NavLink>
-                                    </li>
-                                  ))
+                                    historicalItems.map((item) => (
+                                      <li>
+                                        <NavLink
+                                          href={item.url}
+                                          title={item.title}
+                                          section={framework.id}
+                                          code={item.code}
+                                          standardTitle={item.title}
+                                        >
+                                          {framework.id === "aspe" ? item.code.replace("Section ", "") : item.code}
+                                        </NavLink>
+                                      </li>
+                                    ))
                                 }
                               </ul>
                             )

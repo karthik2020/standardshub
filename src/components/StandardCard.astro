@@ -24,9 +24,10 @@ interface Props {
   framework: "ias" | "ifrs" | "indas" | "ukgaap" | "asbe" | "aspe";
   theme: { bg: string; color: string };
   status?: string;
+  displayCode?: string;
 }
 
-const { href, code, title, framework, theme, status: statusProp } = Astro.props;
+const { href, code, title, framework, theme, status: statusProp, displayCode } = Astro.props;
 
 const frameworkConfig = getFramework(framework)!;
 const frameworkKey = frameworkConfig.code === "Ind AS" ? "IndAS" : frameworkConfig.code === "UK GAAP" ? "UKGAAP" : frameworkConfig.code === "ASBE" ? "ASBE" : frameworkConfig.code === "ASPE" ? "ASPE" : frameworkConfig.code;
@@ -40,7 +41,7 @@ const iconHtml = getStandardIconHtml(code);
   <div class="standard-top">
     <div class="standard-icon" set:html={iconHtml} />
 
-    <div class="standard-code">{code}</div>
+    <div class="standard-code">{displayCode || code}</div>
 
     {resolvedStatus && resolvedStatus !== "Active" && (
       <div class={`standard-status standard-status--${resolvedStatus.toLowerCase()}`}>
