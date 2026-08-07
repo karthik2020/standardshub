@@ -165,7 +165,7 @@ export function getIconHtml(name: string): string {
 }
 
 export function getStandardIconHtml(code: string): string {
-  const normalized = code.replace(/^ASBE No\. (\d+)$/, (_, num) => `ASBE No. ${num.padStart(2, '0')}`);
+  const normalized = code.replace(/^ASBE No\. (\d+)$/, (_, num) => `ASBE No. ${parseInt(num, 10)}`);
   const iconName = standardIcons[normalized] || standardIcons[code] || fallbackIcon;
   return getIconHtml(iconName);
 }
