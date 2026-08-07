@@ -38,6 +38,7 @@ const codeToKey = (code: string) => {
   if (code === "US GAAP") return "USGAAP";
   if (code === "UK GAAP") return "UKGAAP";
   if (code === "ASBE") return "ASBE";
+  if (code === "ASPE") return "ASPE";
   return code;
 };
 
@@ -84,12 +85,17 @@ const standardsList =
                            ...standards.UKGAAP.filter((s) => !s.status),
                            ...standards.UKGAAP.filter((s) => s.status),
                          ]
-                       : frameworkConfig.code === "ASBE"
-                         ? [
-                             ...standards.ASBE.filter((s) => !s.status),
-                             ...standards.ASBE.filter((s) => s.status),
-                           ]
-                         : standards[codeToKey(frameworkConfig.code)] ?? [];
+                        : frameworkConfig.code === "ASBE"
+                          ? [
+                              ...standards.ASBE.filter((s) => !s.status),
+                              ...standards.ASBE.filter((s) => s.status),
+                            ]
+                          : frameworkConfig.code === "ASPE"
+                            ? [
+                                ...standards.ASPE.filter((s) => !s.status),
+                                ...standards.ASPE.filter((s) => s.status),
+                              ]
+                            : standards[codeToKey(frameworkConfig.code)] ?? [];
 
 const currentIndex = standardsList.findIndex((standard) => standard.code === current);
 const previous =

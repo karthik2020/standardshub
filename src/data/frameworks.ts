@@ -217,6 +217,28 @@ export const FRAMEWORK_CONFIG: Record<string, FrameworkConfig> = {
       ],
       status: "active",
     },
+   aspe: {
+      id: "aspe",
+      code: "ASPE",
+      displayName: "ASPE",
+      fullName: "Accounting Standards for Private Enterprises",
+      description:
+        "Accounting Standards for Private Enterprises (ASPE) are the Canadian accounting standards for private enterprises, covering topics such as financial statement concepts, inventories, property plant equipment, revenue, and financial instruments.",
+      route: "/aspe",
+      primary: "#c41230",
+      light: "#FEE2E2",
+      soft: "#FECACA",
+      dark: "#7F1D1D",
+      lucideIcon: "Landmark",
+      faIcon: "landmark",
+      categories: [
+        "General Standards",
+        "Assets",
+        "Liabilities, Equity, Revenue & Other",
+        "Accounting Guidelines",
+      ],
+      status: "active",
+    },
   ifric: {
     id: "ifric",
     code: "IFRIC",
@@ -251,7 +273,7 @@ export const FRAMEWORK_CONFIG: Record<string, FrameworkConfig> = {
   },
 };
 
-export const FRAMEWORK_ORDER = ["ias", "ifrs", "indas", "ifrssustainability", "ifrspublications", "ifrsforsmes", "usgaap", "ukgaap", "asbe", "ifric", "sic"] as const;
+export const FRAMEWORK_ORDER = ["ias", "ifrs", "indas", "ifrssustainability", "ifrspublications", "ifrsforsmes", "usgaap", "ukgaap", "asbe", "aspe", "ifric", "sic"] as const;
 
 export type FrameworkId = keyof typeof FRAMEWORK_CONFIG;
 
