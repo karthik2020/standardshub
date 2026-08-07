@@ -16,6 +16,7 @@ interface Entry {
 
 interface Props {
   entries?: Entry[];
+  title?: string;
 }
 
 const {
@@ -26,11 +27,12 @@ const {
     { abbreviation: 'OCI', fullName: 'Other comprehensive income', variant: 'bo' },
     { abbreviation: 'SCF', fullName: 'Statement of cash flows', variant: 'bc' },
   ],
+  title = 'Financial statement key',
 } = Astro.props;
 ---
 
 <div class="legend">
-  <div class="ltitle">Financial statement key</div>
+  <div class="ltitle">{title}</div>
   <div class="lrow">
     {entries.map((entry) => (
       <div class="litem">
