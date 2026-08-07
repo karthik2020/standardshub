@@ -15,7 +15,7 @@ without a full page reload.
 import { FRAMEWORK_CONFIG } from "../data/frameworks";
 import { Home, BookText, LibraryBig, Files, Leaf, BookOpen, Building2, ScrollText, Landmark } from "@lucide/astro";
 
-const RAIL_FRAMEWORKS = ["ias", "ifrs", "indas", "usgaap", "ukgaap"] as const;
+const RAIL_FRAMEWORKS = ["ias", "ifrs", "indas", "usgaap", "ukgaap", "asbe"] as const;
 
 const lucideIconMap: Record<string, any> = { BookText, LibraryBig, Files, Leaf, BookOpen, Building2, ScrollText, Landmark };
 
@@ -25,6 +25,7 @@ function resolveActiveFramework(pathname: string) {
   if (pathname.startsWith("/indas")) return "indas";
   if (pathname.startsWith("/usgaap")) return "usgaap";
   if (pathname.startsWith("/ukgaap")) return "ukgaap";
+  if (pathname.startsWith("/asbe")) return "asbe";
   return "home";
 }
 

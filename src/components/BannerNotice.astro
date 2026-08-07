@@ -77,6 +77,10 @@ const iconByVariant: Record<Variant, typeof faCircleCheck> = {
   info: faCircleInfo, // circle-info
 };
 
+if (!variant || !iconByVariant[variant]) {
+  return;
+}
+
 const iconSvg = icon(iconByVariant[variant]).html.join("");
 const arrowSvg = icon(faArrowRight).html.join("");
 ---

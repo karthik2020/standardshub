@@ -196,6 +196,27 @@ export const FRAMEWORK_CONFIG: Record<string, FrameworkConfig> = {
       ],
       status: "active",
     },
+   asbe: {
+      id: "asbe",
+      code: "ASBE",
+      displayName: "ASBE",
+      fullName: "Accounting Standards for Business Enterprises",
+      description:
+        "Accounting Standards for Business Enterprises (ASBE) are the Chinese accounting standards issued by the Ministry of Finance, covering topics such as inventories, fixed assets, revenue, and financial instruments.",
+      route: "/asbe",
+      primary: "#EC4899",
+      light: "#FCE7F3",
+      soft: "#FBCFE8",
+      dark: "#9D174D",
+      lucideIcon: "Landmark",
+      faIcon: "landmark",
+      categories: [
+        "Framework",
+        "Standards",
+        "Small Business",
+      ],
+      status: "active",
+    },
   ifric: {
     id: "ifric",
     code: "IFRIC",
@@ -230,7 +251,7 @@ export const FRAMEWORK_CONFIG: Record<string, FrameworkConfig> = {
   },
 };
 
-export const FRAMEWORK_ORDER = ["ias", "ifrs", "indas", "ifrssustainability", "ifrspublications", "ifrsforsmes", "usgaap", "ukgaap", "ifric", "sic"] as const;
+export const FRAMEWORK_ORDER = ["ias", "ifrs", "indas", "ifrssustainability", "ifrspublications", "ifrsforsmes", "usgaap", "ukgaap", "asbe", "ifric", "sic"] as const;
 
 export type FrameworkId = keyof typeof FRAMEWORK_CONFIG;
 
