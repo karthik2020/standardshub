@@ -16,6 +16,7 @@ interface Props {
   latestAmendment?: string;
   status?: string;
   summary?: string;
+  subtitle?: string;
   description?: string;
   canonical?: string;
   robots?: string;
@@ -39,6 +40,7 @@ interface Props {
     url: string;
     relationship: string;
   }[];
+  covers?: string[];
 }
 
 const {
@@ -49,6 +51,7 @@ const {
   latestAmendment = "",
   status = "",
   summary = "",
+  subtitle = "",
   description,
   canonical,
   robots,
@@ -57,6 +60,7 @@ const {
   twitterCard,
   bannerNotice,
   related = [],
+  covers = [],
 } = Astro.props;
 
 const frameworkConfig = getFramework(standardType) ?? getFramework("ias")!;
@@ -85,10 +89,12 @@ const standard = { code, title, dateModified: latestAmendment || undefined };
     code={code}
     title={title}
     summary={summary}
+    subtitle={subtitle}
     issued={issued}
     latestAmendment={latestAmendment}
     status={status}
     framework={frameworkConfig.code}
+    covers={covers}
   />
   {bannerNotice && (
     <div class="standard-banner-notice">
@@ -103,8 +109,8 @@ const standard = { code, title, dateModified: latestAmendment || undefined };
   <ReferenceGuide>
     <slot />
   </ReferenceGuide>
-  <RelatedStandards related={related} framework={frameworkConfig.code as "IAS" | "IFRS" | "Ind AS" | "IFRS Sustainability" | "IFRS Publications" | "IFRS for SMEs" | "US GAAP" | "UK GAAP" | "ASBE" | "ASPE" | "IFRIC" | "SIC"} />
-  <PreviousNextNavigation current={code} framework={frameworkConfig.code as "IAS" | "IFRS" | "Ind AS" | "IFRS Sustainability" | "IFRS Publications" | "IFRS for SMEs" | "US GAAP" | "UK GAAP" | "ASBE" | "ASPE" | "IFRIC" | "SIC"} />
+  <RelatedStandards related={related} framework={frameworkConfig.code as "IAS" | "IFRS" | "Ind AS" | "IFRS Sustainability" | "IFRS Publications" | "IFRS for SMEs" | "US GAAP" | "UK GAAP" | "ASBE" | "ASPE" | "Japan GAAP" | "IFRIC" | "SIC"} />
+  <PreviousNextNavigation current={code} framework={frameworkConfig.code as "IAS" | "IFRS" | "Ind AS" | "IFRS Sustainability" | "IFRS Publications" | "IFRS for SMEs" | "US GAAP" | "UK GAAP" | "ASBE" | "ASPE" | "Japan GAAP" | "IFRIC" | "SIC"} />
 </StandardLayout>
 
 <style>

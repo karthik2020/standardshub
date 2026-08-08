@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HGB §257–263 — Aufbewahrung und Vorlage | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">HGB §§257–263 — Aufbewahrung und Vorlage</div>
+      <div class="hub-sub">Extended reference poster · Book 3, Section 1, Subsection 3 · Retention of records and their production in litigation, disputes, and electronic form · German commercial law · EUR examples</div>
+    </div>
+  </div>
+
+  <div class="callout info" style="max-width:900px;margin:0 auto 20px;text-align:center;">CORRECTION NOTE: An earlier poster in this series (§§238–241a) mistakenly attributed "Beweiskraft der Handelsbücher" (evidentiary weight of commercial books) to §261. The confirmed, current content of §261 is "Vorlegung von Unterlagen auf Bild- oder Datenträgern" — production of documents held on image or data media — covered fully in Section 15 below. This poster uses the corrected content throughout.</div>
+
+  <div class="toc">
+    <a href="#s1">1. Conceptual Framework Linkage</a>
+    <a href="#s2">2. Scope</a>
+    <a href="#s3">3. §257(1) — What Must Be Retained</a>
+    <a href="#s4">4. §257(2) — Defining a Handelsbrief</a>
+    <a href="#s5">5. §257(3) — Electronic and Image-Based Retention</a>
+    <a href="#s6">6. §257(4) — the Two Retention Periods: 10 Years and 6 Years</a>
+    <a href="#s7">7. Worked Example — Classifying Documents Into the Two Retention Periods</a>
+    <a href="#s8">8. §257(5) — When the Retention Clock Actually Starts</a>
+    <a href="#s9">9. Worked Example — Calculating a Retention Period's Expiry Date</a>
+    <a href="#s10">10. The GoBD — Tax Authority Guidance on Electronic Retention</a>
+    <a href="#s11">11. §258 — Court-Ordered Production in Litigation</a>
+    <a href="#s12">12. §259 — the Proportionality Relief: Producing Only an Extract</a>
+    <a href="#s13">13. §260 — Full Production in Inheritance, Property, and Dissolution Disputes</a>
+    <a href="#s14">14. Worked Example — Extract vs Full Production, Side by Side</a>
+    <a href="#s15">15. §261 — Production of Electronically Retained Documents</a>
+    <a href="#s16">16. Worked Example — Who Pays to Make Electronic Records Readable</a>
+    <a href="#s17">17. §§262–263 — Repealed Provisions</a>
+    <a href="#s18">18. Consequences of Premature Destruction</a>
+    <a href="#s19">19. Critical Judgments &amp; Practical Difficulties</a>
+    <a href="#s20">20. Relationship to IFRS — Another Structural Absence</a>
+    <a href="#s21">21. Statement &amp; Process Mapping</a>
+    <a href="#s22">22. Related Provisions — Cross-Reference Map</a>
+    <a href="#s23">23. Quick-Reference Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Preserving what §§238–256a required to be created</div>
+      <div class="principle">Having established WHAT must be recorded (§§238–241a), HOW the annual accounts must be prepared (§§242–245), WHAT must be recognised (§§246–251), and HOW it must be measured (§§252–256a), HGB now turns to a genuinely practical question: for how LONG must all of this documentation be preserved, and under what circumstances can a third party — a court, a counterparty in litigation — compel it to be PRODUCED?</div>
+      <div class="elabel">HOW §§257–263 MAP TO GERMAN ACCOUNTING PRINCIPLES</div>
+      <div class="check-list">
+        <span><strong style="font-weight:500">Nachprüfbarkeit (verifiability)</strong> — retention exists precisely so the traceability §238 demands remains POSSIBLE for years after the fact, not merely at the moment of original entry</span>
+        <span><strong style="font-weight:500">Gläubigerschutz (creditor protection)</strong> — courts and counterparties need genuine access to reliable records long after a transaction occurred, particularly in insolvency or dispute scenarios</span>
+      </div>
+      <div class="note">This is a NARROWER, more procedural Titel than the two preceding anchor posters — it does not introduce new recognition or measurement philosophy, but rather operationalises how long, and in what form, everything already required elsewhere must survive.</div>
+    </div>
+
+    <div class="card cs">
+      <div class="ctitle cs">What §§257–263 require, at a glance</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.5fr 1.8fr;"><span>§</span><span>Core requirement</span></div>
+        <div class="tr" style="grid-template-columns:0.5fr 1.8fr;"><span>257</span><span>What to retain, in what form, and for how long (10 or 6 years)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.5fr 1.8fr;"><span>258</span><span>Courts may order books produced in litigation</span></div>
+        <div class="tr" style="grid-template-columns:0.5fr 1.8fr;"><span>259</span><span>An extract may suffice, rather than the full books</span></div>
+        <div class="tr alt" style="grid-template-columns:0.5fr 1.8fr;"><span>260</span><span>Full production required for inheritance/property/dissolution disputes</span></div>
+        <div class="tr" style="grid-template-columns:0.5fr 1.8fr;"><span>261</span><span>How electronically-retained records must be produced</span></div>
+        <div class="tr alt" style="grid-template-columns:0.5fr 1.8fr;"><span>262–263</span><span>Repealed — no current content</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Scope</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Every Kaufmann bound by the preceding Titel's obligations</div>
+      <div class="principle">§§257–263 apply to the SAME population bound by §§238–256a — the retention obligation is simply the natural continuation of the bookkeeping, accounts-preparation, recognition, and measurement obligations already established, extending their reach forward in TIME rather than introducing a new category of obligated party.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>§257(1) — What Must Be Retained</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Four named categories</div>
+      <div class="check-list">
+        <span>Opening balance sheets, annual accounts, group management reports, and the instructions/organisational documents needed to understand them</span>
+        <span>Commercial letters RECEIVED (empfangene Handelsbriefe)</span>
+        <span>Copies of commercial letters SENT (abgesandte Handelsbriefe)</span>
+        <span>Accounting vouchers (Belege für Buchungen) — the underlying source documents supporting each individual entry</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>§257(2) — Defining a Handelsbrief</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Only documents concerning a specific business transaction</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">§257(2) defines a Handelsbrief (commercial letter) narrowly — only correspondence that relates to the PREPARATION, CONCLUSION, or PERFORMANCE of a specific commercial transaction. General marketing material, internal policy memoranda unconnected to any specific transaction, or purely social correspondence between business contacts do NOT qualify, even if exchanged between merchants in a commercial context.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>§257(3) — Electronic and Image-Based Retention</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Permitted, subject to conditions ensuring the record remains trustworthy</div>
+      <div class="principle">§257(3) permits most documents to be retained as image or data storage media (microfilm, scanned images, electronic files) PROVIDED the reproduction (a) conforms to the original in content, (b) is available and legible within a reasonable time throughout the retention period, and (c) can be reproduced at any time. Opening balance sheets and Jahresabschlüsse historically required RETENTION in original paper form (or as an electronic original meeting stricter integrity conditions) — reflecting their heightened evidentiary and legal significance relative to ordinary correspondence.</div>
+      <div class="callout info" style="margin-bottom:0;">ℹ️ Digitalisation-friendly amendments in recent years have progressively relaxed the historical paper-original requirement, allowing purely electronic preparation and retention under specific integrity safeguards — reflecting a broader, ongoing modernisation trend across German commercial law.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>§257(4) — the Two Retention Periods: 10 Years and 6 Years</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">The most consequential provision in this Titel</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.6fr 1.7fr;"><span>Period</span><span>Document categories</span></div>
+        <div class="tr" style="grid-template-columns:0.6fr 1.7fr;"><span>10 years</span><span>Opening balance sheets, Jahresabschlüsse, Konzernabschlüsse, Lageberichte, Konzernlageberichte, and accounting vouchers (Buchungsbelege)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.6fr 1.7fr;"><span>6 years</span><span>Received commercial letters, copies of sent commercial letters, and other documents relevant for taxation purposes not already covered by the 10-year category</span></div>
+      </div>
+      <div class="note">The heaviest evidentiary items — the finished accounts themselves, and the underlying vouchers proving each entry — get the LONGEST retention period; ordinary correspondence gets a somewhat shorter one.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Worked Example — Classifying Documents Into the Two Retention Periods</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Sorting a company's records by category</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 1: A company's year-end document set</div>
+        <div class="wk-body">A GmbH's records for the past fiscal year include: (a) the signed Jahresabschluss itself, (b) a supplier invoice supporting a specific booked expense, (c) a routine order-confirmation email exchanged with a customer, and (d) a general newsletter the company received from an industry association.</div>
+        <div class="wk-answer">(a) the Jahresabschluss: <strong>10-year</strong> retention. (b) the supplier invoice (a Buchungsbeleg supporting a specific entry): <strong>10-year</strong> retention. (c) the order-confirmation email (a Handelsbrief relating to a specific transaction): <strong>6-year</strong> retention. (d) the general industry newsletter: <strong>NOT</strong> subject to §257 at all — it is neither a Handelsbrief (no specific transaction) nor an accounting voucher.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>§257(5) — When the Retention Clock Actually Starts</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">The end of the calendar year, not the exact date of the document itself</div>
+      <div class="principle">§257(5) provides that the retention period begins at the END of the CALENDAR YEAR in which the last entry was made in the underlying books, the inventory was drawn up, the opening balance sheet or annual accounts were prepared, the commercial letter was received or sent, or the voucher was created — NOT from the exact date of the document itself. This "rounds up" every document's retention clock to a common, predictable annual boundary, considerably simplifying administration.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Worked Example — Calculating a Retention Period's Expiry Date</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Rounding to the calendar year boundary</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 2: Determining exactly when a document may be destroyed</div>
+        <div class="wk-body">A company receives a supplier invoice (a 10-year-retention Buchungsbeleg) on 14 March of Year 1, books the corresponding entry the same day, and the invoice is fully paid and closed out with no further bookings against it.</div>
+        <div class="wk-answer">The retention period begins at the END of the calendar year the LAST entry was made — 31 December of Year 1 — and runs for 10 FULL years from that point, expiring at the end of Year 11 (31 December). The invoice may therefore be destroyed FROM 1 January of Year 12 onward — nearly 11 full years after its original 14 March date, given the calendar-year rounding mechanic.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>The GoBD — Tax Authority Guidance on Electronic Retention</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Administrative guidance bridging commercial retention law and tax practice</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">The GoBD (Grundsätze zur ordnungsmäßigen Führung und Aufbewahrung von Büchern, Aufzeichnungen und Unterlagen in elektronischer Form sowie zum Datenzugriff) is administrative guidance issued by the German tax authorities elaborating in considerable technical detail on how the §257(3) electronic retention conditions must be satisfied in PRACTICE for tax purposes — covering matters like unalterable audit trails, indexing/searchability requirements, and data-access rights for tax auditors. This is yet another instance of the SAME commercial/tax linkage pattern first introduced via §140 AO in the earlier poster on §§238–241a — commercial retention law and tax administrative practice are never fully separable in the German system.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>§258 — Court-Ordered Production in Litigation</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">A court may compel production, on its own motion or upon application</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">In an ordinary legal dispute, §258 allows a court to order a party's commercial books produced for inspection — either on the court's OWN initiative or upon a party's application — typically taking place at the location the books are actually kept, with the parties (or their authorised representatives) present, and relevant entries extracted for the court's own record.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>§259 — the Proportionality Relief: Producing Only an Extract</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">A narrower alternative to producing the entire books</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">§259 provides that, where appropriate, only an EXTRACT of the relevant entries need be produced and communicated to the requesting party, rather than the entire set of books — a genuinely proportionality-oriented relief, protecting the confidentiality of unrelated commercial information while still satisfying the litigating party's legitimate evidentiary need.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>§260 — Full Production in Inheritance, Property, and Dissolution Disputes</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">A narrower, but more thorough, category of disputes requiring the full books</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">§260 addresses a NARROWER category of disputes — inheritance division (Erbteilung), community-of-property disputes (Gütergemeinschaft), and partnership/company dissolution disputes (Gesellschaftsteilung) — where the court may order the FULL books produced (not merely an extract), given that in these specific dispute types, the parties' collective entitlement to a complete, unfiltered picture of the underlying assets and liabilities is considered to outweigh the confidentiality interest §259's extract-only relief otherwise protects.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Worked Example — Extract vs Full Production, Side by Side</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">The same underlying books, two different production obligations depending on the dispute type</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 3: An ordinary contract dispute vs a partnership dissolution</div>
+        <div class="wk-body">Company A is involved in an ordinary commercial dispute with a supplier over a disputed invoice, and the supplier's counsel seeks production of Company A's books to verify certain entries. Separately, Company A's OWN two partners are dissolving their partnership and disagree about each partner's respective capital account balances.</div>
+        <div class="wk-answer">In the SUPPLIER dispute, §258/§259 apply — the court may well limit production to an EXTRACT of the specific entries relevant to the disputed invoice, protecting the rest of Company A's books from unnecessary exposure. In the PARTNERSHIP dissolution, §260 applies instead — the FULL books must be produced to BOTH partners, given their joint entitlement to a complete picture of the partnership's affairs as they wind down their shared enterprise.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 15 ============ -->
+  <div class="section-header" id="s15"><span class="num">15</span><h2>§261 — Production of Electronically Retained Documents</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Making stored image/data records actually readable for production purposes</div>
+      <div class="principle">Where documents have been lawfully retained on image or data storage media under §257(3), and production is ordered under §§258–260, §261 requires the retaining party to produce READABLE reproductions of the stored records — at its OWN expense — or to provide the technical means necessary to make the records readable. Where requested, the retaining party must also furnish printouts or copies, again at its own expense.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 16 ============ -->
+  <div class="section-header" id="s16"><span class="num">16</span><h2>Worked Example — Who Pays to Make Electronic Records Readable</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">The retaining party bears the cost of accessibility</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 4: Producing scanned invoices for a court</div>
+        <div class="wk-body">A company retained its supplier invoices exclusively as scanned images, per §257(3), having since discarded the paper originals. A court orders production of specific invoices under §258 in an ongoing dispute.</div>
+        <div class="wk-answer">The company must produce READABLE reproductions of the scanned invoices — and if the requesting party asks for physical printouts, the company must supply them — with the company itself bearing the COST of this production, per §261. The mere fact that the records exist only in electronic form does not shift this cost onto the requesting party.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 17 ============ -->
+  <div class="section-header" id="s17"><span class="num">17</span><h2>§§262–263 — Repealed Provisions</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">No current content</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Both §262 and §263 are currently marked "(weggefallen)" — repealed, with no substantive content remaining. Their original subject matter (from earlier versions of the Handelsgesetzbuch) has since been restructured elsewhere or removed entirely as German commercial law evolved.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 18 ============ -->
+  <div class="section-header" id="s18"><span class="num">18</span><h2>Consequences of Premature Destruction</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">A direct link to the criminal-law exposure introduced in the first poster of this series</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">As flagged in the companion poster on §§238–241a, destroying, damaging, or concealing commercial books or records BEFORE the §257(4) retention period has expired can itself constitute the criminal offence of Bankrott under §283 StGB, INDEPENDENT of any underlying insolvency — the retention obligation this Titel establishes is not merely an administrative housekeeping matter, but one with genuine criminal-law teeth.</div>
+      <div class="callout danger" style="margin-bottom:0;">🚫 A company that discards records the moment it BELIEVES a dispute has concluded, without confirming the §257(4) period has genuinely expired, risks precisely this exposure — retention periods should be calculated conservatively, not assumed.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 19 ============ -->
+  <div class="section-header" id="s19"><span class="num">19</span><h2>Critical Judgments &amp; Practical Difficulties</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Where judgement matters most</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+          <div class="dot-list">
+            <span>Whether a specific piece of correspondence genuinely qualifies as a Handelsbrief (tied to a specific transaction) or falls outside §257 entirely</span>
+            <span>Whether an electronic retention system's technical safeguards genuinely satisfy §257(3)'s conformity, legibility, and reproducibility conditions</span>
+          </div>
+        </div>
+        <div>
+          <div class="elabel">PRACTICAL DIFFICULTIES</div>
+          <div class="dot-list">
+            <span>Tracking the correct calendar-year-rounded expiry date across a large, heterogeneous document population</span>
+            <span>Maintaining genuinely readable, reproducible electronic archives across obsolete file formats and storage technologies over a full 10-year retention span</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 20 ============ -->
+  <div class="section-header" id="s20"><span class="num">20</span><h2>Relationship to IFRS — Another Structural Absence</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — HGB §§257–263 vs IFRS</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Exactly as with §§238–241a, IFRS has NO equivalent record-retention mandate whatsoever — retention periods, in an IFRS-only jurisdiction, are governed entirely by LOCAL company, tax, or evidence law, with IFRS itself remaining silent on how long underlying records must survive. This Titel is, once again, part of the LEGAL INFRASTRUCTURE layer HGB supplies beneath any accounting standard — IFRS included — rather than a topic IFRS itself ever addresses directly.</div>
+      <div class="note">A GERMAN company preparing IFRS consolidated accounts (per §315e) STILL relies on §§257–263 to determine how long its underlying records must be kept — the two frameworks operate at entirely different LAYERS, not in competition with one another on this particular question.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 21 ============ -->
+  <div class="section-header" id="s21"><span class="num">21</span><h2>Statement &amp; Process Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Where every §§257–263 event lands in the broader accounting process</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event / obligation</span><span>Downstream effect</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>10-year retention triggers</span><span><span class="badge bs">Bilanz/GuV/Belege</span></span><span>Jahresabschlüsse and vouchers held the longest</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>6-year retention triggers</span><span><span class="badge be">Handelsbriefe</span></span><span>Correspondence held for a shorter period</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Court production ordered</span><span>—</span><span>Extract (§259) or full production (§260), depending on dispute type</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 22 ============ -->
+  <div class="section-header" id="s22"><span class="num">22</span><h2>Related Provisions — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How §§257–263 connect across HGB Book 3</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Provision</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>§§238–241a</span><span>Establishes the books and vouchers this Titel then requires to be retained and, where ordered, produced</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>§283 StGB</span><span>Criminalises premature destruction of records this Titel requires to be kept</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>GoBD (tax administrative guidance)</span><span>Elaborates the technical conditions for lawful electronic retention under §257(3)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 23 ============ -->
+  <div class="section-header" id="s23"><span class="num">23</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Handelsbrief</div><div class="glossary-def">A commercial letter relating specifically to the preparation, conclusion, or performance of a business transaction.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Buchungsbeleg</div><div class="glossary-def">An accounting voucher — the source document supporting an individual booked entry.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">GoBD</div><div class="glossary-def">Tax authority administrative guidance elaborating the technical requirements for lawful electronic bookkeeping and record retention.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Erbteilung</div><div class="glossary-def">Inheritance division dispute — one of the categories requiring full (not extract-only) book production under §260.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Gütergemeinschaft</div><div class="glossary-def">Community-of-property dispute — another §260 full-production category.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Gesellschaftsteilung</div><div class="glossary-def">Partnership or company dissolution dispute — the third §260 full-production category.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Key</div>
+    <div class="lrow">
+      <span class="badge bs">Bilanz/GuV/Belege</span> Balance sheet, income statement, and vouchers — 10-year retention
+      <span class="badge be">Handelsbriefe</span> Commercial correspondence — 6-year retention
+    </div>
+  </div>
+
+  <div class="footer-note">HGB §§257–263 — Aufbewahrung und Vorlage · Extended Reference Poster · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

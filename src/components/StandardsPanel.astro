@@ -7,7 +7,8 @@ framework's list up front (server-side, so it works with JS disabled and
 is fully crawlable) inside a hidden [data-framework-panel]; rail-panel.js
 toggles visibility to match the rail selection, and lifts the "hidden"
 restriction entirely while a search term is active so results surface
-across all frameworks at once.
+across all frameworks at once. DRS standards are listed inside the HGB
+panel as a secondary document collection.
 */
 
 import standards from "../data/standards.json";
@@ -25,6 +26,8 @@ function resolveActiveFramework(pathname: string) {
   if (pathname.startsWith("/ukgaap")) return "ukgaap";
   if (pathname.startsWith("/asbe")) return "asbe";
   if (pathname.startsWith("/aspe")) return "aspe";
+  if (pathname.startsWith("/japangaap")) return "japangaap";
+  if (pathname.startsWith("/hgb") || pathname.startsWith("/germany/drs")) return "hgb";
   return "home";
 }
 const active = resolveActiveFramework(currentPath);
@@ -40,6 +43,9 @@ const codeToKey = (code: string) => {
   if (code === "UK GAAP") return "UKGAAP";
   if (code === "ASBE") return "ASBE";
   if (code === "ASPE") return "ASPE";
+  if (code === "Japan GAAP") return "JapanGAAP";
+  if (code === "HGB") return "HGB";
+  if (code === "DRS") return "DRS";
   return code;
 };
 
@@ -147,6 +153,29 @@ const ICON_MAP: Record<string, any> = {
       </a>
       <div class="section" data-section="aspe">
         <StandardGroup items={itemsFor("aspe")} sectionId="aspe" categories={FRAMEWORK_CONFIG.aspe.categories} />
+      </div>
+    </div>
+
+    <div class="fw-panel" data-framework-panel="japangaap">
+      <a href={FRAMEWORK_CONFIG.japangaap.route} class="panel-overview-link">
+        <span>Framework Overview</span>
+        <ArrowUpRight size={12} strokeWidth={2} class="panel-overview-arrow" />
+      </a>
+      <div class="section" data-section="japangaap">
+        <StandardGroup items={itemsFor("japangaap")} sectionId="japangaap" categories={FRAMEWORK_CONFIG.japangaap.categories} />
+      </div>
+    </div>
+
+    <div class="fw-panel" data-framework-panel="hgb">
+      <a href={FRAMEWORK_CONFIG.hgb.route} class="panel-overview-link">
+        <span>Framework Overview</span>
+        <ArrowUpRight size={12} strokeWidth={2} class="panel-overview-arrow" />
+      </a>
+      <div class="section" data-section="hgb">
+        <StandardGroup items={itemsFor("hgb")} sectionId="hgb" label="HGB Standards" />
+      </div>
+      <div class="section" data-section="drs">
+        <StandardGroup items={itemsFor("drs")} sectionId="drs" label="DRS Standards" />
       </div>
     </div>
 

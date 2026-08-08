@@ -140,11 +140,16 @@ function initSidebar() {
 
                 const code = normalize(link.dataset.code || "");
                 const title = normalize(link.dataset.title || "");
+                const aliases = (link.dataset.aliases || "")
+                    .split(",")
+                    .map(normalize)
+                    .filter(Boolean);
 
                 const match =
                     !hasTerm ||
                     code.includes(term) ||
-                    title.includes(term);
+                    title.includes(term) ||
+                    aliases.some(alias => alias.includes(term));
 
                 link.style.display = match ? "" : "none";
 

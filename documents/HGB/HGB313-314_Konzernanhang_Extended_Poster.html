@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HGB §§313–314 — Konzernanhang | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">HGB §§313–314 — Konzernanhang (Consolidated Notes)</div>
+      <div class="hub-sub">Extended reference poster · Book 3, Section 2, Subsection 2, Title 8 · The group-level parallel to the individual Anhang · German commercial law · EUR examples</div>
+    </div>
+  </div>
+
+  <div class="callout suc" style="max-width:900px;margin:0 auto 20px;text-align:center;">A FAMILIAR PATTERN, AT GROUP LEVEL: §313–314 mirror the general shape of §§284–288's individual-entity Anhang — explain the numbers, disclose methods and changes, then a long list of specific items. This poster focuses on what's genuinely NEW here: the full "map" of every corporate relationship in the group, the goodwill roll-forward, and group-level auditor fee disclosure.</div>
+
+  <div class="toc">
+    <a href="#s1">1. Conceptual Framework Linkage</a>
+    <a href="#s2">2. Scope</a>
+    <a href="#s3">3. §313(1) — the General Explanatory Function, at Group Level</a>
+    <a href="#s4">4. §313(2) — the Full Map of Every Corporate Relationship</a>
+    <a href="#s5">5. Worked Example — Compiling the §313(2) Relationship Map</a>
+    <a href="#s6">6. §313(3) — Group-Wide Measurement Method Disclosure</a>
+    <a href="#s7">7. Worked Example — Disclosing a Deviation From the Parent's Own Methods</a>
+    <a href="#s8">8. §313(4) — the Goodwill Roll-Forward</a>
+    <a href="#s9">9. Worked Example — a Full Goodwill Roll-Forward Table</a>
+    <a href="#s10">10. §314 — Other Mandatory Disclosures (Selected Major Categories)</a>
+    <a href="#s11">11. Worked Example — Group-Wide Off-Balance-Sheet Commitments</a>
+    <a href="#s12">12. Auditor Fee Disclosure — a Genuinely Group-Specific Requirement</a>
+    <a href="#s13">13. Worked Example — Disclosing Auditor Fees by Service Category</a>
+    <a href="#s14">14. Critical Judgments &amp; Practical Difficulties</a>
+    <a href="#s15">15. Relationship to IFRS</a>
+    <a href="#s16">16. Statement Mapping</a>
+    <a href="#s17">17. Related Provisions — Cross-Reference Map</a>
+    <a href="#s18">18. Quick-Reference Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The same disclosure philosophy, now covering an entire group</div>
+      <div class="principle">Just as §§284–288 delivered the individual-entity's true-and-fair remedy through disclosure, §§313–314 do the SAME at group level — but with genuinely NEW content specific to consolidation: a comprehensive map of every corporate relationship, and a roll-forward of the goodwill this entire subsection's capital consolidation and equity-method mechanics have created.</div>
+      <div class="elabel">HOW §§313–314 MAP TO GERMAN ACCOUNTING PRINCIPLES</div>
+      <div class="check-list">
+        <span><strong style="font-weight:500">Klarer Einblick, completed at group level</strong> — the SAME "additional disclosure, not departure" remedy established for §297's group-level true-and-fair requirement</span>
+        <span><strong style="font-weight:500">Transparency over the consolidation boundary itself</strong> — §313(2) uniquely requires disclosure of relationships on BOTH sides of the consolidation line: what's IN, and what's excluded and why</span>
+      </div>
+    </div>
+
+    <div class="card cs">
+      <div class="ctitle cs">What §§313–314 require, at a glance</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.6fr 1.7fr;"><span>§</span><span>Core requirement</span></div>
+        <div class="tr" style="grid-template-columns:0.6fr 1.7fr;"><span>313(1)</span><span>Explain the Konzernbilanz and Konzern-GuV, per the consolidation methods actually applied</span></div>
+        <div class="tr alt" style="grid-template-columns:0.6fr 1.7fr;"><span>313(2)</span><span>A full map of every corporate relationship — included, excluded, associated, jointly-managed</span></div>
+        <div class="tr" style="grid-template-columns:0.6fr 1.7fr;"><span>313(3)</span><span>Group-wide measurement methods and deviations, disclosed with their financial effect</span></div>
+        <div class="tr alt" style="grid-template-columns:0.6fr 1.7fr;"><span>313(4)</span><span>A goodwill roll-forward — opening balance, additions, amortisation, closing balance</span></div>
+        <div class="tr" style="grid-template-columns:0.6fr 1.7fr;"><span>314</span><span>A long list of further specific disclosures, including group-level auditor fees</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Scope</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Every parent required to prepare a Konzernanhang under §297(1)</div>
+      <div class="principle">§§313–314 apply to every parent required to prepare a Konzernabschluss and its accompanying Konzernanhang under §297(1), established in the earlier poster on the content and form of the Konzernabschluss.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>§313(1) — the General Explanatory Function, at Group Level</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Explaining, not merely repeating, the consolidated figures</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">§313(1) requires the Konzernanhang to EXPLAIN the Konzernbilanz and Konzern-GuV items, taking into account the specific consolidation methods actually applied — directly paralleling §284(1)'s individual-entity function, now extended to cover the additional complexity consolidation itself introduces.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>§313(2) — the Full Map of Every Corporate Relationship</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Included, excluded, associated, jointly-managed — and everything in between</div>
+      <div class="principle">§313(2) requires disclosure of name, registered seat, ownership percentage, and (where not consolidated at the parent's own uniform reporting date) the equity and result of the last fiscal year for: EVERY company INCLUDED in the consolidation; subsidiaries EXCLUDED under §296 (Section 296(3)'s own justification requirement is satisfied here); associated companies accounted for under §311–312; jointly-managed enterprises accounted for under §310; and OTHER significant participating interests (Beteiligungen) of 20% or more NOT otherwise consolidated or equity-accounted. This is genuinely a comprehensive "MAP" of every significant corporate relationship the group has, regardless of where it sits on the control spectrum.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Worked Example — Compiling the §313(2) Relationship Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">A single table capturing every relationship, wherever it sits on the control spectrum</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 1: A group's complete relationship map</div>
+        <div class="wk-body">A group has: three wholly-owned subsidiaries fully consolidated under §300; one foreign subsidiary excluded under §296(1)'s severe-restrictions ground (recall the earlier example from that poster); one 50%-owned joint venture proportionately consolidated under §310; one 30% associate accounted for under §311–312; and a separate 22% passive shareholding in an unrelated company, not otherwise consolidated or equity-accounted.</div>
+        <div class="wk-answer">The Konzernanhang discloses ALL FIVE relationships in its §313(2) map — name, seat, and ownership percentage for each — with the EXCLUDED subsidiary specifically cross-referencing its §296(3) justification, and the 22% passive shareholding disclosed even though it triggers NEITHER consolidation NOR equity-method treatment, simply because it exceeds the 20% Beteiligung threshold and therefore warrants transparency regardless of its accounting treatment.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>§313(3) — Group-Wide Measurement Method Disclosure</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">The group-level counterpart to §284(2)'s individual-entity disclosure</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">§313(3) requires disclosure of the uniform group-wide measurement methods actually applied per §308 (established in the earlier poster), any DEVIATIONS from the parent's own individual-entity methods, and their financial effect — directly paralleling §284(2)'s individual-entity requirement, now scaled to cover the group-wide harmonisation §308 itself demands.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Worked Example — Disclosing a Deviation From the Parent's Own Methods</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Where the §308(3) disproportionate-cost relief was exercised, readers must be told</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 2: Disclosing the earlier disproportionate-cost relief</div>
+        <div class="wk-body">Recall the recently-acquired subsidiary from the §§308–309 poster, whose incompatible legacy inventory systems justified relying on §308(3)'s disproportionate-cost relief rather than fully restating to the parent's own measurement method.</div>
+        <div class="wk-answer">The Konzernanhang discloses that this SPECIFIC subsidiary's inventory has NOT been restated to the group's uniform method, the REASON (disproportionate cost/delay), and — where reasonably estimable — the approximate FINANCIAL EFFECT of this deviation, ensuring readers understand precisely where the consolidated figures depart from full measurement uniformity.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>§313(4) — the Goodwill Roll-Forward</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">A genuinely useful transparency mechanism, unique to the consolidated level</div>
+      <div class="principle">§313(4) requires disclosure of the COMPOSITION and DEVELOPMENT of the difference amounts arising from capital consolidation (§301) and equity-method investments (§312) — in practice, a "roll-forward" table showing the OPENING balance, ADDITIONS from new acquisitions, AMORTISATION for the period, and CLOSING balance for goodwill (and any negative differences) across the group. This gives readers genuine visibility into how much of the group's goodwill is newly-acquired versus legacy, and how quickly it is being amortised down.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Worked Example — a Full Goodwill Roll-Forward Table</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Tying together the two earlier goodwill examples in this poster series into one disclosure</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 3: Combining prior years' goodwill with a new acquisition</div>
+        <div class="wk-body">A group's opening goodwill balance is €3,200,000 (from prior acquisitions, including the €1,700,000 goodwill computed in the earlier §§300–307 poster's Example 1). During the current year, it acquires the associate from the §§311–312 poster, adding €200,000 of embedded goodwill. Annual amortisation across all goodwill items totals €480,000.</div>
+        <div class="wk-answer">The §313(4) roll-forward discloses: Opening balance €3,200,000 + Additions €200,000 − Amortisation €480,000 = <strong>Closing balance €2,920,000</strong> — giving readers a clear, auditable bridge between the two balance sheet dates, rather than merely a single closing figure with no visibility into how it was reached.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>§314 — Other Mandatory Disclosures (Selected Major Categories)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">The group-level parallel to §285's long list — again, illustrative rather than exhaustive</div>
+      <div class="principle">Consistent with how the earlier individual-accounts poster treated §285, §314's own long, frequently-amended list of specific disclosures is presented here through its MAJOR, well-established categories rather than an exhaustive enumeration of every current numbered sub-point.</div>
+      <div class="check-list">
+        <span>Total group-wide liabilities with a remaining term of MORE than 5 years, and secured liabilities, with the type and form of security</span>
+        <span>Group-wide off-balance-sheet financial commitments relevant to assessing the group's overall financial position</span>
+        <span>Average number of group employees during the year, by category</span>
+        <span>Remuneration paid to the PARENT's own management and supervisory bodies (since the Konzernabschluss has no separate governing body of its own)</span>
+        <span>Fees paid to the group's Abschlussprüfer (statutory auditor), broken down by service category (Section 12)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Worked Example — Group-Wide Off-Balance-Sheet Commitments</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Aggregated across every group entity, not just the parent</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 4: Combining multiple entities' equipment leases</div>
+        <div class="wk-body">Recall the €600,000 individual-entity equipment lease commitment disclosed in the earlier §§284–288 poster. Two OTHER group subsidiaries hold their OWN separate equipment leases, committing to a further €450,000 and €300,000 respectively.</div>
+        <div class="wk-answer">The Konzernanhang discloses the AGGREGATE group-wide commitment of €600,000 + €450,000 + €300,000 = <strong>€1,350,000</strong> under §314 — reflecting the group's TOTAL exposure across every included entity, rather than each subsidiary's own individual-entity Anhang disclosure being left to stand alone and potentially understating the group's genuine combined commitment.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Auditor Fee Disclosure — a Genuinely Group-Specific Requirement</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">A transparency measure aimed squarely at auditor independence concerns</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">§314 requires disclosure of the total fees paid to the group's Abschlussprüfer (statutory auditor), typically broken down by service category — audit services, other assurance services, tax advisory, and other non-audit services. This disclosure exists specifically to address AUDITOR INDEPENDENCE concerns: a large, complex group where the SAME audit firm earns substantial NON-audit fees alongside its audit engagement raises genuine questions about the auditor's ongoing objectivity, and this disclosure gives readers the information needed to evaluate that risk for themselves.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Worked Example — Disclosing Auditor Fees by Service Category</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Making a potential independence concern visible to readers</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 5: A group's auditor fee breakdown</div>
+        <div class="wk-body">A group pays its statutory auditor €450,000 for the audit engagement itself, and a further €280,000 for separate tax advisory services during the same year.</div>
+        <div class="wk-answer">The Konzernanhang discloses BOTH figures SEPARATELY — €450,000 audit fees and €280,000 tax advisory fees — rather than a single combined total, allowing readers to independently assess whether the substantial NON-audit fee relative to the audit fee itself raises any genuine concern about the auditor's independence on this engagement.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Critical Judgments &amp; Practical Difficulties</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Where judgement matters most</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+          <div class="dot-list">
+            <span>Determining which "other significant participating interests" genuinely warrant §313(2) disclosure, beyond the clearly-defined consolidated/excluded/associated categories</span>
+            <span>Estimating the financial effect of a §308(3)-justified measurement deviation where reconstructing the fully-restated figure is itself impracticable</span>
+          </div>
+        </div>
+        <div>
+          <div class="elabel">PRACTICAL DIFFICULTIES</div>
+          <div class="dot-list">
+            <span>Maintaining an accurate, complete §313(2) relationship map across a large, frequently-changing group structure with numerous acquisitions and disposals during the year</span>
+            <span>Aggregating off-balance-sheet commitments consistently across entities using different local record-keeping conventions</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 15 ============ -->
+  <div class="section-header" id="s15"><span class="num">15</span><h2>Relationship to IFRS</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — HGB §§313–314 vs IFRS</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Feature</span><span style="color:var(--color-text-warning);">HGB</span><span style="color:var(--color-text-info);">IFRS</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Disclosure of subsidiaries, associates, joint arrangements</span><span>§313(2) — broadly converged in objective</span><span>IFRS 12 — a dedicated, considerably more detailed standard covering similar ground</span></div>
+        <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Goodwill roll-forward disclosure</span><span>Required (§313(4))</span><span>Required (IFRS 3) — CONVERGED, though IFRS's own impairment-only regime means the roll-forward never shows systematic amortisation</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Auditor fee disclosure</span><span>Required (§314)</span><span>Not an IFRS requirement itself — typically governed by separate securities/audit regulation where applicable</span></div>
+      </div>
+      <div class="note">HGB's own disclosure objectives here are broadly ALIGNED with IFRS 12's underlying goals, though IFRS 12 is a considerably more elaborate, STANDALONE standard — HGB instead folds equivalent content into these two comparatively compact paragraphs.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 16 ============ -->
+  <div class="section-header" id="s16"><span class="num">16</span><h2>Statement Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Where every §§313–314 event lands</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event / obligation</span><span>Document affected</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Relationship map (§313(2))</span><span><span class="badge be">Konzernanhang</span></span><span>No effect on Konzernbilanz/Konzern-GuV figures themselves</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Goodwill roll-forward (§313(4))</span><span><span class="badge be">Konzernanhang</span></span><span>Reconciles the Konzernbilanz goodwill balance across the year</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Auditor fee disclosure (§314)</span><span><span class="badge be">Konzernanhang</span></span><span>Independence-focused transparency measure</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 17 ============ -->
+  <div class="section-header" id="s17"><span class="num">17</span><h2>Related Provisions — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How §§313–314 connect across HGB Book 3</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Provision</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>§284–288</span><span>The individual-entity Anhang provisions this Titel closely parallels at group level</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>§296(3)</span><span>The exclusion-justification requirement §313(2) specifically satisfies for excluded subsidiaries</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>§301(3), §309, §312(2)</span><span>The capital-consolidation and equity-method goodwill mechanics §313(4)'s roll-forward reconciles</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>§308(3)</span><span>The disproportionate-cost measurement relief §313(3) requires disclosed when exercised</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 18 ============ -->
+  <div class="section-header" id="s18"><span class="num">18</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Konzernanhang</div><div class="glossary-def">Consolidated notes — the group-level parallel to the individual-entity Anhang.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Angaben zum Beteiligungsbesitz</div><div class="glossary-def">Disclosures on shareholdings held — the §313(2) requirement to map every significant corporate relationship.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Entwicklung des Unterschiedsbetrags</div><div class="glossary-def">Development of the difference amount — the goodwill roll-forward required under §313(4).</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Abschlussprüfer</div><div class="glossary-def">Statutory auditor — whose group-level fees, by service category, must be disclosed under §314.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Honorare des Abschlussprüfers</div><div class="glossary-def">Auditor fees — disclosed by service category to address independence concerns.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Sonstige Pflichtangaben</div><div class="glossary-def">Other mandatory disclosures — §314's long list of further specific group-level items.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Key</div>
+    <div class="lrow">
+      <span class="badge be">Konzernanhang</span> Consolidated notes
+    </div>
+  </div>
+
+  <div class="footer-note">HGB §§313–314 — Konzernanhang · Extended Reference Poster · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

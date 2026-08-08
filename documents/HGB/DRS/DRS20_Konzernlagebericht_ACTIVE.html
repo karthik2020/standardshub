@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DRS 20 — Konzernlagebericht | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb; --color-background-tertiary: #f3f4f6; --color-background-info: #eff6ff;
+    --color-background-success: #f0fdf4; --color-background-warning: #fffbeb; --color-background-danger: #fff1f2;
+    --color-border-tertiary: #e5e7eb; --color-border-info: #3b82f6; --color-border-success: #22c55e; --color-border-warning: #f59e0b; --color-border-danger: #ef4444;
+    --color-text-primary: #111827; --color-text-secondary: #374151; --color-text-tertiary: #9ca3af;
+    --color-text-info: #2563eb; --color-text-success: #16a34a; --color-text-warning: #b45309; --color-text-danger: #dc2626;
+    --border-radius-lg: 10px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1000px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .hub { text-align: center; padding: 14px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); margin-bottom: 10px; }
+  .hub-title { font-size: 17px; font-weight: 600; }
+  .hub-sub { font-size: 11px; color: var(--color-text-tertiary); margin-top: 4px; }
+  .status-badge { display: inline-block; margin-top: 8px; padding: 4px 12px; border-radius: 14px; font-size: 11px; font-weight: 600; background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+  .callout { max-width: 900px; margin: 0 auto 16px; font-size: 11px; line-height: 1.5; padding: 8px 12px; border-radius: 8px; background: var(--color-background-danger); color: var(--color-text-danger); border: 1px solid var(--color-border-danger); text-align: center; }
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 12px 0 20px; }
+  .toc a { font-size: 10px; font-weight: 500; padding: 4px 10px; border-radius: 12px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 22px 0 10px; }
+  .section-header .num { font-size: 10px; font-weight: 700; color: #fff; background: var(--color-text-info); width: 20px; height: 20px; border-radius: 5px; display: flex; align-items: center; justify-content: center; }
+  .section-header h2 { font-size: 13px; font-weight: 600; margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .span2 { grid-column: span 2; }
+  .card { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 12px 14px; background: var(--color-background-secondary); }
+  .card.info { border-left: 3px solid var(--color-border-info); }
+  .card.warn { border-left: 3px solid var(--color-border-warning); }
+  .card.suc { border-left: 3px solid var(--color-border-success); }
+  .ctitle { font-size: 12px; font-weight: 600; margin-bottom: 6px; }
+  .principle { font-size: 11px; color: var(--color-text-secondary); line-height: 1.55; }
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 9px 11px; background: var(--color-background-info); }
+  .worked .wk-title { font-size: 10.5px; font-weight: 600; color: var(--color-text-info); margin-bottom: 4px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.55; }
+  .worked .wk-answer { margin-top: 5px; padding-top: 5px; border-top: 1px dashed var(--color-border-info); font-size: 11px; }
+  .check-list span { display: block; padding-left: 12px; position: relative; font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 9px; top: 2px; font-weight: 700; }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; }
+  .td-table .th { display: grid; grid-template-columns: 0.8fr 1.6fr; background: var(--color-background-tertiary); padding: 5px 9px; font-weight: 600; }
+  .td-table .tr { display: grid; grid-template-columns: 0.8fr 1.6fr; padding: 5px 9px; border-top: 1px solid var(--color-border-tertiary); }
+  .footer-note { margin-top: 18px; padding: 10px 14px; background: var(--color-background-tertiary); border-radius: 8px; font-size: 10px; color: var(--color-text-tertiary); text-align: center; }
+  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } .span2 { grid-column: span 1; } }
+</style>
+</head>
+<body>
+
+  <div class="hub">
+    <div class="hub-title">DRS 20 — Konzernlagebericht</div>
+    <div class="hub-sub">Group management report — the major consolidator standard of the entire DRS library</div>
+    <div class="status-badge">✅ ACTIVE — absorbed DRS 5, 15, 15a and their sector variants</div>
+  </div>
+
+  <div class="callout">THE CENTREPIECE OF THE ENTIRE CONSOLIDATION WAVE: DRS 20 folded four separate predecessor standards (DRS 5, DRS 5-10, DRS 5-20, DRS 15, DRS 15a) into one comprehensive document — and remains, by a wide margin, the most actively maintained standard in this whole library, with amendments tracking BilRUG (2016), CSR-RUG (2017), ARUG II (2019), and ongoing CSRD/ESRS interaction guidance as recently as March 2026.</div>
+
+  <div class="toc">
+    <a href="#s1">Scope</a><a href="#s2">History</a><a href="#s3">Content structure</a><a href="#s4">Worked example</a><a href="#s5">CSRD/ESRS</a><a href="#s6">HGB link</a><a href="#s7">IFRS</a>
+  </div>
+
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Scope — Elaborating §315 HGB in Full</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card info span2">
+      <div class="ctitle">The single most comprehensive DRS in the library</div>
+      <div class="principle">DRS 20 applies to every group required to prepare a Konzernlagebericht under §315 HGB (established in detail in the earlier HGB poster series), elaborating essentially the ENTIRE statutory content requirement — business review, position, forecast, risk, opportunity, internal control disclosure, takeover-relevant information, and (via reference) the non-financial statement content this whole HGB poster series documented across several posters.</div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s2"><span class="num">2</span><h2>History — a Genuinely Deliberate Consolidation Project</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card warn span2">
+      <div class="ctitle">A response to a documented quality problem</div>
+      <div class="principle">Prior to DRS 20, several separate, narrower standards (DRS 5, 5-10, 5-20, 15, 15a) governed different pieces of Lagebericht content in a fragmented way. DRSC's own review of practice (2000s-era academic and practitioner analysis) found this fragmentation was genuinely undermining the QUALITY and COMPARABILITY of Lageberichte in practice. DRS 20 was the deliberate response: adopted 14 September 2012, announced 4 December 2012, consolidating all of this content into one unified standard.</div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Content Structure</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card">
+      <div class="ctitle">Core sections</div>
+      <div class="check-list">
+        <span>Grundlagen des Konzerns (business model/foundations)</span>
+        <span>Wirtschaftsbericht (business review)</span>
+        <span>Nachtragsbericht (subsequent events)</span>
+        <span>Prognose-, Chancen- und Risikobericht (forecast, opportunities, risk)</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="ctitle">Sonstige Berichtspflichten (further requirements)</div>
+      <div class="check-list">
+        <span>Internal control/risk management re: the group accounting process (§315(4)-(5))</span>
+        <span>Financial instrument risk reporting</span>
+        <span>Takeover-relevant disclosures (§315a)</span>
+        <span>Corporate governance statement (§289a); executive assurance</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Worked Example — the Prognosebericht's Own Quantification Standard</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card span2">
+      <div class="worked">
+        <div class="wk-title">How specific must a forecast actually be?</div>
+        <div class="wk-body">A group's Konzernlagebericht states that it expects revenue to grow "moderately" in the coming year, without any further quantification, citing general economic uncertainty.</div>
+        <div class="wk-answer">DRS 20 requires forecast statements to be QUANTIFIED wherever reasonably possible — either as a point estimate, a range, or at minimum a qualified directional statement (e.g., "increase of 3-5%") — with genuinely vague terms like "moderate growth" alone generally falling short of the standard's own expectations, UNLESS the group can genuinely justify why more specific quantification isn't reasonably achievable, given the demanding "dauernde Erfüllbarkeit"-adjacent rigor this whole series has documented as characteristic of German prudence-driven disclosure.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s5"><span class="num">5</span><h2>The Ongoing CSRD/ESRS Interaction Question</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card suc span2">
+      <div class="ctitle">A live, currently unresolved question this poster series has flagged before</div>
+      <div class="principle">Recall from the earlier HGB Konzernlagebericht poster: Germany has still NOT transposed the EU's CSRD into national law as of this poster series' own research. DRS 20's own Anwendungshinweis 5 (AH 5, most recently amended March 2026) addresses a genuinely practical question this creates: for groups VOLUNTARILY adopting the ESRS framework pending eventual CSRD transposition, how do DRS 20's own established Grundsätze ordnungsmäßiger Lageberichterstattung (Tz. 12-35) interact with the ESRS's own, quite different reporting architecture? This remains a genuinely live, actively-updated area — AH 5 has itself needed repeated extension and revision as the underlying CSRD/ESRS legislative landscape kept shifting.</div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Amendment History</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card span2">
+      <div class="td-table">
+        <div class="th"><span>Amendment</span><span>Trigger</span></div>
+        <div class="tr"><span>DRÄS 6 (2016)</span><span>BilRUG changes; FüPoG I (gender quota disclosures)</span></div>
+        <div class="tr"><span>DRÄS 8 (2017)</span><span>CSR-RUG (non-financial statement requirements)</span></div>
+        <div class="tr"><span>DRÄS 9 (2019)</span><span>ARUG II</span></div>
+        <div class="tr"><span>AH 5 (2025-2026, ongoing)</span><span>CSRD/ESRS interaction guidance, repeatedly extended</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Relationship to IFRS</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card span2">
+      <div class="ctitle">Still the same fundamental divergence flagged throughout this series</div>
+      <div class="principle">As this series has noted repeatedly, IFRS itself has no mandatory, statutorily-anchored forward-looking narrative requirement equivalent to the Konzernlagebericht — the closest comparator (the IFRS Practice Statement on Management Commentary) is explicitly NON-MANDATORY guidance, not a binding standard. DRS 20 remains one of the most distinctively HGB-native components of German group reporting, with no direct IFRS parallel of comparable legal force.</div>
+    </div>
+  </div>
+
+  <div class="footer-note">DRS 20 — Konzernlagebericht · Part D — DRS Library · Active Standard, the Consolidation Wave's Centrepiece</div>
+
+</body>
+</html>

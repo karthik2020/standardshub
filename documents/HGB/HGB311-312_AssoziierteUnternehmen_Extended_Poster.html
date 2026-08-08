@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HGB §§311–312 — Assoziierte Unternehmen | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">HGB §§311–312 — Assoziierte Unternehmen (Associated Companies / Equity Method)</div>
+      <div class="hub-sub">Extended reference poster · Book 3, Section 2, Subsection 2, Title 7 · The third of the three major consolidation techniques · German commercial law · EUR examples</div>
+    </div>
+  </div>
+
+  <div class="callout suc" style="max-width:900px;margin:0 auto 20px;text-align:center;">THE THIRD TECHNIQUE, AND THE ONLY MANDATORY ONE: unlike §310's proportionate consolidation (a genuine election), the equity method under §§311–312 is REQUIRED once significant influence is established — reusing the SAME 20% Beteiligung presumption from §271(1), all the way back in the individual-accounts Bilanz poster.</div>
+
+  <div class="toc">
+    <a href="#s1">1. Conceptual Framework Linkage</a>
+    <a href="#s2">2. Scope</a>
+    <a href="#s3">3. §311(1) — Defining an Assoziiertes Unternehmen</a>
+    <a href="#s4">4. The 20% Presumption — Reusing §271(1)'s Beteiligung Test</a>
+    <a href="#s5">5. Worked Example — Testing Significant Influence</a>
+    <a href="#s6">6. §311(2) — the Materiality Carve-Out</a>
+    <a href="#s7">7. §312(1) — Two Initial Measurement Methods, a Genuine Choice</a>
+    <a href="#s8">8. Worked Example — Computing Goodwill at Initial Recognition</a>
+    <a href="#s9">9. §312(2) — the Difference Amount, Cross-Referenced to §301/§309</a>
+    <a href="#s10">10. §312(3) — the Annual Share-of-Profit Adjustment</a>
+    <a href="#s11">11. Worked Example — Rolling the Investment Forward a Full Year</a>
+    <a href="#s12">12. §312(4) — Why Dividends Reduce the Investment, Not Investment Income</a>
+    <a href="#s13">13. Worked Example — Receiving a Dividend From an Associated Company</a>
+    <a href="#s14">14. Critical Judgments &amp; Practical Difficulties</a>
+    <a href="#s15">15. Relationship to IFRS (IAS 28) — a Genuinely Strong Convergence</a>
+    <a href="#s16">16. Statement Mapping</a>
+    <a href="#s17">17. Related Provisions — Cross-Reference Map</a>
+    <a href="#s18">18. Quick-Reference Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The third technique in the consolidation toolkit, and the only mandatory one</div>
+      <div class="principle">This poster series has now covered all three of HGB's major consolidation techniques: full consolidation (§300, for control), proportionate consolidation (§310, an ELECTION for joint management), and now the equity method (§§311–312, MANDATORY once significant influence is established, with no equivalent choice available). Where full and proportionate consolidation bring the investee's individual assets and liabilities into the group accounts line by line, the equity method instead reduces the ENTIRE relationship to a SINGLE net investment figure on the Konzernbilanz.</div>
+      <div class="elabel">HOW §§311–312 MAP TO GERMAN ACCOUNTING PRINCIPLES</div>
+      <div class="check-list">
+        <span><strong style="font-weight:500">Wirtschaftliche Betrachtungsweise</strong> — significant influence, though short of control, still means the investor's own results are genuinely tied to the investee's performance, warranting more than a static cost-based figure</span>
+        <span><strong style="font-weight:500">Realisationsprinzip, respected even here</strong> — §312(4)'s dividend treatment exists specifically to avoid double-counting income already recognised the year it was earned</span>
+      </div>
+    </div>
+
+    <div class="card cs">
+      <div class="ctitle cs">What §§311–312 require, at a glance</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.6fr 1.7fr;"><span>§</span><span>Core requirement</span></div>
+        <div class="tr" style="grid-template-columns:0.6fr 1.7fr;"><span>311(1)</span><span>Significant influence (presumed at 20%+) makes the equity method MANDATORY</span></div>
+        <div class="tr alt" style="grid-template-columns:0.6fr 1.7fr;"><span>311(2)</span><span>A materiality carve-out for genuinely immaterial interests</span></div>
+        <div class="tr" style="grid-template-columns:0.6fr 1.7fr;"><span>312(1)</span><span>Two initial measurement methods — book value or capital share</span></div>
+        <div class="tr alt" style="grid-template-columns:0.6fr 1.7fr;"><span>312(2)</span><span>The resulting difference treated per the same rules as capital consolidation goodwill</span></div>
+        <div class="tr" style="grid-template-columns:0.6fr 1.7fr;"><span>312(3)–(4)</span><span>Annual share-of-profit adjustment; dividends reduce the investment</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Scope</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Investments held by any group member, in enterprises outside the consolidation scope</div>
+      <div class="principle">§§311–312 apply to any Beteiligung held by the parent or any INCLUDED group member in an enterprise that is NEITHER a consolidated subsidiary (§290) NOR proportionately consolidated (§310) — where the investor nonetheless exercises significant influence over the investee's business and financial policy decisions.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>§311(1) — Defining an Assoziiertes Unternehmen</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Significant influence — genuinely more than a passive investment, genuinely less than control</div>
+      <div class="principle">§311(1) defines an assoziiertes Unternehmen as an enterprise, HELD as a Beteiligung by a group member but NOT included in the Konzernabschluss, over which the holder exercises a SIGNIFICANT INFLUENCE (maßgeblichen Einfluss) on its business and financial policy decisions — genuinely stronger than a passive investment, but stopping SHORT of the control that would instead trigger full consolidation under §290.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>The 20% Presumption — Reusing §271(1)'s Beteiligung Test</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">The exact same threshold, doing double duty across the whole framework</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">§311(1) sentence 2 establishes a REBUTTABLE PRESUMPTION of significant influence at 20% or more of the voting rights — directly reusing the SAME 20%-ownership presumption §271(1) established for the general "Beteiligung" concept, all the way back in the individual-accounts Bilanz poster. This single threshold does genuine double duty across HGB: it first identifies WHETHER a holding counts as a Beteiligung at all (§271(1)), and THEN, specifically within the Konzernabschluss context, whether that Beteiligung rises to the level of significant influence requiring equity-method treatment (§311(1)).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Worked Example — Testing Significant Influence</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">A 20%+ stake, presumed significant, without genuine control</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 1: A 30% stake with a board seat, but no control</div>
+        <div class="wk-body">A group member holds 30% of the voting shares of another company, and has secured a single seat on its supervisory board, giving it meaningful visibility into and input on the investee's strategic decisions — but the REMAINING 70% is held by a single other shareholder who retains full, sole control over ordinary operating decisions.</div>
+        <div class="wk-answer">The 30% stake TRIGGERS the §311(1) rebuttable presumption of significant influence (well above the 20% threshold), and the board seat REINFORCES this conclusion with genuine, substantive evidence of influence over financial and operating policy — the investment MUST be accounted for using the equity method under §312, REGARDLESS of the other shareholder's own dominant 70% control.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>§311(2) — the Materiality Carve-Out</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Genuinely immaterial interests need not bother with equity-method mechanics</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">§311(2) provides that the equity method need NOT be applied where the interest is of subordinate importance for giving a true and fair view of the group's position — the SAME materiality relief pattern seen repeatedly throughout this whole Konzernabschluss subsection (§296's exclusion grounds, §304's profit-elimination exception, §308(2)'s restatement carve-out).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>§312(1) — Two Initial Measurement Methods, a Genuine Choice</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Book value or capital share — an actual election, unlike full consolidation's single mandated approach</div>
+      <div class="principle">§312(1) permits the investment to be initially measured using EITHER the Buchwertmethode (book value method — starting from the investment's own historical acquisition cost) OR the Kapitalanteilsmethode (capital share method — the parent's proportionate share of the associated company's REVALUED equity at the point significant influence was acquired, directly analogous to §301's own Neubewertungsmethode for full consolidation). This is a genuine METHOD CHOICE — unlike full consolidation under §301, which mandates the revaluation approach without alternative.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Worked Example — Computing Goodwill at Initial Recognition</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">A single net figure, with an embedded goodwill component</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 2: Acquiring a 25% associate stake</div>
+        <div class="wk-body">A group member acquires 25% of another enterprise for €1,800,000, qualifying as an associated company under §311(1). Applying the Kapitalanteilsmethode, the investee's identifiable net assets, revalued to fair value, total €6,400,000 — of which the 25% share is €1,600,000.</div>
+        <div class="wk-answer">Goodwill embedded within the investment = €1,800,000 − €1,600,000 = <strong>€200,000</strong>. UNLIKE full or proportionate consolidation, this goodwill is NOT shown as a separate line item on the Konzernbilanz — it remains EMBEDDED within the single "Anteile an assoziierten Unternehmen" investment line, though its amortisation still follows the SAME general rules established for capital consolidation goodwill under §312(2)'s cross-reference to §301(3)/§309.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>§312(2) — the Difference Amount, Cross-Referenced to §301/§309</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">No separate regime — the same rules, just embedded within one line</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">§312(2) provides that any resulting difference — POSITIVE (goodwill-like) or NEGATIVE (bargain-purchase-like) — is treated according to the SAME general principles established for capital consolidation under §301(3) and its subsequent-period treatment under §309: mandatory amortisation for a positive difference; potential, conditions-based release to income for a negative one. The MECHANICS are identical to full consolidation; only the PRESENTATION differs, since the difference is embedded within a single investment line rather than shown as its own separate Konzernbilanz item.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>§312(3) — the Annual Share-of-Profit Adjustment</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">The single most distinctive, ongoing mechanic of equity method accounting</div>
+      <div class="principle">§312(3) requires the investment's carrying amount to be ADJUSTED each subsequent year to reflect the investor's proportionate SHARE of the associated company's OWN profits or losses for the period — with the corresponding amount flowing through the Konzern-GuV (typically as "Ergebnis aus assoziierten Unternehmen," or equity-method income). This is what most distinguishes the equity method from either full consolidation (which shows every underlying line item) or a static cost-based holding (which would never move at all): a SINGLE net investment figure that rises and falls each year with the investee's OWN performance.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Worked Example — Rolling the Investment Forward a Full Year</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">The investment grows purely because the associate itself performed well</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 3: A profitable year for the associate</div>
+        <div class="wk-body">Continuing Example 2: the associated company generates €480,000 of net income in the following year. The group's 25% share is therefore €120,000.</div>
+        <div class="wk-answer">The investment's carrying amount INCREASES from €1,800,000 to <strong>€1,920,000</strong> (€1,800,000 + €120,000), and the group recognises €120,000 of equity-method income in its OWN Konzern-GuV — DESPITE having received NO cash whatsoever from the associate during the year. The group's own reported results move in step with the associate's performance, purely through this single adjusting entry.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>§312(4) — Why Dividends Reduce the Investment, Not Investment Income</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Avoiding double-counting income already recognised the year it was earned</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">§312(4) requires dividends actually RECEIVED from the associated company to REDUCE the investment's carrying amount, RATHER than being recognised as new investment income — since the underlying profit was ALREADY recognised via the §312(3) share-of-profit adjustment in the YEAR IT WAS EARNED. The dividend itself is merely a return OF value already reflected in the group's accounts, not a genuinely NEW economic event; recognising it again as income would DOUBLE-COUNT the same profit.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Worked Example — Receiving a Dividend From an Associated Company</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">A return of already-recognised value, not fresh income</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 4: A cash dividend received the following year</div>
+        <div class="wk-body">Continuing Examples 2–3: the following year, the associated company pays a €70,000 cash dividend to the group, reflecting a portion of the prior year's already-recognised €120,000 equity-method income.</div>
+        <div class="wk-answer">The €70,000 dividend RECEIVED REDUCES the investment's carrying amount from €1,920,000 to <strong>€1,850,000</strong> — it is <strong>NOT</strong> recognised as fresh investment income in the Konzern-GuV, since the underlying €120,000 profit was ALREADY captured in the group's results the PRIOR year, via the §312(3) adjustment. Recognising the dividend again as income would double-count value the group has already reported.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Critical Judgments &amp; Practical Difficulties</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Where judgement matters most</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+          <div class="dot-list">
+            <span>Whether significant influence genuinely exists below the 20% presumption threshold (e.g. via board representation or material transactions), or is genuinely REBUTTED despite exceeding 20%</span>
+            <span>Whether an interest is genuinely immaterial enough to justify the §311(2) carve-out</span>
+          </div>
+        </div>
+        <div>
+          <div class="elabel">PRACTICAL DIFFICULTIES</div>
+          <div class="dot-list">
+            <span>Obtaining timely, reliable financial information from an associate the group does NOT control, to support the annual §312(3) share-of-profit adjustment</span>
+            <span>Choosing consistently between the Buchwertmethode and Kapitalanteilsmethode at initial recognition, and applying that choice per §252(1) no.6's consistency principle thereafter</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 15 ============ -->
+  <div class="section-header" id="s15"><span class="num">15</span><h2>Relationship to IFRS (IAS 28) — a Genuinely Strong Convergence</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — HGB §§311–312 vs IAS 28</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Feature</span><span style="color:var(--color-text-warning);">HGB</span><span style="color:var(--color-text-info);">IAS 28</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Significant influence presumption</span><span>20%+ voting rights (§311(1))</span><span>20%+ voting rights (IAS 28) — CONVERGED</span></div>
+        <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Equity method mandatory once influence exists</span><span>YES (subject to §311(2) materiality)</span><span>YES (subject to general materiality)  — CONVERGED</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Dividends reduce investment rather than recognised as income</span><span>YES (§312(4))</span><span>YES (IAS 28) — CONVERGED</span></div>
+        <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Goodwill embedded in investment, subsequent treatment</span><span>MANDATORY amortisation (via §301(3)/§309 cross-reference)</span><span>NOT separately amortised — the ENTIRE investment is tested for impairment as a single unit (IAS 36/IAS 28)</span></div>
+      </div>
+      <div class="note">This Titel shows a genuinely STRONG overall convergence with IFRS — the 20% presumption, the mandatory nature of the method once influence exists, and the dividend treatment all align closely. The ONE persistent divergence is, unsurprisingly, the SAME goodwill amortisation-vs-impairment split that has run through this entire poster series since §246(1) sentence 4.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 16 ============ -->
+  <div class="section-header" id="s16"><span class="num">16</span><h2>Statement Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Where every §§311–312 event lands</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event / obligation</span><span>Document(s) affected</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Initial recognition (§312(1))</span><span><span class="badge bo">Konzernbilanz</span></span><span>A single "Anteile an assoziierten Unternehmen" investment line</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Annual share-of-profit adjustment (§312(3))</span><span><span class="badge bo">Konzernbilanz</span> <span class="badge bp">Konzern-GuV</span></span><span>Investment and group income both move together</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Dividend received (§312(4))</span><span><span class="badge bo">Konzernbilanz</span></span><span>Reduces the investment; no Konzern-GuV impact</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 17 ============ -->
+  <div class="section-header" id="s17"><span class="num">17</span><h2>Related Provisions — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How §§311–312 connect across HGB Book 3</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Provision</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>§271(1)</span><span>Supplies the SAME 20% Beteiligung presumption §311(1) reuses for significant influence</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>§301(3), §309</span><span>The general goodwill/negative-difference rules §312(2) applies to the equity-method investment</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>§310</span><span>The genuine alternative treatment available for a jointly-managed enterprise, if proportionate consolidation is elected instead</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>§252(1) no.6</span><span>The general consistency principle governing the initial §312(1) method choice over time</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 18 ============ -->
+  <div class="section-header" id="s18"><span class="num">18</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Assoziiertes Unternehmen</div><div class="glossary-def">Associated company — an enterprise over which significant (but not controlling or jointly-managing) influence is exercised.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Maßgeblicher Einfluss</div><div class="glossary-def">Significant influence — presumed at 20%+ voting rights, the trigger for mandatory equity-method treatment.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Buchwertmethode</div><div class="glossary-def">Book value method — initial measurement at the investment's own historical acquisition cost.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Kapitalanteilsmethode</div><div class="glossary-def">Capital share method — initial measurement at the proportionate share of the associate's revalued equity.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Ergebnis aus assoziierten Unternehmen</div><div class="glossary-def">Equity-method income — the group's proportionate share of the associate's own annual profit or loss.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Anteile an assoziierten Unternehmen</div><div class="glossary-def">The single Konzernbilanz investment line representing the entire equity-method relationship.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Key</div>
+    <div class="lrow">
+      <span class="badge bo">Konzernbilanz</span> Consolidated balance sheet
+      <span class="badge bp">Konzern-GuV</span> Consolidated income statement
+    </div>
+  </div>
+
+  <div class="footer-note">HGB §§311–312 — Assoziierte Unternehmen · Extended Reference Poster · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

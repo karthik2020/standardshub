@@ -1,0 +1,387 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import metadata from "../../data/standards/hgb/hgb238-241a.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  summary={metadata.summary}
+  subtitle={metadata.nativeTitle}
+  covers={metadata.covers}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope — Who Is Bound (Der Kaufmann)" },
+        { id: "s3", label: "§238 — The Basic Bookkeeping Obligation (with worked example)" },
+        { id: "s4", label: "The \"Expert Third Party\" Standard (Sachverständiger Dritter)" },
+        { id: "s5", label: "§239 — How the Books Must Be Kept" },
+        { id: "s6", label: "The Alteration Prohibition (Radierverbot, with worked example)" },
+        { id: "s7", label: "§240 — The Inventory Obligation" },
+        { id: "s8", label: "Inventar vs Bilanz — a Critical Distinction" },
+        { id: "s9", label: "§241 — Simplified Stocktaking Procedures" },
+        { id: "s10", label: "Worked Example — the Festwert (Fixed Value) Method" },
+        { id: "s11", label: "Worked Example — Sample-Based Stocktaking" },
+        { id: "s12", label: "§241a — The Small Business Exemption (with worked example)" },
+        { id: "s13", label: "Consequences of Non-Compliance" },
+        { id: "s14", label: "The Tax-Law Linkage (§140 AO)" },
+        { id: "s15", label: "Critical Judgments &amp; Practical Difficulties" },
+        { id: "s16", label: "Relationship to IFRS — a Genuine Structural Absence" },
+        { id: "s17", label: "Statement &amp; Process Mapping" },
+        { id: "s18", label: "Related Provisions — Cross-Reference Map" },
+        { id: "s19", label: "Quick-Reference Glossary" }
+      ]}
+    />
+  </Fragment>
+  
+
+  <!-- ============ SECTION 1 ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The entry point to the entire German commercial accounting edifice</div>
+      <div class="principle">§§238–241a are not a narrow technical rule — they are the FOUNDATION on which every other HGB accounting provision rests. Before any question of RECOGNITION, MEASUREMENT, or DISCLOSURE can even arise, an obligation must exist to keep books AT ALL, and a physical INVENTORY must exist from which a balance sheet can be derived. Everything in Book 3 presupposes §§238–241a have already been satisfied.</div>
+      <div class="elabel">HOW §§238–241A MAP TO GERMAN ACCOUNTING PRINCIPLES</div>
+      <div class="check-list">
+        <span><strong>Gläubigerschutz (creditor protection)</strong> — reliable, tamper-evident books are the FIRST line of defence protecting creditors, who rely on the Kaufmann's own records when extending credit</span>
+        <span><strong>Grundsätze ordnungsmäßiger Buchführung (GoB)</strong> — §238 explicitly INCORPORATES this judicially-developed body of principles BY REFERENCE, making it legally binding rather than a voluntary professional norm</span>
+        <span><strong>Nachprüfbarkeit (verifiability)</strong> — a THIRD party must be able to reconstruct transactions "within a reasonable time," a requirement with NO direct parallel in the IFRS Conceptual Framework's own qualitative characteristics</span>
+      </div>
+      <div class="note">§§238–241a apply REGARDLESS of legal form, size, or industry — they bind every Kaufmann (merchant), unlike most of HGB Book 3 which is layered on top ONLY for Kapitalgesellschaften.</div>
+    </div>
+
+    <div class="card cs">
+      <div class="ctitle cs">What these provisions actually require, at a glance</div>
+      <div class="principle">Four distinct but interlocking obligations, each building on the last.</div>
+      <div class="td-table">
+        <div class="th cols-06-17"><span>§</span><span>Core requirement</span></div>
+        <div class="tr cols-06-17"><span>238</span><span>Keep books showing the state of assets and debts, per GoB</span></div>
+        <div class="tr alt cols-06-17"><span>239</span><span>Keep them in a living language, chronologically, without obscuring alterations</span></div>
+        <div class="tr cols-06-17"><span>240</span><span>Physically count and itemise all assets/liabilities (Inventar) at start and each year-end</span></div>
+        <div class="tr alt cols-06-17"><span>241</span><span>Simplified stocktaking methods are permitted where GoB allows</span></div>
+      </div>
+      <div class="callout info">§241a then EXEMPTS very small sole traders from all four obligations at once — see Section 12.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Scope — Who Is Bound (Der Kaufmann)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Kaufmannseigenschaft — merchant status is what triggers the whole chapter</div>
+      <div class="principle">The bookkeeping obligation attaches to anyone qualifying as a "Kaufmann" under HGB §§1 et seq. — this includes individual sole traders operating a commercial business (Einzelkaufleute), and, CRUCIALLY, ALL corporations (Kapitalgesellschaften: AG, GmbH, KGaA) REGARDLESS of whether they would otherwise qualify as merchants by their activity, since company law itself deems them merchants ("Formkaufmann").</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">BOUND BY §§238–241</div>
+          <div class="check-list">
+            <span>Einzelkaufleute (sole traders) above the §241a thresholds</span>
+            <span>OHG and KG (partnerships) engaged in commercial activity</span>
+            <span>ALL Kapitalgesellschaften (AG, GmbH, KGaA) — automatically, by legal form</span>
+          </div>
+        </div>
+        <div>
+          <div class="elabel">NOT BOUND, OR SEPARATELY GOVERNED</div>
+          <div class="dot-list">
+            <span>Freelancers and members of the liberal professions (Freiberufler) — generally outside HGB's merchant concept entirely</span>
+            <span>Small sole traders below the §241a thresholds (see Section 12)</span>
+            <span>Farmers and foresters below certain size thresholds, per separate provisions</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>§238 — The Basic Bookkeeping Obligation (with worked example)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Books that show the true state of assets and business dealings</div>
+      <div class="principle">§238(1) requires the Kaufmann to keep books and, IN them, to make visible ("ersichtlich machen") their commercial transactions and the state of their assets, IN ACCORDANCE with GoB. The bookkeeping must be such that it gives an EXPERT THIRD PARTY an overview of the transactions and the state of the business WITHIN a reasonable time — and each transaction must be traceable from its ORIGIN through to its final settlement (§238(1) sentence 3).</div>
+      <div class="worked">
+        <div class="wk-title">Example 1: Determining who is bound by §238</div>
+        <div class="wk-body">A freelance graphic designer operates as a sole proprietor with no registered trade (Gewerbe), invoicing clients directly for design services. Separately, a small GmbH with two employees runs an online retail shop selling handmade candles, generating €120,000 revenue and €15,000 profit annually.</div>
+        <div class="wk-answer">The FREELANCE designer is generally OUTSIDE HGB's merchant concept (a liberal profession, not a commercial trade) and is NOT bound by §238. The GmbH, by contrast, is bound by §238 AUTOMATICALLY — its legal form alone makes it a Kaufmann under company law, REGARDLESS of how small its revenue or profit actually is (the §241a exemption applies ONLY to Einzelkaufleute, never to a Kapitalgesellschaft — see Section 12).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>The "Expert Third Party" Standard (Sachverständiger Dritter)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd">
+      <div class="ctitle cd">A specific, named legal test — not a vague aspiration</div>
+      <div class="text-supporting">The books must be intelligible to a KNOWLEDGEABLE outsider — not the Kaufmann themselves, and not a completely untrained layperson — WITHIN A REASONABLE TIME. This is a genuinely NAMED legal standard German courts have interpreted repeatedly, unlike IFRS's broader "understandability" qualitative characteristic, which is aimed at USERS of financial statements rather than at the underlying bookkeeping records themselves.</div>
+    </div>
+    <div class="card cw">
+      <div class="ctitle cw">Traceability from origin to settlement</div>
+      <div class="text-supporting">§238(1) sentence 3 additionally requires that transactions be traceable in their ENTSTEHUNG (origin) and ABWICKLUNG (settlement/processing) — meaning the audit trail must run continuously from the initial business event through to its final accounting resolution, with no unexplained gaps.</div>
+      <div class="callout warn">A bookkeeping system that LOOKS complete but cannot be traced back to source documents within a reasonable time FAILS §238, even if the final balances happen to be numerically correct.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>§239 — How the Books Must Be Kept</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Language, abbreviations, chronology, and timeliness</div>
+      <div class="principle">§239 sets out the MECHANICAL requirements for how the books are physically or electronically maintained.</div>
+      <div class="check-list">
+        <span>Records must be kept in a LIVING language (lebende Sprache) — a dead or invented language would not satisfy the expert-third-party test of §238</span>
+        <span>Abbreviations, digits, letters, or symbols MAY be used, PROVIDED their meaning is clearly established for each specific case</span>
+        <span>Entries must be made COMPLETELY, ACCURATELY, PROMPTLY, and in an ORDERLY, chronological manner</span>
+        <span>An entry or record may NOT be altered in a way that makes the ORIGINAL content unrecognisable — whether this happened at the time of the original entry or only later cannot be established (the "Radierverbot," Section 6)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>The Alteration Prohibition (Radierverbot, with worked example)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Corrections must remain visible, never erased</div>
+      <div class="principle">§239(3) does NOT forbid correcting an error — it forbids correcting it in a way that DESTROYS the ability to see what was originally recorded. A correction must be made so that BOTH the original entry AND the correction remain legible and datable.</div>
+      <div class="worked">
+        <div class="wk-title">Example 2: A permissible correction vs a prohibited one</div>
+        <div class="wk-body">A bookkeeper mistakenly records a €4,500 supplier invoice as €5,400 in the ledger. Two different corrections are considered: (A) using correction fluid to fully obscure "5,400" and writing "4,500" cleanly over the blank space; (B) drawing a single line through "5,400" so it remains legible, writing "4,500" alongside, and initialling/dating the change.</div>
+        <div class="wk-answer">Correction (A) VIOLATES §239(3) — the original erroneous entry can NO LONGER be reconstructed, which is precisely what the Radierverbot exists to prevent. Correction (B) is FULLY COMPLIANT — both the error and its correction remain visible and traceable, satisfying the expert-third-party and traceability requirements of §238 simultaneously.</div>
+      </div>
+      <div class="callout danger">In electronic bookkeeping systems, this principle requires an immutable audit trail or version history — simply overwriting a database field with no record of the prior value is the digital equivalent of using correction fluid, and equally non-compliant.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>§240 — The Inventory Obligation</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">A physical, itemised count — at the start of business and every year-end</div>
+      <div class="principle">§240(1) requires the Kaufmann, at the START of their commercial activity, to prepare an ITEMISED statement of their assets and liabilities showing their respective VALUES (the "Inventar," or inventory) — and §240(2) requires this same itemised statement to be prepared AGAIN for the close of EVERY subsequent business year.</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">WHAT §240 ACTUALLY REQUIRES</div>
+          <div class="dot-list">
+            <span>An itemised list — not a summary — of every asset and every liability</span>
+            <span>A value assigned to each individual item</span>
+            <span>Preparation at the opening of the business AND at each subsequent fiscal year-end</span>
+          </div>
+        </div>
+        <div>
+          <div class="elabel">§240(3)–(4): PRACTICAL FLEXIBILITY</div>
+          <div class="dot-list">
+            <span>Similar items of raw materials, consumables, and goods MAY be combined into groups and valued at a weighted average, where individually itemising each unit would be impracticable</span>
+            <span>Items of comparatively minor value MAY be combined and valued together, on a reasonable estimate</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Inventar vs Bilanz — a Critical Distinction</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Two related but genuinely different documents — a frequently confused distinction</div>
+      <div class="td-table">
+        <div class="th cols-1-1"><span>Inventar (§240)</span><span>Bilanz (§242 onward)</span></div>
+        <div class="tr cols-1-1"><span>A detailed, ITEMISED physical listing of every individual asset and liability</span><span>A CONDENSED summary financial statement, aggregating items into standardised line items</span></div>
+        <div class="tr alt cols-1-1"><span>Internal working document, not published or filed</span><span>Externally-facing; forms part of the filed/published Jahresabschluss</span></div>
+        <div class="tr cols-1-1"><span>No prescribed presentation format</span><span>Legally PRESCRIBED, line-by-line format under §266</span></div>
+      </div>
+      <div class="note">The Inventar is essentially the DETAILED WORKING PAPER from which the summarised Bilanz is then constructed — the Bilanz could not exist, in principle, without an underlying Inventar to support it.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>§241 — Simplified Stocktaking Procedures</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd">
+      <div class="ctitle cd">Four permitted simplification methods</div>
+      <div class="principle">Recognising that a literal, full physical count of EVERY item at EVERY year-end would often be disproportionately costly, §241 permits four specific alternative approaches, WHERE consistent with GoB.</div>
+      <div class="check-list">
+        <span><strong>Stichprobeninventur</strong> — statistical, sample-based counting methods, extrapolated using recognised mathematical/statistical techniques</span>
+        <span><strong>Permanente Inventur</strong> — a perpetual inventory system: a physical count may occur AT ANY POINT during the year (not necessarily the balance sheet date), PROVIDED a properly organised ongoing record allows the year-end quantities to be reliably rolled forward</span>
+        <span><strong>Festwert</strong> — a fixed/standing value for certain low-value, regularly-replenished asset categories (Section 10)</span>
+        <span><strong>Gruppenbewertung</strong> — group valuation of similar items using a weighted average, cross-referenced to §240(4)</span>
+      </div>
+    </div>
+    <div class="card cs">
+      <div class="ctitle cs">Why simplification is permitted at all</div>
+      <div class="text-supporting">The underlying rationale is a genuinely PRACTICAL, cost-conscious one: GoB itself contains an implicit cost-benefit constraint, and §241 gives that constraint concrete, statutory form for the specific case of stocktaking — closely paralleling the SAME cost-benefit reasoning we've seen drive numerous ASPE simplifications for private enterprises.</div>
+      <div class="callout info">All four methods remain subject to the overriding requirement that the RESULTING inventory be at least as reliable as a full physical count would have been — simplification is a method of ACHIEVING the §240 standard more efficiently, not a relaxation of the standard itself.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Worked Example — the Festwert (Fixed Value) Method</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Freezing a value where the underlying stock is stable and low in significance</div>
+      <div class="principle">A Festwert may be used for items of property, plant, raw materials, or supplies that are REGULARLY REPLACED, whose overall quantity is SUBJECT TO ONLY MINOR fluctuations, and whose total value is of SUBORDINATE importance to the enterprise as a whole.</div>
+      <div class="worked">
+        <div class="wk-title">Example 3: Applying the Festwert method to small tools</div>
+        <div class="wk-body">A machine-tool manufacturer holds a large population of small, low-value hand tools (spanners, screwdrivers, gauges) used across its workshop floor, worth approximately €38,000 in aggregate — a genuinely immaterial figure against the company's €14,000,000 balance sheet. The tool population is constantly replaced (worn tools discarded, new ones purchased) but its TOTAL value fluctuates only slightly year to year.</div>
+        <div class="wk-answer">The company adopts a FESTWERT of €38,000 for this tool category, carrying it at that fixed figure YEAR AFTER YEAR — REGARDLESS of the individual tools actually on hand at each balance sheet date — until a PHYSICAL recount (required at least every 3 years under established practice) confirms the fixed value remains appropriate, or a MATERIAL change in the underlying stock justifies an adjustment.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Worked Example — Sample-Based Stocktaking</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Extrapolating from a statistically valid sample</div>
+      <div class="worked">
+        <div class="wk-title">Example 4: Stichprobeninventur in a large warehouse</div>
+        <div class="wk-body">A wholesale distributor holds approximately 40,000 individual SKUs across a large warehouse. A full physical count of every SKU at year-end would require the warehouse to close for several days, at substantial cost. The company instead engages a statistician to design a random sampling procedure covering a representative subset of SKUs, extrapolating the sampled results to the full population using accepted statistical methods, with a documented confidence level and margin of error.</div>
+        <div class="wk-answer">PROVIDED the sampling methodology is genuinely sound and properly documented, this qualifies as a valid Stichprobeninventur under §241(1) — the company need NOT physically count all 40,000 SKUs, so long as the STATISTICAL reliability of the extrapolated result is comparable to what a full count would have achieved.</div>
+      </div>
+      <div class="note">German commercial law scholarship treats the statistical VALIDITY of the sampling method (not merely its existence) as the decisive test — a sloppy or unrepresentative "sample" would not satisfy §241, even if labelled as one.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>§241a — The Small Business Exemption (with worked example)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">A genuine, complete opt-out for very small sole traders — with a 2024 threshold increase</div>
+      <div class="principle">§241a exempts Einzelkaufleute (sole traders) from §§238–241 IN THEIR ENTIRETY — no bookkeeping obligation, no inventory obligation whatsoever — WHERE, at the balance sheet date of two consecutive fiscal years, revenue does NOT exceed <strong>€800,000</strong> and annual profit does NOT exceed <strong>€80,000</strong>. These thresholds were RAISED from their earlier €500,000/€50,000 levels by the Wachstumschancengesetz (Growth Opportunities Act), effective 28 March 2024.</div>
+      <div class="callout warn">CRITICAL LIMITATION: §241a applies ONLY to Einzelkaufleute — sole traders. It does NOT extend to partnerships (OHG, KG) or to ANY Kapitalgesellschaft, no matter how small. A one-person GmbH with €50,000 revenue remains FULLY bound by §§238–241; incorporation itself forecloses this exemption.</div>
+      <div class="worked">
+        <div class="wk-title">Example 5: Testing whether §241a applies</div>
+        <div class="wk-body">A sole-trader artisan bakery reports revenue of €720,000 and €65,000 profit in Year 1, and €780,000 revenue and €72,000 profit in Year 2 — both years below the current thresholds. In Year 3, revenue rises to €850,000 with €90,000 profit.</div>
+        <div class="wk-answer">Since BOTH Year 1 and Year 2 (the two CONSECUTIVE prior years) stayed below €800,000/€80,000, the bakery is EXEMPT from §§238–241 going into Year 3, DESPITE Year 3 itself exceeding the thresholds — the test looks BACKWARD at the two most recently completed years, not at the current, still-open year.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Consequences of Non-Compliance</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd">
+      <div class="ctitle cd">This is not merely a paperwork failing — criminal exposure is real</div>
+      <div class="text-supporting">A failure to keep books at all, or keeping them in a way that OBSCURES the true state of assets, can constitute the criminal offence of Bankrott (bankruptcy fraud) under §283 StGB (Criminal Code) WHERE the enterprise subsequently becomes insolvent — the commercial bookkeeping obligation and CRIMINAL liability are directly linked.</div>
+      <div class="callout danger">Deliberately destroying, damaging, or concealing commercial books BEFORE the expiry of the statutory retention period (§257 — see the companion poster on §§257–263) is itself a SEPARATE criminal offence under §283 StGB, independent of any underlying insolvency.</div>
+    </div>
+    <div class="card cw">
+      <div class="ctitle cw">Civil-law consequences within a commercial dispute</div>
+      <div class="text-supporting">Books kept in violation of §§238–241 lose much of their practical value if a court ever orders their production in litigation (§258 — see the companion poster on §§257–263) — properly kept commercial books can serve as credible evidence when produced; defectively kept, gap-ridden, or altered books carry far less persuasive weight under a court's general, free evaluation of the evidence.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>The Tax-Law Linkage (§140 AO)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Commercial bookkeeping "radiates" directly into tax obligations</div>
+      <div class="principle">§140 of the Abgabenordnung (AO, Germany's General Fiscal Code) provides that WHOEVER is obligated to keep books and records under OTHER laws (i.e., under HGB §238) is ALSO obligated to keep them for TAX purposes — the commercial bookkeeping duty is "hung onto" the tax system directly, WITHOUT tax law needing to separately re-legislate the same requirement.</div>
+      <div class="callout info">This is an early, foundational instance of the broader Maßgeblichkeitsprinzip (authoritative-principle) linkage between commercial and tax accounting we introduced earlier in this series — even at this most basic level, HGB's bookkeeping obligation directly determines whether a tax bookkeeping obligation exists at all.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 15 ============ -->
+  <div class="section-header" id="s15"><span class="num">15</span><h2>Critical Judgments &amp; Practical Difficulties</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Where judgement — and practical difficulty — arises most often</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+          <div class="dot-list">
+            <span>Whether a given activity genuinely constitutes commercial trade (Gewerbe) triggering Kaufmann status, as opposed to a liberal profession outside HGB's scope</span>
+            <span>Whether a proposed stocktaking simplification under §241 is genuinely as reliable as a full physical count would have been</span>
+            <span>Whether an electronic audit-trail/versioning system genuinely satisfies the alteration prohibition of §239(3)</span>
+          </div>
+        </div>
+        <div>
+          <div class="elabel">PRACTICAL DIFFICULTIES</div>
+          <div class="dot-list">
+            <span>Applying the §241a thresholds correctly at the transition point between exempt and non-exempt status, particularly for a newly-founded business (special first-year rules apply)</span>
+            <span>Designing a statistically defensible Stichprobeninventur methodology that would survive challenge by tax or commercial auditors</span>
+          </div>
+        </div>
+      </div>
+      <div class="callout warn">A newly-founded Einzelkaufmann tests the §241a thresholds against the FIRST balance sheet date after founding alone — the "two consecutive years" rule does not apply to a brand-new business, allowing immediate qualification for the exemption from inception if the first year's figures alone are within the limits.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 16 ============ -->
+  <div class="section-header" id="s16"><span class="num">16</span><h2>Relationship to IFRS — a Genuine Structural Absence</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — HGB §§238–241a vs IFRS</div>
+      <div class="td-table">
+        <div class="th cols-12-1-1"><span>Feature</span><span>HGB (§§238–241a)</span><span>IFRS</span></div>
+        <div class="tr cols-12-1-1"><span>Legal bookkeeping mandate</span><span>A DIRECT statutory obligation, with criminal consequences for breach</span><span>NO equivalent — IFRS presupposes underlying records already exist, and never legislates HOW they are kept</span></div>
+        <div class="tr alt cols-12-1-1"><span>Physical inventory requirement</span><span>Explicit, named legal obligation (§240)</span><span>IAS 2 addresses INVENTORY measurement, not the physical stocktaking PROCESS itself</span></div>
+        <div class="tr cols-12-1-1"><span>Small-entity exemption from bookkeeping itself</span><span>YES — §241a, a genuine opt-out from keeping books at all</span><span>NOT applicable — IFRS has no bookkeeping-obligation layer to exempt anyone FROM</span></div>
+      </div>
+      <div class="note">This is a genuinely different KIND of comparison than we have drawn for any other framework in this poster library. IFRS is a FINANCIAL REPORTING standard — it tells preparers how to MEASURE and PRESENT what is already recorded. HGB §§238–241a sit ONE LEVEL BELOW that: they are the underlying LEGAL bookkeeping infrastructure a jurisdiction's commercial or company law must separately supply before any accounting standard — IFRS included — has anything to operate on. An IFRS preparer in Germany STILL relies on §§238–241 to establish that reliable books and an inventory exist in the first place; IFRS itself is simply silent on the question.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 17 ============ -->
+  <div class="section-header" id="s17"><span class="num">17</span><h2>Statement &amp; Process Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Where every §§238–241a event lands in the broader accounting process</div>
+      <div class="td-table">
+        <div class="th cols-16-1-14"><span>Event / obligation</span><span>Downstream effect</span><span>Notes</span></div>
+        <div class="tr cols-16-1-14"><span>§238 bookkeeping obligation triggers</span><span><span class="badge bs">Books</span></span><span>Prerequisite for every subsequent HGB accounting provision</span></div>
+        <div class="tr alt cols-16-1-14"><span>§240 Inventar prepared</span><span><span class="badge bo">Inventar</span> → <span class="badge bp">Bilanz</span></span><span>Supplies the itemised data underlying the summarised balance sheet (§242, §266)</span></div>
+        <div class="tr cols-16-1-14"><span>§241 simplification elected</span><span><span class="badge bo">Inventar</span></span><span>Reduces cost of compliance without reducing reliability</span></div>
+        <div class="tr alt cols-16-1-14"><span>§241a exemption qualifies</span><span>—</span><span>ENTIRE chain of §§238–241 obligations, and the downstream §242 Jahresabschluss obligation, falls away for the qualifying sole trader</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 18 ============ -->
+  <div class="section-header" id="s18"><span class="num">18</span><h2>Related Provisions — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How §§238–241a connect across HGB Book 3</div>
+      <div class="td-table">
+        <div class="th cols-08-2"><span>Provision</span><span>Nature of the connection</span></div>
+        <div class="tr cols-08-2"><span>§242</span><span>The obligation to PREPARE annual accounts (Bilanz, GuV) presupposes the books and Inventar §§238–241 already require</span></div>
+        <div class="tr alt cols-08-2"><span>§257</span><span>Retention periods apply to the very books, records, and Inventare this Titel requires to be created in the first place</span></div>
+        <div class="tr cols-08-2"><span>§258</span><span>Governs court-ordered production of commercial books in litigation — the practical setting in which properly (or defectively) kept books under §§238–239 actually matter as evidence (see the companion poster on §§257–263)</span></div>
+        <div class="tr alt cols-08-2"><span>§140 AO</span><span>Extends the commercial bookkeeping obligation directly into the tax system</span></div>
+        <div class="tr cols-08-2"><span>§283 StGB</span><span>Criminalises bookkeeping failures that obscure the true state of assets, particularly in insolvency</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 19 ============ -->
+  <div class="section-header" id="s19"><span class="num">19</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Kaufmann</div><div class="glossary-def">A merchant under HGB — anyone conducting a commercial trade, or automatically deemed one by legal form (e.g. any Kapitalgesellschaft).</div></div>
+      <div class="glossary-item"><div class="glossary-term">Sachverständiger Dritter</div><div class="glossary-def">The "expert third party" standard §238 uses to test whether bookkeeping is sufficiently clear and traceable.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Inventar</div><div class="glossary-def">The detailed, itemised physical listing of every asset and liability with individual values, distinct from the condensed Bilanz.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Radierverbot</div><div class="glossary-def">The prohibition on altering an entry in a way that destroys the ability to reconstruct the original content.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Festwert</div><div class="glossary-def">A fixed value carried unchanged year to year for low-value, regularly-replenished, immaterial asset categories.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Stichprobeninventur</div><div class="glossary-def">Statistical, sample-based stocktaking, extrapolated to the full population using recognised methods.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Key</div>
+    <div class="lrow">
+      <span class="badge bs">Books</span> Commercial books (Handelsbücher)
+      <span class="badge bo">Inventar</span> Physical inventory listing
+      <span class="badge bp">Bilanz</span> Balance sheet
+    </div>
+  </div>
+  </div>
+</StandardPageLayout>

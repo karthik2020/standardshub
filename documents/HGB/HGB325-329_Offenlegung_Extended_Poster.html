@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HGB §§325–329 — Offenlegung | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">HGB §§325–329 — Offenlegung (Disclosure)</div>
+      <div class="hub-sub">Extended reference poster · Book 3, Section 2, Subsection 4 (entire subsection — no further Titel split) · Filing deadlines, the 2022 digital platform reform, and size-dependent relief · German commercial law · EUR examples</div>
+    </div>
+  </div>
+
+  <div class="callout info" style="max-width:900px;margin:0 auto 20px;text-align:center;">CORRECTION FROM THE PREVIOUS POSTER: §324a's cross-reference to §325(2a) was mischaracterised there as an IFRS-based supplementary statement. Verified now: §325(2a) actually governs "dauerhafte Hinterlegung" (permanent deposit) filing mechanics for LARGE Kapitalgesellschaften submitting their Jahresabschluss to the Unternehmensregister — covered accurately in Section 8 below. The previous poster has been corrected accordingly.</div>
+
+  <div class="toc">
+    <a href="#s1">1. Conceptual Framework Linkage</a>
+    <a href="#s2">2. Scope</a>
+    <a href="#s3">3. §325(1) — What Must Be Filed, and Where</a>
+    <a href="#s4">4. The 2022 DiRUG Reform — From Bundesanzeiger to Unternehmensregister</a>
+    <a href="#s5">5. §325(1a) and (4) — the Two Filing Deadlines</a>
+    <a href="#s6">6. Worked Example — Calculating an Ordinary Company's Filing Deadline</a>
+    <a href="#s7">7. Worked Example — the Shorter Deadline for a Listed Company</a>
+    <a href="#s8">8. §325(2a) — Permanent Deposit Filing for Large Corporations (Corrected)</a>
+    <a href="#s9">9. §325a — Disclosure by Branches of Foreign Corporations</a>
+    <a href="#s10">10. §326 — Relief for Small and Micro-Corporations</a>
+    <a href="#s11">11. Worked Example — the Micro-Corporation Hinterlegung Option</a>
+    <a href="#s12">12. §327 — Relief for Medium-Sized Corporations</a>
+    <a href="#s13">13. §327a — a Narrow Carve-Back for Debt-Only Issuers</a>
+    <a href="#s14">14. §328 — Form, Format, and Content of Disclosed Documents</a>
+    <a href="#s15">15. §329 — the Formal Completeness Check</a>
+    <a href="#s16">16. Worked Example — a Deficient Filing Triggering Enforcement</a>
+    <a href="#s17">17. Critical Judgments &amp; Practical Difficulties</a>
+    <a href="#s18">18. Relationship to IFRS</a>
+    <a href="#s19">19. Statement Mapping</a>
+    <a href="#s20">20. Related Provisions — Cross-Reference Map</a>
+    <a href="#s21">21. Quick-Reference Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Where a completed, audited Jahresabschluss finally reaches the public</div>
+      <div class="principle">Every provision this series has covered so far — recognition, measurement, presentation, consolidation, audit — culminates in a single practical act: FILING the finished, audited documents where the public can actually see them. §§325–329 govern exactly this: what must be filed, by when, in what form, and what happens if a company simply doesn't.</div>
+      <div class="elabel">HOW §§325–329 MAP TO GERMAN ACCOUNTING PRINCIPLES</div>
+      <div class="check-list">
+        <span><strong style="font-weight:500">Gläubigerschutz, made publicly actionable</strong> — creditors and counterparties can only rely on a company's own accounts if those accounts are genuinely, publicly ACCESSIBLE, not merely prepared and audited internally</span>
+        <span><strong style="font-weight:500">Proportionality</strong> — §326/§327's size-dependent relief is the SAME cost-benefit theme running throughout this entire series, now applied to the disclosure step specifically</span>
+      </div>
+    </div>
+
+    <div class="card cs">
+      <div class="ctitle cs">What §§325–329 require, at a glance</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.6fr 1.7fr;"><span>§</span><span>Core requirement</span></div>
+        <div class="tr" style="grid-template-columns:0.6fr 1.7fr;"><span>325</span><span>What to file, with which body, and by when</span></div>
+        <div class="tr alt" style="grid-template-columns:0.6fr 1.7fr;"><span>325a</span><span>Disclosure obligations for German branches of foreign corporations</span></div>
+        <div class="tr" style="grid-template-columns:0.6fr 1.7fr;"><span>326–327</span><span>Size-dependent relief for small, micro, and medium corporations</span></div>
+        <div class="tr alt" style="grid-template-columns:0.6fr 1.7fr;"><span>327a</span><span>A narrow carve-back for debt-only capital-market-oriented issuers</span></div>
+        <div class="tr" style="grid-template-columns:0.6fr 1.7fr;"><span>328</span><span>Filed documents must match what was actually audited</span></div>
+        <div class="tr alt" style="grid-template-columns:0.6fr 1.7fr;"><span>329</span><span>A formal completeness check, with enforcement referral for deficiencies</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Scope</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Every Kapitalgesellschaft (and §264a-caught partnership), scaled by size</div>
+      <div class="principle">§325 binds every Kapitalgesellschaft and §264a-caught partnership established earlier in this series — with the ACTUAL extent of what must be disclosed, and how quickly, scaling directly with the §267 size classification and §264d capital-market-oriented status established in earlier posters.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>§325(1) — What Must Be Filed, and Where</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">The Jahresabschluss, Lagebericht, audit opinion, and the profit-appropriation decision</div>
+      <div class="principle">§325(1) requires the Jahresabschluss, Lagebericht, the Bestätigungsvermerk (or note of its refusal, per §322), and — where the Jahresabschluss itself contained only a PROPOSAL for profit appropriation — the actual resolved decision once available, to be submitted ELECTRONICALLY to the body operating the Unternehmensregister (company register). §325(1a) extends the parallel obligation to the Konzernabschluss and Konzernlagebericht.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>The 2022 DiRUG Reform — From Bundesanzeiger to Unternehmensregister</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">A genuine digitalisation-driven platform change, not merely a rename</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">The DiRUG (Gesetz zur Digitalisierung des Registerrechts), effective 1 August 2022, restructured HOW disclosure actually happens: filings for fiscal years beginning after 31 December 2021 go DIRECTLY to the Unternehmensregister via a dedicated electronic platform, rather than routing through the Bundesanzeiger-Verlag as an intermediary publisher, as had been the case for years beforehand. Many practitioners (and older commentary) still colloquially refer to "filing with the Bundesanzeiger" — but the legally accurate description since August 2022 is "filing with the Unternehmensregister."</div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ This is a genuinely practical point worth getting right: someone researching "Bundesanzeiger Offenlegung" today is researching the CURRENT Unternehmensregister-based process under a legacy name, not a separate or superseded system.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>§325(1a) and (4) — the Two Filing Deadlines</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">12 months ordinarily, 4 months for capital-market-oriented issuers</div>
+      <div class="principle">§325(1a) sets the GENERAL deadline at TWELVE MONTHS after the balance sheet date — a genuinely generous window compared to the §264(1) three-month PREPARATION deadline established much earlier in this series, since disclosure is a separate, later step from preparation itself. §325(4) sets a considerably SHORTER, FOUR-MONTH deadline specifically for capital-market-oriented corporations (per §264d), reflecting capital markets' own need for considerably faster public access to a listed company's results — subject to the narrow §327a carve-back discussed in Section 13.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Worked Example — Calculating an Ordinary Company's Filing Deadline</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">A full calendar year's grace, running from the balance sheet date itself</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 1: A medium-sized GmbH's ordinary filing deadline</div>
+        <div class="wk-body">A medium-sized GmbH, not capital-market-oriented, has a 31 December fiscal year-end.</div>
+        <div class="wk-answer">Its Jahresabschluss for the year ending 31 December must be FILED with the Unternehmensregister no later than <strong>31 December of the FOLLOWING year</strong> — the full 12-month window §325(1a) allows, measured directly from the balance sheet date itself (not rounded to a calendar-year boundary the way §257's own retention period calculation worked).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Worked Example — the Shorter Deadline for a Listed Company</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">A dramatically compressed window for capital-market-oriented issuers</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 2: A listed AG's filing deadline</div>
+        <div class="wk-body">A capital-market-oriented AG has the SAME 31 December fiscal year-end.</div>
+        <div class="wk-answer">Its filing deadline falls just <strong>FOUR MONTHS</strong> later — 30 April of the following year — a considerably tighter window than the ordinary 12-month deadline, DESPITE the underlying preparation, audit, and adoption process being at least as complex as for the non-listed company in Example 1.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>§325(2a) — Permanent Deposit Filing for Large Corporations (Corrected)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">A specific filing-mechanics option, not an IFRS supplementary statement</div>
+      <div class="principle">§325(2a) permits LARGE Kapitalgesellschaften (per §267(3)) to submit their Jahresabschluss, together with the Bestätigungsvermerk (or note of its refusal), in German, via "dauerhafte Hinterlegung" — permanent electronic deposit — to the Unternehmensregister, as an alternative filing MECHANISM under the specific conditions §325(1a) and (4) otherwise set. This is genuinely a procedural/technical filing-format provision, NOT a substantive accounting-standards election — it does not permit or require preparing accounts under any framework other than HGB itself.</div>
+      <div class="callout suc" style="margin-bottom:0;">✅ As flagged at the top of this poster, an earlier draft of the previous §316–324a poster incorrectly described this provision as an IFRS-based supplementary statement. That characterisation has been corrected.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>§325a — Disclosure by Branches of Foreign Corporations</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">German transparency for a foreign parent's local branch presence</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">§325a requires German BRANCHES of foreign-domiciled corporations to disclose certain documents — typically the foreign parent's own accounts, prepared under ITS home jurisdiction's law, translated into German where necessary — ensuring German counterparties dealing with a local branch presence still have meaningful transparency into the underlying foreign company, even though that company itself is not a German Kapitalgesellschaft bound by the rest of this Section.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>§326 — Relief for Small and Micro-Corporations</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Abbreviated disclosure for small companies; an even lighter option for micro-corporations</div>
+      <div class="principle">§326(1) permits SMALL corporations to disclose only the ABBREVIATED §266(1) Bilanz format established earlier in this series (letters/Roman numerals only), and to omit the GuV and certain Anhang items from PUBLIC disclosure entirely — though the company must still PREPARE a full Jahresabschluss for internal and shareholder purposes; it is specifically the PUBLICLY DISCLOSED version that is abbreviated. §326(2) gives MICRO-corporations (per §267a) an even lighter option still: rather than fully public online disclosure, they may choose "Hinterlegung" (deposit) — the Bilanz is held on file and made available only ON REQUEST, rather than freely, immediately accessible to any member of the public online.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Worked Example — the Micro-Corporation Hinterlegung Option</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Meeting minimum transparency without free, unrestricted public browsing</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 3: A micro-corporation electing deposit over full disclosure</div>
+        <div class="wk-body">A Kleinstkapitalgesellschaft, meeting the €450,000/€900,000/10-employee thresholds established earlier in this series, wishes to limit how freely its balance sheet can be browsed by the general public online.</div>
+        <div class="wk-answer">The company elects "Hinterlegung" under §326(2) rather than ordinary public disclosure — its Bilanz is held on file with the Unternehmensregister, accessible to anyone who specifically REQUESTS it, but not presented for free, casual public browsing the way an ordinarily-disclosed company's accounts would be — a genuine, if narrow, privacy-conscious relief reserved specifically for the smallest company category.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>§327 — Relief for Medium-Sized Corporations</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Narrower relief than small companies receive, but still genuine</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">§327 permits MEDIUM-sized corporations to combine or omit certain GuV line items in their DISCLOSED version — echoing the SAME §276 GuV combination relief established earlier in this series for the PREPARED statement itself, now applied specifically to the disclosed/filed version — and to limit certain Anhang disclosures, though considerably more narrowly than the small-company relief under §326.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>§327a — a Narrow Carve-Back for Debt-Only Issuers</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">A specific exception to the "capital-market-oriented is always large" override</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">§327a supplies a narrow carve-back for capital-market-oriented corporations that issue ONLY debt securities (bonds), not equity — since bondholders' own investor-protection needs differ from equity investors', such companies may qualify for CERTAIN of the same size-based reliefs otherwise entirely unavailable to capital-market-oriented companies (recall §267's own "always large" override, and §325(4)'s own shorter deadline, established earlier in this series) — a genuinely narrow exception carved specifically out of that broader override.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>§328 — Form, Format, and Content of Disclosed Documents</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">What's disclosed must be exactly what was audited</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">§328 requires disclosed documents to correspond PRECISELY to the documents the audit opinion was actually based on — a company cannot disclose a "tidied up" or otherwise different version than what the auditor examined — and requires the Bestätigungsvermerk (or note of its qualification/refusal) to be reproduced in FULL alongside the disclosed statements, ensuring readers see the genuine audit outcome rather than a selectively-presented summary.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 15 ============ -->
+  <div class="section-header" id="s15"><span class="num">15</span><h2>§329 — the Formal Completeness Check</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">A checklist review, not a substantive quality audit</div>
+      <div class="principle">§329 requires the Unternehmensregister operator to conduct a FORMAL completeness check on filed documents — verifying that the required elements are actually PRESENT, not independently assessing the SUBSTANTIVE quality or accuracy of what was filed (that remains the auditor's own job under §§316–324a). Where deficiencies are identified, the operator notifies the Bundesamt für Justiz (Federal Office of Justice), the enforcement authority responsible for pursuing fine (Ordnungsgeld) proceedings against non-compliant companies.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 16 ============ -->
+  <div class="section-header" id="s16"><span class="num">16</span><h2>Worked Example — a Deficient Filing Triggering Enforcement</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Missing the deadline carries genuine, escalating financial consequences</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 4: A company that simply misses its filing deadline</div>
+        <div class="wk-body">A medium-sized GmbH fails to file its Jahresabschluss within the 12-month §325(1a) deadline, and does not respond to an initial notice.</div>
+        <div class="wk-answer">The Bundesamt für Justiz opens Ordnungsgeld (administrative fine) proceedings — beginning at a minimum threshold and capable of ESCALATING with repeated non-compliance — under §335. Unlike the individual-accounts §316(3) voidness consequence for skipping a mandatory AUDIT, a late or missing DISCLOSURE filing triggers a financial penalty mechanism rather than invalidating the underlying Jahresabschluss itself.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 17 ============ -->
+  <div class="section-header" id="s17"><span class="num">17</span><h2>Critical Judgments &amp; Practical Difficulties</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Where judgement matters most</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+          <div class="dot-list">
+            <span>Whether a capital-market-oriented issuer genuinely qualifies for the narrow §327a debt-only carve-back, given its own specific securities structure</span>
+          </div>
+        </div>
+        <div>
+          <div class="elabel">PRACTICAL DIFFICULTIES</div>
+          <div class="dot-list">
+            <span>Meeting the considerably compressed 4-month deadline for capital-market-oriented issuers, given the SAME underlying audit and adoption complexity as any other company</span>
+            <span>Correctly using the current Unternehmensregister/publikations-plattform.de filing process rather than outdated Bundesanzeiger-era procedures</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 18 ============ -->
+  <div class="section-header" id="s18"><span class="num">18</span><h2>Relationship to IFRS</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — HGB §§325–329 vs IFRS</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Exactly as with the earlier retention-period poster, IFRS itself has NO equivalent public-disclosure/filing-deadline mandate — WHERE and WHEN audited accounts must be publicly filed is governed entirely by local company or securities law, wherever IFRS is adopted, with IFRS remaining silent on the question. §§325–329 sit at the SAME "legal infrastructure" layer this series has repeatedly identified beneath any accounting standard, IFRS included — even a group using §315e's IFRS permission for its Konzernabschluss STILL relies on this Subsection's own HGB filing mechanics to actually get its accounts in front of the public.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 19 ============ -->
+  <div class="section-header" id="s19"><span class="num">19</span><h2>Statement Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Where every §§325–329 event lands</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event / obligation</span><span>Document affected</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Ordinary filing (§325(1a))</span><span><span class="badge bo">Unternehmensregister</span></span><span>12-month deadline</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Capital-market-oriented filing (§325(4))</span><span><span class="badge bo">Unternehmensregister</span></span><span>4-month deadline, subject to §327a</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Micro-corporation Hinterlegung (§326(2))</span><span><span class="badge be">Deposit only</span></span><span>Available on request, not freely public</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 20 ============ -->
+  <div class="section-header" id="s20"><span class="num">20</span><h2>Related Provisions — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How §§325–329 connect across HGB Book 3</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Provision</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>§267, §267a, §264d</span><span>Supplies the size and capital-market-oriented classifications determining disclosure scope and deadlines</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>§266(1)</span><span>The abbreviated Bilanz format §326(1) permits for small-company disclosure</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>§322</span><span>The Bestätigungsvermerk that §328 requires reproduced in full alongside disclosed documents</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>§335</span><span>The Ordnungsgeld fine provisions §329's enforcement referral ultimately triggers</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 21 ============ -->
+  <div class="section-header" id="s21"><span class="num">21</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Unternehmensregister</div><div class="glossary-def">Company register — the current filing destination for disclosure since the 2022 DiRUG reform, replacing the older Bundesanzeiger-Verlag routing.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">DiRUG</div><div class="glossary-def">Gesetz zur Digitalisierung des Registerrechts — the 2021/2022 reform restructuring the disclosure filing process.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Hinterlegung</div><div class="glossary-def">Deposit — the lighter-touch disclosure option available to micro-corporations under §326(2), accessible on request rather than freely public.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Dauerhafte Hinterlegung</div><div class="glossary-def">Permanent deposit — the specific filing mechanism §325(2a) makes available to large corporations, a procedural option rather than an accounting-standards election.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Ordnungsgeld</div><div class="glossary-def">Administrative fine — the escalating financial penalty for missed or deficient disclosure filings, referred by the Unternehmensregister to the Bundesamt für Justiz.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Bundesamt für Justiz</div><div class="glossary-def">Federal Office of Justice — the enforcement authority pursuing Ordnungsgeld proceedings for disclosure non-compliance.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Key</div>
+    <div class="lrow">
+      <span class="badge bo">Unternehmensregister</span> Company register (public filing)
+      <span class="badge be">Deposit only</span> Micro-corporation Hinterlegung option
+    </div>
+  </div>
+
+  <div class="footer-note">HGB §§325–329 — Offenlegung · Extended Reference Poster · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

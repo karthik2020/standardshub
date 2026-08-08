@@ -1,7 +1,7 @@
 /**
  * Accounting framework.
  */
-export type Framework = "IAS" | "IFRS" | "Ind AS" | "IFRS Sustainability" | "IFRS Publications" | "IFRS for SMEs" | "US GAAP" | "UK GAAP" | "ASBE" | "ASPE" | "IFRIC" | "SIC";
+export type Framework = "IAS" | "IFRS" | "Ind AS" | "IFRS Sustainability" | "IFRS Publications" | "IFRS for SMEs" | "US GAAP" | "UK GAAP" | "ASBE" | "ASPE" | "IFRIC" | "SIC" | "HGB" | "DRS";
 
 /**
  * Current lifecycle status of a standard.
@@ -25,6 +25,9 @@ export interface StandardMetadata {
 
   /** Standard title */
   title: string;
+
+  /** Native title (e.g. German, Japanese) */
+  nativeTitle?: string;
 
   /** URL slug */
   slug: string;
@@ -61,6 +64,12 @@ export interface StandardMetadata {
 
   /** One-line summary */
   summary: string;
+
+  /** Covered paragraphs or sections (e.g. HGB §§238–241a) */
+  covers?: string[];
+
+  /** Search aliases (e.g. "Buchführungspflicht" for HGB §238) */
+  aliases?: string[];
 
   /**
    * Optional semantic banner shown directly below the Hero on the standard page.

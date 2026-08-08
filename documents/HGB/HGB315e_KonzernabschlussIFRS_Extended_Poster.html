@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HGB §315e — Konzernabschluss nach internationalen Rechnungslegungsstandards | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">HGB §315e — Konzernabschluss nach internationalen Rechnungslegungsstandards</div>
+      <div class="hub-sub">Extended reference poster · Book 3, Section 2, Subsection 2, Title 10 (FINAL) · Where HGB and IFRS group reporting formally meet · German commercial law · EUR examples</div>
+    </div>
+  </div>
+
+  <div class="callout suc" style="max-width:900px;margin:0 auto 20px;text-align:center;">THE CAPSTONE OF THE ENTIRE KONZERNABSCHLUSS SUBSECTION: §315e is the specific HGB provision domestically implementing the EU IAS Regulation 1606/2002 dual-system relationship first discussed at the very beginning of this poster series — mandatory IFRS for listed groups' consolidated accounts, HGB always mandatory for individual accounts. This is the LAST Titel of Book 3, Section 2's Konzernabschluss subsection.</div>
+
+  <div class="toc">
+    <a href="#s1">1. Conceptual Framework Linkage</a>
+    <a href="#s2">2. Scope</a>
+    <a href="#s3">3. §315e(1) — the MANDATORY Requirement for Capital-Market-Oriented Parents</a>
+    <a href="#s4">4. Revisiting the Dual System — Tying Back to Where This Whole Project Began</a>
+    <a href="#s5">5. Worked Example — Testing Whether §315e(1) Applies</a>
+    <a href="#s6">6. §315e(2) — the VOLUNTARY Election for Other Companies</a>
+    <a href="#s7">7. Worked Example — a Non-Listed Group Voluntarily Electing EU-IFRS</a>
+    <a href="#s8">8. §315e(3) — the Konzernlagebericht Survives Regardless</a>
+    <a href="#s9">9. Worked Example — an EU-IFRS Group Still Needing a Full HGB Konzernlagebericht</a>
+    <a href="#s10">10. §315e vs §292 — Two Genuinely Different Paths to an IFRS Outcome</a>
+    <a href="#s11">11. What §315e Actually Changes for a German Group</a>
+    <a href="#s12">12. Critical Judgments &amp; Practical Difficulties</a>
+    <a href="#s13">13. "EU-IFRS" vs "Pure" IASB IFRS — a Technical Distinction Worth Knowing</a>
+    <a href="#s14">14. Statement Mapping</a>
+    <a href="#s15">15. Related Provisions — Cross-Reference Map</a>
+    <a href="#s16">16. Quick-Reference Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Where an entire poster series' opening question finally gets its precise statutory answer</div>
+      <div class="principle">Right at the start of this project, before the first poster was even built, this series discussed Germany's "dual system": IFRS mandatory for listed groups' CONSOLIDATED accounts since 2005 (per EU Regulation 1606/2002), HGB always mandatory for INDIVIDUAL accounts. §315e is the SPECIFIC provision that codifies this relationship directly into German commercial law itself — not merely relying on the EU Regulation's own direct applicability, but giving German practitioners a clear, domestic statutory reference point.</div>
+      <div class="elabel">HOW §315E MAPS TO GERMAN ACCOUNTING PRINCIPLES</div>
+      <div class="check-list">
+        <span><strong style="font-weight:500">Avoiding duplicate reporting, in its purest form</strong> — a company already producing EU-IFRS accounts is not additionally forced to ALSO produce a fully separate HGB-based Konzernabschluss</span>
+        <span><strong style="font-weight:500">Comparability for capital markets</strong> — the underlying EU policy rationale for mandating IFRS here at all: cross-border investors need genuinely comparable financial statements across EU-listed companies</span>
+      </div>
+    </div>
+
+    <div class="card cs">
+      <div class="ctitle cs">What §315e requires, at a glance</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.6fr 1.7fr;"><span>§</span><span>Core requirement</span></div>
+        <div class="tr" style="grid-template-columns:0.6fr 1.7fr;"><span>315e(1)</span><span>MANDATORY EU-IFRS Konzernabschluss for capital-market-oriented parents</span></div>
+        <div class="tr alt" style="grid-template-columns:0.6fr 1.7fr;"><span>315e(2)</span><span>VOLUNTARY election available to other parents</span></div>
+        <div class="tr" style="grid-template-columns:0.6fr 1.7fr;"><span>315e(3)</span><span>The Konzernlagebericht remains fully HGB-governed regardless</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Scope</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Every parent required to prepare a Konzernabschluss under §290</div>
+      <div class="principle">§315e applies to every parent bound by §290's own Konzernabschluss obligation — offering the SAME population a choice (or, for a subset, a mandate) between HGB's own §§290–315d framework this entire poster series has documented, and EU-endorsed IFRS instead.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>§315e(1) — the MANDATORY Requirement for Capital-Market-Oriented Parents</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">EU-IFRS replaces HGB's own consolidation framework entirely, for this population</div>
+      <div class="principle">§315e(1) requires a Kapitalgesellschaft whose SECURITIES are admitted to trading on an EU-regulated market — the SAME capital-market-oriented population §264d defines — to prepare its Konzernabschluss and Konzernlagebericht in accordance with EU-endorsed IAS/IFRS, INSTEAD of applying HGB's own §§290–314 Konzernabschluss provisions. For this specific population, EVERYTHING this poster series has covered on full consolidation, proportionate consolidation, the equity method, and the Konzernanhang (§§300–314) is simply REPLACED by the equivalent IFRS requirements.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Revisiting the Dual System — Tying Back to Where This Whole Project Began</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">The EU Regulation's own direct effect, now given a clear domestic anchor</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">EU Regulation 1606/2002 is directly applicable EU law — it does not, strictly speaking, REQUIRE national transposition to have legal effect. §315e nonetheless CODIFIES this mandate directly into HGB, giving German practitioners a clear, domestic statutory hook rather than relying purely on the EU Regulation's own text. This is the EXACT mechanism underlying the "dual system" framing this whole project opened with: mandatory EU-IFRS for the CONSOLIDATED accounts of listed groups (§315e(1)), alongside HGB's OWN, permanently mandatory individual/statutory accounts (§242 et seq.) that IFRS can NEVER substitute for, REGARDLESS of a company's listing status.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Worked Example — Testing Whether §315e(1) Applies</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Listing status alone is decisive, regardless of actual size</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 1: A mid-sized but listed German industrial group</div>
+        <div class="wk-body">A German AG, with shares admitted to trading on a regulated German stock exchange, heads a group with €80,000,000 in combined revenue — well above the §293 size thresholds that would otherwise exempt a small/medium group from consolidation entirely, but a genuinely modest size for a listed company.</div>
+        <div class="wk-answer">REGARDLESS of its actual size, the AG's LISTING STATUS alone triggers §315e(1) — its Konzernabschluss and Konzernlagebericht MUST be prepared under EU-IFRS, not HGB's own §§290–314 framework. This mirrors EXACTLY the same "listing status overrides size" pattern already seen for §267's individual-entity size classification and §293(5)'s group-size exemption override.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>§315e(2) — the VOLUNTARY Election for Other Companies</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">A genuine option, not merely a mandate for the largest companies</div>
+      <div class="principle">§315e(2) permits — but does NOT require — OTHER Kapitalgesellschaften, not caught by §315e(1)'s mandatory population, to VOLUNTARILY prepare their Konzernabschluss under EU-endorsed IFRS instead of HGB's own domestic provisions. This genuinely opens the door for non-listed German groups to use IFRS-based group reporting where they judge it beneficial — for instance, easier comparability for international lenders or investors, or alignment with a foreign parent's own reporting framework — WITHOUT being legally compelled to do so.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Worked Example — a Non-Listed Group Voluntarily Electing EU-IFRS</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">A genuine business reason for opting in, without any legal compulsion</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 2: A privately-held group seeking international bank financing</div>
+        <div class="wk-body">A privately-held German industrial group, well below any capital-market-oriented threshold, is negotiating a substantial syndicated loan facility with a consortium of international banks who would strongly prefer financial statements prepared under an internationally familiar framework, to ease their own credit analysis.</div>
+        <div class="wk-answer">The group ELECTS to prepare its Konzernabschluss under EU-IFRS per §315e(2) — a genuine business choice driven by its lenders' own preferences, NOT a legal requirement. It could equally have continued using HGB's own §§290–314 framework, and could, in principle, revert to it in a later year (subject to the general consistency principle and appropriate disclosure of any such change).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>§315e(3) — the Konzernlagebericht Survives Regardless</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">The single most important practical wrinkle in this entire provision</div>
+      <div class="principle">§315e(3) makes clear that REGARDLESS of whether the Konzernabschluss itself is prepared under EU-IFRS (whether mandatorily under §315e(1) or voluntarily under §315e(2)), the Konzernlagebericht obligation REMAINS governed IN FULL by HGB's own §§315–315d — the forward-looking Prognosebericht, takeover-related disclosures, non-financial group statement, and group corporate governance statement this poster series' PREVIOUS entry documented in detail. The §315e permission/mandate applies ONLY to the financial statements themselves; it does NOT extend to exempting the management report requirement.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Worked Example — an EU-IFRS Group Still Needing a Full HGB Konzernlagebericht</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Two frameworks, genuinely layered together in the same annual filing</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 3: A listed AG's complete annual filing package</div>
+        <div class="wk-body">A listed German AG, mandatorily using EU-IFRS for its Konzernabschluss under §315e(1), prepares its complete annual group filing.</div>
+        <div class="wk-answer">The Konzernabschluss ITSELF (Konzernbilanz, Konzern-GuV, notes) follows EU-IFRS entirely — NONE of §§290–314's own HGB mechanics (capital consolidation, proportionate consolidation, the equity method as this series has documented them) apply. But the ACCOMPANYING Konzernlagebericht — with its mandatory Prognosebericht, takeover-related disclosures (§315a), non-financial group statement (§315b–c, subject to the pending CSRD transposition flagged in the previous poster), and group corporate governance statement (§315d) — remains FULLY governed by HGB's own domestic provisions, prepared and filed ALONGSIDE the EU-IFRS financial statements as a genuinely separate, HGB-specific document.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>§315e vs §292 — Two Genuinely Different Paths to an IFRS Outcome</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Exempting yourself, versus becoming an IFRS preparer yourself</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">This poster series has now covered TWO genuinely different mechanisms connecting HGB to IFRS-flavoured group reporting, worth clearly distinguishing:</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Feature</span><span>§292 (Third-Country Exemption)</span><span>§315e (IFRS Permission)</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>What happens</span><span>The GERMAN entity is EXEMPTED from preparing ANY Konzernabschluss of its own</span><span>The GERMAN entity PREPARES its own Konzernabschluss, but USING EU-IFRS instead of HGB</span></div>
+        <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Whose accounts satisfy the obligation</span><span>A FOREIGN (often non-EU) parent's own equivalent group accounts</span><span>The GERMAN parent's OWN accounts, now IFRS-based</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Konzernlagebericht still required?</span><span>NO — the exemption covers the entire obligation</span><span>YES — §315e(3) preserves it in full</span></div>
+      </div>
+      <div class="note">§292 is fundamentally about RELYING on someone ELSE's IFRS-equivalent accounts to avoid preparing your own; §315e is about the GERMAN entity BECOMING an IFRS preparer itself, for its OWN group accounts.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>What §315e Actually Changes for a German Group</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Every earlier IFRS comparison in this entire series becomes directly operative</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Once §315e's permission (or mandate) is exercised, EVERY IFRS divergence this poster series has documented at the individual-accounts level (mandatory goodwill amortisation vs impairment-only, LIFO's availability, elective vs mandatory borrowing-cost capitalisation) and at the consolidation level (the bargain-purchase divergence, proportionate consolidation's continued availability) simply STOPS applying to the Konzernabschluss itself — the group now follows IFRS's own answers to all of these questions instead. The company's INDIVIDUAL/statutory accounts, however, remain governed by HGB in FULL, REGARDLESS — meaning a single company can genuinely be preparing goodwill under TWO different regimes simultaneously: amortised in its own individual accounts, impairment-tested-only in its EU-IFRS group accounts.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Critical Judgments &amp; Practical Difficulties</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Where judgement matters most</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+          <div class="dot-list">
+            <span>Whether the genuine business case for a voluntary §315e(2) election (lender preference, comparability, foreign parent alignment) outweighs the cost of maintaining IFRS expertise and systems</span>
+          </div>
+        </div>
+        <div>
+          <div class="elabel">PRACTICAL DIFFICULTIES</div>
+          <div class="dot-list">
+            <span>Maintaining genuinely separate HGB individual/statutory accounts ALONGSIDE EU-IFRS group accounts, given the two frameworks' divergent treatment of goodwill, borrowing costs, and other items this series has documented</span>
+            <span>Preparing a fully HGB-compliant Konzernlagebericht as a genuinely separate exercise, even where the underlying financial statements themselves follow EU-IFRS entirely</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>"EU-IFRS" vs "Pure" IASB IFRS — a Technical Distinction Worth Knowing</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">The EU's own endorsement mechanism means the two are not always byte-for-byte identical</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">§315e refers specifically to IFRS "as adopted by the European Union" — the EU maintains its OWN endorsement mechanism for IASB-issued standards, and has, at various points historically, adopted a given standard with SPECIFIC carve-outs or modifications (a well-known historical example being certain hedge-accounting provisions within the older IAS 39). This means "EU-IFRS" and the IASB's own, globally-issued IFRS are not ALWAYS perfectly identical at every point in time — a genuinely useful technical distinction for anyone assuming the two labels are perfectly interchangeable.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Statement Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Where every §315e event lands</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event / obligation</span><span>Document(s) affected</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Mandatory EU-IFRS Konzernabschluss (§315e(1))</span><span><span class="badge bo">Konzernabschluss</span></span><span>Replaces §§290–314 entirely for the financial statements</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Voluntary EU-IFRS election (§315e(2))</span><span><span class="badge bo">Konzernabschluss</span></span><span>Same effect, exercised by choice rather than mandate</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Konzernlagebericht (§315e(3))</span><span><span class="badge be">Konzernlagebericht</span></span><span>UNAFFECTED — remains fully HGB-governed either way</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 15 ============ -->
+  <div class="section-header" id="s15"><span class="num">15</span><h2>Related Provisions — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How §315e connects across HGB Book 3 — and closes the entire Konzernabschluss subsection</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Provision</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>§264d</span><span>Supplies the SAME capital-market-oriented definition triggering §315e(1)'s mandate</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>§292</span><span>A genuinely different exemption mechanism, distinguished carefully in Section 10 above</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>§§290–314</span><span>The ENTIRE HGB Konzernabschluss framework §315e(1) replaces for its mandatory population</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>§§315–315d</span><span>Preserved in FULL by §315e(3), regardless of which framework governs the financial statements themselves</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>§316 et seq.</span><span>The NEXT Titel in this poster series — audit — which now applies to whichever Konzernabschluss framework (HGB or EU-IFRS) actually governs a given group</span></div>
+      </div>
+      <div class="callout suc" style="margin-bottom:0;">✅ With §315e, this poster series has now completed EVERY Titel of Book 3, Section 2, Subsection 2 (Konzernabschluss und Konzernlagebericht) — from §290's basic obligation through to this final, IFRS-connecting provision. The next poster moves into Subsection 3: Prüfung (Audit).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 16 ============ -->
+  <div class="section-header" id="s16"><span class="num">16</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">EU-IFRS</div><div class="glossary-def">IFRS as adopted/endorsed by the European Union — not always perfectly identical to the IASB's own, globally-issued standards.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">EU-Verordnung 1606/2002</div><div class="glossary-def">The EU IAS Regulation directly mandating IFRS for listed groups' consolidated accounts since 2005, domestically codified by §315e.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Wahlrecht (§315e(2))</div><div class="glossary-def">The voluntary election available to non-mandatory companies to use EU-IFRS for their own Konzernabschluss.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Doppelte Rechnungslegung</div><div class="glossary-def">Dual reporting — the practical reality of a company maintaining HGB individual accounts alongside EU-IFRS group accounts simultaneously.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Key</div>
+    <div class="lrow">
+      <span class="badge bo">Konzernabschluss</span> Consolidated financial statements
+      <span class="badge be">Konzernlagebericht</span> Group management report
+    </div>
+  </div>
+
+  <div class="footer-note">HGB §315e — Konzernabschluss nach internationalen Rechnungslegungsstandards · Extended Reference Poster · Self-contained, no internet connection required · FINAL Titel of the Konzernabschluss subsection</div>
+
+</div>
+</body>
+</html>

@@ -8,6 +8,7 @@ export interface StandardSummary {
   url: string;
   category: string;
   status?: string;
+  aliases?: string[];
 }
 
 export interface StandardsJson {

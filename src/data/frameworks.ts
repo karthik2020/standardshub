@@ -255,7 +255,7 @@ export const FRAMEWORK_CONFIG: Record<string, FrameworkConfig> = {
     faIcon: "scroll",
     status: "active",
   },
-  sic: {
+   sic: {
     id: "sic",
     code: "SIC",
     displayName: "SIC",
@@ -271,9 +271,63 @@ export const FRAMEWORK_CONFIG: Record<string, FrameworkConfig> = {
     faIcon: "scroll",
     status: "active",
   },
+   japangaap: {
+    id: "japangaap",
+    code: "Japan GAAP",
+    displayName: "Japan GAAP",
+    fullName: "Japanese Generally Accepted Accounting Principles",
+    description:
+      "Japanese Generally Accepted Accounting Principles (Japan GAAP) comprise the financial reporting standards issued by the Accounting Standards Board of Japan (ASBJ), covering topics such as financial instruments, revenue, leases, and business combinations.",
+    route: "/japangaap",
+    primary: "#394931",
+    light: "#d4d0b9",
+    soft: "#afb59d",
+    dark: "#90997f",
+    lucideIcon: "Landmark",
+    faIcon: "landmark",
+    categories: [
+      "ASBJ Statements",
+      "Implementation Guidance",
+      "JMIS Standards",
+      "Practical Solutions",
+    ],
+    status: "active",
+  },
+  hgb: {
+    id: "hgb",
+    code: "HGB",
+    displayName: "HGB",
+    fullName: "Handelsgesetzbuch (German Commercial Code)",
+    description:
+      "The Handelsgesetzbuch (HGB) is the German Commercial Code, containing the legal framework for accounting and financial reporting in Germany.",
+    route: "/hgb",
+    primary: "#B58900",
+    light: "#FCF8EA",
+    soft: "#F4E7B0",
+    dark: "#8A6800",
+    lucideIcon: "Landmark",
+    faIcon: "landmark",
+    status: "active",
+  },
+  drs: {
+    id: "drs",
+    code: "DRS",
+    displayName: "DRS",
+    fullName: "Deutsche Rechnungslegungsstandards (German Accounting Standards)",
+    description:
+      "Deutsche Rechnungslegungsstandards (DRS) are the German Accounting Standards issued by the Accounting Standards Committee of Germany (DRSC).",
+    route: "/germany/drs",
+    primary: "#B58900",
+    light: "#FCF8EA",
+    soft: "#F4E7B0",
+    dark: "#8A6800",
+    lucideIcon: "Landmark",
+    faIcon: "landmark",
+    status: "active",
+  },
 };
 
-export const FRAMEWORK_ORDER = ["ias", "ifrs", "indas", "ifrssustainability", "ifrspublications", "ifrsforsmes", "usgaap", "ukgaap", "asbe", "aspe", "ifric", "sic"] as const;
+export const FRAMEWORK_ORDER = ["ias", "ifrs", "indas", "ifrssustainability", "ifrspublications", "ifrsforsmes", "usgaap", "ukgaap", "asbe", "aspe", "japangaap", "ifric", "sic", "hgb"] as const;
 
 export type FrameworkId = keyof typeof FRAMEWORK_CONFIG;
 

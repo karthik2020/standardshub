@@ -1,0 +1,32 @@
+---
+import StandardLayout from "../../layouts/StandardLayout.astro";
+import StandardCard from "../../components/StandardCard.astro";
+import { FRAMEWORK_CONFIG, getFramework } from "../../data/frameworks";
+import standards from "../../data/standards.json";
+import { palette } from "../../data/standardVisuals";
+
+const framework = getFramework("JapanGAAP")!;
+---
+
+<StandardLayout code={framework.code} title={framework.fullName} framework={framework.code}>
+  <h1>{framework.fullName}</h1>
+
+  <p class="category-description">
+    {framework.description}
+  </p>
+
+  <div class="standards-group">
+    <h2 class="standards-group-title">Japanese GAAP Standards</h2>
+    <div class="standards-grid">
+      {standards["JapanGAAP"].map((item, index) => (
+        <StandardCard
+          href={item.url}
+          code={item.code}
+          title={item.title}
+          framework="JapanGAAP"
+          theme={palette[index % palette.length]}
+        />
+      ))}
+    </div>
+  </div>
+</StandardLayout>
