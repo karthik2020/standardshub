@@ -27,6 +27,8 @@ import {
   CirclePause,
   ArrowRight,
   ArrowDown,
+  CheckCircle,
+  CircleAlert,
 } from "@lucide/astro";
 import { getLifecycleCountdown } from "../utils/lifecycle";
 
@@ -38,7 +40,11 @@ interface Props {
     | "historical-reference"
     | "effective-soon"
     | "amended"
-    | "suspended";
+    | "suspended"
+    | "active"
+    | "historical"
+    | "revised"
+    | "draft";
   title?: string;
   explanation: string;
   historical: string;
@@ -71,6 +77,10 @@ const iconMap = {
   amended: FileDiff,
   replaced: RefreshCw,
   suspended: CirclePause,
+  active: CheckCircle,
+  historical: BookMarked,
+  revised: RefreshCw,
+  draft: CircleAlert,
 };
 
 const titleMap = {
@@ -81,6 +91,10 @@ const titleMap = {
   amended: "Amended Standard",
   replaced: "Replaced Standard",
   suspended: "Suspended Standard",
+  active: "Active Standard",
+  historical: "Historical Standard",
+  revised: "Revised Standard",
+  draft: "Exposure Draft",
 };
 
 const Icon = iconMap[type];
@@ -307,5 +321,33 @@ const countdown = getLifecycleCountdown(eventDate);
     --ln-soft: #fff7ed; /* orange-50 */
     --ln-ink: #9a3412;
     --ln-divider: #fed7aa;
+  }
+
+  .ln--active {
+    --ln-accent: #16a34a; /* green-600 */
+    --ln-soft: #f0fdf4; /* green-50 */
+    --ln-ink: #166534;
+    --ln-divider: #bbf7d0;
+  }
+
+  .ln--historical {
+    --ln-accent: #475569; /* slate-600 */
+    --ln-soft: #f8fafc; /* slate-50 */
+    --ln-ink: #334155;
+    --ln-divider: #cbd5e1;
+  }
+
+  .ln--revised {
+    --ln-accent: #4f46e5; /* indigo-600 */
+    --ln-soft: #eef2ff; /* indigo-50 */
+    --ln-ink: #4338ca;
+    --ln-divider: #c7d2fe;
+  }
+
+  .ln--draft {
+    --ln-accent: #d97706; /* amber-600 */
+    --ln-soft: #fffbeb; /* amber-50 */
+    --ln-ink: #92400e;
+    --ln-divider: #fde68a;
   }
 </style>

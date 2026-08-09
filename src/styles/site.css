@@ -377,7 +377,7 @@ body {
     text-transform: none;
     padding: 6px 18px 6px;
     margin-top: 4px;
-    background: var(--toc-active-soft, var(--ias-soft));
+    background: color-mix(in srgb, var(--framework-accent) 15%, transparent);
 }
 
 .sidebar-category-group {
@@ -438,6 +438,10 @@ body {
     font-weight: 600;
 }
 
+html[data-theme="dark"] .sidebar-category-label {
+    background: var(--framework-accent);
+}
+
 .sidebar-items .nav-link {
     margin-left: -1px;
 }
@@ -457,10 +461,12 @@ body {
 
 .app-body {
     --framework-accent: #475569;
+    --framework-accent-soft: #f1f5f9;
 }
 
 .app-body[data-framework="home"] {
     --framework-accent: #475569;
+    --framework-accent-soft: #f1f5f9;
 }
 
 .app-body[data-framework="ias"] {
@@ -2015,46 +2021,7 @@ html[data-theme="dark"] .nav-link.active.nav-drs::before {
 
 .breadcrumb-code {
     font-weight: 700;
-}
-
-.breadcrumb-code.ias {
-    color: var(--ias);
-}
-
-.breadcrumb-code.ifrs {
-    color: var(--ifrs);
-}
-
-.breadcrumb-code.indas {
-    color: var(--indas);
-}
-
-.breadcrumb-code.usgaap {
-    color: var(--usgaap);
-}
-
-.breadcrumb-code.asbe {
-    color: var(--asbe);
-}
-
-.breadcrumb-code.aspe {
-    color: var(--aspe);
-}
-
-.breadcrumb-code.japangaap {
-    color: var(--japangaap);
-}
-
-.breadcrumb-code.hgb {
-    color: var(--hgb);
-}
-
-.breadcrumb-code.drs {
-    color: var(--drs);
-}
-
-.breadcrumb-code.ukgaap {
-    color: var(--ukgaap);
+    color: var(--framework-accent-soft);
 }
 
 .breadcrumb-framework {
@@ -2070,14 +2037,6 @@ html[data-theme="dark"] .nav-link.active.nav-drs::before {
 
 html[data-theme="dark"] .breadcrumb-framework {
     color: #fff;
-}
-
-html[data-theme="dark"] .app-body[data-framework="japangaap"] .ctitle.ci,
-html[data-theme="dark"] .app-body[data-framework="japangaap"] .ctitle.cs,
-html[data-theme="dark"] .app-body[data-framework="japangaap"] .ctitle.cw,
-html[data-theme="dark"] .app-body[data-framework="japangaap"] .ctitle.cd,
-html[data-theme="dark"] .app-body[data-framework="japangaap"] .ctitle.cn {
-    color: var(--japangaap-soft);
 }
 
 .crumb-separator {
@@ -2525,6 +2484,7 @@ html[data-theme="dark"] .search-placeholder {
 /* Framework-driven accent colours so chrome matches the standard identity */
 .app-body[data-framework="ias"] {
     --framework-accent: var(--ias);
+    --framework-accent-soft: var(--ias-soft);
     --toc-active: var(--ias);
     --toc-active-soft: var(--ias-soft);
     --section-accent: var(--ias);
@@ -2536,6 +2496,7 @@ html[data-theme="dark"] .search-placeholder {
 
 .app-body[data-framework="ifrs"] {
     --framework-accent: var(--ifrs);
+    --framework-accent-soft: var(--ifrs-soft);
     --toc-active: var(--ifrs);
     --toc-active-soft: var(--ifrs-soft);
     --section-accent: var(--ifrs);
@@ -2547,6 +2508,7 @@ html[data-theme="dark"] .search-placeholder {
 
 .app-body[data-framework="indas"] {
     --framework-accent: var(--indas);
+    --framework-accent-soft: var(--indas-soft);
     --toc-active: var(--indas);
     --toc-active-soft: var(--indas-soft);
     --section-accent: var(--indas);
@@ -2558,6 +2520,7 @@ html[data-theme="dark"] .search-placeholder {
 
 .app-body[data-framework="usgaap"] {
     --framework-accent: var(--usgaap);
+    --framework-accent-soft: var(--usgaap-soft);
     --toc-active: var(--usgaap);
     --toc-active-soft: var(--usgaap-soft);
     --section-accent: var(--usgaap);
@@ -2569,6 +2532,7 @@ html[data-theme="dark"] .search-placeholder {
 
 .app-body[data-framework="ukgaap"] {
     --framework-accent: var(--ukgaap);
+    --framework-accent-soft: var(--ukgaap-soft);
     --toc-active: var(--ukgaap);
     --toc-active-soft: var(--ukgaap-soft);
     --section-accent: var(--ukgaap);
@@ -2580,6 +2544,7 @@ html[data-theme="dark"] .search-placeholder {
 
 .app-body[data-framework="asbe"] {
     --framework-accent: var(--asbe);
+    --framework-accent-soft: var(--asbe-soft);
     --toc-active: var(--asbe);
     --toc-active-soft: var(--asbe-soft);
     --section-accent: var(--asbe);
@@ -2591,6 +2556,7 @@ html[data-theme="dark"] .search-placeholder {
 
 .app-body[data-framework="aspe"] {
     --framework-accent: var(--aspe);
+    --framework-accent-soft: var(--aspe-soft);
     --toc-active: var(--aspe);
     --toc-active-soft: var(--aspe-soft);
     --section-accent: var(--aspe);
@@ -2602,6 +2568,7 @@ html[data-theme="dark"] .search-placeholder {
 
 .app-body[data-framework="japangaap"] {
     --framework-accent: var(--japangaap);
+    --framework-accent-soft: var(--japangaap-soft);
     --toc-active: var(--japangaap);
     --toc-active-soft: var(--japangaap-soft);
     --section-accent: var(--japangaap);
@@ -2613,6 +2580,7 @@ html[data-theme="dark"] .search-placeholder {
 
 .app-body[data-framework="hgb"] {
     --framework-accent: var(--hgb);
+    --framework-accent-soft: var(--hgb-soft);
     --toc-active: var(--hgb);
     --toc-active-soft: var(--hgb-soft);
     --section-accent: var(--hgb);
@@ -2624,6 +2592,7 @@ html[data-theme="dark"] .search-placeholder {
 
 .app-body[data-framework="drs"] {
     --framework-accent: var(--drs);
+    --framework-accent-soft: var(--drs-soft);
     --toc-active: var(--drs);
     --toc-active-soft: var(--drs-soft);
     --section-accent: var(--drs);
@@ -2640,6 +2609,7 @@ html[data-theme="dark"] .search-placeholder {
 .app-body[data-framework="ifrspublications"],
 .app-body[data-framework="ifrsforsmes"] {
     --framework-accent: var(--ifrs);
+    --framework-accent-soft: var(--ifrs-soft);
     --toc-active: var(--ifrs);
     --toc-active-soft: var(--ifrs-soft);
     --section-accent: var(--ifrs);
@@ -2841,6 +2811,10 @@ html[data-theme="dark"] .page-content table a:hover {
 
 .toc a.active::before {
     background: var(--toc-active, var(--ias));
+}
+
+html[data-theme="dark"] .toc a.active {
+    color: var(--framework-accent-soft);
 }
 
 .toc a::before {

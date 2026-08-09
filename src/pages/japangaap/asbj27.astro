@@ -1,6 +1,7 @@
 ---
 import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
 import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
 import "../../styles/standards-poster.css";
 import "../../styles/extended.css";
 import metadata from "../../data/standards/japangaap/asbj27.json";
@@ -15,7 +16,6 @@ import metadata from "../../data/standards/japangaap/asbj27.json";
   latestAmendment={metadata.latestAmendment}
   status={metadata.status}
   summary={metadata.summary}
-  bannerNotice={metadata.bannerNotice}
 >
   <Fragment slot="toc">
     <PageToc
@@ -37,18 +37,18 @@ import metadata from "../../data/standards/japangaap/asbj27.json";
     />
   </Fragment>
 
+  <LifecycleNotice
+    type="revised"
+    title="Recency Note"
+    explanation="ASBJ has recently (2026) issued a revision to this Statement. The core historical framework described below is well-established, but the precise substance of the most recent revision should be verified against ASBJ's current published materials."
+    historical="Extended reference poster. Self-contained, no internet connection required."
+    link="/japangaap/asbj27-revised2026"
+    linkText="ASBJ Statement No. 27 (Revised 2026) — Accounting Standard for Current Income Taxes"
+  />
+
   <div class="wrap">
 
-    <div class="hub">
-      <div class="hub-box">
-        <div class="hub-title">ASBJ Statement No. 27 — Accounting Standard for Current Income Taxes</div>
-        <div class="hub-sub">Extended reference poster · Japan GAAP (J-GAAP) · 法人税、住民税及び事業税等に関する会計基準 · Recently revised (2026) — verify against current ASBJ materials · JPY examples</div>
-      </div>
-    </div>
-
-    <div class="callout info callout--centered">RECENCY NOTE: ASBJ has recently (2026) issued a revision to this Statement. The core historical framework described below is well-established, but the precise substance of the most recent revision should be verified against ASBJ's current published materials.</div>
-
-    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
     <div class="grid">
       <div class="card ci span2">
         <div class="ctitle ci">Recognising the current period's tax liability across multiple layered taxes</div>
@@ -215,7 +215,5 @@ import metadata from "../../data/standards/japangaap/asbj27.json";
       </div>
     </div>
 
-    <div class="footer-note">ASBJ Statement No. 27 — Accounting Standard for Current Income Taxes · Extended Reference Poster · Self-contained, no internet connection required</div>
   </div>
-
 </StandardPageLayout>
