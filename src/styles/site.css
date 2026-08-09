@@ -141,10 +141,10 @@ html[data-theme="dark"] {
 
     --overlay: rgba(0, 0, 0, .72);
 
-    --ias-soft: rgba(37, 99, 235, .15);
-    --ifrs-soft: rgba(22, 163, 74, .15);
-    --indas-soft: rgba(234, 88, 12, .15);
-    --usgaap-soft: rgba(142, 68, 173, .15);
+    --ias-soft: #a5c1ff;  /* rgba(37, 99, 235, .15) */
+    --ifrs-soft: #a5f8b0;  /* rgba(22, 163, 74, .15) */
+    --indas-soft: #f9c8a0;  /* rgba(234, 88, 12, .15) */
+    --usgaap-soft: #c4a5f8;  /* rgba(142, 68, 173, .15) */
 
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, .4);
     --shadow-md: 0 4px 12px rgba(0, 0, 0, .5);
@@ -369,15 +369,15 @@ body {
     margin-top: 4px;
 }
 
-.sidebar-category-label {
-    font-size: var(--text-xs);
+.sidebar-category-label, .sidebar-subfolder-label  {
+    font-size: var(--text-small);
     font-weight: var(--weight-semibold);
     color: var(--framework-accent);
     letter-spacing: .04em;
     text-transform: none;
     padding: 6px 18px 6px;
     margin-top: 4px;
-    background: color-mix(in srgb, var(--framework-accent) 15%, transparent);
+    background: color-mix(in srgb, var(--framework-accent) 10%, transparent);
 }
 
 .sidebar-category-group {
@@ -438,8 +438,9 @@ body {
     font-weight: 600;
 }
 
-html[data-theme="dark"] .sidebar-category-label {
-    background: var(--framework-accent);
+html[data-theme="dark"] .sidebar-category-label, .sidebar-subfolder-label {
+    background: color-mix(in srgb, var(--framework-accent) 80%, transparent);
+    color: white;
 }
 
 .sidebar-items .nav-link {
@@ -2837,9 +2838,7 @@ html[data-theme="dark"] .toc a.active {
 
 .hero-ias {
 
-    background: linear-gradient(135deg,
-            color-mix(in srgb, var(--ias-soft) 60%, var(--surface)),
-            var(--surface) 75%);
+    background: linear-gradient(135deg, color-mix(in srgb, var(--ias-soft) 60%, var(--surface)), var(--surface) 75%);
 
 }
 
@@ -3324,14 +3323,14 @@ html[data-theme="dark"] .toc a.active {
         padding: 0px 0;
     }
 
-    .sidebar-subfolder-label {
+    /* .sidebar-subfolder-label {
         position: sticky;
         top: 0;
         z-index: 2;
         background: var(--surface);
         text-transform: none;
         padding: 12px 4px 8px;
-    }
+    } */
 
     .sidebar-items {
         padding-top: 8px;
@@ -4389,14 +4388,14 @@ html[data-theme="dark"] .rail-item.active {
     display: none;
 }
 
-.sidebar-subfolder-label {
-    font-size: 11px;
+/* .sidebar-subfolder-label {
+    font-size: var(--text-small);
     font-weight: var(--weight-semibold);
     text-transform: uppercase;
     letter-spacing: 0.03em;
     color: var(--text-muted);
     padding: 12px 4px 4px;
-}
+} */
 
 .panel-home-empty {
     display: flex;
@@ -4420,11 +4419,17 @@ html[data-theme="dark"] .rail-item.active {
     padding: 6px 10px;
     margin: 8px 12px 4px;
     border-radius: var(--radius-md);
-    color: var(--text-secondary);
+    /* color: var(--text-secondary); */
     text-decoration: none;
-    font-size: 11px;
+    font-size: var(--text-small);
     font-weight: var(--weight-medium);
-    transition: background var(--transition-fast) var(--ease), color var(--transition-fast) var(--ease);
+    /* transition: background var(--transition-fast) var(--ease), color var(--transition-fast) var(--ease); */
+    transition: transform 220ms cubic-bezier(.22, .61, .36, 1);
+    transform: translate(0, 0);
+    background: var(--framework-accent);
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
 }
 
 .panel-overview-link:hover,
@@ -4434,21 +4439,22 @@ html[data-theme="dark"] .rail-item.active {
 }
 
 .panel-overview-arrow {
-    opacity: 0;
+    opacity: 90%;
     transform: translateX(-2px);
     transition: opacity var(--transition-fast) var(--ease), transform var(--transition-fast) var(--ease);
 }
 
 .panel-overview-link:hover .panel-overview-arrow,
 .panel-overview-link:focus-visible .panel-overview-arrow {
-    opacity: 1;
-    transform: translateX(0);
+    opacity: 90%;
+    /* transform: translateX(0); */
+    transform: translate(3px, -3px);
 }
 
-html[data-theme="dark"] .panel-overview-link {
+/* html[data-theme="dark"] .panel-overview-link {
     background: var(--framework-accent);
     color: #fff;
-}
+} */
 
 html[data-theme="dark"] .panel-overview-link:hover,
 html[data-theme="dark"] .panel-overview-link:focus-visible {
