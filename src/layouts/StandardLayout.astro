@@ -27,6 +27,8 @@ interface Props {
   twitterCard?: string;
   /** Standard page context used to auto-generate the description. */
   standard?: { code: string; title: string; dateModified?: string };
+  /** When false, the TOC column is removed and the content expands to full width. */
+  hasToc?: boolean;
 }
 
 const {
@@ -46,6 +48,7 @@ const {
   ogImage,
   twitterCard,
   standard,
+  hasToc = true,
 } = Astro.props;
 
 const frameworkConfig = getFramework(framework) ?? getFramework("ias")!;
@@ -123,16 +126,18 @@ const seoType = detectSeoType({ code, framework, standard, hideFramework });
         <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
         <main class="content" id="main" tabindex="-1">
-          <div class="page-body" class:list={{"home-layout": code === "Home"}}>
+          <div class="page-body" class:list={{"home-layout": code === "Home", "no-toc": !hasToc}}>
             <div class="reading-column">
               <div class="page-content">
                 <slot />
               </div>
             </div>
 
-            <aside class="page-toc">
-              <slot name="toc" />
-            </aside>
+            {hasToc && (
+              <aside class="page-toc">
+                <slot name="toc" />
+              </aside>
+            )}
 
             <Footer />
           </div>
