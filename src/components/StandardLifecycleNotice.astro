@@ -47,7 +47,7 @@ interface Props {
     | "draft";
   title?: string;
   explanation: string;
-  historical: string;
+  historical?: string;
   link: string;
   linkText: string;
   currentLabel?: string;
@@ -124,7 +124,7 @@ const countdown = getLifecycleCountdown(eventDate);
   )}
   <div class="ln__body">
     <p class="ln__text">{explanation}</p>
-    <p class="ln__text">{historical}</p>
+    {historical && <p class="ln__text">{historical}</p>}
     <div class="ln__current">
       <div class="ln__current-label">{currentLabel}</div>
       <a class="ln__link" href={link}>
