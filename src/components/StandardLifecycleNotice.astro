@@ -106,32 +106,44 @@ const countdown = getLifecycleCountdown(eventDate);
   <div class="ln__header">
     <span class="ln__icon"><Icon size={18} strokeWidth={2} /></span>
     <span class="ln__title">{resolvedTitle}</span>
-    {countdown.showCountdown && (
-      <span class="ln__badge">
-        {countdown.isToday
-          ? "Today"
-          : countdown.isTomorrow
-            ? "Tomorrow"
-            : `${countdown.daysRemaining} days`}
-      </span>
-    )}
+    {
+      countdown.showCountdown && (
+        <span class="ln__badge">
+          {countdown.isToday
+            ? "Today"
+            : countdown.isTomorrow
+              ? "Tomorrow"
+              : `${countdown.daysRemaining} days`}
+        </span>
+      )
+    }
   </div>
-  {transitionTo && targetStatus && (
-    <div class="ln__transition">
-      <span class="ln__transition-arrow"><ArrowDown size={14} strokeWidth={2} /></span>
-      <span class="ln__transition-target">{targetStatus}</span>
-    </div>
-  )}
+  {
+    transitionTo && targetStatus && (
+      <div class="ln__transition">
+        <span class="ln__transition-arrow">
+          <ArrowDown size={14} strokeWidth={2} />
+        </span>
+        <span class="ln__transition-target">{targetStatus}</span>
+      </div>
+    )
+  }
   <div class="ln__body">
     <p class="ln__text">{explanation}</p>
     {historical && <p class="ln__text">{historical}</p>}
-    <div class="ln__current">
-      <div class="ln__current-label">{currentLabel}</div>
-      <a class="ln__link" href={link}>
-        <span class="ln__link-text">{linkText}</span>
-        <span class="ln__arrow"><ArrowRight size={16} strokeWidth={2} /></span>
-      </a>
-    </div>
+    {
+      link && linkText && (
+        <div class="ln__current">
+          <div class="ln__current-label">{currentLabel}</div>
+          <a class="ln__link" href={link}>
+            <span class="ln__link-text">{linkText}</span>
+            <span class="ln__arrow">
+              <ArrowRight size={16} strokeWidth={2} />
+            </span>
+          </a>
+        </div>
+      )
+    }
   </div>
 </section>
 
@@ -213,7 +225,10 @@ const countdown = getLifecycleCountdown(eventDate);
   }
 
   .ln__body {
-    background: var(--ln-soft);
+    /* background:
+      var(--ln-ink), transparent 20%; */
+    background: color-mix(in srgb, var(--ln-ink) 10%, transparent);
+
     padding: 16px 18px;
   }
 
