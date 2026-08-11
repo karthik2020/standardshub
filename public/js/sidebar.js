@@ -128,6 +128,12 @@ function initSidebar() {
 
         sections.forEach(section => {
 
+            if (hasTerm && section.dataset.section === "japangaap") {
+                section.style.display = "none";
+                totalVisible += 0;
+                return;
+            }
+
             const items =
                 section.querySelector(".section-items");
 
