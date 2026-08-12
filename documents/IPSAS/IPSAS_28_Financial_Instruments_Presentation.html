@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPSAS 28 — Financial Instruments: Presentation | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .eg  { margin-bottom: 7px; }
+  .egl { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; margin-bottom: 3px; }
+  .entry { display: flex; align-items: flex-start; gap: 4px; margin-bottom: 4px; }
+  .dr { font-size: 11px; font-weight: 500; color: var(--color-text-info);   min-width: 14px; padding-top: 1px; }
+  .cr { font-size: 11px; font-weight: 500; color: var(--color-text-danger); min-width: 14px; padding-top: 1px; padding-left: 6px; }
+  .etxt { font-size: 11px; color: var(--color-text-primary); flex: 1; line-height: 1.4; }
+  .badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .bc { background: #f3e8ff; color: #7e22ce; }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">IPSAS 28 — Financial Instruments: Presentation</div>
+      <div class="hub-sub">Extended reference poster · Full Handbook structure · Statement mapping · Related standards</div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <a href="#s1">1. Objective, Scope &amp; Definitions</a>
+    <a href="#s2">2. Liabilities vs Net Assets/Equity — the Core Test</a>
+    <a href="#s3">3. Puttable Instruments</a>
+    <a href="#s4">4. Pro Rata Liquidation-Only Instruments &amp; Reclassification</a>
+    <a href="#s5">5. Compound Financial Instruments</a>
+    <a href="#s6">6. Treasury Shares</a>
+    <a href="#s7">7. Interest, Dividends, Losses &amp; Gains</a>
+    <a href="#s8">8. Offsetting a Financial Asset and a Financial Liability</a>
+    <a href="#s9">9. Effective Date &amp; Amendment Timeline</a>
+    <a href="#s10">10. Relationship to IAS 32</a>
+    <a href="#s11">11. Statement / Process Mapping</a>
+    <a href="#s12">12. Related Standards</a>
+    <a href="#s13">13. Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 — OBJECTIVE, SCOPE & DEFINITIONS ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; Definitions (paras. 1–12)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Objective &amp; scope</div>
+      <div class="principle">Establishes principles for presenting financial instruments as LIABILITIES or NET ASSETS/EQUITY, and for OFFSETTING financial assets and financial liabilities — from the ISSUER's perspective. Complements IPSAS 41 (recognition/measurement) and IPSAS 30 (disclosure).</div>
+      <div class="cross-list">
+        <span>Interests in controlled entities/associates/joint ventures (IPSAS 34/35/36) — except derivatives linked to them, and cases where those Standards themselves require IPSAS 41</span>
+        <span>Employers' rights/obligations under employee benefit plans (IPSAS 39)</span>
+        <span>Insurance contract obligations (generally) — though embedded derivatives and financial guarantee contracts CAN fall within scope</span>
+        <span>Share-based payment instruments/contracts — except treasury share provisions (§6)</span>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Key definitions (para. 9)</div>
+      <div class="glossary-item"><div class="glossary-term">Financial instrument</div><div class="glossary-def">Any contract giving rise to BOTH a financial asset of one entity AND a financial liability or equity instrument of another.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Financial asset</div><div class="glossary-def">Cash; an equity instrument of another entity; a contractual right to receive cash/another financial asset, or to exchange instruments on potentially FAVORABLE terms; or certain contracts settled in the entity's own equity instruments.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Financial liability</div><div class="glossary-def">A contractual OBLIGATION to deliver cash/another financial asset, or to exchange instruments on potentially UNFAVORABLE terms; or certain contracts settled in the entity's own equity instruments.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Equity instrument</div><div class="glossary-def">Any contract evidencing a RESIDUAL INTEREST in an entity's assets after deducting all of its liabilities.</div></div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card cw span2">
+      <div class="ctitle cw">Contracts on non-financial items — when they ARE financial instruments (paras. 4–6)</div>
+      <div class="principle">A contract to buy/sell a NON-FINANCIAL item falls WITHIN this Standard's scope if it can be settled NET in cash (or another financial instrument, or by exchanging instruments) — UNLESS entered into and held for the entity's own expected purchase/sale/usage requirements.</div>
+      <div class="dot-list">
+        <span>Either party's contract terms explicitly permit net settlement</span>
+        <span>No explicit net-settlement term, but the entity has a PRACTICE of net-settling similar contracts</span>
+        <span>The entity has a practice of taking delivery and reselling shortly after, to profit from short-term price fluctuations</span>
+        <span>The non-financial item is READILY CONVERTIBLE to cash</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 — LIABILITIES VS NET ASSETS/EQUITY: THE CORE TEST ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Liabilities vs Net Assets/Equity — the Core Classification Test (paras. 13–14)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Substance over form, and the two-condition equity test</div>
+      <div class="principle">The issuer classifies a financial instrument (or its component parts) on initial recognition according to the SUBSTANCE of the contractual arrangement — not its legal form — applying the financial liability, financial asset, and equity instrument definitions.</div>
+      <div class="formula-box">
+        <div class="f-eq">An instrument is EQUITY if, and only if, BOTH conditions hold: (a) no contractual obligation to deliver cash/another financial asset or exchange on unfavorable terms; AND (b) if settled in own equity instruments, it's a fixed-for-fixed non-derivative or specific derivative arrangement</div>
+      </div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ A contractual obligation that WILL or MAY result in future receipt/delivery of the issuer's own equity instruments, but fails EITHER condition, is NOT an equity instrument — it's a financial liability (para. 14), subject to the puttable-instrument and liquidation-only exceptions in §3–§4.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 — PUTTABLE INSTRUMENTS ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Puttable Instruments — An Exception to the Liability Definition (paras. 15–16)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">A narrow carve-out — ALL FIVE features required (para. 15)</div>
+      <div class="check-list">
+        <span>Entitles the holder to a PRO RATA share of net assets on liquidation</span>
+        <span>The instrument is in the class SUBORDINATE to all other classes — no priority on liquidation, and doesn't need conversion to reach that subordinate class</span>
+        <span>ALL instruments in that subordinate class have IDENTICAL features (e.g. all puttable, same redemption pricing formula)</span>
+        <span>Apart from the put obligation itself, NO other contractual obligation to deliver cash/another asset or settle unfavorably, and it's not a contract settled in the entity's own equity instruments</span>
+        <span>Total expected cash flows over the instrument's life are based SUBSTANTIALLY on the entity's surplus/deficit, change in recognized net assets, or change in fair value of (recognized + unrecognized) net assets</span>
+      </div>
+      <div class="note">Even meeting all five, the issuer must ALSO have NO OTHER instrument/contract with cash flows based substantially on the same measures, and with the effect of restricting or fixing the residual return to puttable holders (para. 16) — otherwise equity classification is barred.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 — PRO RATA LIQUIDATION-ONLY INSTRUMENTS & RECLASSIFICATION ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Instruments Obligating Delivery of a Pro Rata Share Only on Liquidation, &amp; Reclassification (paras. 17–19)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">A second, related exception (paras. 17–18)</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Some instruments obligate the issuer to deliver a pro rata net-asset share ONLY ON LIQUIDATION — because liquidation is either CERTAIN (a limited-life entity) or uncertain but at the HOLDER's option. As an exception to the liability definition, classified as equity if it meets essentially the SAME feature set as puttable instruments (§3) — pro rata entitlement, subordination, identical class features, no other unfavorable obligations, and cash flows based substantially on entity performance measures.</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Reclassification (para. 19)</div>
+      <div class="formula-box">
+        <div class="f-eq">An instrument is reclassified FROM the date it starts (or stops) meeting all the relevant conditions — not retrospectively</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">E.g. if a puttable instrument stops meeting all five §3 conditions on a given date, it's reclassified from a financial liability to equity (or vice versa) from THAT date forward.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 — COMPOUND FINANCIAL INSTRUMENTS ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Compound Financial Instruments (paras. 33–37)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Split accounting for convertible-type instruments</div>
+      <div class="principle">A non-derivative financial instrument may contain BOTH a liability component AND a net assets/equity component — e.g. a bond convertible by the HOLDER into a fixed number of the entity's ordinary shares. Two components: a financial LIABILITY (the contractual obligation to deliver cash/another asset) and an EQUITY instrument (the holder's conversion option).</div>
+      <div class="dot-list">
+        <span>The entity presents the liability and net assets/equity components SEPARATELY on the statement of financial position from inception</span>
+        <span>Classification is NOT revised for a change in the likelihood the conversion option will be exercised — even if exercise appears economically favorable at some point</span>
+        <span>Transaction costs are ALLOCATED between the liability and equity components, in proportion to the allocation of proceeds</span>
+      </div>
+      <div class="note">Economically, issuing a convertible bond is substantially the same as issuing a straight debt instrument WITH detachable share-purchase warrants — hence the split presentation (para. 34).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 — TREASURY SHARES ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Treasury Shares (paras. 38–39)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Deducted from net assets/equity — no gain or loss, ever</div>
+      <div class="formula-box">
+        <div class="f-eq">Reacquired own equity instruments ("treasury shares") → DEDUCTED from net assets/equity; NO gain/loss recognized in surplus or deficit on purchase, sale, issue, or cancellation</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">May be acquired/held by the entity OR by other members of the economic entity. Consideration paid or received is recognized DIRECTLY in net assets/equity. Disclosed separately (SOFP or notes) per IPSAS 1; IPSAS 20 related-party disclosure applies if reacquired from related parties (para. 39).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 — INTEREST, DIVIDENDS, LOSSES & GAINS ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Interest, Dividends or Similar Distributions, Losses, and Gains (paras. 40–46)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Classification follows the underlying component</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1.7fr;"><span>Instrument component</span><span>Where interest/dividends/gains/losses land</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.7fr;"><span>Financial LIABILITY</span><span>Revenue or EXPENSE in surplus or deficit</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.7fr;"><span>EQUITY instrument</span><span>Distributions recognized DIRECTLY in net assets/equity</span></div>
+      </div>
+      <div class="note">So: dividends on shares wholly classified as liabilities are expensed like bond interest; gains/losses on redeeming/refinancing financial LIABILITIES hit surplus/deficit, while redeeming/refinancing EQUITY instruments is a net assets/equity change. Changes in an equity instrument's FAIR VALUE are never recognized at all (para. 41).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Transaction costs &amp; presentation</div>
+      <div class="dot-list">
+        <span>Transaction costs of an EQUITY transaction (registration fees, professional fees, printing, stamp duties) → deducted from net assets/equity, to the extent INCREMENTAL and directly attributable</span>
+        <span>Costs of an ABANDONED equity transaction → expensed</span>
+        <span>Compound-instrument transaction costs → allocated between the liability and equity components, proportionate to proceeds allocation (§5)</span>
+        <span>Dividends classified as an expense → presented WITH interest on other liabilities, or as a separate SOFPerformance item</span>
+      </div>
+      <div class="note">Income tax on distributions to equity holders and on equity-transaction costs follows the relevant income tax accounting standard (para. 40A) — not addressed within IPSAS 28 itself.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 — OFFSETTING A FINANCIAL ASSET AND A FINANCIAL LIABILITY ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Offsetting a Financial Asset and a Financial Liability (paras. 47–55)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The two-part test — BOTH required (para. 47)</div>
+      <div class="check-list">
+        <span>Currently has a LEGALLY ENFORCEABLE right to set off the recognized amounts</span>
+        <span>INTENDS either to settle net, OR to realize the asset and settle the liability SIMULTANEOUSLY</span>
+      </div>
+      <div class="note">A LEGAL right alone is NOT sufficient without the intention to actually exercise it or settle simultaneously — without that intention, future cash flow amount/timing is unaffected, so net presentation wouldn't better reflect the entity's position (para. 51). An intention to net-settle WITHOUT the legal right is equally insufficient (para. 52).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Circumstances where offsetting is usually INAPPROPRIATE (para. 54)</div>
+      <div class="cross-list">
+        <span>Several instruments used to emulate a single "synthetic instrument"</span>
+        <span>Same primary risk exposure but DIFFERENT counterparties (e.g. a derivatives portfolio)</span>
+        <span>Assets pledged as collateral for non-recourse liabilities</span>
+        <span>Assets set aside in trust without creditor acceptance in settlement (e.g. a sinking fund)</span>
+        <span>Obligations expected to be recovered from a third party via an insurance claim</span>
+      </div>
+      <div class="note">A MASTER NETTING ARRANGEMENT creates a right of set-off typically enforceable only on a specified DEFAULT event — it does NOT, by itself, satisfy the para. 47 test unless BOTH conditions are independently met (para. 55). Where financial assets/liabilities under a master netting arrangement are NOT offset, IPSAS 30 requires disclosure of the arrangement's credit-risk effect.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 — EFFECTIVE DATE & AMENDMENT TIMELINE ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Effective Date &amp; Amendment Timeline (para. 59)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Amendment history at a glance</div>
+      <div class="principle">Base Standard: periods beginning on/after <strong>1 January 2013</strong>.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2.2fr;"><span>Effective</span><span>Change</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2017</span><span>Amendments consequential on IPSAS 33 (First-time Adoption); IPSAS 35 &amp; IPSAS 37 (consolidation/joint arrangements scope references)</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2018</span><span>Scope references updated for IPSAS 39, Employee Benefits</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2023</span><span>Amendments consequential on IPSAS 41, Financial Instruments (measurement category cross-references throughout)</span></div>
+      </div>
+      <div class="note">IPSAS 28 itself has remained structurally stable since 2013 — most amendments are cross-reference updates as the recognition/measurement and disclosure counterpart Standards (IPSAS 29/41, IPSAS 30) evolved around it.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 — RELATIONSHIP TO IAS 32 ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Relationship to IAS/IFRS — Comparison with IAS 32</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — IPSAS 28 vs IAS 32</div>
+      <div class="principle">IPSAS 28 is drawn primarily from IAS 32 (2003), <em>Financial Instruments: Presentation</em>, including amendments up to 31 December 2008.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1.9fr;"><span>Topic</span><span>Difference</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Financial guarantee / insurance election</span><span>IAS 32 requires entities to have PREVIOUSLY ASSERTED financial guarantees are insurance contracts to elect that treatment; IPSAS 28 allows the same election WITHOUT requiring a prior explicit assertion</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Terminology</span><span>"Statement of financial performance," "net assets/equity" (IPSAS 28) vs "statement of comprehensive income (or separate income statement)," "equity" (IAS 32)</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Revenue vs income</span><span>IPSAS 28 does not distinguish "revenue" from "income"; IAS 32 uses "income" as the broader term</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Substance-of-contract guidance</span><span>IPSAS 28 adds Application Guidance on identifying arrangements that are, in substance, contractual — no IAS 32 equivalent</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Non-exchange revenue guidance</span><span>IPSAS 28 adds Application Guidance on when non-exchange-revenue assets/liabilities ARE financial instruments — a public-sector-specific issue</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>IFRIC 2 principles</span><span>IPSAS 28 embeds IFRIC 2 (Members' Shares in Co-operative Entities) principles AUTHORITATIVELY as an Appendix — under IFRS, IFRIC 2 is a separate document</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Transitional provisions</span><span>IPSAS 28 has FIRST-TIME ADOPTION transitional provisions (for entities adopting accrual accounting or IPSAS 28 for the first time); IAS 32 has none</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 — STATEMENT / PROCESS MAPPING ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Classification decision map</div>
+      <div class="dot-list">
+        <span>1. Does the instrument include a contractual obligation to deliver cash/another asset, or exchange on unfavorable terms? → FINANCIAL LIABILITY (unless a puttable/liquidation-only exception applies) (§2)</span>
+        <span>2. Is it puttable, meeting ALL FIVE §3 features (and no offsetting other-instrument test failure)? → classified as EQUITY, despite the put obligation (§3)</span>
+        <span>3. Does it obligate delivery of a pro rata net-asset share ONLY on liquidation, meeting the equivalent feature set? → EQUITY (§4)</span>
+        <span>4. Does the instrument contain BOTH liability and conversion-option components? → SPLIT into a liability component and an equity component (§5)</span>
+        <span>5. Has the entity reacquired its OWN equity instruments? → deduct from net assets/equity; no gain/loss ever (§6)</span>
+        <span>6. Do BOTH offsetting conditions hold — legal right AND intention to net-settle/settle simultaneously? → present NET on the SOFP (§8)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card cs span2">
+      <div class="ctitle cs">Concept-to-statement mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>IPSAS 28 concept</span><span>Statement(s)</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Financial liability component</span><span><span class="badge bs">SOFP</span></span><span>Interest/dividends expensed in surplus/deficit</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Equity instrument component</span><span><span class="badge be">NA/E</span></span><span>Distributions recognized directly, never expensed</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Treasury shares</span><span><span class="badge be">NA/E</span></span><span>Deducted from net assets/equity; no gain/loss recognized</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Compound instrument split</span><span><span class="badge bs">SOFP</span> <span class="badge be">NA/E</span></span><span>Liability and equity components presented separately</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Offset financial asset/liability</span><span><span class="badge bs">SOFP</span></span><span>Net presentation, only when both conditions are met</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Treasury share amounts</span><span><span class="badge bp">Notes</span></span><span>Disclosed separately per IPSAS 1</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 — RELATED STANDARDS ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How IPSAS 28 connects across the IPSAS body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.7fr 2.2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 1</span><span>Treasury share and transaction-cost disclosure requirements (§6, §7)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 20</span><span>Related party disclosure when treasury shares are reacquired from related parties (§6)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 30</span><span>The disclosure counterpart Standard — complements IPSAS 28's presentation principles (§1)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 34 / 35 / 36</span><span>Determine which controlled-entity/associate/joint-venture interests fall outside IPSAS 28's scope (§1)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 39</span><span>Employee benefit plan rights/obligations excluded from scope (§1)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 41</span><span>Defines several terms IPSAS 28 imports directly (amortized cost, derivative, effective interest method); governs recognition/measurement (§1)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 — GLOSSARY ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Financial instrument</div><div class="glossary-def">Any contract giving rise to both a financial asset of one entity and a financial liability or equity instrument of another.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Equity instrument</div><div class="glossary-def">Any contract evidencing a residual interest in an entity's assets after deducting all liabilities.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Puttable financial instrument</div><div class="glossary-def">One including a contractual obligation for the issuer to repurchase or redeem it on exercise of the put.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Compound financial instrument</div><div class="glossary-def">A non-derivative instrument containing both a liability component and an equity component.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Treasury shares</div><div class="glossary-def">An entity's own equity instruments that it has reacquired.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Right of set-off</div><div class="glossary-def">A debtor's legal right, by contract or otherwise, to settle or eliminate an amount due by applying an amount due from the same creditor.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bs">SOFP</span> Statement of financial position
+      <span class="badge be">NA/E</span> Net assets/equity (statement of changes)
+      <span class="badge bp">Notes</span> Notes to the financial statements
+    </div>
+  </div>
+
+  <div class="footer-note">IPSAS 28 — Financial Instruments: Presentation · Extended Reference Poster · Built from the 2025 IPSASB Handbook, Volume I · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

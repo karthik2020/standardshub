@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPSAS 39 — Employee Benefits | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .eg  { margin-bottom: 7px; }
+  .egl { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; margin-bottom: 3px; }
+  .entry { display: flex; align-items: flex-start; gap: 4px; margin-bottom: 4px; }
+  .dr { font-size: 11px; font-weight: 500; color: var(--color-text-info);   min-width: 14px; padding-top: 1px; }
+  .cr { font-size: 11px; font-weight: 500; color: var(--color-text-danger); min-width: 14px; padding-top: 1px; padding-left: 6px; }
+  .etxt { font-size: 11px; color: var(--color-text-primary); flex: 1; line-height: 1.4; }
+  .badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .bc { background: #f3e8ff; color: #7e22ce; }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">IPSAS 39 — Employee Benefits</div>
+      <div class="hub-sub">Extended reference poster · Full Handbook structure · Statement mapping · Related standards</div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <a href="#s1">1. Objective, Scope &amp; the Four Categories</a>
+    <a href="#s2">2. Definitions</a>
+    <a href="#s3">3. Short-Term Employee Benefits — Recognition</a>
+    <a href="#s4">4. Short-Term Paid Absences &amp; Profit-Sharing/Bonus Plans</a>
+    <a href="#s5">5. Post-Employment Benefits — Defined Contribution vs Defined Benefit</a>
+    <a href="#s6">6. Defined Benefit Plans — the Four-Step Accounting Process</a>
+    <a href="#s7">7. Actuarial Valuation — Projected Unit Credit Method</a>
+    <a href="#s8">8. Actuarial Assumptions &amp; the Discount Rate</a>
+    <a href="#s9">9. Past Service Cost, Curtailments &amp; Settlements</a>
+    <a href="#s10">10. Plan Assets, Net Interest &amp; the Asset Ceiling</a>
+    <a href="#s11">11. Presentation — Offsetting &amp; Where Amounts Go</a>
+    <a href="#s12">12. Disclosure Requirements — Defined Benefit Plans</a>
+    <a href="#s13">13. Other Long-Term Employee Benefits</a>
+    <a href="#s14">14. Termination Benefits</a>
+    <a href="#s15">15. Effective Date &amp; Amendment Timeline</a>
+    <a href="#s16">16. Relationship to IAS 19</a>
+    <a href="#s17">17. Statement / Process Mapping</a>
+    <a href="#s18">18. Related Standards</a>
+    <a href="#s19">19. Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 — OBJECTIVE, SCOPE & THE FOUR CATEGORIES ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; the Four Categories of Employee Benefits (paras. 1–7)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Objective</div>
+      <div class="principle">Requires an entity to recognize (a) a LIABILITY when an employee has provided service in exchange for future benefits, and (b) an EXPENSE when the entity consumes the economic benefits/service potential from that service.</div>
+      <div class="dot-list">
+        <span>Applies to ALL employee benefits EXCEPT share-based transactions (governed by the relevant share-based payment standard)</span>
+        <span>Excludes reporting BY retirement benefit plans themselves (IPSAS 49) and non-employment-related social security programs</span>
+      </div>
+      <div class="note">"Employees" includes KEY MANAGEMENT PERSONNEL as defined in IPSAS 20, and covers full-time, part-time, permanent, casual, and temporary service (para. 7).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">The four categories (para. 5)</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.2fr 1.8fr;"><span>Category</span><span>Examples</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1.8fr;"><span>Short-term</span><span>Wages, paid annual/sick leave, bonuses, non-monetary benefits — settled within 12 months</span></div>
+        <div class="tr alt" style="grid-template-columns:1.2fr 1.8fr;"><span>Post-employment</span><span>Pensions, lump sums, post-employment medical/life insurance</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1.8fr;"><span>Other long-term</span><span>Long-service/sabbatical leave, jubilee benefits, long-term disability</span></div>
+        <div class="tr alt" style="grid-template-columns:1.2fr 1.8fr;"><span>Termination</span><span>Benefits from ending employment — entity-initiated or employee-accepted offer</span></div>
+      </div>
+      <div class="note">Employee benefits arise from FORMAL plans/agreements, LEGISLATIVE requirements (national/state/industry/multi-employer plans, social security), OR informal practices creating a CONSTRUCTIVE obligation — where the entity has no realistic alternative but to pay (para. 4).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 — DEFINITIONS ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Definitions (para. 8)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Plan classification</div>
+      <div class="glossary-item"><div class="glossary-term">Defined contribution plans</div><div class="glossary-def">The entity pays FIXED contributions into a separate fund, with NO legal or constructive obligation for further contributions if the fund proves insufficient.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Defined benefit plans</div><div class="glossary-def">Post-employment benefit plans OTHER than defined contribution plans — the entity bears the risk.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Multi-employer / state plans</div><div class="glossary-def">Plans pooling assets from unrelated entities (multi-employer), or established by legislation to operate as if multi-employer for defined economic categories (state plans).</div></div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">The net defined benefit liability (asset) building blocks</div>
+      <div class="glossary-item"><div class="glossary-term">Deficit or surplus</div><div class="glossary-def">Present value of the defined benefit obligation LESS the fair value of plan assets.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Asset ceiling</div><div class="glossary-def">The present value of economic benefits available as refunds from the plan or reduced future contributions.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Net defined benefit liability (asset)</div><div class="glossary-def">The deficit or surplus, adjusted for any effect of limiting a net asset to the asset ceiling.</div></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 — SHORT-TERM EMPLOYEE BENEFITS: RECOGNITION ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Short-Term Employee Benefits — Recognition (paras. 11–12)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Simple, undiscounted, immediate</div>
+      <div class="formula-box">
+        <div class="f-eq">Recognize the UNDISCOUNTED amount expected to be paid for service rendered: a LIABILITY (accrued expense) net of amounts paid — or an ASSET (prepaid expense) if payments already exceed what's due, to the extent recoverable via future reduction or refund</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Recognized as an EXPENSE, unless another Standard requires/permits capitalizing it into an asset's cost (e.g. IPSAS 12 inventory, IPSAS 45 PP&amp;E) (para. 11).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 — SHORT-TERM PAID ABSENCES & PROFIT-SHARING/BONUS PLANS ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Short-Term Paid Absences &amp; Profit-Sharing/Bonus Plans (paras. 13–24)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Accumulating vs non-accumulating absences</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2fr;"><span>Type</span><span>Treatment</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2fr;"><span>Accumulating</span><span>Recognized as employees render service that increases FUTURE entitlement — whether vesting (cash payable on leaving) or not</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2fr;"><span>Non-accumulating</span><span>Recognized only when the ABSENCE actually occurs (e.g. maternity/paternity, jury duty) — no liability accrues from service alone</span></div>
+      </div>
+      <div class="note">Accumulating absences are measured at the ADDITIONAL amount expected to be paid from the unused entitlement accumulated at period-end (para. 16).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Profit-sharing &amp; bonus plans — a public-sector-relevant test</div>
+      <div class="check-list">
+        <span>A present LEGAL or CONSTRUCTIVE obligation exists (no realistic alternative but to pay)</span>
+        <span>A RELIABLE ESTIMATE can be made — via a formula in the plan's formal terms, a pre-authorization determination, or clear past-practice evidence</span>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Public sector bonus plans are typically tied to SERVICE DELIVERY objectives or financial performance measures (revenue generation, budgetary targets) rather than profit — genuinely less common than in the private sector, but do appear in commercially-operating segments (para. 20). Recognized as an EXPENSE, never a distribution of profit (para. 23). If not settled within 12 months → reclassified as an OTHER LONG-TERM benefit instead (§13) (para. 24).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 — POST-EMPLOYMENT BENEFITS: DEFINED CONTRIBUTION VS DEFINED BENEFIT ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Post-Employment Benefits — Defined Contribution vs Defined Benefit (paras. 52–56)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs">
+      <div class="ctitle cs">Defined contribution — simple, symmetric to short-term benefits</div>
+      <div class="formula-box">
+        <div class="f-eq">Recognize the CONTRIBUTION PAYABLE as a liability (or asset, if overpaid) and an EXPENSE — discounted only if settlement extends beyond 12 months</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">The entity's obligation is limited to the amount it agrees to contribute — the FUND bears investment/actuarial risk, not the entity. Disclosure: the expense amount recognized for defined contribution plans (paras. 53–56).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Defined benefit — the entity underwrites the risk</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Whether funded or unfunded, the entity is IN SUBSTANCE underwriting the actuarial and investment risk — the fund's ability to pay depends on its own performance AND the entity's ability/willingness to cover any shortfall. Consequently, the expense recognized is NOT simply the period's contribution — it requires the full actuarial apparatus covered in §6–§10 (paras. 57–58).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 — DEFINED BENEFIT PLANS: THE FOUR-STEP ACCOUNTING PROCESS ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Defined Benefit Plans — the Four-Step Accounting Process (paras. 59–63)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Step by step (para. 59)</div>
+      <div class="dot-list">
+        <span><strong style="font-weight:500">1. Determine the deficit/surplus</strong> — projected unit credit method (§7) to estimate the ultimate benefit cost, discounted (§8), less the fair value of plan assets (§10)</span>
+        <span><strong style="font-weight:500">2. Determine the net defined benefit liability/asset</strong> — the deficit/surplus, adjusted for the ASSET CEILING</span>
+        <span><strong style="font-weight:500">3. Amounts to SURPLUS OR DEFICIT</strong> — current service cost, past service cost and settlement gains/losses (§9), net interest (§10)</span>
+        <span><strong style="font-weight:500">4. REMEASUREMENTS to net assets/equity</strong> — actuarial gains/losses, return on plan assets (excluding amounts in net interest), and asset-ceiling effect changes</span>
+      </div>
+      <div class="note">Each material plan is accounted for SEPARATELY (para. 59). The liability is remeasured with SUFFICIENT REGULARITY that recognized amounts don't materially differ from a period-end valuation (para. 60). A qualified actuary is ENCOURAGED, not required (para. 61). The entity accounts for BOTH its legal obligation AND any CONSTRUCTIVE obligation arising from informal practices (para. 63) — the same test as elsewhere in this library.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 — ACTUARIAL VALUATION: PROJECTED UNIT CREDIT METHOD ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Actuarial Valuation — the Projected Unit Credit Method (paras. 68–76)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">One additional unit of entitlement, each period</div>
+      <div class="formula-box">
+        <div class="f-eq">Each period of service = an additional UNIT of benefit entitlement, measured SEPARATELY and built up into the final obligation</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">MANDATORY method (para. 69). The WHOLE obligation is discounted, even the portion expected to settle within 12 months (para. 71).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Attributing benefit — usually the plan's formula, sometimes straight-line</div>
+      <div class="dot-list">
+        <span>Default: attribute benefit per the PLAN'S OWN benefit formula</span>
+        <span>EXCEPTION: if later years' service leads to a MATERIALLY HIGHER benefit level than earlier years → attribute STRAIGHT-LINE instead, from first-benefit-accrual date to the date further service yields no material additional benefit</span>
+      </div>
+      <div class="note">An obligation arises even for NON-VESTED benefits — as vesting requirements shrink each period, a constructive obligation builds; the PROBABILITY some employees won't vest affects MEASUREMENT, not whether the obligation exists at all (para. 74). Where benefit = a constant proportion of FINAL salary, future salary increases affect the SETTLEMENT amount but don't create additional benefit units (para. 76).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 — ACTUARIAL ASSUMPTIONS & THE DISCOUNT RATE ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Actuarial Assumptions &amp; the Discount Rate (paras. 77, 85–88)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Unbiased and mutually compatible</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Actuarial assumptions cover DEMOGRAPHIC variables (turnover, mortality) and FINANCIAL variables (future salary increases, medical cost trends) — all must be UNBIASED (neither imprudently optimistic nor excessively conservative) and MUTUALLY COMPATIBLE (para. 77).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">The discount rate — a genuine IPSAS/IAS 19 divergence</div>
+      <div class="formula-box">
+        <div class="f-eq">The discount rate reflects the TIME VALUE OF MONEY — matched in currency and term to the estimated obligation — but NOT actuarial/investment/entity-specific credit risk</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Unlike IAS 19 (which mandates high-quality corporate bond yields), IPSAS 39 leaves the SOURCE open to judgment — government bonds, high-quality corporate bonds, or another instrument, whichever best approximates time value of money in the entity's jurisdiction. Where no deep market exists at the needed maturities, current market rates are used for shorter terms, EXTRAPOLATED along the yield curve for longer maturities (para. 88) — see §16 for the full IAS 19 comparison.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 — PAST SERVICE COST, CURTAILMENTS & SETTLEMENTS ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Past Service Cost, Curtailments &amp; Settlements (paras. 101–110)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Remeasure using current everything</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:8px;">When a plan AMENDMENT, CURTAILMENT, or SETTLEMENT occurs, the net defined benefit liability/asset is remeasured using CURRENT fair value of plan assets and CURRENT actuarial assumptions — reflecting both the before-and-after benefit/asset position (para. 101).</div>
+      <div class="formula-box">
+        <div class="f-eq">PAST SERVICE COST = change in the present value of the obligation from a plan AMENDMENT or CURTAILMENT — recognized as an EXPENSE at the earlier of the amendment/curtailment date, or when related IPSAS 19 restructuring costs/termination benefits are recognized</div>
+      </div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">What past service cost EXCLUDES (para. 110)</div>
+      <div class="cross-list">
+        <span>Differences between actual vs. assumed salary increases (already captured by projected-salary assumptions)</span>
+        <span>Discretionary pension increase over/under-estimates, where a constructive obligation to grant them exists</span>
+        <span>Surplus-driven benefit improvements the entity is obliged to grant (an ACTUARIAL loss instead)</span>
+        <span>Vested-benefit increases from employees simply completing vesting requirements (already captured as current service cost)</span>
+      </div>
+      <div class="note">Past service cost can be POSITIVE (benefits introduced/enhanced) or NEGATIVE (benefits withdrawn/reduced) — a simultaneous reduction-and-increase for the same employees is treated as ONE net change (paras. 108–109). A settlement occurring WITH a plan amendment/curtailment need not be separately distinguished (para. 102) — but where amendment precedes settlement, past service cost is recognized FIRST (para. 102).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 — PLAN ASSETS, NET INTEREST & THE ASSET CEILING ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Plan Assets, Net Interest &amp; the Asset Ceiling (paras. 125–132)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Net interest — a single number to surplus/deficit</div>
+      <div class="formula-box">
+        <div class="f-eq">Net interest = net defined benefit liability (asset) × the discount rate, determined at the START of the period</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Can be viewed as interest EXPENSE on the obligation, interest REVENUE on plan assets, and interest on the asset-ceiling effect, all netted into one figure — recognized in SURPLUS OR DEFICIT.</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Actuarial gains/losses &amp; the return on plan assets — remeasurements</div>
+      <div class="dot-list">
+        <span>ACTUARIAL gains/losses arise from ASSUMPTION changes and EXPERIENCE adjustments — turnover, mortality, salary/medical cost trends, benefit-payment-option assumptions, and discount rate changes (para. 130)</span>
+        <span>They EXCLUDE changes from plan amendments, curtailments, or settlements — those are past service cost or settlement gains/losses instead (§9) (para. 131)</span>
+        <span>RETURN ON PLAN ASSETS is net of the plan's own management costs and any tax payable BY THE PLAN (excluding tax already built into the obligation's actuarial assumptions) (para. 132)</span>
+      </div>
+      <div class="note">All THREE remeasurement components — actuarial gains/losses, return on plan assets (excluding the net-interest portion), and asset-ceiling effect changes (excluding the net-interest portion) — go to NET ASSETS/EQUITY, never recycled through surplus or deficit later (para. 129).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 — PRESENTATION: OFFSETTING & WHERE AMOUNTS GO ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Presentation — Offsetting &amp; Component Placement (paras. 133–136)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs">
+      <div class="ctitle cs">Offsetting across plans — the same two-part test</div>
+      <div class="check-list">
+        <span>A LEGALLY ENFORCEABLE right to use one plan's surplus to settle another plan's obligations</span>
+        <span>INTENDS to settle net, or to realize the surplus and settle the obligation SIMULTANEOUSLY</span>
+      </div>
+      <div class="note">Deliberately mirrors the IPSAS 28 financial-instrument offsetting criteria (§8 of that Standard's poster) (para. 134).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">No prescribed current/non-current split, no prescribed line item</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">IPSAS 39 does NOT specify whether post-employment assets/liabilities should be split current/non-current (para. 135), and does NOT prescribe exactly where service cost and net interest are presented within surplus or deficit — IPSAS 1's general presentation principles govern that placement instead (para. 136).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 — DISCLOSURE REQUIREMENTS: DEFINED BENEFIT PLANS ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Disclosure Requirements — Defined Benefit Plans (paras. 137–149)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Three disclosure objectives (para. 137)</div>
+      <div class="check-list">
+        <span>EXPLAIN plan characteristics and associated risks</span>
+        <span>IDENTIFY and explain the amounts arising in the financial statements</span>
+        <span>DESCRIBE the effect on the amount, timing, and uncertainty of future cash flows</span>
+      </div>
+      <div class="note">Same judgment-based approach as elsewhere in this library: consider the level of detail, emphasis, aggregation/disaggregation needed to meet the objective — supplement with additional information if the specified disclosures alone fall short (paras. 138–139).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Disaggregation — separating materially different risks</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Entities assess whether plans/plan groups with MATERIALLY DIFFERENT risks warrant disaggregated disclosure — by geography, plan type (flat-salary, final-salary, medical), regulatory environment, reporting segment, or funding arrangement (para. 140). Suggested analyses: active vs. deferred members vs. pensioners; vested vs. accrued-not-vested benefits; conditional benefits vs. future-salary-linked amounts (para. 139).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 — OTHER LONG-TERM EMPLOYEE BENEFITS ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Other Long-Term Employee Benefits (paras. 155–161)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Examples, and why the method is SIMPLER</div>
+      <div class="dot-list">
+        <span>Long-term paid/sabbatical leave, jubilee benefits, long-term disability, profit-sharing/bonuses not settled within 12 months, deferred remuneration, and compensation until re-employment (para. 155)</span>
+      </div>
+      <div class="note">Measurement here is USUALLY less uncertain than post-employment benefits — so this Standard requires a SIMPLIFIED method that does NOT split out net-assets/equity remeasurements the way defined benefit plans do (para. 156). A REBUTTABLE PRESUMPTION exists that long-term disability payments are similarly less uncertain — if rebutted, the FULL defined-benefit machinery (§6–§10) applies instead (para. 157). This is a genuine IPSAS/IAS 19 divergence, covered further in §16.</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">One net number, straight to surplus or deficit</div>
+      <div class="formula-box">
+        <div class="f-eq">Recognize the NET TOTAL of service cost + net interest + ALL remeasurements → straight to surplus or deficit (unless capitalized under another IPSAS)</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Applies the SAME recognition/measurement mechanics as defined benefit plans (paras. 58–100, 115–121) — but with EVERYTHING routed through surplus or deficit, none split to net assets/equity (para. 158–159). For length-of-service-linked disability benefits, the obligation reflects payment PROBABILITY and expected duration; for flat-rate benefits, cost is recognized only when the disabling EVENT occurs (para. 160).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 — TERMINATION BENEFITS ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Termination Benefits (paras. 162–170)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Why treated separately — the triggering EVENT differs</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Termination benefits arise from TERMINATION of employment, not from SERVICE — that's why they're accounted for separately from every other category. They result EITHER from the entity's decision to terminate, OR the employee's acceptance of an offered exchange for termination (para. 162).</div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ Benefits from termination AT THE EMPLOYEE's request (without an entity offer), or from mandatory retirement, are POST-EMPLOYMENT benefits, not termination benefits — though the INCREMENTAL benefit above what an employee-requested termination would receive IS a termination benefit (para. 163).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Recognition — the earlier of two triggers (para. 168)</div>
+      <div class="check-list">
+        <span>When the entity can NO LONGER WITHDRAW the offer</span>
+        <span>When the entity recognizes related IPSAS 19 restructuring costs</span>
+      </div>
+      <div class="dot-list">
+        <span>EMPLOYEE-accepted offers: the earlier of ACCEPTANCE, or when a withdrawal restriction (legal/regulatory/contractual) takes effect (para. 169)</span>
+        <span>ENTITY-initiated terminations: when a termination PLAN has been communicated to affected employees, meeting specific criteria (unlikely to change significantly, identifies affected employees/jobs/locations, and a near-term completion timeframe) (para. 170)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 15 — EFFECTIVE DATE & AMENDMENT TIMELINE ============ -->
+  <div class="section-header" id="s15"><span class="num">15</span><h2>Effective Date &amp; Amendment Timeline (paras. 176–176D)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Amendment history at a glance</div>
+      <div class="principle">Base Standard: periods beginning on/after <strong>1 January 2018</strong>.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2.2fr;"><span>Effective</span><span>Change</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>Plan amendments/curtailments/settlements from 1 Jan 2019</span><span>Paras. 59, 101, 122, 125, 127, 128, 159 amended; new 103A, 124A, 125A — Improvements to IPSAS, 2018 (past-service-cost and net-interest recalculation refinements)</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2023</span><span>Paras. 3, 4 — Improvements to IPSAS, 2021</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2025</span><span>Paras. 11, 53, 123 — IPSAS 45, Property, Plant, and Equipment (May 2023); paras. 8, 144 — IPSAS 46, Measurement (May 2023)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 16 — RELATIONSHIP TO IAS 19 ============ -->
+  <div class="section-header" id="s16"><span class="num">16</span><h2>Relationship to IAS/IFRS — Comparison with IAS 19</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — IPSAS 39 vs IAS 19</div>
+      <div class="principle">IPSAS 39 is drawn primarily from IAS 19 (issued 2011, amendments to 31 December 2018), <em>Employee Benefits</em>.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1.9fr;"><span>Topic</span><span>Difference</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Public sector bonus plans</span><span>IPSAS 39 adds specific guidance (§4) — a public-sector need IAS 19 doesn't address</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Discount rate</span><span>IAS 19 REQUIRES high-quality corporate bond yields; IPSAS 39 requires a rate reflecting time value of money generally (government bonds, corporate bonds, or another instrument) — PLUS requires disclosure of the basis used (§8)</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Long-term disability rebuttable presumption</span><span>IPSAS 39 includes one (§13); IAS 19 does not</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Remeasurement destination</span><span>IPSAS 39: NET ASSETS/EQUITY. IAS 19: OTHER COMPREHENSIVE INCOME — reflecting the different statement architecture between the frameworks</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>IFRIC 14 guidance</span><span>IPSAS 39 embeds it AUTHORITATIVELY as Appendix AA (asset ceiling / minimum funding interaction); under IFRS, IFRIC 14 is a separate document</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Terminology</span><span>"Revenue," "controlling entity," "controlled entities" (IPSAS 39) vs "income," "parent," "subsidiaries" (IAS 19)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 17 — STATEMENT / PROCESS MAPPING ============ -->
+  <div class="section-header" id="s17"><span class="num">17</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Classification decision map</div>
+      <div class="dot-list">
+        <span>1. Is it a TERMINATION benefit (arises from ending employment, not service)? → §14, recognized at the earlier of two specific triggers</span>
+        <span>2. Otherwise, will it settle WITHIN 12 months of the related service? → SHORT-TERM: undiscounted, simple accrual (§3–§4)</span>
+        <span>3. Is it POST-EMPLOYMENT (payable after employment ends)? → determine DEFINED CONTRIBUTION (simple) or DEFINED BENEFIT (full actuarial machinery) (§5)</span>
+        <span>4. Defined benefit → run the four-step process: deficit/surplus → net liability/asset → surplus/deficit amounts → net-assets/equity remeasurements (§6–§10)</span>
+        <span>5. Neither short-term, post-employment, nor termination → OTHER LONG-TERM benefit — same recognition/measurement mechanics as defined benefit, but ALL routed through surplus or deficit (no remeasurement split) (§13)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card cs span2">
+      <div class="ctitle cs">Concept-to-statement mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>IPSAS 39 concept</span><span>Statement(s)</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Short-term benefit accrual</span><span><span class="badge bs">SOFP</span></span><span>Liability net of amounts paid</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Defined contribution expense</span><span><span class="badge bp">SOFPerf</span></span><span>Unless capitalized under another IPSAS</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Net defined benefit liability (asset)</span><span><span class="badge bs">SOFP</span></span><span>Deficit/surplus, adjusted for the asset ceiling</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Service cost, net interest, past service cost</span><span><span class="badge bp">SOFPerf</span></span><span>All to surplus or deficit</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Actuarial gains/losses, return on plan assets</span><span><span class="badge be">NA/E</span></span><span>Defined benefit plans only — never recycled</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Other long-term benefit remeasurements</span><span><span class="badge bp">SOFPerf</span></span><span>Unlike defined benefit — all through surplus/deficit</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Termination benefit liability</span><span><span class="badge bs">SOFP</span> <span class="badge bp">SOFPerf</span></span><span>Recognized at the earlier trigger date</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 18 — RELATED STANDARDS ============ -->
+  <div class="section-header" id="s18"><span class="num">18</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How IPSAS 39 connects across the IPSAS body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.7fr 2.2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 1</span><span>General presentation principles govern service cost/net interest placement within surplus or deficit; employee benefits expense disclosure (§11, §12)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 12 / 45</span><span>Capitalization of employee benefit costs into inventory or PP&amp;E cost, where required/permitted (§3, §13)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 19</span><span>Restructuring cost recognition interacts with past service cost and termination benefit recognition triggers (§9, §14); contingent liability disclosure for post-employment obligations (§12)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 20</span><span>Defines key management personnel (included as "employees" under this Standard); related party disclosures for benefit plans and KMP remuneration (§1, §12)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 28</span><span>Source of the offsetting test mirrored for cross-plan asset/liability offsetting (§11)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 41</span><span>Governs qualifying insurance policies and other financial instruments within plan assets</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 46</span><span>Fair value measurement of plan assets (§10)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 49</span><span>Governs reporting BY retirement benefit plans themselves — explicitly excluded from IPSAS 39's own scope (§1)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 19 — GLOSSARY ============ -->
+  <div class="section-header" id="s19"><span class="num">19</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Defined contribution plan</div><div class="glossary-def">A post-employment plan where the entity pays fixed contributions, with no further obligation if the fund proves insufficient.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Defined benefit plan</div><div class="glossary-def">Any post-employment plan other than a defined contribution plan — the entity bears actuarial and investment risk.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Current service cost</div><div class="glossary-def">The increase in the present value of the defined benefit obligation from employee service in the current period.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Past service cost</div><div class="glossary-def">The change in the present value of the defined benefit obligation from a plan amendment or curtailment.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Actuarial gains and losses</div><div class="glossary-def">Changes in the present value of the defined benefit obligation from assumption changes and experience adjustments.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Termination benefits</div><div class="glossary-def">Employee benefits provided in exchange for the termination of employment, rather than for service.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bs">SOFP</span> Statement of financial position
+      <span class="badge bp">SOFPerf</span> Statement of financial performance
+      <span class="badge be">NA/E</span> Net assets/equity (statement of changes)
+    </div>
+  </div>
+
+  <div class="footer-note">IPSAS 39 — Employee Benefits · Extended Reference Poster · Built from the 2025 IPSASB Handbook, Volume II · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

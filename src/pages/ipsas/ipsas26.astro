@@ -1,0 +1,263 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import metadata from "../../data/standards/ipsas/ipsas26.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  covers={metadata.covers}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Objective, Scope & Definitions" },
+        { id: "s2", label: "Cash-Generating vs Non-Cash-Generating Assets" },
+        { id: "s3", label: "Identifying an Asset That May Be Impaired" },
+        { id: "s4", label: "Measuring Recoverable Amount" },
+        { id: "s5", label: "Value in Use — Cash Flow Projections" },
+        { id: "s6", label: "Recognising an Impairment Loss" },
+        { id: "s7", label: "Cash-Generating Units — Identification & Carrying Amount" },
+        { id: "s8", label: "Goodwill Allocation & Impairment Testing" },
+        { id: "s9", label: "Allocating an Impairment Loss Within a CGU" },
+        { id: "s10", label: "Reversing an Impairment Loss" },
+        { id: "s11", label: "Disclosures" },
+        { id: "s12", label: "Effective Date & Amendment Timeline" },
+        { id: "s13", label: "Relationship to IAS 36" },
+        { id: "s14", label: "Statement / Process Mapping" },
+        { id: "s15", label: "Related Standards" },
+        { id: "s16", label: "Glossary" }
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="active"
+    explanation="IPSAS 26 Impairment of Cash-Generating Assets is the current, active standard issued by the IPSASB for assessing and measuring impairment of cash-generating assets — including identifiable cash-generating units and goodwill. It is effective for annual financial statements covering periods beginning on or after 1 April 2009 (earlier application is permitted). The current Standard comprises paras. 1–127."
+    historical="IPSAS 26 is the IPSASB's adaptation of IAS 36 Impairment of Assets for the public sector. The core structure — identifying assets that may be impaired, measuring recoverable amount as the higher of fair value less costs to sell and value in use, allocating impairment losses first to assets other than goodwill and then to goodwill, and reversing impairment when the recoverable amount has increased — is retained, with public-sector framing of the 'service constraint' concept in place of IAS 36's residual-value approach."
+    link=""
+    linkText=""
+  />
+
+  <!-- LEGEND -->
+  <div class="legend">
+    <span class="legend-item legend-objective">Objective &amp; scope (paras. 1–4)</span>
+    <span class="legend-item legend-recognition">Recognition &amp; measurement (paras. 5–9)</span>
+    <span class="legend-item legend-disclosure">Disclosure (paras. 10–19)</span>
+    <span class="legend-item legend-related">Related Standard</span>
+    <span class="legend-item legend-ias">IAS / IFRS equivalent</span>
+  </div>
+
+  <!-- ============ SECTION 1 ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; Definitions (paras. 1–13)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Objective &amp; scope</div>
+      <div class="principle">Establishes the principles for carrying cash-generating assets (and CGUs) at no more than their recoverable amount — the higher of fair value less costs to sell and value in use. Applies to all assets (except those held for sale) that may be impaired at the reporting date.</div>
+      <div class="glossary-item"><div class="glossary-term">Cash-generating asset</div><div class="glossary-def">An asset (or group of assets) that generates an indivisible group of cash flows that are largely independent of the cash flows from other assets.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Recoverable amount</div><div class="glossary-def">The higher of an asset's fair value less costs to sell and its value in use.</div></div>
+    </div>
+
+    <div class="card cd span2">
+      <div class="ctitle cd">Scope exclusions</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.6fr 1.4fr;"><span>Excluded</span><span>Instead, see…</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1.4fr;"><span>Assets held for sale / disposal groups</span><span>IPSAS 20 / IFRS 5</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1.4fr;"><span>Investment property (cost model)</span><span>IPSAS 16</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1.4fr;"><span>Intangible assets with indefinite lives</span><span>IPSAS 38</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1.4fr;"><span>Bearer plants (agriculture)</span><span>IPSAS 27</span></div>
+      </div>
+      <div class="callout info callout--flush">Three-step process: (1) identify assets that may be impaired; (2) determine recoverable amount for those assets; (3) recognise and measure the impairment loss (reversal too).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Cash-Generating vs Non-Cash-Generating Assets (paras. 14–22)</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card cw span2">
+      <div class="ctitle cw">Core distinction (para. 14)</div>
+      <div class="principle">Cash-generating assets cover those whose economic benefits are not recovered solely through sale — typically PP&amp;E, intangible assets, and long-lived investments used in operations. Non-cash-generating assets (including inventories) follow their own Standards.</div>
+      <div class="callout warn">A CGU is the smallest group of assets that generates cash flows largely independently of other assets. Goodwill is allocated to CGUs, never tested in isolation.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Identifying an Asset That May Be Impaired (paras. 23–32)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">When to test (para. 23)</div>
+      <div class="principle">Indicate that an asset may be impaired whenever an event has occurred that indicates the asset's carrying amount may not be recoverable. Impairment is assessed at each reporting date — a 'point in time' evaluation, not a rolling forecast.</div>
+      <div class="cross-list"><span>Internal indicators</span><span>Obsolescence, physical damage, idle capacity</span><span>Restructuring, legal/economic changes</span><span>Market-driven indicators</span><span>Market value below cost, declining cash flows</span></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Measuring Recoverable Amount (paras. 33–46)</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card cd">
+      <div class="ctitle cd">Higher of two measurements (para. 33)</div>
+      <div class="principle">Recoverable amount = max(fair value less costs to sell, value in use). If carrying amount exceeds recoverable amount, the asset is impaired and written down.</div>
+      <div class="check-list"><span>Fair value less costs to sell — market-based</span><span>Value in use — entity-specific, discounted cash-flow estimate</span><span>Use the HIGHER of the two</span></div>
+      <div class="callout info callout--flush">Where both estimates are about equally reliable, value in use may be the more relevant measure for a CGU with no active market; fair value dominates where markets are liquid.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Value in Use — Cash Flow Projections (paras. 47–56)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Estimating future cash flows (para. 47)</div>
+      <div class="principle">Value in use = discounted cash-flow estimate. Uses the entity's own cash-flow projections (as of the reporting date), a pre-tax discount rate reflecting current market assessments of time value and risk, and the expected cash flows over the asset's (or CGU's) remaining useful life.</div>
+      <div class="glossary-item"><div class="glossary-term">Value in use</div><div class="glossary-def">The present value of future cash-flows expected to be derived from an asset (or CGU).</div></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Recognising an Impairment Loss (paras. 57–68)</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card ci">
+      <div class="ctitle ci">When the loss hits (para. 57)</div>
+      <div class="principle">Recognised immediately in profit or loss (or equity where permitted) when the asset's carrying amount exceeds its recoverable amount. Revalued assets are compared at the revalued amount.</div>
+      <div class="cross-list"><span>Written-down to recoverable amount</span><span>Carrying amount of CGU after the write-down</span><span>If CGU has goodwill, allocate first to other assets</span></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Cash-Generating Units — Identification &amp; Carrying Amount (paras. 69–78)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">CGU at a glance (para. 69)</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.5fr 1.5fr;"><span>Aspect</span><span>Guidance</span></div>
+        <div class="tr" style="grid-template-columns:1.5fr 1.5fr;"><span>Smallest cash-generating group</span><span>Largely independent cash inflows</span></div>
+        <div class="tr alt" style="grid-template-columns:1.5fr 1.5fr;"><span>Goodwill allocation</span><span>To the CGU that benefits (never tested alone)</span></div>
+        <div class="tr" style="grid-template-columns:1.5fr 1.5fr;"><span>Carrying amount</span><span>Sum of assets less liabilities assigned</span></div>
+      </div>
+      <div class="callout info callout--flush">If a CGU's carrying amount is below zero (liabilities exceed assets), recognise a liability unless it results from a payment obligation.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Goodwill Allocation &amp; Impairment Testing (paras. 79–92)</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card cw">
+      <div class="ctitle cw">Goodwill is last in (para. 81)</div>
+      <div class="principle">For impairment, losses are allocated: first to assets other than goodwill; only when assets other than goodwill are reduced to zero is goodwill tested for impairment.</div>
+      <div class="glossary-item"><div class="glossary-term">Goodwill</div><div class="glossary-def">The excess of the cost of an acquired unit over the fair value of acquired net identifiable assets.</div></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Allocating an Impairment Loss Within a CGU (paras. 93–106)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Order of allocation (para. 94)</div>
+      <div class="principle">Within a CGU, an impairment loss is allocated to reduce the carrying amount of assets in a prescribed order: (1) assets other than goodwill, proportionally; (2) goodwill. No asset is written below its fair value less costs to sell.</div>
+      <div class="check-list"><span>Reduce pro-rata (excluding goodwill)</span><span>Reduce goodwill only thereafter</span><span>Carrying amount ≥ fair value less costs to sell</span></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Reversing an Impairment Loss (paras. 107–116)</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card cd span2">
+      <div class="ctitle cd">Reversal allowed (para. 107)</div>
+      <div class="principle">An impairment loss for an asset (and a CGU) may be reversed if, and only if, there has been a change in the estimates used to calculate the asset's recoverable amount since the loss was recognised. The reversal is limited to the original carrying amount minus discount.</div>
+      <div class="callout warn">Goodwill reversals are PROHIBITED. Reversals are recorded in profit or loss (not equity where previously charged to equity).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Disclosures (paras. 117–123)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">What to tell users (para. 117)</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.4fr 1.6fr;"><span>The amount</span><span>The explanation</span></div>
+        <div class="tr" style="grid-template-columns:1.4fr 1.6fr;"><span>Impairment loss recognised</span><span>Events indicating the asset's carrying amount may not be recoverable</span></div>
+        <div class="tr alt" style="grid-template-columns:1.4fr 1.6fr;"><span>Reversals</span><span>Methods used to determine recoverable amount</span></div>
+        <div class="tr" style="grid-template-columns:1.4fr 1.6fr;"><span>Discount rate</span><span>CGU structure and how goodwill was allocated</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Effective Date &amp; Amendment Timeline</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card ci span2">
+      <div class="ctitle ci">Timeline</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 1.2fr;"><span>Date</span><span>Event</span></div>
+        <div class="tr" style="grid-template-columns:1fr 1.2fr;"><span>Mar 2008</span><span>Issued</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 1.2fr;"><span>1 Apr 2009</span><span>Effective date</span></div>
+        <div class="tr" style="grid-template-columns:1fr 1.2fr;"><span>2019</span><span>Amended (latest)</span></div>
+      </div>
+      <div class="callout info callout--flush">Issued alongside IPSAS 17/18/19 to complete the impairment set; supersedes earlier ad hoc guidance.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Relationship to IAS 36</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Mapping notes (para. 127)</div>
+      <div class="principle">IPSAS 26 mirrors IAS 36's structure (recoverable amount, CGUs, goodwill allocation, reversals) but replaces the 'residual value' constraint with the public-sector service-constraint framing and adapts the discount-rate commentary for public-sector cash-flow profiles.</div>
+      <div class="cross-list"><span>IAS 36 recoverable amount</span><span>IPSAS 26 recoverable amount (identical)</span><span>IAS 36 CGU</span><span>IPSAS 26 CGU</span><span>IAS 36 goodwill reversal ban</span><span>IPSAS 26 same</span></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card cw span2">
+      <div class="ctitle cw">Where it flows</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.4fr 1.3fr;"><span>Process</span><span>Ledger</span></div>
+        <div class="tr" style="grid-template-columns:1.4fr 1.3fr;"><span>Impairment calculation</span><span>Asset Register → Revaluation Reserves</span></div>
+        <div class="tr alt" style="grid-template-columns:1.4fr 1.3fr;"><span>CGU allocation</span><span>Business-planning → Asset Allocation</span></div>
+        <div class="tr" style="grid-template-columns:1.4fr 1.3fr;"><span>Disclosure prep</span><span>Disclosure Engine → IPSAS 7200</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 15 ============ -->
+  <div class="section-header" id="s15"><span class="num">15</span><h2>Related Standards</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">See also</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2fr;"><span>Standard</span><span>Relation</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2fr;"><span>IPSAS 17</span><span>Property, Plant & Equipment (cost model — impairment)</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2fr;"><span>IPSAS 38</span><span>Intangible Assets</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2fr;"><span>IAS 36</span><span>Direct equivalent</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 16 ============ -->
+  <div class="section-header" id="s16"><span class="num">16</span><h2>Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Carrying amount</div><div class="glossary-def">Asset's cost less accumulated depreciation/impairment (liabilities: amortised cost).</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Recoverable amount</div><div class="glossary-def">Higher of fair value less costs to sell and value in use.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Value in use</div><div class="glossary-def">Discounted future cash flows expected from an asset (or CGU).</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">CGU</div><div class="glossary-def">Cash-Generating Unit — smallest group that generates largely independent cash flows.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Goodwill</div><div class="glossary-def">Excess of CGU cost over fair value of net identifiable assets.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Reversal</div><div class="glossary-def">Removal of a previously recognised impairment (never for goodwill).</div></div>
+    </div>
+  </div>
+</StandardPageLayout>

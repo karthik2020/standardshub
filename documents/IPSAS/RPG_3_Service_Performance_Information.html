@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RPG 3 — Reporting Service Performance Information | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .eg  { margin-bottom: 7px; }
+  .egl { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; margin-bottom: 3px; }
+  .entry { display: flex; align-items: flex-start; gap: 4px; margin-bottom: 4px; }
+  .dr { font-size: 11px; font-weight: 500; color: var(--color-text-info);   min-width: 14px; padding-top: 1px; }
+  .cr { font-size: 11px; font-weight: 500; color: var(--color-text-danger); min-width: 14px; padding-top: 1px; padding-left: 6px; }
+  .etxt { font-size: 11px; color: var(--color-text-primary); flex: 1; line-height: 1.4; }
+  .badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .bc { background: #f3e8ff; color: #7e22ce; }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">RPG 3 — Reporting Service Performance Information</div>
+      <div class="hub-sub">Extended reference poster · Full Handbook structure · Worked example · Statement mapping · Related standards</div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <a href="#s1">1. Objective, Status &amp; Scope</a>
+    <a href="#s2">2. Definitions — Inputs, Outputs, Outcomes, Efficiency &amp; Effectiveness</a>
+    <a href="#s3">3. Performance Indicators &amp; Service Performance Objectives</a>
+    <a href="#s4">4. Reporting Boundary &amp; Period</a>
+    <a href="#s5">5. Principles for Presentation of Service Performance Information</a>
+    <a href="#s6">6. Information for Display — the Three Required Elements</a>
+    <a href="#s7">7. Selecting Performance Indicators — Quality Criteria</a>
+    <a href="#s8">8. Multi-Year Objectives &amp; Cost Information</a>
+    <a href="#s9">9. Planned vs. Actual &amp; Changes During the Period</a>
+    <a href="#s10">10. Information for Disclosure</a>
+    <a href="#s11">11. Location of Service Performance Information</a>
+    <a href="#s12">12. A "Principles" RPG, Not a "Requirements" RPG</a>
+    <a href="#s13">13. Worked Example — Program Financed by a Green Bond</a>
+    <a href="#s14">14. Sustainability Programs — Implementation Guidance</a>
+    <a href="#s15">15. Statement / Process Mapping</a>
+    <a href="#s16">16. Related Standards</a>
+    <a href="#s17">17. Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 — OBJECTIVE, STATUS & SCOPE ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Status &amp; Scope (paras. 1–7)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Objective</div>
+      <div class="principle">Guides reporting SERVICE PERFORMANCE INFORMATION in GPFRs — the services an entity provides, its service performance OBJECTIVES, and the EXTENT of their achievement. Helps users assess service EFFICIENCY and EFFECTIVENESS.</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Status — a genuinely different framing from RPG 1/2</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Good practice — an entity should AIM TO ACHIEVE the PRINCIPLES here, not comply with binding "requirements" the way RPG 1/2 use that word (see §12 for the deliberate terminology shift). Compliance with THIS RPG is never needed for an IPSAS compliance statement (para. 2). Applies to controlled COMMERCIAL entities' services, even though it doesn't apply to commercial entities directly (para. 3). Where a jurisdiction's own requirements go FURTHER than this RPG, entities are encouraged to present information satisfying BOTH (para. 7).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 — DEFINITIONS: INPUTS, OUTPUTS, OUTCOMES, EFFICIENCY & EFFECTIVENESS ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Definitions — the Five-Part Performance Framework (paras. 8–19)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The five core terms</div>
+      <div class="glossary-item"><div class="glossary-term">Inputs</div><div class="glossary-def">Resources used by an entity to provide outputs — human resources, capital assets, cash/financial assets, intangibles.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Outputs</div><div class="glossary-def">Services provided by an entity to recipients EXTERNAL to the entity.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Outcomes</div><div class="glossary-def">Impacts on society occurring as a result of, or reasonably attributable to, the entity's outputs.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Efficiency</div><div class="glossary-def">The relationship between (a) inputs and outputs, or (b) inputs and outcomes.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Effectiveness</div><div class="glossary-def">The relationship between actual results and service performance objectives.</div></div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">What outputs and outcomes actually cover</div>
+      <div class="dot-list">
+        <span>Outputs: direct services (health, education, goods); indirect community-protecting services; TRANSFERS (cash, tax incentives); policy/regulation/legislation; TAX collection (para. 15)</span>
+        <span>External receipt is the deciding factor — internally-consumed services aren't outputs (para. 16)</span>
+        <span>Outcomes may be DIRECT recipient impacts, or INDIRECT benefits to non-recipients; the causal link to the entity's own actions can be strong OR weak, since external factors may hinder/facilitate achievement (paras. 17–19)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 — PERFORMANCE INDICATORS & SERVICE PERFORMANCE OBJECTIVES ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Performance Indicators &amp; Service Performance Objectives (paras. 20–26)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Three indicator forms</div>
+      <div class="dot-list">
+        <span><strong style="font-weight:500">Quantitative measures</strong> — number of outputs, cost of services, time taken, numerical outcome targets</span>
+        <span><strong style="font-weight:500">Qualitative measures</strong> — descriptors like poor/good/excellent, satisfactory/unsatisfactory, incl. quality ratings from recipients/citizens/experts</span>
+        <span><strong style="font-weight:500">Qualitative descriptions</strong> — narrative, used where complexity/judgment make quantification genuinely difficult</span>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Service performance objective — SMART-adjacent, flexibly expressed</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Expressed using ONE OR MORE of inputs/outputs/outcomes/efficiency indicators, OR as a narrative description of a desired future state. Generally SPECIFIC, MEASURABLE, ACHIEVABLE, REALISTIC, and TIME-BOUND (para. 24). Objectives across an entity NEED NOT all use the same indicator type — some may be outcome-based, others output- or input-based (para. 25). A single SERVICE may serve multiple objectives; multiple SERVICES may serve one objective (para. 26).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 — REPORTING BOUNDARY & PERIOD ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Reporting Boundary &amp; Period (paras. 27–31)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Same boundary as the financial statements — but NOT a consolidation</div>
+      <div class="formula-box">
+        <div class="f-eq">Reporting boundary = the SAME as the financial statements — but service performance information is NOT usually a combination of controlled entities' own service reporting, unlike consolidated financial statements</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">A genuinely important distinction from financial consolidation (IPSAS 35): performance indicators reflect the CONTROLLING entity's OWN service performance objectives — services simply don't "add up" the way cash/assets/liabilities do (paras. 27–28).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Annual reporting, with room for multi-year objectives</div>
+      <div class="dot-list">
+        <span>Reported AT LEAST ANNUALLY, covering the SAME period as the financial statements — though a different period may be justified by user needs/cost-benefit (e.g. controlled entities with a different reporting period) (paras. 29–30)</span>
+        <span>MULTI-YEAR objectives require interim PROGRESS information — see §8 (para. 31)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 — PRINCIPLES FOR PRESENTATION OF SERVICE PERFORMANCE INFORMATION ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Principles for Presentation (paras. 32–37)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Usefulness, context, and appropriate aggregation</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Presentation should make the RELATIONSHIP between objectives and achievements CLEAR (para. 32); combined with financial statement information, it should let users assess finances IN THE CONTEXT of service achievement, and vice versa (para. 33). Reflects the entity's specific circumstances — services provided, entity nature, regulatory environment (para. 34). Aggregation/disaggregation should be MEANINGFUL — not so aggregated it conceals performance, not so disaggregated it produces obscuring detail lists (para. 36).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">The comparability-vs-relevance trade-off — a genuine tension acknowledged directly</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Comparability across entities is HARD — even two entities providing the identical service may have different objectives, needing different, non-comparable indicators. Inter-entity comparability may need to be TRADED OFF against relevance to the specific entity's situation — or, where user needs favor comparable indicators, the two characteristics may instead ALIGN (para. 37). This is a rare instance in the IPSASB literature of openly acknowledging that two qualitative characteristics can genuinely conflict, without a fixed resolution rule.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 — INFORMATION FOR DISPLAY: THE THREE REQUIRED ELEMENTS ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Selection of Service Performance Information — Display (paras. 38–42)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The three DISPLAY elements (para. 38)</div>
+      <div class="check-list">
+        <span>SERVICE PERFORMANCE OBJECTIVES</span>
+        <span>PERFORMANCE INDICATORS</span>
+        <span>TOTAL COSTS of the services</span>
+      </div>
+      <div class="note">For indicators AND total costs: display PLANNED and ACTUAL for the current period, PLUS ACTUAL for the PREVIOUS period (para. 39) — a three-way comparison baked directly into the display requirement.</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Cross-references, sources, and adapting to changed objectives</div>
+      <div class="dot-list">
+        <span>Where display content overlaps with the financial statements, CROSS-REFERENCE to avoid confusion (para. 40)</span>
+        <span>Legislation and planning documents (budgets, mission statements, strategic plans, funding agreements) USUALLY help identify the relevant objectives/indicators (para. 41)</span>
+        <span>Where objectives CHANGE (e.g. re-focusing from increasing outputs to improving efficiency) → the presented information must REFLECT that change (para. 42)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 — SELECTING PERFORMANCE INDICATORS: QUALITY CRITERIA ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Selecting Performance Indicators — Quality Criteria (paras. 43–52)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Relevance, alignment, and avoiding overload</div>
+      <div class="dot-list">
+        <span>Indicators must link DIRECTLY to one or more service performance objectives; ALIGNMENT between input/output/outcome indicators helps users see how resources relate to results (para. 43)</span>
+        <span>Where budget info is public and IPSAS 24 applies, consider the relationship between budget and service performance information (para. 45)</span>
+        <span>Identify only a FEW KEY indicators — avoid overwhelming users with an exhaustive list (para. 47)</span>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Reliability, neutrality, and appropriate use of narrative</div>
+      <div class="callout warn" style="margin-bottom:9px;">⚠️ Entities must AVOID bias toward reporting positive results — information should be NEUTRAL, even where trade-offs exist between different performance aspects (para. 49). EASE of measurement is a valid consideration, but SECONDARY to user needs — don't over-emphasize easily-measured dimensions at the expense of what actually matters (para. 50).</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Quantified indicators should be RELIABLY measurable — transaction-processing-system-derived indicators support verifiability/timeliness (para. 48). QUALITATIVE descriptions are appropriate where services are genuinely complex, involve interrelated factors, or many possible success indicators requiring judgment about relative importance (para. 51).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 — MULTI-YEAR OBJECTIVES & COST INFORMATION ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Multi-Year Objectives &amp; Total/Disaggregated Cost Information (paras. 53–54)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Multi-year objectives — proxy measures bridge the gap</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">A LONG timeframe should NOT deter reporting multi-year objectives and progress. Where full-outcome data isn't yet available, ALTERNATIVE or PROXY measures can show interim progress — e.g. treating ANNUAL output achievement as indicative of progress toward a longer-term multi-year OUTCOME, with actual outcomes reported less frequently (para. 53).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Disaggregated cost — supporting an efficiency assessment</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Beyond the mandatory TOTAL cost display, an entity MAY present disaggregated costs — by service performance objective, outcome, service area, individual service, output, or specific input. Cost-per-output or cost-per-outcome data directly supports users' EFFICIENCY assessments (para. 54).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 — PLANNED VS. ACTUAL & CHANGES DURING THE PERIOD ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Planned and Actual Service Performance (paras. 55–57)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Consistency enables genuine comparison</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Report on the SAME indicators, with the SAME methodology/parameters, as established BEFORE the reporting period began — this enables genuine planned-vs-actual comparison (para. 55). Multi-year CONSISTENCY supports trend analysis, but shouldn't be pursued at the expense of IMPROVING indicator quality, or aligning with genuinely changed stakeholder expectations (para. 56).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Mid-period changes — including a public sector combination scenario</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Stakeholder revisions during the period, or a PUBLIC SECTOR COMBINATION transferring service accountability between entities, may require reporting against BOTH the original AND the revised objectives — with narrative discussion explaining the reason for, and impact of, the change, and how actual achievement compares to both the ORIGINAL and the UPDATED objectives (para. 57).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 — INFORMATION FOR DISCLOSURE ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Information for Disclosure (paras. 58–67)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The basis behind the displayed information (para. 61)</div>
+      <div class="check-list">
+        <span>How service performance OBJECTIVES were established, why they matter, and their relationship to the displayed INDICATORS and the entity's overall objectives</span>
+        <span>The RELATIONSHIP between related indicators (e.g. how inputs/outputs feed a particular outcome)</span>
+        <span>The BASIS for aggregation/disaggregation — the level of detail chosen</span>
+      </div>
+      <div class="note">If disaggregated COSTS are presented, disclose the determination basis — allocation policies, direct/indirect treatment, or a reconciliation to total expenses (paras. 62–63). A CONTROLLING entity discloses the respective ROLES/RESPONSIBILITIES for service performance across the economic entity (para. 64).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Reporting-period mismatches, and standalone-report identification</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Where the service reporting period differs from the financial statements: disclose the fact, WHY, and (if financial data is included) either the statements' period plus access information, or the source of that financial data (para. 65). Where presented SEPARATELY from the GPFR containing the financial statements: disclose entity name, controlling-entity group description (or controlling entity identity, if controlled), reporting date/period (para. 67).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 — LOCATION OF SERVICE PERFORMANCE INFORMATION ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Location of Service Performance Information (paras. 72–75)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Two placement options, four decision factors</div>
+      <div class="dot-list">
+        <span>Within the SAME GPFR as the financial statements, OR in a SEPARATELY issued GPFR</span>
+      </div>
+      <div class="check-list">
+        <span>How much the information needs review ALONGSIDE the financial statements (incl. budget comparisons)</span>
+        <span>Whether same-GPFR or separate-GPFR placement better serves user needs/qualitative characteristics</span>
+        <span>Cost-benefit — do the benefits of co-location JUSTIFY the additional cost?</span>
+        <span>JURISDICTION-specific location requirements</span>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">The resource-allocation vs. policy-strategy test</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">A key factor: is the PRIMARY purpose informing RESOURCE ALLOCATION decisions (→ value in linking to the financial statements/budget comparisons), or informing POLICY/STRATEGY decisions (→ value in linking to policy/strategy documents instead) (para. 74)? Where issued separately, TIMELINESS matters — usually issued at the SAME time as the financial statements, or very close to it (para. 75).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 — A "PRINCIPLES" RPG, NOT A "REQUIREMENTS" RPG ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>A "Principles" RPG, Not a "Requirements" RPG (Basis for Conclusions BC3–BC7)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">A deliberate design choice — decisions and guidance, not minimum standards</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">The IPSASB weighed TWO possible approaches: establishing MINIMUM CHARACTERISTICS of service performance information (mirroring an RPG's "good practice" role), OR providing a FRAMEWORK identifying the DECISIONS preparers must make, with guidance on making them. Given the sheer DIVERSITY of services and reporting contexts worldwide, the Board chose NOT to standardize — instead focusing on achievement of PRINCIPLES (BC3–BC5).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Even the word "compliance" was deliberately softened</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Some respondents flagged an apparent contradiction: RPGs don't establish requirements, yet an early draft spoke of "compliance with all of its requirements." The Board's fix: replace "compliance with requirements" with "COMPLIANCE WITH PRINCIPLES" throughout — entities use these principles to guide their OWN decisions about what to report, and may progressively move toward full compliance rather than facing an all-or-nothing bar (BC7). This RPG involves MORE flexibility of application than IPSAS typically allow — genuinely distinct in tone from RPG 1/2's more requirement-like "shall" language.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 — WORKED EXAMPLE: PROGRAM FINANCED BY A GREEN BOND ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Worked Example — Program Financed by a Green Bond (Illustrative Example IE5)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Entity A issues a green bond to fund a reforestation program</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Target: plant 100 million trees by year-end at CU4/tree, absorbing 997,900 tons of CO2/year for 20 years. Actual: 85 million trees planted at CU4.1/tree, absorbing 578,328 tons of CO2 in year 1</div>
+        <div class="wk-body">
+          <div class="td-table" style="margin-top:8px;margin-bottom:8px;">
+            <div class="th" style="grid-template-columns:1.6fr 1fr 1fr;"><span>Performance indicator</span><span>Planned</span><span>Actual</span></div>
+            <div class="tr" style="grid-template-columns:1.6fr 1fr 1fr;"><span>Input — cost per tree planted</span><span>CU4.0</span><span>CU4.1</span></div>
+            <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1fr;"><span>Output — trees planted</span><span>100 million</span><span>85 million</span></div>
+            <div class="tr" style="grid-template-columns:1.6fr 1fr 1fr;"><span>Outcome — CO2 absorbed (year 1)</span><span>997,900 tons</span><span>578,328 tons</span></div>
+            <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1fr;"><span>Efficiency — cost per ton CO2 absorbed</span><span>CU401</span><span>CU603</span></div>
+          </div>
+          <strong>Effectiveness ratios</strong> (actual over target): Input 102.5% (CU4.1/CU4.0 — cost per tree ran slightly over); Output 85% (85m/100m trees); Outcome 58% (578,328/997,900 tons CO2).
+        </div>
+        <div class="wk-answer">The HIGHER cost per ton of CO2 absorbed (CU603 vs. a planned CU401) signals LOWER absorption efficiency than planned — attributable to the gradual planting process, fewer trees planted than targeted, and a lower tree survival rate. This single worked example shows all FIVE indicator types (input, output, outcome, efficiency, effectiveness) operating together on one program.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 — SUSTAINABILITY PROGRAMS: IMPLEMENTATION GUIDANCE ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Sustainability Programs — Implementation Guidance (paras. IG1–IG4)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Yes — RPG 3 applies directly, no special model needed</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">RPG 3's ordinary principles apply wherever an entity establishes service performance objectives for sustainability programs and can measure performance against relevant indicators — set either by the entity itself, or by program-specific metrics (IG1–IG2). Just like RPG 1's own climate/sustainability extension (see that RPG's own poster §10), no NEW framework is created — the existing input/output/outcome/efficiency/effectiveness model is simply APPLIED to this program category.</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Four illustrative program types, one shared purpose</div>
+      <div class="dot-list">
+        <span>Program financed by a GREEN BOND — worked in full in §13</span>
+        <span>Program financed by a CARBON TAX — EV charging station rollout, ZEV market share targets</span>
+        <span>Investment in INFRASTRUCTURE to mitigate climate change impacts</span>
+        <span>TAX EXPENDITURES for sustainability investments</span>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Decision-makers evaluating GOVERNANCE, STRATEGY, RISK, and PERFORMANCE for sustainability programs benefit from RPG 3's transparency — supporting both accountability and decision-making (IG3–IG4).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 15 — STATEMENT / PROCESS MAPPING ============ -->
+  <div class="section-header" id="s15"><span class="num">15</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Decision map</div>
+      <div class="dot-list">
+        <span>1. Set the reporting BOUNDARY (same as the financial statements) and PERIOD (at least annual) — remember service information doesn't "consolidate" the way finances do (§4)</span>
+        <span>2. Define service performance OBJECTIVES — expressed via one or more of inputs/outputs/outcomes/efficiency, or narratively (§3)</span>
+        <span>3. Select a FEW KEY performance indicators — relevant, reliable, neutral, appropriately quantitative/qualitative/narrative (§7)</span>
+        <span>4. DISPLAY: objectives, indicators, and total costs — each with planned/actual/prior-period comparatives (§6)</span>
+        <span>5. DISCLOSE the basis behind the displayed information — how objectives were set, indicator relationships, aggregation basis (§10)</span>
+        <span>6. Decide LOCATION — same GPFR as the financial statements, or separate — based on the resource-allocation vs. policy-strategy purpose test (§11)</span>
+        <span>7. Report CONSISTENTLY period to period, addressing any mid-period objective changes transparently (§9)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 16 — RELATED STANDARDS ============ -->
+  <div class="section-header" id="s16"><span class="num">16</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How RPG 3 connects across the IPSASB body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.7fr 2.2fr;"><span>Document</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>Conceptual Framework</span><span>Source of the qualitative characteristics and pervasive constraints applied throughout, and the Consultation Paper framework-approach philosophy referenced in the Basis for Conclusions (§5, §12)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 24</span><span>Budget-actual comparison information relevant to selecting/relating performance indicators, and to the location decision (§7, §11)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 35</span><span>Defines consolidation/control — explicitly CONTRASTED with here, since service performance reporting does NOT combine controlled entities' information the way financial consolidation does (§4)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 40</span><span>Public sector combinations trigger the service-accountability-transfer scenario addressed in the mid-period-change guidance (§9)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 42</span><span>Conceptual parallel — both address genuinely public-sector, non-commercial-return-driven reporting needs</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>RPG 1</span><span>Shares the same sustainability-program implementation guidance structure and philosophy (§14, cross-referenced directly in both RPGs)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>RPG 2</span><span>A companion non-financial-statement GPFR guideline — together, all three RPGs complete the IPSASB's encouraged reporting suite</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 17 — GLOSSARY ============ -->
+  <div class="section-header" id="s17"><span class="num">17</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Inputs</div><div class="glossary-def">Resources used by an entity to provide outputs.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Outputs</div><div class="glossary-def">Services provided by an entity to recipients external to the entity.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Outcomes</div><div class="glossary-def">Impacts on society occurring as a result of, or reasonably attributable to, an entity's outputs.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Efficiency</div><div class="glossary-def">The relationship between inputs and outputs, or inputs and outcomes.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Effectiveness</div><div class="glossary-def">The relationship between actual results and service performance objectives.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Performance indicators</div><div class="glossary-def">Quantitative measures, qualitative measures, and/or qualitative descriptions of resource use, service provision, and objective achievement.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Reporting document key</div>
+    <div class="lrow">
+      <span class="badge bs">GPFR</span> General Purpose Financial Report
+      <span class="badge bp">GPFS</span> General Purpose Financial Statements
+    </div>
+  </div>
+
+  <div class="footer-note">RPG 3 — Reporting Service Performance Information · Extended Reference Poster · Built from the 2025 IPSASB Handbook, Volume III · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

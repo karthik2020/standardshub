@@ -70,7 +70,31 @@ export const FRAMEWORK_CONFIG: Record<string, FrameworkConfig> = {
     faIcon: "globe",
     status: "active",
   },
-  indas: {
+  ipsas: {
+    id: "ipsas",
+    code: "IPSAS",
+    displayName: "IPSAS",
+    fullName: "International Public Sector Accounting Standards",
+    description:
+      "International Public Sector Accounting Standards (IPSAS) are accrual-basis financial reporting standards for public sector entities, issued by the International Public Sector Accounting Standards Board (IPSASB). They cover topics including financial statement presentation, property, plant and equipment, leases, financial instruments, employee benefits, revenue, leases, and public sector combinations.",
+    route: "/ipsas",
+    primary: "#0D9488",
+    light: "#99F6E4",
+    soft: "#CCFBF1",
+    dark: "#115E59",
+    lucideIcon: "BookText",
+    faIcon: "book-open",
+    categories: [
+      "IPSAS Standards",
+      "Cash Basis IPSAS",
+      "RPG — Recommended Practice Guidelines",
+      "SRS — Sustainability Reporting Standards",
+      "Conceptual Framework",
+      "Supporting / Reference Material",
+    ],
+    status: "active",
+  },
+   indas: {
     id: "indas",
     code: "Ind AS",
     displayName: "Ind AS",
@@ -327,7 +351,7 @@ export const FRAMEWORK_CONFIG: Record<string, FrameworkConfig> = {
   },
 };
 
-export const FRAMEWORK_ORDER = ["ias", "ifrs", "indas", "ifrssustainability", "ifrspublications", "ifrsforsmes", "usgaap", "ukgaap", "asbe", "aspe", "japangaap", "ifric", "sic", "hgb"] as const;
+export const FRAMEWORK_ORDER = ["ias", "ifrs", "ipsas", "indas", "ifrssustainability", "ifrspublications", "ifrsforsmes", "usgaap", "ukgaap", "asbe", "aspe", "japangaap", "ifric", "sic", "hgb"] as const;
 
 export type FrameworkId = keyof typeof FRAMEWORK_CONFIG;
 

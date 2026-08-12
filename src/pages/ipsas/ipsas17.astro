@@ -1,0 +1,79 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import metadata from "../../data/standards/ipsas/ipsas17.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  covers={metadata.covers}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Why This Standard Is Here" },
+        { id: "s2", label: "Superseded by IPSAS 45" },
+        { id: "s3", label: "Redirect Map" },
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="withdrawn"
+    explanation="IPSAS 17 Property, Plant and Equipment was withdrawn for annual financial statements covering periods beginning on or after 1 January 2025 and superseded by IPSAS 45."
+    historical="IPSAS 17 (2001) was replaced by a comprehensively updated IPSAS 45 incorporating the 2023 Standards package — Measurement, Revenue, and the PP&E rewrite issued together in May 2023."
+    link="/ipsas/ipsas45"
+    linkText="IPSAS 45 — Property, Plant and Equipment"
+    currentLabel="Replaced by"
+  />
+
+  <div class="wrap">
+  <!-- ============ SECTION 1 — WHY THIS STANDARD IS HERE ============ -->
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Why This Standard Is Here</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Removed from the Handbook — retained here only as a numbering placeholder</div>
+        <div class="principle">IPSAS 17, <em>Property, Plant, and Equipment</em>, was withdrawn as the IPSASB replaced it with a comprehensively updated Standard incorporating current measurement guidance and consequential updates from the broader 2023 Standards package (Measurement, Revenue, and the PP&amp;E rewrite issued together in May 2023). It was superseded for annual financial statements covering periods beginning on or after <strong>1 January 2025</strong>.</div>
+        <div class="callout danger callout--flush">The 2025 IPSASB Handbook now contains only a one-paragraph removal notice for this number — there is no remaining technical content to build a reference poster from. This page exists so the poster library's numbering stays complete and correctly redirects to the live successor Standard.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 2 — SUPERSEDED BY ============ -->
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Superseded by IPSAS 45</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">A full rewrite, not just a renumbering</div>
+        <div class="principle">IPSAS 17 governed recognition, measurement, depreciation, and derecognition of property, plant, and equipment, using the historical-cost and revaluation models familiar from IAS 16. Its replacement was issued as part of the IPSASB's May 2023 package alongside IPSAS 46 (Measurement) and IPSAS 47 (Revenue), aligning PP&amp;E measurement terminology and mechanics with the Board's updated Conceptual Framework-consistent measurement bases.</div>
+        <div class="spec-box">
+          <div class="spec-title">IPSAS 45 — Property, Plant, and Equipment</div>
+          <div class="text-supporting">Recognition, initial and subsequent measurement (cost model and current value model), depreciation, componentization, decommissioning/restoration costs, impairment interaction, and derecognition of PP&amp;E — updated to reference IPSAS 46's measurement bases (e.g. "current operational value" terminology) rather than IPSAS 17's older fair-value-centric language.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 3 — REDIRECT MAP ============ -->
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Redirect Map</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Withdrawn number → live Standard</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1fr 1.4fr 1.6fr;"><span>Withdrawn</span><span>Superseded by</span><span>Effective date</span></div>
+          <div class="tr" style="grid-template-columns:1fr 1.4fr 1.6fr;"><span>IPSAS 17</span><span><span class="badge bs">IPSAS 45</span></span><span>Periods beginning on/after 1 Jan 2025</span></div>
+        </div>
+        <div class="note">A full extended reference poster for IPSAS 45 can be built when the library reaches that number. IPSAS 45 is referenced extensively throughout this library already, in the standards it interacts with (IPSAS 5, 12, 16, 19, and others).</div>
+      </div>
+    </div>
+
+
+  </div>
+</StandardPageLayout>

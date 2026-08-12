@@ -115,10 +115,10 @@ const currentPath = Astro.url.pathname;
                 framework.categories
                   ? framework.categories.map((category) => {
                       const activeItems = sectionStandards.filter(
-                        (item) => !item.status && item.category === category
+                        (item) => (!item.status || item.status === "Upcoming") && item.category === category
                       );
                       const historicalItems = sectionStandards.filter(
-                        (item) => item.status && item.category === category
+                        (item) => (item.status && item.status !== "Upcoming") && item.category === category
                       );
                       if (activeItems.length === 0 && historicalItems.length === 0) {
                         return null;
@@ -174,7 +174,7 @@ const currentPath = Astro.url.pathname;
                     <>
                       <ul class="sidebar-items">
                         {
-                           sectionStandards.filter((item) => !item.status).map((item) => (
+                           sectionStandards.filter((item) => (!item.status || item.status === "Upcoming")).map((item) => (
                             <li>
                               <NavLink
                                 href={item.url}
@@ -192,7 +192,7 @@ const currentPath = Astro.url.pathname;
                       <ul class="sidebar-items">
                         <li class="sidebar-group-label">Historical Standards</li>
                         {
-                          sectionStandards.filter((item) => item.status).map((item) => (
+                          sectionStandards.filter((item) => (item.status && item.status !== "Upcoming")).map((item) => (
                             <li>
                               <NavLink
                                 href={item.url}

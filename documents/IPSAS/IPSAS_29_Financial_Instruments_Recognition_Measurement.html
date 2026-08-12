@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPSAS 29 — Financial Instruments: Recognition and Measurement | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .eg  { margin-bottom: 7px; }
+  .egl { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; margin-bottom: 3px; }
+  .entry { display: flex; align-items: flex-start; gap: 4px; margin-bottom: 4px; }
+  .dr { font-size: 11px; font-weight: 500; color: var(--color-text-info);   min-width: 14px; padding-top: 1px; }
+  .cr { font-size: 11px; font-weight: 500; color: var(--color-text-danger); min-width: 14px; padding-top: 1px; padding-left: 6px; }
+  .etxt { font-size: 11px; color: var(--color-text-primary); flex: 1; line-height: 1.4; }
+  .badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .bc { background: #f3e8ff; color: #7e22ce; }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">IPSAS 29 — Financial Instruments: Recognition and Measurement</div>
+      <div class="hub-sub">Extended reference poster · A Standard in transition — mostly superseded, with a narrow legacy option remaining · Full Handbook structure</div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <a href="#s1">1. An Unusual Status — What's Deleted, What Remains</a>
+    <a href="#s2">2. Scope — Applying the Legacy Hedge Accounting Option</a>
+    <a href="#s3">3. Hedge Accounting — Qualifying Conditions</a>
+    <a href="#s4">4. Fair Value Hedges</a>
+    <a href="#s5">5. Cash Flow Hedges</a>
+    <a href="#s6">6. Hedges of a Net Investment in a Foreign Operation</a>
+    <a href="#s7">7. Effective Date &amp; Amendment Timeline</a>
+    <a href="#s8">8. Relationship to IAS 39</a>
+    <a href="#s9">9. Statement / Process Mapping</a>
+    <a href="#s10">10. Related Standards</a>
+    <a href="#s11">11. Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 — AN UNUSUAL STATUS ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>An Unusual Status — What's Deleted, What Remains</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Neither fully live nor fully withdrawn</div>
+      <div class="principle">IPSAS 29 is unlike any other Standard in this library so far. When IPSAS 41, <em>Financial Instruments</em>, was issued in August 2018, it absorbed almost ALL of IPSAS 29's substantive recognition and measurement content — paragraphs 11 through 79 (initial recognition, classification, subsequent measurement, reclassification, derecognition, impairment) are now simply marked <strong>[Deleted]</strong> in the current Handbook. Even the OBJECTIVE paragraph itself (para. 1) is [Deleted].</div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ What SURVIVES: paragraphs 80–126 — a narrow, OPTIONAL set of legacy HEDGE ACCOUNTING requirements. IPSAS 41 (para. 177) permits an entity to ELECT to continue applying IPSAS 29's hedge accounting model instead of adopting IPSAS 41's own hedge accounting requirements. This poster covers only that surviving, optional slice.</div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card cn span2">
+      <div class="ctitle cn">Why this matters for the poster library</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Most withdrawn IPSAS in this library (6, 7, 8, 13, 15, 17, 25) have a clean redirect: the whole Standard is gone, replaced by a successor. IPSAS 29 doesn't fit that pattern — it's PARTIALLY superseded, with a genuinely optional accounting POLICY CHOICE still available to preparers today. Recognition, measurement, classification, and impairment of financial instruments are governed by IPSAS 41 for ALL entities. Hedge accounting is the one area where an entity can choose between IPSAS 41's model and this legacy model.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 — SCOPE: APPLYING THE LEGACY HEDGE ACCOUNTING OPTION ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Scope — Applying the Legacy Hedge Accounting Option (paras. 2, 9–10)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The current scope paragraph, in full</div>
+      <div class="principle">"This Standard shall be applied by all entities to all financial instruments within the scope of IPSAS 41 IF, and to the extent that: (a) IPSAS 41 permits the hedge accounting requirements of this Standard to be applied; and (b) the financial instrument is part of a hedging relationship that qualifies for hedge accounting in accordance with this Standard" (para. 2, as amended).</div>
+      <div class="note">Paragraphs 3–8 are [Deleted]. This is now a POINTER paragraph — it exists to define WHEN the remainder of this Standard applies, rather than to establish independent recognition/measurement scope.</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Terminology borrowed from elsewhere</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Terms used in the surviving hedge accounting paragraphs are defined in IPSAS 28 and IPSAS 41, not restated independently here (para. 9) — e.g. amortized cost, derecognition, derivative, effective interest method, financial liability at fair value through surplus or deficit, financial guarantee contract, firm commitment, forecast transaction, hedge effectiveness, hedged item, hedging instrument, held for trading, regular way purchase or sale, and transaction costs.</div>
+      <div class="note">HEDGE EFFECTIVENESS is defined directly in para. 10: the degree to which changes in the fair value or cash flows of the hedged item attributable to a hedged risk are OFFSET by changes in the fair value or cash flows of the hedging instrument.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 — HEDGE ACCOUNTING: QUALIFYING CONDITIONS ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Hedge Accounting — Qualifying Conditions &amp; Three Hedge Types (paras. 96–98)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Three types of hedging relationship (para. 96)</div>
+      <div class="dot-list">
+        <span><strong style="font-weight:500">Fair value hedge</strong> — a hedge of exposure to changes in the fair value of a recognized asset/liability, or an unrecognized firm commitment, attributable to a particular risk and affecting surplus/deficit</span>
+        <span><strong style="font-weight:500">Cash flow hedge</strong> — a hedge of exposure to variability in cash flows attributable to a particular risk on a recognized asset/liability, or a highly probable forecast transaction, affecting surplus/deficit</span>
+        <span><strong style="font-weight:500">Hedge of a net investment</strong> in a foreign operation, as defined in IPSAS 4</span>
+      </div>
+      <div class="note">A hedge of the foreign currency risk of a FIRM COMMITMENT may be accounted for as EITHER a fair value hedge or a cash flow hedge (para. 97).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Five conditions — ALL required for hedge accounting (para. 98)</div>
+      <div class="check-list">
+        <span>Formal designation and documentation at hedge INCEPTION — hedging instrument, hedged item, nature of risk, effectiveness assessment method</span>
+        <span>The hedge is expected to be HIGHLY EFFECTIVE at offsetting fair value/cash flow changes attributable to the hedged risk</span>
+        <span>For cash flow hedges: the forecast transaction is HIGHLY PROBABLE, presenting an exposure that could affect surplus/deficit</span>
+        <span>Hedge effectiveness can be RELIABLY MEASURED</span>
+        <span>The hedge is assessed on an ONGOING basis, and determined to have ACTUALLY been highly effective throughout the reporting periods designated</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 — FAIR VALUE HEDGES ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Fair Value Hedges (paras. 99–105)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The mechanics — both sides through surplus/deficit</div>
+      <div class="formula-box">
+        <div class="f-eq">Gain/loss on the HEDGING INSTRUMENT → surplus or deficit</div>
+      </div>
+      <div class="formula-box">
+        <div class="f-eq">Gain/loss on the HEDGED ITEM (attributable to the hedged risk) → adjusts its carrying amount, ALSO to surplus or deficit</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">The two largely offset — that's the point of the hedge. Applies whether the hedged item is otherwise carried at cost, or is a financial asset at fair value through net assets/equity under IPSAS 41 para. 41 (para. 99).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Discontinuation &amp; amortization</div>
+      <div class="dot-list">
+        <span>Discontinue PROSPECTIVELY if: the hedging instrument expires/is sold/terminated/exercised; the hedge no longer meets the para. 98 criteria; or the entity revokes the designation (para. 102)</span>
+        <span>Carrying-amount adjustments to a hedged item using the effective interest method are AMORTIZED to surplus or deficit, beginning no later than when the hedged item stops being adjusted for the hedged risk (para. 103)</span>
+      </div>
+      <div class="note">A clearing-counterparty NOVATION required by new laws/regulations is NOT treated as an expiration or termination of the hedging instrument, provided changes are limited to what's needed to effect that replacement (para. 102(a)) — a modern addition addressing post-financial-crisis derivatives clearing mandates.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 — CASH FLOW HEDGES ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Cash Flow Hedges (paras. 106–112)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs">
+      <div class="ctitle cs">The effective/ineffective split</div>
+      <div class="formula-box">
+        <div class="f-eq">Effective portion of the hedging instrument's gain/loss → net assets/equity (Statement of Changes in Net Assets/Equity)</div>
+      </div>
+      <div class="formula-box">
+        <div class="f-eq">Ineffective portion → surplus or deficit</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">The net assets/equity component is adjusted to the LESSER (in absolute terms) of the cumulative hedging-instrument gain/loss since inception, and the cumulative fair value change of the hedged item's expected future cash flows since inception (para. 107).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Reclassification when the forecast transaction occurs</div>
+      <div class="dot-list">
+        <span>Results in a FINANCIAL asset/liability → reclassify the net-assets/equity amount into surplus/deficit in the SAME period(s) the hedged cash flows affect surplus/deficit (para. 108)</span>
+        <span>Results in a NON-FINANCIAL asset/liability → EITHER reclassify on the same basis, OR remove the amount and fold it into the asset/liability's initial cost — a consistent POLICY CHOICE applied to all such hedges (paras. 109–110)</span>
+        <span>Forecast transaction NO LONGER expected to occur → the cumulative amount is reclassified to surplus/deficit IMMEDIATELY (para. 112(c))</span>
+      </div>
+      <div class="note">Discontinuation triggers mirror §4's fair value hedge list — instrument expiry/sale/termination, no longer meeting para. 98 criteria, or revocation (para. 112).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 — HEDGES OF A NET INVESTMENT IN A FOREIGN OPERATION ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Hedges of a Net Investment in a Foreign Operation (para. 113)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Accounted for like a cash flow hedge</div>
+      <div class="principle">Including hedges of a monetary item accounted for as part of the net investment (IPSAS 4). Follows the SAME effective/ineffective split as cash flow hedges:</div>
+      <div class="dot-list">
+        <span>Effective portion of the hedging instrument's gain/loss → net assets/equity, via the Statement of Changes in Net Assets/Equity</span>
+        <span>Ineffective portion → surplus or deficit</span>
+      </div>
+      <div class="formula-box" style="margin-top:8px;">
+        <div class="f-eq">On DISPOSAL of the foreign operation → the cumulative effective-portion amount is reclassified from net assets/equity to surplus or deficit, per IPSAS 4 paras. 56–57</div>
+      </div>
+      <div class="note">A separate package of TEMPORARY EXCEPTIONS (paras. 113A–113N) addresses hedging relationships directly affected by INTEREST RATE BENCHMARK REFORM (e.g. LIBOR transition) — narrowly scoped relief that applies only where the reform creates genuine uncertainty about a hedged interest rate benchmark.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 — EFFECTIVE DATE & AMENDMENT TIMELINE ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Effective Date &amp; Amendment Timeline (paras. 124–126)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Amendment history at a glance</div>
+      <div class="principle">Base Standard: periods beginning on/after <strong>1 January 2013</strong> — may not be applied before that date unless IPSAS 28 and IPSAS 30 are also applied (para. 125).</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2.2fr;"><span>Effective</span><span>Change</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2014</span><span>Para. 2 — IPSAS 32, Service Concession Arrangements: Grantor</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2017</span><span>Numerous first-time-adoption paragraphs — IPSAS 33</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2019</span><span>Para. AG131 — IPSAS 40, Public Sector Combinations</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span><strong>1 Jan 2023</strong></span><span><strong>THE decisive amendment</strong> — IPSAS 41, Financial Instruments (Aug 2018): deletes paragraphs 1, 3–8, 11–79, and B1–B7, A.1–G.2, and IE32–IE50, absorbing virtually all recognition/measurement content. Paragraphs 80–126 (hedge accounting) are RETAINED as an optional policy choice</span></div>
+      </div>
+      <div class="note">Interest rate benchmark reform relief (paras. 113A onward) and its 2021/2022-era refinements were layered on afterward, applicable specifically to entities still using this legacy hedge accounting model.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 — RELATIONSHIP TO IAS 39 ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Relationship to IAS/IFRS — Comparison with IAS 39</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — IPSAS 29 vs IAS 39</div>
+      <div class="principle">IPSAS 29 was originally drawn from IAS 39, <em>Financial Instruments: Recognition and Measurement</em> (amendments up to 31 December 2008, plus the IASB's April 2009 Improvements to IFRS). IAS 39 was ITSELF later replaced by IFRS 9 in the private sector — a transition IPSAS mirrored via IPSAS 41, though IPSAS chose to retain a legacy hedge accounting OPTION rather than deleting IPSAS 29 outright.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1.9fr;"><span>Topic</span><span>Difference</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Concessionary loans &amp; nil-consideration guarantees</span><span>IPSAS 29 (originally) contained additional application guidance IAS 39 lacks — a public-sector-specific need</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Terminology</span><span>"Statement of financial performance," "net assets/equity" (IPSAS 29) vs "statement of comprehensive income," "equity" (IAS 39)</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Embedded IFRIC guidance</span><span>IFRIC 9 (Reassessment of Embedded Derivatives) and IFRIC 16 (Hedges of a Net Investment) are embedded as AUTHORITATIVE appendices — under IFRS, these are separate documents</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Current retention strategy</span><span>IAS 39's hedge accounting was fully superseded by IFRS 9; IPSAS retained IPSAS 29's hedge model as an explicit CHOICE alongside IPSAS 41's own hedge accounting — a structural divergence unique to the public sector standard</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 — STATEMENT / PROCESS MAPPING ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Decision map — does IPSAS 29 even apply to this instrument?</div>
+      <div class="dot-list">
+        <span>1. Is the question about RECOGNITION, MEASUREMENT, CLASSIFICATION, or IMPAIRMENT of a financial instrument? → apply IPSAS 41. IPSAS 29 has NOTHING left to say on this (§1)</span>
+        <span>2. Is the question about HEDGE ACCOUNTING specifically? → the entity has a CHOICE: IPSAS 41's own hedge accounting model, OR this Standard's legacy model (§2)</span>
+        <span>3. Has the entity ELECTED to continue applying IPSAS 29's hedge accounting? → apply the para. 98 qualifying conditions, then route to fair value (§4), cash flow (§5), or net investment (§6) hedge mechanics as applicable</span>
+        <span>4. Does the hedging relationship still meet ALL FIVE qualifying conditions? → continue hedge accounting. If any fails → discontinue PROSPECTIVELY from that point</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card cs span2">
+      <div class="ctitle cs">Concept-to-statement mapping table (hedge accounting only)</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>IPSAS 29 concept</span><span>Statement(s)</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Fair value hedge — both instrument &amp; hedged item</span><span><span class="badge bp">SOFPerf</span></span><span>Both sides through surplus/deficit</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Cash flow hedge — effective portion</span><span><span class="badge be">NA/E</span></span><span>Statement of Changes in Net Assets/Equity</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Cash flow hedge — ineffective portion</span><span><span class="badge bp">SOFPerf</span></span><span>Always surplus/deficit</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Net investment hedge</span><span><span class="badge be">NA/E</span> <span class="badge bp">SOFPerf</span></span><span>Same split as cash flow hedges; reclassified on disposal</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>All other recognition/measurement/impairment</span><span>—</span><span>Governed entirely by IPSAS 41, not this Standard</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 — RELATED STANDARDS ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How IPSAS 29 connects across the IPSAS body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.7fr 2.2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 1</span><span>Statement of Changes in Net Assets/Equity presentation for the effective portion of cash flow and net investment hedges (§5, §6)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 4</span><span>Defines "net investment in a foreign operation," and governs the reclassification-on-disposal mechanics for net investment hedges (§6)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 28</span><span>Source of several terms used but not redefined in the surviving hedge accounting paragraphs (§2)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 30</span><span>Governs disclosure of hedge accounting activity and risk exposure (companion Standard)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 32</span><span>Service concession arrangement scope amendment referenced in para. 2's history (§7)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 41</span><span>The successor Standard governing ALL recognition, measurement, classification, and impairment — and offering its OWN hedge accounting model as the alternative to this Standard's legacy option (§1, §2)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 — GLOSSARY ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Hedge effectiveness</div><div class="glossary-def">The degree to which changes in the fair value/cash flows of a hedged item attributable to a hedged risk are offset by changes in the hedging instrument.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Fair value hedge</div><div class="glossary-def">A hedge of exposure to fair value changes in a recognized asset/liability or unrecognized firm commitment, attributable to a particular risk.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Cash flow hedge</div><div class="glossary-def">A hedge of exposure to cash flow variability attributable to a particular risk, associated with a recognized item or a highly probable forecast transaction.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Firm commitment</div><div class="glossary-def">A binding agreement for the exchange of a specified quantity of resources at a specified price on a specified future date(s).</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Forecast transaction</div><div class="glossary-def">An uncommitted but anticipated future transaction.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Reclassification adjustment</div><div class="glossary-def">An amount reclassified from net assets/equity to surplus or deficit in the current period.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bp">SOFPerf</span> Statement of financial performance
+      <span class="badge be">NA/E</span> Net assets/equity (statement of changes)
+    </div>
+  </div>
+
+  <div class="footer-note">IPSAS 29 — Financial Instruments: Recognition and Measurement · Extended Reference Poster · A Standard in transition · Built from the 2025 IPSASB Handbook, Volume I · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

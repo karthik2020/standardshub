@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPSAS 30 — Financial Instruments: Disclosures | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .eg  { margin-bottom: 7px; }
+  .egl { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; margin-bottom: 3px; }
+  .entry { display: flex; align-items: flex-start; gap: 4px; margin-bottom: 4px; }
+  .dr { font-size: 11px; font-weight: 500; color: var(--color-text-info);   min-width: 14px; padding-top: 1px; }
+  .cr { font-size: 11px; font-weight: 500; color: var(--color-text-danger); min-width: 14px; padding-top: 1px; padding-left: 6px; }
+  .etxt { font-size: 11px; color: var(--color-text-primary); flex: 1; line-height: 1.4; }
+  .badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .bc { background: #f3e8ff; color: #7e22ce; }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">IPSAS 30 — Financial Instruments: Disclosures</div>
+      <div class="hub-sub">Extended reference poster · Full Handbook structure · Statement mapping · Related standards</div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <a href="#s1">1. Objective, Scope &amp; Definitions</a>
+    <a href="#s2">2. Classes &amp; Significance for Financial Position</a>
+    <a href="#s3">3. Fair Value Designation Disclosures</a>
+    <a href="#s4">4. Significance for Financial Performance</a>
+    <a href="#s5">5. Other Disclosures — Accounting Policies, Hedging &amp; Fair Value</a>
+    <a href="#s6">6. Concessionary Loans</a>
+    <a href="#s7">7. Nature &amp; Extent of Risks — Qualitative &amp; Quantitative</a>
+    <a href="#s8">8. Credit Risk</a>
+    <a href="#s9">9. Liquidity Risk</a>
+    <a href="#s10">10. Market Risk</a>
+    <a href="#s11">11. Effective Date &amp; Amendment Timeline</a>
+    <a href="#s12">12. Relationship to IFRS 7</a>
+    <a href="#s13">13. Statement / Process Mapping</a>
+    <a href="#s14">14. Related Standards</a>
+    <a href="#s15">15. Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 — OBJECTIVE, SCOPE & DEFINITIONS ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; Definitions (paras. 1–8)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Objective &amp; scope</div>
+      <div class="principle">Requires disclosures enabling users to evaluate (a) the SIGNIFICANCE of financial instruments for the entity's financial position and performance, and (b) the NATURE AND EXTENT of risks arising from financial instruments, and how the entity manages them. Complements IPSAS 28 (presentation) and IPSAS 41 (recognition/measurement).</div>
+      <div class="note">Applies to BOTH recognized and unrecognized financial instruments — e.g. some loan commitments are unrecognized under IPSAS 41 but still within THIS Standard's disclosure scope (para. 4).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Key definitions (para. 8)</div>
+      <div class="glossary-item"><div class="glossary-term">Credit risk</div><div class="glossary-def">The risk one party to a financial instrument will cause a financial loss for the other by failing to discharge an obligation.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Liquidity risk</div><div class="glossary-def">The risk of encountering difficulty meeting obligations associated with financial liabilities settled by delivering cash/another financial asset.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Market risk</div><div class="glossary-def">The risk fair value or future cash flows will fluctuate from market price changes — comprising CURRENCY risk, INTEREST RATE risk, and OTHER PRICE risk.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Loans payable</div><div class="glossary-def">Financial liabilities OTHER THAN short-term trade payables on normal credit terms.</div></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 — CLASSES & SIGNIFICANCE FOR FINANCIAL POSITION ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Classes of Financial Instruments &amp; Significance for Financial Position (paras. 9–11)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Grouping into classes (para. 9)</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Where disclosure BY CLASS is required, the entity groups instruments into classes appropriate to the NATURE of the information disclosed, taking account of the instruments' characteristics — providing sufficient information to permit RECONCILIATION to the SOFP line items.</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Mandatory SOFP categories (para. 11) — IPSAS 41-aligned</div>
+      <div class="dot-list">
+        <span>Financial assets at fair value through surplus or deficit — designated vs. mandatorily so classified, shown separately</span>
+        <span>Financial liabilities at fair value through surplus or deficit — designated vs. held-for-trading, shown separately</span>
+        <span>Financial assets measured at AMORTIZED COST</span>
+        <span>Financial liabilities measured at AMORTIZED COST</span>
+        <span>Financial assets at fair value through NET ASSETS/EQUITY — showing separately those under IPSAS 41 para. 41 vs. equity instruments designated under para. 106</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 — FAIR VALUE DESIGNATION DISCLOSURES ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Fair Value Designation Disclosures (paras. 12–17)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw">
+      <div class="ctitle cw">Designated financial ASSETS (para. 12)</div>
+      <div class="dot-list">
+        <span>Maximum exposure to credit risk at period-end</span>
+        <span>Amount by which related credit derivatives/similar instruments MITIGATE that exposure</span>
+        <span>Change in fair value (period + cumulative) attributable to changes in the asset's OWN credit risk</span>
+        <span>Change in fair value of related credit derivatives (period + cumulative)</span>
+      </div>
+    </div>
+
+    <div class="card cn">
+      <div class="ctitle cn">Designated financial LIABILITIES (para. 13)</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Where the entity presents credit-risk-attributable fair value changes in net assets/equity (per IPSAS 41 para. 108), disclose the cumulative amount of that change, and any transferred amount within net assets/equity, plus the difference between the liability's carrying amount and the contractually required amount at maturity.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 — SIGNIFICANCE FOR FINANCIAL PERFORMANCE ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Significance for Financial Performance — Statement of Financial Performance Disclosures</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Items of revenue, expense, gains, and losses — by category</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">An entity discloses items of revenue, expense, gains, or losses, EITHER on the face of the statements or in the notes, showing separately for each of the SOFP measurement categories (§2): net gains/losses (with an indication of whether interest revenue/expense is included), total interest revenue and expense (calculated using the effective interest method), fee revenue/expense (other than amounts in effective-interest calculations), and impairment losses for each class of financial asset.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 — OTHER DISCLOSURES ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Other Disclosures — Accounting Policies, Hedge Accounting &amp; Fair Value</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs">
+      <div class="ctitle cs">Accounting policies &amp; hedge accounting</div>
+      <div class="dot-list">
+        <span>Measurement basis (or bases) used, and other accounting policies relevant to understanding the statements (IPSAS 1)</span>
+        <span>Hedge accounting: a description of each hedge TYPE, the hedging instruments and their fair values, and the nature of hedged risks — separately for fair value, cash flow, and net investment hedges (cross-ref IPSAS 29 §3–§6)</span>
+        <span>For cash flow hedges: periods when cash flows are expected, when they'll affect surplus/deficit, and any amounts previously in net assets/equity now expected to NOT be recoverable</span>
+      </div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Fair value disclosures</div>
+      <div class="dot-list">
+        <span>Fair value for EACH class of financial asset/liability, comparable to its carrying amount</span>
+        <span>The methods and (when a valuation technique is used) assumptions applied in estimating fair value</span>
+        <span>Whether fair value measurements use a QUOTED market price or are ESTIMATED using a valuation technique</span>
+      </div>
+      <div class="note">Fair value disclosure is NOT required when the carrying amount is a reasonable approximation of fair value (e.g. short-term trade receivables), or for instruments where fair value cannot be reliably measured.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 — CONCESSIONARY LOANS ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Concessionary Loans (paras. 37–37A)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">What they are</div>
+      <div class="principle">Loans granted on BELOW-MARKET terms — e.g. loans to developing countries, small farms, student loans for university/college, and housing loans for low-income families.</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Required disclosure — for loans at amortized cost (para. 37) or at fair value (para. 37A)</div>
+      <div class="check-list">
+        <span>A RECONCILIATION between opening and closing carrying amounts — nominal value of new loans, fair value adjustment on initial recognition, loans repaid, impairment losses (or the fair value adjustment during the period, for fair-value-measured loans), discount unwinding, other changes</span>
+        <span>The NOMINAL VALUE of loans at period-end</span>
+        <span>Purpose and terms of the various loan types — including, for fair-value loans, the NATURE OF THE CONCESSION</span>
+        <span>VALUATION ASSUMPTIONS used</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 — NATURE & EXTENT OF RISKS ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Nature &amp; Extent of Risks Arising from Financial Instruments (paras. 38–42)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Qualitative disclosures — per risk type (para. 40)</div>
+      <div class="check-list">
+        <span>The EXPOSURES to risk, and how they arise</span>
+        <span>OBJECTIVES, POLICIES, and PROCESSES for managing the risk, and methods used to measure it</span>
+        <span>Any CHANGES from the previous period</span>
+      </div>
+      <div class="note">Pairing qualitative WITH quantitative disclosures helps users link related information and build an overall risk picture (para. 39A).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Quantitative disclosures — per risk type (para. 41)</div>
+      <div class="dot-list">
+        <span>Summary quantitative data on exposure at period-end, BASED ON information reported internally to key management personnel (IPSAS 20) — e.g. the governing body or CEO</span>
+        <span>The specific disclosures required by §8–§10 (credit, liquidity, market risk), to the extent not already covered by the internal-reporting-based disclosure</span>
+        <span>CONCENTRATIONS of risk, if not already apparent</span>
+      </div>
+      <div class="note">If period-end quantitative data is UNREPRESENTATIVE of the entity's risk exposure during the period, further representative information must be provided (para. 42).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 — CREDIT RISK ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Credit Risk (paras. 42A–43)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Objective &amp; three disclosure pillars (para. 42B)</div>
+      <div class="check-list">
+        <span>Credit risk management PRACTICES, and how they relate to expected credit loss recognition/measurement — including methods, assumptions, and information used</span>
+        <span>Quantitative and qualitative information on amounts arising from EXPECTED CREDIT LOSSES, including changes and reasons for those changes</span>
+        <span>The entity's credit risk EXPOSURE, including significant concentrations</span>
+      </div>
+      <div class="note">Cross-referenced incorporation from a management commentary or risk report (available on the same terms, at the same time) is permitted — without it, the financial statements are INCOMPLETE (para. 42C).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Key required disclosures</div>
+      <div class="dot-list">
+        <span>How significant credit risk INCREASES since initial recognition are determined, including "low credit risk" treatment and rebutting the 30-days-past-due presumption (IPSAS 41 paras. 82–83)</span>
+        <span>Definitions of DEFAULT, write-off policy, and credit-impairment determination</span>
+        <span>A RECONCILIATION of the loss allowance, opening to closing, by class and by expected-credit-loss stage (12-month vs. lifetime)</span>
+        <span>Credit risk EXPOSURE by credit risk rating grade, split by ECL stage</span>
+        <span>Maximum credit risk exposure, and collateral/credit enhancement description, for instruments OUTSIDE the IPSAS 41 impairment model (para. 43)</span>
+        <span>Assets obtained by taking possession of collateral — nature, carrying amount, and disposal policy (para. 45)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 — LIQUIDITY RISK ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Liquidity Risk (para. 46)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">The three required disclosures</div>
+      <div class="check-list">
+        <span>A MATURITY ANALYSIS for non-derivative financial liabilities (including issued financial guarantee contracts), showing REMAINING CONTRACTUAL maturities</span>
+        <span>A maturity analysis for DERIVATIVE financial liabilities, where contractual maturities are essential to understanding cash flow timing</span>
+        <span>A description of how the entity MANAGES the liquidity risk inherent in both of the above</span>
+      </div>
+      <div class="note">The maturity analysis convention — undiscounted contractual cash flows bucketed by remaining time band — mirrors standard practice for liquidity risk transparency in both public and private sector financial reporting.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 — MARKET RISK ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Market Risk — Sensitivity Analysis &amp; Transfers of Financial Assets (paras. 47–49H)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Two routes to satisfying the sensitivity analysis requirement</div>
+      <div class="elabel">STANDARD ROUTE (PARA. 47)</div>
+      <div class="dot-list" style="margin-bottom:9px;">
+        <span>A sensitivity analysis per market risk TYPE, showing the impact on surplus/deficit and net assets/equity from reasonably possible changes in the relevant risk variable</span>
+        <span>Methods and assumptions used, and any period-to-period changes with reasons</span>
+      </div>
+      <div class="elabel">ALTERNATIVE ROUTE (PARA. 48)</div>
+      <div style="font-size:10.5px;color:var(--color-text-secondary);line-height:1.5;">If the entity manages risk using an INTERDEPENDENCY-reflecting method (e.g. value-at-risk), it may use that instead — disclosing the method, main parameters/assumptions, its objective, and any limitations affecting how fully it reflects the assets/liabilities' fair value.</div>
+      <div class="note">If year-end sensitivity data is unrepresentative of exposure DURING the year, that fact and the reason must be disclosed (para. 49).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Transfers of financial assets (paras. 49A–49H) — a single dedicated note</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:8px;">Where an asset is transferred but NOT derecognized in its entirety, or the entity has CONTINUING INVOLVEMENT, disclosures (presented together in ONE note) must let users understand the relationship between the transferred assets and associated liabilities, and evaluate the nature/risks of any continuing involvement.</div>
+      <div class="dot-list">
+        <span>Nature of the transferred assets, and the risks/rewards of ownership retained</span>
+        <span>Nature of the relationship between transferred assets and associated liabilities, including USE RESTRICTIONS</span>
+        <span>Where the liability counterparty has recourse ONLY to the transferred assets — a schedule of fair values (assets, liabilities, and the net position)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 — EFFECTIVE DATE & AMENDMENT TIMELINE ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Effective Date &amp; Amendment Timeline (paras. 50–53)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Amendment history at a glance</div>
+      <div class="principle">Base Standard: periods beginning on/after <strong>1 January 2013</strong> — may not be applied before that date unless the entity also applies IPSAS 28 and IPSAS 29 (para. 51).</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2.2fr;"><span>Effective</span><span>Change</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2017</span><span>First-time-adoption amendments (IPSAS 33); IPSAS 35, 37 &amp; 38 scope references</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2018</span><span>Paras. 6, 7 deleted (Applicability of IPSAS); para. 3 amended (IPSAS 39)</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span><strong>1 Jan 2023</strong></span><span><strong>Extensive rewrite</strong> — IPSAS 41, Financial Instruments (Aug 2018): new credit-risk expected-credit-loss disclosure package (paras. 42A–42N, §8), transfers-of-assets requirements, and measurement-category alignment throughout (§2)</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2025</span><span>Para. 8 — IPSAS 46, Measurement</span></div>
+      </div>
+      <div class="note">Unlike IPSAS 29, IPSAS 30 was substantially REWRITTEN rather than gutted when IPSAS 41 arrived — its disclosure framework needed updating to match IPSAS 41's expected-credit-loss impairment model, but the Standard itself remains fully live.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 — RELATIONSHIP TO IFRS 7 ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Relationship to IAS/IFRS — Comparison with IFRS 7</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — IPSAS 30 vs IFRS 7</div>
+      <div class="principle">IPSAS 30 is drawn primarily from IFRS 7, <em>Financial Instruments: Disclosures</em> (originally issued 2005, amendments to April 2009).</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1.9fr;"><span>Topic</span><span>Difference</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Concessionary loans</span><span>IPSAS 30 requires specific disclosures (§6) — a public-sector-specific need; IFRS 7 has no equivalent</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Terminology</span><span>"Revenue," "statement of financial performance," "net assets/equity" (IPSAS 30) vs "income," "statement of comprehensive income," "equity" (IFRS 7)</span></div>
+      </div>
+      <div class="note">Notably brief comparison — IPSAS 30 tracks IFRS 7 closely in structure and substance, since financial instrument disclosure principles translate well across sectors once the concessionary-loan carve-out is addressed.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 — STATEMENT / PROCESS MAPPING ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Disclosure decision map</div>
+      <div class="dot-list">
+        <span>1. Group financial instruments into CLASSES appropriate to the disclosure, reconcilable to SOFP line items (§2)</span>
+        <span>2. Disclose SOFP carrying amounts by IPSAS 41 measurement category, and any fair-value DESIGNATION effects (§2, §3)</span>
+        <span>3. Disclose SOFPerformance items (net gains/losses, interest revenue/expense, fee revenue/expense, impairment) by category (§4)</span>
+        <span>4. Disclose accounting policies, hedge accounting activity, and fair value methods/assumptions (§5)</span>
+        <span>5. Are there CONCESSIONARY LOANS? → present the mandatory reconciliation and valuation-assumption disclosures (§6)</span>
+        <span>6. For EACH risk type (credit, liquidity, market) — disclose BOTH qualitative (exposure, management objectives) and quantitative (internal-reporting-based) information (§7–§10)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card cs span2">
+      <div class="ctitle cs">Concept-to-statement mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>IPSAS 30 concept</span><span>Statement(s)</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Financial instruments by measurement category</span><span><span class="badge bs">SOFP</span> <span class="badge bp">Notes</span></span><span>Face or notes, reconciled to line items</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Net gains/losses, interest, fees, impairment</span><span><span class="badge bp">Notes</span></span><span>By SOFP measurement category</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Expected credit loss reconciliation</span><span><span class="badge bp">Notes</span></span><span>By class and ECL stage, opening to closing</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Liquidity maturity analysis</span><span><span class="badge bp">Notes</span></span><span>Non-derivative and derivative liabilities, separately</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Market risk sensitivity analysis</span><span><span class="badge bp">Notes</span></span><span>Per risk type, or a value-at-risk alternative</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Concessionary loan reconciliation</span><span><span class="badge bp">Notes</span></span><span>Mandatory, para. 37/37A</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 — RELATED STANDARDS ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How IPSAS 30 connects across the IPSAS body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.7fr 2.2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 1</span><span>General accounting policy disclosure principles underpinning §5 (§1, §5)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 20</span><span>Key management personnel definition drives the "internally reported" basis for quantitative risk disclosures (§7)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 28</span><span>The presentation counterpart Standard — offsetting rules referenced in the maximum-credit-risk-exposure disclosure (§1, §8)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 29</span><span>Legacy hedge accounting activity, when elected, drives the hedge disclosure requirements (§5)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 41</span><span>The recognition/measurement/impairment Standard this disclosure package is built to complement — expected credit loss mechanics underpin §8 entirely</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 46</span><span>Fair value measurement basis referenced in the effective-date amendment history (§11)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 47</span><span>Revenue-transaction receivables and lease receivables get specific ECL provision-matrix treatment (§8)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 15 — GLOSSARY ============ -->
+  <div class="section-header" id="s15"><span class="num">15</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Credit risk</div><div class="glossary-def">The risk one party to a financial instrument causes a financial loss for the other by failing to discharge an obligation.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Credit risk rating grades</div><div class="glossary-def">A rating of credit risk based on the risk of a default occurring on the financial instrument.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Liquidity risk</div><div class="glossary-def">The risk of difficulty meeting obligations from financial liabilities settled by delivering cash or another financial asset.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Market risk</div><div class="glossary-def">The risk fair value or future cash flows fluctuate from market price changes — currency, interest rate, and other price risk.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Concessionary loans</div><div class="glossary-def">Loans granted on below-market terms — e.g. to developing countries, students, or low-income households.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Loans payable</div><div class="glossary-def">Financial liabilities other than short-term trade payables on normal credit terms.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bs">SOFP</span> Statement of financial position
+      <span class="badge bp">Notes</span> Notes to the financial statements
+    </div>
+  </div>
+
+  <div class="footer-note">IPSAS 30 — Financial Instruments: Disclosures · Extended Reference Poster · Built from the 2025 IPSASB Handbook, Volume I · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

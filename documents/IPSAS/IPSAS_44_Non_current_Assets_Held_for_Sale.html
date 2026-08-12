@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPSAS 44 — Non-current Assets Held for Sale and Discontinued Operations | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .eg  { margin-bottom: 7px; }
+  .egl { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; margin-bottom: 3px; }
+  .entry { display: flex; align-items: flex-start; gap: 4px; margin-bottom: 4px; }
+  .dr { font-size: 11px; font-weight: 500; color: var(--color-text-info);   min-width: 14px; padding-top: 1px; }
+  .cr { font-size: 11px; font-weight: 500; color: var(--color-text-danger); min-width: 14px; padding-top: 1px; padding-left: 6px; }
+  .etxt { font-size: 11px; color: var(--color-text-primary); flex: 1; line-height: 1.4; }
+  .badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .bc { background: #f3e8ff; color: #7e22ce; }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">IPSAS 44 — Non-current Assets Held for Sale and Discontinued Operations</div>
+      <div class="hub-sub">Extended reference poster · Full Handbook structure · Statement mapping · Related standards</div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <a href="#s1">1. Objective, Scope &amp; Disposal Groups</a>
+    <a href="#s2">2. Definitions</a>
+    <a href="#s3">3. Classification — the "Highly Probable" Test</a>
+    <a href="#s4">4. Assets to Be Abandoned &amp; Held for Distribution to Owners</a>
+    <a href="#s5">5. Measurement of Held-for-Sale Assets</a>
+    <a href="#s6">6. Impairment Losses &amp; Reversals</a>
+    <a href="#s7">7. Changes to a Plan of Sale — Reclassifying Back</a>
+    <a href="#s8">8. Presentation on the Statement of Financial Position</a>
+    <a href="#s9">9. Discontinued Operations — Presentation</a>
+    <a href="#s10">10. Additional Disclosures &amp; Fair Value Disclosures</a>
+    <a href="#s11">11. Effective Date &amp; Amendment Timeline</a>
+    <a href="#s12">12. Relationship to IFRS 5</a>
+    <a href="#s13">13. Statement / Process Mapping</a>
+    <a href="#s14">14. Related Standards</a>
+    <a href="#s15">15. Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 — OBJECTIVE, SCOPE & DISPOSAL GROUPS ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; Disposal Groups (paras. 1–8)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Objective</div>
+      <div class="principle">Specifies accounting for assets held for sale, and presentation/disclosure of discontinued operations. Requires held-for-sale assets to be measured at the LOWER of carrying amount and fair value less costs to sell (with depreciation ceasing), and presented SEPARATELY on both the SOFP and SOFPerformance.</div>
+      <div class="note">Applies to ALL recognized non-current assets and disposal groups for classification/presentation; measurement requirements apply to the SAME population, except specific carve-outs (§1 right).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Measurement carve-outs (para. 6) &amp; disposal groups</div>
+      <div class="cross-list">
+        <span>Deferred tax assets</span>
+        <span>Employee benefit assets (IPSAS 39)</span>
+        <span>Financial assets (IPSAS 41)</span>
+        <span>Investment property under IPSAS 16's fair value model</span>
+        <span>Biological assets at fair value less costs to sell (IPSAS 27)</span>
+        <span>Insurance contract groups</span>
+      </div>
+      <div class="note">A DISPOSAL GROUP (a group of assets, possibly with directly associated liabilities, disposed of together) is measured as a WHOLE at the lower of carrying amount and fair value less costs to sell — even where it includes current assets/liabilities or carve-out assets (para. 5). The SAME classification/presentation/measurement rules apply to assets held for DISTRIBUTION TO OWNERS (para. 7).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 — DEFINITIONS ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Definitions (paras. 9, 40)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Core vocabulary</div>
+      <div class="glossary-item"><div class="glossary-term">Costs to sell</div><div class="glossary-def">Incremental costs directly attributable to disposal, excluding finance costs and income tax expense.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Cash-generating unit</div><div class="glossary-def">The smallest identifiable group of assets, held for a commercial return, generating largely independent cash inflows — imported directly from IPSAS 26.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Component of an entity</div><div class="glossary-def">Operations and cash flows clearly distinguishable, operationally and for financial reporting, from the rest of the entity.</div></div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Discontinued operation — three qualifying paths (paras. 41)</div>
+      <div class="dot-list">
+        <span>Represents a SEPARATE MAJOR operation or geographical area of operations</span>
+        <span>Is part of a SINGLE COORDINATED PLAN to dispose of a separate major operation or geographical area</span>
+        <span>Is a CONTROLLED ENTITY acquired EXCLUSIVELY with a view to resale</span>
+      </div>
+      <div class="note">A discontinued operation is a component that has EITHER been disposed of, OR is classified as held for sale, AND meets one of the three tests above.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 — CLASSIFICATION: THE "HIGHLY PROBABLE" TEST ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Classification — the "Highly Probable" Test (paras. 11–18)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The core rule, and what "highly probable" requires (para. 11–13)</div>
+      <div class="formula-box">
+        <div class="f-eq">Classify as held for sale if carrying amount will be recovered PRINCIPALLY through a sale transaction, rather than continuing use</div>
+      </div>
+      <div class="check-list">
+        <span>Available for IMMEDIATE sale in present condition, subject only to usual/customary terms</span>
+        <span>Appropriate management level COMMITTED to a plan to sell, with an ACTIVE program to locate a buyer</span>
+        <span>ACTIVELY MARKETED at a price reasonable relative to current fair value</span>
+        <span>Sale expected to complete within ONE YEAR of classification (with a narrow extension exception, para. 15)</span>
+        <span>Unlikely the plan will change significantly or be withdrawn</span>
+      </div>
+      <div class="callout info" style="margin-bottom:0;">ℹ️ <strong style="font-weight:600">Distinctive public sector footnote:</strong> obtaining REGULATORY approval to sell assets is common in the public sector — the probability of owners'/regulatory approval (where required) is explicitly factored into the highly-probable assessment (para. 13, footnote 4).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Special cases</div>
+      <div class="dot-list">
+        <span>Loss-of-control sale plan for a controlled entity → classify ALL its assets/liabilities as held for sale once criteria are met, REGARDLESS of any retained non-controlling interest (para. 14)</span>
+        <span>Exchanges of non-current assets WITH commercial substance (IPSAS 45 sense) count as sale transactions (para. 16)</span>
+        <span>Newly acquired assets → classify at ACQUISITION only if the one-year test is met AND other criteria are highly probable within a short period (usually 3 months) afterward (para. 17)</span>
+        <span>Criteria met AFTER period-end but BEFORE statements are authorized for issue → don't reclassify retroactively, but DISCLOSE key facts in the notes (para. 18)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 — ASSETS TO BE ABANDONED & HELD FOR DISTRIBUTION TO OWNERS ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Assets to Be Abandoned &amp; Held for Distribution to Owners (paras. 19–21)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd">
+      <div class="ctitle cd">Abandoned assets — NEVER classified as held for sale</div>
+      <div class="callout danger" style="margin-bottom:9px;">✕ An asset to be ABANDONED is never classified as held for sale — its carrying amount will be recovered through CONTINUING use, not a sale (para. 20).</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">EXCEPTION: if the disposal group being abandoned meets the discontinued-operation criteria, its results/cash flows ARE presented as discontinued operations — but only from the date it CEASES to be used (para. 20). Temporarily taken-out-of-use assets are never treated as abandoned (para. 21).</div>
+    </div>
+
+    <div class="card cs">
+      <div class="ctitle cs">Held for distribution to owners</div>
+      <div class="formula-box">
+        <div class="f-eq">Classified when the entity is COMMITTED to distribute the asset to owners — available for immediate distribution AND highly probable</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Same "highly probable" logic as a sale (§3): actions initiated, expected completion within one year, unlikely to change/withdraw, with owners'/regulatory approval probability factored in (para. 19).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 — MEASUREMENT OF HELD-FOR-SALE ASSETS ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Measurement of Held-for-Sale Assets (paras. 22–27)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The core rule — lower of two amounts</div>
+      <div class="formula-box">
+        <div class="f-eq">Held for sale → lower of CARRYING AMOUNT and FAIR VALUE LESS COSTS TO SELL</div>
+      </div>
+      <div class="formula-box">
+        <div class="f-eq">Held for distribution to owners → lower of carrying amount and FAIR VALUE LESS COSTS TO DISTRIBUTE</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Costs to sell beyond ONE YEAR are measured at PRESENT VALUE; any increase from the passage of time is a FINANCING COST in surplus or deficit (para. 25).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Newly acquired assets — the combination-type distinction</div>
+      <div class="dot-list">
+        <span>Acquired via a public sector ACQUISITION (IPSAS 40) → measured at FAIR VALUE LESS COSTS TO SELL only</span>
+        <span>Acquired via a public sector AMALGAMATION (IPSAS 40) → the ORDINARY lower-of test applies (carrying amount vs. fair value less costs to sell) — reflecting the amalgamation model's carrying-amount basis rather than fair value (para. 24)</span>
+      </div>
+      <div class="note">Immediately BEFORE initial classification, carrying amounts are measured per the applicable IPSAS as normal (para. 26). On subsequent remeasurement of a disposal group, carve-out items (§1) are remeasured under THEIR OWN Standards first, before the group's fair value less costs to sell is remeasured (para. 27).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 — IMPAIRMENT LOSSES & REVERSALS ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Recognition of Impairment Losses &amp; Reversals (paras. 28–33)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Write-downs and gains — capped by cumulative prior losses</div>
+      <div class="formula-box">
+        <div class="f-eq">Any write-down to fair value less costs to sell → IMPAIRMENT LOSS</div>
+      </div>
+      <div class="formula-box">
+        <div class="f-eq">Any subsequent increase → GAIN, capped at cumulative impairment previously recognized (under this Standard, IPSAS 21, or IPSAS 26)</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">For a disposal group, the loss/gain is allocated across the group's in-scope assets using IPSAS 26's OWN allocation order (paras. 91(a)-(b), 110 — mirroring the goodwill-first waterfall from that Standard's poster) (para. 31).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">No depreciation while held for sale, and derecognition timing</div>
+      <div class="callout danger" style="margin-bottom:0;">✕ An asset is NEVER depreciated/amortized while classified as held for sale (or part of a held-for-sale disposal group) — though interest and other expenses on disposal-group LIABILITIES continue as normal (para. 33). Any gain/loss not yet recognized by the sale date is recognized AT DERECOGNITION, per IPSAS 45 (PP&amp;E) or IPSAS 31 (intangibles) (para. 32).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 — CHANGES TO A PLAN OF SALE: RECLASSIFYING BACK ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Changes to a Plan of Sale or Distribution (paras. 34–38)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Sale ↔ distribution switch — a continuation, not a reversal</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Reclassifying DIRECTLY between held-for-sale and held-for-distribution-to-owners is treated as a CONTINUATION of the original disposal plan — apply the new method's classification/presentation/measurement rules, but do NOT reset the original classification date, and don't follow the ceases-to-qualify mechanics below (para. 35).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Genuinely ceasing to qualify — the reclassification-back formula</div>
+      <div class="formula-box">
+        <div class="f-eq">Measure at the LOWER of: (a) carrying amount BEFORE classification, adjusted for depreciation/amortization/revaluations that WOULD have been recognized had it never been classified held for sale; and (b) RECOVERABLE AMOUNT at the date of the decision not to sell/distribute</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Effectively "catches up" the missed depreciation, capped by whatever the asset would actually be worth today under an impairment test (paras. 34, 36).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 — PRESENTATION ON THE STATEMENT OF FINANCIAL POSITION ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Presentation on the Statement of Financial Position (paras. 48–50)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Separate line items — no offsetting, no retrospective restatement</div>
+      <div class="check-list">
+        <span>Held-for-sale ASSETS presented SEPARATELY from other assets</span>
+        <span>Disposal-group LIABILITIES presented SEPARATELY from other liabilities</span>
+        <span>Assets and liabilities are NEVER offset into a single net amount</span>
+        <span>MAJOR CLASSES disclosed separately (face or notes) — except for newly-acquired-controlled-entity disposal groups (para. 49)</span>
+        <span>Cumulative net-assets/equity amounts related to the held-for-sale item presented SEPARATELY (para. 48)</span>
+      </div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ Prior-period SOFP amounts are NEVER reclassified/represented to reflect the latest period's held-for-sale classification (para. 50) — unlike discontinued operations in the SOFPerformance, which ARE re-presented (§9).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 — DISCONTINUED OPERATIONS: PRESENTATION ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Discontinued Operations — Presentation (paras. 42–47)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">A single SOFPerformance amount, with a mandatory analysis</div>
+      <div class="formula-box">
+        <div class="f-eq">One line = post-tax surplus/deficit of discontinued operations + post-tax gain/loss on measurement/disposal</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Broken into: revenue, expenses, pre-tax surplus/deficit; related income tax; the gain/loss on measurement/disposal; and ITS related tax — presentable in notes OR a dedicated SOFPerformance section CLEARLY separated from continuing operations (para. 42). Also required: net cash flows by activity (operating/investing/financing), and revenue split between continuing/discontinued attributable to controlling-entity owners (para. 42(c)-(d)).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Re-presentation, and later adjustments</div>
+      <div class="dot-list">
+        <span>PRIOR periods are RE-PRESENTED so disclosures reflect ALL operations discontinued by the LATEST period's end (para. 43) — the mirror opposite of §8's SOFP rule</span>
+        <span>Later-period adjustments directly related to a PRIOR period's discontinued disposal (purchase price adjustments, indemnification resolution, retained environmental/warranty obligations) → classified SEPARATELY within discontinued operations, with nature/amount disclosed (para. 44)</span>
+        <span>If a component CEASES to be classified as held for sale, ITS results are RECLASSIFIED and included in continuing operations for ALL periods presented (para. 45)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 — ADDITIONAL DISCLOSURES & FAIR VALUE DISCLOSURES ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Additional Disclosures &amp; Fair Value Disclosures (paras. 51–55)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Per classification/sale period (para. 51–53)</div>
+      <div class="check-list">
+        <span>A DESCRIPTION of the asset (or disposal group)</span>
+        <span>Facts/circumstances of the sale, or leading to the expected disposal — expected MANNER and TIMING</span>
+        <span>The gain/loss recognized, and its SOFPerformance caption if not separately shown</span>
+        <span>The SEGMENT (IPSAS 18) it's presented in, if applicable</span>
+        <span>If materially LOWER carrying amount than fair value → disclose the fair value</span>
+        <span>If a plan change occurs → facts/circumstances and the EFFECT on results, current and prior periods</span>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Fair value hierarchy disclosures — the familiar package</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Mirrors the fair value disclosure packages seen throughout this library: measurement techniques and inputs for assets/liabilities measured at fair value AFTER initial recognition — helping users assess how those measurements were developed (paras. 54–55).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 — EFFECTIVE DATE & AMENDMENT TIMELINE ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Effective Date, Amendment Timeline &amp; Transition (paras. 58–61)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Amendment history at a glance</div>
+      <div class="principle">Base Standard: periods beginning on/after <strong>1 January 2025</strong> — earlier application requires SIMULTANEOUS adoption of IPSAS 43, Leases (para. 58). Applied PROSPECTIVELY to assets/disposal groups meeting the held-for-sale/discontinued-operation criteria from the effective date forward (para. 60).</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2.2fr;"><span>Effective</span><span>Change</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2025</span><span>Paras. 16, 32, 37 — IPSAS 45, Property, Plant, and Equipment (May 2023)</span></div>
+      </div>
+      <div class="note">IPSAS 44 is another member of the 2022–2023 companion-Standard wave (alongside 43, 45, 46) all sharing the 1 January 2025 effective date.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 — RELATIONSHIP TO IFRS 5 ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Relationship to IAS/IFRS — Comparison with IFRS 5</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — IPSAS 44 vs IFRS 5</div>
+      <div class="principle">IPSAS 44 is drawn primarily from IFRS 5 (issued 2004, amendments to May 2017), <em>Non-current Assets Held for Sale and Discontinued Operations</em>.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1.9fr;"><span>Topic</span><span>Difference</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Fair value disclosure trigger</span><span>IPSAS 44 REQUIRES notes disclosure of fair value when materially different from carrying amount; IFRS 5 has no equivalent explicit trigger</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Cash-generating unit definition</span><span>IPSAS 44 imports the IPSAS 26 definition directly, rather than IFRS 5's own</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Public sector combinations</span><span>IPSAS 44 distinguishes ACQUISITIONS from AMALGAMATIONS (IPSAS 40) — newly-acquired amalgamation assets held for sale use the LOWER-OF test, not straight fair value less costs to sell (§5); IFRS 5 has no equivalent since business combinations are always acquisition-method</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Terminology</span><span>"Operation," "public sector combination," "revenue," "owner," "controlling entity," "controlled entity" (IPSAS 44) vs "business," "business combination," "income," "shareholder," "parent," "subsidiary" (IFRS 5)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 — STATEMENT / PROCESS MAPPING ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Classification decision map</div>
+      <div class="dot-list">
+        <span>1. Will carrying amount be recovered PRINCIPALLY through sale, not continuing use? Is it being ABANDONED instead? → abandoned assets are NEVER held for sale (§3, §4)</span>
+        <span>2. Apply the HIGHLY PROBABLE test — available for immediate sale, committed management plan, active marketing, expected completion within one year (§3)</span>
+        <span>3. Classify: measure at the LOWER of carrying amount and fair value less costs to sell (or costs to distribute); STOP depreciating immediately (§5, §6)</span>
+        <span>4. Present SEPARATELY on the SOFP — assets and liabilities each in their own line, never offset, prior periods NOT restated (§8)</span>
+        <span>5. Does the disposed/held-for-sale component meet the DISCONTINUED OPERATION test (major operation, coordinated disposal plan, or resale-only acquisition)? → present as a single SOFPerformance line with a full analysis, prior periods RE-PRESENTED (§9)</span>
+        <span>6. Criteria no longer met? → reclassify BACK at the lower of adjusted-original-carrying-amount and recoverable amount (§7)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card cs span2">
+      <div class="ctitle cs">Concept-to-statement mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>IPSAS 44 concept</span><span>Statement(s)</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Held-for-sale asset/disposal group carrying amount</span><span><span class="badge bs">SOFP</span></span><span>Separate line, never offset with liabilities</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Impairment loss/gain on held-for-sale measurement</span><span><span class="badge bp">SOFPerf</span></span><span>Capped at cumulative prior impairment</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Discontinued operations result</span><span><span class="badge bp">SOFPerf</span></span><span>Single line, analyzed in notes or a dedicated section</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Discontinued operations cash flows</span><span>Cash Flow</span><span>By operating/investing/financing activity</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Reclassification-back adjustment</span><span><span class="badge bs">SOFP</span> <span class="badge bp">SOFPerf</span></span><span>Catch-up depreciation, capped at recoverable amount</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Description, facts/circumstances, fair value</span><span><span class="badge be">Notes</span></span><span>Mandatory disclosures, paras. 51–55</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 — RELATED STANDARDS ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How IPSAS 44 connects across the IPSAS body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.7fr 2.2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 1</span><span>General disclosure principles supplement this Standard's specific requirements where needed (§1)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 18</span><span>Segment disclosure for held-for-sale assets/disposal groups (§10)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 21 / 26</span><span>Impairment loss cap methodology, and the cash-generating-unit definition/allocation order imported directly (§2, §6)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 31</span><span>Derecognition mechanics for intangible assets within a disposal group (§6)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 39 / 41</span><span>Scope carve-outs from this Standard's measurement requirements (§1)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 40</span><span>The acquisition/amalgamation distinction drives newly-acquired-asset measurement (§5)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 43</span><span>Simultaneous early-adoption requirement (§11)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 45</span><span>Derecognition mechanics for PP&amp;E within a disposal group; commercial substance definition for qualifying exchange transactions (§3, §6)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 15 — GLOSSARY ============ -->
+  <div class="section-header" id="s15"><span class="num">15</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Disposal group</div><div class="glossary-def">A group of assets, possibly with directly associated liabilities, disposed of together in a single transaction.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Costs to sell</div><div class="glossary-def">Incremental costs directly attributable to disposal, excluding finance costs and income tax expense.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Component of an entity</div><div class="glossary-def">Operations and cash flows clearly distinguishable, operationally and for financial reporting, from the rest of the entity.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Discontinued operation</div><div class="glossary-def">A disposed-of or held-for-sale component representing a major operation, geographical area, or resale-only acquisition.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bs">SOFP</span> Statement of financial position
+      <span class="badge bp">SOFPerf</span> Statement of financial performance
+      <span class="badge be">Notes</span> Notes to the financial statements
+    </div>
+  </div>
+
+  <div class="footer-note">IPSAS 44 — Non-current Assets Held for Sale and Discontinued Operations · Extended Reference Poster · Built from the 2025 IPSASB Handbook, Volume III · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

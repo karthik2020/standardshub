@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPSAS 34 — Separate Financial Statements | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .eg  { margin-bottom: 7px; }
+  .egl { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; margin-bottom: 3px; }
+  .entry { display: flex; align-items: flex-start; gap: 4px; margin-bottom: 4px; }
+  .dr { font-size: 11px; font-weight: 500; color: var(--color-text-info);   min-width: 14px; padding-top: 1px; }
+  .cr { font-size: 11px; font-weight: 500; color: var(--color-text-danger); min-width: 14px; padding-top: 1px; padding-left: 6px; }
+  .etxt { font-size: 11px; color: var(--color-text-primary); flex: 1; line-height: 1.4; }
+  .badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .bc { background: #f3e8ff; color: #7e22ce; }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">IPSAS 34 — Separate Financial Statements</div>
+      <div class="hub-sub">Extended reference poster · Full Handbook structure · Statement mapping · Related standards</div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <a href="#s1">1. Objective, Scope &amp; Definitions</a>
+    <a href="#s2">2. When Separate Financial Statements Are the ONLY Statements</a>
+    <a href="#s3">3. Preparation — the Three Measurement Choices</a>
+    <a href="#s4">4. Investment Entities &amp; Changes in Status</a>
+    <a href="#s5">5. Dividends &amp; Group Reorganizations</a>
+    <a href="#s6">6. Disclosure Requirements</a>
+    <a href="#s7">7. Effective Date, Withdrawal of IPSAS 6 &amp; Amendment Timeline</a>
+    <a href="#s8">8. Relationship to IAS 27</a>
+    <a href="#s9">9. Statement / Process Mapping</a>
+    <a href="#s10">10. Related Standards</a>
+    <a href="#s11">11. Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 — OBJECTIVE, SCOPE & DEFINITIONS ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; Definitions (paras. 1–8)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Objective &amp; scope</div>
+      <div class="principle">Prescribes accounting and disclosure requirements for investments in CONTROLLED ENTITIES, JOINT VENTURES, and ASSOCIATES when an entity prepares SEPARATE financial statements — i.e., the CONTROLLING entity's OWN (non-consolidated) statements.</div>
+      <div class="note">This Standard does NOT mandate which entities must produce separate financial statements — it simply governs HOW, when an entity elects or is required by regulation to present them (para. 3).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">The core definitions (para. 6)</div>
+      <div class="glossary-item"><div class="glossary-term">Consolidated financial statements</div><div class="glossary-def">Statements of an ECONOMIC ENTITY, presenting the controlling entity's and controlled entities' assets/liabilities/net assets/revenue/expenses/cash flows as ONE entity.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Separate financial statements</div><div class="glossary-def">Statements where the entity ELECTS to account for its controlled-entity/joint-venture/associate investments EITHER at COST, per IPSAS 41, OR using the EQUITY METHOD (IPSAS 36).</div></div>
+      <div class="callout warn" style="margin-bottom:0;margin-top:8px;">⚠️ Financial statements of an entity with NO controlled entity, associate, or joint venture interest are NOT "separate financial statements" in this Standard's sense — they're simply that entity's ordinary statements (para. 8).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 — WHEN SEPARATE STATEMENTS ARE THE ONLY STATEMENTS ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>When Separate Financial Statements Are the ONLY Financial Statements (paras. 7, 9–10)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs">
+      <div class="ctitle cs">Ordinarily presented ALONGSIDE consolidated statements</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Separate financial statements are normally presented IN ADDITION TO consolidated statements — or in addition to an investor's own statements where it has NO controlled entities but DOES hold equity-method associate/joint-venture interests (para. 7).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">The two exceptions — separate statements stand ALONE</div>
+      <div class="dot-list">
+        <span>An entity EXEMPTED from consolidation (IPSAS 35, para. 5) or from applying the equity method (IPSAS 36, para. 23) MAY present separate financial statements as its ONLY statements (para. 9)</span>
+        <span>An INVESTMENT ENTITY required, throughout the current AND all comparative periods, to measure ALL controlled-entity investments at fair value through surplus or deficit (IPSAS 35 para. 56) presents separate statements as its ONLY statements (para. 10)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 — PREPARATION: THE THREE MEASUREMENT CHOICES ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Preparation of Separate Financial Statements — the Three Measurement Choices (paras. 11–13)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">One policy per investment CATEGORY, applied consistently</div>
+      <div class="formula-box">
+        <div class="f-eq">For EACH category of investment (controlled entities, joint ventures, associates) → account at COST, per IPSAS 41 (fair value), OR using the EQUITY METHOD (IPSAS 36)</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">The SAME accounting is applied to each category — no mixing within a category (para. 12). Investments held for SALE or distribution are reclassified under IPSAS 44 if accounted for at cost or equity method — but IPSAS 41-measured investments are UNCHANGED by that classification, since they're already at fair value (para. 12). If an entity elects FAIR VALUE for associates/joint ventures under IPSAS 36 para. 24, it must use the SAME treatment in its separate statements (para. 13).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 — INVESTMENT ENTITIES & CHANGES IN STATUS ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Investment Entities &amp; Changes in Investment Entity Status (paras. 14–15)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd">
+      <div class="ctitle cd">Mandatory fair value flows through to separate statements too</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Where a controlling entity is REQUIRED (IPSAS 35 para. 56) to measure a controlled entity at fair value through surplus or deficit, it applies the SAME treatment in its own separate statements (para. 14). A controlling entity that is NOT ITSELF an investment entity measures its investment in a controlled INVESTMENT entity per the ordinary §3 choices instead.</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Status changes — treated as a deemed disposal/acquisition</div>
+      <div class="dot-list">
+        <span><strong style="font-weight:500">CEASES</strong> to be an investment entity → the change date becomes a DEEMED ACQUISITION date; the controlled entity's fair value AT that date becomes the deemed transferred consideration for §3 accounting going forward (para. 15(a))</span>
+        <span><strong style="font-weight:500">BECOMES</strong> an investment entity → switches to fair value through surplus or deficit; the difference between the PREVIOUS carrying amount and fair value at the change date is a gain/loss in surplus or deficit, and any CUMULATIVE net-assets/equity amount is treated as if the entity had been DISPOSED of at that date (para. 15(b))</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 — DIVIDENDS & GROUP REORGANIZATIONS ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Dividends or Similar Distributions &amp; Group Reorganizations (paras. 16–18)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs">
+      <div class="ctitle cs">Dividend recognition timing</div>
+      <div class="formula-box">
+        <div class="f-eq">Dividends recognized when the entity's RIGHT TO RECEIVE is established</div>
+      </div>
+      <div class="dot-list">
+        <span>Cost or IPSAS 41 measurement basis → dividend goes to SURPLUS OR DEFICIT</span>
+        <span>Equity method → dividend REDUCES the investment's carrying amount instead (para. 16)</span>
+      </div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Group reorganizations — "new top company" transactions</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Where a NEW controlling entity is inserted above the original one via an equity-instrument exchange (or equivalent mechanism), and the underlying economic entity's assets/liabilities and owners' relative interests are UNCHANGED before and after — the new controlling entity measures its investment cost at the CARRYING AMOUNT of its share of the original controlling entity's net assets/equity, as shown in the ORIGINAL entity's own separate statements at the reorganization date (paras. 17–18). This prevents an artificial step-up in value from a purely structural reorganization.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 — DISCLOSURE REQUIREMENTS ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Disclosure Requirements (paras. 19–23)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Where separate statements substitute for consolidated ones (para. 20)</div>
+      <div class="check-list">
+        <span>That the statements ARE separate financial statements, and that the CONSOLIDATION exemption was used</span>
+        <span>The NAME of the entity whose IPSAS-compliant consolidated statements ARE publicly available, and WHERE to obtain them</span>
+        <span>A list of significant investments — names, jurisdictions (if different), ownership proportions and how determined</span>
+        <span>The METHOD used to account for each</span>
+      </div>
+      <div class="note">An INVESTMENT ENTITY presenting separate statements as its only statements discloses that fact, PLUS the IPSAS 38 investment-entity disclosures (para. 21). A non-investment-entity controlling entity applying IPSAS 35 para. 58 to an investment-entity subsidiary discloses its accounting policy CHOICE, plus IPSAS 38 disclosures (para. 22).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Where separate statements accompany consolidated ones (para. 23)</div>
+      <div class="dot-list">
+        <span>IDENTIFY the consolidated (or IPSAS 36/37-based) statements to which the separate statements relate</span>
+        <span>The fact that they ARE separate statements, and WHY they're prepared (if not legally mandated)</span>
+        <span>The same significant-investment LIST and accounting METHOD disclosures as para. 20</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 — EFFECTIVE DATE, WITHDRAWAL OF IPSAS 6 & AMENDMENT TIMELINE ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Effective Date, Withdrawal of IPSAS 6 &amp; Amendment Timeline (paras. 32–34)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">A coordinated launch with IPSAS 35</div>
+      <div class="principle">Base Standard: periods beginning on/after <strong>1 January 2017</strong> — earlier adoption requires simultaneous IPSAS 35, 36, 37, and 38 adoption (para. 32). Issued CONCURRENTLY with IPSAS 35: together the two Standards supersede IPSAS 6, <em>Consolidated and Separate Financial Statements</em> (December 2006) — see this library's own IPSAS 6 withdrawal notice (para. 34).</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2.2fr;"><span>Effective</span><span>Change</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2018</span><span>Paras. 4, 5 deleted — The Applicability of IPSAS (Apr 2016)</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2019</span><span>Paras. 14, 22, 30 — Improvements to IPSAS 2018</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2023</span><span>Paras. 6, 12–15, 22, 26, 30 — IPSAS 41, Financial Instruments</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2025</span><span>Para. 12 — IPSAS 44; new paras. 23A–23H — IPSAS 46, Measurement</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 — RELATIONSHIP TO IAS 27 ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Relationship to IAS/IFRS — Comparison with IAS 27</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — IPSAS 34 vs IAS 27 (Amended 2011)</div>
+      <div class="principle">IPSAS 34 is drawn primarily from IAS 27 (Amended in 2011), <em>Separate Financial Statements</em>, with amendments to 31 December 2014. Where IAS 27 references IFRS 9, IPSAS 34 substitutes the relevant IPSAS financial instruments Standard instead.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1.9fr;"><span>Topic</span><span>Difference</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Terminology</span><span>"Net assets/equity," "economic entity," "controlling entity," "controlled entity," "revenue" (IPSAS 34) vs "equity," "group," "parent," "subsidiary," "income" (IAS 27)</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Controlling entity holding a controlled INVESTMENT entity</span><span>IPSAS 34 has SPECIFIC requirements (§4) for a non-investment-entity controlling entity holding an investment-entity subsidiary; IAS 27 has none — it simply requires consolidation in that case</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 — STATEMENT / PROCESS MAPPING ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Decision map</div>
+      <div class="dot-list">
+        <span>1. Does the entity elect, or is it REQUIRED, to present separate financial statements? If it has no controlled/associate/joint-venture interests at all → not "separate financial statements" in this Standard's sense (§1)</span>
+        <span>2. Is the entity EXEMPTED from consolidation/equity method, or a QUALIFYING investment entity? → separate statements may be its ONLY statements (§2)</span>
+        <span>3. Choose ONE measurement policy per investment CATEGORY — cost, IPSAS 41 fair value, or equity method — applied consistently (§3)</span>
+        <span>4. Has the entity's INVESTMENT ENTITY status changed during the period? → apply the deemed acquisition/disposal mechanics (§4)</span>
+        <span>5. Recognize dividends when the RIGHT TO RECEIVE is established — to surplus/deficit, or as a reduction of the investment's carrying amount under the equity method (§5)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card cs span2">
+      <div class="ctitle cs">Concept-to-statement mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>IPSAS 34 concept</span><span>Statement(s)</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Investment carrying amount</span><span><span class="badge bs">SOFP</span></span><span>Cost, fair value, or equity-method carrying amount</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Dividends received (cost/fair value basis)</span><span><span class="badge bp">SOFPerf</span></span><span>Recognized when the right to receive is established</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Dividends received (equity method)</span><span><span class="badge bs">SOFP</span></span><span>Reduces the investment carrying amount instead</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Gain/loss on investment entity status change</span><span><span class="badge bp">SOFPerf</span></span><span>Difference between previous carrying amount and fair value</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Significant investment list, methods, consolidation exemption</span><span><span class="badge be">Notes</span></span><span>Mandatory disclosures, paras. 20–23</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 — RELATED STANDARDS ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How IPSAS 34 connects across the IPSAS body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.7fr 2.2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 33</span><span>Deemed-cost election for investments in controlled entities on first-time IPSAS adoption (cross-referenced from IPSAS 33 §8)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 35</span><span>Defines consolidation exemptions (§2) and the investment-entity mandatory fair value rule (§4); issued concurrently, together superseding IPSAS 6</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 36</span><span>Defines the equity method and its own exemptions; the fair-value election under its para. 24 (§2, §3)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 37</span><span>Source of joint-venture/joint-control definitions used by reference (§1)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 38</span><span>Investment-entity disclosures required alongside separate-statement disclosures for investment entities (§6)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 41</span><span>Fair value measurement basis, and held-for-sale reclassification interaction (§3)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 44</span><span>Held-for-sale/distribution classification for cost- or equity-method-measured investments (§3)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 — GLOSSARY ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Separate financial statements</div><div class="glossary-def">Statements where investments in controlled entities, joint ventures, and associates are accounted for at cost, IPSAS 41 fair value, or the equity method.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Consolidated financial statements</div><div class="glossary-def">Statements presenting an economic entity's controlling and controlled entities as a single entity.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Investment entity</div><div class="glossary-def">An entity required to measure its investments in controlled entities at fair value through surplus or deficit, under conditions set in IPSAS 35.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Equity method</div><div class="glossary-def">A method where an investment is initially recognized at cost and adjusted for the investor's share of the investee's post-acquisition surplus/deficit.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bs">SOFP</span> Statement of financial position
+      <span class="badge bp">SOFPerf</span> Statement of financial performance
+      <span class="badge be">Notes</span> Notes to the financial statements
+    </div>
+  </div>
+
+  <div class="footer-note">IPSAS 34 — Separate Financial Statements · Extended Reference Poster · Built from the 2025 IPSASB Handbook, Volume II · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

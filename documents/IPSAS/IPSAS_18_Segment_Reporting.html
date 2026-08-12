@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPSAS 18 — Segment Reporting | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .eg  { margin-bottom: 7px; }
+  .egl { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; margin-bottom: 3px; }
+  .entry { display: flex; align-items: flex-start; gap: 4px; margin-bottom: 4px; }
+  .dr { font-size: 11px; font-weight: 500; color: var(--color-text-info);   min-width: 14px; padding-top: 1px; }
+  .cr { font-size: 11px; font-weight: 500; color: var(--color-text-danger); min-width: 14px; padding-top: 1px; padding-left: 6px; }
+  .etxt { font-size: 11px; color: var(--color-text-primary); flex: 1; line-height: 1.4; }
+  .badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .bc { background: #f3e8ff; color: #7e22ce; }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">IPSAS 18 — Segment Reporting</div>
+      <div class="hub-sub">Extended reference poster · Full Handbook structure · Worked example · Statement mapping · Related standards</div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <a href="#s1">1. Objective, Scope &amp; Definitions</a>
+    <a href="#s2">2. Identifying Segments — Reporting Structures</a>
+    <a href="#s3">3. Service &amp; Geographical Segments</a>
+    <a href="#s4">4. Reporting Structures Not Appropriate</a>
+    <a href="#s5">5. Segment Revenue, Expense, Assets &amp; Liabilities</a>
+    <a href="#s6">6. Attributing Items to Segments</a>
+    <a href="#s7">7. Segment Accounting Policies &amp; Joint Assets</a>
+    <a href="#s8">8. Disclosure Requirements</a>
+    <a href="#s9">9. Worked Example — Education Authority</a>
+    <a href="#s10">10. Effective Date &amp; Amendment Timeline</a>
+    <a href="#s11">11. Relationship to IAS 14</a>
+    <a href="#s12">12. Statement / Process Mapping</a>
+    <a href="#s13">13. Related Standards</a>
+    <a href="#s14">14. Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 — OBJECTIVE, SCOPE & DEFINITIONS ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; Definitions (paras. 1–9)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Objective &amp; scope</div>
+      <div class="principle">Establishes principles for reporting financial information by segments, to (a) help users understand past performance and the resources allocated to major activities, and (b) enhance transparency and accountability.</div>
+      <div class="check-list">
+        <span>Applied by an entity preparing accrual-basis financial statements, in the presentation of segment information</span>
+        <span>Applies to complete sets of published financial statements complying with IPSAS</span>
+      </div>
+      <div class="note">If BOTH consolidated statements of an economic entity and the separate statements of the controlling entity are presented together, segment information need only be presented for the CONSOLIDATED statements (para. 6).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">The core definition (para. 9)</div>
+      <div class="glossary-item" style="border-bottom:none;">
+        <div class="glossary-term">Segment</div>
+        <div class="glossary-def">A distinguishable activity or group of activities of an entity for which it is appropriate to separately report financial information for the purpose of (a) evaluating the entity's past performance in achieving its objectives, and (b) making decisions about the future allocation of resources.</div>
+      </div>
+      <div class="callout info" style="margin-bottom:0;margin-top:9px;">ℹ️ Why segments matter in the public sector: entity-wide/consolidated statements show WHAT resources were controlled and WHAT it cost overall — but not the specific operational objectives, activities, and resource allocation WITHIN the entity (para. 10).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 — IDENTIFYING SEGMENTS: REPORTING STRUCTURES ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Identifying Segments — Reporting Structures (paras. 12–16)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs">
+      <div class="ctitle cs">Internal reporting is the usual starting point</div>
+      <div class="principle">In most cases, the segments reported internally to the governing body and senior manager — often reflecting budget documentation's major activity classifications — will ALSO satisfy this Standard's external reporting requirements.</div>
+      <div class="elabel">JUDGMENT FACTORS (PARA. 15)</div>
+      <div class="dot-list">
+        <span>The objective of segment reporting itself (accountability + resource-allocation decisions)</span>
+        <span>Community/elected-representative expectations about key activities</span>
+        <span>The Conceptual Framework's qualitative characteristics</span>
+        <span>Whether the structure reflects what the governing body/senior manager actually uses</span>
+      </div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Whole-of-government reporting patterns (para. 16)</div>
+      <div class="dot-list">
+        <span>Major economic/GFS functional classifications — health, education, defense, welfare, plus major trading activities (power stations, banks, insurers)</span>
+        <span>Portfolio responsibilities of individual ministers/executive members — often but not always aligned with the economic classifications above</span>
+      </div>
+      <div class="note">Determining the right segment structure involves judgment — there's no single mandated basis, unlike some other standards' quantitative thresholds.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 — SERVICE & GEOGRAPHICAL SEGMENTS ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Service Segments &amp; Geographical Segments (paras. 17–23)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Service segments — the typical public sector default</div>
+      <div class="principle">A distinguishable component engaged in providing related outputs or achieving particular operating objectives consistent with the entity's overall mission. Government departments are usually managed along service lines — e.g. an education department split into primary, secondary, and tertiary segments.</div>
+      <div class="elabel">FACTORS (PARA. 19)</div>
+      <div class="dot-list">
+        <span>Primary operating objectives and associated goods/services/activities</span>
+        <span>Nature of goods/services; nature of the production/delivery process</span>
+        <span>Type of customer/consumer; internal management reporting basis</span>
+        <span>Regulatory environment or government sector</span>
+      </div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Geographical segments &amp; multiple segmentation (paras. 20–23)</div>
+      <div class="principle">A distinguishable component engaged in providing outputs or achieving operating objectives within a particular geographical area — adopted where internal reporting/resource decisions are made on a regional basis.</div>
+      <div class="dot-list">
+        <span>Similarity of economic/social/political conditions across regions</span>
+        <span>Whether service delivery/operating conditions differ by region</span>
+        <span>Special needs, skills, or risks in a particular area</span>
+      </div>
+      <div class="note">Multiple segmentation (both service AND geographical) is useful when an entity's objectives are strongly affected by BOTH dimensions — reported separately or as a matrix, potentially with a primary/secondary structure (para. 23).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 — REPORTING STRUCTURES NOT APPROPRIATE ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Reporting Structures Not Appropriate (paras. 24–26)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd">
+      <div class="ctitle cd">Two common but unsatisfactory bases</div>
+      <div class="cross-list">
+        <span>Aggregating by budget-dependent vs TRADING activities, or budget-dependent vs COMMERCIAL public sector entities — unlikely to give users relevant performance information</span>
+        <span>Reports structured ONLY by expenditure nature (wages, rent, supplies, capital) to evidence budget-appropriation compliance, rather than by activity/objective</span>
+      </div>
+      <div class="note">IPSAS 22 separately covers General Government Sector (GGS) disclosures for governments electing to report on that statistical basis — not a substitute for IPSAS 18 segment reporting.</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">When internal reporting doesn't fit (para. 26)</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">If an entity's internal reporting structure doesn't satisfy this Standard's objective, it must independently identify segments meeting the para. 9 definition for EXTERNAL reporting purposes, and disclose the required information (§8) — even though that structure differs from what's used internally.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 — SEGMENT REVENUE, EXPENSE, ASSETS & LIABILITIES ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Definitions of Segment Revenue, Expense, Assets &amp; Liabilities (para. 27)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Segment revenue &amp; expense</div>
+      <div class="elabel">SEGMENT REVENUE INCLUDES</div>
+      <div style="font-size:10.5px;color:var(--color-text-secondary);line-height:1.5;margin-bottom:8px;">Directly attributable/reasonably allocable revenue — budget appropriations, grants, transfers, fines, fees, goods/services provided externally or to other segments.</div>
+      <div class="elabel">SEGMENT REVENUE EXCLUDES</div>
+      <div class="cross-list" style="margin-bottom:9px;">
+        <span>Interest/dividend revenue (unless the segment is primarily financial in nature)</span>
+        <span>Gains on investment sales or debt extinguishment (same carve-out)</span>
+      </div>
+      <div class="elabel">SEGMENT EXPENSE EXCLUDES</div>
+      <div class="cross-list">
+        <span>Interest (unless primarily financial); losses on investment sales/debt extinguishment (same carve-out)</span>
+        <span>Share of associates'/joint ventures' net deficit; income tax/equivalent expense</span>
+        <span>General admin/head office expenses relating to the entity as a whole</span>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Segment assets &amp; liabilities</div>
+      <div class="elabel">SEGMENT ASSETS</div>
+      <div style="font-size:10.5px;color:var(--color-text-secondary);line-height:1.5;margin-bottom:8px;">Operating assets employed in the segment's activities, directly attributable or reasonably allocable. Include related receivables/investments if interest/dividend revenue is included; include equity-method investments only if their surplus/deficit is in segment revenue. EXCLUDE income tax/equivalent assets.</div>
+      <div class="elabel">SEGMENT LIABILITIES</div>
+      <div style="font-size:10.5px;color:var(--color-text-secondary);line-height:1.5;">Operating liabilities from the segment's activities, directly attributable or reasonably allocable. Include the related interest-bearing liability if interest expense is included. EXCLUDE income tax/equivalent liabilities.</div>
+      <div class="note">Examples of segment assets: current assets, PP&amp;E, right-of-use assets, intangibles used in operations — NOT general/head-office assets like a central administration building or a parliamentary building (para. 33).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 — ATTRIBUTING ITEMS TO SEGMENTS ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Attributing Items to Segments (paras. 28–38)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs">
+      <div class="ctitle cs">Internal reporting as the presumption — with limits</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:8px;">There's a presumption that amounts identified with segments for INTERNAL reporting are directly attributable or reasonably allocable for EXTERNAL segment reporting too (para. 29).</div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ An internal allocation basis that's SUBJECTIVE, ARBITRARY, or hard for external users to understand does NOT constitute a "reasonable basis" under this Standard — even if used internally. Conversely, an item NOT allocated internally despite a reasonable basis existing must still be allocated externally (para. 30).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Block/line-item appropriations &amp; unattributed amounts</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Government funding is often via "block" or "line item" appropriations not tied to specific service lines — making direct attribution or reasonable allocation impossible in some cases. UNATTRIBUTED revenue, expense, assets, and liabilities are reported as an unallocated amount in the required reconciliation (§8, para. 64) (para. 31).</div>
+      <div class="note">Goodwill from a public sector combination (IPSAS 40) is included in segment assets if directly attributable/allocable, with related impairment as segment expense (para. 34). Debt issued centrally is often NOT allocable — unless "finance" is itself identified as a separate segment (para. 36).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 — SEGMENT ACCOUNTING POLICIES & JOINT ASSETS ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Segment Accounting Policies, Joint Assets &amp; Newly Identified Segments (paras. 43–50)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Same policies as the entity-wide statements</div>
+      <div class="principle">Segment information is prepared using the SAME accounting policies as the consolidated/entity-wide financial statements (para. 43) — plus additional segment-specific policies (e.g. inter-segment transfer pricing).</div>
+      <div class="dot-list">
+        <span>Additional info on a DIFFERENT basis is permitted if relevant AND the measurement basis is clearly described (para. 46)</span>
+        <span>Jointly used assets are allocated to segments IF AND ONLY IF their related revenue/expenses are also allocated (para. 47)</span>
+      </div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Newly identified segments — restate comparatives (para. 49)</div>
+      <div class="formula-box">
+        <div class="f-eq">A segment identified for the first time → prior-period comparative data RESTATED to show it separately, unless impracticable</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Common triggers: a shift from service to geographical segment structure, significant new activities, or an internal support service starting to serve external parties.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 — DISCLOSURE REQUIREMENTS ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Disclosure Requirements (paras. 51–75)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Mandatory, per segment (paras. 52–55, 61, 64)</div>
+      <div class="check-list">
+        <span>Segment revenue AND expense — split: budget appropriation revenue, other external revenue, inter-segment revenue</span>
+        <span>Total carrying amount of segment ASSETS</span>
+        <span>Total carrying amount of segment LIABILITIES</span>
+        <span>Total cost incurred to acquire segment assets used over more than one period</span>
+        <span>Aggregate share of associates'/joint ventures' net surplus (deficit), IF substantially all their operations sit within one segment (with related investment amount)</span>
+        <span>A RECONCILIATION between segment totals and entity/consolidated totals — revenue, expense, assets, liabilities each reconciled separately</span>
+      </div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Encouraged (not required) &amp; other disclosure matters</div>
+      <div class="dot-list" style="margin-bottom:9px;">
+        <span>Items of unusual size/nature/incidence relevant to explaining segment performance</span>
+        <span>Segment cash flows (per IPSAS 2), OR depreciation/amortization and other significant non-cash items if cash flows aren't disclosed</span>
+        <span>Minimum cross-basis disclosures — e.g. geographical segment expense/assets/capital outlay, even when the primary basis is service segments (and vice versa)</span>
+        <span>Broad operating objectives per segment, and the extent achieved</span>
+      </div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ <strong style="font-weight:600">No segment result required:</strong> unlike IAS 14, this Standard does NOT require disclosure of a segment operating result. If one IS disclosed, it must exclude finance charges (para. 58). Inter-segment transfer PRICING BASIS, and any change in it, must be disclosed (para. 67) — a pricing method CHANGE itself is not treated as an accounting policy change requiring restatement.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 — WORKED EXAMPLE ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Worked Example — Education Authority Segment Disclosure</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Four segments: Primary/Secondary, Tertiary, Special Services, Other Services — 20X2 (CU millions)</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.6fr 0.85fr 0.85fr 0.85fr 0.85fr 1fr;"><span>Item</span><span>Pri/Sec</span><span>Tertiary</span><span>Special Svc</span><span>Other Svc</span><span>Consolidated</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 0.85fr 0.85fr 0.85fr 0.85fr 1fr;"><span>Total segment revenue</span><span>63</span><span>28</span><span>21</span><span>9</span><span>101</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 0.85fr 0.85fr 0.85fr 0.85fr 1fr;"><span>Total segment expenses</span><span>(60)</span><span>(28)</span><span>(23)</span><span>(5)</span><span>(96)</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 0.85fr 0.85fr 0.85fr 0.85fr 1fr;"><span>Unallocated central expenses</span><span></span><span></span><span></span><span></span><span>(7)</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 0.85fr 0.85fr 0.85fr 0.85fr 1fr;"><span><strong>Deficit from operating activities</strong></span><span></span><span></span><span></span><span></span><span><strong>(2)</strong></span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 0.85fr 0.85fr 0.85fr 0.85fr 1fr;"><span>Interest expense / revenue (net)</span><span></span><span></span><span></span><span></span><span>(2)</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 0.85fr 0.85fr 0.85fr 0.85fr 1fr;"><span>Share of net surplus of associates</span><span></span><span></span><span></span><span>8</span><span>8</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 0.85fr 0.85fr 0.85fr 0.85fr 1fr;"><span><strong>Surplus for the period</strong></span><span></span><span></span><span></span><span></span><span><strong>4</strong></span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 0.85fr 0.85fr 0.85fr 0.85fr 1fr;"><span>Segment assets</span><span>54</span><span>34</span><span>10</span><span>10</span><span>108</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 0.85fr 0.85fr 0.85fr 0.85fr 1fr;"><span>Investment in associates (equity method)</span><span></span><span></span><span></span><span>32</span><span>32</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 0.85fr 0.85fr 0.85fr 0.85fr 1fr;"><span>Unallocated central assets</span><span></span><span></span><span></span><span></span><span>35</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 0.85fr 0.85fr 0.85fr 0.85fr 1fr;"><span><strong>Consolidated total assets</strong></span><span></span><span></span><span></span><span></span><span><strong>175</strong></span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 0.85fr 0.85fr 0.85fr 0.85fr 1fr;"><span>Segment liabilities</span><span>25</span><span>8</span><span>8</span><span>1</span><span>42</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 0.85fr 0.85fr 0.85fr 0.85fr 1fr;"><span>Unallocated central liabilities</span><span></span><span></span><span></span><span></span><span>40</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 0.85fr 0.85fr 0.85fr 0.85fr 1fr;"><span><strong>Consolidated total liabilities</strong></span><span></span><span></span><span></span><span></span><span><strong>82</strong></span></div>
+      </div>
+      <div class="note">The Authority reports on four functional segments. Special Services provides commercial educational services to corporate employees, using the Pri/Sec and Tertiary segments' capacity on a fee basis (inter-segment transfers of 20, eliminated on consolidation). Other Services administers a 40%-owned equity-accounted foundation (EuroED Ltd) providing services internationally. A geographical note discloses Eastern Europe operations separately: cost of services 5 (4 in 20X1), carrying amount of facilities 3 (6.5 in 20X1) — illustrating the encouraged minimum geographical disclosure alongside a primarily service-segment structure (§8).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 — EFFECTIVE DATE & AMENDMENT TIMELINE ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Effective Date &amp; Amendment Timeline (paras. 76–76G)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Amendment history at a glance</div>
+      <div class="principle">Base Standard: periods beginning on/after <strong>1 July 2003</strong>.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2.2fr;"><span>Effective</span><span>Change</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2017</span><span>Para. 77 (IPSAS 33); para. 69 (Improvements to IPSAS 2015)</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>—</span><span>Paras. 27, 32 (IPSAS 37, Joint Arrangements — applied alongside IPSAS 37)</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2018</span><span>Paras. 2, 3 deleted; paras. 16, 24, 38, 41 amended — The Applicability of IPSAS</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2019</span><span>Paras. 34, 37 — IPSAS 40, Public Sector Combinations</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2025</span><span>Paras. 33, 35 — IPSAS 43, Leases (right-of-use asset terminology)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 — RELATIONSHIP TO IAS 14 ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Relationship to IAS/IFRS — Comparison with IAS 14</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — IPSAS 18 vs IAS 14</div>
+      <div class="principle">IPSAS 18 is drawn primarily from IAS 14 (revised 1997), <em>Segment Reporting</em> — an IFRS Standard subsequently withdrawn and replaced by IFRS 8 (Operating Segments) in the private sector. IPSAS 18 has NOT followed IFRS 8's "management approach" model.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1.9fr;"><span>Topic</span><span>Difference</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Segment definition</span><span>IPSAS 18: appropriate for evaluating past performance and resource-allocation decisions. IAS 14: requires business AND geographical segments specifically</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Segment result</span><span>IAS 14 requires disclosure; IPSAS 18 does not require it (though encourages related non-cash disclosures)</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Secondary segments</span><span>IPSAS 18 doesn't require secondary segment disclosure, but encourages minimum cross-basis disclosures</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Quantitative thresholds</span><span>IPSAS 18 specifies NONE for identifying reportable segments — a judgment-based approach throughout</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Terminology</span><span>"Revenue," "statement of financial performance," "net assets/equity" (IPSAS 18) vs "income," "income statement," "equity" (IAS 14)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 — STATEMENT / PROCESS MAPPING ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Segment identification decision map</div>
+      <div class="dot-list">
+        <span>1. Does internal reporting to the governing body/senior manager reflect distinguishable activities usable for accountability and resource-allocation decisions? → adopt that structure (§2)</span>
+        <span>2. Is that internal structure organized by SERVICE lines, GEOGRAPHY, or both? → classify accordingly (§3)</span>
+        <span>3. Is the internal structure only budget-dependent-vs-trading, or expenditure-by-nature for compliance purposes? → NOT appropriate for external reporting; identify segments independently (§4)</span>
+        <span>4. For each identified segment: attribute or reasonably allocate revenue, expense, assets, liabilities — using internal allocations as a presumption, but excluding arbitrary bases (§6)</span>
+        <span>5. Is a new segment identified for the first time this period? → restate prior-period comparatives, unless impracticable (§7)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card cs span2">
+      <div class="ctitle cs">Concept-to-statement mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>IPSAS 18 concept</span><span>Statement(s)</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Segment revenue &amp; expense</span><span><span class="badge bp">Notes</span></span><span>Not shown on the primary SOFPerformance itself</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Segment assets &amp; liabilities</span><span><span class="badge bp">Notes</span></span><span>Not shown on the primary SOFP itself</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Reconciliation to entity totals</span><span><span class="badge bp">Notes</span></span><span>Ties segment disclosures back to the primary statements</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Unallocated central items</span><span><span class="badge bp">Notes</span></span><span>Bridges segment totals to consolidated totals</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Segment operating objectives &amp; achievement</span><span><span class="badge be">Annual Report</span></span><span>Often reported outside the financial statements themselves</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 — RELATED STANDARDS ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How IPSAS 18 connects across the IPSAS body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.7fr 2.2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 1</span><span>Material item disclosure at the entity level — para. 56 encourages evaluating significance at the SEGMENT level too (§8)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 2</span><span>Segment cash flow disclosure encouragement follows IPSAS 2's operating/investing/financing framework (§8)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 3</span><span>Governs restatement mechanics for segment accounting policy changes (§7)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 12</span><span>Cost allocation guidance usable for attributing costs to segments (§6)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 22</span><span>General Government Sector disclosure — a distinct statistical-basis alternative, not a segment-reporting substitute (§4)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 35</span><span>Intra-economic-entity eliminations occur BEFORE segment revenue/expense/assets/liabilities are determined (§6)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 37</span><span>Joint arrangement equity-accounted surplus/deficit feeding segment revenue (§5)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 40</span><span>Goodwill and fair value adjustments from public sector combinations affecting segment assets (§6)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 43</span><span>Right-of-use assets and lease liabilities included in segment assets/liabilities (§5)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 — GLOSSARY ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Segment</div><div class="glossary-def">A distinguishable activity or group of activities for which separate financial information is appropriate for performance evaluation and resource-allocation decisions.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Service segment</div><div class="glossary-def">A distinguishable component providing related outputs or achieving particular operating objectives consistent with the entity's mission.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Geographical segment</div><div class="glossary-def">A distinguishable component providing outputs or achieving operating objectives within a particular geographical area.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Segment accounting policies</div><div class="glossary-def">Policies adopted for the consolidated/entity statements, plus policies specific to segment reporting (e.g. inter-segment transfer pricing).</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Segment assets / liabilities</div><div class="glossary-def">Operating assets/liabilities directly attributable to, or reasonably allocable to, a segment's activities.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Segment revenue / expense</div><div class="glossary-def">Revenue/expense directly attributable or reasonably allocable to a segment, including inter-segment amounts.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bp">Notes</span> Notes to the financial statements
+      <span class="badge be">Annual Report</span> Broader annual report, outside the financial statements
+    </div>
+  </div>
+
+  <div class="footer-note">IPSAS 18 — Segment Reporting · Extended Reference Poster · Built from the 2025 IPSASB Handbook, Volume I · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

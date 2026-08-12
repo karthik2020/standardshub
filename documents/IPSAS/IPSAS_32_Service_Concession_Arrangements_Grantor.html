@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPSAS 32 — Service Concession Arrangements: Grantor | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .eg  { margin-bottom: 7px; }
+  .egl { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; margin-bottom: 3px; }
+  .entry { display: flex; align-items: flex-start; gap: 4px; margin-bottom: 4px; }
+  .dr { font-size: 11px; font-weight: 500; color: var(--color-text-info);   min-width: 14px; padding-top: 1px; }
+  .cr { font-size: 11px; font-weight: 500; color: var(--color-text-danger); min-width: 14px; padding-top: 1px; padding-left: 6px; }
+  .etxt { font-size: 11px; color: var(--color-text-primary); flex: 1; line-height: 1.4; }
+  .badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .bc { background: #f3e8ff; color: #7e22ce; }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">IPSAS 32 — Service Concession Arrangements: Grantor</div>
+      <div class="hub-sub">Extended reference poster · Full Handbook structure · Statement mapping · Related standards</div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <a href="#s1">1. Objective, Scope &amp; Out-of-Scope Arrangements</a>
+    <a href="#s2">2. Definitions — Grantor, Operator, Asset &amp; Arrangement</a>
+    <a href="#s3">3. Recognition of a Service Concession Asset — the Control Test</a>
+    <a href="#s4">4. Initial Measurement &amp; Reclassification of Existing Assets</a>
+    <a href="#s5">5. Recognition of the Corresponding Liability</a>
+    <a href="#s6">6. Financial Liability Model</a>
+    <a href="#s7">7. Grant of a Right to the Operator Model</a>
+    <a href="#s8">8. Dividing the Arrangement</a>
+    <a href="#s9">9. Other Liabilities, Contingencies &amp; Other Revenues</a>
+    <a href="#s10">10. Presentation &amp; Disclosure</a>
+    <a href="#s11">11. Transitional Provisions, Effective Date &amp; Amendment Timeline</a>
+    <a href="#s12">12. Relationship to IFRIC 12 — No Direct IAS/IFRS Equivalent</a>
+    <a href="#s13">13. Statement / Process Mapping</a>
+    <a href="#s14">14. Related Standards</a>
+    <a href="#s15">15. Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 — OBJECTIVE, SCOPE & OUT-OF-SCOPE ARRANGEMENTS ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; Out-of-Scope Arrangements (paras. 1–7)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Objective</div>
+      <div class="principle">Prescribes the accounting for service concession arrangements BY THE GRANTOR — a public sector entity. This Standard fills a genuine gap: it addresses only the GRANTOR's side; the OPERATOR's accounting is addressed by the relevant international/national standard dealing with service concession arrangements (typically IFRIC 12) (para. 7).</div>
+      <div class="note">A "grantor" is typically a government or other public sector entity granting a private (or public) operator the right to provide public services using an asset.</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">What falls outside scope (para. 6)</div>
+      <div class="cross-list">
+        <span>Arrangements that do NOT involve delivery of public services</span>
+        <span>Arrangements with service/management components where the asset is NOT controlled by the grantor — e.g. outsourcing, ordinary service contracts, or privatization</span>
+      </div>
+      <div class="note">Within scope: arrangements where the OPERATOR provides public services related to the service concession asset ON BEHALF of the grantor (para. 5). The scope deliberately MIRRORS IFRIC 12's recognition criteria, so both parties to the same arrangement apply symmetric principles — minimizing the risk that an asset is accounted for by BOTH parties, or by NEITHER.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 — DEFINITIONS ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Definitions — Grantor, Operator, Asset &amp; Arrangement (para. 8)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The parties</div>
+      <div class="glossary-item"><div class="glossary-term">Grantor</div><div class="glossary-def">The entity that grants the right to use the service concession asset to the operator.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Operator</div><div class="glossary-def">The entity that USES the service concession asset to provide public services, SUBJECT TO the grantor's control of the asset.</div></div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">The arrangement and the asset</div>
+      <div class="glossary-item">
+        <div class="glossary-term">Service concession arrangement</div>
+        <div class="glossary-def">A binding arrangement where (a) the operator uses the asset to provide a public service on the grantor's behalf for a specified period, and (b) the operator is compensated for its services over that period.</div>
+      </div>
+      <div class="glossary-item" style="border-bottom:none;">
+        <div class="glossary-term">Service concession asset</div>
+        <div class="glossary-def">An asset used to provide public services, EITHER provided by the operator (constructed/developed/acquired, or an existing operator asset) OR provided by the grantor (an existing asset, or an upgrade to one).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 — RECOGNITION: THE CONTROL TEST ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Recognition of a Service Concession Asset — the Control Test (paras. 9–10)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Two conditions — BOTH required (except whole-of-life assets)</div>
+      <div class="check-list">
+        <span>The grantor CONTROLS or REGULATES what services the operator must provide with the asset, to WHOM, and at what PRICE</span>
+        <span>The grantor CONTROLS — through ownership, beneficial entitlement, or otherwise — any SIGNIFICANT RESIDUAL INTEREST in the asset at the end of the arrangement</span>
+      </div>
+      <div class="callout info" style="margin-bottom:0;">ℹ️ <strong style="font-weight:600">Whole-of-life exception:</strong> for an asset used for its ENTIRE useful life within the arrangement, ONLY the first condition (control/regulation of services) needs to be met — there's no meaningful "end of arrangement" residual interest to assess (para. 10). This mirrors IFRIC 12's approach precisely, by deliberate design (§1) — a CONTROL-based test, not a risks-and-rewards test, because the grantor's primary interest is service delivery, not economic return.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 — INITIAL MEASUREMENT & RECLASSIFICATION ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Initial Measurement &amp; Reclassification of Existing Grantor Assets (paras. 11–13)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Initial measurement — fair value, with an exception</div>
+      <div class="formula-box">
+        <div class="f-eq">Service concession asset (new, operator-provided) → initially measured at FAIR VALUE</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">After initial recognition (or reclassification), the asset is subsequently accounted for under IPSAS 31 (if intangible) or IPSAS 45 (if PP&amp;E), as appropriate (para. 13).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Reclassifying the grantor's OWN existing asset</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Where an EXISTING grantor asset (or an upgrade to one) meets the para. 9/10 conditions, the grantor RECLASSIFIES it as a service concession asset — continuing to account for it under IPSAS 31 or IPSAS 45 as appropriate, rather than remeasuring it at fair value from scratch (para. 12).</div>
+      <div class="note">This reclassification mechanic is distinct from initial recognition of a NEW operator-provided asset — no new fair value measurement event occurs merely from the reclassification itself.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 — RECOGNITION OF THE CORRESPONDING LIABILITY ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Recognition &amp; Measurement of the Corresponding Liability (paras. 14–17)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs">
+      <div class="ctitle cs">The matching-liability principle</div>
+      <div class="formula-box">
+        <div class="f-eq">Recognize a service concession asset → ALSO recognize a LIABILITY, initially measured at the SAME amount, adjusted for any other consideration exchanged</div>
+      </div>
+      <div class="note">EXCEPTION: no liability arises merely from RECLASSIFYING an existing grantor asset (§4) — unless the operator provides ADDITIONAL consideration as part of that reclassification (para. 14).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Two models, driven by the nature of consideration (para. 17)</div>
+      <div class="dot-list">
+        <span><strong style="font-weight:500">Financial liability model</strong> — the grantor MAKES PAYMENTS to the operator</span>
+        <span><strong style="font-weight:500">Grant of a right to the operator model</strong> — the grantor compensates by OTHER MEANS: the right to earn revenue from third-party users, or access to another revenue-generating asset (e.g. a private hospital wing, an adjacent parking facility)</span>
+      </div>
+      <div class="note">These two models can be COMBINED for a single arrangement — see §8, Dividing the Arrangement.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 — FINANCIAL LIABILITY MODEL ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Financial Liability Model (paras. 18–23)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">When it applies — an UNCONDITIONAL obligation</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:8px;">Applies where the grantor has an unconditional obligation to pay cash/another financial asset for the asset's construction, development, acquisition, or upgrade. Unconditional includes guaranteeing SPECIFIED/DETERMINABLE amounts, OR a SHORTFALL guarantee (topping up user-fee revenue to a determinable floor) — even if payment is contingent on the asset meeting quality/efficiency standards (para. 19).</div>
+      <div class="note">IPSAS 28, IPSAS 30, and the derecognition requirements of IPSAS 41 apply to this financial liability, except where IPSAS 32 itself provides specific guidance (para. 20).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Splitting the payment into three components (paras. 21–23)</div>
+      <div class="formula-box">
+        <div class="f-eq">Each payment = reduction of the LIABILITY + a FINANCE CHARGE + a charge for SERVICES provided by the operator</div>
+      </div>
+      <div class="dot-list">
+        <span>The finance charge AND the services charge are both recognized as EXPENSES</span>
+        <span>Where asset and service components are SEPARATELY identifiable → allocate by relative FAIR VALUES</span>
+        <span>Where they are NOT separately identifiable → use ESTIMATION techniques instead</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 — GRANT OF A RIGHT TO THE OPERATOR MODEL ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Grant of a Right to the Operator Model (paras. 24–26)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">The liability is unearned revenue, not a financial obligation</div>
+      <div class="formula-box">
+        <div class="f-eq">No unconditional cash obligation, but the operator is granted a right to earn third-party revenue (or access another revenue-generating asset) → the liability = the UNEARNED PORTION of exchange revenue</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Granting the operator this right IS regarded as a REVENUE-generating transaction for the grantor — but because the right is effective over the WHOLE arrangement period, the grantor does NOT recognize that revenue immediately. Instead, revenue is recognized ACCORDING TO THE ECONOMIC SUBSTANCE of the arrangement, reducing the liability progressively (paras. 25–26).</div>
+      <div class="note">This deliberately avoids the term "performance obligation" (used in ED 43) — IPSAS 32 governs an EXCHANGE transaction, and "performance obligation" risked confusion with IPSAS 23's non-exchange terminology.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 — DIVIDING THE ARRANGEMENT ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Dividing the Arrangement (paras. 27–28)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">A blended arrangement is split into two, not forced into one model</div>
+      <div class="formula-box">
+        <div class="f-eq">Grantor pays PARTLY via financial liability and PARTLY via grant of a right → account for EACH PART separately</div>
+      </div>
+      <div class="dot-list">
+        <span>The TOTAL amount initially recognized for the combined liability is the SAME amount determined under para. 15 (i.e., matching the service concession asset's measurement, adjusted for other consideration)</span>
+        <span>Each part of that total liability is THEN accounted for under its own model — the financial-liability mechanics (§6) for the cash-obligation portion, and the grant-of-a-right mechanics (§7) for the revenue-right portion</span>
+      </div>
+      <div class="note">This is common in real-world arrangements — e.g. a toll-road concession where the grantor makes some availability payments AND grants the operator toll-collection rights.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 — OTHER LIABILITIES, CONTINGENCIES & OTHER REVENUES ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Other Liabilities, Commitments, Contingent Liabilities/Assets &amp; Other Revenues (paras. 29–30)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Routine cross-references, not new mechanics</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Other liabilities, commitments, contingent liabilities, and contingent assets arising from a service concession arrangement are accounted for under the ORDINARY Standards — IPSAS 19 (provisions/contingencies), IPSAS 28, IPSAS 30, and IPSAS 41 (financial instruments) — IPSAS 32 does not create bespoke rules for these (para. 29).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Other revenue streams</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Revenues from a service concession arrangement OTHER than the unearned-revenue liability release described in §7 (paras. 24–26) are accounted for under IPSAS 47, Revenue — the general revenue Standard, not a special IPSAS 32 mechanism (para. 30).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 — PRESENTATION & DISCLOSURE ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Presentation &amp; Disclosure (paras. 31–33)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Required disclosures, per arrangement (para. 32)</div>
+      <div class="check-list">
+        <span>A DESCRIPTION of the arrangement</span>
+        <span>SIGNIFICANT TERMS affecting the amount, timing, and certainty of future cash flows — concession period, re-pricing dates, re-pricing/renegotiation basis</span>
+        <span>Nature and extent of: rights to use specified assets; rights to expect specified operator services; the CARRYING AMOUNT of recognized service concession assets (including reclassified existing assets); rights to receive assets at arrangement end; renewal/termination options; other rights/obligations (e.g. major overhauls); and obligations to provide asset access</span>
+        <span>CHANGES in the arrangement occurring during the period</span>
+      </div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Individual vs aggregate disclosure, and interaction with IPSAS 31/45</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Disclosures are provided INDIVIDUALLY for each material arrangement, or in AGGREGATE for arrangements of a similar nature (e.g. toll collections, telecommunications, water treatment) — para. 33. This is IN ADDITION to the ordinary class-of-asset disclosures required by IPSAS 31/45; a service concession asset subset may sit WITHIN a broader IPSAS 45 asset class (e.g. a toll bridge reported with "bridges" generally, but ALSO with other toll roads reported in aggregate for IPSAS 32 purposes).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 — TRANSITIONAL PROVISIONS, EFFECTIVE DATE & AMENDMENT TIMELINE ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Transitional Provisions, Effective Date &amp; Amendment Timeline (paras. 34–37)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Amendment history at a glance</div>
+      <div class="principle">Base Standard: periods beginning on/after <strong>1 January 2014</strong> — earlier adoption requires simultaneous adoption of IPSAS 5, IPSAS 13, IPSAS 17, IPSAS 29, and IPSAS 31 (para. 36). Retrospective application required under IPSAS 3 for grantors that had previously recognized service concession assets/liabilities/revenues/expenses (para. 34).</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2.2fr;"><span>Effective</span><span>Change</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2017</span><span>Paras. 35, 37 — IPSAS 33, First-time Adoption</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2017</span><span>Paras. 13, 32, 33, AG35 amended; new 35A–35B added — Improvements to IPSAS 2015 (asset reclassification transition mechanics)</span></div>
+      </div>
+      <div class="note">Where reclassification under the 2015 amendment applies, specific transition guidance (para. 35B) governs whether the reclassified asset continues under a cost or current-value model, depending on how it was PREVIOUSLY measured and how the receiving asset class is measured.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 — RELATIONSHIP TO IFRIC 12 ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Relationship to IFRIC 12 — No Direct IAS/IFRS Standard Equivalent</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">A deliberate mirror of an Interpretation, not a Standard</div>
+      <div class="principle">IPSAS 32 has no equivalent IAS/IFRS STANDARD — instead it deliberately MIRRORS IFRIC 12, <em>Service Concession Arrangements</em>, an IFRS INTERPRETATION that addresses only the OPERATOR's accounting. IFRIC 12 provided no guidance for the grantor at all — the gap IPSAS 32 was built to fill (Basis for Conclusions, BC1).</div>
+      <div class="dot-list">
+        <span>The IPSASB deliberately used IFRIC 12's SAME recognition criteria (control over services and residual interest) so that both parties to one arrangement apply SYMMETRIC principles — minimizing double-counting or under-counting of the asset (BC2, BC15)</span>
+        <span>IPSAS 32 rejected a RISKS-AND-REWARDS approach (too subjective for public sector service delivery, where the grantor's primary interest is SERVICE POTENTIAL, not economic return) and a RIGHTS-AND-OBLIGATIONS approach (too significant a departure from existing practice) in favor of the CONTROL-based test (BC12–BC15)</span>
+        <span>Terminology was deliberately changed FROM ED 43's "performance obligation" TO "liability," to avoid confusion with IPSAS 23's unrelated non-exchange-transaction usage of "performance obligation" (BC21–BC23)</span>
+        <span>Unlike IFRIC 12 (silent on the point), IPSAS 32 provides EXPLICIT guidance on the interest rate to use for the financial liability model's finance charge — the operator's cost of capital, if determinable, or another rate appropriate to the arrangement's specific terms (BC28)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 — STATEMENT / PROCESS MAPPING ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">End-to-end decision map</div>
+      <div class="dot-list">
+        <span>1. Does the arrangement involve the operator delivering PUBLIC SERVICES using an asset, on the grantor's behalf? If no (outsourcing, ordinary service contracts) → outside scope entirely (§1)</span>
+        <span>2. Does the grantor control/regulate the SERVICES (what, to whom, at what price), AND control any significant RESIDUAL interest at arrangement end (or just the services test, for whole-of-life assets)? → recognize a service concession ASSET (§3)</span>
+        <span>3. Is this a NEW operator-provided asset, or an EXISTING grantor asset meeting the test? → fair value initial measurement, or reclassification, respectively (§4)</span>
+        <span>4. Recognize a matching LIABILITY (except on mere reclassification without extra consideration) (§5)</span>
+        <span>5. Does the grantor have an UNCONDITIONAL cash obligation? → FINANCIAL LIABILITY model (§6). Does the grantor instead grant REVENUE RIGHTS? → GRANT OF A RIGHT model (§7). Both? → DIVIDE the arrangement and apply each model to its portion (§8)</span>
+        <span>6. Route all OTHER liabilities/contingencies/revenues to the ordinary Standards — IPSAS 19, 28, 30, 41, and 47 (§9)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card cs span2">
+      <div class="ctitle cs">Concept-to-statement mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>IPSAS 32 concept</span><span>Statement(s)</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Service concession asset</span><span><span class="badge bs">SOFP</span></span><span>Accounted for under IPSAS 31 or IPSAS 45 thereafter</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Financial liability model liability</span><span><span class="badge bs">SOFP</span></span><span>Reduced by payments net of finance charge/service charge</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Finance charge &amp; service charge</span><span><span class="badge bp">SOFPerf</span></span><span>Both recognized as expenses</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Grant-of-a-right liability (unearned revenue)</span><span><span class="badge bs">SOFP</span></span><span>Reduced as revenue is recognized over the arrangement</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Revenue from the grant of a right</span><span><span class="badge bp">SOFPerf</span></span><span>Per the arrangement's economic substance</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Arrangement description, terms, rights/obligations</span><span><span class="badge be">Notes</span></span><span>Mandatory, individually or in aggregate</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 — RELATED STANDARDS ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How IPSAS 32 connects across the IPSAS body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.7fr 2.2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 3</span><span>Governs retrospective transition for grantors previously recognizing these arrangements differently (§11)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 19</span><span>Other liabilities, commitments, and contingencies from the arrangement (§9)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 28 / 30 / 41</span><span>Presentation, disclosure, and derecognition of the financial liability model's financial liability (§6, §9)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 31</span><span>Subsequent measurement and disclosure of intangible service concession assets (§4, §10)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 45</span><span>Subsequent measurement and disclosure of PP&amp;E-type service concession assets (§4, §10)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 47</span><span>Governs all OTHER revenue from the arrangement beyond the grant-of-a-right unearned revenue (§9)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 15 — GLOSSARY ============ -->
+  <div class="section-header" id="s15"><span class="num">15</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Grantor</div><div class="glossary-def">The entity that grants the operator the right to use the service concession asset.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Operator</div><div class="glossary-def">The entity using the service concession asset to provide public services, subject to the grantor's control.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Service concession arrangement</div><div class="glossary-def">A binding arrangement where the operator uses an asset to provide public services on the grantor's behalf, compensated over the arrangement period.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Service concession asset</div><div class="glossary-def">An asset used to provide public services under a service concession arrangement.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Financial liability model</div><div class="glossary-def">Applies where the grantor has an unconditional obligation to pay cash or another financial asset to the operator.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Grant of a right to the operator model</div><div class="glossary-def">Applies where the grantor compensates the operator through revenue rights rather than cash payments.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bs">SOFP</span> Statement of financial position
+      <span class="badge bp">SOFPerf</span> Statement of financial performance
+      <span class="badge be">Notes</span> Notes to the financial statements
+    </div>
+  </div>
+
+  <div class="footer-note">IPSAS 32 — Service Concession Arrangements: Grantor · Extended Reference Poster · Built from the 2025 IPSASB Handbook, Volume II · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

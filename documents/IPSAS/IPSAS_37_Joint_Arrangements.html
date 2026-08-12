@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPSAS 37 — Joint Arrangements | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .eg  { margin-bottom: 7px; }
+  .egl { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; margin-bottom: 3px; }
+  .entry { display: flex; align-items: flex-start; gap: 4px; margin-bottom: 4px; }
+  .dr { font-size: 11px; font-weight: 500; color: var(--color-text-info);   min-width: 14px; padding-top: 1px; }
+  .cr { font-size: 11px; font-weight: 500; color: var(--color-text-danger); min-width: 14px; padding-top: 1px; padding-left: 6px; }
+  .etxt { font-size: 11px; color: var(--color-text-primary); flex: 1; line-height: 1.4; }
+  .badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .bc { background: #f3e8ff; color: #7e22ce; }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">IPSAS 37 — Joint Arrangements</div>
+      <div class="hub-sub">Extended reference poster · Full Handbook structure · Statement mapping · Related standards</div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <a href="#s1">1. Objective, Scope &amp; Definitions</a>
+    <a href="#s2">2. Joint Control — the Unanimous Consent Test</a>
+    <a href="#s3">3. Types of Joint Arrangement — Operation vs Venture</a>
+    <a href="#s4">4. Joint Operations — Recognition</a>
+    <a href="#s5">5. Non-Controlling Parties &amp; Acquisitions of Joint Operation Interests</a>
+    <a href="#s6">6. Joint Ventures — the Equity Method</a>
+    <a href="#s7">7. Separate Financial Statements</a>
+    <a href="#s8">8. Transition — Proportionate Consolidation to Equity Method</a>
+    <a href="#s9">9. Transition — Equity Method to Joint Operation Accounting</a>
+    <a href="#s10">10. Effective Date &amp; Amendment Timeline</a>
+    <a href="#s11">11. Relationship to IFRS 11</a>
+    <a href="#s12">12. Statement / Process Mapping</a>
+    <a href="#s13">13. Related Standards</a>
+    <a href="#s14">14. Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 — OBJECTIVE, SCOPE & DEFINITIONS ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; Definitions (paras. 1–7)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Objective &amp; scope</div>
+      <div class="principle">Establishes principles for financial reporting by entities with an interest in JOINTLY controlled arrangements. Requires an entity party to a joint arrangement to determine its TYPE by assessing its rights and obligations, and to account for those rights/obligations ACCORDINGLY.</div>
+      <div class="check-list">
+        <span>Applies to ALL entities that are a party to a joint arrangement</span>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Six core definitions (para. 7)</div>
+      <div class="glossary-item"><div class="glossary-term">Joint arrangement</div><div class="glossary-def">An arrangement of which two or more parties have JOINT CONTROL.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Joint operation</div><div class="glossary-def">A joint arrangement where the jointly controlling parties have rights to the ASSETS, and obligations for the LIABILITIES, relating to the arrangement.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Joint venture</div><div class="glossary-def">A joint arrangement where the jointly controlling parties have rights to the NET ASSETS of the arrangement.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Separate vehicle</div><div class="glossary-def">A separately identifiable financial structure — including separate legal entities or statutory entities, whether or not they have legal personality.</div></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 — JOINT CONTROL: THE UNANIMOUS CONSENT TEST ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Joint Control — the Unanimous Consent Test (paras. 9–18)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Two required characteristics (para. 10)</div>
+      <div class="check-list">
+        <span>The parties are bound by a BINDING ARRANGEMENT</span>
+        <span>That arrangement gives TWO OR MORE parties JOINT CONTROL</span>
+      </div>
+      <div class="note">A joint arrangement is EITHER a joint operation OR a joint venture (para. 11) — never both at once for the same activity.</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">The two-stage assessment</div>
+      <div class="dot-list">
+        <span><strong style="font-weight:500">Stage 1 — collective control:</strong> do all parties (or a group of them) control the arrangement TOGETHER — i.e., must they ACT TOGETHER to direct the relevant activities? (para. 13)</span>
+        <span><strong style="font-weight:500">Stage 2 — joint control:</strong> once collective control is established, does exercising it require the UNANIMOUS CONSENT of the parties sharing control? (para. 14)</span>
+      </div>
+      <div class="note">No single party controls a joint arrangement alone — any joint-control party can BLOCK the others from controlling it unilaterally (para. 15). Some parties may participate WITHOUT joint control (para. 16). Judgment is applied throughout, considering all facts/circumstances, and REASSESSED whenever those change (paras. 17–18).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 — TYPES OF JOINT ARRANGEMENT: OPERATION VS VENTURE ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Types of Joint Arrangement — Operation vs Venture (paras. 19–22)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Classification depends on RIGHTS AND OBLIGATIONS, not just structure</div>
+      <div class="principle">An entity determines its type by considering the arrangement's STRUCTURE and LEGAL FORM, the terms agreed by the parties (or established by legislative/executive authority), and — where relevant — OTHER facts and circumstances (para. 20).</div>
+      <div class="dot-list">
+        <span>A single FRAMEWORK AGREEMENT can spawn MULTIPLE joint arrangements of DIFFERENT types — where the parties' rights/obligations differ across the specific activities it covers, joint operations and joint ventures can genuinely COEXIST under one umbrella agreement (para. 21)</span>
+        <span>Classification is REASSESSED whenever facts and circumstances change (para. 22)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 — JOINT OPERATIONS: RECOGNITION ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Joint Operations — the "Look-Through" Recognition Model (paras. 23–24)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Recognize YOUR OWN share directly — no equity-method wrapper</div>
+      <div class="formula-box">
+        <div class="f-eq">A joint operator recognizes ITS OWN assets, liabilities, revenue, and expenses (including its SHARE of any held/incurred jointly), applying the IPSAS otherwise applicable to each item</div>
+      </div>
+      <div class="check-list">
+        <span>Its OWN assets, including its share of any assets held JOINTLY</span>
+        <span>Its OWN liabilities, including its share of any liabilities incurred JOINTLY</span>
+        <span>Revenue from selling ITS OWN share of the joint operation's output</span>
+        <span>Its SHARE of revenue from the joint operation's OWN sale of output</span>
+        <span>Its OWN expenses, including its share of jointly incurred expenses</span>
+      </div>
+      <div class="callout info" style="margin-bottom:0;">ℹ️ This is fundamentally different from the joint venture's equity method (§6) — there's no single "investment" line item. Each joint operator's SOFP and SOFPerformance directly reflect its proportionate share of the underlying assets, liabilities, revenue, and expenses, item by item, using whichever Standard normally governs each item (para. 24).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 — NON-CONTROLLING PARTIES & ACQUISITIONS ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Non-Controlling Parties &amp; Acquisitions of Interests in Joint Operations (paras. 24A–26)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd">
+      <div class="ctitle cd">Participating without joint control</div>
+      <div class="dot-list">
+        <span>Has rights to assets AND obligations for liabilities of the joint operation, despite lacking joint control → applies the SAME §4 recognition mechanics (para. 26)</span>
+        <span>Does NOT have such rights/obligations → accounts for its interest under whichever IPSAS ordinarily applies to that interest instead (para. 26)</span>
+      </div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Acquiring an interest where the activity is an "operation" (IPSAS 40 sense)</div>
+      <div class="formula-box">
+        <div class="f-eq">Where the joint operation's activity constitutes an OPERATION (IPSAS 40) → apply IPSAS 40's acquisition-accounting principles, to the extent of the entity's own share</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Applies to BOTH the initial interest AND any additional interests acquired later (para. 24A). Transactions between an entity and a joint operation it participates in (sales, contributions, purchases of assets) follow specific Application Guidance (para. 25) — not repeated in the black-letter text itself.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 — JOINT VENTURES: THE EQUITY METHOD ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Joint Ventures — the Equity Method (paras. 27–28)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs">
+      <div class="ctitle ci">Joint venturers — equity method by default</div>
+      <div class="formula-box">
+        <div class="f-eq">A joint venturer recognizes its interest as an INVESTMENT, accounted for using the EQUITY METHOD (IPSAS 36) — unless exempt</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">This is the mirror image of §4's joint operation treatment — here, ONE investment line item captures the venturer's interest, rather than proportionate line-by-line recognition (para. 27).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Non-controlling parties to a joint venture</div>
+      <div class="dot-list">
+        <span>No joint control, no significant influence → financial instruments Standards (IPSAS 28, 30, 41)</span>
+        <span>No joint control, but DOES have significant influence → IPSAS 36 (equity method) instead</span>
+      </div>
+      <div class="note">A joint arrangement classified as a joint VENTURE never gets the joint operation's line-by-line recognition treatment — the split is total, based purely on whether the parties have rights to NET ASSETS (venture) or to specific assets/liabilities (operation) (para. 28, cross-ref §3).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 — SEPARATE FINANCIAL STATEMENTS ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Separate Financial Statements (paras. 29–30)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Same split, carried into the entity's own separate statements</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 1fr 1.6fr;"><span>Party status</span><span>Interest type</span><span>Treatment in separate statements</span></div>
+        <div class="tr" style="grid-template-columns:1fr 1fr 1.6fr;"><span>Joint operator/venturer</span><span>Joint operation</span><span>Same §4 line-by-line recognition (para. 29(a))</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 1fr 1.6fr;"><span>Joint operator/venturer</span><span>Joint venture</span><span>Per IPSAS 34 para. 12 — cost, IPSAS 41 fair value, or equity method (para. 29(b))</span></div>
+        <div class="tr" style="grid-template-columns:1fr 1fr 1.6fr;"><span>Non-controlling party</span><span>Joint operation</span><span>Same §5 treatment (para. 30(a))</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 1fr 1.6fr;"><span>Non-controlling party</span><span>Joint venture</span><span>IPSAS 41, UNLESS significant influence exists — then IPSAS 34 para. 12 (para. 30(b))</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 — TRANSITION: PROPORTIONATE CONSOLIDATION TO EQUITY METHOD ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Transitional Provisions — Joint Ventures: Proportionate Consolidation to the Equity Method (paras. 31–36)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Building the opening investment balance</div>
+      <div class="formula-box">
+        <div class="f-eq">Opening investment (start of immediately preceding period) = AGGREGATE of the carrying amounts of all previously proportionately-consolidated assets/liabilities, INCLUDING any purchased goodwill</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Goodwill previously belonging to a LARGER cash-generating unit is allocated to the joint venture based on RELATIVE carrying amounts (para. 32). This opening balance is then treated as the DEEMED COST at initial recognition — immediately tested for impairment under IPSAS 36 paras. 43–48, with any resulting loss adjusted against opening accumulated surplus/deficit (para. 33).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Negative net assets, and required disclosure</div>
+      <div class="dot-list">
+        <span>If aggregating the previously-consolidated items yields NEGATIVE net assets → assess whether legal/constructive obligations exist; if so, recognize a LIABILITY; if not, adjust opening accumulated surplus/deficit instead — WITHOUT recognizing a liability (para. 34)</span>
+        <span>Disclose: that fact, the CUMULATIVE unrecognized share of joint venture losses (both at the start of the preceding period AND at first application), and a BREAKDOWN of everything aggregated into the single investment line (paras. 34–35)</span>
+      </div>
+      <div class="note">After this one-time transition, the investment is accounted for using the ordinary equity method going forward (para. 36).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 — TRANSITION: EQUITY METHOD TO JOINT OPERATION ACCOUNTING ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Transitional Provisions — Joint Operations: Equity Method to Assets &amp; Liabilities (paras. 37–41)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd">
+      <div class="ctitle cd">Derecognize the investment, recognize the shares</div>
+      <div class="formula-box">
+        <div class="f-eq">DERECOGNIZE the equity-method investment (and any other net-investment items) → RECOGNIZE the entity's share of each underlying asset/liability, including any embedded goodwill</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">The interest in assets/liabilities is determined per the binding arrangement's specified proportion; initial carrying amounts are DISAGGREGATED from the former investment's carrying amount, using the same information the entity used applying the equity method (paras. 37–38).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Where the difference goes, and the reconciliation</div>
+      <div class="dot-list">
+        <span>Net recognized assets/liabilities (incl. goodwill) HIGHER than the derecognized investment → offset against any existing goodwill FIRST; any remainder adjusts opening accumulated surplus/deficit</span>
+        <span>Net recognized assets/liabilities LOWER than the derecognized investment → the whole difference adjusts opening accumulated surplus/deficit (para. 39)</span>
+      </div>
+      <div class="note">A RECONCILIATION between the derecognized investment and the recognized assets/liabilities is required, with any remaining difference disclosed (para. 40). An entity previously using cost or IPSAS 41 for a joint operation interest in its own SEPARATE statements (under the old IPSAS 6 para. 58) follows the SAME derecognition/recognition mechanics, with its own reconciliation (para. 41).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 — EFFECTIVE DATE & AMENDMENT TIMELINE ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Effective Date &amp; Amendment Timeline (paras. 42–42E)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Amendment history at a glance</div>
+      <div class="principle">Base Standard: periods beginning on/after <strong>1 January 2017</strong> — issued alongside IPSAS 34, 35, 36, and 38, with simultaneous adoption required for earlier application.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2.2fr;"><span>Effective</span><span>Change</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2018</span><span>Paras. 5, 6 deleted — The Applicability of IPSAS (Apr 2016)</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2019</span><span>New paras. 24A, 41A, AG33A–AG33D (acquisition accounting for operations); para. 32 amended — IPSAS 40, Public Sector Combinations</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2023</span><span>Paras. 28, 30, 41, AG11, AG33A — IPSAS 41, Financial Instruments</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>—</span><span>Para. AG33CA added — Improvements to IPSAS, 2018</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 — RELATIONSHIP TO IFRS 11 ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Relationship to IAS/IFRS — Comparison with IFRS 11</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — IPSAS 37 vs IFRS 11</div>
+      <div class="principle">IPSAS 37 is drawn primarily from IFRS 11 (issued 2011, amendments to 31 December 2014), <em>Joint Arrangements</em>.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1.9fr;"><span>Topic</span><span>Difference</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Terminology</span><span>"Controlling entity," "surplus or deficit," "accumulated surplus or deficit" (IPSAS 37) vs "parent," "profit or loss," "retained earnings" (IFRS 11)</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Binding arrangement</span><span>Defined (via IPSAS 35) more BROADLY than IFRS 11's "contractual arrangement" — capturing statutory/legislative mechanisms alongside contracts</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Illustrative examples</span><span>IPSAS 37 adds ADDITIONAL examples reflecting the public sector context</span></div>
+      </div>
+      <div class="note">A notably SHORT comparison — IPSAS 37 tracks IFRS 11 closely, since the joint-arrangement classification logic (rights to assets/liabilities vs. rights to net assets) translates cleanly across sectors.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 — STATEMENT / PROCESS MAPPING ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Classification &amp; accounting decision map</div>
+      <div class="dot-list">
+        <span>1. Is there a BINDING ARRANGEMENT giving two or more parties JOINT CONTROL (unanimous consent required)? If no → not a joint arrangement at all (§2)</span>
+        <span>2. Assess RIGHTS AND OBLIGATIONS: rights to specific ASSETS and obligations for specific LIABILITIES → JOINT OPERATION. Rights to the NET ASSETS only → JOINT VENTURE (§3)</span>
+        <span>3. Joint operation → recognize YOUR OWN share of assets/liabilities/revenue/expenses directly, line by line, under whichever IPSAS normally governs each item (§4)</span>
+        <span>4. Joint venture → recognize a SINGLE investment, equity-accounted under IPSAS 36, unless exempt (§6)</span>
+        <span>5. Does the joint operation's activity constitute an "operation" under IPSAS 40? → apply IPSAS 40 acquisition accounting to your own share, for both initial and additional interests (§5)</span>
+        <span>6. Apply the SAME split in the entity's own separate financial statements (§7)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card cs span2">
+      <div class="ctitle cs">Concept-to-statement mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>IPSAS 37 concept</span><span>Statement(s)</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Joint operator's share of assets/liabilities</span><span><span class="badge bs">SOFP</span></span><span>Recognized directly, not as a single investment</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Joint operator's share of revenue/expenses</span><span><span class="badge bp">SOFPerf</span></span><span>Line by line, per the applicable IPSAS for each item</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Joint venturer's investment</span><span><span class="badge bs">SOFP</span></span><span>Single line, equity-accounted per IPSAS 36</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Transition adjustment (proportionate consolidation → equity method)</span><span><span class="badge be">NA/E</span></span><span>Opening accumulated surplus/deficit, one-time</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Transition adjustment (equity method → joint operation)</span><span><span class="badge be">NA/E</span></span><span>Opening accumulated surplus/deficit, with reconciliation disclosure</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 — RELATED STANDARDS ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How IPSAS 37 connects across the IPSAS body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.7fr 2.2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 3</span><span>Governs the disclosure of transitional quantitative information, with the relief in §8/§9 (para. 31)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 28 / 30 / 41</span><span>Govern non-controlling parties to a joint venture without significant influence (§6, §7)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 34</span><span>Governs separate-statement accounting for joint venture interests, per its own para. 12 (§7)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 35</span><span>Source of the "binding arrangement" definition applied here, and the shared control-assessment vocabulary (§1)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 36</span><span>Governs the EQUITY METHOD itself, applied to every joint venture interest; also governs the impairment test used during transition (§6, §8)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 38</span><span>Houses all disclosure requirements for joint arrangements — none appear within IPSAS 37 itself</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 40</span><span>Governs acquisition accounting when a joint operation's activity constitutes an "operation" (§5)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 — GLOSSARY ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Joint arrangement</div><div class="glossary-def">An arrangement of which two or more parties have joint control.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Joint control</div><div class="glossary-def">The agreed sharing of control, existing only when relevant-activity decisions require unanimous consent.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Joint operation</div><div class="glossary-def">A joint arrangement where the parties have rights to the assets and obligations for the liabilities relating to the arrangement.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Joint operator</div><div class="glossary-def">A party to a joint operation that has joint control of that joint operation.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Joint venture</div><div class="glossary-def">A joint arrangement where the parties have rights to the net assets of the arrangement.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Separate vehicle</div><div class="glossary-def">A separately identifiable financial structure, including separate legal entities or statutory entities.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bs">SOFP</span> Statement of financial position
+      <span class="badge bp">SOFPerf</span> Statement of financial performance
+      <span class="badge be">NA/E</span> Net assets/equity (statement of changes)
+    </div>
+  </div>
+
+  <div class="footer-note">IPSAS 37 — Joint Arrangements · Extended Reference Poster · Built from the 2025 IPSASB Handbook, Volume II · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

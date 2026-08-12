@@ -1,0 +1,123 @@
+---
+/*
+FrameworkBookGlobe
+
+Rail icon for the IPSAS framework: a book (primary shape) carrying a small
+globe marker in its top-right corner. Both elements are pinned to the IPSAS
+colour tokens (var(--ipsas) / var(--ipsas-soft)) rather than var(--framework-accent),
+so the icon always reads as IPSAS teal regardless of which framework page is
+currently being viewed.
+*/
+
+interface Props {
+  frameworkId?: string;
+}
+
+const frameworkId = Astro.props.frameworkId ?? "ipsas";
+---
+
+<span
+  class:list={["framework-book-globe"]}
+  data-framework-book-globe={frameworkId}
+  style={`--book-color: var(--ipsas); --globe-primary: var(--ipsas); --globe-secondary: var(--ipsas-soft);`}
+  aria-hidden="true"
+>
+  <!-- Book (primary shape) -->
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <path
+      d="M22 16.7399V4.66994C22 3.46994 21.02 2.57994 19.83 2.67994H19.77C17.67 2.85994 14.48 3.92994 12.7 5.04994L12.53 5.15994C12.24 5.33994 11.76 5.33994 11.47 5.15994L11.22 5.00994C9.44 3.89994 6.26 2.83994 4.16 2.66994C2.97 2.56994 2 3.46994 2 4.65994V16.7399C2 17.6999 2.78 18.5999 3.74 18.7199L4.03 18.7599C6.2 19.0499 9.55 20.1499 11.47 21.1999L11.51 21.2199C11.78 21.3699 12.21 21.3699 12.47 21.2199C14.39 20.1599 17.75 19.0499 19.93 18.7599L20.26 18.7199C21.22 18.5999 22 17.6999 22 16.7399Z"
+      stroke="currentColor"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M12 5.48999V20.49"
+      stroke="currentColor"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M7.75 8.48999H5.5"
+      stroke="currentColor"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M8.5 11.49H5.5"
+      stroke="currentColor"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+
+  <!-- Globe marker (top-right corner) -->
+  <svg
+    class="fbg-globe"
+    width="13"
+    height="13"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <circle class="globe-secondary" cx="12" cy="12" r="9.5" />
+    <ellipse class="globe-primary" cx="12" cy="12" rx="9.5" ry="2.2" />
+    <ellipse class="globe-primary" cx="12" cy="12" rx="2.2" ry="9.5" />
+  </svg>
+</span>
+
+<style>
+  .framework-book-globe {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+    flex-shrink: 0;
+    color: var(--book-color);
+  }
+
+  .framework-book-globe svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+  }
+
+  .fbg-globe {
+    position: absolute;
+    top: -1px;
+    right: -3px;
+    width: 13px;
+    height: 13px;
+    display: block;
+  }
+
+  .globe-primary {
+    fill: var(--globe-primary);
+  }
+
+  .globe-secondary {
+    fill: var(--globe-secondary);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .framework-book-globe[data-framework-book-globe="ipsas"] {
+      --book-color: var(--ipsas-soft);
+      --globe-primary: var(--ipsas);
+      --globe-secondary: var(--ipsas-soft);
+    }
+  }
+</style>

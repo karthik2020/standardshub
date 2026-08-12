@@ -1,0 +1,195 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import metadata from "../../data/standards/ipsas/ipsas34.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  covers={metadata.covers}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Objective, Scope & Definitions" },
+        { id: "s2", label: "When Separate Financial Statements Are the ONLY Financial Statements" },
+        { id: "s3", label: "Preparation — the Three Measurement Choices" },
+        { id: "s4", label: "Investment Entities & Changes in Status" },
+        { id: "s5", label: "Dividends or Similar Distributions & Group Reorganizations" },
+        { id: "s6", label: "Disclosure Requirements" },
+        { id: "s7", label: "Effective Date, Withdrawal of IPSAS 6 & Amendment Timeline" },
+        { id: "s8", label: "Relationship to IAS 27" },
+        { id: "s9", label: "Statement / Process Mapping" },
+        { id: "s10", label: "Related Standards — Cross-Reference Map" },
+        { id: "s11", label: "Quick-Reference Glossary" }
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="active"
+    explanation="IPSAS 34 Separate Financial Statements is the current, active standard issued by the IPSASB for accounting and disclosure for investments in associates and joint ventures when an entity presents separate (non-consolidated) financial statements. Effective for periods beginning on or after 1 January 2017 — it also WITHDREW IPSAS 6 (Consolidated and Separate Financial Statements), taking over the separate-statements carve-out. Paras. 1–34."
+    historical="IPSAS 34 is the IPSASB's adaptation of IAS 27 (2011) for the public sector, combined with the formal withdrawal of IPSAS 6. Separate financial statements here are measured at cost (or deemed cost), with the equity method allowed for associates and joint ventures."
+    link=""
+    linkText=""
+  />
+
+  <div class="legend">
+    <span class="legend-item legend-objective">Objective &amp; scope (paras. 1–8)</span>
+    <span class="legend-item legend-recognition">Measurement choices (paras. 9–15)</span>
+    <span class="legend-item legend-disclosure">Disclosure (paras. 19–23)</span>
+    <span class="legend-item legend-ias">IAS / IFRS equivalent (IAS 27)</span>
+  </div>
+
+  <!-- ============ SECTION 1 ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; Definitions (paras. 1–8)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Scope (para. 1)</div>
+      <div class="principle">Applies to an entity's investments in associates and joint ventures when it elects (or is required) to present SEPARATE financial statements that include those interests but NOT the entities it controls. Investments accounted for at fair value through other comprehensive income are also covered.</div>
+      <div class="glossary-item"><div class="glossary-term">Separate financial statements</div><div class="glossary-def">Financial statements that include assets and liabilities of the reporting entity, but not those it controls.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Investment entity</div><div class="glossary-def">An entity that holds investments in associates/joint ventures for their capital appreciation.</div></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>When Separate Financial Statements Are the ONLY Financial Statements (paras. 7, 9–10)</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card cd span2">
+      <div class="ctitle cd">Control carve-out (para. 9)</div>
+      <div class="principle">A public-sector entity that is a wholly-owned or partially-owned entity may present ONLY separate financial statements when doing so best depicts its economic resources and shows the basis of preparation. If so, it accounts for all investments in associates and joint ventures using the equity method.</div>
+      <div class="callout warn">The 'control' test still applies — an entity it controls is still excluded from the separate statements but disclosed per IPSAS 38.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Preparation — the Three Measurement Choices (paras. 11–13)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Three bases (para. 11)</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 1.7fr;"><span>Choice</span><span>Result</span></div>
+        <div class="tr" style="grid-template-columns:1fr 1.7fr;"><span>Cost / deemed cost</span><span>Acquisition cost; FVOCI/equity-method for associates/JVs</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 1.7fr;"><span>Fair value (election)</span><span>FV through other comprehensive income</span></div>
+        <div class="tr" style="grid-template-columns:1fr 1.7fr;"><span>Equity method (default for associates/JVs)</span><span>Share of profit/loss & OCI</span></div>
+      </div>
+      <div class="callout info callout--flush">Public-sector entities generally use cost or deemed cost (IPSAS 33) for the underlying assets, and the equity method for associates/JVs.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Investment Entities &amp; Changes in Status (paras. 14–15)</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card ci">
+      <div class="ctitle ci">Status change (para. 14)</div>
+      <div class="principle">An entity that was NOT an investment entity but becomes one (or vice-versa) during the period accounts for its investments at FVOCI from the change date, with a re-measurement recognised in profit or loss.</div>
+      <div class="cross-list"><span>Becomes investment entity</span><span>Re-measure to FV (P&L)</span><span>Stops being one</span><span>Revert to cost model</span></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Dividends or Similar Distributions &amp; Group Reorganizations (paras. 16–18)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Distributions (para. 16)</div>
+      <div class="principle">When a public-sector entity distributes declared dividends or similar, it accounts for its investment in the investee at the ex-dividend date as a DEEMED disposal, recognising any difference between carrying amount and proceeds in profit or loss. Group reorganisations follow the same deemed-disposal logic.</div>
+      <div class="callout warn">The equity-method shareholder's equity is reduced by the entity's share of dividends declared.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Disclosure Requirements (paras. 19–23)</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card cw span2">
+      <div class="ctitle cw">What to show (para. 19)</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.4fr 1.6fr;"><span>Disclosure</span><span>Includes</span></div>
+        <div class="tr" style="grid-template-columns:1.4fr 1.6fr;"><span>Nature of investments</span><span>Associates, JVs, FVOCI</span></div>
+        <div class="tr alt" style="grid-template-columns:1.4fr 1.6fr;"><span>Carrying amounts</span><span>Cost-model vs FV-election split</span></div>
+        <div class="tr" style="grid-template-columns:1.4fr 1.6fr;"><span>Unrealised gains</span><span>Parent-issuer eliminations</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Effective Date, Withdrawal of IPSAS 6 &amp; Amendment Timeline (paras. 32–34)</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card ci span2">
+      <div class="ctitle ci">Timeline</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 1.2fr;"><span>Date</span><span>Event</span></div>
+        <div class="tr" style="grid-template-columns:1fr 1.2fr;"><span>Jan 2015</span><span>Issued</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 1.2fr;"><span>1 Jan 2017</span><span>Effective date</span></div>
+        <div class="tr" style="grid-template-columns:1fr 1.2fr;"><span>Jan 2017</span><span>Withdrew IPSAS 6</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 1.2fr;"><span>2025</span><span>Amended (latest)</span></div>
+      </div>
+      <div class="callout warn">IPSAS 6 (Consolidated and Separate Financial Statements) was withdrawn; its separate-statements function now lives here, and its consolidation function moved to IPSAS 35.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Relationship to IAS 27</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Mapping (para. 34)</div>
+      <div class="principle">IPSAS 34 mirrors IAS 27 (2011) Separate Financial Statements — cost model, equity method for associates/JVs, FVOCI election, and the deemed-dividend treatment — but retains the public-sector 'service potential' / net-assets language and aligns with the IPSAS first-time-adoption transition (IPSAS 33).</div>
+      <div class="cross-list"><span>IAS 27 separate FS</span><span>IPSAS 34 same model</span><span>IAS 27 investment entity</span><span>IPSAS 34 same</span><span>IAS 27 withdrawal</span><span>IPSAS 34 withdrew IPSAS 6</span></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card cw span2">
+      <div class="ctitle cw">Where it flows</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.4fr 1.3fr;"><span>Process</span><span>Ledger</span></div>
+        <div class="tr" style="grid-template-columns:1.4fr 1.3fr;"><span>Investment register</span><span>Asset Register → Cost / Deemed cost</span></div>
+        <div class="tr alt" style="grid-template-columns:1.4fr 1.3fr;"><span>Equity-method accounting</span><span>Associate Module → Share of P&L/OCI</span></div>
+        <div class="tr" style="grid-template-columns:1.4fr 1.3fr;"><span>Distribution event</span><span>Bonus/Dividend → Deemed disposal P&L</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">See also</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2fr;"><span>Standard</span><span>Relation</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2fr;"><span>IPSAS 33</span><span>First-time adoption (deemed cost transition)</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2fr;"><span>IPSAS 35</span><span>Companion consolidation standard</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2fr;"><span>IPSAS 36</span><span>Equity-method associates/JVs</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2fr;"><span>IAS 27</span><span>Direct equivalent</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Separate statements</div><div class="glossary-def">Excludes controlled entities; may be the only statements issued.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Cost model</div><div class="glossary-def">Carry at cost less impairment; FVOCI election allowed.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Investment entity</div><div class="glossary-def">Entity holding investments for capital appreciation.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Deemed disposal</div><div class="glossary-def">Distribution accounted for at ex-dividend date; P&L impact.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Equity method</div><div class="glossary-def">Associate/JV share of profit/loss & OCI.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">IPSAS 6 (withdrawn)</div><div class="glossary-def">Replaced by IPSAS 34 (separate) + IPSAS 35 (consolidation).</div></div>
+    </div>
+  </div>
+</StandardPageLayout>

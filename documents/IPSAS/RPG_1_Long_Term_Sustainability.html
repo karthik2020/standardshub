@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RPG 1 — Reporting on the Long-Term Sustainability of an Entity's Finances | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .eg  { margin-bottom: 7px; }
+  .egl { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; margin-bottom: 3px; }
+  .entry { display: flex; align-items: flex-start; gap: 4px; margin-bottom: 4px; }
+  .dr { font-size: 11px; font-weight: 500; color: var(--color-text-info);   min-width: 14px; padding-top: 1px; }
+  .cr { font-size: 11px; font-weight: 500; color: var(--color-text-danger); min-width: 14px; padding-top: 1px; padding-left: 6px; }
+  .etxt { font-size: 11px; color: var(--color-text-primary); flex: 1; line-height: 1.4; }
+  .badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .bc { background: #f3e8ff; color: #7e22ce; }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">RPG 1 — Reporting on the Long-Term Sustainability of an Entity's Finances</div>
+      <div class="hub-sub">Extended reference poster · Full Handbook structure · Statement mapping · Related standards</div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <a href="#s1">1. Objective, Status &amp; Scope</a>
+    <a href="#s2">2. Definitions</a>
+    <a href="#s3">3. Determining Whether to Report &amp; the Reporting Boundary</a>
+    <a href="#s4">4. The Three-Component Reporting Structure</a>
+    <a href="#s5">5. Presenting Projections of Future Inflows and Outflows</a>
+    <a href="#s6">6. Time Horizon</a>
+    <a href="#s7">7. The Three Dimensions — Service, Revenue &amp; Debt</a>
+    <a href="#s8">8. Principles &amp; Methodologies — Assumptions, Inflation &amp; Sensitivity</a>
+    <a href="#s9">9. Disclosure Requirements</a>
+    <a href="#s10">10. Sustainability Programs — Implementation Guidance</a>
+    <a href="#s11">11. Statement / Process Mapping</a>
+    <a href="#s12">12. Related Standards</a>
+    <a href="#s13">13. Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 — OBJECTIVE, STATUS & SCOPE ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Status &amp; Scope (paras. 1–8)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Objective</div>
+      <div class="principle">Guides reporting on the LONG-TERM SUSTAINABILITY of a public sector entity's finances — the impact of current policies/decisions on future inflows/outflows, SUPPLEMENTING (not replacing) the financial statements. Aim: indicate projected long-term sustainability over a specified time horizon, per stated assumptions.</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-top:8px;">Not limited to social-benefit programs, though those are often highly significant. Doesn't directly address ENVIRONMENTAL sustainability — but financial impacts of environmental factors should still feed into projections (paras. 3–4).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Status — good practice, not a requirement</div>
+      <div class="formula-box">
+        <div class="f-eq">Following this RPG is ENCOURAGED, not required — an entity's IPSAS compliance statement is UNAFFECTED by whether it follows RPG 1</div>
+      </div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ Like the accrual IPSAS themselves, information can't be described as complying with THIS RPG unless it meets ALL its requirements (para. 7) — a binary "if you claim it, claim it fully" rule, even though the RPG itself is non-mandatory. Doesn't apply directly to COMMERCIAL public sector entities — but a commercial entity's flows, if CONTROLLED by the reporting entity, ARE in scope (para. 6).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 — DEFINITIONS ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Definitions (para. 9)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The core vocabulary</div>
+      <div class="glossary-item"><div class="glossary-term">Long-term fiscal sustainability</div><div class="glossary-def">The ability of an entity to meet service delivery and financial commitments BOTH now and in the future.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Current policy assumptions</div><div class="glossary-def">Assumptions based on legislation/regulation in force at the reporting date, with appropriate departures for defined circumstances.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Projection</div><div class="glossary-def">Forward-looking financial information prepared on the basis of current policy assumptions, and assumptions about future economic and other conditions.</div></div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Inflows and outflows — broader than the accrual statements</div>
+      <div class="glossary-item"><div class="glossary-term">Inflows</div><div class="glossary-def">Cash and cash equivalents projected to be received or accrued over the projection time horizon.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Outflows</div><div class="glossary-def">Cash and cash equivalents projected to be paid or accrued over the projection time horizon.</div></div>
+      <div class="note" style="margin-top:6px;">"Fiscal" is used BROADLY here — covering both inflows and outflows, not just taxation, despite a narrower meaning in some jurisdictions (footnote 1).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 — DETERMINING WHETHER TO REPORT & THE REPORTING BOUNDARY ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Determining Whether to Report &amp; the Reporting Boundary (paras. 10–15)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Who has users for this — three telltale characteristics (para. 13)</div>
+      <div class="dot-list">
+        <span>Significant TAX and/or other REVENUE-RAISING powers</span>
+        <span>Powers to incur significant DEBT</span>
+        <span>The power/ability to determine the NATURE, LEVEL, and METHOD of service delivery, including introducing new services</span>
+      </div>
+      <div class="note">This information is BROADER than the financial statements themselves — it captures decisions already made that will trigger future outflows NOT yet meeting the liability definition/recognition criteria, and future inflows not yet meeting the asset definition (para. 11).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Reporting boundary — same as the statements, or GGS</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Using the SAME boundary as the financial statements enhances understandability (para. 14). Alternatively, an entity MAY use the General Government Sector (GGS) boundary instead — for cross-jurisdiction comparability, or where other GGS-based indicators are the norm. Entities doing so are encouraged to ALSO present IPSAS 22 GGS disclosures (para. 15).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 — THE THREE-COMPONENT REPORTING STRUCTURE ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>The Three-Component Reporting Structure (paras. 16–20)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">No single presentation format will do</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Form and content vary by entity nature and regulatory environment — a SINGLE approach is unlikely to satisfy financial reporting's objectives. Long-term fiscal sustainability information USUALLY includes three components (para. 17):</div>
+      <div class="check-list">
+        <span>PROJECTIONS of future inflows/outflows — tabular or graphical, with narrative discussion (§5)</span>
+        <span>A narrative discussion of the DIMENSIONS of long-term fiscal sustainability, with any indicators used (§7)</span>
+        <span>A narrative discussion of the PRINCIPLES, ASSUMPTIONS, and METHODOLOGY underlying the projections (§8)</span>
+      </div>
+      <div class="note">May be published as a SEPARATE report, or as part of another one; at the same time as the GPFS, or a different time. A controlled entity's reported information must stay CONSISTENT with its controlling entity's (paras. 19–20).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 — PRESENTING PROJECTIONS OF FUTURE INFLOWS AND OUTFLOWS ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Presenting Projections of Future Inflows and Outflows (paras. 21–24)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Building on current policy, reusing existing work where possible</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Projections (including capital expenditure) are based on CURRENT policy assumptions plus future economic/other condition assumptions (para. 21). An entity should assess whether it can draw on ASSUMPTIONS/PROJECTIONS/INDICATORS already prepared by others (e.g. a Ministry of Finance) — reducing reporting cost, provided that information meets the qualitative characteristics. An existing BUDGET or FORECAST meeting the projection definition can be reused for the relevant period(s) (para. 22).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Format choices, and the neutrality safeguard</div>
+      <div class="dot-list">
+        <span>Tabular or graphical — balance UNDERSTANDABILITY against RELEVANCE; more periods = more complete, but risks information overload (para. 23)</span>
+        <span>Choice/presentation must NOT be skewed toward a misleadingly favorable OR unfavorable picture — formats/terms stay CONSISTENT between periods (para. 24)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 — TIME HORIZON ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Time Horizon (paras. 25–26)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">A genuine tension — longer captures more, but weakens robustness</div>
+      <div class="formula-box">
+        <div class="f-eq">Balance VERIFIABILITY, FAITHFUL REPRESENTATION, and RELEVANCE — longer horizons capture more future events but rely on progressively LESS ROBUST assumptions; TOO SHORT a horizon risks ignoring consequences that fall just outside it</div>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">What drives the right length</div>
+      <div class="dot-list">
+        <span>Longevity of KEY PROGRAMS</span>
+        <span>Level of DEPENDENCE on other entities for funding</span>
+        <span>Estimated lives of major PP&amp;E — especially infrastructure networks</span>
+        <span>Time horizons adopted by COMPARABLE entities providing similar prospective information</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 — THE THREE DIMENSIONS: SERVICE, REVENUE & DEBT ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Addressing the Dimensions of Long-Term Fiscal Sustainability (paras. 27–40)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Three inter-related dimensions, each with two aspects</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Changing ONE dimension affects the others — a single dimension is analyzed by holding the other two CONSTANT (e.g. fixing service/revenue levels to isolate the effect on debt) (para. 28). Every dimension has TWO aspects: CAPACITY (the entity's ability to change/influence it) and VULNERABILITY (its dependence on factors outside its control) (para. 29).</div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card ci">
+      <div class="ctitle ci">Service Dimension</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Volume/quality of services and beneficiary entitlements over the projection period, given current revenue policy, within debt constraints. Focuses on capacity to MAINTAIN or VARY service levels — and vulnerability to beneficiaries' willingness to accept reductions, or to another government level setting service levels externally (paras. 31–34).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Revenue Dimension</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Taxation and other revenue sources over the projection period, given current service policy, within debt constraints. Focuses on capacity to VARY tax levels or introduce new sources — and vulnerability to taxpayer resistance, or dependence on revenue sources outside the entity's control (e.g. intergovernmental grants) (paras. 35–37).</div>
+    </div>
+
+    <div class="card cd span2">
+      <div class="ctitle cd">Debt Dimension</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Debt levels over the projection period, given current service and revenue policy. Focuses on capacity to meet commitments as due, or refinance/increase debt — and vulnerability to market/lender confidence and interest rate risk. NET DEBT is a key indicator: it represents past service provision that must still be financed in the future (paras. 38–39). At national level, the PRIMARY balance (spending excluding interest, minus tax revenue) may be distinguished from the OVERALL balance (including interest); at sub-national level, net debt as a % of total revenues is often the focus (para. 40).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 — PRINCIPLES & METHODOLOGIES: ASSUMPTIONS, INFLATION & SENSITIVITY ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Principles &amp; Methodologies — Assumptions, Inflation &amp; Sensitivity Analysis (paras. 41–53)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Updating, age-related programs, and demographic/economic assumptions</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Annual updating is DESIRABLE but not always realistic — an inverse relationship exists between assumption robustness and time elapsed; entities should update MORE frequently during financial volatility or after major unexpected events (para. 41). AGE-RELATED programs (eligibility tied to age/demographics) may be individually modeled; NON-age-related programs may track GDP or stay constant in real terms, offering some built-in flexibility (para. 49). Demographic assumptions: fertility, mortality, migration, workforce participation. Economic assumptions: growth rates, inflation, and increasingly, environmental factors like resource depletion (para. 50).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Inflation/discount rate consistency, and sensitivity analysis</div>
+      <div class="formula-box">
+        <div class="f-eq">If projections INCLUDE inflation → the discount rate must ALSO include inflation. If projections are at CURRENT prices → the discount rate EXCLUDES inflation</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">A genuine consistency requirement — mismatching these two would double-count or omit inflation's effect (para. 52). SENSITIVITY ANALYSIS helps users understand how significant changes in demographic/economic assumptions affect the projections, since small variable changes can have outsized impacts (para. 53).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 — DISCLOSURE REQUIREMENTS ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure Requirements (paras. 54–58)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Entity-identification disclosures (para. 55)</div>
+      <div class="check-list">
+        <span>The entity's NAME, and which financial statements the information relates to</span>
+        <span>Where DIFFERENT, the names of entities within the long-term sustainability reporting BOUNDARY vs. the financial statement boundary</span>
+        <span>If a controlled entity: the identity of its CONTROLLING entity</span>
+        <span>The DATE the full projection set was made, and the basis/timing of subsequent updates</span>
+        <span>Where projections/indicators from OTHER entities/sources were used: their names, and what was used</span>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Narrative-discussion disclosures (para. 56)</div>
+      <div class="dot-list">
+        <span>Sources of SIGNIFICANT revenue inflows, and current policy assumptions behind them (thresholds, allowances)</span>
+        <span>Sources of SIGNIFICANT outflows (incl. capital expenditure), and the assumptions behind them</span>
+        <span>Whether projections are modeled INDIVIDUALLY or in AGGREGATE</span>
+        <span>An EXPLANATION that projections are NOT FORECASTS — actual outcomes are unlikely to match, and the gap depends on many factors including the entity's own future actions</span>
+        <span>Changes in projections and formats between periods, and WHY; the time horizon used, and why — including any horizon CHANGE from the prior period</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 — SUSTAINABILITY PROGRAMS: IMPLEMENTATION GUIDANCE ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Sustainability Programs — Implementation Guidance (paras. IG1–IG3)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">A genuinely current extension — does RPG 1 cover climate/sustainability program impacts?</div>
+      <div class="formula-box">
+        <div class="f-eq">YES — RPG 1's principles apply to an entity's OVERALL long-term fiscal sustainability, INCLUDING sustainability-program impacts, provided the relevant inflows/outflows are built into the projections (IG1)</div>
+      </div>
+      <div class="dot-list">
+        <span>Sustainability programs (green bonds, carbon taxes, climate-adaptation infrastructure, sustainability tax expenditures — see the Handbook's own illustrative examples) can affect ALL THREE dimensions — service, revenue, and debt</span>
+        <span>Their impacts should be MODELED and INCLUDED in overall projections, using the same current-policy/demographic/economic assumption framework — presented EITHER separately, or folded into overall totals, depending on the report's purpose and their significance (IG2)</span>
+        <span>ALL of RPG 1's ordinary guidance applies — policy/demographic/economic assumptions, and sensitivity analysis to help users understand assumption-change impacts (IG3)</span>
+      </div>
+      <div class="note">This guidance doesn't create a SEPARATE sustainability-reporting model — it confirms RPG 1's existing framework is BROAD enough to absorb these newer program types without modification.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 — STATEMENT / PROCESS MAPPING ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Reporting decision map</div>
+      <div class="dot-list">
+        <span>1. Does the entity have significant tax/revenue-raising power, debt-incurring power, or service-delivery-determining power? → likely has genuine USERS for this information (§3)</span>
+        <span>2. Choose a REPORTING BOUNDARY — same as the financial statements, or the GGS (§3)</span>
+        <span>3. Build the THREE reporting components: projections, dimension discussion, and assumptions/methodology discussion (§4)</span>
+        <span>4. Select a TIME HORIZON balancing relevance against assumption robustness (§6)</span>
+        <span>5. Address ALL THREE dimensions — Service, Revenue, Debt — each with capacity AND vulnerability framing (§7)</span>
+        <span>6. Set demographic/economic assumptions, keep inflation treatment CONSISTENT between projections and discount rate, and run sensitivity analysis (§8)</span>
+        <span>7. Disclose entity identification, projection dates/updates, and the required narrative items (§9)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 — RELATED STANDARDS ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How RPG 1 connects across the IPSASB body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.7fr 2.2fr;"><span>Document</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>Conceptual Framework</span><span>Source of the objectives, qualitative characteristics, and constraints this RPG applies throughout (Chapters 2–3, cited directly)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 22</span><span>Governs GGS disclosure, encouraged as a companion where the GGS reporting boundary is used (§3)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 24</span><span>Conceptual parallel — budget/forecast information reused as projection input where it qualifies (§5)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 35</span><span>Governs the controlling/controlled entity relationship underlying the consistency requirement between related entities' reports (§4)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 42</span><span>Cross-references THIS RPG directly as encouraged (not required) long-term sustainability reporting — see that Standard's own poster §6</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 — GLOSSARY ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Long-term fiscal sustainability</div><div class="glossary-def">The ability of an entity to meet service delivery and financial commitments both now and in the future.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Projection</div><div class="glossary-def">Forward-looking financial information based on current policy assumptions and future economic/other condition assumptions.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Capacity</div><div class="glossary-def">The entity's ability to change or influence a dimension of long-term fiscal sustainability.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Vulnerability</div><div class="glossary-def">The extent of an entity's dependence on factors outside its control or influence.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Service dimension</div><div class="glossary-def">The volume and quality of services and entitlements over the projection period.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Debt dimension</div><div class="glossary-def">Debt levels over the projection period, given current service and revenue policy.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Reporting document key</div>
+    <div class="lrow">
+      <span class="badge bs">GPFR</span> General Purpose Financial Report
+      <span class="badge bp">GPFS</span> General Purpose Financial Statements
+    </div>
+  </div>
+
+  <div class="footer-note">RPG 1 — Reporting on the Long-Term Sustainability of an Entity's Finances · Extended Reference Poster · Built from the 2025 IPSASB Handbook, Volume III · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

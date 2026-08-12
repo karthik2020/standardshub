@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPSAS 40 — Public Sector Combinations | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .eg  { margin-bottom: 7px; }
+  .egl { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; margin-bottom: 3px; }
+  .entry { display: flex; align-items: flex-start; gap: 4px; margin-bottom: 4px; }
+  .dr { font-size: 11px; font-weight: 500; color: var(--color-text-info);   min-width: 14px; padding-top: 1px; }
+  .cr { font-size: 11px; font-weight: 500; color: var(--color-text-danger); min-width: 14px; padding-top: 1px; padding-left: 6px; }
+  .etxt { font-size: 11px; color: var(--color-text-primary); flex: 1; line-height: 1.4; }
+  .badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .bc { background: #f3e8ff; color: #7e22ce; }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">IPSAS 40 — Public Sector Combinations</div>
+      <div class="hub-sub">Extended reference poster · Full Handbook structure · Statement formats · Statement mapping · Related standards</div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <a href="#s1">1. Objective, Scope &amp; the "Operation" Test</a>
+    <a href="#s2">2. Definitions — Amalgamation, Acquisition &amp; Related Terms</a>
+    <a href="#s3">3. Identifying &amp; Classifying a Combination</a>
+    <a href="#s4">4. Indicators of Economic Substance</a>
+    <a href="#s5">5. Amalgamations — the Modified Pooling of Interests Method</a>
+    <a href="#s6">6. Amalgamations — Recognition, Measurement &amp; Exceptions</a>
+    <a href="#s7">7. Amalgamations — the Net Assets/Equity Mechanism</a>
+    <a href="#s8">8. Amalgamations — Measurement Period &amp; Related Costs</a>
+    <a href="#s9">9. Amalgamations — Statement Formats &amp; Disclosures</a>
+    <a href="#s10">10. Acquisitions — the Acquisition Method</a>
+    <a href="#s11">11. Acquisitions — Recognition &amp; Measurement Principles</a>
+    <a href="#s12">12. Acquisitions — Exceptions to Recognition/Measurement</a>
+    <a href="#s13">13. Goodwill, Bargain Purchases &amp; Non-Exchange Acquisitions</a>
+    <a href="#s14">14. Non-Controlling Interests &amp; Staged Acquisitions</a>
+    <a href="#s15">15. Acquisitions — Disclosure Requirements</a>
+    <a href="#s16">16. Combinations Under Common Control</a>
+    <a href="#s17">17. Effective Date &amp; Amendment Timeline</a>
+    <a href="#s18">18. Relationship to IFRS 3</a>
+    <a href="#s19">19. Statement / Process Mapping</a>
+    <a href="#s20">20. Related Standards</a>
+    <a href="#s21">21. Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 — OBJECTIVE, SCOPE & THE "OPERATION" TEST ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; the "Operation" Test (paras. 1–4)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Objective</div>
+      <div class="principle">Improves the relevance, faithful representation, and comparability of information about a public sector combination — establishing how a reporting entity CLASSIFIES a combination (amalgamation vs. acquisition), and how it recognizes/measures the resulting assets, liabilities, non-controlling interests, net assets/equity, and goodwill or gain.</div>
+      <div class="check-list">
+        <span>Applies to any transaction/event meeting the "public sector combination" definition — the bringing together of separate operations into ONE public sector entity</span>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">The gateway test — is it an "operation"?</div>
+      <div class="formula-box">
+        <div class="f-eq">An operation = an INTEGRATED SET of activities and related assets/liabilities, capable of being conducted/managed to achieve an entity's objectives by providing goods/services</div>
+      </div>
+      <div class="cross-list">
+        <span>A joint arrangement's OWN formation, in its own statements — excluded</span>
+        <span>Acquiring/receiving an asset (or asset group) that does NOT constitute an operation — identify and recognize the individual assets instead; NO goodwill arises</span>
+        <span>Assuming a liability (or liability group) that does NOT constitute an operation — recognize the individual liabilities instead</span>
+        <span>An investment entity's acquisition of a controlled-entity investment required to be fair-valued (IPSAS 35)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 — DEFINITIONS ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Definitions — Amalgamation, Acquisition &amp; Related Terms (para. 5)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Amalgamation vocabulary</div>
+      <div class="glossary-item"><div class="glossary-term">Amalgamation</div><div class="glossary-def">A combination where NO party gains control (a); OR one party gains control but the combination has the ECONOMIC SUBSTANCE of an amalgamation (b).</div></div>
+      <div class="glossary-item"><div class="glossary-term">Resulting entity</div><div class="glossary-def">The entity resulting from two or more operations combining in an amalgamation.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Combining operation</div><div class="glossary-def">An operation that combines with one or more others to form the resulting entity.</div></div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Acquisition vocabulary</div>
+      <div class="glossary-item"><div class="glossary-term">Acquisition</div><div class="glossary-def">A combination where one party gains control of one or more operations, and there's evidence it is NOT an amalgamation.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Acquirer / acquired operation</div><div class="glossary-def">The entity gaining control / the operation being controlled.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Goodwill</div><div class="glossary-def">An asset representing future economic benefits from acquired assets NOT individually identified and separately recognized.</div></div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card cw span2">
+      <div class="ctitle cw">Shared terms</div>
+      <div class="dot-list">
+        <span><strong style="font-weight:500">Identifiable asset</strong> — separable (sellable/transferable/licensable/rentable/exchangeable alone or together with a related item), OR arises from binding arrangements, regardless of transferability</span>
+        <span><strong style="font-weight:500">Public sector combination under common control</strong> — ALL entities/operations involved are ultimately controlled by the SAME entity, both before AND after the combination</span>
+        <span><strong style="font-weight:500">Contingent consideration</strong> — an obligation to transfer additional assets/equity if future conditions are met, OR a right to the return of consideration already transferred</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 — IDENTIFYING & CLASSIFYING A COMBINATION ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Identifying &amp; Classifying a Public Sector Combination (paras. 6–9)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">The two-part classification logic</div>
+      <div class="formula-box">
+        <div class="f-eq">NO party gains control of any operation → automatically an AMALGAMATION</div>
+      </div>
+      <div class="formula-box">
+        <div class="f-eq">ONE party gains control → an ACQUISITION, UNLESS the combination has the ECONOMIC SUBSTANCE of an amalgamation</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Classification is judged against whether the resulting accounting treatment gives users information meeting financial reporting's OBJECTIVES and satisfying the QUALITATIVE CHARACTERISTICS (para. 9). Individually or combined, the §4 indicators USUALLY resolve this conclusively — a combination need NOT satisfy both indicator sets to qualify as an amalgamation (para. 9).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 — INDICATORS OF ECONOMIC SUBSTANCE ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Indicators That a Combination Is an Amalgamation (paras. 10–14)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Consideration-related indicators (para. 12)</div>
+      <div class="dot-list">
+        <span>Consideration is paid for reasons OTHER than compensating those entitled to the transferred operation's net assets</span>
+        <span>Consideration is NOT paid to those entitled to the net assets</span>
+        <span>Consideration is NOT paid because NO ONE has an entitlement to the transferred entity's net assets</span>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Decision-making-process indicators (para. 13)</div>
+      <div class="dot-list">
+        <span>The combination is IMPOSED by a third party — no party to the combination is involved in the decision</span>
+        <span>The combination requires approval by each party's CITIZENS through referenda</span>
+        <span>The combination occurs UNDER COMMON CONTROL</span>
+      </div>
+      <div class="note">In EXCEPTIONAL cases where both indicator sets are inconclusive, the entity instead considers which classification and treatment would BEST meet financial reporting's objectives and BEST satisfy the qualitative characteristics (relevance, faithful representation, understandability, timeliness, comparability, verifiability) (para. 14).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 — AMALGAMATIONS: THE MODIFIED POOLING OF INTERESTS METHOD ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Accounting for Amalgamations — the Modified Pooling of Interests Method (paras. 15–20)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Four steps (para. 16)</div>
+      <div class="check-list">
+        <span>Identify the RESULTING entity</span>
+        <span>Determine the AMALGAMATION DATE</span>
+        <span>Recognize/measure identifiable assets received, liabilities assumed, and non-controlling interests</span>
+        <span>Recognize/measure net assets/equity components and other adjustments</span>
+      </div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Identifying the resulting entity &amp; the amalgamation date</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">The resulting entity is whichever entity OBTAINS CONTROL of the combining operations (paras. 17–18). The amalgamation date is when that control transfers — often when assets/liabilities are formally DELEGATED to the resulting entity, though legislation or written agreement may specify a different date. All pertinent facts/circumstances are considered (paras. 19–20).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 — AMALGAMATIONS: RECOGNITION, MEASUREMENT & EXCEPTIONS ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Amalgamations — Recognition, Measurement &amp; Exceptions (paras. 21–35)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Recognition &amp; measurement — carrying amounts, not fair value</div>
+      <div class="formula-box">
+        <div class="f-eq">Measure identifiable assets/liabilities at their COMBINING-OPERATION CARRYING AMOUNTS at the amalgamation date — adjusted only to conform to the resulting entity's OWN accounting policies</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">This is THE defining contrast with acquisitions (§11) — amalgamations POOL carrying amounts; acquisitions REMEASURE to fair value. Intra-combining-operation transactions are ELIMINATED (para. 22). Assets/liabilities must meet the CONCEPTUAL FRAMEWORK definitions at the amalgamation date — future exit/termination costs the entity merely EXPECTS (but isn't obliged) to incur are NOT liabilities here (para. 23).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Classification consistency, and the licenses exception</div>
+      <div class="dot-list">
+        <span>Assets/liabilities keep the SAME classifications/designations the combining operations previously used (e.g. fair-value vs. amortized-cost financial instrument classification) — the resulting entity does NOT adopt different ones on initial recognition, even where another IPSAS would otherwise permit it (paras. 24–25)</span>
+        <span>EXCEPTION: a license/similar right previously granted BETWEEN combining operations, recognized as an intangible by the recipient, is recognized by the resulting entity too — NOT eliminated as an intra-group transaction (para. 32)</span>
+      </div>
+      <div class="note">Non-controlling interests are measured at THEIR carrying amounts in the combining operation, adjusted for their proportionate share of any conforming-policy adjustments (para. 29).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 — AMALGAMATIONS: THE NET ASSETS/EQUITY MECHANISM ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Amalgamations — the Net Assets/Equity Mechanism (paras. 37–39)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">No goodwill, no gain — just a balancing entry within net assets/equity</div>
+      <div class="formula-box">
+        <div class="f-eq">Recognize WITHIN net assets/equity, amounts EQUAL AND OPPOSITE to: the combining operations' asset carrying amounts, liability carrying amounts, and non-controlling interest carrying amounts</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">PLUS corresponding adjustments for: intra-combining-operation elimination (§6); accounting-policy conformity adjustments; and any recognition/measurement EXCEPTIONS applied. This is the pooling method's core mechanic — since assets/liabilities transfer at carrying amount rather than fair value, there's no "purchase price" to reconcile into goodwill; instead the WHOLE transaction nets out through net assets/equity, which MAY be presented as either a single opening balance, OR disaggregated into components (paras. 37–39).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 — AMALGAMATIONS: MEASUREMENT PERIOD & RELATED COSTS ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Amalgamations — Measurement Period, Related Costs &amp; Tax Forgiveness (paras. 40–49)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The measurement period — up to one year to finalize</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Provisional amounts may be adjusted for UP TO ONE YEAR from the amalgamation date, as new information emerges — adjustments are made AS IF the accounting had been finalized at the amalgamation date, including REVISING comparative information and any depreciation/amortization already recognized (paras. 41, 43). AFTER the measurement period closes, only IPSAS 3 ERROR corrections can revise the accounting (para. 44).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Amalgamation-related costs, and tax forgiveness</div>
+      <div class="dot-list">
+        <span>Amalgamation-related costs (advisory, legal, accounting, valuation fees, general administrative costs, debt/equity registration/issuance costs) are EXPENSED as incurred, by both the resulting entity and combining operations (para. 45)</span>
+        <span>Where a tax authority FORGIVES tax as a consequence of the amalgamation, the resulting entity accounts for it PROSPECTIVELY, per the applicable income tax standard (para. 49)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 — AMALGAMATIONS: STATEMENT FORMATS & DISCLOSURES ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Amalgamations — Statement Formats &amp; Disclosures (paras. 50–56)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Required statement set — a genuinely new resulting entity (para. 50)</div>
+      <div class="check-list">
+        <span>Opening statement of financial position AS OF the amalgamation date</span>
+        <span>Statement of financial position at the reporting date</span>
+        <span>Statement of financial performance, amalgamation date → reporting date</span>
+        <span>Statement of changes in net assets/equity, same period</span>
+        <span>Cash flow statement, same period</span>
+        <span>Budget-vs-actual comparison, IF the entity publishes an approved budget</span>
+        <span>Notes — significant accounting policies and other explanatory notes</span>
+      </div>
+      <div class="note">Where the resulting entity is NOT a new entity (i.e., one combining operation is treated as continuing), disclosure requirements shift instead to §51 — amounts recognized by class, conforming adjustments, and elimination adjustments.</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Per-amalgamation disclosures (para. 54)</div>
+      <div class="dot-list">
+        <span>Name/description of each combining operation, the amalgamation date, and the PRIMARY REASONS (including legal basis)</span>
+        <span>Amounts recognized by major asset/liability class, and the adjustments made (elimination + conformity)</span>
+        <span>An ANALYSIS of net assets/equity, including any separately presented components and significant adjustments (e.g. revaluation surpluses)</span>
+      </div>
+      <div class="note">An entity MAY (not required to) present PRIOR-PERIOD financial statements for each combining operation — but if it does, that information is disclosed on the SAME basis as originally prepared, NOT restated, with the basis disclosed (para. 52, 54(g)).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 — ACQUISITIONS: THE ACQUISITION METHOD ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Accounting for Acquisitions — the Acquisition Method (paras. 58–63)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Four steps — the fair-value mirror of §5</div>
+      <div class="check-list">
+        <span>Identify the ACQUIRER</span>
+        <span>Determine the ACQUISITION DATE</span>
+        <span>Recognize/measure identifiable assets acquired, liabilities assumed, and non-controlling interests</span>
+        <span>Recognize/measure GOODWILL, or a gain/loss</span>
+      </div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Identifying the acquirer &amp; the acquisition date</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">The acquirer is already identified during the §3/§4 CLASSIFICATION step — the party that gains control (para. 61). The acquisition date is USUALLY the closing date (legal consideration transfer / asset-liability assumption) — but a written agreement may set an EARLIER or LATER date; all facts/circumstances are considered (paras. 62–63).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 — ACQUISITIONS: RECOGNITION & MEASUREMENT PRINCIPLES ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Acquisitions — Recognition &amp; Measurement Principles (paras. 64–74)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Recognition — separate from goodwill, and part of the exchange</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Recognized SEPARATELY from goodwill, as of the acquisition date. Must meet Conceptual Framework asset/liability definitions AT that date (expected-but-not-obliged future exit/termination costs are excluded, as in §6) (para. 65) — AND be part of what was actually EXCHANGED in the acquisition transaction, not a separate transaction accounted for on its own terms (para. 66). This recognition can bring PREVIOUSLY UNRECOGNIZED items onto the books — e.g. an internally-developed patent the acquired operation never capitalized (para. 67).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Measurement — acquisition-date FAIR VALUE (the core contrast with §6)</div>
+      <div class="formula-box">
+        <div class="f-eq">Identifiable assets acquired and liabilities assumed → measured at ACQUISITION-DATE FAIR VALUE (IPSAS 46)</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Present-ownership non-controlling interests entitled to a proportionate liquidation share of net assets are measured EITHER at fair value, OR at their proportionate share of the acquired operation's recognized identifiable net assets — an ELECTION (para. 73). Classifications/designations (financial instrument categories, hedge designations, embedded derivatives) are made based on conditions AS THEY EXIST at the acquisition date — NOT carried over from the acquired operation, unlike the amalgamation approach in §6 (paras. 69–70). Two narrow exceptions: lease classification (IPSAS 43) and insurance contract classification are carried over from inception instead (para. 71).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 — ACQUISITIONS: EXCEPTIONS TO RECOGNITION/MEASUREMENT ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Acquisitions — Exceptions to the Recognition/Measurement Principles (paras. 75–84)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">A limited, specified list</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Paragraphs 76–84 list specific items recognized/measured DIFFERENTLY from the general principles — e.g. CONTINGENT LIABILITIES are recognized as of the acquisition date if they're a PRESENT obligation from past events AND fair value can be measured reliably, EVEN IF an outflow isn't probable — a genuine departure from IPSAS 19's ordinary recognition threshold, which would otherwise leave many contingent liabilities off the books entirely (paras. 76–77). Other exception items (not itemized here) follow the same pattern: applying additional or different conditions than the general recognition/measurement principles.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 — GOODWILL, BARGAIN PURCHASES & NON-EXCHANGE ACQUISITIONS ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Goodwill, Bargain Purchases &amp; Non-Exchange Acquisitions (paras. 85–93)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The goodwill formula — and a public-sector cap</div>
+      <div class="formula-box">
+        <div class="f-eq">Goodwill = [consideration transferred + non-controlling interest + fair value of any previously-held interest] − [net identifiable assets acquired and liabilities assumed]</div>
+      </div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ <strong style="font-weight:600">Public-sector-specific cap (para. 86):</strong> goodwill is recognized ONLY to the extent the acquisition generates CASH INFLOWS, or reduces the acquirer's NET CASH OUTFLOWS. Any further excess is recognized as a LOSS in surplus or deficit instead — reflecting that many public sector acquisitions aren't commercially return-generating at all.</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Bargain purchases &amp; the genuinely public-sector non-exchange scenario</div>
+      <div class="dot-list">
+        <span><strong style="font-weight:500">Bargain purchase</strong> — net identifiable assets EXCEED the consideration/NCI/previously-held-interest aggregate → after reassessing all measurements, recognize the gain in SURPLUS OR DEFICIT, attributed to the acquirer (paras. 88, 90)</span>
+        <span><strong style="font-weight:500">Non-exchange acquisitions WITH some consideration</strong> — compensated seizures, or a donor transfer for nominal consideration → treated as bargain purchases (paras. 91–92)</span>
+        <span><strong style="font-weight:500">Non-exchange acquisitions with NO consideration</strong> — uncompensated seizures (forced nationalizations), or donor transfers/bequests for NO consideration at all (para. 93)</span>
+      </div>
+      <div class="note">Where NO consideration is transferred at all, the acquirer substitutes the acquisition-date fair value of ITS OWN interest in the acquired operation for the "consideration transferred" figure in the goodwill formula (para. 87).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 — NON-CONTROLLING INTERESTS & STAGED ACQUISITIONS ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Non-Controlling Interests, Measurement Period &amp; Acquisitions Achieved in Stages (paras. 73, 99–105)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Measurement period — an acquisition-side mirror of §8</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Up to ONE YEAR from the acquisition date to finalize provisional amounts for: identifiable assets/liabilities/NCI; consideration transferred; any previously-held equity interest; and the resulting goodwill/gain/loss (para. 104). Ends as soon as the acquirer gets the sought information, or learns no more is obtainable — whichever is EARLIER, but never beyond the one-year cap (para. 103).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Step acquisitions — remeasure the old stake to fair value</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Entity A holds a 35% non-controlling interest in Entity B; on 31 Dec 20X1 it buys an additional 40%, gaining control</div>
+        <div class="wk-answer">Entity A REMEASURES its PREVIOUSLY HELD 35% interest to acquisition-date fair value, recognizing any resulting gain/loss in surplus or deficit (or net assets/equity, if that's where prior changes in the interest's value were recognized — recycled on the SAME basis as a direct disposal would require) (para. 100).</div>
+      </div>
+      <div class="note">The SAME mechanic applies where a joint OPERATION party (IPSAS 37) gains control of that operation — its ENTIRE previously-held interest is remeasured (para. 100A).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 15 — ACQUISITIONS: DISCLOSURE REQUIREMENTS ============ -->
+  <div class="section-header" id="s15"><span class="num">15</span><h2>Acquisitions — Disclosure Requirements (paras. 119–125)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Per acquisition — the core package (para. 120)</div>
+      <div class="check-list">
+        <span>Name/description of the acquired operation, acquisition date, and % of voting/equivalent interests acquired</span>
+        <span>Primary reasons for the acquisition, and how control was obtained (incl. legal basis)</span>
+        <span>QUALITATIVE description of what makes up recognized goodwill (expected synergies, non-separable intangibles, etc.)</span>
+        <span>Acquisition-date fair value of TOTAL consideration, broken out by major class (cash, other assets, liabilities incurred, equity interests)</span>
+        <span>Contingent consideration/indemnification assets: amount recognized, arrangement description, and an OUTCOME RANGE (or why one can't be estimated)</span>
+        <span>Acquired receivables: fair value, gross contractual amount, and best estimate of uncollectible cash flows — by major receivable class</span>
+      </div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Further required items</div>
+      <div class="dot-list">
+        <span>Amounts recognized by MAJOR asset/liability class at the acquisition date</span>
+        <span>Recognized contingent liabilities — the IPSAS 19 para. 98 disclosure package, or (if fair value can't be reliably measured) para. 100's package plus WHY reliable measurement wasn't possible</span>
+        <span>Total goodwill expected to be TAX-DEDUCTIBLE</span>
+        <span>Separately-recognized transactions (per para. 109) — description, accounting treatment, amounts, and the line item(s) affected</span>
+      </div>
+      <div class="note">Where a MATERIAL acquisition occurs AFTER period-end but before statements are authorized for issue, the SAME disclosure package is required for that subsequent-event acquisition too (para. 119(b)).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 16 — COMBINATIONS UNDER COMMON CONTROL ============ -->
+  <div class="section-header" id="s16"><span class="num">16</span><h2>Public Sector Combinations Under Common Control (paras. AG37–AG39)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The classic case — a government merges two ministries</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Common-control combinations are often INSTIGATED by, and on behalf of, the controlling entity, which sets the terms — e.g. a government deciding to merge two ministries for administrative/political reasons. Where the controlling entity makes the ultimate decision AND sets the terms, this is evidence the combination is economically an AMALGAMATION (para. AG37).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Voluntary combinations still need controlling-entity involvement</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Even where two commonly-controlled operations agree to combine VOLUNTARILY, that decision is usually subject to the controlling entity's approval (explicit or implicit) — which STILL points to amalgamation classification (para. AG38). Only where there's genuinely NO evidence the controlling entity instigated, set terms for, or approved the combination does this indicator fail to apply — in which case the entity falls back on the OTHER §4 indicators (para. AG39).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 17 — EFFECTIVE DATE & AMENDMENT TIMELINE ============ -->
+  <div class="section-header" id="s17"><span class="num">17</span><h2>Effective Date &amp; Amendment Timeline (paras. 126–126D)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Amendment history at a glance</div>
+      <div class="principle">Base Standard: applied PROSPECTIVELY to combinations with an amalgamation/acquisition date on or after periods beginning <strong>1 January 2019</strong>.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2.2fr;"><span>Effective</span><span>Change</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2019</span><span>New para. 100A — Improvements to IPSAS, 2018 (step-acquisition treatment for joint operations)</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2023</span><span>Paras. 25, 45, 70, 111, 115, 117, AG88 — IPSAS 41, Financial Instruments</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>—</span><span>Para. 126C (later amended by Improvements to IPSAS, 2019) — links this Standard's applicability to an entity's IPSAS 33 first-time adoption date, for entities adopting accrual IPSAS AFTER this Standard's base effective date</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 18 — RELATIONSHIP TO IFRS 3 ============ -->
+  <div class="section-header" id="s18"><span class="num">18</span><h2>Relationship to IAS/IFRS — Comparison with IFRS 3</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — IPSAS 40 vs IFRS 3 (acquisitions only)</div>
+      <div class="principle">The ACQUISITION accounting requirements in IPSAS 40 are drawn primarily from IFRS 3 (issued 2004, amendments to 31 December 2015), <em>Business Combinations</em>. The AMALGAMATION model, however, has NO IFRS equivalent whatsoever — IFRS abandoned pooling-of-interests accounting decades ago, while the IPSASB reintroduced a MODIFIED version specifically because so many public sector combinations (ministry mergers, forced local-government amalgamations) genuinely lack an "acquirer" in any meaningful economic sense.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1.9fr;"><span>Topic</span><span>Difference</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Determining the acquirer</span><span>IFRS 3 has dedicated guidance; IPSAS 40 folds this into the broader amalgamation-vs-acquisition CLASSIFICATION step (§3–§4) instead</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Public-sector-specific transactions</span><span>IPSAS 40 adds guidance IFRS 3 lacks entirely — tax forgiveness (§8), non-exchange acquisitions via seizure/donation (§13), and the goodwill cash-generation cap (§13)</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Terminology</span><span>"Public sector combination," "operation," "acquired operation" (IPSAS 40) vs "business combination," "business," "acquiree" (IFRS 3)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 19 — STATEMENT / PROCESS MAPPING ============ -->
+  <div class="section-header" id="s19"><span class="num">19</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">The master decision map</div>
+      <div class="dot-list">
+        <span>1. Do the assets/liabilities involved constitute an "OPERATION"? If no → account for individual assets/liabilities under the ordinary IPSAS; no goodwill arises (§1)</span>
+        <span>2. Does ANY party gain control? NO → AMALGAMATION automatically. YES → apply the §4 indicators to test economic substance (§3, §4)</span>
+        <span>3. AMALGAMATION path → modified pooling of interests: carrying amounts, net-assets/equity plug, up-to-1-year measurement period, full new-entity statement set (§5–§9)</span>
+        <span>4. ACQUISITION path → acquisition method: fair values, goodwill/bargain-purchase formula, up-to-1-year measurement period, extensive disclosure package (§10–§15)</span>
+        <span>5. Is this a step acquisition, or a joint-operation party gaining control? → remeasure the previously-held interest to fair value first (§14)</span>
+        <span>6. Is this a common-control combination? → strong indicator toward amalgamation classification (§16)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card cs span2">
+      <div class="ctitle cs">Concept-to-statement mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>IPSAS 40 concept</span><span>Statement(s)</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Amalgamation: assets/liabilities received</span><span><span class="badge bs">SOFP</span></span><span>At combining-operation carrying amounts</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Amalgamation: net assets/equity plug</span><span><span class="badge be">NA/E</span></span><span>Equal and opposite to net assets/liabilities/NCI received</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Amalgamation-related costs</span><span><span class="badge bp">SOFPerf</span></span><span>Expensed as incurred</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Acquisition: assets/liabilities acquired</span><span><span class="badge bs">SOFP</span></span><span>At acquisition-date fair value</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Goodwill</span><span><span class="badge bs">SOFP</span></span><span>Only to the extent of cash-generating capacity</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Excess goodwill / bargain purchase gain</span><span><span class="badge bp">SOFPerf</span></span><span>Loss or gain, attributed to the acquirer</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Step-acquisition remeasurement gain/loss</span><span><span class="badge bp">SOFPerf</span> <span class="badge be">NA/E</span></span><span>Follows the basis of the prior interest's own accounting</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Full disclosure packages (both models)</span><span><span class="badge bp">Notes</span></span><span>Extensive — see §9 and §15</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 20 — RELATED STANDARDS ============ -->
+  <div class="section-header" id="s20"><span class="num">20</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How IPSAS 40 connects across the IPSAS body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.7fr 2.2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 3</span><span>Governs error correction after the measurement period ends (§8, §14)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 19</span><span>Ordinary contingent liability recognition threshold; the acquisition-side EXCEPTION overrides it for combinations (§12)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 21 / 26</span><span>Govern subsequent impairment testing of goodwill and assets recognized in a combination</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 24</span><span>Budget-vs-actual comparison required in a resulting entity's first post-amalgamation statement set (§9)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 31</span><span>Intangible asset recognition criteria applied to previously-unrecognized intangibles surfaced in an acquisition (§11)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 35 / 36 / 37</span><span>Define control, joint control, and the interests that a combination might convert into control (§14)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 41</span><span>Financial instrument classification/designation carried over (amalgamation) or freshly assessed (acquisition) (§6, §11)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 43</span><span>Lease classification exception carried over from inception in an acquisition (§11)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 46</span><span>Fair value measurement methodology underpinning the entire acquisition method (§11)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 21 — GLOSSARY ============ -->
+  <div class="section-header" id="s21"><span class="num">21</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Operation</div><div class="glossary-def">An integrated set of activities and related assets/liabilities capable of being conducted and managed to achieve objectives by providing goods/services.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Modified pooling of interests method</div><div class="glossary-def">The accounting method for amalgamations — assets and liabilities recognized at carrying amounts, not fair value.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Acquisition method</div><div class="glossary-def">The accounting method for acquisitions — assets and liabilities recognized at acquisition-date fair value.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Bargain purchase</div><div class="glossary-def">An acquisition where the net identifiable assets acquired exceed the consideration transferred, resulting in a gain.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Measurement period</div><div class="glossary-def">The period, up to one year, during which provisional amounts recognized for a combination may be adjusted.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Acquisition achieved in stages</div><div class="glossary-def">An acquisition where the acquirer already held an equity interest in the acquired operation before gaining control.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bs">SOFP</span> Statement of financial position
+      <span class="badge bp">SOFPerf</span> Statement of financial performance
+      <span class="badge be">NA/E</span> Net assets/equity (statement of changes)
+    </div>
+  </div>
+
+  <div class="footer-note">IPSAS 40 — Public Sector Combinations · Extended Reference Poster · Built from the 2025 IPSASB Handbook, Volume II · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

@@ -20,6 +20,7 @@ const currentPath = Astro.url.pathname;
 
 function resolveActiveFramework(pathname: string) {
   if (pathname.startsWith("/ifrs") || pathname.startsWith("/ifric") || pathname.startsWith("/sic")) return "ifrs";
+  if (pathname.startsWith("/ipsas")) return "ipsas";
   if (pathname.startsWith("/ias")) return "ias";
   if (pathname.startsWith("/indas")) return "indas";
   if (pathname.startsWith("/usgaap")) return "usgaap";
@@ -201,6 +202,21 @@ const ICON_MAP: Record<string, any> = {
           </details>
         ))
       }
+    </div>
+
+    <div class="fw-panel" data-framework-panel="ipsas">
+      <a href={FRAMEWORK_CONFIG.ipsas.route} class="panel-overview-link">
+        <span>Framework Overview</span>
+        <ArrowUpRight size={30} strokeWidth={4} class="panel-overview-arrow" />
+      </a>
+      <div class="section" data-section="ipsas">
+        {FRAMEWORK_CONFIG.ipsas.categories?.map((category: string) => (
+          <div class="sidebar-category-group" key={category}>
+            <div class="sidebar-category-label">{category}</div>
+            <StandardGroup items={itemsFor("ipsas").filter((item) => item.category === category)} sectionId="ipsas" />
+          </div>
+        ))}
+      </div>
     </div>
 
     <div class="sidebar-empty" id="sidebar-empty" hidden>

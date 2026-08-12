@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPSAS 41 — Financial Instruments | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .eg  { margin-bottom: 7px; }
+  .egl { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; margin-bottom: 3px; }
+  .entry { display: flex; align-items: flex-start; gap: 4px; margin-bottom: 4px; }
+  .dr { font-size: 11px; font-weight: 500; color: var(--color-text-info);   min-width: 14px; padding-top: 1px; }
+  .cr { font-size: 11px; font-weight: 500; color: var(--color-text-danger); min-width: 14px; padding-top: 1px; padding-left: 6px; }
+  .etxt { font-size: 11px; color: var(--color-text-primary); flex: 1; line-height: 1.4; }
+  .badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .bc { background: #f3e8ff; color: #7e22ce; }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">IPSAS 41 — Financial Instruments</div>
+      <div class="hub-sub">Extended reference poster · Full Handbook structure · Statement mapping · Related standards</div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <a href="#s1">1. Objective, Scope &amp; Out-of-Scope Instruments</a>
+    <a href="#s2">2. Definitions</a>
+    <a href="#s3">3. Recognition &amp; Initial Measurement</a>
+    <a href="#s4">4. Derecognition of Financial Assets</a>
+    <a href="#s5">5. Derecognition of Financial Liabilities</a>
+    <a href="#s6">6. Classification of Financial Assets — Business Model &amp; SPPI</a>
+    <a href="#s7">7. Classification of Financial Liabilities</a>
+    <a href="#s8">8. The Fair Value Option, Reclassification &amp; Embedded Derivatives</a>
+    <a href="#s9">9. Subsequent Measurement — Amortized Cost &amp; Effective Interest</a>
+    <a href="#s10">10. Impairment — the Three-Stage Expected Credit Loss Model</a>
+    <a href="#s11">11. Impairment — Simplified Approach &amp; Modified/Purchased Assets</a>
+    <a href="#s12">12. Concessionary Loans — a Public-Sector-Specific Model</a>
+    <a href="#s13">13. Gains, Losses &amp; Presentation</a>
+    <a href="#s14">14. Hedge Accounting — Objective, Instruments &amp; Qualifying Criteria</a>
+    <a href="#s15">15. Hedge Accounting — the Three Hedge Types &amp; Discontinuation</a>
+    <a href="#s16">16. Disclosure — Cross-Reference to IPSAS 30</a>
+    <a href="#s17">17. Effective Date &amp; Amendment Timeline</a>
+    <a href="#s18">18. Relationship to IFRS 9</a>
+    <a href="#s19">19. Statement / Process Mapping</a>
+    <a href="#s20">20. Related Standards</a>
+    <a href="#s21">21. Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 — OBJECTIVE, SCOPE & OUT-OF-SCOPE INSTRUMENTS ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; Out-of-Scope Instruments (paras. 1–9)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Objective</div>
+      <div class="principle">Establishes principles for financial reporting of financial assets and liabilities that present relevant, useful information for assessing the AMOUNT, TIMING, and UNCERTAINTY of an entity's future cash flows. This is the successor to almost all of IPSAS 29's original content — see that Standard's own poster for its narrow surviving legacy hedge-accounting role.</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Key exclusions (para. 2)</div>
+      <div class="cross-list">
+        <span>Equity-method interests (IPSAS 34/35/36) — though derivatives on them, and the HOLDER's own equity instruments, generally stay in scope</span>
+        <span>Lease rights/obligations (IPSAS 43) — EXCEPT finance/operating lease receivables (derecognition + impairment), lessee lease liabilities (derecognition only), and embedded lease derivatives</span>
+        <span>Employee benefit plan rights/obligations (IPSAS 39)</span>
+        <span>The entity's OWN equity instruments (IPSAS 28) — though holders still apply IPSAS 41</span>
+        <span>Insurance contracts (except financial guarantee contracts, and embedded non-insurance derivatives)</span>
+        <span>Initial recognition/measurement of IPSAS 47 revenue transaction rights/obligations — though IMPAIRMENT still applies</span>
+        <span>Service concession grantor rights/obligations (IPSAS 32) — except the financial liability model's DERECOGNITION provisions</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 — DEFINITIONS ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Definitions (para. 9)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Credit &amp; measurement vocabulary</div>
+      <div class="glossary-item"><div class="glossary-term">Amortized cost</div><div class="glossary-def">Initial measurement, less principal repayments, plus/minus cumulative effective-interest amortization, adjusted for any loss allowance.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Credit-impaired financial asset</div><div class="glossary-def">One where a detrimental event has already occurred — significant financial difficulty, default, a lender concession, probable bankruptcy, or a deep-discount purchase reflecting incurred losses.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Credit loss</div><div class="glossary-def">The difference between contractual cash flows due and cash flows expected to be received, discounted at the original effective interest rate.</div></div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Instrument &amp; interest vocabulary</div>
+      <div class="glossary-item"><div class="glossary-term">Derivative</div><div class="glossary-def">A contract whose value changes with an underlying variable, requires little/no initial net investment, and settles at a future date — all THREE features required.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Effective interest rate</div><div class="glossary-def">The rate that exactly discounts estimated future cash flows through the expected life to the gross carrying amount (assets) or amortized cost (liabilities).</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">12-month expected credit losses</div><div class="glossary-def">The portion of lifetime expected credit losses from default events possible within 12 months of the reporting date.</div></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 — RECOGNITION & INITIAL MEASUREMENT ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Recognition &amp; Initial Measurement (paras. 10–11, 57–60)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Recognition — becoming a party to the contract</div>
+      <div class="formula-box">
+        <div class="f-eq">Recognize a financial asset/liability when, and only when, the entity becomes PARTY to the instrument's contractual provisions</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Regular way purchases/sales use EITHER trade date OR settlement date accounting consistently (para. 11).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Initial measurement — fair value plus/minus transaction costs</div>
+      <div class="formula-box">
+        <div class="f-eq">Fair value ± transaction costs directly attributable to acquisition/issue — EXCEPT for instruments measured at fair value through surplus or deficit, where transaction costs are EXPENSED immediately</div>
+      </div>
+      <div class="note">Practical expedient: short-term receivables WITHOUT a significant IPSAS 47 financing component may be measured at TRANSACTION CONSIDERATION instead; short-term payables similarly, if discounting's effect is immaterial (para. 60).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 — DERECOGNITION OF FINANCIAL ASSETS ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Derecognition of Financial Assets — the Risks-and-Rewards Framework (paras. 12–20)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Two derecognition triggers (para. 14)</div>
+      <div class="check-list">
+        <span>Contractual rights to the cash flows EXPIRE or are WAIVED, OR</span>
+        <span>The asset is TRANSFERRED, and that transfer qualifies for derecognition</span>
+      </div>
+      <div class="note">"Pass-through" arrangements (retaining contractual rights but assuming an obligation to remit to eventual recipients) are treated as a transfer ONLY if three strict conditions hold: no obligation to pay unless equivalent amounts are collected; prohibited from selling/pledging the original asset; and an obligation to remit WITHOUT material delay, with no reinvestment right beyond short-term cash equivalents (para. 16).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">The three-way risks-and-rewards test (para. 17)</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1.9fr;"><span>Risks/rewards outcome</span><span>Treatment</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Transfers SUBSTANTIALLY ALL</span><span>Derecognize; separately recognize any retained/created rights and obligations</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Retains SUBSTANTIALLY ALL</span><span>CONTINUE recognizing the asset in full</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Neither transfers nor retains substantially all</span><span>Test CONTROL: retained control → continue recognizing to the extent of CONTINUING INVOLVEMENT; no retained control → derecognize</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 — DERECOGNITION OF FINANCIAL LIABILITIES ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Derecognition of Financial Liabilities (paras. 35–38)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Extinguishment — discharged, waived, canceled, or expired</div>
+      <div class="formula-box">
+        <div class="f-eq">Remove a financial liability when, and only when, it is EXTINGUISHED</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">An exchange of debt instruments with SUBSTANTIALLY DIFFERENT terms — or a SUBSTANTIAL modification of existing terms, whether or not from the debtor's financial difficulty — is treated as EXTINGUISHING the old liability and recognizing a NEW one (para. 36).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">The extinguishment gain/loss, and partial repurchase</div>
+      <div class="formula-box">
+        <div class="f-eq">Gain/loss = carrying amount extinguished − consideration paid (including non-cash assets/liabilities assumed) → surplus or deficit</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Where a lender WAIVES an obligation, or a third party assumes it as a non-exchange transaction, IPSAS 47 applies instead (para. 37). PARTIAL repurchases allocate the previous carrying amount between the retained and derecognized portions, by RELATIVE FAIR VALUE at the repurchase date (para. 38).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 — CLASSIFICATION OF FINANCIAL ASSETS: BUSINESS MODEL & SPPI ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Classification of Financial Assets — Management Model &amp; SPPI Tests (paras. 39–44)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Three categories, driven by TWO tests together</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.2fr 1.2fr 1.6fr;"><span>Category</span><span>Management model</span><span>Cash flow characteristics</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.6fr;"><span>Amortized cost</span><span>HOLD to collect contractual cash flows</span><span>SOLELY payments of principal and interest (SPPI) on outstanding principal</span></div>
+        <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.6fr;"><span>Fair value through net assets/equity</span><span>BOTH collect contractual cash flows AND sell</span><span>SPPI</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.6fr;"><span>Fair value through surplus or deficit</span><span>Residual — everything else</span><span>Residual — everything else, including equity instruments</span></div>
+      </div>
+      <div class="note">"Principal" = the financial asset's fair value AT initial recognition. "Interest" = consideration for the time value of money, credit risk, other basic lending risks/costs, and a profit margin (para. 43). An IRREVOCABLE election is available for equity instruments otherwise defaulting to fair value through surplus/deficit, to instead present fair value changes in net assets/equity (para. 42, §13).</div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card cw span2">
+      <div class="ctitle cw">The fair value option override — eliminating an accounting mismatch</div>
+      <div class="formula-box">
+        <div class="f-eq">Even where amortized cost or FVNA/E would otherwise apply, an entity MAY irrevocably designate a financial asset at fair value through surplus or deficit at initial recognition, IF doing so eliminates or significantly reduces an accounting MISMATCH</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">A mismatch arises from measuring related assets/liabilities, or recognizing their gains/losses, on DIFFERENT bases (para. 44).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 — CLASSIFICATION OF FINANCIAL LIABILITIES ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Classification of Financial Liabilities (paras. 45–46)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Default: amortized cost — four exceptions (para. 45)</div>
+      <div class="dot-list">
+        <span>Fair value through surplus or deficit (incl. derivative liabilities) — measured at FAIR VALUE</span>
+        <span>Transferred-asset liabilities that FAIL derecognition, or continuing-involvement liabilities</span>
+        <span>FINANCIAL GUARANTEE CONTRACTS — higher of the loss allowance (§10) and initial recognition amount, less cumulative IPSAS 47 revenue recognized</span>
+        <span>Below-market LOAN COMMITMENTS — same "higher of" measurement as guarantees</span>
+        <span>Contingent consideration from an IPSAS 40 public sector combination — fair value, changes to surplus or deficit</span>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">The fair value option for liabilities (para. 46)</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Irrevocable designation at fair value through surplus or deficit, EITHER to eliminate an accounting mismatch, OR where a group of assets/liabilities is managed and evaluated on a fair value basis under a DOCUMENTED risk management/investment strategy, reported that way to KEY MANAGEMENT PERSONNEL (IPSAS 20).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 — RECLASSIFICATION & EMBEDDED DERIVATIVES ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Reclassification &amp; Embedded Derivatives (paras. 47–56)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Reclassification — RARE, and only for a genuine model change</div>
+      <div class="formula-box">
+        <div class="f-eq">Reclassify financial ASSETS only when the entity CHANGES its management model — liabilities are NEVER reclassified</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">A hedging-relationship change (an instrument starting/stopping being a hedge) is explicitly NOT a reclassification (paras. 54–56).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Embedded derivatives — bifurcation for non-financial-asset hosts</div>
+      <div class="dot-list">
+        <span>Financial ASSET host → apply the WHOLE-CONTRACT classification test (§6) — no separate bifurcation</span>
+        <span>NON-asset host (e.g. a liability or lease host) → separate the embedded derivative ONLY IF: its economics AREN'T closely related to the host's; a standalone instrument with the same terms would itself be a derivative; AND the hybrid isn't already fair-valued through surplus/deficit</span>
+      </div>
+      <div class="note">If separation is required but the embedded derivative can't be measured reliably on its own, the ENTIRE hybrid contract is designated at fair value through surplus or deficit instead (paras. 52–53).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 — SUBSEQUENT MEASUREMENT: AMORTIZED COST & EFFECTIVE INTEREST ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Subsequent Measurement — Amortized Cost &amp; the Effective Interest Method (paras. 61–69)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Three measurement destinations for assets, one for liabilities</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Financial assets: amortized cost, fair value through net assets/equity, or fair value through surplus or deficit (para. 61) — per the §6 classification. Financial liabilities: per §7's classification. Amortized-cost and FVNA/E assets are BOTH subject to the impairment requirements (§10) (para. 62).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">The effective interest method</div>
+      <div class="formula-box">
+        <div class="f-eq">Interest revenue = effective interest rate × the instrument's GROSS carrying amount — EXCLUDING expected credit losses from the rate calculation itself</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">The effective interest rate discounts estimated future cash flows (considering prepayment/extension/call options, but NOT credit losses) to the gross carrying amount (assets) or amortized cost (liabilities), including all fees/points integral to the rate.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 — IMPAIRMENT: THE THREE-STAGE EXPECTED CREDIT LOSS MODEL ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Impairment — the Expected Credit Loss Model (paras. 73–83, 90)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The two-bucket general approach</div>
+      <div class="formula-box">
+        <div class="f-eq">Credit risk has increased SIGNIFICANTLY since initial recognition → measure the loss allowance at LIFETIME expected credit losses</div>
+      </div>
+      <div class="formula-box">
+        <div class="f-eq">No significant increase → measure at 12-MONTH expected credit losses only</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Applies to amortized-cost and FVNA/E assets, lease receivables, loan commitments, and financial guarantee contracts (para. 73). For FVNA/E assets, the loss allowance goes to NET ASSETS/EQUITY — it does NOT reduce the SOFP carrying amount (para. 74). The gain/loss adjusting the allowance to the required amount hits SURPLUS OR DEFICIT (para. 80).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Assessing "significant increase" — the 30-day rebuttable presumption</div>
+      <div class="dot-list">
+        <span>Compare DEFAULT RISK at the reporting date vs. at initial recognition — NOT the change in expected loss amount itself (para. 81)</span>
+        <span>LOW credit risk at the reporting date → may ASSUME no significant increase (para. 82)</span>
+        <span>REBUTTABLE PRESUMPTION: credit risk has increased significantly once payments are &gt;30 DAYS past due — rebuttable only with reasonable, supportable evidence obtainable without undue cost/effort (para. 83)</span>
+        <span>Forward-looking information takes priority over past-due data WHEREVER available without undue cost/effort</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card cn span2">
+      <div class="ctitle cn">Measuring expected credit losses (para. 90)</div>
+      <div class="dot-list">
+        <span>An UNBIASED, PROBABILITY-WEIGHTED amount, evaluating a RANGE of possible outcomes</span>
+        <span>The TIME VALUE OF MONEY</span>
+        <span>Reasonable and supportable information available without undue cost or effort at the reporting date, including FORWARD-LOOKING data</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 — IMPAIRMENT: SIMPLIFIED APPROACH & MODIFIED/PURCHASED ASSETS ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Impairment — Simplified Approach, Modified &amp; Purchased Credit-Impaired Assets (paras. 84–89)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Simplified approach — ALWAYS lifetime, no staging needed</div>
+      <div class="formula-box">
+        <div class="f-eq">Trade/binding-arrangement receivables (IPSAS 47) WITHOUT a significant financing component → ALWAYS lifetime expected credit losses, mandatorily</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">WITH a significant financing component, or LEASE receivables (IPSAS 43) → lifetime ECL is an ACCOUNTING POLICY CHOICE, electable separately for trade vs. lease receivables, and for finance vs. operating lease receivables (paras. 87–88).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Modified assets, and purchased/originated credit-impaired assets</div>
+      <div class="dot-list">
+        <span>MODIFIED (but not derecognized) cash flows → compare default risk at the reporting date (using MODIFIED terms) against default risk at initial recognition (using ORIGINAL terms) (para. 84)</span>
+        <span>PURCHASED OR ORIGINATED credit-impaired assets — already impaired at acquisition — recognize only the CUMULATIVE CHANGE in lifetime ECL since initial recognition; even FAVORABLE changes are recognized as a gain, even below the amount built into the original cash flow estimates (paras. 85–86)</span>
+      </div>
+      <div class="note">The purchased/originated credit-impaired rules do NOT apply to short-term receivables (para. 89).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 — CONCESSIONARY LOANS: A PUBLIC-SECTOR-SPECIFIC MODEL ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Concessionary Loans — a Public-Sector-Specific Model (paras. AG118–AG126)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">What makes them distinctive</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Loans granted/received at BELOW-MARKET terms — loans to developing countries, small farms, student loans, low-income housing loans. The INTENTION from the outset is to provide/receive resources below market terms — this is what distinguishes a concessionary loan from a later WAIVER of a loan originally made at market terms (para. AG119–AG120).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Concessionary vs. originated credit-impaired — a substance test</div>
+      <div class="dot-list">
+        <span>Both share the feature that transaction price ≠ fair value at initial recognition — but the CAUSE differs</span>
+        <span>CONCESSIONARY: an INTENDED non-exchange component (a deliberate transfer of resources built into below-market terms)</span>
+        <span>ORIGINATED CREDIT-IMPAIRED: one or more events have ALREADY damaged the estimated future cash flows</span>
+      </div>
+      <div class="note">First assess the loan's SUBSTANCE under IPSAS 28 and IPSAS 47 — is it a loan, a non-exchange transaction, a contribution from owners, or a combination? Then determine fair value at initial recognition — using an active market reference, or (more commonly) a valuation technique discounting future receipts at a MARKET-RELATED rate for a similar loan (paras. AG123–AG124). The transaction-price/fair-value DIFFERENCE: if the loan is RECEIVED, apply IPSAS 47; if GRANTED, expense it immediately (unless it's a transaction with owners in that capacity) (para. AG125).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 — GAINS, LOSSES & PRESENTATION ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Gains, Losses &amp; Presentation (paras. 101–108)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Fair-value gains/losses — default to surplus/deficit, with four carve-outs</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Default: SURPLUS OR DEFICIT. Carve-outs: (a) it's part of a hedging relationship; (b) an equity instrument with the §6 net-assets/equity election; (c) a fair-value-designated liability's OWN credit risk component; or (d) an FVNA/E debt asset's specific fair-value-change split (para. 101).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Amortized-cost gains/losses, and dividends</div>
+      <div class="dot-list">
+        <span>Recognized in surplus or deficit only on DERECOGNITION, RECLASSIFICATION, through the AMORTIZATION process, or to recognize IMPAIRMENT (para. 103)</span>
+        <span>Dividends recognized in surplus or deficit only when: the right to receive is established, economic benefit inflow is PROBABLE, and the amount is RELIABLY measurable (para. 102)</span>
+      </div>
+      <div class="note">Investments in equity instruments electing the net-assets/equity presentation (§6): the election is IRREVOCABLE, and gains/losses NEVER recycle to surplus/deficit — even on disposal (para. 106 and following, cross-ref IPSAS 28's treasury-share-style permanence).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 — HEDGE ACCOUNTING: OBJECTIVE, INSTRUMENTS & QUALIFYING CRITERIA ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Hedge Accounting — Objective, Instruments &amp; Qualifying Criteria (paras. 113–129)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Objective, and the option to stay on IPSAS 29's model</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Represents, in the financial statements, the effect of risk management activities using financial instruments against particular risks affecting surplus/deficit (or net assets/equity, for the elected equity-instrument category) (para. 113). An entity may instead ELECT to keep applying IPSAS 29's legacy hedge accounting model — see that Standard's own poster (para. 115, cross-ref).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Qualifying instruments, and designation rules</div>
+      <div class="dot-list">
+        <span>A DERIVATIVE at fair value through surplus or deficit may be a hedging instrument (except some written options) (para. 116)</span>
+        <span>A NON-DERIVATIVE at fair value through surplus or deficit may also qualify — with a foreign-currency-risk-component carve-out for equity instruments on the net-assets/equity election (para. 117)</span>
+        <span>Only EXTERNAL counterparty contracts qualify (para. 118)</span>
+        <span>Must be designated in its ENTIRETY — narrow exceptions for intrinsic-value-only options, spot-element-only forwards, and PROPORTIONS of an instrument (para. 119)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card cs span2">
+      <div class="ctitle cs">The three qualifying criteria (para. 129) — ALL required</div>
+      <div class="check-list">
+        <span>Consists ONLY of eligible hedging instruments and hedged items</span>
+        <span>FORMAL designation and documentation at INCEPTION — instrument, hedged item, risk nature, and the effectiveness-assessment method (including sources of ineffectiveness and hedge-ratio determination)</span>
+        <span>Meets hedge EFFECTIVENESS requirements: a genuine economic relationship; credit risk doesn't DOMINATE the value changes; and the hedge RATIO matches actual hedging activity (without artificial imbalance)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 15 — HEDGE ACCOUNTING: THE THREE HEDGE TYPES & DISCONTINUATION ============ -->
+  <div class="section-header" id="s15"><span class="num">15</span><h2>Hedge Accounting — the Three Hedge Types, Rebalancing &amp; Discontinuation (paras. 130–135)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Three hedge types (para. 131)</div>
+      <div class="dot-list">
+        <span><strong style="font-weight:500">Fair value hedge</strong> — exposure to fair value changes in a recognized asset/liability or unrecognized firm commitment, attributable to a specific risk affecting surplus/deficit</span>
+        <span><strong style="font-weight:500">Cash flow hedge</strong> — exposure to cash flow variability from a recognized item or highly probable forecast transaction</span>
+        <span><strong style="font-weight:500">Net investment hedge</strong> — as defined in IPSAS 4</span>
+      </div>
+      <div class="note">A firm commitment's foreign currency risk hedge may be treated as EITHER fair value or cash flow (para. 133). Where the hedged item is a net-assets/equity-elected equity instrument, ineffectiveness is ALSO presented in net assets/equity (para. 132).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Rebalancing, and prospective-only discontinuation</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">If the hedge RATIO drifts out of qualification but the RISK MANAGEMENT OBJECTIVE stays the same → REBALANCE the ratio to re-qualify, rather than discontinuing (para. 134). Discontinuation is always PROSPECTIVE — only when the relationship (or part of it) genuinely stops meeting the qualifying criteria, including instrument expiry/sale/termination/exercise. A CLEARING-COUNTERPARTY NOVATION required by new laws/regulations is explicitly NOT treated as expiration/termination, provided changes are limited to effecting that replacement (para. 135) — mirroring IPSAS 29's own modernization for post-crisis derivatives clearing mandates.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 16 — DISCLOSURE: CROSS-REFERENCE TO IPSAS 30 ============ -->
+  <div class="section-header" id="s16"><span class="num">16</span><h2>Disclosure — Cross-Reference to IPSAS 30</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Recognition/measurement here, disclosure there</div>
+      <div class="principle">IPSAS 41 governs recognition, classification, measurement, impairment, derecognition, and hedge accounting. ALL disclosure requirements for financial instruments — significance for financial position/performance, the expected-credit-loss disclosure package, credit/liquidity/market risk, and concessionary loan disclosures — live in <strong>IPSAS 30, Financial Instruments: Disclosures</strong>, not here. See that Standard's own poster for the complete disclosure package this Standard's classification and impairment mechanics feed directly into.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 17 — EFFECTIVE DATE & AMENDMENT TIMELINE ============ -->
+  <div class="section-header" id="s17"><span class="num">17</span><h2>Effective Date &amp; Amendment Timeline (paras. 156–156C)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Amendment history at a glance</div>
+      <div class="principle">Base Standard: periods beginning on/after <strong>1 January 2023</strong> — issued August 2018, replacing almost all of IPSAS 29's original content.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2.2fr;"><span>Effective</span><span>Change</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2023</span><span>New paras. 185–190, AG74A; amended AG73(b), AG74(b) — Long-term Interests in Associates and Joint Ventures / Prepayment Features with Negative Compensation amendments (Jan 2019)</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2023</span><span>New paras. 155A–155L; amended para. 184 — Improvements to IPSAS, 2021 (interest rate benchmark reform relief)</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2023</span><span>New paras. 72A–72E, 155M–155Z, 191–194 — Improvements to IPSAS, 2021 (further benchmark reform and ECL refinements)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 18 — RELATIONSHIP TO IFRS 9 ============ -->
+  <div class="section-header" id="s18"><span class="num">18</span><h2>Relationship to IAS/IFRS — Comparison with IFRS 9</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — IPSAS 41 vs IFRS 9</div>
+      <div class="principle">IPSAS 41 is drawn primarily from IFRS 9 (amendments to 31 December 2015), <em>Financial Instruments</em>.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1.9fr;"><span>Topic</span><span>Difference</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Public-sector-specific guidance</span><span>IPSAS 41 adds application guidance for CONCESSIONARY LOANS (§12), financial guarantees at nil/nominal consideration, equity instruments from non-exchange transactions, and fair value measurement</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Terminology</span><span>"Statement of financial performance," "net assets/equity" (IPSAS 41) vs "statement of comprehensive income or separate income statement," "equity" (IFRS 9)</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Revenue vs income</span><span>IPSAS 41 does not distinguish them; IFRS 9 treats "income" as broader than "revenue"</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Embedded IFRIC guidance</span><span>IFRIC 16 (Hedges of a Net Investment) and IFRIC 19 (Extinguishing Financial Liabilities with Equity Instruments) are AUTHORITATIVE appendices to IPSAS 41; under IFRS, these are separate documents</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Fair value measurement guidance</span><span>IPSAS 41 retains ADDITIONAL fair value guidance carried over from IPSAS 29</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 19 — STATEMENT / PROCESS MAPPING ============ -->
+  <div class="section-header" id="s19"><span class="num">19</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">The master decision map</div>
+      <div class="dot-list">
+        <span>1. Does the entity become party to the contract? → recognize at fair value ± transaction costs (§3)</span>
+        <span>2. CLASSIFY: apply the management-model AND SPPI tests to assets (§6); apply the four-exception default for liabilities (§7)</span>
+        <span>3. Is there an ACCOUNTING MISMATCH? → consider the fair value option override (§6, §7)</span>
+        <span>4. Subsequently measure per classification — amortized cost via the effective interest method, or fair value (§9)</span>
+        <span>5. For amortized-cost/FVNA/E assets: assess credit risk INCREASE each period → 12-month or lifetime ECL; apply the simplified approach where mandated (§10, §11)</span>
+        <span>6. On transfer or extinguishment → apply the risks-and-rewards (assets) or extinguishment (liabilities) derecognition tests (§4, §5)</span>
+        <span>7. Electing hedge accounting? → choose IPSAS 41's own model (§14–§15) OR the IPSAS 29 legacy alternative</span>
+        <span>8. Route ALL disclosure requirements to IPSAS 30 (§16)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card cs span2">
+      <div class="ctitle cs">Concept-to-statement mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>IPSAS 41 concept</span><span>Statement(s)</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Amortized cost asset/liability</span><span><span class="badge bs">SOFP</span></span><span>Effective interest method</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Fair value through surplus/deficit</span><span><span class="badge bs">SOFP</span> <span class="badge bp">SOFPerf</span></span><span>All fair value changes to surplus/deficit</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Fair value through net assets/equity (debt)</span><span><span class="badge bs">SOFP</span> <span class="badge be">NA/E</span></span><span>Recycled to surplus/deficit on derecognition</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Equity instrument NA/E election</span><span><span class="badge be">NA/E</span></span><span>Irrevocable, never recycled</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Expected credit loss allowance</span><span><span class="badge bp">SOFPerf</span></span><span>Impairment gain/loss each period</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Cash flow hedge — effective portion</span><span><span class="badge be">NA/E</span></span><span>Ineffective portion to surplus/deficit</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>All disclosures</span><span><span class="badge bp">Notes</span></span><span>Per IPSAS 30, not IPSAS 41 itself</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 20 — RELATED STANDARDS ============ -->
+  <div class="section-header" id="s20"><span class="num">20</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How IPSAS 41 connects across the IPSAS body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.7fr 2.2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 4</span><span>Defines net investment hedges (§15); foreign exchange gain/loss guidance for settlement-date accounting (§4)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 19</span><span>Contingent liability recognition/measurement in an IPSAS 40 combination context; rights to reimbursement excluded from scope (§1)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 20</span><span>Key management personnel definition drives the fair-value-option-by-management-strategy test (§7)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 28</span><span>Equity instrument definitions; the entity's own equity instruments excluded from scope; concessionary loan substance test (§1, §12)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 29</span><span>The legacy hedge accounting alternative an entity may elect instead of §14–§15 (§14)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 30</span><span>Houses ALL disclosure requirements this Standard's mechanics feed into (§16)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 32</span><span>Grantor financial liability model derecognition governed here (§1)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 39</span><span>Qualifying insurance policies and other plan-asset financial instruments</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 40</span><span>Contingent consideration measurement; classification/designation carryover rules for combinations (§7)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 43</span><span>Lease receivable derecognition/impairment; lessee lease liability derecognition (§1)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 46</span><span>Fair value measurement methodology underpinning the entire Standard (§9)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 47</span><span>Governs the significant financing component test for the simplified ECL approach; non-exchange components of concessionary loans (§11, §12)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 21 — GLOSSARY ============ -->
+  <div class="section-header" id="s21"><span class="num">21</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Amortized cost</div><div class="glossary-def">Initial measurement, less principal repayments, plus/minus cumulative effective-interest amortization, adjusted for loss allowance.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">SPPI test</div><div class="glossary-def">Whether contractual cash flows are solely payments of principal and interest on the outstanding principal amount.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Expected credit losses</div><div class="glossary-def">A probability-weighted estimate of credit losses over either 12 months or the instrument's lifetime.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Concessionary loan</div><div class="glossary-def">A loan granted or received at below-market terms, with a deliberate non-exchange component built in from the outset.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Derecognition</div><div class="glossary-def">The removal of a previously recognized financial asset or liability from the statement of financial position.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Hedge ratio</div><div class="glossary-def">The relationship between the quantity of the hedged item and the quantity of the hedging instrument actually used.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bs">SOFP</span> Statement of financial position
+      <span class="badge bp">SOFPerf</span> Statement of financial performance
+      <span class="badge be">NA/E</span> Net assets/equity (statement of changes)
+      <span class="badge bp">Notes</span> Notes to the financial statements
+    </div>
+  </div>
+
+  <div class="footer-note">IPSAS 41 — Financial Instruments · Extended Reference Poster · Built from the 2025 IPSASB Handbook, Volume II · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

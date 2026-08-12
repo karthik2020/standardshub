@@ -1,0 +1,253 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import metadata from "../../data/standards/ipsas/ipsas31.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  covers={metadata.covers}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Objective, Scope & Intangible Heritage Assets" },
+        { id: "s2", label: "Definitions & Three-Part Intangible Asset Test" },
+        { id: "s3", label: "Recognition & Separate Acquisition" },
+        { id: "s4", label: "Acquisition as Part of a Combination & via Non-Exchange" },
+        { id: "s5", label: "Internally Generated Intangibles — Research vs Development" },
+        { id: "s6", label: "Cost of an Internally Generated Intangible Asset" },
+        { id: "s7", label: "Subsequent Measurement — Historical Cost & Current Value Models" },
+        { id: "s8", label: "Useful Life — Finite vs Indefinite" },
+        { id: "s9", label: "Amortization, Impairment & Retirements/Disposals" },
+        { id: "s10", label: "Disclosure Requirements" },
+        { id: "s11", label: "Effective Date & Amendment Timeline" },
+        { id: "s12", label: "Relationship to IAS/IFRS — Comparison with IAS 38" },
+        { id: "s13", label: "Statement / Process Mapping" },
+        { id: "s14", label: "Related Standards — Cross-Reference Map" },
+        { id: "s15", label: "Quick-Reference Glossary" }
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="active"
+    explanation="IPSAS 31 Intangible Assets is the current, active standard issued by the IPSASB for recognising and measuring intangible assets in the public sector — including the IPSAS-specific three-part intangible-asset test, internally generated assets, and the historical-cost / current-value model choice. Effective for periods beginning on or after 1 April 2011 (earlier application permitted). Paras. 1–133."
+    historical="IPSAS 31 is the IPSASB's adaptation of IAS 38 Intangible Assets for the public sector — retaining the IAS 38 recognition and valuation framework but adding the public-sector three-part intangible-asset test, the heritage-assets commentary and the explicit allowance for the current-value model."
+    link=""
+    linkText=""
+  />
+
+  <div class="legend">
+    <span class="legend-item legend-objective">Objective &amp; scope (paras. 1–15)</span>
+    <span class="legend-item legend-recognition">Recognition &amp; measurement (paras. 16–70)</span>
+    <span class="legend-item legend-disclosure">Disclosure (paras. 117–127)</span>
+    <span class="legend-item legend-ias">IAS / IFRS equivalent</span>
+  </div>
+
+  <!-- ============ SECTION 1 ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; Intangible Heritage Assets (paras. 1–15)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Objective &amp; scope (para. 1)</div>
+      <div class="principle">Prescribes the accounting for INTANGIBLE ASSETS held for use in the public sector — recognising them when probable that future economic benefits will flow and the cost/value can be measured reliably, and measuring them under historical cost or current value.</div>
+      <div class="glossary-item"><div class="glossary-term">Intangible asset</div><div class="glossary-def">Identifiable non-monetary asset without physical substance.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Heritage asset</div><div class="glossary-def">A depreciating, renewable resource or a non-depreciating cultural asset treated as an intangible.</div></div>
+    </div>
+
+    <div class="card cd span2">
+      <div class="ctitle cd">Scope exclusions</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.6fr 1.4fr;"><span>Excluded</span><span>Instead, see…</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1.4fr;"><span>Goodwill from combinations</span><span>IPSAS 40</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1.4fr;"><span>Bearer plants</span><span>IPSAS 27</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1.4fr;"><span>Financial instruments</span><span>IPSAS 28/41</span></div>
+      </div>
+      <div class="callout info callout--flush">IPSAS 31 adds a public-sector three-part intangible-asset test (control, identifiability, probable future benefits) on top of the IAS 38 framework.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Definitions &amp; the Three-Part Intangible Asset Test (paras. 16–27)</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card cw span2">
+      <div class="ctitle cw">The IPSAS three-part test (para. 16)</div>
+      <div class="principle">An intangible asset is recognised when ALL hold: (a) the entity controls the resource; (b) it is identifiable (separable or arising from contractual/legal rights); and (c) it is probable future economic benefits will flow.</div>
+      <div class="check-list"><span>Control</span><span>Identifiability</span><span>Probable future benefits</span></div>
+      <div class="callout warn">Measurement is REQUIRED before recognition — an unmeasurable intangible is not recognised (no 'best estimate' placeholder).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Recognition &amp; Separate Acquisition (paras. 28–39)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Acquired separately (para. 28)</div>
+      <div class="principle">An intangible acquired in a separate (non-combination) transaction is recognised at cost — the consideration received plus, where applicable, transaction costs. If the asset's fair value cannot be measured reliably, it is not recognised.</div>
+      <div class="glossary-item"><div class="glossary-term">Cost</div><div class="glossary-def">Purchase price plus directly attributable costs, including estimates for dismantling/use.</div></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Acquisition as Part of a Combination &amp; via Non-Exchange Transactions (paras. 39A–47)</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card cd span2">
+      <div class="ctitle cd">Combination = FV (para. 39A)</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.4fr 1.6fr;"><span>Situation</span><span>Measurement</span></div>
+        <div class="tr" style="grid-template-columns:1.4fr 1.6fr;"><span>Acquisition in a combination</span><span>Fair value at acquisition date</span></div>
+        <div class="tr alt" style="grid-template-columns:1.4fr 1.6fr;"><span>Non-exchange transaction</span><span>Fair value of the asset received</span></div>
+        <div class="tr" style="grid-template-columns:1.4fr 1.6fr;"><span>Goodwill arising</span><span>IPSAS 40 (not 31)</span></div>
+      </div>
+      <div class="callout info callout--flush">For a combination, the intangible's cost is its fair value at the acquisition date; any goodwill is a combination issue.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Internally Generated Intangible Assets — Research vs Development Phase (paras. 49–62)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw">
+      <div class="ctitle cw">Research vs development (para. 49)</div>
+      <div class="principle">Research expenditure is EXPENSED as incurred. Development expenditure is CAPITALISED only if it meets the six IAS 38(57) criteria (technical feasibility, intention to complete, ability to use/sell, future economic benefits, reliable measurement, and adequate resources). The IPSASB added public-sector commentary on 'public interest' outcomes.</div>
+      <div class="cross-list"><span>Research</span><span>Expense — no asset</span><span>Development (criteria met)</span><span>Capitalise cost</span><span>Development (criteria failed)</span><span>Expense</span></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Cost of an Internally Generated Intangible Asset (paras. 63–70)</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card ci span2">
+      <div class="ctitle ci">Build-up of cost (para. 63)</div>
+      <div class="principle">The cost of a capitalised development asset includes: expenditure to date that meets the criteria, directly attributable to the creation of the asset, and interest during the period of development where the asset qualifies as a 'qualifying asset' (IPSAS 5 commentary applies).</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 1.2fr;"><span>Element</span><span>Nature</span></div>
+        <div class="tr" style="grid-template-columns:1fr 1.2fr;"><span>Direct expenditure</span><span>Materials, staff, subcontracts</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 1.2fr;"><span>Attributable borrowings</span><span>IPSAS 5 capitalisation (if qualifying)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Subsequent Measurement — Historical Cost &amp; Current Value Models (paras. 71–86)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Two measurement models (para. 71)</div>
+      <div class="principle">An entity chooses, for each class of intangible assets, either the HISTORICAL COST model (subsequent cost less amortisation and impairment) or the CURRENT VALUE model (revalued amount = fair value at date of revaluation less subsequent amortisation/impairment). Revaluations must be revalued regularly to fair value.</div>
+      <div class="callout warn">Switching models mid-life is treated as a change in accounting policy; the IPSASB requires public-sector justification for the current-value model (heritage asset rationale).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Useful Life — Finite vs Indefinite (paras. 87–95A)</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card cw">
+      <div class="ctitle cw">Amortise or not (para. 87)</div>
+      <div class="principle">An intangible with a finite useful life is amortised over that life (review annually for changes). An intangible with an INDEFINITE life is NOT amortised — it is tested annually for impairment (para. 88). The IPSASB adds a rebuttable presumption that heritage assets have indefinite lives unless demonstrated otherwise.</div>
+      <div class="glossary-item"><div class="glossary-term">Amortisation</div><div class="glossary-def">Systematic distribution of an asset's carrying amount over its useful life.</div></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Amortization, Impairment &amp; Retirements/Disposals (paras. 96–116)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Review points (para. 96)</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.4fr 1.6fr;"><span>Event</span><span>Action</span></div>
+        <div class="tr" style="grid-template-columns:1.4fr 1.6fr;"><span>Finite life asset</span><span>Amortise; review life annually</span></div>
+        <div class="tr alt" style="grid-template-columns:1.4fr 1.6fr;"><span>Indefinite life asset</span><span>Annual impairment test (IPSAS 26)</span></div>
+        <div class="tr" style="grid-template-columns:1.4fr 1.6fr;"><span>Retirement/disposal</span><span>Derecognise gain/loss</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Disclosure Requirements (paras. 117–127)</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card cd">
+      <div class="ctitle cd">What users need (para. 117)</div>
+      <div class="principle">Disclose the accounting policy (model chosen per class), the carrying amount, amortisation method/charge, impairment recognised, revaluation surplus, and the nature/amount of internally generated intangibles not recognised. For heritage assets, disclose the revaluation surplus and the actuarial assumptions used.</div>
+      <div class="callout info callout--flush">Heritage assets require the extra IPSAS 31 disclosures on revaluation surplus classification and the assumed remaining useful life.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Transitional Provisions, Effective Date &amp; Amendment Timeline (paras. 128–133)</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card cw span2">
+      <div class="ctitle cw">Timeline</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 1.2fr;"><span>Date</span><span>Event</span></div>
+        <div class="tr" style="grid-template-columns:1fr 1.2fr;"><span>Jan 2010</span><span>Issued</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 1.2fr;"><span>1 Apr 2011</span><span>Effective date</span></div>
+        <div class="tr" style="grid-template-columns:1fr 1.2fr;"><span>2025</span><span>Amended (latest)</span></div>
+      </div>
+      <div class="callout warn">Transitional: adopt retrospectively at deemed cost (IPSAS 33 transition guidance).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Relationship to IAS/IFRS — Comparison with IAS 38</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Key adaptations</div>
+      <div class="cross-list"><span>IAS 38 recognition criteria</span><span>IPSAS 31 same + 3-part test</span><span>IAS 38 heritage assets</span><span>IPSAS 31 explicit</span><span>IAS 38 current value</span><span>IPSAS 31 permitted model</span></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card cd span2">
+      <div class="ctitle cd">Where it flows</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.4fr 1.3fr;"><span>Process</span><span>Ledger</span></div>
+        <div class="tr" style="grid-template-columns:1.4fr 1.3fr;"><span>Asset intake</span><span>Asset Register → Cost/Value</span></div>
+        <div class="tr alt" style="grid-template-columns:1.4fr 1.3fr;"><span>Development tracking</span><span>Project System → Capitalise decision</span></div>
+        <div class="tr" style="grid-template-columns:1.4fr 1.3fr;"><span>Yearly revaluation</span><span>Annual Valuation → Revaluation Reserve</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">See also</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2fr;"><span>Standard</span><span>Relation</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2fr;"><span>IPSAS 33</span><span>First-time adoption transition</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2fr;"><span>IPSAS 40</span><span>Goodwill from combinations</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2fr;"><span>IPSAS 41</span><span>Hedge of intangible-related cash flows</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2fr;"><span>IAS 38</span><span>Direct equivalent</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 15 ============ -->
+  <div class="section-header" id="s15"><span class="num">15</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Intangible asset</div><div class="glossary-def">Asset without physical substance; identifiable & separable or from rights.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Development</div><div class="glossary-def">Expenditure capitalisable if six IAS 38(57) criteria met.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Current value model</div><div class="glossary-def">Revalued amount = FV less amortisation/impairment.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Indefinite life</div><div class="glossary-def">Not amortised; tested annually for impairment.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Heritage asset</div><div class="glossary-def">Cultural/non-depreciable resource under IPSAS 31.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Amortisation</div><div class="glossary-def">Systematic allocation over useful life.</div></div>
+    </div>
+  </div>
+</StandardPageLayout>

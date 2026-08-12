@@ -1,7 +1,7 @@
 /**
  * Accounting framework.
  */
-export type Framework = "IAS" | "IFRS" | "Ind AS" | "IFRS Sustainability" | "IFRS Publications" | "IFRS for SMEs" | "US GAAP" | "UK GAAP" | "ASBE" | "ASPE" | "IFRIC" | "SIC" | "HGB" | "DRS";
+export type Framework = "IAS" | "IFRS" | "Ind AS" | "IFRS Sustainability" | "IFRS Publications" | "IFRS for SMEs" | "US GAAP" | "UK GAAP" | "ASBE" | "ASPE" | "IFRIC" | "SIC" | "HGB" | "DRS" | "IPSAS";
 
 /**
  * Current lifecycle status of a standard.

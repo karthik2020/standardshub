@@ -1,0 +1,79 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import metadata from "../../data/standards/ipsas/ipsas25.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  covers={metadata.covers}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Why This Standard Is Here" },
+        { id: "s2", label: "Superseded by IPSAS 39" },
+        { id: "s3", label: "Redirect Map" },
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="withdrawn"
+    explanation="IPSAS 25 Employee Benefits was withdrawn for annual financial statements covering periods beginning on or after 1 January 2018 and superseded by IPSAS 39."
+    historical="IPSAS 25 (2001) was replaced by IPSAS 39 Employee Benefits, which reflects the IASB's substantially revised IAS 19 (2011) — most notably, the elimination of the corridor approach for deferred actuarial gains/losses on defined benefit plans, replaced with immediate recognition through other comprehensive income (net assets/equity, in IPSAS terms)."
+    link="/ipsas/ipsas39"
+    linkText="IPSAS 39 — Employee Benefits"
+    currentLabel="Replaced by"
+  />
+
+  <div class="wrap">
+  <!-- ============ SECTION 1 — WHY THIS STANDARD IS HERE ============ -->
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Why This Standard Is Here</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Removed from the Handbook — retained here only as a numbering placeholder</div>
+        <div class="principle">IPSAS 25, <em>Employee Benefits</em>, was withdrawn as the IPSASB replaced it with an updated Standard reflecting the IASB's substantially revised IAS 19 (2011) — most notably, the elimination of the "corridor approach" for deferred actuarial gains/losses on defined benefit plans, replaced with immediate recognition through other comprehensive income (net assets/equity, in IPSAS terms). It was superseded for annual financial statements covering periods beginning on or after <strong>1 January 2018</strong>.</div>
+        <div class="callout danger callout--flush">The 2025 IPSASB Handbook now contains only a one-paragraph removal notice for this number — there is no remaining technical content to build a reference poster from. This page exists so the poster library's numbering stays complete and correctly redirects to the live successor Standard.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 2 — SUPERSEDED BY ============ -->
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Superseded by IPSAS 39</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Modernized defined benefit plan accounting</div>
+        <div class="principle">IPSAS 25 governed short-term employee benefits, post-employment benefits (pensions), other long-term benefits, and termination benefits — following the OLDER IAS 19 model, which permitted several methods (including the "corridor approach") for deferring recognition of actuarial gains and losses on defined benefit obligations.</div>
+        <div class="spec-box">
+          <div class="spec-title">IPSAS 39 — Employee Benefits</div>
+          <div class="text-supporting">Requires IMMEDIATE recognition of the full defined benefit obligation, with remeasurements (actuarial gains/losses) recognized directly in net assets/equity as they arise — eliminating deferral mechanisms like the corridor approach. Also updates the return-on-plan-assets calculation and simplifies past-service-cost recognition, mirroring IAS 19 (2011).</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 3 — REDIRECT MAP ============ -->
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Redirect Map</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Withdrawn number → live Standard</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1fr 1.4fr 1.6fr;"><span>Withdrawn</span><span>Superseded by</span><span>Effective date</span></div>
+          <div class="tr" style="grid-template-columns:1fr 1.4fr 1.6fr;"><span>IPSAS 25</span><span><span class="badge bs">IPSAS 39</span></span><span>Periods beginning on/after 1 Jan 2018</span></div>
+        </div>
+        <div class="note">A full extended reference poster for IPSAS 39 can be built when the library reaches that number. IPSAS 39 is already referenced across this library — e.g. in IPSAS 20's key management personnel remuneration measurement, IPSAS 21's employee termination cost exclusions, and IPSAS 24's social benefits reconciliation notes.</div>
+      </div>
+    </div>
+
+
+  </div>
+</StandardPageLayout>

@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPSAS 35 — Consolidated Financial Statements | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .eg  { margin-bottom: 7px; }
+  .egl { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; margin-bottom: 3px; }
+  .entry { display: flex; align-items: flex-start; gap: 4px; margin-bottom: 4px; }
+  .dr { font-size: 11px; font-weight: 500; color: var(--color-text-info);   min-width: 14px; padding-top: 1px; }
+  .cr { font-size: 11px; font-weight: 500; color: var(--color-text-danger); min-width: 14px; padding-top: 1px; padding-left: 6px; }
+  .etxt { font-size: 11px; color: var(--color-text-primary); flex: 1; line-height: 1.4; }
+  .badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .bc { background: #f3e8ff; color: #7e22ce; }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">IPSAS 35 — Consolidated Financial Statements</div>
+      <div class="hub-sub">Extended reference poster · Full Handbook structure · Worked control scenarios · Statement mapping · Related standards</div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <a href="#s1">1. Objective, Scope &amp; the Public Sector Combinations Carve-Out</a>
+    <a href="#s2">2. Presentation — the Consolidation Exemption</a>
+    <a href="#s3">3. Definitions</a>
+    <a href="#s4">4. Control — the Three-Element Test</a>
+    <a href="#s5">5. Power — Rights &amp; Public Sector Nuances</a>
+    <a href="#s6">6. Benefits — Financial &amp; Non-Financial</a>
+    <a href="#s7">7. Link Between Power and Benefits — Principal vs Agent</a>
+    <a href="#s8">8. Consolidation Procedures</a>
+    <a href="#s9">9. Uniform Policies, Measurement Timing, Reporting Dates &amp; Potential Voting Rights</a>
+    <a href="#s10">10. Non-Controlling Interests</a>
+    <a href="#s11">11. Changes in Ownership Proportion Without Loss of Control</a>
+    <a href="#s12">12. Loss of Control — Derecognition &amp; Gain/Loss Mechanics</a>
+    <a href="#s13">13. Investment Entities — the Fair Value Exception</a>
+    <a href="#s14">14. Worked Scenarios — Power &amp; Control Assessment Judgment</a>
+    <a href="#s15">15. Disclosure — Deferred Entirely to IPSAS 38</a>
+    <a href="#s16">16. Transitional Provisions, Effective Date &amp; Amendment Timeline</a>
+    <a href="#s17">17. Relationship to IFRS 10</a>
+    <a href="#s18">18. Statement / Process Mapping</a>
+    <a href="#s19">19. Related Standards</a>
+    <a href="#s20">20. Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 — OBJECTIVE, SCOPE & PUBLIC SECTOR COMBINATIONS CARVE-OUT ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; the Public Sector Combinations Carve-Out (paras. 1–6)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Objective</div>
+      <div class="principle">Establishes principles for presenting and preparing consolidated financial statements when an entity controls one or more other entities. To achieve this, the Standard: requires controlling entities to present consolidated statements; DEFINES control as the basis for consolidation; sets out how to APPLY the control principle; prescribes accounting requirements for consolidation; and defines an INVESTMENT ENTITY exception (para. 2).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">What's carved out</div>
+      <div class="cross-list">
+        <span>Accounting for PUBLIC SECTOR COMBINATIONS and their consolidation effects, including goodwill (IPSAS 40) — para. 4</span>
+        <span>Post-employment and other long-term employee benefit plans (IPSAS 39) — para. 6</span>
+      </div>
+      <div class="note">Scope applies to the preparation of consolidated statements for the ECONOMIC ENTITY — a controlling entity and its controlled entities (para. 3). A controlled entity's DISSIMILAR activities (e.g. commercial entities alongside budget-sector entities) do NOT exclude it from consolidation — segment disclosures (IPSAS 18) instead explain the differing activities (para. 8).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 — PRESENTATION: THE CONSOLIDATION EXEMPTION ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Presentation of Consolidated Financial Statements — the Consolidation Exemption (paras. 5, 7, 9–10)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Every controlling entity presents consolidated statements — UNLESS all four conditions hold (para. 5)</div>
+      <div class="check-list">
+        <span>It is ITSELF a controlled entity, and user needs are met by ITS OWN controlling entity's consolidated statements — and (for a partially-owned entity) all OTHER owners have been informed and don't object</span>
+        <span>Its debt/equity instruments are NOT publicly traded (domestic/foreign exchange, over-the-counter, local/regional)</span>
+        <span>It has NOT filed, and is not in the process of filing, statements with a securities regulator for public-market issuance</span>
+        <span>Its ultimate or any intermediate controlling entity produces PUBLICLY AVAILABLE, IPSAS-compliant consolidated (or investment-entity fair-value) statements</span>
+      </div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ The exemption does NOT apply where a controlled entity's users' needs would NOT be met by its controlling entity's consolidated statements — e.g. whole-of-government statements may not satisfy users interested in a specific sector or activity, and jurisdictions often legislate separate reporting for exactly this reason (para. 9).</div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card cn span2">
+      <div class="ctitle cn">Investment entities, and aggregated statements outside this Standard</div>
+      <div class="dot-list">
+        <span>A controlling entity that IS an investment entity does NOT present consolidated statements if REQUIRED (para. 56) to measure ALL controlled entities at fair value through surplus or deficit (para. 7)</span>
+        <span>An entity legally required to prepare AGGREGATED statements for a DIFFERENT economic entity than this Standard defines falls OUTSIDE its scope — though the Standard's guidance may still usefully inform that preparation (para. 10)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 — DEFINITIONS ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Definitions (para. 14)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The central concept</div>
+      <div class="glossary-item">
+        <div class="glossary-term">Control</div>
+        <div class="glossary-def">An entity controls another entity when it is EXPOSED, or has RIGHTS, to VARIABLE BENEFITS from its involvement, AND has the ABILITY to affect the nature or amount of those benefits through its POWER over the other entity.</div>
+      </div>
+      <div class="glossary-item"><div class="glossary-term">Power</div><div class="glossary-def">Existing rights that give the CURRENT ability to direct the RELEVANT ACTIVITIES of another entity.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Benefits</div><div class="glossary-def">Advantages an entity obtains from its involvement with other entities — financial OR non-financial, positive OR negative.</div></div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">The supporting vocabulary</div>
+      <div class="glossary-item"><div class="glossary-term">Economic entity</div><div class="glossary-def">A controlling entity and its controlled entities — also called an administrative, financial, or consolidated entity, or a group.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Non-controlling interest</div><div class="glossary-def">Net assets/equity in a controlled entity NOT attributable, directly or indirectly, to a controlling entity.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Relevant activities</div><div class="glossary-def">Activities of the potentially controlled entity that SIGNIFICANTLY AFFECT the nature or amount of benefits the assessing entity receives.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Protective rights</div><div class="glossary-def">Rights designed to protect the HOLDER's interest without giving that party POWER over the entity.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Investment entity</div><div class="glossary-def">An entity that (a) obtains funds from investors to provide investment management services, (b) invests solely for capital appreciation/investment revenue, and (c) measures substantially all investments at fair value.</div></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 — CONTROL: THE THREE-ELEMENT TEST ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Control — the Three-Element Test (paras. 18–22)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">ALL three elements required, simultaneously</div>
+      <div class="formula-box">
+        <div class="f-eq">Control exists if, and ONLY if, an entity has: (a) POWER over the other entity; (b) exposure/rights to VARIABLE BENEFITS from involvement; AND (c) the ABILITY to use its power to AFFECT those benefits</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Every entity, regardless of the NATURE of its involvement, must assess whether it controls another entity using this test (para. 18). ALL facts and circumstances are considered — and the assessment is REASSESSED whenever facts and circumstances suggest a change to any of the three elements (para. 21).</div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card cw span2">
+      <div class="ctitle cw">Collective control — nobody controls alone</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Where TWO OR MORE entities must ACT TOGETHER to direct the relevant activities, NO SINGLE entity controls the other — since no one party can direct activities without the others' cooperation. Each party instead accounts for its interest under IPSAS 36, 37, or the financial instruments Standards (IPSAS 28/30/41), as appropriate (para. 22).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 — POWER: RIGHTS & PUBLIC SECTOR NUANCES ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Power — Rights &amp; Public Sector Nuances (paras. 23–29)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Where power comes from</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:8px;">The right to direct another entity's FINANCIAL AND OPERATING policies is the most common way power is demonstrated in the public sector (para. 23). Power can arise from voting rights (straightforward) — OR, more often in the public sector, from BINDING ARRANGEMENTS conferring rights WITHOUT any equity instrument at all (para. 24).</div>
+      <div class="callout danger" style="margin-bottom:0;">✕ <strong style="font-weight:600">Two things that do NOT, by themselves, create power:</strong> REGULATORY control (e.g. a pollution authority's power to shut down non-compliant operators; a gaming board's licensing authority — these protect the PUBLIC, not establish a controlling interest), and ECONOMIC DEPENDENCE (para. 26).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Statutory independence does NOT preclude control</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">An entity can have power even WITHOUT day-to-day operational responsibility. Legislation may give statutory bodies (an Auditor-General, a central bank) independence to carry out FUNCTIONS without recourse to government — but that independence does NOT, of itself, preclude the government having power over the entity's operating/financial policies to obtain benefits. ALL facts and circumstances still matter (para. 25).</div>
+      <div class="dot-list">
+        <span>An entity has power even if its rights to direct HAVEN'T yet been exercised — e.g. rights exercised once, at an entity's ESTABLISHMENT, with predetermined activities thereafter (para. 27)</span>
+        <span>Where multiple entities each unilaterally direct DIFFERENT relevant activities, power belongs to whichever entity directs the activities that MOST SIGNIFICANTLY affect benefits (para. 28)</span>
+        <span>Holding only PROTECTIVE rights (see §3) never confers power, even alongside another party's significant influence (para. 29)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 — BENEFITS: FINANCIAL & NON-FINANCIAL ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Benefits — Financial &amp; Non-Financial (paras. 30–34)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Financial benefit examples (para. 32)</div>
+      <div class="dot-list">
+        <span>Dividends, variable debt-security interest, other distributions</span>
+        <span>Exposure to investment value increases/decreases</span>
+        <span>Exposure to loss from financial-support agreements (e.g. major project backing)</span>
+        <span>Cost savings from economies of scale or synergies</span>
+        <span>Residual interests on the other entity's liquidation</span>
+      </div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Non-financial benefit examples — distinctly public sector (para. 33)</div>
+      <div class="dot-list">
+        <span>Benefiting from another entity's specialized knowledge</span>
+        <span>Another entity's activities assisting the assessing entity's OWN objectives</span>
+        <span>Improved or more efficient outcomes; more efficient goods/services delivery</span>
+        <span>Assets/services available EARLIER, or at a HIGHER service quality, than otherwise</span>
+      </div>
+      <div class="note">Benefits can be CONGRUENT (in agreement with the entity's objectives) or COMPLEMENTARY (adding to and completing them) — voluntary OR directed. Only ONE entity can control another, but MULTIPLE parties can SHARE in that entity's benefits (e.g. non-controlling interest holders sharing in surpluses) (para. 34).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 — LINK BETWEEN POWER AND BENEFITS: PRINCIPAL VS AGENT ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Link Between Power and Benefits — Principal vs Agent (paras. 35–37)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd">
+      <div class="ctitle cd">Power alone isn't enough — it must be USABLE</div>
+      <div class="principle">Control requires the ABILITY to USE power to affect benefits — not merely holding power and separately being exposed to benefits. Congruent OBJECTIVES alone are insufficient; the entity must be able to DIRECT the other entity to further ITS OWN objectives using that power (paras. 35–36).</div>
+    </div>
+
+    <div class="card cs">
+      <div class="ctitle cs">Agents never control, even while exercising decision-making rights</div>
+      <div class="formula-box">
+        <div class="f-eq">An AGENT is primarily engaged to act ON BEHALF OF and for the BENEFIT of a principal — and therefore does NOT control the entity when exercising its decision-making authority</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Every entity with decision-making rights must determine whether IT is a principal or agent — AND whether ANOTHER entity with decision-making rights is acting as ITS agent. A principal's power may be HELD and EXERCISED by an agent, but always ON THE PRINCIPAL's behalf (para. 37).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 — CONSOLIDATION PROCEDURES ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Accounting Requirements &amp; Consolidation Procedures (paras. 38–41)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The mechanics — three steps (para. 40)</div>
+      <div class="check-list">
+        <span><strong style="font-weight:500">Combine</strong> — like items of assets, liabilities, net assets/equity, revenue, expenses, and cash flows of the controlling entity WITH those of controlled entities, line by line</span>
+        <span><strong style="font-weight:500">Offset</strong> — eliminate the controlling entity's INVESTMENT carrying amount against its portion of each controlled entity's net assets/equity (IPSAS 40 governs any resulting goodwill)</span>
+        <span><strong style="font-weight:500">Eliminate</strong> — INTRA-ECONOMIC-ENTITY balances/transactions in full — surpluses/deficits embedded in assets like inventory or fixed assets are eliminated entirely; intra-entity LOSSES may signal an impairment requiring separate recognition</span>
+      </div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Uniform policies &amp; consolidation window</div>
+      <div class="dot-list">
+        <span>Uniform accounting POLICIES apply for like transactions/events across the whole economic entity — a member using DIFFERENT policies gets adjusted before consolidation (para. 38, 41)</span>
+        <span>Consolidation begins the date CONTROL is obtained, and ceases the date control is LOST (para. 39)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 — UNIFORM POLICIES, MEASUREMENT TIMING, REPORTING DATES & POTENTIAL VOTING RIGHTS ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Measurement Timing, Reporting Dates &amp; Potential Voting Rights (paras. 42–46)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Measurement window &amp; reporting dates</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Revenue/expenses of a controlled entity are included from the date control is GAINED to the date it's LOST — based on asset/liability amounts recognized in the consolidated statements AT the acquisition date (e.g. post-acquisition depreciation is based on acquisition-date asset values) (para. 42). Component statements used for consolidation are prepared as of the SAME reporting date — via additional information, or the most recent statements ADJUSTED for significant intervening transactions (para. 46).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Potential voting rights — existing interests only, with one exception</div>
+      <div class="formula-box">
+        <div class="f-eq">Surplus/deficit and net assets/equity change allocations use ONLY existing ownership interests — NOT potential voting rights or derivatives, UNLESS those rights currently give SUBSTANTIVE access to ownership benefits</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Where an instrument DOES currently give substantive access to ownership benefits, the eventual exercise/conversion IS taken into account (paras. 43–44). Such instruments fall OUTSIDE IPSAS 28/41's scope in that case; otherwise they're accounted for under those Standards normally (para. 45).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 — NON-CONTROLLING INTERESTS ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Non-Controlling Interests (paras. 47–50)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Presentation &amp; attribution</div>
+      <div class="formula-box">
+        <div class="f-eq">Non-controlling interests presented WITHIN net assets/equity on the consolidated SOFP, SEPARATELY from the controlling entity's owners</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Surplus/deficit and EVERY gain/loss recognized directly in net assets/equity is attributed BETWEEN the controlling entity's owners and non-controlling interests — even where this gives non-controlling interests a DEFICIT balance (para. 49).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Cumulative preference shares held by non-controlling interests</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Where a controlled entity has outstanding cumulative preference shares CLASSIFIED as equity and held by non-controlling interests, the entity computes ITS OWN share of surplus/deficit AFTER adjusting for dividends on those shares — WHETHER OR NOT those dividends have actually been declared (para. 50).</div>
+      <div class="note">Ownership CHANGES that do NOT result in losing control are treated as TRANSACTIONS WITH OWNERS in their capacity as owners — not as gains/losses in surplus or deficit (para. 48, expanded in §11).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 — CHANGES IN OWNERSHIP PROPORTION WITHOUT LOSS OF CONTROL ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Changes in the Proportion Held by Non-Controlling Interests (para. 51)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">A pure equity transaction — never surplus or deficit</div>
+      <div class="formula-box">
+        <div class="f-eq">When the non-controlling proportion changes (control retained throughout) → adjust the carrying amounts of BOTH controlling and non-controlling interests to reflect their new relative interests</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Any DIFFERENCE between the amount by which non-controlling interests are adjusted, and the fair value of consideration paid/received, is recognized DIRECTLY in net assets/equity, attributed to the CONTROLLING entity's owners (para. 51). This is the consolidation-level parallel to §10's "transactions with owners" framing — buying or selling a partial stake WITHOUT losing control never touches the performance statement.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 — LOSS OF CONTROL: DERECOGNITION & GAIN/LOSS MECHANICS ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Loss of Control — Derecognition &amp; Gain/Loss Mechanics (paras. 52–55A)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd">
+      <div class="ctitle cd">The four-part sequence (paras. 52, 54)</div>
+      <div class="check-list">
+        <span>DERECOGNIZE the former controlled entity's assets (including goodwill) and liabilities at their carrying amounts, plus any non-controlling interest carrying amount, at the date control is lost</span>
+        <span>RECOGNIZE the fair value of any consideration received, any share distribution to owners, and any RETAINED investment at its fair value at that date</span>
+        <span>TRANSFER directly to accumulated surplus/deficit any amounts previously in net assets/equity, on the SAME basis as if the entity had directly disposed of the underlying assets/liabilities</span>
+        <span>RECOGNIZE any resulting difference as a GAIN OR LOSS in surplus or deficit, attributable to the controlling entity</span>
+      </div>
+      <div class="note">A retained investment's remeasured fair value at the loss-of-control date becomes its DEEMED initial fair value under IPSAS 41, or deemed COST if it becomes an equity-method associate/joint venture (para. 52(b)).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Multiple arrangements treated as ONE transaction</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:8px;">Control can be lost across two or more arrangements — but where indicators suggest they're economically linked, they're accounted for as a SINGLE transaction (para. 53). Indicators: entered at the same time or in contemplation of each other; designed for one overall commercial effect; one arrangement's occurrence depends on another; or one arrangement alone isn't economically justified but IS when combined (e.g. a below-market disposal offset by a later above-market one).</div>
+      <div class="note">Where the retained interest becomes an equity-method associate/joint venture NOT containing an "operation" (IPSAS 40), the gain/loss is recognized ONLY to the extent of UNRELATED investors' interests — the remainder is eliminated against the retained investment's carrying amount (para. 55A).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 — INVESTMENT ENTITIES: THE FAIR VALUE EXCEPTION ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Investment Entities — the Fair Value Exception &amp; Status Changes (paras. 56–64)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The core exception, and its own carve-out</div>
+      <div class="formula-box">
+        <div class="f-eq">An investment entity does NOT consolidate its controlled entities (or apply IPSAS 40) → instead measures each at FAIR VALUE THROUGH SURPLUS OR DEFICIT under IPSAS 41 (para. 56)</div>
+      </div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ <strong style="font-weight:600">Exception to the exception:</strong> a controlled entity that is NOT itself an investment entity, and whose main purpose is providing SERVICES related to the investment entity's own investment activities, IS consolidated normally under §8 (para. 57).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">A non-investment-entity parent of an investment-entity subsidiary — a blended approach</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Such a controlling entity presents consolidated statements measuring the CONTROLLED INVESTMENT ENTITY's own investments at fair value through surplus or deficit, while CONSOLIDATING that investment entity's other assets/liabilities/revenue/expenses normally (para. 58) — a hybrid presentation unique to this scenario.</div>
+      <div class="dot-list">
+        <span>CEASES to be an investment entity → the change date becomes a DEEMED ACQUISITION date; fair value at that date becomes deemed consideration for any IPSAS 40 goodwill; full consolidation resumes going forward (para. 63)</span>
+        <span>BECOMES an investment entity → stops consolidating (except §57 service-entities); treated AS IF it had lost control of those entities at that date, applying the §12 mechanics (para. 64)</span>
+      </div>
+      <div class="note">Determining investment-entity status considers ALL facts and circumstances, including purpose and design — reassessed whenever circumstances change (para. 59). Absent one or more of three characteristics (funds from multiple investors; equity-like ownership interests; more than one investment), the entity must disclose the JUDGMENTS made in reaching its conclusion (IPSAS 38 para. 15) (paras. 61–62).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 — WORKED SCENARIOS: POWER & CONTROL ASSESSMENT JUDGMENT ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Worked Scenarios — Power &amp; Control Assessment Judgment (Illustrative Examples IE2–IE6)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd">
+      <div class="ctitle cd">Partial funding ≠ power</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">A state government partially funds a local government's activities (library services, leisure facilities, refuse/wastewater, building/safety enforcement) — a council elected every 4 years decides how to use resources.</div>
+        <div class="wk-answer">Despite the partial funding, the state government does NOT have power to direct the local government's relevant activities. The local council's own rights preclude state control (Example 1).</div>
+      </div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Regulatory power ≠ power over relevant activities</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">A gaming control board (GCB) regulates casinos — licensing, accounting systems, game rules, auditing — and can grant or deny operating licenses based on character/integrity standards.</div>
+        <div class="wk-answer">The GCB does NOT have power over the relevant activities of the gaming establishments it regulates. The regulations protect the PUBLIC and apply uniformly to all licensees, who each retain a genuine choice whether to operate at all (Example 5).</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card ci span2">
+      <div class="ctitle ci">Two entities, two decision rights — who has power over the combined venture?</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Entities A and B jointly form Entity C to develop and market a medical product. A has UNILATERAL authority over development/regulatory approval; B has unilateral authority over manufacturing/marketing once approved.</div>
+        <div class="wk-answer">Since BOTH sets of activities could be "relevant activities," A and B must each determine which activity MOST SIGNIFICANTLY affects Entity C's benefits — considering the purpose/design of C, what drives its surplus/value, the effect of each entity's decisions on performance, and their own exposure to variable benefits. In this case: the uncertainty and effort of obtaining regulatory approval (weighed against A's track record), and which entity controls the product once development succeeds, are the deciding factors (Example 6).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 15 — DISCLOSURE: DEFERRED ENTIRELY TO IPSAS 38 ============ -->
+  <div class="section-header" id="s15"><span class="num">15</span><h2>Disclosure — Deferred Entirely to IPSAS 38</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">A structural note: no black-letter disclosure section in IPSAS 35 itself</div>
+      <div class="principle">Unlike most Standards in this library, IPSAS 35 contains NO dedicated "Disclosure" section of its own. All disclosure requirements relating to interests in controlled entities, structured entities, joint arrangements, and associates — including investment-entity-specific disclosures such as the significant-judgments disclosure referenced in §13 — are consolidated into a SEPARATE, DEDICATED Standard: IPSAS 38, <em>Disclosure of Interests in Other Entities</em>.</div>
+      <div class="note">This is a deliberate structural design choice by the IPSASB, carried over directly from IFRS 10/12's own split — recognition/measurement principles sit in one Standard, while disclosure for the WHOLE family of "interests in other entities" (controlled entities, joint arrangements, associates, structured entities, investment entities) sits together in one place, avoiding repetition across IPSAS 34, 35, 36, and 37.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 16 — TRANSITIONAL PROVISIONS, EFFECTIVE DATE & AMENDMENT TIMELINE ============ -->
+  <div class="section-header" id="s16"><span class="num">16</span><h2>Transitional Provisions, Effective Date &amp; Amendment Timeline (paras. 65–81)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Transition — largely retrospective, with a grandfathering rule</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Applied RETROSPECTIVELY under IPSAS 3, with specific exceptions (paras. 65–78). Notably: at the date of initial application, NO adjustment is required to previous accounting for entities that were ALREADY consolidated under the old IPSAS 6 AND remain consolidated under IPSAS 35 — or for entities that were NOT consolidated under either (para. 68). Only entities whose consolidation STATUS actually CHANGES require restatement.</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Amendment history &amp; withdrawal of IPSAS 6</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2.2fr;"><span>Effective</span><span>Change</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2017</span><span>Base Standard — issued CONCURRENTLY with IPSAS 34; together they supersede IPSAS 6 (Dec 2006)</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2018</span><span>Paras. 11–13 deleted, para. 8 amended — The Applicability of IPSAS; para. 6 — IPSAS 39</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2019</span><span>Paras. 4, 40, 56, 57, 63 — IPSAS 40, Public Sector Combinations</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2023</span><span>Paras. 22, 45, 52, 55A, 56, 58 — IPSAS 41, Financial Instruments</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2026</span><span>Para. AG13 — IPSAS 47, Revenue</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 17 — RELATIONSHIP TO IFRS 10 ============ -->
+  <div class="section-header" id="s17"><span class="num">17</span><h2>Relationship to IAS/IFRS — Comparison with IFRS 10</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — IPSAS 35 vs IFRS 10</div>
+      <div class="principle">IPSAS 35 is drawn primarily from IFRS 10 (issued 2011, amendments to 31 December 2014), <em>Consolidated Financial Statements</em>. At initial issuance the IPSASB had not yet considered the public sector applicability of IFRS 5 (superseded by IPSAS 44, May 2022) or IFRS 9.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1.9fr;"><span>Topic</span><span>Difference</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Terminology</span><span>"Economic entity," "controlling entity," "controlled entity" (IPSAS 35) vs "group," "parent," "subsidiary" (IFRS 10) — "investor"/"investee" mostly replaced by "an entity"/"another entity," retained only in investment-entity guidance</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Binding arrangement</span><span>IPSAS 35 defines this BROADER concept, capturing rights from statutory/legislative mechanisms — not just contracts, as IFRS 10's "contractual arrangement" does</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Investment entity characteristics</span><span>IFRS 10 lists "typical characteristics" separately from the definition; IPSAS 35 folds relevant characteristics INTO the definition discussion instead</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Non-financial benefits</span><span>IPSAS 35 contains substantially MORE guidance — reflecting that public sector "returns" are so often non-financial (§6)</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Non-investment-entity parent of an investment-entity subsidiary</span><span>IPSAS 35 requires the BLENDED presentation described in §13; IFRS 10's equivalent provision differs in detail</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Illustrative examples</span><span>IPSAS 35 adds ADDITIONAL examples reflecting the public sector context (regulatory control, statutory independence, joint public-sector ventures) — see §14</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 18 — STATEMENT / PROCESS MAPPING ============ -->
+  <div class="section-header" id="s18"><span class="num">18</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Consolidation decision map</div>
+      <div class="dot-list">
+        <span>1. Does the entity CONTROL another entity — power, variable-benefit exposure, AND the ability to use power to affect those benefits, ALL three present? (§4–§7)</span>
+        <span>2. Does the CONSOLIDATION EXEMPTION apply (all four para. 5 conditions met)? → separate statements only, per IPSAS 34 (§2)</span>
+        <span>3. Is the controlling entity an INVESTMENT ENTITY? → fair value through surplus or deficit instead of consolidation, except for service-providing controlled entities (§13)</span>
+        <span>4. Consolidate: combine line items, eliminate the investment against net assets/equity, eliminate intra-entity balances/transactions (§8)</span>
+        <span>5. Present NON-CONTROLLING INTERESTS within net assets/equity, attributing surplus/deficit and other comprehensive changes proportionately (§10)</span>
+        <span>6. Ownership proportion changes WITHOUT losing control → net assets/equity transaction only (§11). LOSING control → derecognize, recognize retained interests at fair value, recognize a gain/loss in surplus or deficit (§12)</span>
+        <span>7. Route all disclosure requirements to IPSAS 38 — nothing to disclose under IPSAS 35 itself (§15)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card cs span2">
+      <div class="ctitle cs">Concept-to-statement mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>IPSAS 35 concept</span><span>Statement(s)</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Combined assets/liabilities/revenue/expenses</span><span><span class="badge bs">SOFP</span> <span class="badge bp">SOFPerf</span></span><span>Line-by-line combination, intra-entity items eliminated</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Non-controlling interests</span><span><span class="badge be">NA/E</span></span><span>Within net assets/equity, separate from controlling entity's owners</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Ownership proportion change (control retained)</span><span><span class="badge be">NA/E</span></span><span>Never surplus or deficit</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Gain/loss on loss of control</span><span><span class="badge bp">SOFPerf</span></span><span>Attributable to the controlling entity</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Investment entity's controlled-entity investments</span><span><span class="badge bs">SOFP</span></span><span>Fair value through surplus or deficit, not consolidated</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Interests in other entities disclosures</span><span><span class="badge bp">Notes</span></span><span>Entirely under IPSAS 38, not IPSAS 35</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 19 — RELATED STANDARDS ============ -->
+  <div class="section-header" id="s19"><span class="num">19</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How IPSAS 35 connects across the IPSAS body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.7fr 2.2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 3</span><span>Governs retrospective transition to this Standard, with the specific grandfathering exceptions in §16</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 18</span><span>Segment disclosures explain dissimilar activities within a consolidated economic entity (§1)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 20</span><span>Key management personnel and related party concepts intersect with control assessment for smaller/indirect interests</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 22</span><span>GGS disclosure eliminations mirror the WITHIN-group elimination principle in §8</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 28 / 30 / 41</span><span>Govern collectively-controlled and potential-voting-right instruments falling outside consolidation (§4, §9); fair value measurement for investment entities and retained interests (§12, §13)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 34</span><span>Governs the controlling entity's OWN separate financial statements — issued concurrently, together superseding IPSAS 6 (§16)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 36 / 37</span><span>Govern accounting for interests that fall short of control — associates, joint ventures, and collectively-controlled arrangements (§4)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 38</span><span>Houses ALL disclosure requirements for interests in other entities arising under this Standard (§15)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 39</span><span>Post-employment/long-term employee benefit plans excluded from this Standard's scope (§1)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 40</span><span>Governs public sector combination accounting, goodwill on consolidation, and the deemed-acquisition mechanics for investment entity status changes (§1, §8, §13)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 20 — GLOSSARY ============ -->
+  <div class="section-header" id="s20"><span class="num">20</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Control</div><div class="glossary-def">Exposure/rights to variable benefits from involvement with another entity, plus the ability to affect those benefits through power over it.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Power</div><div class="glossary-def">Existing rights giving the current ability to direct the relevant activities of another entity.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Relevant activities</div><div class="glossary-def">Activities of the potentially controlled entity that significantly affect the nature or amount of benefits to the assessing entity.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Non-controlling interest</div><div class="glossary-def">Net assets/equity in a controlled entity not attributable, directly or indirectly, to the controlling entity.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Investment entity</div><div class="glossary-def">An entity obtaining funds from investors to provide investment management services, investing solely for capital appreciation or investment revenue, measured at fair value.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Protective rights</div><div class="glossary-def">Rights protecting the holder's interest without conferring power over the entity to which they relate.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bs">SOFP</span> Statement of financial position
+      <span class="badge bp">SOFPerf</span> Statement of financial performance
+      <span class="badge be">NA/E</span> Net assets/equity (statement of changes)
+    </div>
+  </div>
+
+  <div class="footer-note">IPSAS 35 — Consolidated Financial Statements · Extended Reference Poster · Built from the 2025 IPSASB Handbook, Volume II · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

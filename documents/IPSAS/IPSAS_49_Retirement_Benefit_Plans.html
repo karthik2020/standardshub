@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPSAS 49 — Retirement Benefit Plans | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .eg  { margin-bottom: 7px; }
+  .egl { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; margin-bottom: 3px; }
+  .entry { display: flex; align-items: flex-start; gap: 4px; margin-bottom: 4px; }
+  .dr { font-size: 11px; font-weight: 500; color: var(--color-text-info);   min-width: 14px; padding-top: 1px; }
+  .cr { font-size: 11px; font-weight: 500; color: var(--color-text-danger); min-width: 14px; padding-top: 1px; padding-left: 6px; }
+  .etxt { font-size: 11px; color: var(--color-text-primary); flex: 1; line-height: 1.4; }
+  .badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .bc { background: #f3e8ff; color: #7e22ce; }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">IPSAS 49 — Retirement Benefit Plans</div>
+      <div class="hub-sub">Extended reference poster · Full Handbook structure · Statement formats · Statement mapping · Related standards</div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <a href="#s1">1. Objective, Scope &amp; Plan Types</a>
+    <a href="#s2">2. Definitions</a>
+    <a href="#s3">3. Recognition</a>
+    <a href="#s4">4. Measurement — Plan Investments &amp; Actuarial Present Value</a>
+    <a href="#s5">5. Presentation — the Statement of Financial Position</a>
+    <a href="#s6">6. Presentation — Changes in Net Assets &amp; Cash Flow Statement</a>
+    <a href="#s7">7. Changes in Retirement Benefit Obligations</a>
+    <a href="#s8">8. Disclosure Requirements — General</a>
+    <a href="#s9">9. Disclosure — Defined Benefit Specific &amp; Plan Description</a>
+    <a href="#s10">10. Effective Date &amp; Transition</a>
+    <a href="#s11">11. Relationship to IAS 26 &amp; GFS</a>
+    <a href="#s12">12. Statement / Process Mapping</a>
+    <a href="#s13">13. Related Standards</a>
+    <a href="#s14">14. Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 — OBJECTIVE, SCOPE & PLAN TYPES ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; Plan Types (paras. 1–8)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Objective — accounting BY the plan, not the employer</div>
+      <div class="principle">Prescribes accounting and reporting requirements for PUBLIC SECTOR RETIREMENT BENEFIT PLANS themselves — a genuinely distinct perspective from IPSAS 39 (which governs the EMPLOYER's own accounting for its obligations). The plan is treated as a REPORTING ENTITY SEPARATE from the employers of its participants (para. 3).</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-top:8px;">Covers the plan for ALL participants AS A GROUP — not individual participant benefit reports (para. 4). Excludes termination payments, deferred compensation, long-service leave, early-retirement/redundancy plans, health/welfare plans, bonus plans, and government social security arrangements (para. 5).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Plan types, and the insurance-company carve-out</div>
+      <div class="dot-list">
+        <span>DEFINED BENEFIT plans EXPLICITLY include HYBRID plans (mixing both types) — all references to "defined benefit" in this Standard cover hybrids too (para. 6)</span>
+        <span>Applies REGARDLESS of whether a separate fund exists, and regardless of trustees (para. 7)</span>
+        <span>Insurance-invested plans → IN scope, UNLESS the contract is in a SPECIFIC participant's/group's name AND the obligation is SOLELY the insurance company's responsibility (para. 8)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 — DEFINITIONS ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Definitions (para. 9)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The obligation-side vocabulary</div>
+      <div class="glossary-item"><div class="glossary-term">Actuarial present value of promised retirement benefits</div><div class="glossary-def">The present value of expected plan payments to participants, attributable to service ALREADY rendered.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Retirement benefit obligations</div><div class="glossary-def">For defined benefit plans — the actuarial present value of promised benefits. For defined contribution plans — the defined contribution obligations.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Vested benefits</div><div class="glossary-def">Benefits whose rights are NOT conditional on continued employment.</div></div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">The net-position vocabulary</div>
+      <div class="glossary-item">
+        <div class="glossary-term">Net assets available for benefits</div>
+        <div class="glossary-def">Defined benefit plans: plan assets LESS liabilities OTHER THAN the actuarial present value (and, for hybrids, the defined contribution obligation). Defined contribution plans: plan assets LESS liabilities other than the defined contribution obligations.</div>
+      </div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Funding</div><div class="glossary-def">The transfer of assets to the retirement benefit plan (separate from the employer/sponsor) to meet future benefit payment obligations.</div></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 — RECOGNITION ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Recognition (paras. 10–11)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Two plan types, two SOFP recognition treatments</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2fr;"><span>Plan type</span><span>Recognition on the SOFP</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2fr;"><span>Defined benefit</span><span>A PROVISION for the actuarial present value of promised retirement benefits</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2fr;"><span>Defined contribution</span><span>The DEFINED CONTRIBUTION OBLIGATIONS owed to participants</span></div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-top:8px;">Since the plan is the reporting entity (not the employer), these obligations sit on the PLAN's own statement of financial position — a direct counterpart to the employer-side net defined benefit liability recognized under IPSAS 39.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 — MEASUREMENT: PLAN INVESTMENTS & ACTUARIAL PRESENT VALUE ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Measurement — Plan Investments &amp; Actuarial Present Value (paras. 12–14)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Plan investments — always fair value</div>
+      <div class="formula-box">
+        <div class="f-eq">Retirement benefit plan investments SHALL be measured at FAIR VALUE</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">No accounting policy choice here — unlike IPSAS 39's dual net-interest/remeasurement mechanics for the employer, the plan itself simply fair-values its investment portfolio.</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">The projected salary requirement — a genuine IAS 26 divergence</div>
+      <div class="formula-box">
+        <div class="f-eq">Actuarial present value = benefits promised under the plan's terms, for service rendered to date, using PROJECTED salary levels</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">IPSAS 49 MANDATES projected salaries — IAS 26 allows a CHOICE between current and projected salary levels (§11). If no current actuarial valuation exists, the most RECENT one is used, updated for material transactions/circumstance changes (para. 14).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 — PRESENTATION: THE STATEMENT OF FINANCIAL POSITION ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Presentation — the Statement of Financial Position (paras. 15, 17)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The full required statement set (para. 15)</div>
+      <div class="check-list">
+        <span>A STATEMENT OF FINANCIAL POSITION</span>
+        <span>A STATEMENT OF CHANGES IN NET ASSETS available for benefits</span>
+        <span>A CASH FLOW STATEMENT</span>
+        <span>NOTES to the financial statements</span>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Statement of Financial Position — line items (para. 17)</div>
+      <div class="dot-list">
+        <span>Plan investments (suitably classified)</span>
+        <span>Contributions receivable</span>
+        <span>Other assets</span>
+        <span>Benefits due and payable</span>
+        <span>Other liabilities (excluding retirement benefit obligations to participants)</span>
+        <span>NET ASSETS AVAILABLE FOR BENEFITS</span>
+        <span>Provision for the actuarial present value of promised retirement benefits (defined benefit) OR defined contribution obligation (defined contribution)</span>
+        <span>EXCESS OR DEFICIT — the plan's own funded-status bottom line</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 — PRESENTATION: CHANGES IN NET ASSETS & CASH FLOW STATEMENT ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Presentation — Changes in Net Assets &amp; the Cash Flow Statement (paras. 18–19)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Statement of Changes in Net Assets Available for Benefits — line items (para. 18)</div>
+      <div class="dot-list">
+        <span>Employer/sponsor contributions</span>
+        <span>Participant contributions</span>
+        <span>Investment income</span>
+        <span>Other income</span>
+        <span>Benefits paid or payable (analyzed, e.g. retirement/death/disability, or lump sums)</span>
+        <span>Transfers from and to OTHER plans</span>
+        <span>Administrative expenses</span>
+        <span>Other expenses</span>
+        <span>Taxes on income</span>
+      </div>
+      <div class="note">Opening and closing balances are always presented.</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Cash Flow Statement — a mandatory method choice</div>
+      <div class="formula-box">
+        <div class="f-eq">MUST use the DIRECT method, per IPSAS 2 (para. 19)</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">A genuinely distinctive requirement — IPSAS 2 generally permits EITHER the direct or indirect method for operating activities, but IPSAS 49 removes that choice entirely for retirement benefit plans, mandating direct-method presentation. This is ALSO a divergence from IAS 26, which doesn't require a cash flow statement at all (§11).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 — CHANGES IN RETIREMENT BENEFIT OBLIGATIONS ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Changes in Retirement Benefit Obligations (paras. 16, 20–21)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Statement OR note — a genuine either/or choice</div>
+      <div class="formula-box">
+        <div class="f-eq">Explain changes in retirement benefit obligations EITHER via a dedicated STATEMENT of changes, OR a NOTE reconciliation between opening and closing balances</div>
+      </div>
+      <div class="dot-list">
+        <span>Amendments to the plan (e.g. changes in participant benefits)</span>
+        <span>Changes in the plan's NATURE (e.g. a merger with another plan)</span>
+        <span>Participant benefits allocated to DEFINED CONTRIBUTION accounts</span>
+        <span>Net changes to DEFINED BENEFIT accrued benefits (e.g. actuarial movements)</span>
+        <span>Employer/sponsor and participant contributions; taxes on contributions</span>
+        <span>Benefits paid; administration expenses</span>
+      </div>
+      <div class="note">Opening and closing balances are always presented, regardless of which format is chosen (paras. 20–21).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 — DISCLOSURE REQUIREMENTS: GENERAL ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Disclosure Requirements — General, Both Plan Types (para. 22)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Core notes package</div>
+      <div class="check-list">
+        <span>A summary of significant ACCOUNTING POLICIES</span>
+        <span>A DESCRIPTION of the plan (§9), and the effect of any period changes</span>
+        <span>The BASIS for valuing all plan assets, including fair value hierarchy disclosure per class</span>
+        <span>Details of any SINGLE investment exceeding 5% of net assets available for benefits, or 5% of any security class/type</span>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Related-party and funding disclosures</div>
+      <div class="dot-list">
+        <span>Details of any INVESTMENT IN THE EMPLOYER/SPONSOR — a genuine conflict-of-interest transparency item</span>
+        <span>Liabilities OTHER than the retirement benefit obligation itself</span>
+        <span>A description of the FUNDING POLICY, including any employer/sponsor obligation to meet an actuarially-determined SHORTFALL in a funded plan</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 — DISCLOSURE: DEFINED BENEFIT SPECIFIC & PLAN DESCRIPTION ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure — Defined Benefit Specific &amp; Plan Description (paras. 23–24)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Defined benefit plans — additional required items (para. 23)</div>
+      <div class="check-list">
+        <span>The actuarial present value, DISTINGUISHING vested vs. non-vested benefits</span>
+        <span>Significant ACTUARIAL ASSUMPTIONS, and the calculation METHOD used</span>
+        <span>The EFFECT of any assumption changes that significantly affected the actuarial present value</span>
+        <span>The DATE of the actuarial valuation, and when the NEXT one is due</span>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Plan description — mandatory for ALL plans (para. 24)</div>
+      <div class="dot-list">
+        <span>Name(s) of the employer(s)/sponsor(s) and participant groups covered</span>
+        <span>Number of participants receiving benefits, and other participants (classified as appropriate)</span>
+        <span>Plan TYPE — defined contribution or defined benefit</span>
+        <span>Whether participants CONTRIBUTE to the plan</span>
+        <span>A description of the retirement benefits PROMISED</span>
+        <span>Any plan TERMINATION terms</span>
+        <span>Changes to ANY of the above during the period</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 — EFFECTIVE DATE & TRANSITION ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Effective Date &amp; Transition (paras. 25–27)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">One of the newest Standards in the Handbook</div>
+      <div class="principle">Periods beginning on/after <strong>1 January 2026</strong>. Earlier application permitted, with disclosure of that fact (para. 25). Applied PROSPECTIVELY from the beginning of the annual period first applied (para. 27) — no retrospective option, unlike IPSAS 48's dual-path transition.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 — RELATIONSHIP TO IAS 26 & GFS ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Relationship to IAS/IFRS &amp; GFS — Comparison with IAS 26</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Comparison — IPSAS 49 vs IAS 26</div>
+      <div class="principle">IPSAS 49 is drawn from IAS 26 (amendments to Feb 2021), <em>Accounting and Reporting by Retirement Benefit Plans</em>.</div>
+      <div class="dot-list">
+        <span>Different DEFINITIONS — e.g. defined benefit plans, net assets available for benefits</span>
+        <span>IPSAS 49 MANDATES projected salary levels only; IAS 26 permits a CHOICE of current or projected (§4)</span>
+        <span>IPSAS 49 REQUIRES a cash flow statement; IAS 26 does NOT (§6)</span>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Comparison — IPSAS 49 vs GFS</div>
+      <div class="dot-list">
+        <span>Both PERMIT contributions to be accounted for as EITHER revenue or a participant liability, depending on plan terms/scheme type</span>
+        <span>Both REQUIRE retirement benefit obligations recognized on the balance sheet/SOFP — GFS calls this "pension entitlements"</span>
+      </div>
+      <div class="note">A notably CLOSE alignment with GFS compared to many other Standards in this library — reflecting how naturally pension-scheme reporting maps onto statistical frameworks.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 — STATEMENT / PROCESS MAPPING ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Decision map</div>
+      <div class="dot-list">
+        <span>1. Is this a retirement benefit PLAN itself (the reporting entity), not the employer's own accounting? → IPSAS 49 applies; the employer's mirror-image obligation is governed by IPSAS 39 instead (§1)</span>
+        <span>2. DEFINED BENEFIT (including hybrid) or DEFINED CONTRIBUTION? → determines which liability line appears on the SOFP (§3)</span>
+        <span>3. Measure plan INVESTMENTS at fair value; measure the DEFINED BENEFIT obligation using projected salary levels (§4)</span>
+        <span>4. Prepare the FULL statement set — SOFP, changes in net assets, direct-method cash flow statement, notes (§5, §6)</span>
+        <span>5. Explain OBLIGATION changes — dedicated statement, or note reconciliation (§7)</span>
+        <span>6. Disclose plan description, funding policy, and (for defined benefit) actuarial assumptions/methods (§8, §9)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card cs span2">
+      <div class="ctitle cs">Concept-to-statement mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>IPSAS 49 concept</span><span>Statement(s)</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Plan investments</span><span><span class="badge bs">SOFP</span></span><span>Always at fair value</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Actuarial present value provision (defined benefit)</span><span><span class="badge bs">SOFP</span></span><span>Projected salary levels, mandatory</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Net assets available for benefits</span><span><span class="badge bs">SOFP</span></span><span>Key summary line item</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Contributions, investment income, benefits paid</span><span>Changes in Net Assets</span><span>Opening/closing balances required</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>All cash flows</span><span>Cash Flow</span><span>Direct method mandatory (IPSAS 2)</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Actuarial assumptions, plan description, funding policy</span><span><span class="badge be">Notes</span></span><span>Mandatory disclosures, paras. 22–24</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 — RELATED STANDARDS ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How IPSAS 49 connects across the IPSAS body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.7fr 2.2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 2</span><span>Mandatory direct-method cash flow statement basis (§6)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 33</span><span>Governs when this Standard applies for entities adopting accrual IPSAS after the base effective date (§10)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 39</span><span>Governs the EMPLOYER's own mirror-image accounting for the same retirement benefit obligations — explicitly excluded from this Standard's own scope, and vice versa (§1)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 41 / 46</span><span>Fair value measurement methodology for plan investments (§4)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 — GLOSSARY ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Retirement benefit plan</div><div class="glossary-def">An arrangement whereby an employer/sponsor provides benefits to participants on or after termination of employment.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Actuarial present value of promised retirement benefits</div><div class="glossary-def">The present value of expected plan payments attributable to service already rendered.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Net assets available for benefits</div><div class="glossary-def">Plan assets less liabilities other than the retirement benefit obligation itself.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Vested benefits</div><div class="glossary-def">Benefits whose rights are not conditional on continued employment.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Funding</div><div class="glossary-def">The transfer of assets to the retirement benefit plan, separate from the employer/sponsor, to meet future benefit obligations.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Participants</div><div class="glossary-def">The members of a retirement benefit plan and others entitled to benefits under it.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bs">SOFP</span> Statement of financial position
+      <span class="badge bp">SOFPerf</span> Statement of financial performance
+      <span class="badge be">Notes</span> Notes to the financial statements
+    </div>
+  </div>
+
+  <div class="footer-note">IPSAS 49 — Retirement Benefit Plans · Extended Reference Poster · Built from the 2025 IPSASB Handbook, Volume III · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

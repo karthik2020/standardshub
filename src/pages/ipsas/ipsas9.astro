@@ -1,0 +1,374 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import metadata from "../../data/standards/ipsas/ipsas9.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  covers={metadata.covers}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Objective, Scope & Definitions" },
+        { id: "s2", label: "Measurement of Revenue" },
+        { id: "s3", label: "Rendering of Services" },
+        { id: "s4", label: "Sale of Goods" },
+        { id: "s5", label: "Interest, Royalties & Dividends" },
+        { id: "s6", label: "Principal vs Agent" },
+        { id: "s7", label: "Implementation Guidance — Worked Scenarios" },
+        { id: "s8", label: "Disclosure Requirements" },
+        { id: "s9", label: "Effective Date & Amendment Timeline" },
+        { id: "s10", label: "Relationship to IAS 18 & IPSAS 47" },
+        { id: "s11", label: "Statement / Process Mapping" },
+        { id: "s12", label: "Related Standards" },
+        { id: "s13", label: "Glossary" }
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="active"
+    explanation="IPSAS 9 Revenue from Exchange Transactions is the current, active standard issued by the IPSASB for recognizing revenue from exchange transactions. It is effective for annual financial statements covering periods beginning on or after 1 July 2002 (earlier application encouraged). Former paras. 2–3 were deleted; the current Standard comprises paras. 1–42, all of equal authority."
+    historical="IPSAS 9 is drawn primarily from IAS 18 Revenue, adapted for the public sector. The IPSASB has since issued IPSAS 47 Revenue (2023), covering revenue from exchange and non-exchange transactions in one five-step model; IPSAS 9 remains active and continues to receive consequential amendments through 2025 — it has not been formally superseded."
+    link=""
+    linkText=""
+  />
+
+
+
+  <!-- ============ SECTION 1 — OBJECTIVE, SCOPE & DEFINITIONS ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; Definitions (paras. 1–11)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Objective — "revenue" replaces "income"</div>
+      <div class="principle">Prescribes the accounting treatment of revenue from EXCHANGE transactions and events. Uses "revenue" (encompassing both revenue and gains) in place of the IASB Framework's broader "income." The primary issue is WHEN to recognize revenue: when it's probable that (a) future economic benefits/service potential will flow to the entity, and (b) they can be measured reliably.</div>
+      <div class="check-list">
+        <span>(a) Rendering of services</span>
+        <span>(b) Sale of goods</span>
+        <span>(c) Use by others of entity assets yielding interest, royalties, and dividends or similar distributions</span>
+      </div>
+      <div class="cross-list">
+        <span>Revenue from NON-exchange transactions (taxes, grants, donations) — out of scope entirely (para. 4)</span>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Exchange vs non-exchange (paras. 5–6) &amp; definitions</div>
+      <div class="glossary-item"><div class="glossary-term">Exchange transactions</div><div class="glossary-def">One entity receives assets/services, or has liabilities extinguished, and directly gives approximately EQUAL VALUE to the other party in exchange.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Non-exchange transactions</div><div class="glossary-def">Not exchange transactions — value flows one way without approximately equal value returned (e.g. taxes, fines, grants, donations).</div></div>
+      <div class="callout info callout--flush">Substance governs the distinction, not form. Examples of exchange transactions: purchase/sale of goods or services; leasing PP&amp;E at MARKET rates.</div>
+    </div>
+  </div>
+
+  <div class="grid grid-spaced">
+    <div class="card cw span2">
+      <div class="ctitle cw">Explicitly out of scope (para. 10) — governed by other Standards instead</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.6fr 1.4fr;"><span>Excluded item</span><span>Governed by</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1.4fr;"><span>Lease agreements</span><span>IPSAS 13 / IPSAS 43 (Leases)</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1.4fr;"><span>Equity-method dividends/distributions</span><span>IPSAS 36</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1.4fr;"><span>Gains from PP&amp;E disposal</span><span>IPSAS 45</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1.4fr;"><span>Financial instrument FV changes / disposal</span><span>IPSAS 41</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1.4fr;"><span>Biological assets &amp; agricultural produce</span><span>IPSAS 27</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1.4fr;"><span>Insurance contracts; extraction of mineral ores</span><span>Relevant international/national standards</span></div>
+      </div>
+      <div class="note">Also excluded: revenue from agreements directly related to CONSTRUCTION contracts (e.g. project manager/architect services) — governed by IPSAS 11 instead (para. 7).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 — MEASUREMENT OF REVENUE ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Measurement of Revenue (paras. 12–17)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The core measurement rule</div>
+      <div class="formula-box">
+        <div class="f-eq">Revenue = Fair value of consideration received or receivable</div>
+      </div>
+      <div class="text-supporting">Net of trade discounts and volume rebates. Where the cash inflow is DEFERRED (e.g. interest-free credit, below-market note), the fair value is LESS than the nominal amount — determined by discounting future receipts at an imputed rate; the difference is recognized as interest revenue.</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">What revenue excludes (paras. 12–13)</div>
+      <div class="cross-list">
+        <span>Amounts collected as an AGENT on behalf of government or third parties (e.g. utility payments collected by a post office) — no economic benefit flows to the collecting entity</span>
+        <span>Financing inflows (notably borrowings) — equal change in assets AND liabilities, no net assets/equity impact</span>
+      </div>
+      <div class="note">In an agency relationship, revenue is only the COMMISSION earned for collecting/handling the gross flows — not the gross flows themselves (§6 covers principal vs. agent in depth).</div>
+    </div>
+  </div>
+
+  <div class="grid grid-spaced">
+    <div class="card cw span2">
+      <div class="ctitle cw">Exchanges of dissimilar goods/services (para. 17)</div>
+      <div class="dot-list">
+        <span>SIMILAR nature and value (e.g. oil or milk swapped between suppliers) → NOT a revenue-generating transaction</span>
+        <span>DISSIMILAR goods/services exchanged → revenue IS generated, measured at the fair value of what was RECEIVED, adjusted for any cash transferred</span>
+        <span>If the fair value of what was received can't be measured reliably → measure at the fair value of what was GIVEN UP instead</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 — RENDERING OF SERVICES ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Rendering of Services — Percentage of Completion (paras. 19–27)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs">
+      <div class="ctitle cs">Reliable outcome estimate — ALL FOUR conditions (para. 19)</div>
+      <div class="check-list">
+        <span>Amount of revenue can be measured reliably</span>
+        <span>Probable that economic benefits/service potential will flow to the entity</span>
+        <span>Stage of completion at the reporting date can be measured reliably</span>
+        <span>Costs incurred, and costs to complete, can be measured reliably</span>
+      </div>
+      <div class="elabel">METHODS FOR MEASURING STAGE OF COMPLETION (PARA. 23)</div>
+      <div class="dot-list">
+        <span>Surveys of work performed</span>
+        <span>Services performed to date as a % of total services</span>
+        <span>Costs incurred to date as a % of estimated total costs (only costs REFLECTING services performed count)</span>
+      </div>
+      <div class="note">Progress payments/advances often do NOT reflect actual services performed — don't use them as a completion proxy.</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">When the outcome CANNOT be estimated reliably (paras. 25–27)</div>
+      <div class="formula-box">
+        <div class="f-eq">Revenue recognized only to the extent of RECOVERABLE expenses incurred — no surplus recognized</div>
+      </div>
+      <div class="text-supporting">Common in the EARLY stages of a transaction. If it's also NOT probable that costs will be recovered, revenue is not recognized at all and costs are expensed.</div>
+      <div class="dot-list">
+        <span>Indeterminate number of acts over a specified period → recognize revenue STRAIGHT-LINE, unless another method better reflects the stage of completion (para. 24)</span>
+        <span>One act far more significant than the others → defer ALL revenue until that significant act is executed</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 — SALE OF GOODS ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Sale of Goods (paras. 28–32)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Recognition — ALL FIVE conditions (para. 28)</div>
+      <div class="check-list">
+        <span>Significant RISKS AND REWARDS of ownership transferred to the purchaser</span>
+        <span>No continuing managerial involvement or effective control retained</span>
+        <span>Amount of revenue measured reliably</span>
+        <span>Probable that economic benefits/service potential will flow to the entity</span>
+        <span>Costs incurred/to be incurred can be measured reliably</span>
+      </div>
+      <div class="note">Risk/reward transfer USUALLY coincides with legal title transfer or possession — but not always; the SUBSTANCE of the arrangement governs.</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Retained significant risk → not yet a sale (para. 30)</div>
+      <div class="cross-list">
+        <span>Obligation for unsatisfactory performance NOT covered by normal warranty</span>
+        <span>Revenue contingent on the PURCHASER's own resale (e.g. sale-or-return to schools)</span>
+        <span>Installation still outstanding and a SIGNIFICANT part of the contract</span>
+        <span>Purchaser's right to rescind, with uncertain return probability</span>
+      </div>
+      <div class="callout suc callout--flush"><strong>Insignificant risk retained → still a sale:</strong> e.g. retaining legal title purely to protect collectability, or a satisfaction-guaranteed refund offer where returns can be reliably estimated (with a returns liability recognized based on experience).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 — INTEREST, ROYALTIES & DIVIDENDS ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Interest, Royalties &amp; Dividends or Similar Distributions (paras. 33–38)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Recognition treatments (para. 34) — after the two general tests (probable inflow + reliable measurement)</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2.2fr;"><span>Revenue type</span><span>Recognition basis</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>Interest</span><span>TIME PROPORTION basis, taking into account the effective yield on the asset (includes amortization of any discount/premium to maturity)</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>Royalties</span><span>As EARNED, in accordance with the substance of the relevant agreement (e.g. petroleum royalties accrue per the agreement's terms)</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>Dividends / similar distributions</span><span>When the shareholder's/entity's RIGHT TO RECEIVE PAYMENT is established</span></div>
+      </div>
+      <div class="note">Pre-acquisition interest: when unpaid interest accrued BEFORE an investment was acquired, subsequent receipts are split between pre- and post-acquisition periods — only the post-acquisition portion is revenue (para. 36). Pre-acquisition dividends are deducted from the security's cost instead of recognized as revenue.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 — PRINCIPAL VS AGENT ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Determining Principal vs Agent (Implementation Guidance IG32–IG34)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Acting as PRINCIPAL — recognize gross revenue</div>
+      <div class="dot-list">
+        <span>Primary responsibility for providing the goods/services or fulfilling the order</span>
+        <span>Inventory risk before/after the customer order, during shipping, or on return</span>
+        <span>Latitude in establishing prices, directly or indirectly</span>
+        <span>Bears the customer's CREDIT RISK for the receivable</span>
+      </div>
+      <div class="note">An entity is a principal when it has exposure to the significant risks and rewards of the sale/service.</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Acting as AGENT — recognize only the commission</div>
+      <div class="text-supporting">No exposure to the significant risks/rewards of the sale or service. Telltale sign: the amount the entity earns is PREDETERMINED — a fixed fee per transaction, or a stated percentage of the amount billed to the customer.</div>
+      <div class="callout warn callout--flush">Judgment call, considering ALL relevant facts and circumstances — no single factor is decisive on its own (para. IG32).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 — IMPLEMENTATION GUIDANCE WORKED SCENARIOS ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Implementation Guidance — Worked Scenarios (IG1–IG34)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Rendering-of-services scenarios (IG3–IG9)</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1.7fr;"><span>Scenario</span><span>Recognition point</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.7fr;"><span>Housing rental</span><span>As earned, per the tenancy agreement</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.7fr;"><span>School transport fares</span><span>As the transport is provided</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.7fr;"><span>Toll road management</span><span>As earned, based on road usage</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.7fr;"><span>Court case processing</span><span>Stage of completion, OR periods courts are in session</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.7fr;"><span>Science/tech research contracts</span><span>Stage of completion per individual project</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.7fr;"><span>Installation fees</span><span>Stage of completion — UNLESS incidental to a product sale, then recognized when goods are sold</span></div>
+      </div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Financial service fee scenarios (IG12) — three categories</div>
+      <div class="dot-list">
+        <span><strong>Integral to effective interest rate</strong> — loan origination fees, commitment fees (loan probable) → deferred, adjust the effective interest rate</span>
+        <span><strong>Earned as services are provided</strong> — loan servicing fees, investment management fees, commitment fees (loan NOT probable) → recognized as the service is delivered / time-proportion basis</span>
+        <span><strong>Earned on execution of a significant act</strong> — e.g. a placement fee for arranging shares for a client → recognized when that act is completed</span>
+      </div>
+      <div class="note">License/royalty scenarios (IG29–IG31): a fixed fee under a non-cancelable contract with no remaining licensor obligation is, in substance, a SALE — revenue recognized at the time of the assignment, not spread over the license term.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 — DISCLOSURE REQUIREMENTS ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Disclosure Requirements (paras. 39–40)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Required disclosures</div>
+      <div class="check-list">
+        <span>Accounting policies for revenue recognition, including methods used to determine stage of completion for services</span>
+        <span>Amount of each SIGNIFICANT category of revenue recognized during the period: services rendered, goods sold, interest, royalties, dividends/similar distributions</span>
+        <span>Amount of revenue from exchanges of goods/services INCLUDED WITHIN each significant category</span>
+      </div>
+      <div class="note">Contingent assets/liabilities arising from items like warranty costs, claims, or penalties are governed by IPSAS 19, not disclosed here (para. 40).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 — EFFECTIVE DATE & AMENDMENT TIMELINE ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Effective Date &amp; Amendment Timeline (paras. 41–42)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Amendment history at a glance</div>
+      <div class="principle">Base Standard: periods beginning on/after <strong>1 July 2002</strong> (earlier application encouraged).</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2.2fr;"><span>Effective</span><span>Change</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2011 (Nov 2010 improvements)</span><span>Paras. 1, 9, 12, 33, 34, 36, 39</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>2015 (with IPSAS 33 / 37)</span><span>Para. 42 (IPSAS 33); para. 10(b) (IPSAS 37, Joint Arrangements)</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2018</span><span>Paras. 2, 3 deleted — The Applicability of IPSAS (Apr 2016)</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2023</span><span>Para. 10 — IPSAS 41, Financial Instruments (Aug 2018)</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2025</span><span>Para. 10(c) (IPSAS 45); para. 11 (IPSAS 46, Measurement)</span></div>
+      </div>
+      <div class="note">Para. 42: when an entity adopts accrual-basis IPSAS after the effective date (per IPSAS 33), this Standard applies from the date of adoption.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 — RELATIONSHIP TO IAS 18 & IPSAS 47 ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Relationship to IAS 18 &amp; IPSAS 47</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Comparison — IPSAS 9 vs IAS 18</div>
+      <div class="principle">IPSAS 9 is drawn primarily from IAS 18, <em>Revenue</em>.</div>
+      <div class="dot-list">
+        <span>Title difference clarifies IPSAS 9 does NOT cover non-exchange revenue</span>
+        <span>Definitions are similar, but IAS 18 references "ordinary activities" — IPSAS 9 does not</span>
+        <span>Terminology: IPSAS 9 uses "net assets/equity" where IAS 18 uses "equity"</span>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">A standard in transition — IPSAS 47</div>
+      <div class="principle">IPSAS 47, <em>Revenue</em> (issued May 2023, drawn from IFRS 15's five-step model) is the IPSASB's modern successor covering revenue from BOTH exchange and non-exchange transactions in a single framework.</div>
+      <div class="callout warn callout--flush">IPSAS 9 remains in the Handbook and has continued to receive consequential amendments through 2025 — it has NOT been formally withdrawn the way IPSAS 6–8 were. Preparers should confirm their jurisdiction's transition timeline: IPSAS 47 is available for early adoption and will eventually supersede IPSAS 9, 11, and the non-exchange revenue Standard (IPSAS 23).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 — STATEMENT / PROCESS MAPPING ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Revenue recognition decision map</div>
+      <div class="dot-list">
+        <span>1. Is this an EXCHANGE transaction (approximately equal value both ways)? If no → out of scope, see IPSAS 47 / IPSAS 23 non-exchange rules</span>
+        <span>2. Is it a service, a sale of goods, or use of an asset (interest/royalty/dividend)? → route to §3, §4, or §5 respectively</span>
+        <span>3. Services: can the outcome be estimated reliably (all 4 conditions)? → recognize by STAGE OF COMPLETION. If not → recognize only to the extent of recoverable costs</span>
+        <span>4. Goods: have all 5 sale conditions been met (risk/reward transfer, no continuing control, reliable measurement)? → recognize in FULL at that point. If risk is still retained → not yet a sale</span>
+        <span>5. Is the entity a principal or an agent in the arrangement? → principal recognizes GROSS revenue; agent recognizes only the COMMISSION</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-spaced">
+    <div class="card cs span2">
+      <div class="ctitle cs">Concept-to-statement mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>IPSAS 9 concept</span><span>Statement(s)</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Revenue from services/goods/use of assets</span><span><span class="badge bp">SOFPerf</span></span><span>Recognized per the applicable criteria, §3–§5</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Deferred consideration — imputed interest</span><span><span class="badge bp">SOFPerf</span></span><span>Interest revenue recognized separately from the sale</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Agent's gross collections</span><span><span class="badge bs">SOFP</span></span><span>Held as a liability to the principal, not revenue</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Uncollectable amount, previously recognized</span><span><span class="badge bp">SOFPerf</span></span><span>Recognized as an EXPENSE, not a revenue reversal</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Revenue recognition policy &amp; category breakdown</span><span><span class="badge be">Notes</span></span><span>Mandatory per para. 39</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 — RELATED STANDARDS ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How IPSAS 9 connects across the IPSAS body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.8fr 2.1fr;"><span>Standard</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2.1fr;"><span>IPSAS 11</span><span>Construction-contract-related service agreements (e.g. project managers, architects) — governed there instead (§1)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2.1fr;"><span>IPSAS 13 / 43</span><span>Lease revenue is out of IPSAS 9's scope (§1)</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2.1fr;"><span>IPSAS 19</span><span>Contingent assets/liabilities from warranty, claims, penalties — disclosed under IPSAS 19 (§8)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2.1fr;"><span>IPSAS 23</span><span>Sister standard for NON-exchange revenue (taxes, transfers, grants) — the two together cover all revenue until IPSAS 47 supersedes both</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2.1fr;"><span>IPSAS 27</span><span>Biological assets and agricultural produce revenue — out of scope here (§1)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2.1fr;"><span>IPSAS 36</span><span>Equity-method dividends/distributions — out of scope here (§1)</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2.1fr;"><span>IPSAS 41</span><span>Financial instrument fee classification (origination, commitment, servicing fees) — §7 Implementation Guidance</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2.1fr;"><span>IPSAS 45</span><span>Gains from PP&amp;E disposal — out of scope here (§1)</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2.1fr;"><span>IPSAS 47</span><span>The modern successor standard, covering exchange AND non-exchange revenue in one five-step model (§10)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 — GLOSSARY ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Exchange transactions</div><div class="glossary-def">Transactions where the entity receives assets/services, or has liabilities extinguished, and gives approximately equal value in return.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Non-exchange transactions</div><div class="glossary-def">Transactions where value flows without approximately equal value being given in return.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Percentage of completion method</div><div class="glossary-def">Recognizing service revenue by reference to the stage of completion of the transaction at the reporting date.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Effective yield</div><div class="glossary-def">The rate of interest that discounts an asset's expected future cash receipts to equate to its initial carrying amount.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Principal</div><div class="glossary-def">An entity exposed to the significant risks and rewards of a sale/service — recognizes gross revenue.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Agent</div><div class="glossary-def">An entity not exposed to those risks/rewards, typically earning a predetermined fee or percentage — recognizes only the commission.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bs">SOFP</span> Statement of financial position
+      <span class="badge bp">SOFPerf</span> Statement of financial performance
+      <span class="badge be">Notes</span> Notes to the financial statements
+    </div>
+  </div>
+
+  
+</StandardPageLayout>

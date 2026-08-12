@@ -1,0 +1,414 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import metadata from "../../data/standards/ipsas/ipsas16.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  covers={metadata.covers}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Objective, Scope & Definitions" },
+        { id: "s2", label: "Classification — Investment vs Owner-Occupied" },
+        { id: "s3", label: "Mixed-Use & Ancillary Services" },
+        { id: "s4", label: "Recognition & Measurement at Recognition" },
+        { id: "s5", label: "Measurement After Recognition — Policy Choice" },
+        { id: "s6", label: "Current Value Model" },
+        { id: "s7", label: "Inability to Measure Fair Value Reliably" },
+        { id: "s8", label: "Historical Cost Model" },
+        { id: "s9", label: "Transfers" },
+        { id: "s10", label: "Disposals" },
+        { id: "s11", label: "Disclosure Requirements" },
+        { id: "s12", label: "Effective Date & Amendment Timeline" },
+        { id: "s13", label: "Relationship to IAS 40" },
+        { id: "s14", label: "Statement / Process Mapping" },
+        { id: "s15", label: "Related Standards" },
+        { id: "s16", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="active"
+    explanation="IPSAS 16 Investment Property is the current, active standard issued by the IPSASB for accounting for investment property. It is effective for annual financial statements covering periods beginning on or after 1 January 2008 (earlier application encouraged)."
+    historical="IPSAS 16 is based on IAS 40 Investment Property, adapted for the public sector with a linked-liability exception and explicit commentary on the defining feature that investment property generates cash flows largely independently of an entity's other assets."
+    link=""
+    linkText=""
+  />
+
+  <div class="wrap">
+  <!-- ============ SECTION 1 — OBJECTIVE, SCOPE & DEFINITIONS ============ -->
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; Definitions (paras. 1–7)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Objective &amp; scope</div>
+        <div class="principle">Prescribes the accounting treatment for investment property and related disclosures.</div>
+        <div class="cross-list">
+          <span>Biological assets related to agricultural activity (IPSAS 27 / IPSAS 45)</span>
+          <span>Mineral rights and mineral reserves (oil, natural gas, similar non-regenerative resources)</span>
+        </div>
+        <div class="note">Paras. 3–5 [Deleted].</div>
+      </div>
+
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions (para. 7)</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Investment property</div>
+          <div class="glossary-def">Property (land, a building, part of a building, or both — held by the owner OR by a lessee as a right-of-use asset) held to earn rentals or for CAPITAL APPRECIATION, or both — rather than for use in production/supply of goods and services, administrative purposes, or sale in the ordinary course of operations.</div>
+        </div>
+        <div class="glossary-item" style="border-bottom:none;">
+          <div class="glossary-term">Owner-occupied property</div>
+          <div class="glossary-def">Property held for use in the production or supply of goods/services, or for administrative purposes.</div>
+        </div>
+        <div class="callout info callout--flush">The defining feature: investment property generates cash flows largely INDEPENDENTLY of an entity's other assets — unlike owner-occupied property, where cash flows are attributable to the property AND the other assets used alongside it (para. 10).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 2 — CLASSIFICATION ============ -->
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Classification — Investment vs Owner-Occupied Property (paras. 9–19)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs">
+        <div class="ctitle cs">Examples of investment property (para. 12)</div>
+        <div class="dot-list">
+          <span>Land held for long-term capital appreciation (not short-term sale)</span>
+          <span>Land held for a CURRENTLY UNDETERMINED future use — defaults to "held for capital appreciation"</span>
+          <span>A building (owned or right-of-use) leased out under one or more operating leases on a commercial basis</span>
+          <span>A vacant building held to be leased out commercially</span>
+          <span>Property being constructed/developed for future use as investment property</span>
+        </div>
+      </div>
+
+      <div class="card cd">
+        <div class="ctitle cd">NOT investment property (para. 13)</div>
+        <div class="cross-list">
+          <span>Property held for sale in the ordinary course of operations, or under construction for such sale (IPSAS 12, Inventories)</span>
+          <span>Owner-occupied property, including future/under-development owner-occupied property and employee housing (e.g. military personnel quarters)</span>
+          <span>Property leased to another entity under a FINANCE lease</span>
+          <span>Property held to provide a SOCIAL SERVICE that incidentally generates cash inflows (e.g. below-market-rent low-income housing) — accounted for under IPSAS 45 instead</span>
+          <span>Property held for STRATEGIC purposes — accounted for under IPSAS 45</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-spaced">
+      <div class="card cw span2">
+        <div class="ctitle cw">Whole-of-government consolidation wrinkle (para. 19)</div>
+        <div class="principle">A property management entity that owns a building leased to ANOTHER government entity treats it as investment property in ITS OWN individual financial statements. But in the WHOLE-OF-GOVERNMENT consolidated statements, that same property is owner-occupied from the economic entity's perspective — reclassified as PP&amp;E under IPSAS 45.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 3 — MIXED-USE & ANCILLARY SERVICES ============ -->
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Mixed-Use Property &amp; Ancillary Services (paras. 14–18A)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Split-use buildings (para. 14)</div>
+        <div class="dot-list">
+          <span>Portions could be SOLD (or finance-leased) SEPARATELY → account for each portion separately</span>
+          <span>Portions CANNOT be sold separately → the whole is investment property ONLY IF the owner-occupied portion is INSIGNIFICANT</span>
+        </div>
+        <div class="note">Example: a hospital or university building, part administrative and part leased out commercially as apartments.</div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Ancillary services — the significance test (paras. 15–17)</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.2fr 1.8fr;"><span>Service level</span><span>Classification</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1.8fr;"><span>Insignificant (e.g. security/maintenance for a commercially-rented office building)</span><span>Still INVESTMENT PROPERTY</span></div>
+          <div class="tr alt" style="grid-template-columns:1.2fr 1.8fr;"><span>Significant (e.g. a government-managed hotel/hostel)</span><span>OWNER-OCCUPIED property instead</span></div>
+        </div>
+        <div class="note">Judgment is needed where a management contract sits between "passive investor" and "outsourced day-to-day functions with retained cash-flow exposure" (para. 17). Disclosure of the classification criteria is required when classification is difficult (para. 86(c)).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 4 — RECOGNITION & MEASUREMENT AT RECOGNITION ============ -->
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Recognition &amp; Measurement at Recognition (paras. 20–38A)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Recognition criteria (para. 20)</div>
+        <div class="check-list">
+          <span>Probable that future economic benefits/service potential will flow to the entity</span>
+          <span>Cost or fair value can be measured reliably</span>
+        </div>
+        <div class="note">Costs of DAY-TO-DAY servicing (labor, consumables, minor parts) are expensed, not capitalized (para. 24). Replacement parts are capitalized when recognition criteria are met, with the replaced part's carrying amount derecognized (para. 25).</div>
+      </div>
+
+      <div class="card cd">
+        <div class="ctitle cd">Initial measurement</div>
+        <div class="formula-box">
+          <div class="f-eq">Owned investment property → measured initially at COST (incl. transaction costs)</div>
+        </div>
+        <div class="dot-list">
+          <span>Acquired via a NON-EXCHANGE transaction (e.g. transferred at no charge, or via sequestration powers) → cost = fair value at the acquisition date</span>
+          <span>Cost is NOT increased by start-up costs (unless necessary), pre-occupancy operating losses, or abnormal wasted resources (para. 30)</span>
+          <span>Deferred payment → cost = cash price equivalent; the difference is INTEREST EXPENSE over the credit period (para. 31)</span>
+          <span>Acquired via a non-monetary asset EXCHANGE → measured at fair value UNLESS the exchange lacks commercial substance or neither asset's fair value is reliably measurable (para. 36)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 5 — MEASUREMENT AFTER RECOGNITION: POLICY CHOICE ============ -->
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Measurement After Recognition — Policy Choice (paras. 39–41C)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">One policy, applied to ALL investment property</div>
+        <div class="principle">An entity chooses EITHER the current value model OR the historical cost model, and applies it to ALL its investment property (para. 39). A voluntary switch FROM current value TO historical cost is highly unlikely to ever meet IPSAS 3's "more relevant information" test (para. 40).</div>
+        <div class="dot-list">
+          <span>Fair value must be measured for ALL investment property regardless of model chosen — either as the MEASUREMENT basis (current value model) or for DISCLOSURE (historical cost model) (para. 41)</span>
+          <span>An independent, appropriately-qualified valuer is ENCOURAGED but not required</span>
+        </div>
+        <div class="callout warn callout--flush"><strong>Linked-liability exception (para. 41A):</strong> an entity MAY choose a different model for investment property backing liabilities that pay a return linked directly to the fair value of specified assets, versus all OTHER investment property. Sales BETWEEN pools using different models are recognized at fair value, with the cumulative fair-value change hitting surplus/deficit (para. 41C).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 6 — CURRENT VALUE MODEL ============ -->
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Current Value Model (paras. 42–61)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">The core rule</div>
+        <div class="formula-box">
+          <div class="f-eq">All investment property measured at FAIR VALUE; gains/losses from fair value changes → surplus or deficit, in the period they arise</div>
+        </div>
+        <div class="text-supporting">Fair value measurement follows Appendix D of IPSAS 46, reflecting rental revenue from current leases and other market-participant assumptions (para. 49). A right-of-use investment property is measured at the fair value of the RIGHT-OF-USE ASSET, not the underlying asset (para. 49A).</div>
+      </div>
+
+      <div class="card cd">
+        <div class="ctitle cd">Avoiding double-counting (para. 59)</div>
+        <div class="dot-list">
+          <span>Integral equipment (elevators, air-conditioning) → included in the property's fair value, NOT recognized separately as PP&amp;E</span>
+          <span>Furnished office let on a furnished basis → furniture's fair value included; not recognized as a separate asset</span>
+          <span>Fair value EXCLUDES prepaid/accrued lease revenue — recognized as a separate asset/liability instead</span>
+          <span>Right-of-use investment property → fair value reflects expected cash flows; any recognized LEASE LIABILITY must be added back if the valuation was obtained net of expected payments</span>
+        </div>
+        <div class="note">Where the present value of expected payments (other than recognized-liability payments) exceeds expected receipts, apply IPSAS 19 to determine whether a liability should be recognized (para. 61).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 7 — INABILITY TO MEASURE FAIR VALUE RELIABLY ============ -->
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Inability to Measure Fair Value Reliably (paras. 62–64)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">A rebuttable presumption — with a narrow exception</div>
+        <div class="principle">There is a REBUTTABLE PRESUMPTION that fair value can be reliably measured on a continuing basis. The presumption can be rebutted only ON INITIAL RECOGNITION (or when a property first becomes investment property) — and only when the market for comparable property is INACTIVE, and no reliable alternative measurement (e.g. discounted cash flow) is available.</div>
+        <div class="two-col">
+          <div class="spec-box">
+            <div class="spec-title">Property UNDER CONSTRUCTION</div>
+            <div class="text-supporting">Measure at HISTORICAL COST until fair value becomes reliably measurable, or construction completes — whichever is EARLIER. Once construction completes, fair value is PRESUMED measurable.</div>
+          </div>
+          <div class="spec-box">
+            <div class="spec-title">Other investment property (rebutted, not under construction)</div>
+            <div class="text-supporting">Measure using the HISTORICAL COST MODEL of IPSAS 45 (owned) or IPSAS 43 (right-of-use), with RESIDUAL VALUE assumed zero — continued until disposal.</div>
+          </div>
+        </div>
+        <div class="callout warn callout--flush">Even where one property is measured at historical cost for this reason, ALL OTHER investment property must still be measured at fair value under the current value model (para. 63). Once measured at fair value, an entity CONTINUES at fair value until disposal (or change of use) even if the market later becomes less active (para. 64).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 8 — HISTORICAL COST MODEL ============ -->
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Historical Cost Model (para. 65)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Routes to three other Standards</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.4fr 1.6fr;"><span>Circumstance</span><span>Applicable Standard</span></div>
+          <div class="tr" style="grid-template-columns:1.4fr 1.6fr;"><span>Meets held-for-sale criteria (or in a disposal group classified as held for sale)</span><span>IPSAS 44</span></div>
+          <div class="tr alt" style="grid-template-columns:1.4fr 1.6fr;"><span>Held by a lessee as a right-of-use asset, not held for sale</span><span>IPSAS 43</span></div>
+          <div class="tr" style="grid-template-columns:1.4fr 1.6fr;"><span>All other cases</span><span>IPSAS 45's historical cost model</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 9 — TRANSFERS ============ -->
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Transfers (paras. 66–76)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Transfer trigger — a CHANGE IN USE, evidenced</div>
+        <div class="dot-list">
+          <span>Commencement of owner-occupation (or development toward it) → investment property → owner-occupied</span>
+          <span>Commencement of development with a view to sale → investment property → inventories</span>
+          <span>End of owner-occupation → owner-occupied → investment property</span>
+          <span>Inception of a commercial operating lease to another party → inventories → investment property</span>
+        </div>
+        <div class="callout warn callout--flush">A mere CHANGE IN MANAGEMENT'S INTENTIONS, on its own, does NOT provide evidence of a change in use (para. 66).</div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Accounting for the transfer (current value model only)</div>
+        <div class="dot-list">
+          <span>FROM investment property (fair value) TO owner-occupied/inventories → the property's cost for subsequent accounting is its FAIR VALUE at the date of change (para. 71)</span>
+          <span>FROM owner-occupied TO investment property (fair value) → treat any difference between IPSAS 45/43 carrying amount and fair value the SAME as a REVALUATION under IPSAS 45 (paras. 72–73)</span>
+          <span>FROM inventories TO investment property (fair value) → any difference vs. previous carrying amount → SURPLUS OR DEFICIT (para. 74, consistent with inventory sale treatment)</span>
+        </div>
+        <div class="note">Under the HISTORICAL COST MODEL, transfers change neither the carrying amount nor the cost of the property (para. 70). Self-constructed investment property carried at fair value: on completion (or when fair value first becomes reliably measurable), any difference vs. the previous carrying amount → surplus or deficit (para. 76).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 10 — DISPOSALS ============ -->
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Disposals (paras. 77–84)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs">
+        <div class="ctitle cs">Derecognition &amp; gain/loss</div>
+        <div class="formula-box">
+          <div class="f-eq">Gain/loss = Net disposal proceeds − Carrying amount, recognized in surplus/deficit in the period of retirement/disposal</div>
+        </div>
+        <div class="text-supporting">Derecognized on disposal, OR when permanently withdrawn from use with no future economic benefits/service potential expected from disposal (para. 77). Disposal can be by sale or by entering into a finance lease; IPSAS 43 governs sale-and-leaseback (para. 78).</div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Compensation &amp; separate economic events (paras. 83–84)</div>
+        <div class="dot-list">
+          <span>Third-party compensation for impaired, lost, or given-up investment property → recognized in surplus/deficit when RECEIVABLE</span>
+          <span>Impairments (IPSAS 21/26), retirements/disposals, compensation receivable, and replacement-asset costs are treated as four SEPARATE economic events, accounted for separately</span>
+        </div>
+        <div class="note">Transaction consideration for a disposal follows IPSAS 47's requirements (paras. 109–132), including subsequent changes to estimated consideration (para. 81).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 11 — DISCLOSURE REQUIREMENTS ============ -->
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Disclosure Requirements (paras. 85–90)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Applies to both models (para. 86)</div>
+        <div class="check-list">
+          <span>Which model is applied (current value or historical cost)</span>
+          <span>Classification criteria used, when classification is difficult</span>
+          <span>Extent fair value is based on an independent qualified valuer's valuation (or that fact if none)</span>
+          <span>Rental revenue, direct operating expenses (with/without rental revenue generated) recognized in surplus/deficit</span>
+          <span>Restrictions on realizability or remittance of revenue/disposal proceeds</span>
+          <span>Contractual obligations to purchase, construct, develop, repair, maintain, or enhance investment property</span>
+        </div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Model-specific: reconciliation &amp; fair value hierarchy</div>
+        <div class="elabel">CURRENT VALUE MODEL (PARA. 87) — RECONCILIATION</div>
+        <div class="text-supporting">Opening to closing balance: additions (acquisitions vs. subsequent expenditure), public sector combination additions, held-for-sale/other disposals, net fair-value gains/losses, FX translation differences, transfers, other changes.</div>
+        <div class="elabel">HISTORICAL COST MODEL (PARA. 90(E))</div>
+        <div class="text-supporting">Must still disclose FAIR VALUE — or, in the para. 62 exceptional cases, a description, the reason fair value can't be reliably measured, and (if possible) the likely range.</div>
+        <div class="note">IPSAS 46-based fair value hierarchy disclosures (Level 1/2/3, valuation techniques, unobservable inputs, Level 3 reconciliations) apply per paras. 89A–89C — mirroring the IPSAS 12 fair value package.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 12 — EFFECTIVE DATE & AMENDMENT TIMELINE ============ -->
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Effective Date &amp; Amendment Timeline</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Amendment history at a glance</div>
+        <div class="principle">Base Standard: periods beginning on/after <strong>1 January 2008</strong>.</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1fr 2.2fr;"><span>Effective</span><span>Change</span></div>
+          <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>Various (pre-2018)</span><span>Numerous paragraph deletions/amendments through Improvements to IPSAS cycles and The Applicability of IPSAS</span></div>
+          <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2019</span><span>Paras. 66, 68 — Improvements to IPSAS, 2018 (transfer-of-investment-property amendments, §9)</span></div>
+          <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2025 (IPSAS 43 suite)</span><span>Extensive amendments integrating the new right-of-use lease model throughout (§4, §6, §8)</span></div>
+          <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2025 (IPSAS 44/45/46 suite)</span><span>Held-for-sale, PP&amp;E, and fair value measurement cross-references updated</span></div>
+        </div>
+        <div class="note">Paragraph 100B–100D provide specific transition guidance for the 2018 transfer-of-investment-property amendments, including a hindsight-free retrospective option and required reclassification disclosures.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 13 — RELATIONSHIP TO IAS 40 ============ -->
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Relationship to IAS/IFRS — Comparison with IAS 40</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — IPSAS 16 vs IAS 40</div>
+        <div class="principle">IPSAS 16 is drawn primarily from IAS 40 (2003), <em>Investment Property</em>, including the IASB's May 2008 Improvements to IFRS. IPSAS 44 (2022) brought forward the IFRS 5-consequential amendments that had previously been excluded pending an IPSASB view on their public sector applicability.</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.3fr 1.9fr;"><span>Topic</span><span>Difference</span></div>
+          <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>No/nominal-cost acquisition</span><span>IPSAS 16 specifies cost = fair value at acquisition; IAS 40 requires cost measurement generally, without this specific carve-out</span></div>
+          <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Social service property</span><span>Additional IPSAS 16 commentary clarifying that property held to deliver a social service (incidentally generating cash) is excluded — accounted for under IPSAS 45</span></div>
+          <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Terminology</span><span>"Statement of financial performance" (IPSAS 16) vs "income statement" (IAS 40); IPSAS 16 does not use "income"</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 14 — STATEMENT / PROCESS MAPPING ============ -->
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Classification &amp; measurement decision map</div>
+        <div class="dot-list">
+          <span>1. Is the property held to earn rentals or for capital appreciation, generating cash flows LARGELY INDEPENDENT of other assets? → potential investment property (§2)</span>
+          <span>2. Is it held for sale in the ordinary course of business, or owner-occupied? → NOT investment property — see IPSAS 12 or IPSAS 45 instead</span>
+          <span>3. Are ancillary services provided to occupants SIGNIFICANT? → owner-occupied (a managed hotel). Insignificant? → still investment property (§3)</span>
+          <span>4. Which measurement model — current value (fair value, gains/losses to surplus/deficit) or historical cost? Chosen ONCE, applied to ALL investment property (§5)</span>
+          <span>5. Can fair value be reliably measured? If not (rare, on initial recognition only) → historical cost model under IPSAS 43/45 instead (§7)</span>
+          <span>6. Has the USE changed, with evidence? → transfer between investment property, owner-occupied property, and inventories (§9)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-spaced">
+      <div class="card cs span2">
+        <div class="ctitle cs">Concept-to-statement mapping table</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>IPSAS 16 concept</span><span>Statement(s)</span><span>Notes</span></div>
+          <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Investment property carrying amount</span><span><span class="badge bs">SOFP</span></span><span>Fair value (current value model) or cost less depreciation (historical cost model)</span></div>
+          <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Fair value gains/losses</span><span><span class="badge bp">SOFPerf</span></span><span>Current value model only — never to net assets/equity</span></div>
+          <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Transfer FROM owner-occupied (fair value model)</span><span><span class="badge be">NA/E</span> <span class="badge bp">SOFPerf</span></span><span>Treated as an IPSAS 45 revaluation</span></div>
+          <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Rental revenue &amp; direct operating expenses</span><span><span class="badge bp">SOFPerf</span> <span class="badge be">Notes</span></span><span>Disclosed by category, generating vs non-generating property</span></div>
+          <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Fair value hierarchy &amp; reconciliation</span><span><span class="badge be">Notes</span></span><span>IPSAS 46-aligned disclosure package</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 15 — RELATED STANDARDS ============ -->
+    <div class="section-header" id="s15"><span class="num">15</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">How IPSAS 16 connects across the IPSAS body of literature</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:0.7fr 2.2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+          <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 12</span><span>Property held for sale in the ordinary course of operations is inventory, not investment property (§2, §9)</span></div>
+          <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 19</span><span>Liability recognition where expected payments exceed expected receipts on an investment property (§6)</span></div>
+          <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 21 / 26</span><span>Impairment governs investment property held under the historical cost model (§10)</span></div>
+          <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 40</span><span>Determines whether an investment property acquisition is a public sector combination (§2)</span></div>
+          <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 43</span><span>Right-of-use investment property recognition/measurement, lessor/lessee disclosures, sale-and-leaseback (throughout)</span></div>
+          <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 44</span><span>Held-for-sale classification for investment property under the historical cost model (§8)</span></div>
+          <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 45</span><span>Historical cost model mechanics, and the revaluation-equivalent treatment for owner-occupied-to-investment transfers (§8, §9)</span></div>
+          <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 46</span><span>Fair value measurement methodology (Appendix D) and disclosure hierarchy (§6, §11)</span></div>
+          <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 47</span><span>Transaction consideration determination on disposal of investment property (§10)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 16 — GLOSSARY ============ -->
+    <div class="section-header" id="s16"><span class="num">16</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <div class="three-col">
+      <div class="card cn">
+        <div class="glossary-item"><div class="glossary-term">Investment property</div><div class="glossary-def">Property held to earn rentals or for capital appreciation, rather than for use in operations or for sale.</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Owner-occupied property</div><div class="glossary-def">Property held for use in production/supply of goods/services, or for administrative purposes.</div></div>
+      </div>
+      <div class="card cn">
+        <div class="glossary-item"><div class="glossary-term">Cost</div><div class="glossary-def">Cash/cash equivalents paid, or the fair value of other consideration given, to acquire an asset at acquisition or construction.</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Carrying amount</div><div class="glossary-def">The amount at which an asset is recognized in the statement of financial position.</div></div>
+      </div>
+      <div class="card cn">
+        <div class="glossary-item"><div class="glossary-term">Current value model</div><div class="glossary-def">Measures all investment property at fair value, with changes recognized in surplus or deficit.</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Historical cost model</div><div class="glossary-def">Measures investment property per IPSAS 43/44/45's historical cost provisions, as applicable.</div></div>
+      </div>
+    </div>
+
+    <div class="legend">
+      <div class="ltitle">Financial statement key</div>
+      <div class="lrow">
+        <span class="badge bs">SOFP</span> Statement of financial position
+        <span class="badge bp">SOFPerf</span> Statement of financial performance
+        <span class="badge be">NA/E</span> Net assets/equity (statement of changes)
+      </div>
+    </div>
+
+
+  </div>
+</StandardPageLayout>

@@ -1,0 +1,366 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import metadata from "../../data/standards/ipsas/ipsas11.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  covers={metadata.covers}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Objective, Scope & Definitions" },
+        { id: "s2", label: "Combining & Segmenting Contracts" },
+        { id: "s3", label: "Contract Revenue" },
+        { id: "s4", label: "Contract Costs" },
+        { id: "s5", label: "Recognition — Percentage of Completion" },
+        { id: "s6", label: "Recognition of Expected Deficits" },
+        { id: "s7", label: "Changes in Estimates & Disclosure" },
+        { id: "s8", label: "Worked Example — Noncommercial Contract" },
+        { id: "s9", label: "Worked Example — Commercial Contract" },
+        { id: "s10", label: "Effective Date & Amendment Timeline" },
+        { id: "s11", label: "Relationship to IAS 11" },
+        { id: "s12", label: "Statement / Process Mapping" },
+        { id: "s13", label: "Related Standards" },
+        { id: "s14", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="active"
+    explanation="IPSAS 11 Construction Contracts is the current, active standard issued by the IPSASB for accounting for the costs and revenue of construction contracts. It is effective for annual financial statements covering periods beginning on or after 1 July 2002 (earlier application encouraged). The immediate-expected-deficit rule applies only to full-cost-recovery contracts."
+    historical="IPSAS 11 is drawn primarily from IAS 11 Construction Contracts, adapted for the public sector with commentary on binding arrangements, cost-plus and non-commercial contracts, and an explicit scope covering contracts with no contract revenue. Unlike the private sector (where IAS 11 was replaced by IFRS 15), IPSAS 11 remains construction-contract-specific, pending IPSAS 47."
+    link=""
+    linkText=""
+  />
+
+  <div class="wrap">
+  <!-- ============ SECTION 1 — OBJECTIVE, SCOPE & DEFINITIONS ============ -->
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; Definitions (paras. 1–11)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Objective — public sector construction is different</div>
+        <div class="principle">Prescribes the accounting treatment of costs and revenue for construction contracts. In many jurisdictions, public sector construction contracts specify NO contract revenue at all — funding comes via appropriation or grant instead. There, the primary issue is allocating CONSTRUCTION COSTS to the right period. Where contracts ARE commercial or cost-recovery based, the issue extends to allocating REVENUE too.</div>
+        <div class="check-list">
+          <span>Applied by a contractor preparing accrual-basis financial statements</span>
+        </div>
+      </div>
+
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions (para. 4)</div>
+        <div class="glossary-item"><div class="glossary-term">Construction contract</div><div class="glossary-def">A contract, or similar BINDING ARRANGEMENT, specifically negotiated for constructing an asset or a closely interrelated/interdependent combination of assets.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Fixed price contract</div><div class="glossary-def">The contractor agrees to a fixed contract price or fixed rate per unit of output (possibly subject to cost-escalation clauses).</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Cost plus / cost-based contract</div><div class="glossary-def">The contractor is reimbursed for allowable/defined costs, plus (if commercial) an additional percentage or fixed fee.</div></div>
+        <div class="callout info callout--flush">"Binding arrangement" reaches beyond legal contracts — a ministerial direction, cabinet decision, Act of Parliament, or MOU between government departments counts too, provided it confers similar rights and obligations (para. 7).</div>
+      </div>
+    </div>
+
+    <div class="grid grid-spaced">
+      <div class="card cw span2">
+        <div class="ctitle cw">Public-sector contract types (paras. 9–10)</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">COMMERCIAL COST-PLUS</div>
+            <div class="text-supporting">Revenue covers costs PLUS a profit margin — a genuine commercial arrangement.</div>
+          </div>
+          <div>
+            <div class="elabel">NONCOMMERCIAL FULL/PARTIAL COST RECOVERY</div>
+            <div class="text-supporting">A public sector entity constructs for another entity in exchange for full or partial reimbursement — no profit margin.</div>
+          </div>
+        </div>
+        <div class="note">Where a controlling entity funds a controlled entity's construction INDIRECTLY (general appropriation, or third-party grants with no direct cost recovery), that arrangement is classified as a FIXED PRICE contract for IPSAS 11 purposes (para. 10) — also covers services directly related to construction (project managers, architects) and demolition/environmental restoration work (para. 6).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 2 — COMBINING & SEGMENTING CONTRACTS ============ -->
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Combining &amp; Segmenting Construction Contracts (paras. 12–15)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs">
+        <div class="ctitle cs">Segment ONE contract into several (para. 13) — ALL THREE conditions</div>
+        <div class="check-list">
+          <span>Separate proposals submitted for each asset</span>
+          <span>Each asset separately negotiated, and either party could accept/reject that part alone</span>
+          <span>Costs and revenues of each asset can be identified</span>
+        </div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Combine SEVERAL contracts into one (para. 14) — ALL THREE conditions</div>
+        <div class="check-list">
+          <span>Negotiated as a single package</span>
+          <span>So closely interrelated they're effectively one project with an overall margin</span>
+          <span>Performed concurrently or in continuous sequence</span>
+        </div>
+        <div class="note">An OPTIONAL additional asset is a separate contract if it differs significantly in design/technology/function from the original, OR its price was negotiated independently of the original contract price (para. 15).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 3 — CONTRACT REVENUE ============ -->
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Contract Revenue (paras. 16–22)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">What contract revenue comprises</div>
+        <div class="formula-box">
+          <div class="f-eq">Contract revenue = Initial agreed amount + Variations + Claims + Incentive payments (where probable AND reliably measurable)</div>
+        </div>
+        <div class="text-supporting">Measured at the fair value of consideration received/receivable. For cost-plus contracts, the initial revenue amount may need to be ESTIMATED (e.g. by reference to expected life-of-contract costs) rather than being stated outright.</div>
+      </div>
+
+      <div class="card cd">
+        <div class="ctitle cd">Three components requiring judgment</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:0.9fr 2.1fr;"><span>Component</span><span>Included when...</span></div>
+          <div class="tr" style="grid-template-columns:0.9fr 2.1fr;"><span>Variation</span><span>Customer-instructed scope change; probable the customer approves it AND the revenue amount, and reliably measurable</span></div>
+          <div class="tr alt" style="grid-template-columns:0.9fr 2.1fr;"><span>Claim</span><span>Amount sought as reimbursement for costs outside the contract price (delays, spec errors); only when negotiations have reached an ADVANCED stage and the amount can be reliably measured</span></div>
+          <div class="tr" style="grid-template-columns:0.9fr 2.1fr;"><span>Incentive payment</span><span>Extra payment for meeting/exceeding performance standards; only when the contract is sufficiently advanced that meeting the standard is probable, and reliably measurable</span></div>
+        </div>
+        <div class="note">Amounts paid directly to SUBCONTRACTORS by third-party funding agencies must be reviewed against the revenue definition/recognition criteria — if they qualify, they're both contract revenue AND contract costs (para. 22).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 4 — CONTRACT COSTS ============ -->
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Contract Costs (paras. 23–29)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Three cost categories (para. 23)</div>
+        <div class="dot-list">
+          <span><strong>Direct costs</strong> — site labor/supervision, materials, plant depreciation, moving/hiring plant, direct design/technical assistance, rectification/warranty costs, third-party claims (reduced by incidental revenue, e.g. surplus-material sales)</span>
+          <span><strong>Allocable general costs</strong> — insurance, non-direct design costs, construction overheads (incl. IPSAS 5 capitalized borrowing costs) — allocated systematically, based on NORMAL activity levels</span>
+          <span><strong>Contract-specific chargeable costs</strong> — general admin/development costs where the contract specifies reimbursement</span>
+        </div>
+      </div>
+
+      <div class="card cd">
+        <div class="ctitle cd">Excluded from contract costs (para. 28)</div>
+        <div class="cross-list">
+          <span>General admin costs NOT specified for reimbursement</span>
+          <span>Selling costs</span>
+          <span>R&amp;D costs not specified for reimbursement</span>
+          <span>Depreciation of IDLE plant/equipment not used on the contract</span>
+        </div>
+        <div class="note">Costs incurred to SECURE a contract can be included if separately identifiable, reliably measurable, and it's probable the contract will be won — but if expensed when incurred, they're NOT reinstated as contract costs if won later (para. 29).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 5 — RECOGNITION: PERCENTAGE OF COMPLETION ============ -->
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Recognition — Percentage of Completion Method (paras. 30–43)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs">
+        <div class="ctitle cs">Reliable outcome — the conditions differ by contract type</div>
+        <div class="elabel">FIXED PRICE CONTRACT (PARA. 31) — ALL FOUR</div>
+        <div class="check-list">
+          <span>Total contract revenue can be measured reliably</span>
+          <span>Probable that economic benefits/service potential will flow to the entity</span>
+          <span>Both costs to complete AND stage of completion can be measured reliably</span>
+          <span>Contract costs attributable can be clearly identified and measured, so actuals can be compared to estimates</span>
+        </div>
+        <div class="elabel">COST PLUS / COST-BASED CONTRACT (PARA. 32) — BOTH</div>
+        <div class="check-list">
+          <span>Probable that economic benefits/service potential will flow to the entity</span>
+          <span>Attributable contract costs (reimbursable or not) can be clearly identified and measured reliably</span>
+        </div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Stage of completion methods (para. 38) &amp; unreliable outcome (para. 40)</div>
+        <div class="dot-list">
+          <span>Contract costs incurred to date ÷ estimated total contract costs</span>
+          <span>Surveys of work performed</span>
+          <span>Physical proportion of contract work completed</span>
+        </div>
+        <div class="formula-box">
+          <div class="f-eq">Outcome NOT reliably estimable → Revenue recognized only to the extent of RECOVERABLE costs incurred; costs expensed as incurred; no surplus/deficit</div>
+        </div>
+        <div class="note">Progress payments/advances often do NOT reflect actual work performed — don't use as a completion proxy (para. 38). Materials delivered but not yet installed, and advance subcontractor payments, are EXCLUDED from costs-incurred-to-date (para. 39).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 6 — RECOGNITION OF EXPECTED DEFICITS ============ -->
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Recognition of Expected Deficits (paras. 44–48)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">The immediate-loss rule — but ONLY for full-cost-recovery contracts</div>
+        <div class="principle">Where a contract is intended, AT INCEPTION, to have costs FULLY RECOVERED from the other parties to the contract, and it becomes probable that total contract costs will exceed total contract revenue, the ENTIRE expected deficit is recognized as an expense IMMEDIATELY — not spread over the remaining contract life.</div>
+        <div class="callout warn callout--flush"><strong>Scope limitation:</strong> this rule does NOT apply to contracts intended for less-than-full cost recovery, where the funding gap is expected to be filled by appropriation or third-party grants (para. 46) — in those, an "expected deficit" isn't the same red flag. The deficit amount is determined regardless of whether work has started, the stage of completion, or expected surpluses on OTHER unrelated commercial contracts (para. 48).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 7 — CHANGES IN ESTIMATES & DISCLOSURE ============ -->
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Changes in Estimates &amp; Disclosure (paras. 49–56)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Changes in estimates (para. 49)</div>
+        <div class="text-supporting">The percentage-of-completion method is applied CUMULATIVELY each period to CURRENT estimates. A change in estimated contract revenue, costs, or outcome is a change in accounting ESTIMATE (IPSAS 3) — applied to the current and future periods, never retrospectively restated.</div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Required disclosures (paras. 50–55)</div>
+        <div class="check-list">
+          <span>Contract revenue recognized as revenue in the period</span>
+          <span>Methods used to determine recognized contract revenue</span>
+          <span>Methods used to determine stage of completion</span>
+        </div>
+        <div class="elabel">FOR CONTRACTS IN PROGRESS AT THE REPORTING DATE</div>
+        <div class="dot-list">
+          <span>Aggregate costs incurred and recognized surpluses (less deficits) to date</span>
+          <span>Amount of advances received; amount of retentions</span>
+          <span>Gross amount DUE FROM customers (an asset) / DUE TO customers (a liability) for contract work</span>
+        </div>
+        <div class="note">Retentions = progress billings withheld until specified conditions/defect-rectification are met. Advances = revenue received before the related work is performed (para. 52).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 8 — WORKED EXAMPLE: NONCOMMERCIAL CONTRACT ============ -->
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Worked Example — Noncommercial Aid-Funded Contract (IG9–IG14)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Aid agency funds construction; costs revised upward in Year 1</div>
+        <div class="worked">
+          <div class="wk-title">Initial contract revenue 4,000; initial cost estimate — by end of Year 1, revised to 8,050 total; stage of completion 26% (Yr1), 74% (Yr2), 100% (Yr3)</div>
+          <div class="wk-body">Stage of completion is measured as costs-incurred-to-date ÷ latest total estimated costs.</div>
+          <div class="wk-answer">
+            <strong>Year 1:</strong> Revenue = 4,000 × 26% = 1,040; Expenses = 8,050 × 26% = 2,093.<br>
+            <strong>Year 2:</strong> Cumulative revenue = 4,100 × 74% = 3,034 (less 1,040 recognized in Yr1 = <strong>1,994 recognized this year</strong>); cumulative expenses = 8,200 × 74% = 6,068 (less 2,093 = <strong>3,975 this year</strong>).<br>
+            <strong>Year 3:</strong> Cumulative revenue = 4,100 × 100% = 4,100 (less 3,034 = <strong>1,066 this year</strong>); cumulative expenses = 8,200 (less 6,068 = <strong>2,132 this year</strong>).
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 9 — WORKED EXAMPLE: COMMERCIAL CONTRACT ============ -->
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Worked Example — Commercial Fixed-Price Contract (IG15–IG21)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">Bridge construction: fixed price 9,000, a Year-2 variation, and materials stockpiled at year-end</div>
+        <div class="worked">
+          <div class="wk-title">Initial revenue 9,000, initial cost estimate 8,000; Yr1 cost estimate revised to 8,050; Yr2 customer-approved variation +200 revenue / +150 costs; Yr2 year-end includes 100 of stored materials not yet used</div>
+          <div class="wk-body">Stage of completion EXCLUDES the 100 of stored materials from costs-incurred, since they don't reflect work performed → Year 2 stage = 74% (not higher).</div>
+          <div class="wk-answer">
+            <strong>Year 1:</strong> Total revenue 9,000, total costs 8,050, stage 26% → Revenue 2,340, Expenses 2,093, <strong>Surplus 247</strong>.<br>
+            <strong>Year 2:</strong> Total revenue 9,200 (incl. variation), total costs 8,200, stage 74% → cumulative revenue 6,808 (less 2,340 = <strong>4,468 this year</strong>); cumulative expenses 6,068 (less 2,093 = <strong>3,975 this year</strong>); <strong>Surplus this year 493</strong>.<br>
+            <strong>Year 3:</strong> Stage 100% → cumulative revenue 9,200 (less 6,808 = <strong>2,392 this year</strong>); cumulative expenses 8,200 (less 6,068 = <strong>2,132 this year</strong>); <strong>Surplus this year 260</strong>. Total surplus over the contract = 1,000.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 10 — EFFECTIVE DATE & AMENDMENT TIMELINE ============ -->
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Effective Date &amp; Amendment Timeline (paras. 57–58)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Amendment history at a glance</div>
+        <div class="principle">Base Standard: periods beginning on/after <strong>1 July 2002</strong> (earlier application encouraged).</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1fr 2.2fr;"><span>Effective</span><span>Change</span></div>
+          <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2017</span><span>Para. 58 — IPSAS 33, First-time Adoption</span></div>
+          <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2018</span><span>Paras. 2, 3 deleted; para. 45 amended — The Applicability of IPSAS (Apr 2016)</span></div>
+        </div>
+        <div class="note">Relatively few amendments compared to other early-numbered Standards — construction contract accounting has stayed largely stable since 2002.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 11 — RELATIONSHIP TO IAS 11 ============ -->
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Relationship to IAS/IFRS — Comparison with IAS 11</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — IPSAS 11 vs IAS 11</div>
+        <div class="principle">IPSAS 11 is drawn primarily from IAS 11, <em>Construction Contracts</em> (an IFRS Standard subsequently withdrawn and replaced by IFRS 15 in the private sector — IPSAS 11 has NOT followed that path and remains construction-contract-specific pending IPSAS 47's eventual broader rollout).</div>
+        <div class="dot-list">
+          <span>Additional public-sector commentary throughout, to clarify applicability</span>
+          <span>Terminology: "revenue," "statement of financial performance" (IPSAS 11) vs "income," "income statement" (IAS 11)</span>
+          <span>IPSAS 11 includes BINDING ARRANGEMENTS that aren't legal contracts within scope — IAS 11 does not</span>
+          <span>IPSAS 11 explicitly includes COST-BASED and NONCOMMERCIAL contracts within scope</span>
+          <span>IPSAS 11 clarifies the immediate-expected-deficit rule applies ONLY to full-cost-recovery contracts</span>
+          <span>IPSAS 11 adds extra Implementation Guidance examples for NONCOMMERCIAL construction contracts (§8)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 12 — STATEMENT / PROCESS MAPPING ============ -->
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Recognition decision map</div>
+        <div class="dot-list">
+          <span>1. Is this a single contract, or should it be COMBINED/SEGMENTED per §2's tests?</span>
+          <span>2. Is the outcome reliably estimable (fixed-price para. 31 tests, or cost-plus para. 32 tests)? If yes → recognize by STAGE OF COMPLETION (§5)</span>
+          <span>3. If not reliably estimable → revenue limited to recoverable costs incurred; no surplus recognized (§5)</span>
+          <span>4. Was the contract intended, at inception, for FULL cost recovery? If yes AND a deficit becomes probable → recognize the WHOLE expected deficit immediately (§6)</span>
+          <span>5. Do estimates change as the contract progresses? → treat as a change in accounting ESTIMATE (IPSAS 3), applied prospectively (§7)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-spaced">
+      <div class="card cs span2">
+        <div class="ctitle cs">Concept-to-statement mapping table</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>IPSAS 11 concept</span><span>Statement(s)</span><span>Notes</span></div>
+          <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Revenue &amp; costs by stage of completion</span><span><span class="badge bp">SOFPerf</span></span><span>Percentage-of-completion method</span></div>
+          <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Costs relating to future contract activity</span><span><span class="badge bs">SOFP</span></span><span>Recognized as an asset (contract work in progress)</span></div>
+          <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Expected deficit (full-recovery contracts)</span><span><span class="badge bp">SOFPerf</span></span><span>Recognized immediately, in full</span></div>
+          <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Gross amount due FROM customers</span><span><span class="badge bs">SOFP</span></span><span>Asset — costs + surpluses exceed billings</span></div>
+          <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Gross amount due TO customers</span><span><span class="badge bs">SOFP</span></span><span>Liability — billings exceed costs + surpluses</span></div>
+          <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Revenue recognition methods, stage-of-completion methods</span><span><span class="badge be">Notes</span></span><span>Mandatory per para. 50</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 13 — RELATED STANDARDS ============ -->
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">How IPSAS 11 connects across the IPSAS body of literature</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:0.7fr 2.2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+          <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 3</span><span>Governs changes in contract-revenue/cost estimates as accounting estimate changes (§7)</span></div>
+          <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 5</span><span>Allowed-alternative borrowing cost capitalization can be an allocable general contract cost (§4)</span></div>
+          <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 9</span><span>Service-agreement revenue directly related to construction (project managers, architects) is dealt with HERE, not under IPSAS 9 (§1)</span></div>
+          <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 19</span><span>Contingent liabilities/assets from warranty costs, claims, penalties, and restructuring provisions (§7)</span></div>
+          <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 33</span><span>First-time adoption interaction — effective-date mechanics (§10)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 14 — GLOSSARY ============ -->
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <div class="three-col">
+      <div class="card cn">
+        <div class="glossary-item"><div class="glossary-term">Contractor</div><div class="glossary-def">An entity performing construction work under a construction contract — includes a general/prime contractor, subcontractor, or construction manager.</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Retentions</div><div class="glossary-def">Progress billings withheld until specified contract conditions are met or defects rectified.</div></div>
+      </div>
+      <div class="card cn">
+        <div class="glossary-item"><div class="glossary-term">Progress billings</div><div class="glossary-def">Amounts of contract revenue billed for work performed, whether or not yet paid.</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Advances</div><div class="glossary-def">Contract revenue received by the contractor before the related work is performed.</div></div>
+      </div>
+      <div class="card cn">
+        <div class="glossary-item"><div class="glossary-term">Percentage of completion method</div><div class="glossary-def">Recognizing contract revenue/costs by reference to the stage of completion at the reporting date.</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Variation</div><div class="glossary-def">A customer-instructed change in the scope of contracted work.</div></div>
+      </div>
+    </div>
+
+    <div class="legend">
+      <div class="ltitle">Financial statement key</div>
+      <div class="lrow">
+        <span class="badge bs">SOFP</span> Statement of financial position
+        <span class="badge bp">SOFPerf</span> Statement of financial performance
+        <span class="badge be">Notes</span> Notes to the financial statements
+      </div>
+    </div>
+
+
+  </div>
+</StandardPageLayout>

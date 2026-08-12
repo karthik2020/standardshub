@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPSAS 36 — Investments in Associates and Joint Ventures | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .eg  { margin-bottom: 7px; }
+  .egl { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; margin-bottom: 3px; }
+  .entry { display: flex; align-items: flex-start; gap: 4px; margin-bottom: 4px; }
+  .dr { font-size: 11px; font-weight: 500; color: var(--color-text-info);   min-width: 14px; padding-top: 1px; }
+  .cr { font-size: 11px; font-weight: 500; color: var(--color-text-danger); min-width: 14px; padding-top: 1px; padding-left: 6px; }
+  .etxt { font-size: 11px; color: var(--color-text-primary); flex: 1; line-height: 1.4; }
+  .badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .bc { background: #f3e8ff; color: #7e22ce; }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">IPSAS 36 — Investments in Associates and Joint Ventures</div>
+      <div class="hub-sub">Extended reference poster · Full Handbook structure · Statement mapping · Related standards</div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <a href="#s1">1. Objective, Scope &amp; Quantifiable Ownership Interests</a>
+    <a href="#s2">2. Definitions</a>
+    <a href="#s3">3. Significant Influence — the 20% Presumption</a>
+    <a href="#s4">4. The Equity Method — Core Mechanics</a>
+    <a href="#s5">5. Application &amp; Exemptions</a>
+    <a href="#s6">6. Held for Sale, Discontinuing the Equity Method &amp; Category Changes</a>
+    <a href="#s7">7. Changes in Ownership Interest</a>
+    <a href="#s8">8. Equity Method Procedures — Upstream/Downstream &amp; Uniform Policies</a>
+    <a href="#s9">9. Acquisition Accounting &amp; Reporting Date Alignment</a>
+    <a href="#s10">10. The Deficit Floor — When Losses Exceed the Investment</a>
+    <a href="#s11">11. Impairment of the Net Investment</a>
+    <a href="#s12">12. Separate Financial Statements &amp; Transitional Provisions</a>
+    <a href="#s13">13. Effective Date &amp; Amendment Timeline</a>
+    <a href="#s14">14. Relationship to IAS 28</a>
+    <a href="#s15">15. Statement / Process Mapping</a>
+    <a href="#s16">16. Related Standards</a>
+    <a href="#s17">17. Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 — OBJECTIVE, SCOPE & QUANTIFIABLE OWNERSHIP INTERESTS ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; Quantifiable Ownership Interests (paras. 1–5)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Objective &amp; scope</div>
+      <div class="principle">Prescribes the accounting for investments in associates and joint ventures, and sets out the requirements for applying the EQUITY METHOD. Applies to all entities that are investors with SIGNIFICANT INFLUENCE over, or JOINT CONTROL of, an investee — WHERE the investment leads to a QUANTIFIABLE OWNERSHIP INTEREST.</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-top:8px;">A quantifiable ownership interest includes formal equity structures (share capital, property trust units) AND other reliably measurable interests (e.g. partnership interests) — but NOT where the equity structure is too poorly defined to measure reliably (para. 4).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Worked example — an "investment" that ISN'T an ownership interest</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">A public sector entity substantially funds a hospital OWNED and OPERATED by a charity</div>
+        <div class="wk-body">The contribution is non-exchange in nature — it lets the public entity participate in hospital operations, and the charity is accountable for public monies received.</div>
+        <div class="wk-answer">This does NOT constitute an ownership interest — the charity could seek alternative funding and prevent the public entity from participating. The public entity is not exposed to the RISKS, nor does it enjoy the REWARDS, incidental to true ownership (para. 5).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 — DEFINITIONS ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Definitions (para. 8)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The three relationship types</div>
+      <div class="glossary-item"><div class="glossary-term">Associate</div><div class="glossary-def">An entity over which the investor has SIGNIFICANT INFLUENCE.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Joint arrangement</div><div class="glossary-def">An arrangement of which two or more parties have JOINT CONTROL.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Joint control</div><div class="glossary-def">The AGREED sharing of control by way of a binding arrangement — exists ONLY when decisions about relevant activities require UNANIMOUS consent of the controlling parties.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Joint venture</div><div class="glossary-def">A joint arrangement where the parties with joint control have rights to the NET ASSETS of the arrangement.</div></div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">The method, and the influence threshold</div>
+      <div class="glossary-item">
+        <div class="glossary-term">Equity method</div>
+        <div class="glossary-def">Initial recognition at COST, adjusted thereafter for the investor's share of the investee's POST-ACQUISITION change in net assets/equity — the investor's surplus/deficit includes its share of the investee's surplus/deficit.</div>
+      </div>
+      <div class="glossary-item" style="border-bottom:none;">
+        <div class="glossary-term">Significant influence</div>
+        <div class="glossary-def">The POWER to participate in financial and operating policy DECISIONS of another entity — but NOT control or joint control of those policies.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 — SIGNIFICANT INFLUENCE: THE 20% PRESUMPTION ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Significant Influence — the 20% Presumption (paras. 10–15)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The rebuttable voting-power threshold (para. 11)</div>
+      <div class="formula-box">
+        <div class="f-eq">≥20% of voting power (direct or indirect) → PRESUMED significant influence, unless clearly demonstrated otherwise</div>
+      </div>
+      <div class="formula-box">
+        <div class="f-eq">&lt;20% of voting power → PRESUMED NO significant influence, unless clearly demonstrated otherwise</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">A substantial or majority ownership by ANOTHER investor does NOT automatically preclude the entity from also having significant influence.</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Evidence of significant influence (para. 12) &amp; potential voting rights</div>
+      <div class="dot-list">
+        <span>Board (or equivalent) representation</span>
+        <span>Participation in policy-making, including dividend/distribution decisions</span>
+        <span>Material transactions with the investee</span>
+        <span>Interchange of managerial personnel</span>
+        <span>Provision of essential technical information</span>
+      </div>
+      <div class="note">CURRENTLY exercisable/convertible potential voting rights (warrants, options, convertible instruments) — even those held by OTHER entities — are considered in the significant-influence assessment; management's INTENTIONS and financial ABILITY to exercise are explicitly excluded from that judgment (paras. 13–14). Significant influence can be LOST with or without any ownership change — e.g. an associate becomes subject to another government's control, a court, or an administrator (para. 15).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 — THE EQUITY METHOD: CORE MECHANICS ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>The Equity Method — Core Mechanics (paras. 16–21)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The running balance</div>
+      <div class="formula-box">
+        <div class="f-eq">Carrying amount = cost + cumulative share of post-acquisition surplus/deficit − distributions received ± share of other net-assets/equity changes</div>
+      </div>
+      <div class="dot-list">
+        <span>Investor's share of investee's surplus/deficit → investor's OWN surplus or deficit</span>
+        <span>Distributions received → REDUCE the investment's carrying amount (never revenue)</span>
+        <span>Share of investee net-assets/equity changes NOT run through surplus/deficit (e.g. PP&amp;E revaluation, foreign exchange translation) → investor's OWN net assets/equity</span>
+      </div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Why NOT just recognize dividends as revenue?</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Distributions received often bear LITTLE RELATION to the investee's actual performance. Since the investor has joint control or significant influence, it genuinely has an interest in the investee's performance — the equity method extends the investor's OWN financial statements to capture that interest, giving more informative reporting of both net assets/equity and surplus or deficit (para. 17).</div>
+      <div class="note">Unless classified held-for-sale (IPSAS 44), the investment (or any retained portion) is classified as a NON-CURRENT asset (para. 21). IPSAS 41 does NOT apply to equity-method interests — except LONG-TERM interests that, in substance, extend the net investment (§10), which ARE subject to IPSAS 41 first (paras. 20, 20A).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 — APPLICATION & EXEMPTIONS ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Application &amp; Exemptions from the Equity Method (paras. 22–25)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Default: equity method required — exemptions mirror IPSAS 35's</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">An entity with joint control or significant influence applies the equity method UNLESS exempt. Exemption applies where the entity is a controlling entity ALREADY exempt from consolidation (IPSAS 35 para. 5) — or, for a non-controlling entity, the SAME four conditions as IPSAS 35's consolidation exemption (informed/non-objecting owners; no public market trading; no securities filing; a compliant ultimate/intermediate controlling entity) (para. 23).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">The fair value election for venture capital &amp; similar vehicles</div>
+      <div class="formula-box">
+        <div class="f-eq">Investment held by/through a venture capital organization, mutual fund, unit trust, or investment-linked insurance fund → MAY elect fair value through surplus or deficit (IPSAS 41) instead of the equity method</div>
+      </div>
+      <div class="dot-list">
+        <span>Election made SEPARATELY for each associate/joint venture, at INITIAL recognition — an investment entity will, by definition, have made this election for all its investments (para. 24)</span>
+        <span>Where only a PORTION is held via such a vehicle, that portion may be separately fair-valued while the REMAINDER stays on the equity method (para. 25)</span>
+        <span>Where the portion is held via an INVESTMENT ENTITY specifically (not just any venture capital vehicle), fair value MUST be used for that portion — no election, it's mandatory (para. 25)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 — HELD FOR SALE, DISCONTINUING THE EQUITY METHOD & CATEGORY CHANGES ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Classification as Held for Sale &amp; Discontinuing the Equity Method (paras. 25A–27)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd">
+      <div class="ctitle cd">Held for sale — partial or full</div>
+      <div class="dot-list">
+        <span>Portion meeting IPSAS 44 held-for-sale criteria → apply IPSAS 44 to THAT portion; any RETAINED portion continues on the equity method until the held-for-sale portion is actually disposed of (para. 25A)</span>
+        <span>After disposal → any retained interest goes to IPSAS 41, UNLESS it's still an associate/joint venture, in which case the equity method continues</span>
+        <span>No longer meets held-for-sale criteria → equity method resumes RETROSPECTIVELY from the original classification date; prior-period statements are amended accordingly (para. 25B)</span>
+      </div>
+    </div>
+
+    <div class="card cs">
+      <div class="ctitle cs">Discontinuing the equity method — three destinations (para. 26)</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1.9fr;"><span>What it becomes</span><span>Treatment</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>A controlled entity</span><span>IPSAS 40 (public sector combination) + IPSAS 35 (consolidation)</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>A retained financial asset</span><span>Fair value under IPSAS 41 — that fair value becomes the deemed initial recognition value; gain/loss = (retained-interest fair value + disposal proceeds) − carrying amount at discontinuation, to surplus or deficit</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Net assets/equity amounts previously recognized</span><span>Same basis as if the investee had directly disposed of the related assets/liabilities</span></div>
+      </div>
+      <div class="note">Associate ↔ joint venture reclassification (still equity-accounted either way): the equity method CONTINUES uninterrupted — NO remeasurement of the retained interest (para. 27).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 — CHANGES IN OWNERSHIP INTEREST ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Changes in Ownership Interest — Reduced but Still Significant/Joint (para. 28)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Partial disposal WITHOUT losing the classification</div>
+      <div class="formula-box">
+        <div class="f-eq">Ownership interest reduced, but STILL classified as an associate or joint venture → transfer directly to accumulated surplus/deficit any proportion of gain/loss PREVIOUSLY recognized in net assets/equity relating to that reduction — but only if IPSAS would ALSO require that transfer on an outright disposal of the underlying assets/liabilities</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">This mirrors the "recycling" logic seen elsewhere in this library (e.g. revaluation surplus realized progressively or on disposal) — a partial reduction in the equity-accounted interest triggers a PROPORTIONATE recycling of any accumulated net-assets/equity amount attributable to that specific slice.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 — EQUITY METHOD PROCEDURES: UPSTREAM/DOWNSTREAM & UNIFORM POLICIES ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Equity Method Procedures — Upstream/Downstream Transactions &amp; Uniform Policies (paras. 29–34B, 37–40)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Eliminating unrealized profit — but only to the unrelated-investor share</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2fr;"><span>Direction</span><span>Elimination rule</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2fr;"><span><strong>Upstream</strong> (associate/JV → investor)</span><span>The investor's SHARE of the associate/JV's gain is eliminated</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2fr;"><span><strong>Downstream</strong> (investor → associate/JV, non-operation assets)</span><span>Recognized only to the extent of UNRELATED investors' interests in the associate/JV</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2fr;"><span><strong>Downstream</strong> (assets constituting an "operation," per IPSAS 40)</span><span>Recognized IN FULL (para. 34A) — a 2017 IPSAS 40 refinement</span></div>
+      </div>
+      <div class="note">Impairment/net-realizable-value LOSSES are never eliminated this way — downstream losses recognized IN FULL by the investor; upstream losses recognized to the investor's SHARE (para. 32). Non-monetary contributions lacking commercial substance (IPSAS 45 sense) → gain/loss treated as UNREALIZED, eliminated against the investment itself, never shown as deferred gains/losses on the SOFP (para. 33).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Uniform policies, investment entities, and cumulative preference shares</div>
+      <div class="dot-list">
+        <span>Associate/JV policies CONFORMED to the investor's own for equity-method purposes — UNLESS the associate/JV is itself an INVESTMENT ENTITY, in which case its fair value measurement of ITS OWN controlled entities is RETAINED, not adjusted (paras. 37–39)</span>
+        <span>Cumulative preference shares held by OTHER parties, classified as equity → investor's share of surplus/deficit computed AFTER adjusting for those dividends, WHETHER OR NOT declared (para. 40)</span>
+      </div>
+      <div class="note">An economic entity's share = the AGGREGATE holding of the controlling entity and its controlled entities — other, unrelated associates'/JVs' holdings are ignored (para. 30).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 — ACQUISITION ACCOUNTING & REPORTING DATE ALIGNMENT ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Acquisition Accounting &amp; Reporting Date Alignment (paras. 35–36)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The fair value difference on acquisition</div>
+      <div class="dot-list">
+        <span>Goodwill embedded within the investment's carrying amount → NEVER amortized (mirrors IPSAS 26's treatment for consolidated goodwill)</span>
+        <span>Excess of the investor's share of NET FAIR VALUE over cost (a "bargain purchase") → included as REVENUE in the investor's share of the associate/JV's surplus or deficit, in the acquisition period</span>
+        <span>Post-acquisition adjustments (e.g. depreciation based on acquisition-date fair values, or impairment of PP&amp;E/goodwill) flow through the investor's share of surplus/deficit each period (para. 35)</span>
+      </div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Reporting date mismatches — the same two options as consolidation</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Where the associate/JV's reporting date differs from the investor's, the investor EITHER obtains additional financial information as of its own date, OR uses the associate/JV's most recent statements adjusted for significant intervening transactions/events (para. 36) — precisely mirroring IPSAS 35's consolidation reporting-date rule (§9 of that Standard's poster).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 — THE DEFICIT FLOOR ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>The Deficit Floor — When Losses Exceed the Investment (paras. 41–42)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd">
+      <div class="ctitle cd">Stop recognizing losses at zero — with a broader "interest" definition</div>
+      <div class="formula-box">
+        <div class="f-eq">Investor's share of the investee's deficit ≥ its INTEREST in the associate/JV → STOP recognizing further deficit share</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">"Interest" here is BROADER than just the equity-method carrying amount — it includes any LONG-TERM interests that, in substance, extend the net investment (e.g. preference shares, long-term receivables/loans NOT expected to be settled in the foreseeable future) — but explicitly EXCLUDES ordinary trade receivables/payables, and secured long-term receivables with adequate collateral. Losses beyond the ordinary-share investment are absorbed against these other components in REVERSE seniority order (i.e., last-priority-on-liquidation items absorb losses first) (para. 41).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Below zero — legal/constructive obligations only, and resumption</div>
+      <div class="dot-list">
+        <span>Once the interest reaches ZERO, further deficits are provided for (a LIABILITY recognized) ONLY to the extent the entity has incurred LEGAL or CONSTRUCTIVE obligations, or made payments, on the associate/JV's behalf</span>
+        <span>If the associate/JV LATER reports surpluses, the investor resumes recognizing its share only AFTER that share of surpluses equals the UNRECOGNIZED share of prior deficits (para. 42)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 — IMPAIRMENT OF THE NET INVESTMENT ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Impairment of the Net Investment (paras. 43–48)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Loss events — objective evidence required</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:8px;">Impairment exists ONLY where a loss event AFTER initial recognition has an impact on estimated future cash flows that can be RELIABLY ESTIMATED — losses expected from FUTURE events, however likely, are never recognized (para. 44A).</div>
+      <div class="dot-list">
+        <span>Significant financial difficulty of the associate/JV</span>
+        <span>Breach of contract (default, payment delinquency)</span>
+        <span>The investor granting a concession it wouldn't otherwise consider, for financial-difficulty reasons</span>
+        <span>Probable bankruptcy or financial reorganization</span>
+        <span>Disappearance of an active market DUE TO the associate/JV's financial difficulties</span>
+      </div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ NOT, by itself, evidence of impairment: a market disappearing merely because the instrument is no longer publicly traded; a credit rating downgrade; or a fair value decline — though any of these MAY count when considered alongside other information (para. 44B). A significant or PROLONGED fair value decline below cost IS objective evidence (para. 44C).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Which impairment Standard applies, and how value in use is estimated</div>
+      <div class="dot-list">
+        <span>Impairment indicated → apply IPSAS 26 (cash-generating), and POSSIBLY IPSAS 21 (non-cash-generating) as well (para. 45)</span>
+        <span>Value in use for a cash-generating investment = EITHER the investor's share of the PV of the associate/JV's own future cash flows (including eventual disposal proceeds), OR the PV of expected distributions plus disposal proceeds — both methods give the SAME result under consistent assumptions (para. 46)</span>
+        <span>Recoverable amount is assessed for EACH associate/JV individually, UNLESS it doesn't generate cash inflows largely independent of the entity's other assets (para. 48)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 — SEPARATE FINANCIAL STATEMENTS & TRANSITIONAL PROVISIONS ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Separate Financial Statements &amp; Transitional Provisions (paras. 49–50)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs">
+      <div class="ctitle cs">Separate statements — cross-referenced back to IPSAS 34</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">An investment in an associate or joint venture in the entity's OWN separate financial statements is accounted for per IPSAS 34 para. 12 — cost, IPSAS 41 fair value, or the equity method, applied consistently by category (para. 49).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Transition from proportionate consolidation — routed to IPSAS 37</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">The specific transitional mechanics for an entity moving FROM proportionate consolidation TO the equity method (or from the equity method to accounting for a joint OPERATION's assets/liabilities directly) are set out in IPSAS 37, not repeated here (para. 50) — reflecting the close structural relationship between these two Standards.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 — EFFECTIVE DATE & AMENDMENT TIMELINE ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Effective Date &amp; Amendment Timeline (paras. 51–51D)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Amendment history at a glance</div>
+      <div class="principle">Base Standard: periods beginning on/after <strong>1 January 2017</strong> — issued alongside IPSAS 34, 35, 37, and 38, with simultaneous adoption required for earlier application.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2.2fr;"><span>Effective</span><span>Change</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2018</span><span>Paras. 6, 7 deleted — The Applicability of IPSAS (Apr 2016)</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2019</span><span>Para. 26 — IPSAS 40, Public Sector Combinations</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>Prospective, TBD</span><span>Paras. 31, 33 amended; 34A, 34B added — IPSAS 40 (operation vs non-operation asset distinction, §8)</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2023</span><span>Paras. 20, 24, 25, 26, 43, 44, 45 amended; new 44A–44C added — IPSAS 41, Financial Instruments (the modern loss-event impairment model, §11)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 — RELATIONSHIP TO IAS 28 ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Relationship to IAS/IFRS — Comparison with IAS 28</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — IPSAS 36 vs IAS 28 (Amended 2011)</div>
+      <div class="principle">IPSAS 36 is drawn primarily from IAS 28 (Amended 2011), <em>Investments in Associates and Joint Ventures</em>, with amendments to 31 December 2014.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1.9fr;"><span>Topic</span><span>Difference</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Terminology</span><span>"Net assets/equity," "economic entity," "controlling entity," "controlled entity," "revenue" (IPSAS 36) vs "equity," "group," "parent," "subsidiary," "income" (IAS 28)</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Quantifiable ownership interest requirement</span><span>IPSAS 36 applies ONLY where a quantifiable ownership interest exists (§1); IAS 28 has no equivalent explicit requirement, though it's unlikely equity accounting would apply without one anyway</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Retained interest measurement when fair value is precluded</span><span>IPSAS 36 permits using CARRYING AMOUNT as deemed cost when the applicable financial instruments Standard precludes fair value measurement; IAS 28 always requires fair value</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Investment entity associate/JV fair value retention</span><span>IPSAS 36 REQUIRES retaining the investment entity's own fair value measurement (§8); IAS 28 only PERMITS it</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 15 — STATEMENT / PROCESS MAPPING ============ -->
+  <div class="section-header" id="s15"><span class="num">15</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Decision map</div>
+      <div class="dot-list">
+        <span>1. Does the investment give a QUANTIFIABLE OWNERSHIP INTEREST? If no → outside scope entirely (§1)</span>
+        <span>2. Is there SIGNIFICANT INFLUENCE (≥20% voting power presumption) or JOINT CONTROL? → apply the equity method, unless exempt (§3, §5)</span>
+        <span>3. Is the investment held via a venture capital vehicle, mutual fund, or investment entity? → fair value election (or mandatory fair value) instead (§5)</span>
+        <span>4. Track the running carrying amount: cost + share of surplus/deficit − distributions ± other net-assets/equity share (§4)</span>
+        <span>5. Has the investor's share of losses REACHED the full interest? → stop recognizing further losses at zero, absorb only legal/constructive obligations beyond that (§10)</span>
+        <span>6. Is there OBJECTIVE EVIDENCE of impairment? → apply IPSAS 26 (and possibly IPSAS 21) to determine any impairment loss (§11)</span>
+        <span>7. Has the relationship CHANGED — control gained, held-for-sale, disposal, or reclassification between associate/JV? → route to the corresponding discontinuation/continuation mechanics (§6, §7)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card cs span2">
+      <div class="ctitle cs">Concept-to-statement mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>IPSAS 36 concept</span><span>Statement(s)</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Equity-method investment carrying amount</span><span><span class="badge bs">SOFP</span></span><span>Non-current asset, unless held for sale</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Share of investee surplus/deficit</span><span><span class="badge bp">SOFPerf</span></span><span>Investor's own surplus or deficit</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Share of investee other net-assets/equity changes</span><span><span class="badge be">NA/E</span></span><span>E.g. investee's own PP&amp;E revaluation, FX translation</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Distributions received</span><span><span class="badge bs">SOFP</span></span><span>Reduce the investment carrying amount, not revenue</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Impairment loss on the net investment</span><span><span class="badge bp">SOFPerf</span></span><span>Per IPSAS 26 (or IPSAS 21) methodology</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Gain/loss on discontinuing the equity method</span><span><span class="badge bp">SOFPerf</span></span><span>Fair value of retained interest and proceeds, less carrying amount</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 16 — RELATED STANDARDS ============ -->
+  <div class="section-header" id="s16"><span class="num">16</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How IPSAS 36 connects across the IPSAS body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.7fr 2.2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 21 / 26</span><span>Govern impairment testing of the net investment once objective evidence exists (§11)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 34</span><span>Governs the SEPARATE (non-equity-method-by-default) accounting for the same investments in the investor's own statements (§12)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 35</span><span>Consolidation exemption conditions mirrored exactly in this Standard's own equity-method exemption (§5); defines control, benefits, power used to distinguish these lesser relationships</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 37</span><span>Defines joint operation and governs transition mechanics between proportionate consolidation, equity accounting, and direct joint-operation accounting (§12)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 38</span><span>Houses all disclosure requirements for associates and joint ventures — none appear within IPSAS 36 itself</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 40</span><span>Governs public sector combination accounting when an associate/JV becomes a controlled entity; defines "operation" for upstream/downstream transaction treatment (§6, §8)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 41</span><span>Governs financial instrument accounting for interests NOT on the equity method, long-term interests extending the net investment, and retained interests after discontinuation (§4, §6, §10)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 44</span><span>Governs held-for-sale classification of investments or portions thereof (§6)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 45</span><span>Defines "commercial substance," relevant to non-monetary contribution gain/loss recognition (§8)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 17 — GLOSSARY ============ -->
+  <div class="section-header" id="s17"><span class="num">17</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Associate</div><div class="glossary-def">An entity over which the investor has significant influence.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Significant influence</div><div class="glossary-def">The power to participate in financial and operating policy decisions of another entity, without control or joint control.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Joint control</div><div class="glossary-def">The agreed sharing of control by binding arrangement, existing only when relevant-activity decisions require unanimous consent.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Joint venture</div><div class="glossary-def">A joint arrangement where the parties with joint control have rights to the net assets of the arrangement.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Equity method</div><div class="glossary-def">Initial recognition at cost, adjusted for the investor's share of the investee's post-acquisition net assets/equity change.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Upstream / downstream transaction</div><div class="glossary-def">Sales from the associate/JV to the investor (upstream), or from the investor to the associate/JV (downstream).</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bs">SOFP</span> Statement of financial position
+      <span class="badge bp">SOFPerf</span> Statement of financial performance
+      <span class="badge be">NA/E</span> Net assets/equity (statement of changes)
+    </div>
+  </div>
+
+  <div class="footer-note">IPSAS 36 — Investments in Associates and Joint Ventures · Extended Reference Poster · Built from the 2025 IPSASB Handbook, Volume II · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

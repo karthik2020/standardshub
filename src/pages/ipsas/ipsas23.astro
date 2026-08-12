@@ -1,0 +1,446 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import metadata from "../../data/standards/ipsas/ipsas23.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  covers={metadata.covers}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Objective, Scope & Definitions" },
+        { id: "s2", label: "Non-Exchange vs Exchange Transactions" },
+        { id: "s3", label: "Stipulations — Conditions vs Restrictions" },
+        { id: "s4", label: "Recognition of Assets" },
+        { id: "s5", label: "Contributions from Owners & Mixed Transactions" },
+        { id: "s6", label: "Measurement & Recognition of Revenue" },
+        { id: "s7", label: "Taxes" },
+        { id: "s8", label: "Transfers — Debt Forgiveness & Fines" },
+        { id: "s9", label: "Transfers — Bequests, Gifts & Donations" },
+        { id: "s10", label: "Services In-Kind & Pledges" },
+        { id: "s11", label: "Disclosure Requirements" },
+        { id: "s12", label: "Effective Date & Amendment Timeline" },
+        { id: "s13", label: "Relationship to IPSAS 9 & IPSAS 47" },
+        { id: "s14", label: "Statement / Process Mapping" },
+        { id: "s15", label: "Related Standards" },
+        { id: "s16", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="active"
+    explanation="IPSAS 23 Revenue from Non-Exchange Transactions is the current, active standard issued by the IPSASB for recognising and measuring revenue from non-exchange transactions (taxes, grants, donations, fines, asset transfers). Effective 30 June 2008."
+    historical="IPSAS 23 covers the non-exchange counterpart to IPSAS 9 (exchange revenue); together they cover all revenue until IPSAS 47 Revenue provides a single five-step model for both exchange and non-exchange transactions. It uses the stipulation (condition vs restriction) distinction and asset-vs-outflow recognition for contributor-style transactions."
+    link=""
+    linkText=""
+  />
+
+  <div class="wrap">
+  <!-- ============ SECTION 1 — OBJECTIVE, SCOPE & DEFINITIONS ============ -->
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; Definitions (paras. 1–7)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Objective &amp; scope</div>
+        <div class="principle">Prescribes financial reporting requirements for revenue arising from NON-EXCHANGE transactions — other than those giving rise to a public sector combination. Covers recognizing and measuring such revenue, including identifying contributions from owners.</div>
+        <div class="cross-list">
+          <span>A public sector combination that is itself a non-exchange transaction (IPSAS 40)</span>
+          <span>Contributions to social benefit schemes under the insurance approach (IPSAS 42, paras. 26–31)</span>
+        </div>
+        <div class="note">Sister standard: IPSAS 9 covers EXCHANGE transaction revenue. Together they cover most public sector revenue, pending IPSAS 47's eventual broader rollout.</div>
+      </div>
+
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions (para. 7)</div>
+        <div class="glossary-item"><div class="glossary-term">Taxes</div><div class="glossary-def">Economic benefits/service potential compulsorily paid or payable to public sector entities, per laws/regulations established to provide government revenue — EXCLUDING fines or other penalties.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Transfers</div><div class="glossary-def">Inflows of future economic benefits/service potential from non-exchange transactions, OTHER than taxes.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Control of an asset</div><div class="glossary-def">Arises when the entity can use/benefit from the asset in pursuit of its objectives, AND can exclude or regulate others' access to that benefit.</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">The taxable event</div><div class="glossary-def">The event that government/legislature/other authority has determined will be subject to taxation.</div></div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 2 — NON-EXCHANGE VS EXCHANGE TRANSACTIONS ============ -->
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Non-Exchange vs Exchange Transactions (paras. 8–11)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Three transaction patterns</div>
+        <div class="dot-list">
+          <span>Clearly EXCHANGE — approximately equal value both ways (governed by IPSAS 9)</span>
+          <span>Clearly NON-EXCHANGE — the entity receives resources and provides no/nominal consideration directly in return (governed by IPSAS 23)</span>
+          <span>MIXED — some consideration given, but not approximating fair value → SPLIT into an exchange component (IPSAS 9) and a non-exchange component (IPSAS 23), each recognized separately</span>
+        </div>
+        <div class="note">Taxpayers pay taxes because the law mandates it — not in exchange for the public services the government happens to provide with that revenue (para. 9).</div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Worked example — a concessionary loan is really TWO transactions</div>
+        <div class="worked">
+          <div class="wk-title">Multi-lateral agency provides CU6m; entity must repay CU5m over 10 years at 5% (market rate 11%)</div>
+          <div class="wk-body">The entity has effectively received a grant PLUS a below-market loan.</div>
+          <div class="wk-answer">Non-exchange component: CU1m grant (CU6m − CU5m to be repaid), PLUS the off-market portion of the interest (6% below market). Exchange component: the CU5m contractual capital and interest payments at 5% over the loan's life.</div>
+        </div>
+        <div class="note">Subsidized-price sales are also split by substance, not form — a "sale" at well below fair value has a non-exchange component too (para. 11).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 3 — STIPULATIONS: CONDITIONS VS RESTRICTIONS ============ -->
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Stipulations on Transferred Assets — Conditions vs Restrictions (paras. 14–24)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Conditions — impose a PRESENT OBLIGATION (a liability)</div>
+        <div class="principle">Require the recipient to CONSUME the future economic benefits/service potential as specified, OR RETURN them to the transferor if breached. Because the recipient cannot avoid this outflow, a LIABILITY is recognized alongside the asset on initial recognition (para. 17).</div>
+        <div class="note">A stipulation is a CONDITION only if the return obligation is genuinely ENFORCEABLE and would actually be ENFORCED — assessed on the transferor's past behavior, or (absent history) presumed enforceable (paras. 20–21).</div>
+      </div>
+
+      <div class="card cs">
+        <div class="ctitle cs">Restrictions — limit USE, but no return obligation</div>
+        <div class="principle">Limit or direct the PURPOSES an asset may be used for, but do NOT require return if not deployed as specified. Gaining control does NOT create a present obligation — breach may trigger a PENALTY (court action, administrative directive), but that penalty stems from the breach itself, not from acquiring the asset (para. 19).</div>
+        <div class="note">Substance over form governs throughout: merely LABELING a stipulation as requiring consumption/return isn't sufficient by itself to create a liability (para. 20). Constructive obligations do NOT arise from stipulations — those are governed separately by IPSAS 19 (para. 16).</div>
+      </div>
+    </div>
+
+    <div class="grid grid-spaced">
+      <div class="card cw span2">
+        <div class="ctitle cw">What a valid condition needs (para. 23) &amp; conditional-on-a-future-event transfers</div>
+        <div class="dot-list">
+          <span>Nature/quantity of goods, services, or assets to be provided/acquired, specified clearly</span>
+          <span>Performance periods, if relevant, AND ongoing monitoring by or on behalf of the transferor</span>
+          <span>An outflow that is genuinely PROBABLE, with performance capable of being assessed</span>
+        </div>
+        <div class="note">Where an asset must be RETURNED if a future event does NOT occur (e.g. a national government grants matching funds subject to the recipient raising its own contribution), no return obligation — and no liability — arises UNTIL it's expected the stipulation WILL be breached (para. 24).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 4 — RECOGNITION OF ASSETS ============ -->
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Recognition of Assets (paras. 29–36)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">The two-part test (para. 31)</div>
+        <div class="check-list">
+          <span>PROBABLE that future economic benefits/service potential will flow to the entity</span>
+          <span>Fair value can be measured RELIABLY</span>
+        </div>
+        <div class="note">Exception: when a creditor forgives a liability, the entity DECREASES the carrying amount of the liability rather than recognizing a new asset (para. 29).</div>
+      </div>
+
+      <div class="card cd">
+        <div class="ctitle cd">Control &amp; the past event — announcements aren't enough</div>
+        <div class="callout danger"><strong>Not sufficient:</strong> a mere ANNOUNCEMENT of an intention to transfer resources does NOT itself identify controlled resources. A destroyed school doesn't recognize a receivable the moment government announces it will fund rebuilding (para. 33).</div>
+        <div class="dot-list">
+          <span>Where a transfer AGREEMENT is required, resources aren't controlled until the agreement is BINDING (para. 33)</span>
+          <span>The past event may be a purchase, a taxable event, or a transfer — an INTENTION to levy tax is never itself a past event (para. 34)</span>
+          <span>An item meeting the asset definition but failing recognition criteria may warrant CONTINGENT ASSET disclosure under IPSAS 19 (para. 36)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 5 — CONTRIBUTIONS FROM OWNERS & MIXED TRANSACTIONS ============ -->
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Contributions from Owners &amp; Mixed Exchange/Non-Exchange Components (paras. 37–43)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs">
+        <div class="ctitle cs">Substance over form — is it really equity?</div>
+        <div class="dot-list">
+          <span>A FORMAL DESIGNATION by the contributor (or its controlling entity) as part of the recipient's contributed net assets/equity</span>
+          <span>A formal agreement establishing/increasing a sellable, transferable, or redeemable financial interest</span>
+          <span>Issuance of sellable/transferable/redeemable equity instruments</span>
+        </div>
+        <div class="callout warn callout--flush">If a transaction is LABELED a contribution but specifies fixed distributions with an eventual return of the "investment" at a set date — that's economically a LOAN, and is accounted for as such (para. 37).</div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Measuring assets on initial recognition (para. 42)</div>
+        <div class="formula-box">
+          <div class="f-eq">An asset acquired through a non-exchange transaction → measured initially at CURRENT VALUE as at the date of acquisition</div>
+        </div>
+        <div class="text-supporting">Inventories, investment property, intangibles, financial instruments → FAIR VALUE at acquisition. PP&amp;E → DEEMED COST at acquisition, where the deemed-cost basis (current operational value vs. fair value) follows the same primary-objective test used under IPSAS 45 (paras. 43, 43A).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 6 — MEASUREMENT & RECOGNITION OF REVENUE ============ -->
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Recognition &amp; Measurement of Revenue from Non-Exchange Transactions (paras. 44–58)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">The core recognition rule</div>
+        <div class="formula-box">
+          <div class="f-eq">Revenue = the increase in net assets recognized — an asset inflow is revenue EXCEPT to the extent a liability is ALSO recognized for the same inflow</div>
+        </div>
+        <div class="dot-list">
+          <span>As a recognized LIABILITY (a condition) is satisfied, the entity REDUCES the liability and recognizes REVENUE equal to that reduction (para. 45)</span>
+          <span>Timing follows the nature of conditions and their settlement — e.g. revenue recognized as goods/services are actually provided under the condition (para. 47)</span>
+        </div>
+        <div class="note">A transaction satisfying the definition of contributions from owners is NEVER recognized as a liability or revenue (para. 46).</div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Present obligations recognized as liabilities (para. 50)</div>
+        <div class="text-supporting">A present obligation arising from a non-exchange transaction that meets the liability definition and satisfies the recognition criteria is recognized as a LIABILITY — measured at the BEST ESTIMATE of the amount required to settle it at the reporting date (para. 57).</div>
+        <div class="formula-box">
+          <div class="f-eq">Revenue from non-exchange transactions = the amount of the increase in NET ASSETS recognized by the entity</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 7 — TAXES ============ -->
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Taxes (paras. 59–75)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Recognition trigger &amp; who recognizes it</div>
+        <div class="formula-box">
+          <div class="f-eq">Recognize an asset when the TAXABLE EVENT occurs AND asset recognition criteria are met</div>
+        </div>
+        <div class="dot-list">
+          <span>Revenue accrues ONLY to the government that IMPOSES the tax — a collecting AGENCY acting on another government's behalf recognizes nothing (para. 61)</span>
+          <span>A national government passing 100% of collected sales tax to states recognizes ITS OWN asset/revenue, plus an expense for the transfer; the STATES recognize the transfer as their own asset/revenue (para. 61)</span>
+        </div>
+        <div class="note">Taxes do NOT satisfy the contributions-from-owners definition — paying tax gives no distribution rights or ownership interest (para. 62).</div>
+      </div>
+
+      <div class="card cd">
+        <div class="ctitle cd">The taxable event, by tax type (para. 65)</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1fr 2fr;"><span>Tax type</span><span>Taxable event</span></div>
+          <div class="tr" style="grid-template-columns:1fr 2fr;"><span>Income tax</span><span>Earning of assessable income during the tax period</span></div>
+          <div class="tr alt" style="grid-template-columns:1fr 2fr;"><span>VAT</span><span>Undertaking a taxable activity during the tax period</span></div>
+          <div class="tr" style="grid-template-columns:1fr 2fr;"><span>Goods and services tax</span><span>Purchase/sale of taxable goods and services during the period</span></div>
+          <div class="tr alt" style="grid-template-columns:1fr 2fr;"><span>Customs duty</span><span>Movement of dutiable goods/services across the customs boundary</span></div>
+          <div class="tr" style="grid-template-columns:1fr 2fr;"><span>Death duty</span><span>Death of a person owning taxable property</span></div>
+          <div class="tr alt" style="grid-template-columns:1fr 2fr;"><span>Property tax</span><span>Passing of the levy date, or the levy period if periodic</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-spaced">
+      <div class="card cw">
+        <div class="ctitle cw">Measurement — statistical models, and when reliability is delayed</div>
+        <div class="text-supporting">Measured at the BEST ESTIMATE of the inflow — often via statistical models based on collection history, filing patterns, and economic relationships (para. 68). A separation between the taxable event and collection timing is normal and doesn't itself block recognition; ESTIMATE revisions follow IPSAS 3 (para. 69).</div>
+        <div class="note">Exceptional cases (e.g. a large deceased estate needing specialist antique/artwork valuations for death duty) may delay recognition until receipt/receivability is achieved several periods after the taxable event (para. 70).</div>
+      </div>
+
+      <div class="card cn">
+        <div class="ctitle cn">Advance receipts, expenses paid through the tax system &amp; tax expenditures</div>
+        <div class="dot-list">
+          <span>Tax received BEFORE the taxable event occurs → recognize an ASSET and a LIABILITY (advance receipt); revenue only when the taxable event later occurs (para. 66)</span>
+          <span>Taxation revenue is measured GROSS — never reduced for "expenses paid through the tax system" (amounts available to beneficiaries regardless of whether they pay tax); those are separately recognized as government EXPENSES (paras. 71–72)</span>
+          <span>Taxation revenue is never GROSSED UP for tax EXPENDITURES (concessions only available to taxpayers) — these are foregone revenue, not expenses; no asset/liability/revenue/expense arises at all (paras. 73–74)</span>
+        </div>
+        <div class="note">Offsetting tax revenue against expenses paid through the tax system is explicitly PROHIBITED (para. 75, cross-ref IPSAS 1).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 8 — TRANSFERS: DEBT FORGIVENESS & FINES ============ -->
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Transfers — Debt Forgiveness &amp; Fines (paras. 76, 84–89)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Debt forgiveness</div>
+        <div class="formula-box">
+          <div class="f-eq">Revenue = the CARRYING AMOUNT of the debt forgiven</div>
+        </div>
+        <div class="text-supporting">Recognized when the former debt no longer meets the liability definition or recognition criteria — provided it doesn't itself satisfy the CONTRIBUTIONS FROM OWNERS definition (para. 85). A controlling entity forgiving a WHOLLY-OWNED controlled entity's debt, or assuming its liabilities, may instead be a contribution from owners (para. 86).</div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Fines</div>
+        <div class="principle">Economic benefits/service potential received or receivable, as determined by a COURT or other LAW ENFORCEMENT body, following a breach of laws/regulations. A negotiated penalty-instead-of-trial payment IS recognized as a fine (para. 88).</div>
+        <div class="dot-list">
+          <span>Normally require a fixed CASH transfer, with no offsetting government obligation → no liability recognized</span>
+          <span>Recognized as revenue when the receivable meets the asset definition/recognition criteria; measured at the BEST ESTIMATE of the inflow</span>
+          <span>Collected as an AGENT → not revenue of the collecting entity (para. 89)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 9 — TRANSFERS: BEQUESTS, GIFTS & DONATIONS ============ -->
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Transfers — Bequests, Gifts &amp; Donations, Including Goods In-Kind (paras. 90–97)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs">
+        <div class="ctitle cs">Bequests</div>
+        <div class="text-supporting">A transfer per the provisions of a deceased person's WILL. The past event = when the entity gains an ENFORCEABLE CLAIM (e.g. on death, or on grant of probate, per jurisdiction). Recognized as assets/revenue when probable AND reliably measurable — probability may be affected by elapsed time, estate solvency, and disputed wills (paras. 90–91).</div>
+        <div class="note">Fair value follows the same approach as gifts/donations (§9 right) — sometimes already determined by a tax authority for deceased-estate tax purposes (para. 92).</div>
+      </div>
+
+      <div class="card cd">
+        <div class="ctitle cd">Gifts, donations &amp; goods in-kind</div>
+        <div class="principle">VOLUNTARY transfers, normally free from stipulations, from an entity or individual. For cash/monetary gifts and goods in-kind, the past event is normally RECEIPT of the gift.</div>
+        <div class="dot-list">
+          <span>Goods in-kind: recognized as assets when received, or when a BINDING arrangement to receive them exists</span>
+          <span>No conditions attached → revenue recognized IMMEDIATELY</span>
+          <span>Conditions attached → a liability is recognized, reduced (with revenue recognized) as conditions are satisfied</span>
+        </div>
+        <div class="note">Initial measurement (para. 97): inventories, investment property, intangibles, financial instruments → FAIR VALUE at acquisition. PP&amp;E → DEEMED COST, using the current operational value or fair value basis per its primary holding objective (same test as IPSAS 45).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 10 — SERVICES IN-KIND & PLEDGES ============ -->
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Services In-Kind &amp; Pledges (paras. 98–105)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Services in-kind — optional recognition</div>
+        <div class="callout info">An entity MAY, but is NOT REQUIRED to, recognize services in-kind as revenue and as an asset (para. 98).</div>
+        <div class="text-supporting">These technically meet the asset definition — but are IMMEDIATELY consumed, so an equal-value transaction (usually an expense) is recognized alongside the revenue. If used to CONSTRUCT an asset instead, the amount is included in that asset's cost (para. 99).</div>
+        <div class="elabel">TYPICAL EXAMPLES (PARA. 100)</div>
+        <div class="dot-list">
+          <span>Technical assistance from other governments/international organizations</span>
+          <span>Convicted offenders performing community service</span>
+          <span>Public hospital or school volunteers; volunteer firefighters</span>
+        </div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Why recognition is optional, and pledges</div>
+        <div class="text-supporting">Uncertainty over CONTROL and RELIABLE MEASUREMENT of services in-kind is pervasive — many are rendered by untrained volunteers, fundamentally different from services the entity would otherwise purchase (para. 102). Disclosure of nature/type is ENCOURAGED regardless of recognition (para. 108).</div>
+        <div class="callout danger callout--flush"><strong>Pledges are never assets:</strong> a pledge is an UNENFORCEABLE undertaking to transfer assets — the recipient cannot control the transferor's access to the pledged item. Never recognized as an asset or revenue; may warrant IPSAS 19 contingent-asset disclosure. If the pledge is subsequently ACTUALLY transferred, it's then recognized as a gift/donation (para. 104).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 11 — DISCLOSURE REQUIREMENTS ============ -->
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Disclosure Requirements (paras. 106–108)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Face or notes (para. 106)</div>
+        <div class="check-list">
+          <span>Revenue by major class — taxes (by major tax class) and transfers (by major transfer class), shown separately</span>
+          <span>Receivables recognized in respect of non-exchange revenue</span>
+          <span>Liabilities recognized for transferred assets subject to CONDITIONS (and, separately, concessionary-loan conditions)</span>
+          <span>Assets subject to RESTRICTIONS, and the nature of those restrictions</span>
+          <span>Existence and amounts of any advance receipts</span>
+          <span>Any liabilities FORGIVEN</span>
+        </div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Notes only (para. 107) &amp; encouraged extras</div>
+        <div class="dot-list">
+          <span>Accounting policies for recognizing non-exchange revenue</span>
+          <span>Basis used to measure fair value of inflowing resources, by major revenue class</span>
+          <span>Nature of taxes the entity CANNOT reliably measure during the taxable-event period</span>
+          <span>Nature and type of major bequest/gift/donation classes, with goods-in-kind shown separately</span>
+        </div>
+        <div class="callout success">Disclosure of the nature/type of major services-in-kind classes RECEIVED is encouraged — including those NOT recognized (para. 108). Disaggregation of the conditions-liability disclosure by class is also encouraged (para. 111).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 12 — EFFECTIVE DATE & AMENDMENT TIMELINE ============ -->
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Effective Date &amp; Amendment Timeline (paras. 124–125)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Amendment history at a glance</div>
+        <div class="principle">Base Standard: periods beginning on/after <strong>30 June 2008</strong> — a distinctive mid-year effective date.</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1fr 2.2fr;"><span>Effective</span><span>Change</span></div>
+          <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2013</span><span>Para. 37 (IPSAS 28); paras. 5, 10, 87, 106 amended, new 105A–105B (IPSAS 29)</span></div>
+          <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2017</span><span>Paras. 116–123, 125 — IPSAS 33, First-time Adoption</span></div>
+          <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2018</span><span>Paras. 3, 4 deleted — The Applicability of IPSAS (Apr 2016)</span></div>
+          <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2019</span><span>Paras. 1, 2, 6 amended — IPSAS 40, Public Sector Combinations</span></div>
+        </div>
+        <div class="note">All of paras. 116–123 (transitional provisions) are now [Deleted] — first-time-adoption relief for revenue recognition now lives exclusively in IPSAS 33.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 13 — RELATIONSHIP TO IPSAS 9 & IPSAS 47 ============ -->
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Relationship to IPSAS 9 &amp; IPSAS 47 — No IAS/IFRS Equivalent</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">A genuinely public-sector-only Standard, now in transition</div>
+        <div class="principle">IPSAS 23 has NO IFRS counterpart — non-exchange revenue (taxes, fines, gifts) is largely a public-sector-specific concept that private-sector accounting standards don't need to address at this scale. It was DEVELOPED independently by the IPSASB, drawing on the Conceptual Framework rather than converging with any existing IASB Standard.</div>
+        <div class="dot-list">
+          <span>IPSAS 9 is the sister standard covering EXCHANGE transaction revenue — together the two Standards cover essentially all public sector revenue</span>
+          <span>IPSAS 47, <em>Revenue</em> (issued May 2023, IFRS 15-style five-step model) is the IPSASB's eventual unified successor, covering BOTH exchange and non-exchange revenue in one framework</span>
+        </div>
+        <div class="callout warn callout--flush">IPSAS 23 remains in the Handbook and continues to receive consequential amendments — it has NOT been formally withdrawn. Preparers should track their jurisdiction's transition plan toward IPSAS 47, which is available for early adoption.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 14 — STATEMENT / PROCESS MAPPING ============ -->
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">The full non-exchange inflow analysis, end to end</div>
+        <div class="dot-list">
+          <span>1. Is this an EXCHANGE, NON-EXCHANGE, or MIXED transaction? Split mixed transactions into components (§2)</span>
+          <span>2. Does the inflow meet the ASSET definition and recognition criteria — probable, reliably measurable, past event occurred, control established? If no → no asset (§4)</span>
+          <span>3. Does the transaction satisfy CONTRIBUTIONS FROM OWNERS (substance test)? → not revenue at all, recognized in net assets/equity directly (§5)</span>
+          <span>4. Is the transferred asset subject to a STIPULATION? CONDITION → recognize a liability too. RESTRICTION → asset only, no liability (§3)</span>
+          <span>5. Recognize revenue = the net increase in net assets; as any liability/condition is later satisfied, reduce it and recognize revenue equal to the reduction (§6)</span>
+          <span>6. Route to the SPECIFIC transfer-type guidance — taxes (§7), debt forgiveness/fines (§8), bequests/gifts/donations (§9), services in-kind/pledges (§10) — each with its own past-event and measurement nuances</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-spaced">
+      <div class="card cs span2">
+        <div class="ctitle cs">Concept-to-statement mapping table</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>IPSAS 23 concept</span><span>Statement(s)</span><span>Notes</span></div>
+          <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Non-exchange revenue (taxes, transfers)</span><span><span class="badge bp">SOFPerf</span></span><span>Gross basis, by major class</span></div>
+          <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Liability for a condition on a transferred asset</span><span><span class="badge bs">SOFP</span></span><span>Reduced as the condition is satisfied, releasing revenue</span></div>
+          <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Advance receipts of taxes/transfers</span><span><span class="badge bs">SOFP</span></span><span>Asset AND liability, until the taxable event/binding arrangement arises</span></div>
+          <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Contributions from owners</span><span><span class="badge be">NA/E</span></span><span>Never revenue — direct net assets/equity movement</span></div>
+          <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Expenses paid through the tax system</span><span><span class="badge bp">SOFPerf</span></span><span>Separate expense line, NOT netted against tax revenue</span></div>
+          <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Restricted assets, condition liabilities, advance receipts</span><span><span class="badge bp">Notes</span></span><span>Mandatory disclosures, para. 106</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 15 — RELATED STANDARDS ============ -->
+    <div class="section-header" id="s15"><span class="num">15</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">How IPSAS 23 connects across the IPSAS body of literature</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:0.7fr 2.2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+          <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 1</span><span>Contributions/distributions from owners definitions imported directly (§5); offsetting prohibition applied to tax revenue (§7)</span></div>
+          <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 3</span><span>Governs revisions to statistical-model tax revenue estimates as accounting estimate changes (§7)</span></div>
+          <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 9</span><span>Sister standard for exchange transaction revenue; defines the exchange/non-exchange split (§2)</span></div>
+          <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 12 / 16 / 31 / 41</span><span>Fair-value initial measurement basis for non-exchange-acquired inventories, investment property, intangibles, and financial instruments (§5, §9)</span></div>
+          <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 19</span><span>Constructive obligations governed there, not by stipulations here; contingent asset disclosure for pledges and unrecognized bequests (§3, §4, §10)</span></div>
+          <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 28</span><span>Distinguishing liabilities from contributions from owners in contractual arrangements (§5)</span></div>
+          <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 40</span><span>Public sector combinations that are non-exchange transactions are excluded from IPSAS 23's scope entirely (§1)</span></div>
+          <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 42</span><span>Social benefit scheme contributions under the insurance approach are excluded from scope (§1)</span></div>
+          <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 45</span><span>Deemed-cost measurement basis (current operational value vs. fair value) for non-exchange-acquired PP&amp;E (§5, §9)</span></div>
+          <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 47</span><span>The eventual unified successor for exchange AND non-exchange revenue (§13)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 16 — GLOSSARY ============ -->
+    <div class="section-header" id="s16"><span class="num">16</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <div class="three-col">
+      <div class="card cn">
+        <div class="glossary-item"><div class="glossary-term">Conditions on transferred assets</div><div class="glossary-def">Stipulations requiring consumption as specified, or return of benefits, if breached — create a liability on initial recognition.</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Restrictions on transferred assets</div><div class="glossary-def">Stipulations limiting purpose of use, without a return-on-breach requirement — no liability arises.</div></div>
+      </div>
+      <div class="card cn">
+        <div class="glossary-item"><div class="glossary-term">Fines</div><div class="glossary-def">Economic benefits received/receivable as determined by a court or law enforcement body, following a breach of laws or regulations.</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Expenses paid through the tax system</div><div class="glossary-def">Amounts available to beneficiaries regardless of whether they pay taxes — recognized as a separate government expense.</div></div>
+      </div>
+      <div class="card cn">
+        <div class="glossary-item"><div class="glossary-term">Tax expenditures</div><div class="glossary-def">Preferential tax law provisions available only to taxpayers — foregone revenue, not expenses; no accounting entries arise.</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Pledges</div><div class="glossary-def">Unenforceable undertakings to transfer assets — never recognized as an asset or revenue.</div></div>
+      </div>
+    </div>
+
+    <div class="legend">
+      <div class="ltitle">Financial statement key</div>
+      <div class="lrow">
+        <span class="badge bs">SOFP</span> Statement of financial position
+        <span class="badge bp">SOFPerf</span> Statement of financial performance
+        <span class="badge be">NA/E</span> Net assets/equity (statement of changes)
+      </div>
+    </div>
+
+
+  </div>
+</StandardPageLayout>

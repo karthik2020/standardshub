@@ -1,0 +1,77 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import metadata from "../../data/standards/ipsas/ipsas8.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  covers={metadata.covers}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Why This Standard Is Here" },
+        { id: "s2", label: "Superseded by IPSAS 37" },
+        { id: "s3", label: "Redirect Map" }
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="withdrawn"
+    explanation="IPSAS 8, Interests in Joint Ventures, was withdrawn as part of the IPSASB's 2015 Consolidation Suite, mirroring the IASB's 2011 replacement of IAS 31 with IFRS 11. It was superseded for annual financial statements covering periods beginning on or after 1 January 2017."
+    historical="Retained as a numbering placeholder. The 2025 IPSASB Handbook contains only a one-paragraph removal notice for this number; there is no remaining technical content to build a reference poster from. Use IPSAS 37 for current requirements."
+    link="/ipsas/ipsas37"
+    linkText="IPSAS 37 — Joint Arrangements"
+    currentLabel="Replaced by"
+  />
+
+  <div class="wrap">
+    <!-- ============ SECTION 1 ============ -->
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Why This Standard Is Here</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Removed from the Handbook — retained here only as a numbering placeholder</div>
+        <div class="principle">IPSAS 8, <em>Interests in Joint Ventures</em>, was withdrawn as part of the IPSASB's 2015 "Consolidation Suite" project, mirroring the IASB's own 2011 replacement of IAS 31 with IFRS 11. It was superseded for annual financial statements covering periods beginning on or after <strong>1 January 2017</strong>.</div>
+        <div class="callout danger callout--flush">The 2025 IPSASB Handbook now contains only a one-paragraph removal notice for this number — there is no remaining technical content to build a reference poster from. This page exists so the poster library's numbering stays complete and correctly redirects to the live successor Standard.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 2 ============ -->
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Superseded by IPSAS 37</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Proportionate consolidation option removed</div>
+        <div class="principle">IPSAS 8 covered jointly controlled operations, assets, and entities, permitting proportionate consolidation for jointly controlled entities. Its requirements — together with what had been IPSAS 7's associate equity-accounting content — were consolidated into a single Standard. The replacement Standard removed the proportionate-consolidation option, aligning with the IASB's IFRS 11 approach.</div>
+        <div class="spec-box" style="margin-bottom:0;">
+          <div class="spec-title">IPSAS 37 — Joint Arrangements</div>
+          <div class="text-supporting">Classifies joint arrangements as either joint operations (recognize your own share of assets, liabilities, revenue, and expenses directly) or joint ventures (equity method only, per IPSAS 36) — based on the parties' rights and obligations, not the legal vehicle used.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 3 ============ -->
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Redirect Map</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Withdrawn number → live Standard</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1fr 1.4fr 1.6fr;"><span>Withdrawn</span><span>Superseded by</span><span>Effective date</span></div>
+          <div class="tr" style="grid-template-columns:1fr 1.4fr 1.6fr;"><span>IPSAS 8</span><span><span class="badge be">IPSAS 37</span></span><span>Periods beginning on/after 1 Jan 2017</span></div>
+        </div>
+        <div class="note">A full extended reference poster for IPSAS 37 can be built when the library reaches that number.</div>
+      </div>
+    </div>
+  </div>
+</StandardPageLayout>

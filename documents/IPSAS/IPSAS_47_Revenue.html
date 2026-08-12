@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPSAS 47 — Revenue | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .eg  { margin-bottom: 7px; }
+  .egl { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; margin-bottom: 3px; }
+  .entry { display: flex; align-items: flex-start; gap: 4px; margin-bottom: 4px; }
+  .dr { font-size: 11px; font-weight: 500; color: var(--color-text-info);   min-width: 14px; padding-top: 1px; }
+  .cr { font-size: 11px; font-weight: 500; color: var(--color-text-danger); min-width: 14px; padding-top: 1px; padding-left: 6px; }
+  .etxt { font-size: 11px; color: var(--color-text-primary); flex: 1; line-height: 1.4; }
+  .badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .bc { background: #f3e8ff; color: #7e22ce; }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">IPSAS 47 — Revenue</div>
+      <div class="hub-sub">Extended reference poster · Full Handbook structure · Statement mapping · Related standards</div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <a href="#s1">1. Objective, Scope &amp; Out-of-Scope Items</a>
+    <a href="#s2">2. Definitions</a>
+    <a href="#s3">3. The Gateway Decision — Binding Arrangement or Not?</a>
+    <a href="#s4">4. Without Binding Arrangements — Recognition &amp; Measurement</a>
+    <a href="#s5">5. Taxes</a>
+    <a href="#s6">6. The Binding Arrangement Accounting Model — the Five-Criteria Gate</a>
+    <a href="#s7">7. Combination &amp; Modification of Binding Arrangements</a>
+    <a href="#s8">8. Identifying Compliance Obligations — the Distinct Goods/Services Test</a>
+    <a href="#s9">9. Satisfaction of Compliance Obligations — Over Time vs Point in Time</a>
+    <a href="#s10">10. Initial Recognition &amp; Onerous Binding Arrangements</a>
+    <a href="#s11">11. Determining the Transaction Consideration</a>
+    <a href="#s12">12. Variable Consideration &amp; Constraining Estimates</a>
+    <a href="#s13">13. Allocating the Transaction Consideration</a>
+    <a href="#s14">14. Capital Transfers</a>
+    <a href="#s15">15. Services In-Kind, Pledges &amp; Advance Receipts</a>
+    <a href="#s16">16. Disclosure Requirements</a>
+    <a href="#s17">17. Effective Date &amp; Amendment Timeline</a>
+    <a href="#s18">18. Relationship to IFRS 15</a>
+    <a href="#s19">19. Statement / Process Mapping</a>
+    <a href="#s20">20. Related Standards</a>
+    <a href="#s21">21. Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 — OBJECTIVE, SCOPE & OUT-OF-SCOPE ITEMS ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; Out-of-Scope Items (paras. 1–3)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Objective — the unified successor to IPSAS 9 and IPSAS 23</div>
+      <div class="principle">Establishes principles for reporting useful information about the nature, amount, timing, and uncertainty of revenue and cash flows from revenue transactions. Requires an entity to determine the TYPE of revenue transaction first, then apply the corresponding accounting requirements — a single framework replacing the former IPSAS 9 (exchange) / IPSAS 23 (non-exchange) split.</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Key exclusions (para. 3)</div>
+      <div class="cross-list">
+        <span>Social benefit scheme contributions under the IPSAS 42 insurance approach</span>
+        <span>Public sector combinations (IPSAS 40); contributions from owners</span>
+        <span>Lease contracts (IPSAS 43); insurance contracts</span>
+        <span>Financial instruments (IPSAS 41)</span>
+        <span>Rights/obligations from binding arrangements under IPSAS 19, 32, 34–37, 39, 40</span>
+        <span>Non-monetary exchanges between same-line-of-business entities to facilitate sales to resource providers</span>
+        <span>Gains on non-financial asset sales that AREN'T an output of activities (IPSAS 16/45/31)</span>
+        <span>Subsequent-measurement value changes; biological asset fair value changes (IPSAS 27); mineral resource extraction</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 — DEFINITIONS ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Definitions (para. 4)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Binding arrangement vocabulary</div>
+      <div class="glossary-item"><div class="glossary-term">Binding arrangement</div><div class="glossary-def">An arrangement conferring both rights and obligations, enforceable through legal or equivalent means, on the parties to it.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Compliance obligation</div><div class="glossary-def">A promise in a binding arrangement to use resources internally for distinct goods/services, OR transfer distinct goods/services to a purchaser or third-party beneficiary.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Transaction consideration</div><div class="glossary-def">The amount of resources to which an entity expects to be entitled.</div></div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Parties &amp; non-exchange vocabulary</div>
+      <div class="glossary-item"><div class="glossary-term">Purchaser</div><div class="glossary-def">A resource provider that provides a resource in exchange for goods/services that are an output of the entity's activities, for its own consumption.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Third-party beneficiary</div><div class="glossary-def">An entity, household, or individual who benefits from a transaction made between OTHER parties by receiving resources.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Transfer</div><div class="glossary-def">A transaction, other than taxes, where an entity receives a resource without directly providing any good, service, or other asset in return.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Capital transfer</div><div class="glossary-def">An inflow arising from a binding arrangement specifying the entity acquires/constructs a non-financial asset it will control.</div></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 — THE GATEWAY DECISION: BINDING ARRANGEMENT OR NOT? ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>The Gateway Decision — Binding Arrangement or Not? (paras. 9–16)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The first question, always</div>
+      <div class="principle">At inception, an entity FIRST considers whether it has entered a revenue transaction WITH or WITHOUT a binding arrangement. Most public sector revenue arises WITHOUT one, or from arrangements that don't involve transferring distinct goods/services to external parties.</div>
+      <div class="dot-list">
+        <span>WITHOUT a binding arrangement → apply paras. 18–55 (§4–§5)</span>
+        <span>WITH a binding arrangement → apply paras. 56–147 (§6–§15)</span>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">What makes an arrangement "binding"</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Must be ENFORCEABLE through legal or equivalent means — substance over form governs; enforceability can arise through various mechanisms, so long as they give the entity ability to enforce terms and hold parties accountable (paras. 11–12). Rights/obligations under TAX law do NOT create a binding arrangement — the taxpayer's compliance duty and the government's collection right don't make taxation a binding-arrangement transaction (para. 8). Can be WRITTEN, ORAL, or IMPLIED by customary practice (para. 14).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 — WITHOUT BINDING ARRANGEMENTS: RECOGNITION & MEASUREMENT ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Revenue Without Binding Arrangements — Recognition &amp; Measurement (paras. 17–35)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The asset/liability recognition logic — familiar from IPSAS 23</div>
+      <div class="formula-box">
+        <div class="f-eq">Recognize an ASSET if the inflow is presently CONTROLLED as a result of a past event, and its value is RELIABLY measurable</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">A mere ANNOUNCEMENT of intention to transfer resources is NOT sufficient for control (para. 22) — the destroyed-school example carries forward directly from IPSAS 23. Any associated OBLIGATION meeting the liability definition is recognized too (para. 26); revenue = the increase in net assets, recognized as the liability (if any) is satisfied, or IMMEDIATELY if no enforceable obligation exists (para. 29).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Measurement</div>
+      <div class="dot-list">
+        <span>Asset initially measured at TRANSACTION CONSIDERATION as at the recognition date; non-cash consideration measured at CURRENT VALUE (para. 30)</span>
+        <span>Liability = best estimate to settle, capped at the associated asset's value on initial recognition; discounted if the time value of money is material (paras. 32–33)</span>
+        <span>Revenue = the amount of the increase in net assets recognized (para. 34)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 — TAXES ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Taxes (paras. 36–55)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Recognition trigger, and who recognizes it</div>
+      <div class="formula-box">
+        <div class="f-eq">Recognize an asset when the TAXABLE EVENT (or equivalent event for other compulsory contributions/levies) occurs AND recognition criteria are met</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Revenue accrues ONLY to the government that IMPOSES the tax — a collecting agency acting for another government recognizes nothing of its own (para. 39). Taxes do NOT satisfy the contributions-from-owners definition (para. 40).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">A framework carried forward almost entirely from IPSAS 23</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">The taxable-event-by-tax-type table, advance receipts, expenses paid through the tax system vs. tax expenditures, and the gross-measurement/no-offsetting rule ALL carry forward from IPSAS 23's own tax framework — see that Standard's poster (§7) for the detailed taxable-event table. IPSAS 47 consolidates this guidance while preserving its substance unchanged.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 — THE BINDING ARRANGEMENT ACCOUNTING MODEL: THE FIVE-CRITERIA GATE ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>The Binding Arrangement Accounting Model — the Five-Criteria Gate (paras. 56–61)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">ALL five criteria required (para. 56)</div>
+      <div class="check-list">
+        <span>Parties have APPROVED the arrangement and are COMMITTED to perform</span>
+        <span>The entity can identify each party's RIGHTS</span>
+        <span>The entity can identify the PAYMENT TERMS</span>
+        <span>The arrangement has ECONOMIC SUBSTANCE — risk, timing, or amount of future cash flows/service potential is expected to change</span>
+        <span>COLLECTION of the entitled consideration is PROBABLE — considering only the resource provider's ABILITY and INTENTION to pay</span>
+      </div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ If criteria AREN'T met, revenue is recognized only when the compliance obligation is FULLY satisfied and consideration received is non-refundable, OR the arrangement is TERMINATED with non-refundable consideration retained (para. 58). Criteria are assessed at INCEPTION and NOT reassessed absent significant changed circumstances (para. 57).</div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card cn span2">
+      <div class="ctitle cn">"Wholly unsatisfied" arrangements aren't binding for this Standard's purposes</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">An arrangement is NOT treated as binding if EITHER party can unilaterally terminate it, without compensation, while it's WHOLLY UNSATISFIED — meaning NEITHER the entity has started performing NOR the resource provider has paid or become obligated to pay anything (paras. 59–60).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 — COMBINATION & MODIFICATION OF BINDING ARRANGEMENTS ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Combination &amp; Modification of Binding Arrangements (paras. 62–67)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">When to combine — any ONE of three tests</div>
+      <div class="dot-list">
+        <span>Negotiated as a PACKAGE with a single objective</span>
+        <span>Consideration in ONE depends on the OTHER's consideration/performance</span>
+        <span>Promises across them form a SINGLE compliance obligation</span>
+      </div>
+      <div class="note">Applied to two or more arrangements entered at or near the same time with the same resource provider (or related parties) (para. 62).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Modifications — separate arrangement, or blended treatment</div>
+      <div class="formula-box">
+        <div class="f-eq">Treated as a SEPARATE arrangement ONLY if scope increases with DISTINCT additional promises, AND consideration increases by the STAND-ALONE value of those additions (para. 65)</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Otherwise, the REMAINING (not-yet-transferred) promises are accounted for as a prospective adjustment, a termination-and-new-arrangement, or a blend, depending on whether remaining goods/services are distinct from those already transferred (para. 66). A modification exists once the parties approve it — even amid a dispute over scope/consideration (para. 64).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 — IDENTIFYING COMPLIANCE OBLIGATIONS: THE DISTINCT GOODS/SERVICES TEST ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Identifying Compliance Obligations — the Distinct Goods/Services Test (paras. 68–77)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Two paths to a compliance obligation</div>
+      <div class="dot-list">
+        <span>A DISTINCT good or service (or bundle)</span>
+        <span>A SERIES of distinct goods/services, substantially the same, with the SAME PATTERN of internal use/transfer</span>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Every binding arrangement has AT LEAST ONE compliance obligation, because enforceability holds the entity accountable with little/no realistic alternative to avoid performing (para. 69). Implied promises count too — customary practices, published policies, or specific statements creating a VALID EXPECTATION (para. 71). Mere administrative SETUP tasks are never compliance obligations (para. 72).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">"Distinct" — a two-part test (para. 73)</div>
+      <div class="check-list">
+        <span><strong style="font-weight:500">Capable of being distinct</strong> — the recipient can benefit from it alone or with readily available resources</span>
+        <span><strong style="font-weight:500">Separately identifiable</strong> — the promise isn't so integrated, customized, or interdependent with other promises that it's really part of a combined output</span>
+      </div>
+      <div class="note">If NOT distinct → combine with other promises until a distinct BUNDLE emerges — potentially resulting in the WHOLE arrangement being one single compliance obligation (para. 77).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 — SATISFACTION OF COMPLIANCE OBLIGATIONS: OVER TIME VS POINT IN TIME ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Satisfaction of Compliance Obligations — Over Time vs Point in Time (paras. 87–97)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The over-time criteria — any ONE qualifies (para. 92, 95)</div>
+      <div class="dot-list">
+        <span>The recipient SIMULTANEOUSLY receives and consumes benefits AS the entity performs</span>
+        <span>The performance CREATES OR ENHANCES an asset the recipient controls as it's built</span>
+        <span>The entity has an ENFORCEABLE RIGHT to payment for performance completed TO DATE — even if not a fixed amount, it must at minimum compensate for work done if terminated for reasons other than the entity's own non-performance</span>
+      </div>
+      <div class="note">Failing all three → satisfied at a POINT IN TIME instead, using the ordinary control-transfer test (para. 94).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">The recognition mechanics once satisfaction occurs</div>
+      <div class="formula-box">
+        <div class="f-eq">Recognize revenue for satisfied obligations, and a liability for unsatisfied ones, from the SAME inflow — reduce the liability by an equal amount as satisfaction occurs (paras. 87–88)</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Control includes the ability to use the resource for internal training, production, enhancing other assets, settling liabilities, selling/exchanging, pledging, or simply holding it (para. 90) — a deliberately broad list reflecting non-commercial public sector uses.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 — INITIAL RECOGNITION & ONEROUS BINDING ARRANGEMENTS ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Initial Recognition &amp; Onerous Binding Arrangements (paras. 78–79)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Nothing recognized until someone performs — unless it's onerous</div>
+      <div class="formula-box">
+        <div class="f-eq">A WHOLLY UNSATISFIED arrangement → no asset, liability, or revenue recognized, UNLESS onerous</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Recognition begins once EITHER party starts satisfying its obligations (para. 78). Where the arrangement becomes ONEROUS — the unavoidable costs of meeting the obligations exceed the economic benefits expected — the expected deficit is accounted for under IPSAS 19's provisions framework, not this Standard (para. 79).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 — DETERMINING THE TRANSACTION CONSIDERATION ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Determining the Transaction Consideration (paras. 109–112)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The amount the entity expects to be ENTITLED to</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Excludes amounts collected on behalf of THIRD PARTIES (e.g. some sales taxes) (para. 109). CREDIT RISK is never factored in here — receivable impairment is a separate IPSAS 41 matter (para. 110). Determined assuming the arrangement proceeds as written, without cancellation/renewal/modification (para. 112).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Five factors to weigh (para. 111)</div>
+      <div class="dot-list">
+        <span>VARIABLE consideration (§12)</span>
+        <span>CONSTRAINING estimates of variable consideration (§12)</span>
+        <span>A significant FINANCING COMPONENT, if present</span>
+        <span>NON-CASH consideration</span>
+        <span>Consideration PAYABLE to a resource provider</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 — VARIABLE CONSIDERATION & CONSTRAINING ESTIMATES ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Variable Consideration &amp; Constraining Estimates (paras. 113–121)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Two estimation methods, and what makes consideration variable</div>
+      <div class="dot-list">
+        <span>Discounts, rebates, refunds, credits, price concessions, incentives, bonuses, penalties — or contingency on a future event (paras. 114–115)</span>
+        <span>IMPLICIT price concessions count too — customary practice, published policy, or the entity's own intention when entering the arrangement (para. 115)</span>
+      </div>
+      <div class="formula-box">
+        <div class="f-eq">EXPECTED VALUE (probability-weighted sum, for many similar arrangements) OR MOST LIKELY AMOUNT (for a binary or near-binary outcome) — whichever better predicts the entitled amount (para. 116)</div>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Constraining the estimate — avoiding overstatement</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">An estimate of variable consideration is included ONLY to the extent HIGHLY PROBABLE that a SIGNIFICANT revenue reversal won't occur once the uncertainty resolves (paras. 119–121) — directly mirroring IFRS 15's own constraint mechanic, adapted for the public sector's often politically/socially driven variability sources (e.g. fee waivers, means-tested reductions).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 — ALLOCATING THE TRANSACTION CONSIDERATION ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Allocating the Transaction Consideration to Compliance Obligations (paras. 133–140)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Relative stand-alone value — the default allocation basis</div>
+      <div class="formula-box">
+        <div class="f-eq">Allocate to each compliance obligation IN PROPORTION to its STAND-ALONE VALUE at inception</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Best evidence: the OBSERVABLE price when sold/used separately in similar circumstances. A stated/list price is NOT automatically presumed to be the stand-alone value (para. 137). Not needed at all where there's only ONE compliance obligation (para. 135).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Estimating when not directly observable</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Estimate using ALL reasonably available information — entity-specific factors, resource-provider/class information, and market conditions — maximizing OBSERVABLE inputs and applying methods CONSISTENTLY (para. 138). Special allocation rules apply for DISCOUNTS (Application Guidance) and VARIABLE amounts within a single compliance obligation (paras. 141–143).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 — CAPITAL TRANSFERS ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Capital Transfers (paras. AG140–AG142)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Grant funding to build an asset — the binding-arrangement path applies</div>
+      <div class="principle">A capital transfer arises from a binding arrangement where a resource provider gives cash/another asset SPECIFICALLY to fund the entity acquiring or constructing a non-financial asset it will control — a capital transfer ALWAYS imposes at least one compliance obligation.</div>
+      <div class="dot-list">
+        <span>Revenue recognized as the entity SATISFIES its compliance obligations, applying the same §9 mechanics</span>
+        <span>Separately assess whether the inflow meets the ASSET definition, and whether the compliance obligation meets the LIABILITY definition</span>
+        <span>The liability's carrying amount is REDUCED as revenue is recognized</span>
+        <span>A SEPARATE compliance obligation may exist for OPERATING the constructed/acquired asset (e.g. ongoing service delivery conditions) — assessed independently of the capital-transfer element itself</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 15 — SERVICES IN-KIND, PLEDGES & ADVANCE RECEIPTS ============ -->
+  <div class="section-header" id="s15"><span class="num">15</span><h2>Services In-Kind, Pledges &amp; Advance Receipts (paras. AG143–AG151)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Services in-kind — optional, immediately consumed</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">An entity MAY, but is not required to, recognize services in-kind as revenue and an asset — technical assistance, community-service offenders, hospital/school volunteers, volunteer firefighters. These are typically IMMEDIATELY consumed, so an equal-value expense (or construction cost, if building an asset) offsets the revenue. Uncertainty over control and reliable measurement is WHY recognition stays optional — disclosure is STRONGLY encouraged instead (paras. AG143–AG148).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Pledges — never assets — and advance receipts</div>
+      <div class="callout danger" style="margin-bottom:9px;">✕ Pledges are UNENFORCEABLE promises — never recognized as an asset or revenue, though they may warrant IPSAS 19 contingent-asset disclosure. If later actually transferred, recognized as a gift/donation at that point (para. AG150).</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Resources received BEFORE a transfer arrangement becomes binding → recognized as an asset (if criteria met) PLUS an advance-receipt LIABILITY, extinguished as compliance obligations are later satisfied once the arrangement becomes binding (para. AG151).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 16 — DISCLOSURE REQUIREMENTS ============ -->
+  <div class="section-header" id="s16"><span class="num">16</span><h2>Disclosure Requirements (paras. 167–171)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Core disclosures — face or notes (para. 169)</div>
+      <div class="check-list">
+        <span>Revenue by major class: TAXES, other compulsory contributions/levies, TRANSFERS, and compliance obligations in binding arrangements — each SEPARATELY</span>
+        <span>Receivables recognized at the reporting date</span>
+        <span>Liabilities for transferred-asset compliance obligations, and concessionary-loan-related liabilities</span>
+        <span>Advance receipts — existence and amounts</span>
+        <span>Liabilities FORGIVEN</span>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Notes-only disclosures, and the distinctive "compelled transaction" package</div>
+      <div class="dot-list">
+        <span>Accounting policies; significant judgments; measurement basis by major revenue class (para. 170)</span>
+        <span>Nature of taxes/levies the entity CANNOT reliably measure during the taxable-event period</span>
+        <span>Nature/type of major bequest/gift/donation classes, goods-in-kind separately; services-in-kind qualitative/quantitative info</span>
+      </div>
+      <div class="note">A genuinely distinctive package (para. 171): where the entity is COMPELLED (by legislation, constitutional authority, or policy) to satisfy an obligation regardless of the counterparty's ability/intention to pay — disclose the compelling legislation/policy, revenue recognized after applying paras. 25/105/115, and amounts NOT recognized due to collection being improbable or an implicit price concession.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 17 — EFFECTIVE DATE & AMENDMENT TIMELINE ============ -->
+  <div class="section-header" id="s17"><span class="num">17</span><h2>Effective Date &amp; Amendment Timeline (paras. 194–195)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Amendment history at a glance</div>
+      <div class="principle">Base Standard: periods beginning on/after <strong>1 January 2026</strong> — one of the very newest Standards in the entire Handbook.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2.2fr;"><span>Effective</span><span>Change</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2027</span><span>New paras. 203A, AG153A–AG153B, AG202A–AG202J; amended AG1, AG154 — Concessionary Leases and Other Arrangements Conveying Rights over Assets (Oct 2024) — requires SIMULTANEOUS adoption of IPSAS 43, 45, 46, and 48</span></div>
+      </div>
+      <div class="note">This Standard replaces IPSAS 9 and IPSAS 23 going forward — both remain in the Handbook (and in this library) as the prior framework, applicable until an entity transitions.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 18 — RELATIONSHIP TO IFRS 15 ============ -->
+  <div class="section-header" id="s18"><span class="num">18</span><h2>Relationship to IAS/IFRS — Comparison with IFRS 15</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — IPSAS 47 vs IFRS 15</div>
+      <div class="principle">The binding arrangement accounting requirements are drawn primarily from IFRS 15 (issued 2014, amendments to March 2018), <em>Revenue from Contracts with Customers</em>.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1.9fr;"><span>Topic</span><span>Difference</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Overall scope</span><span>IPSAS 47 covers ALL public sector revenue, with or without binding arrangements; IFRS 15 covers only a SUBSET — contracts to deliver goods/services to customers</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Binding arrangement determination</span><span>IPSAS 47 EXPLICITLY requires determining whether a binding arrangement exists; IFRS 15 has no equivalent explicit step</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Unit of account terminology</span><span>"Compliance obligation" (IPSAS 47) — BROADER than "performance obligation" (IFRS 15), since it covers promises to use resources INTERNALLY, not just transfers to a customer</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Government grants</span><span>IAS 20 (Government Grants) has NO IPSAS equivalent — IPSAS 47 covers capital transfers and other binding-arrangement transfers directly within its own compliance-obligation framework instead (§14)</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Compelled-transaction disclosure</span><span>IPSAS 47 REQUIRES it (§16); IFRS 15 has no equivalent</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Terminology</span><span>"Compliance obligation," "resource provider," "stand-alone value," "economic substance" (IPSAS 47) vs "performance obligation," "customer," "stand-alone selling price," "commercial substance" (IFRS 15)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 19 — STATEMENT / PROCESS MAPPING ============ -->
+  <div class="section-header" id="s19"><span class="num">19</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">The master decision map</div>
+      <div class="dot-list">
+        <span>1. Is there a BINDING ARRANGEMENT? No → §4/§5 (asset/liability test, taxes). Yes → continue (§3)</span>
+        <span>2. Does the arrangement meet ALL FIVE gate criteria (§6)? If not → recognize only on full satisfaction with non-refundable consideration, or termination</span>
+        <span>3. Should this arrangement be COMBINED with others, or does it need MODIFICATION treatment? (§7)</span>
+        <span>4. Identify each COMPLIANCE OBLIGATION — distinct goods/services, or a series with the same pattern (§8)</span>
+        <span>5. For each: satisfied OVER TIME (simultaneous consumption, asset creation control, or enforceable payment right) or AT A POINT IN TIME? (§9)</span>
+        <span>6. Determine the TRANSACTION CONSIDERATION — fixed + variable (constrained), financing component, non-cash (§11, §12)</span>
+        <span>7. ALLOCATE consideration across compliance obligations by relative stand-alone value (§13)</span>
+        <span>8. Recognize revenue as (or when) each obligation is satisfied, reducing any liability by the same amount (§9)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card cs span2">
+      <div class="ctitle cs">Concept-to-statement mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>IPSAS 47 concept</span><span>Statement(s)</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Tax/transfer/compliance obligation revenue</span><span><span class="badge bp">SOFPerf</span></span><span>Gross, by major class</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Liability for unsatisfied compliance obligations</span><span><span class="badge bs">SOFP</span></span><span>Reduced as revenue is recognized</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Advance receipts</span><span><span class="badge bs">SOFP</span></span><span>Asset AND liability until the binding arrangement forms</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Onerous binding arrangement provision</span><span><span class="badge bs">SOFP</span></span><span>Per IPSAS 19, not this Standard directly</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Services in-kind (if elected)</span><span><span class="badge bs">SOFP</span> <span class="badge bp">SOFPerf</span></span><span>Equal asset and expense/construction cost</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Major class breakdown, judgments, compelled transactions</span><span><span class="badge be">Notes</span></span><span>Mandatory disclosures, paras. 169–171</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 20 — RELATED STANDARDS ============ -->
+  <div class="section-header" id="s20"><span class="num">20</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How IPSAS 47 connects across the IPSAS body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.7fr 2.2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 9 / 23</span><span>The two predecessor Standards this one eventually replaces — both remain applicable until an entity transitions</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 19</span><span>Governs onerous binding arrangement provisions and contingent asset disclosure for pledges (§10, §15)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 20</span><span>Related party pricing evidence relevant to stand-alone value estimation (§13)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 32</span><span>Grantor "other revenue" from service concession arrangements is governed here, not IPSAS 32 itself</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 41</span><span>Receivable subsequent measurement and impairment (credit risk explicitly excluded from consideration determination) (§4, §11)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 43</span><span>Determines whether a sale-and-leaseback transfer is a genuine sale; simultaneous adoption for the 2024 amendments (§17)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 45</span><span>Determines transaction consideration on PP&amp;E disposal/derecognition</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 46</span><span>Current value measurement of non-cash consideration; fair value methodology throughout</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 48</span><span>The mirror-image Standard governing TRANSFER EXPENSES from the giving entity's perspective</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 21 — GLOSSARY ============ -->
+  <div class="section-header" id="s21"><span class="num">21</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Binding arrangement</div><div class="glossary-def">An arrangement conferring both rights and obligations, enforceable through legal or equivalent means.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Compliance obligation</div><div class="glossary-def">A promise to use resources internally for, or transfer, distinct goods or services.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Stand-alone value</div><div class="glossary-def">The price of a good or service required to be used internally or provided separately.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Capital transfer</div><div class="glossary-def">An inflow from a binding arrangement specifying the entity will acquire or construct a controlled non-financial asset.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Third-party beneficiary</div><div class="glossary-def">An entity, household, or individual benefiting from a transaction between other parties.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Pledges</div><div class="glossary-def">Unenforceable promises to transfer assets — never recognized as an asset or revenue.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bs">SOFP</span> Statement of financial position
+      <span class="badge bp">SOFPerf</span> Statement of financial performance
+      <span class="badge be">Notes</span> Notes to the financial statements
+    </div>
+  </div>
+
+  <div class="footer-note">IPSAS 47 — Revenue · Extended Reference Poster · Built from the 2025 IPSASB Handbook, Volume III · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>
