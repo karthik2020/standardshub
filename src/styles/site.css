@@ -3219,27 +3219,37 @@ body.sidebar-open {
         transform: translateX(0);
     }
 
-    /* Small floating × button — absolute in the top-right corner of the standards panel area */
+    /* Close button hangs off the RIGHT edge of the sidebar like a bookmark tab */
     .sidebar-close-btn {
         display: flex;
-        position: absolute;
-        top: 8px;
-        right: 8px;
-        z-index: 20;
+        position: fixed;
+        /* Sits just to the right of the sidebar */
+        left: min(380px, 90vw);
+        top: calc(var(--header-height) + 24px);
+        z-index: calc(var(--z-sidebar) + 1);
         align-items: center;
         justify-content: center;
-        width: 30px;
-        height: 30px;
+        width: 36px;
+        height: 36px;
         border: none;
-        background: var(--surface-hover);
+        background: var(--surface);
         color: var(--text-secondary);
-        border-radius: var(--radius-sm);
+        border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        box-shadow: 3px 2px 8px rgba(0, 0, 0, 0.18);
         cursor: pointer;
-        transition: background var(--transition-fast), color var(--transition-fast);
+        transition: background var(--transition-fast), color var(--transition-fast), opacity var(--transition-fast);
+        /* Only visible when sidebar is open */
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .sidebar.open .sidebar-close-btn {
+        opacity: 1;
+        pointer-events: auto;
     }
 
     .sidebar-close-btn:hover {
-        background: var(--surface-alt);
+        background: var(--surface-hover);
         color: var(--text);
     }
 
@@ -3757,7 +3767,8 @@ body.sidebar-open {
     }
 
     .sidebar {
-        max-height: 55vh;
+        /* Full height — no max-height clipping on small phones */
+        max-height: none;
     }
 
     .section-header,
