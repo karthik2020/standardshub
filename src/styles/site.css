@@ -2861,10 +2861,13 @@ html[data-theme="dark"] .toc a.active {
     inset: 0;
     background: rgba(0, 0, 0, 0.3);
     z-index: calc(var(--z-sidebar) - 1);
+    opacity: 0;
+    transition: opacity var(--duration-normal) var(--ease);
 }
 
 .sidebar-overlay.visible {
     display: block;
+    opacity: 1;
 }
 
 .footer-link {
@@ -3174,6 +3177,16 @@ html[data-theme="dark"] .toc a.active {
     }
 }
 
+/* Close bar: hidden on desktop, shown inside @media query below */
+.sidebar-close-bar {
+    display: none;
+}
+
+/* Body scroll lock when mobile sidebar is open */
+body.sidebar-open {
+    overflow: hidden;
+}
+
 @media (max-width: 900px) {
     --header-height: 64px;
 
@@ -3185,22 +3198,62 @@ html[data-theme="dark"] .toc a.active {
         display: flex;
     }
 
+    /* Full-height drawer anchored to left edge, with gap on the right
+       so the dimmed content area is visible and tappable to close. */
     .sidebar {
         position: fixed;
-        top: calc(var(--header-height) + 12px);
-        left: 12px;
-        width: min(360px, calc(100vw - 24px));
-        bottom: calc(16px + env(safe-area-inset-bottom, 0px));
-        border-radius: var(--radius-xl);
+        top: var(--header-height);
+        left: 0;
+        bottom: 0;
+        width: min(320px, 85vw);
+        border-radius: 0;
         z-index: var(--z-sidebar);
-        transform: translateX(-120%);
+        transform: translateX(-100%);
         transition: transform var(--duration-normal) var(--ease);
-        box-shadow: var(--shadow-lg);
+        box-shadow: 4px 0 24px rgba(0, 0, 0, 0.18);
         overflow: hidden;
+        display: flex;
+        flex-direction: column;
     }
 
     .sidebar.open {
         transform: translateX(0);
+    }
+
+    .sidebar-close-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 14px 12px 16px;
+        border-bottom: 1px solid var(--border);
+        flex-shrink: 0;
+        background: var(--surface);
+    }
+
+    .sidebar-close-title {
+        font-size: 13px;
+        font-weight: var(--weight-semibold);
+        color: var(--text);
+        letter-spacing: 0.01em;
+    }
+
+    .sidebar-close-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border: none;
+        background: transparent;
+        color: var(--text-secondary);
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        transition: background var(--transition-fast), color var(--transition-fast);
+    }
+
+    .sidebar-close-btn:hover {
+        background: var(--surface-hover);
+        color: var(--text);
     }
 
     /* On mobile, hide the rail — the framework is already known from the URL.

@@ -320,36 +320,47 @@ function initSidebar() {
     const overlay =
         document.getElementById("sidebarOverlay");
 
+    const closeBtn =
+        document.getElementById("sidebarClose");
+
+    function openSidebar() {
+        sidebarEl.classList.add("open");
+        overlay?.classList.add("visible");
+        document.body.classList.add("sidebar-open");
+        menuBtn?.setAttribute("aria-expanded", "true");
+        menuBtn?.setAttribute("aria-label", "Close menu");
+    }
+
+    function closeSidebar() {
+        sidebarEl.classList.remove("open");
+        overlay?.classList.remove("visible");
+        document.body.classList.remove("sidebar-open");
+        menuBtn?.setAttribute("aria-expanded", "false");
+        menuBtn?.setAttribute("aria-label", "Open menu");
+    }
+
     if (menuBtn && sidebarEl) {
 
         menuBtn.addEventListener("click", () => {
-
-            const isOpen =
-                sidebarEl.classList.toggle("open");
-
-            overlay?.classList.toggle("visible", isOpen);
-
-            menuBtn.setAttribute("aria-expanded", String(isOpen));
-
-            menuBtn.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
-
+            const isOpen = sidebarEl.classList.contains("open");
+            isOpen ? closeSidebar() : openSidebar();
         });
 
         if (overlay) {
-
-            overlay.addEventListener("click", () => {
-
-                sidebarEl.classList.remove("open");
-
-                overlay.classList.remove("visible");
-
-                menuBtn.setAttribute("aria-expanded", "false");
-
-                menuBtn.setAttribute("aria-label", "Open menu");
-
-            });
-
+            overlay.addEventListener("click", closeSidebar);
         }
+
+        if (closeBtn) {
+            closeBtn.addEventListener("click", closeSidebar);
+        }
+
+        // Close on Escape key
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && sidebarEl.classList.contains("open")) {
+                closeSidebar();
+                menuBtn.focus();
+            }
+        });
 
     }
 
