@@ -1,0 +1,206 @@
+---
+import StandardLayout from "../../../layouts/StandardLayout.astro";
+import standards from "../../../data/standards.json";
+import StandardCard from "../../../components/StandardCard.astro";
+import { palette } from "../../../data/standardVisuals";
+import { FRAMEWORK_CONFIG, getFramework } from "../../../data/frameworks";
+
+const framework = getFramework("ifric")!;
+
+const groupedIFRIC = /** @type {Record<string, any[]>} */ ({});
+
+for (const item of standards.IFRIC) {
+  const category = item.category;
+  if (!groupedIFRIC[category]) {
+    groupedIFRIC[category] = [];
+  }
+  groupedIFRIC[category].push(item);
+}
+---
+
+<StandardLayout code={framework.code} title={`${framework.fullName} (${framework.code})`} framework="IFRS" hasToc={false}>
+
+  <h1>{framework.fullName}</h1>
+
+  <p class="category-description">
+    {framework.description}
+  </p>
+
+  <div class="view-toggle">
+
+    <button id="btn-number" class="active" aria-pressed="true" aria-controls="number-view">
+      Standard Number
+    </button>
+
+    <button id="btn-category" aria-pressed="false" aria-controls="category-view">
+      Category
+    </button>
+
+  </div>
+
+  <div id="number-view">
+
+    <div class="standards-group">
+      <h2 class="standards-group-title">Active Standards</h2>
+      <div class="standards-grid">
+
+        {
+          standards.IFRIC.filter((item) => !item.status).map((item, index) => (
+
+            <StandardCard
+              href={item.url}
+              code={item.code}
+              title={item.title}
+              framework={framework.id}
+              theme={palette[index % palette.length]}
+            />
+
+          ))
+        }
+
+      </div>
+    </div>
+
+    <div class="standards-divider"></div>
+
+    <div class="standards-group">
+      <h2 class="standards-group-title">Historical Standards</h2>
+      <div class="standards-grid">
+
+        {
+          standards.IFRIC.filter((item) => item.status).map((item, index) => (
+
+            <StandardCard
+              href={item.url}
+              code={item.code}
+              title={item.title}
+              framework={framework.id}
+              status={item.status}
+              theme={palette[index % palette.length]}
+            />
+
+          ))
+        }
+
+      </div>
+    </div>
+
+  </div>
+
+  <div id="category-view" style="display:none;">
+
+    {
+      Object.entries(groupedIFRIC).map(
+        ([category, items]) => {
+
+          const activeItems = items.filter((item) => !item.status);
+          const historicalItems = items.filter((item) => item.status);
+
+          return (
+            <div class="category-group">
+
+              <h2>{category}</h2>
+
+              {activeItems.length > 0 && (
+                <div class="standards-group">
+                  <div class="standards-grid">
+
+                     {
+                       activeItems.map((item, index) => (
+
+              <StandardCard
+                href={item.url}
+                code={item.code}
+                title={item.title}
+                framework={framework.id}
+                theme={palette[index % palette.length]}
+              />
+
+                       ))
+                     }
+
+                  </div>
+                </div>
+              )}
+
+              {historicalItems.length > 0 && (
+                <>
+                  <div class="standards-divider"></div>
+                  <div class="standards-group">
+                    <div class="standards-grid">
+
+                      {
+                      historicalItems.map((item, index) => (
+
+                        <StandardCard
+                          href={item.url}
+                          code={item.code}
+                          title={item.title}
+                          framework={framework.id}
+                          status={item.status}
+                          theme={palette[index % palette.length]}
+                        />
+
+                      ))
+                      }
+
+                    </div>
+                  </div>
+                </>
+              )}
+
+            </div>
+          );
+
+        }
+      )
+    }
+
+  </div>
+
+  <script>
+
+    const btnNumber =
+      document.getElementById("btn-number");
+
+    const btnCategory =
+      document.getElementById("btn-category");
+
+    const numberView =
+      document.getElementById("number-view");
+
+    const categoryView =
+      document.getElementById("category-view");
+
+    btnNumber?.addEventListener("click", () => {
+
+      numberView.style.display = "block";
+      categoryView.style.display = "none";
+
+      btnNumber.classList.add("active");
+      btnNumber.setAttribute("aria-pressed", "true");
+      btnCategory.classList.remove("active");
+      btnCategory.setAttribute("aria-pressed", "false");
+
+    });
+
+    btnCategory?.addEventListener("click", () => {
+
+      numberView.style.display = "none";
+      categoryView.style.display = "block";
+
+      btnCategory.classList.add("active");
+      btnCategory.setAttribute("aria-pressed", "true");
+      btnNumber.classList.remove("active");
+      btnNumber.setAttribute("aria-pressed", "false");
+
+    });
+
+  </script>
+
+</StandardLayout>
+
+
+
+
+

@@ -174,7 +174,8 @@ html[data-theme="dark"] {
 .ctitle.cs,
 .ctitle.cw,
 .ctitle.cd,
-.ctitle.cn {
+.ctitle.cn,
+[data-framework="hgb"] .ctitle {
   color: var(--framework-accent);
 }
 
@@ -182,7 +183,8 @@ html[data-theme="dark"] .ctitle.ci,
 html[data-theme="dark"] .ctitle.cs,
 html[data-theme="dark"] .ctitle.cw,
 html[data-theme="dark"] .ctitle.cd,
-html[data-theme="dark"] .ctitle.cn {
+html[data-theme="dark"] .ctitle.cn,
+html[data-theme="dark"] [data-framework="hgb"] .ctitle {
   color: var(--framework-accent-soft);
 }
 
@@ -493,6 +495,18 @@ html[data-theme="dark"] .formula-box::before {
      ol {
        padding-left: 23px;
        /* Reduces the default browser indentation */ }
+.ordered-list {
+  list-style: decimal;
+  padding-left: 23px;
+  margin: 0;
+}
+.ordered-list li {
+  font-size: var(--text-small);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-xs);
+}
+
 .dot-list span,
 .check-list span,
 .cross-list span {
@@ -803,6 +817,12 @@ html[data-theme="dark"] .td-table .th {
 
 .cols-1-2 {
   grid-template-columns: 1fr 2fr;
+}
+
+.td-table .cols-1-2-fit {
+  grid-template-columns: 1fr 2fr;
+  width: auto !important;
+  min-width: 0 !important;
 }
 
 .cols-1-1-1 {

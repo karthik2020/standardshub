@@ -21,7 +21,7 @@ interface Props {
   href: string;
   code: string;
   title: string;
-  framework: "ias" | "ifrs" | "indas" | "ukgaap" | "asbe" | "aspe" | "japangaap" | "hgb" | "ipsas";
+  framework: "ias" | "ifrs" | "indas" | "ukgaap" | "asbe" | "aspe" | "asbj" | "hgb" | "ipsas";
   theme: { bg: string; color: string };
   status?: string;
   displayCode?: string;
@@ -30,7 +30,7 @@ interface Props {
 const { href, code, title, framework, theme, status: statusProp, displayCode } = Astro.props;
 
 const frameworkConfig = getFramework(framework)!;
-const frameworkKey = frameworkConfig.code === "Ind AS" ? "IndAS" : frameworkConfig.code === "UK GAAP" ? "UKGAAP" : frameworkConfig.code === "ASBE" ? "ASBE" : frameworkConfig.code === "ASPE" ? "ASPE" : frameworkConfig.code === "Japan GAAP" ? "JapanGAAP" : frameworkConfig.code === "HGB" ? "HGB" : frameworkConfig.code;
+const frameworkKey = frameworkConfig.code === "Ind AS" ? "IndAS" : frameworkConfig.code === "UK GAAP" ? "UKGAAP" : frameworkConfig.code === "ASBE" ? "ASBE" : frameworkConfig.code === "ASPE" ? "ASPE" : frameworkConfig.code === "ASBJ" ? "ASBJ" : frameworkConfig.code === "HGB" ? "HGB" : frameworkConfig.code;
 const standardData = standards[frameworkKey]?.find((s) => s.code === code);
 const resolvedStatus = statusProp ?? standardData?.status;
 

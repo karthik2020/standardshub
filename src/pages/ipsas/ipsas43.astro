@@ -1,0 +1,433 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import metadata from "../../data/standards/ipsas/ipsas43.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  covers={metadata.covers}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Objective, Scope & Definitions" },
+        { id: "s2", label: "Identifying a Lease & Separating Contract Components" },
+        { id: "s3", label: "Lessee — Recognition Exemptions" },
+        { id: "s4", label: "Lessee — Initial Measurement" },
+        { id: "s5", label: "Lessee — Concessionary Leases" },
+        { id: "s6", label: "Lessee — Subsequent Measurement & Modifications" },
+        { id: "s7", label: "Lessor — Classification: Finance vs Operating" },
+        { id: "s8", label: "Lessor — Finance Lease Accounting" },
+        { id: "s9", label: "Lessor — Operating Leases & Concessionary Leases" },
+        { id: "s10", label: "Sale and Leaseback Transactions — the Framework" },
+        { id: "s11", label: "Worked Example — Sale and Leaseback with Above-Market Terms" },
+        { id: "s12", label: "Disclosure Requirements" },
+        { id: "s13", label: "Effective Date & Amendment Timeline" },
+        { id: "s14", label: "Relationship to IFRS 16 & GFS" },
+        { id: "s15", label: "Statement / Process Mapping" },
+        { id: "s16", label: "Related Standards" },
+        { id: "s17", label: "Glossary" }
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="active"
+    explanation="IPSAS 43 Leases is the current, active standard issued by the IPSASB for recognition, measurement, presentation, and disclosure of leases for lessees and lessors. Effective for periods beginning on or after 1 January 2025. Earlier application permitted for entities that also apply IPSAS 41 at or before this Standard's initial application date."
+    historical="IPSAS 43 is drawn primarily from IFRS 16 Leases for the public sector, retaining the lessee right-of-use model and lessor classification framework while adding distinctive public-sector features: concessionary lease measurement (market-rate-based right-of-use asset cost), concessionary lease disclosures for both lessees and lessors, and public-sector scope exclusions for service concession arrangements and biological asset leases."
+    link=""
+    linkText=""
+  />
+
+  <!-- ============ SECTION 1 ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; Definitions (paras. 1–5)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Objective &amp; scope</div>
+      <div class="principle">Sets out recognition, measurement, presentation, and disclosure principles for leases — ensuring lessees and lessors provide relevant, faithfully-representative information about the effect of leases on financial position, performance, and cash flows.</div>
+      <div class="cross-list">
+        <span>Leases to explore for/use minerals, oil, gas, and similar non-regenerative resources</span>
+        <span>Leases of biological assets (IPSAS 27) held by a LESSEE</span>
+        <span>Service concession arrangements (IPSAS 32)</span>
+        <span>Lessee rights under licensing agreements within IPSAS 31's scope (films, recordings, plays, manuscripts, patents, copyrights)</span>
+      </div>
+      <div class="note">A lessee MAY elect to apply this Standard to OTHER intangible asset leases beyond the mandatory scope (para. 4).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Core definitions (para. 5)</div>
+      <div class="glossary-item"><div class="glossary-term">Lease</div><div class="glossary-def">A contract, or part of a contract, conveying the right to use an asset for a period of time in exchange for consideration.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Lease term</div><div class="glossary-def">The non-cancellable period, plus extension-option periods the lessee is REASONABLY CERTAIN to exercise, and termination-option periods it is reasonably certain NOT to exercise.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Interest rate implicit in the lease</div><div class="glossary-def">The rate equating the present value of lease payments plus unguaranteed residual value to the sum of the underlying asset's fair value and the lessor's initial direct costs.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Lessee's incremental borrowing rate</div><div class="glossary-def">The rate the lessee would pay to borrow, over a similar term and security, funds to obtain an asset of similar value in a similar economic environment.</div></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Identifying a Lease &amp; Separating Contract Components (paras. 10–16)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The control test</div>
+      <div class="formula-box">
+        <div class="f-eq">A contract is, or contains, a lease if it conveys the right to CONTROL the use of an IDENTIFIED asset for a period of time, in exchange for consideration</div>
+      </div>
+      <div class="text-supporting">Assessed at CONTRACT INCEPTION; reassessed ONLY if the contract's terms/conditions actually change (paras. 10, 12). A "period of time" can be expressed as an amount of USE (e.g. production units) (para. 11).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Separating lease from non-lease components</div>
+      <div class="text-supporting">Each LEASE component within a contract is accounted for SEPARATELY from non-lease components (e.g. maintenance services bundled with an equipment lease) — unless the entity applies the practical expedient to combine them into a single lease component instead (para. 13).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Lessee — Recognition Exemptions: Short-Term &amp; Low-Value Leases (paras. 6–9)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs">
+      <div class="ctitle cs">Two elective exemptions from the full model</div>
+      <div class="formula-box">
+        <div class="f-eq">SHORT-TERM leases (≤12 months at commencement, no purchase option) OR LOW-VALUE underlying assets → elect to expense payments straight-line (or another systematic basis better reflecting the benefit pattern), skipping right-of-use/liability recognition entirely</div>
+      </div>
+      <div class="note">A lease that CONTAINS a purchase option is NEVER a short-term lease, regardless of the remaining term.</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Election mechanics</div>
+      <div class="dot-list">
+        <span>Short-term election: made BY CLASS of underlying asset (a grouping of similar nature/use)</span>
+        <span>Low-value election: made LEASE BY LEASE, individually</span>
+        <span>A MODIFICATION, or a CHANGE in lease term (e.g. exercising a previously-excluded option), means the entity must treat it as a NEW lease for exemption-eligibility purposes (para. 8)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Lessee — Recognition &amp; Initial Measurement (paras. 23–29)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">At commencement: TWO items, always together</div>
+      <div class="formula-box">
+        <div class="f-eq">Recognize a RIGHT-OF-USE ASSET and a LEASE LIABILITY — at the commencement date, for every lease not exempted under §3</div>
+      </div>
+      <div class="elabel">RIGHT-OF-USE ASSET COST (PARA. 25)</div>
+      <div class="dot-list">
+        <span>The initial lease liability amount</span>
+        <span>Payments made at/before commencement, LESS lease incentives received</span>
+        <span>Initial direct costs incurred by the lessee</span>
+        <span>Estimated dismantling/removal/restoration costs (IPSAS 19 basis), unless incurred to produce inventories</span>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">LEASE LIABILITY — present value of what's not yet paid (paras. 27–29)</div>
+      <div class="formula-box">
+        <div class="f-eq">PV of unpaid lease payments, discounted at the interest rate IMPLICIT in the lease (if readily determinable) — otherwise the lessee's INCREMENTAL BORROWING RATE</div>
+      </div>
+      <div class="dot-list">
+        <span>Fixed payments (incl. in-substance fixed), less lease incentives receivable</span>
+        <span>Index/rate-linked variable payments, initially measured using the commencement-date index/rate</span>
+        <span>Amounts expected payable under residual value guarantees</span>
+        <span>Purchase option exercise price, if reasonably certain to exercise</span>
+        <span>Termination penalty payments, if the lease term reflects exercising a termination option</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Lessee — Concessionary Leases (paras. 26A–26C, 29A)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Market-rate-based cost, not contractual-payment-based — a distinctive public sector rule</div>
+      <div class="principle">A CONCESSIONARY lease — granted at below-market terms — has its right-of-use asset cost measured at the PRESENT VALUE OF MARKET-RATE PAYMENTS for the underlying asset's CURRENT USE, at the commencement date, NOT the actual (below-market) contractual payments. IFRS 16 has NO equivalent to this rule at all (§14).</div>
+      <div class="dot-list">
+        <span>Market-rate payments are discounted using the SAME rate hierarchy as ordinary leases (implicit rate, or incremental borrowing rate) (para. 26B)</span>
+        <span>The asset cost ALSO includes initial direct costs and dismantling/restoration estimates, same as an ordinary lease (para. 26B)</span>
+        <span>A REASONABLE LEVEL OF EFFORT is required to determine market-rate payments; if genuinely unavailable, the lessee falls back to the ordinary paras. 24–26 measurement instead (para. 26C)</span>
+        <span>The LEASE LIABILITY, by contrast, is measured under the SAME paras. 27–29 mechanics as an ordinary lease — using the ACTUAL (below-market) contractual payments (para. 29A)</span>
+      </div>
+      <div class="note">The GAP between market-rate asset cost and below-market liability effectively captures the CONCESSION element as part of the right-of-use asset's initial value — conceptually similar to how IPSAS 23 treats non-exchange components of concessionary loans.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Lessee — Subsequent Measurement &amp; Lease Modifications (paras. 30–47)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Right-of-use asset — three possible models</div>
+      <div class="dot-list">
+        <span><strong class="text-medium">Historical cost model (default)</strong> — cost, less accumulated depreciation/impairment, adjusted for lease liability remeasurements; depreciated per IPSAS 45, over the SHORTER of useful life or lease term (unless ownership transfers, or a purchase option is expected — then to the underlying asset's full useful life)</span>
+        <span><strong class="text-medium">Investment property fair value model</strong> — IF the lessee applies IPSAS 16's current value model to owned investment property, right-of-use assets meeting that definition follow suit</span>
+        <span><strong class="text-medium">PP&amp;E revaluation model</strong> — IF the lessee applies the current value model to a PP&amp;E class, matching right-of-use assets follow suit</span>
+      </div>
+      <div class="note">Impairment testing applies IPSAS 21 or IPSAS 26 as appropriate to the right-of-use asset (para. 34).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Lease liability remeasurement &amp; modifications</div>
+      <div class="text-supporting">Interest accrues on the liability using a CONSTANT periodic rate; payments reduce the carrying amount. REASSESSMENT is triggered by changes in lease term, purchase-option certainty, or expected residual-value-guarantee amounts — remeasured using a REVISED discount rate in some cases, the original rate in others (paras. 37–43). A genuine MODIFICATION (not accounted for as a separate new lease) is accounted for by remeasuring the liability using a revised discount rate, with a corresponding right-of-use asset adjustment — EXCEPT scope-decrease modifications, which recognize a gain/loss for the portion terminated (paras. 44–47).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Lessor — Classification: Finance vs Operating (paras. 65–70)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The legacy risks-and-rewards test — retained for LESSORS only</div>
+      <div class="formula-box">
+        <div class="f-eq">Finance lease = transfers SUBSTANTIALLY ALL risks and rewards incidental to ownership. Operating lease = does not</div>
+      </div>
+      <div class="text-supporting">A genuinely asymmetric model — LESSEES apply the single right-of-use model (§3–§6) regardless of classification; only LESSORS still classify. Substance governs over form (para. 67). Classification is fixed at INCEPTION, reassessed ONLY on a lease modification — never merely from changed estimates or lessee default (para. 70).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Finance-lease indicators (paras. 67–68)</div>
+      <div class="dot-list">
+        <span>Ownership transfers by lease-end; or a purchase option expected to be exercised (bargain price)</span>
+        <span>Lease term covers the MAJOR PART of the asset's economic life</span>
+        <span>PV of lease payments ≈ SUBSTANTIALLY ALL of the asset's fair value at inception</span>
+        <span>The asset is so SPECIALIZED only the lessee can use it without major modification</span>
+        <span>Secondary indicators: lessee bears cancellation losses; lessee captures residual value fluctuation gains/losses; secondary-period rent is well below market</span>
+      </div>
+      <div class="note">These indicators aren't always conclusive — if OTHER features clearly show risks/rewards AREN'T substantially transferred, it's still an operating lease (e.g. ownership transfers at a variable fair-value-equivalent payment) (para. 69).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Lessor — Finance Lease Recognition &amp; Measurement (paras. 71–79)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">A receivable, not a physical asset</div>
+      <div class="formula-box">
+        <div class="f-eq">Recognize a RECEIVABLE at an amount equal to the NET INVESTMENT in the lease = gross investment (lease payments receivable + unguaranteed residual value) discounted at the interest rate implicit in the lease</div>
+      </div>
+      <div class="text-supporting">Initial direct costs are AUTOMATICALLY built into the net investment via the implicit rate's own definition — no separate addition needed (para. 73).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Subsequent measurement — constant periodic return</div>
+      <div class="dot-list">
+        <span>Finance REVENUE recognized over the lease term at a CONSTANT periodic rate of return on the net investment (para. 75)</span>
+        <span>Lease payments received reduce BOTH principal and unearned finance revenue (para. 76)</span>
+        <span>IPSAS 41's derecognition AND IMPAIRMENT requirements apply to the net investment; unguaranteed residual value estimates are reviewed REGULARLY, with reductions recognized immediately (para. 77)</span>
+      </div>
+      <div class="note">A CONCESSIONARY finance lease follows the SAME recognition framework as an ordinary finance lease (para. 71A) — though its measurement will reflect below-market terms, generating a day-one concession loss (as seen in the Handbook's illustrative example computing a CU3.9m loss component).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Lessor — Operating Leases &amp; Concessionary Lease Disclosures (paras. 94–96B)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Operating leases — the asset stays on the lessor's books</div>
+      <div class="text-supporting">The lessor keeps the underlying asset recognized as its OWN PP&amp;E (IPSAS 45 disclosures apply, DISAGGREGATED between leased and non-leased assets by class), or investment property/biological asset/intangible as applicable. A maturity analysis of undiscounted lease payments RECEIVABLE is required, for at least each of the first five years plus a total for remaining years (paras. 94–96).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Concessionary lease disclosures — granted by the lessor</div>
+      <div class="dot-list">
+        <span><strong>Concessionary FINANCE leases</strong> — by class: carrying amount of assets transferred; net investment at commencement; the DIFFERENCE between the two (the concession); and the purpose/terms/nature of the concession (para. 96A)</span>
+        <span><strong>Concessionary OPERATING leases</strong> — by class: lease revenue accrued; associated costs incurred; the DIFFERENCE; and the purpose/terms/nature of the concession (para. 96B)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 — SALE AND LEASEBACK TRANSACTIONS: THE FRAMEWORK ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Sale and Leaseback Transactions — the Framework (paras. 97–102)</h2><span class="line"></span></div>
+  <div class="cols-1">
+    <div class="card ci">
+      <div class="ctitle ci">Step 1 — is the transfer genuinely a SALE?</div>
+      <div class="text-supporting">Apply IPSAS 47's control-transfer/performance-obligation-satisfaction test to determine whether the asset transfer qualifies as a sale (para. 98). Also assess whether the leaseback contains an EMBEDDED CONCESSION at inception — if below-market terms ARE a concession, the seller-lessee applies IPSAS 47 and the buyer-lessor applies this Standard; otherwise, below-market terms are treated as PREPAYMENTS (para. 97A–97B, 100(a)).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Step 2 — the two outcomes</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2fr;"><span>Outcome</span><span>Treatment</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2fr;"><span>IS a sale</span><span>Seller-lessee measures the right-of-use asset at the PROPORTION of previous carrying amount relating to the RETAINED right of use — recognizing gain/loss ONLY on the portion of rights actually TRANSFERRED. Buyer-lessor accounts for the purchase normally, and the lease under ordinary lessor rules (para. 99)</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2fr;"><span>NOT a sale</span><span>Seller-lessee CONTINUES recognizing the asset, and recognizes a FINANCIAL LIABILITY (IPSAS 41) equal to transfer proceeds; buyer-lessor does NOT recognize the asset, recognizing a FINANCIAL ASSET instead (para. 102)</span></div>
+      </div>
+      <div class="note">Where sale consideration or lease payments AREN'T at fair value/market rates, adjustments are needed: below-market → prepayment of lease payments; above-market → additional FINANCING from buyer-lessor to seller-lessee — measured using whichever of two methods is more readily determinable (paras. 100–101).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Worked Example — Sale and Leaseback with Above-Market Terms (Illustrative Example 24)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Seller-lessee sells a building for CU2,000,000; fair value is CU1,800,000; carrying amount CU1,000,000</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">18-year leaseback, CU120,000/year, implicit rate 4.5%. Since sale price (CU2m) exceeds fair value (CU1.8m), the CU200,000 excess is additional financing, not sale proceeds (para. 100(b))</div>
+        <div class="wk-body">
+          PV of 18 annual payments of CU120,000 at 4.5% = CU1,459,200 total, split: CU200,000 (financing, 18 payments of CU16,447) + CU1,259,200 (lease, 18 payments of CU103,553).<br><br>
+          <strong>Seller-lessee's right-of-use asset</strong> = CU1,000,000 × (CU1,259,200 ÷ CU1,800,000) = <strong style="color:var(--color-text-danger);">CU699,555</strong> — the retained-use proportion of the original carrying amount.<br><br>
+          Total gain on sale = CU1,800,000 − CU1,000,000 = CU800,000, split: CU559,645 relates to the RETAINED right of use (not recognized), and <strong style="color:var(--color-text-danger);">CU240,355</strong> relates to the rights TRANSFERRED to Buyer-lessor (recognized).
+        </div>
+        <div class="wk-answer">
+          <strong>Seller-lessee's commencement-date entry:</strong><br>
+          Dr Cash CU2,000,000 · Dr Right-of-use asset CU699,555<br>
+          Cr Building CU1,000,000 · Cr Lease liability CU1,259,200 · Cr Financial liability CU200,000 · Cr Gain on rights transferred CU240,355<br><br>
+          <strong>Buyer-lessor's commencement-date entry:</strong><br>
+          Dr Building CU1,800,000 · Dr Financial asset CU200,000<br>
+          Cr Cash CU2,000,000<br><br>
+          After commencement, Buyer-lessor treats CU103,553 of each CU120,000 annual payment as lease revenue, and the remaining CU16,447 as settling the financial asset plus interest revenue.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Presentation &amp; Disclosure Requirements (paras. 50–64A)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Lessee — presentation across all three primary statements</div>
+      <div class="dot-list">
+        <span><strong>SOFP:</strong> right-of-use assets and lease liabilities shown SEPARATELY (or their line items disclosed) — investment-property right-of-use assets go with investment property instead (paras. 50–51)</span>
+        <span><strong>SOFPerformance:</strong> interest expense presented SEPARATELY from depreciation (para. 52)</span>
+        <span><strong>Cash flow statement:</strong> principal repayments → FINANCING activities; interest → per IPSAS 2's interest-paid policy; short-term/low-value/excluded-variable payments → OPERATING activities (para. 53)</span>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Lessee notes (paras. 54–64A) &amp; lessor package (§9)</div>
+      <div class="check-list">
+        <span>Depreciation charge BY CLASS of underlying asset; interest expense on lease liabilities</span>
+        <span>Short-term and low-value lease EXPENSE (separately)</span>
+        <span>Total cash outflow for leases; additions to right-of-use assets</span>
+        <span>A MATURITY ANALYSIS of lease liabilities, per IPSAS 30's liquidity risk disclosure approach</span>
+        <span>Concessionary lease disclosures matching the LESSOR package in §9, adapted for the lessee side</span>
+      </div>
+      <div class="note">A single note (or cross-referenced section) satisfies the objective — no duplication required where information already appears elsewhere in the statements (para. 55).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Effective Date &amp; Amendment Timeline (paras. 103–103C)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Amendment history at a glance</div>
+      <div class="principle">Base Standard: periods beginning on/after <strong>1 January 2025</strong> — earlier application permitted for entities that ALSO apply IPSAS 41 at or before this Standard's initial application date (para. 103).</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2.2fr;"><span>Effective</span><span>Change</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2025</span><span>Para. 78 — IPSAS 44, Non-current Assets Held for Sale and Discontinued Operations (May 2022)</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2025</span><span>Paras. 5, 31, 32, 36, 60, 84, 94, AG45 — IPSAS 45, Property, Plant, and Equipment (May 2023)</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2025</span><span>Paras. 35, 113 — IPSAS 46, Measurement (May 2023)</span></div>
+      </div>
+      <div class="note">IPSAS 43 is one of the NEWEST Standards in this library — issued alongside a wave of 2022–2023 companion Standards (44, 45, 46) all sharing the same 1 January 2025 effective date.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Relationship to IAS/IFRS &amp; GFS — Comparison with IFRS 16</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Comparison — IPSAS 43 vs IFRS 16</div>
+      <div class="principle">IPSAS 43 is drawn primarily from IFRS 16 (2016), amendments to March 2021, <em>Leases</em>.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.1fr 1.7fr;"><span>Topic</span><span>Difference</span></div>
+        <div class="tr" style="grid-template-columns:1.1fr 1.7fr;"><span>Terminology</span><span>"Revenue," "operation," "accumulated surpluses/(deficits)," "segment" (IPSAS 43) vs "income," "business unit," "retained earnings," "business segment" (IFRS 16)</span></div>
+        <div class="tr alt" style="grid-template-columns:1.1fr 1.7fr;"><span>Identifying a lease</span><span>IPSAS 43 refers to BOTH "economic benefits" AND "service potential"; IFRS 16 refers only to economic benefits</span></div>
+        <div class="tr" style="grid-template-columns:1.1fr 1.7fr;"><span>Manufacturer/dealer lessors</span><span>IFRS 16 includes specific requirements; IPSAS 43 does NOT</span></div>
+        <div class="tr alt" style="grid-template-columns:1.1fr 1.7fr;"><span>Concessionary leases</span><span>IPSAS 43 includes DEDICATED measurement (lessees, §5) and disclosure (both sides, §9/§12) requirements; IFRS 16 has none</span></div>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Comparison — IPSAS 43 vs GFS</div>
+      <div class="dot-list">
+        <span>IPSAS 43 applies a RIGHT-OF-USE model for lessees and a RISKS-AND-REWARDS model for lessors; GFS applies risks-and-rewards for BOTH</span>
+        <span>GFS classifies leases into THREE types (financial, operating, resource); IPSAS 43 has only two (finance/operating), and only for LESSORS — lessees don't classify at all</span>
+        <span>GFS financial leases recognize an underlying asset and a LOAN; IPSAS 43 lessees recognize a right-of-use asset and lease LIABILITY instead</span>
+        <span>IPSAS 43's short-term/low-value RECOGNITION EXEMPTIONS have no GFS equivalent</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 15 ============ -->
+  <div class="section-header" id="s15"><span class="num">15</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Master decision map</div>
+      <ol class="ordered-list">
+        <li>Does the contract convey the right to CONTROL an identified asset's use? → it's a lease (§2)</li>
+        <li>LESSEE side: is a §3 exemption (short-term/low-value) elected? → simple straight-line expense. Otherwise → recognize a right-of-use asset AND lease liability at commencement, at present value (§4)</li>
+        <li>Is the lease CONCESSIONARY? → measure the lessee's right-of-use asset at MARKET-RATE present value instead of contractual payments (§5)</li>
+        <li>LESSOR side: classify EVERY lease as finance or operating, using the risks-and-rewards test (§7)</li>
+        <li>Finance lease → derecognize the asset, recognize a net investment receivable (§8). Operating lease → keep the asset on the lessor's books, recognize lease revenue over time (§9)</li>
+        <li>SALE AND LEASEBACK? → test whether the transfer is a genuine sale under IPSAS 47; if yes, recognize gain only on the TRANSFERRED rights; if no, treat as a financing arrangement (§10, worked in §11)</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="grid grid-spaced">
+    <div class="card cs span2">
+      <div class="ctitle cs">Concept-to-statement mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>IPSAS 43 concept</span><span>Statement(s)</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Right-of-use asset</span><span><span class="badge bs">SOFP</span></span><span>Separate line, or disclosed within another line</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Lease liability</span><span><span class="badge bs">SOFP</span></span><span>Separate from other liabilities</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Depreciation &amp; interest expense</span><span><span class="badge bp">SOFPerf</span></span><span>Presented separately from each other</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Principal repayments</span><span>Cash Flow</span><span>Financing activities</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Interest paid</span><span>Cash Flow</span><span>Per IPSAS 2's interest policy</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Lessor net investment in a finance lease</span><span><span class="badge bs">SOFP</span></span><span>Receivable, not the underlying asset</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Lessor operating lease asset</span><span><span class="badge bs">SOFP</span></span><span>Stays as the lessor's own PP&amp;E/investment property</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Seller-lessee gain on transferred rights</span><span><span class="badge bp">SOFPerf</span></span><span>Only the transferred-rights portion</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 16 ============ -->
+  <div class="section-header" id="s16"><span class="num">16</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How IPSAS 43 connects across the IPSAS body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.7fr 2.2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 1 / 2</span><span>Interest expense presentation and cash flow classification requirements (§12)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 16</span><span>Investment-property right-of-use assets follow the current value model where the lessee applies it to owned investment property (§6)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 19</span><span>Dismantling/restoration cost obligations built into right-of-use asset cost (§4)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 21 / 26</span><span>Impairment testing of right-of-use assets (§6)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 27 / 31 / 32</span><span>Scope exclusions — biological asset leases, intangible licensing, service concession arrangements (§1)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 30</span><span>Maturity analysis methodology applied to lease liability disclosures (§12)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 41</span><span>Lessor finance lease derecognition/impairment; sale-and-leaseback financial asset/liability treatment when a sale test fails (§8, §10)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 45</span><span>Right-of-use asset depreciation methodology and current-value-model alignment (§6)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 47</span><span>Determines whether a sale-and-leaseback transfer qualifies as a genuine sale (§10)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 17 ============ -->
+  <div class="section-header" id="s17"><span class="num">17</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Right-of-use asset</div><div class="glossary-def">An asset representing a lessee's right to use an underlying asset for the lease term.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Lease liability</div><div class="glossary-def">A lessee's obligation to make lease payments, measured at the present value of unpaid amounts.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Finance lease</div><div class="glossary-def">A lease that transfers substantially all the risks and rewards incidental to ownership of an underlying asset.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Net investment in the lease</div><div class="glossary-def">The gross investment in a finance lease, discounted at the interest rate implicit in the lease.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Concessionary lease</div><div class="glossary-def">A lease granted at below-market terms, with the right-of-use asset measured at market-rate present value.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Sale and leaseback</div><div class="glossary-def">A transaction where an entity transfers an asset to another entity and leases that same asset back.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bs">SOFP</span> Statement of financial position
+      <span class="badge bp">SOFPerf</span> Statement of financial performance
+    </div>
+  </div>
+</StandardPageLayout>

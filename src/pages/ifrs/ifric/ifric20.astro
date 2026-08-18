@@ -1,0 +1,288 @@
+---
+import StandardPageLayout from "../../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../../components/FinancialStatementKey.astro";
+import Glossary from "../../../components/Glossary.astro";
+import PageToc from "../../../components/PageToc.astro";
+import "../../../styles/standards-poster.css";
+import "../../../styles/extended.css";
+import HistoryTimeline from "../../../components/HistoryTimeline.astro";
+import history from "../../../data/history.json";
+import metadata from "../../../data/standards/ifric/ifric20.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType="IFRS"
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework" },
+        { id: "s2", label: "Scope & Definitions" },
+        { id: "s3", label: "Splitting the Benefit — Inventory vs Improved Access" },
+        { id: "s4", label: "Recognition Criteria for the Stripping Activity Asset" },
+        { id: "s5", label: "Initial Measurement" },
+        { id: "s6", label: "Subsequent Measurement & Amortisation" },
+        { id: "s7", label: "Allocating Costs Between Inventory and the Asset" },
+        { id: "s8", label: "Worked Example — Component-Based Recognition" },
+        { id: "s9", label: "Disclosure" },
+        { id: "s10", label: "Judgments & Estimates" },
+        { id: "s11", label: "IFRIC 20 vs US GAAP" },
+        { id: "s12", label: "Statement Mapping" },
+        { id: "s13", label: "Related Standards" },
+        { id: "s14", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Why stripping costs need special accounting</div>
+        <div class="principle">Stripping (waste removal) costs in surface mining are incurred to IMPROVE ACCESS to the ore body — not just to extract inventory. This dual benefit means that treating ALL stripping costs as inventory cost (under IAS 2) would overstate current-period profit, while treating ALL of them as PPE (under IAS 16) would misrepresent the asset base. IFRIC 20 applies the Conceptual Framework's asset definition to split costs between the two purposes based on the BENEFIT GENERATED.</div>
+        <div class="note">The key economic insight is that some stripping is DONE TO EXTRACT ORE (inventory benefit) while other stripping is DONE TO IMPROVE ACCESS (future benefit). These are two distinct economic events requiring two distinct accounting treatments.</div>
+      </div>
+      <div class="card cs">
+        <div class="ctitle cs">The asset recognition principle</div>
+        <div class="principle">IFRIC 20 creates a NEW category of asset — the "stripping activity asset" — for the portion of stripping costs that generate FUTURE ECONOMIC BENEFITS by improving access to the ore body. This asset is recognised when, and only when, it is PROBABLE that FUTURE ECONOMIC BENEFITS will flow to the entity and the cost can be RELIABLY MEASURED — the standard Conceptual Framework recognition criteria applied to a specific mining scenario.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope & Definitions</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What IFRIC 20 covers</div>
+        <div class="principle">IFRIC 20 applies to STRIPPING COSTS incurred in the PRODUCTION PHASE of a SURFACE MINE. The interpretation does NOT apply to: (a) exploration and evaluation costs (covered by IFRS 6), (b) development costs incurred before the production phase, (c) costs incurred in the PRODUCTION PHASE of an UNDERGROUND mine, or (d) overburden removal costs that do not improve access to the ore body.</div>
+        <div class="elabel">TYPICAL FACT PATTERNS</div>
+        <div class="dot-list">
+          <span>Coal surface mines removing overburden to access coal seams</span>
+          <span>Iron ore surface operations stripping waste rock to reach ore bodies</span>
+          <span>Open-pit copper/gold mines removing overburden to improve pit access</span>
+          <span>Sand and gravel operations removing overburden to access aggregate deposits</span>
+        </div>
+      </div>
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Stripping activity asset</div>
+          <div class="glossary-def">An asset recognised for the component of stripping costs that generate future economic benefits by improving access to the ore body, measured and depreciated as part of the related asset under IAS 16 or IAS 38.</div>
+        </div>
+        <div class="glossary-item" style="border-bottom:none;">
+          <div class="glossary-term">Production phase</div>
+          <div class="glossary-def">The phase of a mining operation when the entity has commenced the extraction of the mineral deposit, and the ore body is being actively worked — as distinct from the exploration, evaluation, or development phases.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Splitting the Benefit — Inventory vs Improved Access</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">The two components of stripping costs</div>
+        <div class="td-table">
+          <div class="th cols-13-1"><span>Component</span><span>Accounting treatment</span></div>
+          <div class="tr cols-13-1"><span>Inventory component</span><span>Costs incurred to EXTRACT ore that can be SOLD as inventory in the current period — treated as part of inventory cost under IAS 2</span></div>
+          <div class="tr alt cols-13-1"><span>Access-improvement component</span><span>Costs incurred to IMPROVE ACCESS to the ore body, generating benefits over MULTIPLE periods — recognised as a stripping activity asset under IAS 16/IAS 38</span></div>
+        </div>
+        <div class="elabel">THE CRITICAL DISTINCTION</div>
+        <div class="dot-list">
+          <span>Inventory stripping = waste removed to EXTRACT current-period ore; benefit is CONSUMED when the ore is sold</span>
+          <span>Access-improvement stripping = waste removed to REACH ore that was PREVIOUSLY inaccessible; benefit extends BEYOND the current period</span>
+        </div>
+        <div class="callout warn callout--flush">⚠️ The split is NOT based on the PHYSICAL LOCATION of the stripping — it is based on the ECONOMIC BENEFIT generated. Stripping that physically removes overburden from an active pit face but opens access to a PREVIOUSLY UNREACHABLE ore section generates an access-improvement benefit, not just inventory benefit.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Recognition Criteria for the Stripping Activity Asset</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">When the asset can be recognised</div>
+        <div class="principle">A stripping activity asset can be recognised ONLY when BOTH of the following conditions are met: (1) it is PROBABLE that FUTURE ECONOMIC BENEFITS will flow to the entity from the improved access to the ore body, and (2) the cost can be RELIABLY MEASURED. These are the SAME recognition criteria that apply to any asset under the Conceptual Framework — IFRIC 20 simply applies them to a specific mining context.</div>
+        <div class="elabel">PROBABLE FUTURE ECONOMIC BENEFITS</div>
+        <div class="dot-list">
+          <span>Improved access allows extraction of ore that would otherwise be INACCESSIBLE</span>
+          <span>The ore body has SUFFICIENT RESERVES to justify the stripping cost</span>
+          <span>The entity has the INTENTION and ABILITY to extract the accessible ore</span>
+        </div>
+      </div>
+      <div class="card cd">
+        <div class="ctitle cd">When recognition is NOT permitted</div>
+        <div class="principle">If the improved access does NOT generate future economic benefits — for example, because the ore body is depleted or the mine is being closed — the stripping costs are treated ENTIRELY as inventory cost (if they relate to current production) or expensed immediately (if they do not relate to current production). No stripping activity asset is recognised.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Initial Measurement</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Cost model for the stripping activity asset</div>
+        <div class="principle">The stripping activity asset is initially measured at COST — the directly attributable cost of the stripping activity that generated the improved access. Directly attributable costs include: labour, equipment depreciation, fuel, explosives, and other directly attributable costs. Indirect costs are NOT included unless they are directly attributable to the stripping activity.</div>
+        <div class="formula-box">
+          <div class="f-label">INITIAL MEASUREMENT</div>
+          <div class="f-eq">Stripping activity asset = Directly attributable costs of stripping that improves access to the ore body</div>
+        </div>
+      </div>
+      <div class="card cs">
+        <div class="ctitle cs">Allocated to the specific component of the mine</div>
+        <div class="principle">The stripping activity asset is allocated to the SPECIFIC COMPONENT OF THE ORE BODY that the stripping makes accessible. This means that if stripping opens access to a specific bench or section of the pit, the stripping activity asset is allocated to that bench or section — not spread across the entire mine. This component-specific allocation ensures that depreciation matches the benefit period of each section.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Subsequent Measurement & Amortisation</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">Depreciation over the expected benefit period</div>
+        <div class="principle">After initial recognition, the stripping activity asset is MEASURED at COST LESS ACCUMULATED DEPRECIATION AND IMPAIRMENT. The asset is depreciated on a SYSTEMATIC BASIS over the EXPECTED BENEFIT PERIOD — the period over which the improved access to the ore body is expected to generate economic benefits. This is typically the REMAINING LIFE of the ore body section that the stripping made accessible.</div>
+        <div class="elabel">DEPRECIATION METHODS</div>
+        <div class="dot-list">
+          <span>Units-of-production method (most common for mining assets) — depreciation based on ore extracted from the accessed section</span>
+          <span>Straight-line method — if production is uniform over the benefit period</span>
+          <span>Depletion method — if the benefit is directly tied to the reserve quantity extracted</span>
+        </div>
+        <div class="callout info">The stripping activity asset is DEPRECIATED, not amortised, because it is classified as part of property, plant and equipment under IAS 16 (if it enhances tangible mine infrastructure) or as an intangible asset under IAS 38 (if it enhances a mining right or similar intangible asset).</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Allocating Costs Between Inventory and the Asset</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">The allocation mechanics</div>
+        <div class="principle">For each period, the entity must ALLOCATE its total stripping costs between the INVENTORY COMPONENT and the STRIPPING ACTIVITY ASSET COMPONENT. This allocation is performed using a CONSISTENT METHODOLOGY that reflects the BENEFIT GENERATED by each component. The most common approach is to compare the stripping volume from the CURRENT PIT SECTION (inventory) with the stripping volume that IMPROVES ACCESS to new sections (asset).</div>
+        <div class="formula-box">
+          <div class="f-label">ALLOCATION FORMULA</div>
+          <div class="f-eq">Inventory component = Total stripping costs × (Volume of current-pit stripping ÷ Total stripping volume)<br>Stripping activity asset = Total stripping costs - Inventory component</div>
+        </div>
+      </div>
+      <div class="card cw">
+        <div class="ctitle cw">The "identifiable assets" approach</div>
+        <div class="principle">An alternative (and increasingly common) approach is to identify SPECIFIC BENCHES OR SECTIONS where stripping improves access to PREVIOUSLY INACCESSIBLE ORE. Costs incurred to strip those specific sections are capitalised as stripping activity assets; costs incurred to strip within the ALREADY ACCESSIBLE sections are treated as inventory. This approach is more precise but requires detailed tracking of stripping activities by bench.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Worked Example — Component-Based Recognition</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="worked">
+          <div class="wk-title">Example: Coal mine stripping allocation</div>
+          <div class="wk-body">A coal surface mine incurs £2.5m of stripping costs in Year 1. Analysis shows that £1.5m of the stripping was within the CURRENT accessible pit (inventory benefit) and £1.0m was to remove overburden to access a PREVIOUSLY INACCESSIBLE bench (future benefit). The new bench contains 5m tonnes of coal. Annual production from the new bench is expected to be 500,000 tonnes over 10 years.</div>
+          <div class="wk-answer"><strong>Step 1 — Allocate costs:</strong><br>Inventory component = £1.5m<br>Stripping activity asset = £1.0m<br><br><strong>Step 2 — Initial recognition:</strong><br>£1.5m added to inventory cost (IAS 2)<br>£1.0m recognised as stripping activity asset (IAS 16)<br><br><strong>Step 3 — Depreciation calculation:</strong><br>Annual depreciation = £1.0m ÷ 10 years = £100,000/year (straight-line)<br>OR using units-of-production: £1.0m ÷ 5m tonnes = £0.20 per tonne<br><br><strong>Step 4 — Year 1 production:</strong><br>500,000 tonnes extracted<br>Depreciation charge = 500,000 × £0.20 = £100,000<br><br><strong>Step 5 — Balance sheet:</strong><br>Inventory: £1.5m stripping cost + mining costs<br>Stripping activity asset (net): £1.0m - £100,000 = £900,000</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">What IFRIC 20 requires</div>
+        <div class="check-list">
+          <span>The accounting policy for recognising stripping activity assets, including the method of allocating stripping costs between inventory and the asset</span>
+          <span>The carrying amount of stripping activity assets at the beginning and end of the period</span>
+          <span>The amount of stripping costs capitalised during the period</span>
+          <span>The amount of depreciation charged during the period</span>
+          <span>The method used to depreciate the stripping activity asset and the useful life applied</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Judgments & Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where judgement matters most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Whether specific stripping activities improve access to previously inaccessible ore or merely extract current-period ore</span>
+              <span>Which component of the ore body the stripping activity asset is allocated to</span>
+              <span>Whether future economic benefits are probable given the mine plan and ore reserves</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>Remaining life of the ore body section accessed by the stripping</span>
+              <span>Stripping volumes that improve access vs volumes for current extraction</span>
+              <span>Depreciation method and useful life for the stripping activity asset</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>IFRIC 20 vs US GAAP</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — IFRIC 20 vs ASC 932 (Extractive Activities — Mining)</div>
+        <div class="td-table">
+          <div class="th cols-12-1-1"><span>Feature</span><span>IFRIC 20 (IFRS)</span><span>US GAAP (ASC 932)</span></div>
+          <div class="tr cols-12-1-1"><span>Stripping activity asset</span><span>Recognised for access-improvement component; measured at cost less depreciation</span><span>Similar asset recognised for "stripping phase" costs that improve access</span></div>
+          <div class="tr alt cols-12-1-1"><span>Allocation method</span><span>Split between inventory and asset based on benefit generated</span><span>Similar split required between inventory and asset</span></div>
+          <div class="tr cols-12-1-1"><span>Depreciation</span><span>Over the expected benefit period (typically mine life of the accessed component)</span><span>Over the expected benefit period of the stripping phase asset</span></div>
+          <div class="tr alt cols-12-1-1"><span>Scope</span><span>Surface mines only, production phase only</span><span>Similar scope — production phase, surface and underground mines</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Where every IFRIC 20 event lands</div>
+        <div class="td-table">
+          <div class="th cols-16-1-14"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr cols-16-1-14"><span>Stripping costs — inventory component</span><span><span class="badge bs">SOFP</span> <span class="badge bp">SOPL</span></span><span>Capitalised as part of inventory under IAS 2; expensed as COGS when ore is sold</span></div>
+          <div class="tr alt cols-16-1-14"><span>Stripping activity asset recognised</span><span><span class="badge bs">SOFP</span></span><span>Recognised under IAS 16 or IAS 38 at cost</span></div>
+          <div class="tr cols-16-1-14"><span>Depreciation of stripping activity asset</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Systematic depreciation over the benefit period</span></div>
+          <div class="tr alt cols-16-1-14"><span>Impairment of stripping activity asset</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>IAS 36 impairment testing applies to the stripping activity asset</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Cross-reference map</div>
+        <div class="td-table">
+          <div class="th cols-08-2"><span>Standard</span><span>Connection</span></div>
+          <div class="tr cols-08-2"><span>IAS 2</span><span>Governs the portion of stripping costs relating to inventory produced in the current period</span></div>
+          <div class="tr alt cols-08-2"><span>IAS 16</span><span>Governs classification and depreciation of the stripping activity asset where it enhances tangible mine infrastructure</span></div>
+          <div class="tr cols-08-2"><span>IAS 38</span><span>Governs classification and amortisation of the stripping activity asset where it enhances an intangible mining right</span></div>
+          <div class="tr alt cols-08-2"><span>IAS 36</span><span>Governs impairment testing of the stripping activity asset</span></div>
+        </div>
+      </div>
+      <div class="card cn">
+        <div class="ctitle cn">Quick-reference glossary</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Stripping activity asset</div>
+          <div class="glossary-def">An asset recognised for the portion of stripping costs that generate future economic benefits by improving access to the ore body, depreciated over the expected benefit period.</div>
+        </div>
+        <div class="glossary-item" style="border-bottom:none;">
+          <div class="glossary-term">Overburden</div>
+          <div class="glossary-def">The layer of soil and rock covering the mineral deposit in a surface mine — the material removed through stripping to access the ore body.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Stripping activity asset", definition: "An asset recognised for the portion of stripping costs that generate future economic benefits by improving access to the ore body, depreciated over the expected benefit period." },
+      { term: "Overburden", definition: "The layer of soil and rock covering the mineral deposit in a surface mine — the material removed through stripping to access the ore body." },
+      { term: "Units-of-production depreciation", definition: "A depreciation method based on the quantity of ore extracted from the accessed section of the mine — the most common method for stripping activity assets." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.IFRIC20} />
+  </section>
+</StandardPageLayout>
+
+
+
+

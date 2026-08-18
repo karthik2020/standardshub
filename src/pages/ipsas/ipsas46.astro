@@ -1,0 +1,428 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import metadata from "../../data/standards/ipsas/ipsas46.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  covers={metadata.covers}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Objective, Scope & the Four Measurement Bases" },
+        { id: "s2", label: "Definitions — Fair Value Hierarchy Vocabulary" },
+        { id: "s3", label: "Initial Measurement — Transaction Price & Deemed Cost" },
+        { id: "s4", label: "Subsequent Measurement — Models & Bases" },
+        { id: "s5", label: "Historical Cost Basis" },
+        { id: "s6", label: "Current Operational Value Basis" },
+        { id: "s7", label: "Cost of Fulfillment Basis" },
+        { id: "s8", label: "Fair Value Basis" },
+        { id: "s9", label: "Characteristics of the Asset/Liability & Unit of Account" },
+        { id: "s10", label: "Measurement Techniques — Market, Cost & Income Approaches" },
+        { id: "s11", label: "Depreciation, Impairment & Other Adjustments" },
+        { id: "s12", label: "Transaction Costs in Subsequent Measurement" },
+        { id: "s13", label: "The Fair Value Hierarchy — Levels 1, 2 & 3" },
+        { id: "s14", label: "Disclosure Requirements" },
+        { id: "s15", label: "Effective Date & Transition" },
+        { id: "s16", label: "Relationship to IFRS 13 & GFS" },
+        { id: "s17", label: "Statement / Process Mapping" },
+        { id: "s18", label: "Related Standards" },
+        { id: "s19", label: "Glossary" }
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="active"
+    explanation="IPSAS 46 Measurement is the current, active standard issued by the IPSASB defining measurement bases that help fairly reflect cost of services, operational capacity, and financial capacity. It covers historical cost, current operational value, cost of fulfillment, and fair value, including measurement techniques and the fair value hierarchy. Effective for periods beginning on or after 1 January 2025."
+    historical="IPSAS 46 is drawn primarily from IFRS 13 Fair Value Measurement, but is much broader — covering historical cost, current operational value, cost of fulfillment, and fair value, whereas IFRS 13 covers only fair value. IPSAS 46 operationalizes the Conceptual Framework's Chapter 7 models/bases/techniques structure into binding requirements, and delegates disclosure requirements to the individual IPSAS governing each asset or liability."
+    link=""
+    linkText=""
+  />
+
+  <!-- ============ SECTION 1 — OBJECTIVE, SCOPE & THE FOUR MEASUREMENT BASES ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; the Four Measurement Bases (paras. 1–5)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Objective — operationalizing the Conceptual Framework</div>
+      <div class="principle">Defines measurement bases that help fairly reflect COST OF SERVICES, OPERATIONAL CAPACITY, and FINANCIAL CAPACITY — the same three lenses from the Conceptual Framework's Chapter 7. IPSAS 46 identifies the APPROACHES under each basis that individual IPSAS then apply to achieve financial reporting's objectives.</div>
+      <div class="note">Applies whenever ANOTHER IPSAS requires/permits one of the four bases, OR a measurement based on one of them (e.g. fair value less costs of disposal) (para. 3).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Scope carve-outs, and the four bases (para. 4, 20)</div>
+      <div class="cross-list">
+        <span>Leasing transactions (IPSAS 43)</span>
+        <span>Service concession arrangements (IPSAS 32)</span>
+        <span>Similar-but-distinct measurements — net realizable value (IPSAS 12), value in use (IPSAS 21/26) — though IPSAS 46 STILL governs FAIR VALUE measurement within those Standards</span>
+      </div>
+      <div class="check-list">
+        <span>Historical cost (Appendix A)</span>
+        <span>Current operational value (Appendix B)</span>
+        <span>Cost of fulfillment (Appendix C)</span>
+        <span>Fair value (Appendix D)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 — DEFINITIONS: FAIR VALUE HIERARCHY VOCABULARY ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Definitions (para. 6)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The four bases, defined</div>
+      <div class="glossary-item"><div class="glossary-term">Historical cost</div><div class="glossary-def">Consideration given (plus transaction costs) to acquire/construct/develop an asset, or received (minus transaction costs) to assume a liability, at the time incurred.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Current operational value</div><div class="glossary-def">The amount an entity would pay for the remaining service potential of an asset at the measurement date.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Cost of fulfillment</div><div class="glossary-def">The costs an entity will incur fulfilling a liability, assuming it does so in the least costly manner.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Fair value</div><div class="glossary-def">The price received to sell an asset, or paid to transfer a liability, in an orderly transaction between market participants at the measurement date.</div></div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Fair value hierarchy &amp; supporting vocabulary</div>
+      <div class="glossary-item"><div class="glossary-term">Level 1 / 2 / 3 inputs</div><div class="glossary-def">Quoted prices in active markets for identical items / other observable inputs / unobservable inputs — in DESCENDING order of reliability.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Market participants</div><div class="glossary-def">Independent, knowledgeable, able, and willing buyers/sellers in the principal or most advantageous market.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Orderly transaction</div><div class="glossary-def">One assuming market exposure before the measurement date for usual/customary marketing — NOT a forced liquidation or distress sale.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Deemed cost</div><div class="glossary-def">An amount used as a surrogate for transaction price at the measurement date.</div></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 — INITIAL MEASUREMENT: TRANSACTION PRICE & DEEMED COST ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Initial Measurement — Transaction Price &amp; Deemed Cost (paras. 7–16)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Default: transaction price</div>
+      <div class="formula-box">
+        <div class="f-eq">Initial measurement = transaction price ± transaction costs — UNLESS it fails to faithfully represent relevant information, or another IPSAS requires/permits otherwise</div>
+      </div>
+      <div class="text-supporting">In an ORDERLY market, the transaction price is PRESUMED to present relevant information (paras. 8–9).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">When deemed cost steps in — six trigger scenarios (para. 12)</div>
+      <div class="dot-list">
+        <span>Transaction prices with a CONCESSIONARY element</span>
+        <span>Assets transferred FREE OF CHARGE or DONATED</span>
+        <span>Liabilities imposed by LEGISLATION or regulation</span>
+        <span>Liabilities for compensation/penalty from wrongdoing or breach of contract</span>
+        <span>Prices affected by RELATED-PARTY dynamics, financial distress, or duress</span>
+        <span>Prices unavailable at the IPSAS 33 date of adoption</span>
+      </div>
+      <div class="note">Where deemed cost applies, a CURRENT VALUE basis determines it (para. 10); any difference between deemed cost and actual consideration is revenue/expense, unless it's a contribution from owners or another IPSAS requires otherwise (para. 11). Transaction costs at initial measurement reflect only costs of the ACTUAL transaction — possible FUTURE disposal/settlement costs are excluded unless explicitly required (para. 14).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 — SUBSEQUENT MEASUREMENT: MODELS & BASES ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Subsequent Measurement — Models &amp; Bases (paras. 17–20)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">The accounting policy choice, and its downstream effect</div>
+      <div class="formula-box">
+        <div class="f-eq">Choose HISTORICAL COST or CURRENT VALUE as the measurement MODEL — this choice then determines which specific BASIS applies</div>
+      </div>
+      <div class="text-supporting">The model selection considers the item's characteristics, the measurement OBJECTIVE, and the monetary information being presented (para. 18). This is the SAME structure introduced in Conceptual Framework Chapter 7 (models → bases → techniques) — IPSAS 46 operationalizes it into binding requirements.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 — HISTORICAL COST BASIS ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Historical Cost Basis (Appendix A, paras. A1–A6)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">An entry, entity-specific value — frozen at acquisition</div>
+      <div class="text-supporting">Derived, at least in part, from the ACTUAL transaction price (or deemed cost). After initial measurement, the gross carrying amount is UNAFFECTED by changes in current market conditions — UNLESS those changes trigger impairment (para. A4). It's still updated for the SAME depreciation/interest/impairment mechanics as current value measurements (section 11) (para. A5).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Amortized cost — the financial-instrument application</div>
+      <div class="text-supporting">The historical cost basis is applied to financial instruments via AMORTIZED COST — reflecting estimated future cash flows discounted at the rate determined at INITIAL measurement, updated over time for interest accrual, impairment, and payments (para. A6) — directly connecting to IPSAS 41's effective interest method.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 — CURRENT OPERATIONAL VALUE BASIS ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Current Operational Value Basis (Appendix B, paras. B1–B8)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Four determinations, and three defining features</div>
+      <div class="check-list">
+        <span>The amount the entity WOULD PAY</span>
+        <span>The REMAINING SERVICE POTENTIAL, given current condition</span>
+        <span>The asset consistent with its UNIT OF ACCOUNT — existing use and location</span>
+        <span>The appropriate MEASUREMENT TECHNIQUE(S)</span>
+      </div>
+      <div class="text-supporting">Differs from fair value in THREE ways (para. 25): it's explicitly an ENTRY price including all costs necessarily paid; it reflects the asset's EXISTING use (not highest and best use — a building used as a hospital is valued AS a hospital); and it's ENTITY-SPECIFIC, reflecting the entity's own economic position.</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Worked example — military aircraft with no active market (para. B6)</div>
+      <div class="worked worked--flush">
+        <div class="wk-title">Many military assets (e.g. aircraft) have no active market and cannot be acquired as an identical/similar finished product</div>
+        <div class="wk-answer">Current operational value is estimated by costing EACH PART (fuselage, engine, electronics, etc.) and the cost to ASSEMBLE them into the same/similar aircraft — adjusted for age, functionality, and condition.</div>
+      </div>
+      <div class="note">When an active market DOES exist for an identical/similar asset, that price is used directly (para. B5). Entity-specific assumptions reflect the economic, legal, and other constraints affecting the asset's possible uses (para. B8).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 — COST OF FULFILLMENT BASIS ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Cost of Fulfillment Basis (Appendix C)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">An exit, entity-specific cost — the least costly manner</div>
+      <div class="formula-box">
+        <div class="f-eq">Cost of fulfillment = PV of cash/resources the entity expects to be OBLIGED to transfer, fulfilling the liability in the LEAST COSTLY manner it can access</div>
+      </div>
+      <div class="text-supporting">Reflects the SAME factors as fair value, but from the ENTITY's perspective rather than a market participant's (para. 28). No exhaustive search of fulfillment methods is required — but the entity considers all REASONABLY AVAILABLE information; absent contrary evidence, the CURRENTLY SELECTED method is presumed least costly.</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Worked example — restoring land beyond the minimum obligation</div>
+      <div class="worked worked--flush">
+        <div class="wk-title">An entity has a liability to restore land to its original condition once a temporary road is no longer used — but intends to ENHANCE the land beyond that</div>
+        <div class="wk-answer">The cost of fulfillment reflects ONLY the minimum restoration obligation. Enhancement costs are BEYOND the liability's scope and are NOT part of cost of fulfillment — if the entity genuinely intends to go beyond its commitment, IPSAS 19 governs that excess separately.</div>
+      </div>
+      <div class="note">Where fulfillment uses the entity's OWN employees, no profit margin is included (it isn't a genuine resource use); where a CONTRACTOR is used as the least-costly method, the contractor's own margin IS implicitly included, since the total amount charged is a real claim on the entity's resources.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 — FAIR VALUE BASIS ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Fair Value Basis (Appendix D, paras. D1–D10)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">An exit, market-based value — four determinations</div>
+      <div class="check-list">
+        <span>The particular asset/liability (per its UNIT OF ACCOUNT)</span>
+        <span>For non-financial assets: the VALUATION PREMISE — consistent with HIGHEST AND BEST USE</span>
+        <span>The PRINCIPAL (or most advantageous) market</span>
+        <span>The appropriate MEASUREMENT TECHNIQUE(S) and fair value hierarchy level</span>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Principal market, and market participant assumptions</div>
+      <div class="text-supporting">Assumes an orderly transaction in the PRINCIPAL market — or, absent one, the MOST ADVANTAGEOUS market. No exhaustive market search is required; absent contrary evidence, the market the entity would NORMALLY use is presumed principal/most advantageous (paras. D3–D4). Even where no observable market exists, fair value STILL assumes a hypothetical transaction, from the perspective of a market participant holding the asset or owing the liability (para. D8). Assumptions used are those market participants would apply, acting in their own economic best interest — WITHOUT needing to identify specific participants (paras. D9–D10).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 — CHARACTERISTICS OF THE ASSET/LIABILITY & UNIT OF ACCOUNT ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Characteristics of the Asset/Liability &amp; Unit of Account (paras. 32–35)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Characteristics affecting measurement</div>
+      <div class="dot-list">
+        <span>Condition, use, and LOCATION of the asset</span>
+        <span>RESTRICTIONS, if any, on its sale or use</span>
+      </div>
+      <div class="text-supporting">Considered wherever market participants (fair value) or the entity itself (entity-specific bases) would take them into account when pricing (para. 32).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Stand-alone vs. group, and the unit of account link</div>
+      <div class="text-supporting">The measured item may be a STAND-ALONE asset/liability, OR a GROUP (a cash-generating unit, or an operation). Whether it's treated as stand-alone or grouped for recognition/disclosure depends on its UNIT OF ACCOUNT — determined by whichever IPSAS requires/permits applying this Standard's bases, except where IPSAS 46 itself specifies otherwise (paras. 34–35).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 — MEASUREMENT TECHNIQUES: MARKET, COST & INCOME APPROACHES ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Measurement Techniques — Market, Cost &amp; Income Approaches (paras. 36, 44–45)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Three techniques, chosen for available data</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2fr;"><span>Approach</span><span>Mechanic</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2fr;"><span>Market approach</span><span>Uses prices/information from market transactions involving identical or comparable items</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2fr;"><span>Cost approach</span><span>Reflects the amount currently required to replace an asset's service capacity — "current replacement cost"; uses a MODERN EQUIVALENT ASSET providing equivalent service (para. 44)</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2fr;"><span>Income approach</span><span>Converts future amounts (cash flows, revenue/expenses) to a single CURRENT (discounted) amount, reflecting current expectations (para. 45)</span></div>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Selection criteria</div>
+      <div class="text-supporting">The entity uses techniques APPROPRIATE in the circumstances, for which SUFFICIENT DATA is available to estimate the measurement basis or determine deemed cost (para. 36) — directly mirroring the Conceptual Framework's own "measurement techniques" tier beneath models and bases.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 — DEPRECIATION, IMPAIRMENT & OTHER ADJUSTMENTS ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Depreciation, Impairment &amp; Other Adjustments (paras. 46–48)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Methods, not measurement bases in their own right</div>
+      <div class="text-supporting">Depreciation and impairment apply across BOTH the historical cost model AND the current value model — they REFLECT consumption or benefit loss, but are not themselves bases or techniques (para. 46).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">How assets and liabilities update over time</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2fr;"><span>Item</span><span>Updated to reflect</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2fr;"><span>ASSET</span><span>Consumption (depreciation/amortization); payments that extinguish it; impairment; interest accrual for any financing component (para. 47)</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2fr;"><span>LIABILITY</span><span>Fulfillment (payments, obligation satisfaction); becoming ONEROUS (carrying amount no longer sufficient); interest accrual (para. 48)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 — TRANSACTION COSTS IN SUBSEQUENT MEASUREMENT ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Transaction Costs in Subsequent Measurement (paras. 49–53)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Incremental, and entry- vs. exit-based inclusion</div>
+      <div class="formula-box">
+        <div class="f-eq">Transaction costs = incremental costs that WOULDN'T have been incurred but for the transaction</div>
+      </div>
+      <div class="text-supporting">Operating costs after acquisition are incremental but NOT transaction costs — they're not a direct result of the transaction itself (para. 50). Costs to NEGOTIATE beforehand, or BORROWING costs afterward, are also excluded (para. 51).</div>
+      <div class="dot-list">
+        <span>ENTRY-based measurement bases (historical cost, current operational value) → include costs of ENTERING the transaction</span>
+        <span>EXIT-based, ENTITY-SPECIFIC bases (cost of fulfillment) → include costs that WOULD be incurred exiting — a possible future transaction</span>
+        <span>Fair value, being NON-entity-specific, generally does NOT build in the entity's own future transaction costs the same way (para. 53)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 — THE FAIR VALUE HIERARCHY: LEVELS 1, 2 & 3 ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>The Fair Value Hierarchy — Levels 1, 2 &amp; 3 (paras. D58–D65)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Three levels — priority by input reliability</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.5fr 2.5fr;"><span>Level</span><span>Input type</span></div>
+        <div class="tr" style="grid-template-columns:0.5fr 2.5fr;"><span>1</span><span>Quoted prices (unadjusted) in ACTIVE markets for IDENTICAL items, accessible at the measurement date — the HIGHEST priority, used WITHOUT adjustment whenever available</span></div>
+        <div class="tr alt" style="grid-template-columns:0.5fr 2.5fr;"><span>2</span><span>OTHER observable inputs — directly or indirectly</span></div>
+        <div class="tr" style="grid-template-columns:0.5fr 2.5fr;"><span>3</span><span>UNOBSERVABLE inputs — the LOWEST priority</span></div>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">The "lowest significant input" rule</div>
+      <div class="text-supporting">A measurement using inputs from MULTIPLE levels is categorized ENTIRELY at the LOWEST level that's SIGNIFICANT to the overall measurement (para. D59). If a Level 2 input requires an unobservable adjustment that SIGNIFICANTLY changes the measurement, the WHOLE thing drops to Level 3 (para. D61) — e.g. adjusting a quoted price for a sale restriction using an unobservable input. Costs-to-sell-type adjustments are NOT considered when determining the hierarchy level itself (para. D59).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 — DISCLOSURE REQUIREMENTS ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Disclosure Requirements (paras. 54–55)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Delegated entirely to the individual IPSAS</div>
+      <div class="formula-box">
+        <div class="f-eq">Disclose information helping users assess the MEASUREMENT BASIS, TECHNIQUES, and INPUTS used — by applying the measurement disclosure requirements in the SPECIFIC IPSAS governing that asset/liability</div>
+      </div>
+      <div class="text-supporting">Unlike IFRS 13 (which centralizes ALL fair value disclosures in one place, section 16), IPSAS 46 doesn't prescribe its OWN standalone disclosure package — instead, each individual Standard (IPSAS 12, 16, 27, 31, 45, and others throughout this library) carries the specific fair value hierarchy disclosure requirements you've seen repeated consistently across their own posters.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 15 — EFFECTIVE DATE & TRANSITION ============ -->
+  <div class="section-header" id="s15"><span class="num">15</span><h2>Effective Date &amp; Transition (paras. 56–58)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">A single clean effective date, applied prospectively</div>
+      <div class="principle">Periods beginning on/after <strong>1 January 2025</strong> — applied PROSPECTIVELY from the start of the annual period in which it's first applied (para. 58). Entities adopting accrual IPSAS AFTER this date apply IPSAS 46 from their own IPSAS 33 date of adoption (para. 57).</div>
+      <div class="note">Unlike most Standards in this library, IPSAS 46 has NO subsequent amendment entries yet in the Handbook — it's one of the newest Standards, itself the SOURCE of measurement-methodology amendments flowing INTO other Standards (IPSAS 12, 16, 27, 31, 34, 39, 43, 44, 45, and more all received consequential amendments FROM IPSAS 46's issuance, as seen throughout this library's own amendment timelines).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 16 — RELATIONSHIP TO IFRS 13 & GFS ============ -->
+  <div class="section-header" id="s16"><span class="num">16</span><h2>Relationship to IAS/IFRS &amp; GFS — Comparison with IFRS 13</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Comparison — IPSAS 46 vs IFRS 13</div>
+      <div class="principle">The FAIR VALUE requirements are drawn primarily from IFRS 13 (issued 2011, amendments to Feb 2023), <em>Fair Value Measurement</em>.</div>
+      <div class="dot-list">
+        <span>IPSAS 46 is much BROADER — covering historical cost, current operational value, cost of fulfillment, AND fair value; IFRS 13 covers ONLY fair value</span>
+        <span>IPSAS 46 delegates disclosure to each RELEVANT IPSAS (section 14); IFRS 13 centralizes ALL fair value disclosures in one place</span>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Comparison — IPSAS 46 vs GFS</div>
+      <div class="dot-list">
+        <span>Actual similarity/difference DEPENDS on the specific transaction and period-end carrying amounts</span>
+        <span>Initial recognition: IPSAS 46 uses transaction price/deemed cost; GFS generally uses MARKET PRICES for everything — the two CAN converge</span>
+        <span>IPSAS 46 requires transaction cost capitalization for ALL assets; GFS only for the cost of OWNERSHIP TRANSFER on non-financial assets</span>
+        <span>Subsequent measurement: IPSAS 46 allows FOUR bases; GFS generally uses market prices — convergence is possible if the market approach happens to be selected as the IPSAS 46 technique</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 17 — STATEMENT / PROCESS MAPPING ============ -->
+  <div class="section-header" id="s17"><span class="num">17</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Measurement decision map</div>
+      <ol class="ordered-list">
+        <li>Initial recognition: is there a genuine transaction price from an ORDERLY market? → use it ± transaction costs. If not (six deemed-cost triggers) → use DEEMED COST via a current value basis (section 3)</li>
+        <li>Subsequent measurement: does the relevant IPSAS mandate a basis, or offer a choice? → select the MODEL (historical cost or current value), then the specific BASIS (section 4)</li>
+        <li>Which basis fits the objective? Asset held for OPERATIONAL capacity → current operational value (section 6). Held for FINANCIAL capacity or a market-based need → fair value (section 8). Liability → cost of fulfillment (section 7). Simple pass-through → historical cost/amortized cost (section 5)</li>
+        <li>Select an appropriate MEASUREMENT TECHNIQUE — market, cost, or income approach, based on available data (section 10)</li>
+        <li>If fair value → determine the HIERARCHY LEVEL based on the lowest significant input used (section 13)</li>
+        <li>Apply depreciation/impairment/interest-accrual updating mechanics consistently, regardless of the underlying model (section 11)</li>
+        <li>Disclose per the SPECIFIC IPSAS governing the asset/liability in question — not a standalone IPSAS 46 package (section 14)</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="grid grid-spaced">
+    <div class="card cs span2">
+      <div class="ctitle cs">Concept-to-statement mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>IPSAS 46 concept</span><span>Statement(s)</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Historical cost carrying amount</span><span><span class="badge bs">SOFP</span></span><span>Frozen at acquisition except for impairment</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Current operational value / fair value carrying amount</span><span><span class="badge bs">SOFP</span></span><span>Updated at each measurement date</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Cost of fulfillment liability</span><span><span class="badge bs">SOFP</span></span><span>Reflects least-costly settlement method</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Deemed cost adjustment vs. actual consideration</span><span><span class="badge bp">SOFPerf</span></span><span>Revenue or expense, unless a contribution from owners</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Fair value hierarchy classification</span><span><span class="badge bp">Notes</span></span><span>Per the governing individual IPSAS, not IPSAS 46 itself</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 18 — RELATED STANDARDS ============ -->
+  <div class="section-header" id="s18"><span class="num">18</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How IPSAS 46 connects across the IPSAS body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.7fr 2.2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>Conceptual Framework</span><span>Chapter 7's models/bases/techniques structure is directly operationalized here into binding requirements (section 1, section 4, section 10)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 12 / 16 / 27</span><span>Apply the fair value/current value bases for inventories, investment property, and biological assets</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 19</span><span>Governs excess-of-minimum-obligation restoration/enhancement costs beyond cost of fulfillment (section 7)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 20</span><span>Related party definition informs the market participant independence test (section 2)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 21 / 26</span><span>Value in use is explicitly EXCLUDED from IPSAS 46's bases, though fair value WITHIN those Standards still follows this Standard (section 1)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 31 / 45</span><span>Apply the current operational value / fair value dual basis for intangibles and PP&amp;E</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 32 / 43</span><span>Explicitly excluded from IPSAS 46's measurement requirements (section 1)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 33</span><span>Deemed cost concept directly underpins first-time-adoption transitional relief</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 41</span><span>Amortized cost application of the historical cost basis (section 5)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 44</span><span>Fair value less costs to sell measurement for held-for-sale assets</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 19 — GLOSSARY ============ -->
+  <div class="section-header" id="s19"><span class="num">19</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Active market</div><div class="glossary-def">A market where transactions occur with sufficient frequency and volume to provide ongoing pricing information.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Highest and best use</div><div class="glossary-def">The use of a non-financial asset by market participants that would maximize its value.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Principal market</div><div class="glossary-def">The market with the greatest volume and level of activity for the asset or liability.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Most advantageous market</div><div class="glossary-def">The market maximizing sale proceeds or minimizing transfer payment, after transaction and transport costs.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Non-performance risk</div><div class="glossary-def">The risk that an entity will not fulfill an obligation, including its own credit risk.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Unit of account</div><div class="glossary-def">The level at which an asset or liability is aggregated or disaggregated for recognition purposes.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bs">SOFP</span> Statement of financial position
+      <span class="badge bp">SOFPerf</span> Statement of financial performance
+      <span class="badge bp">Notes</span> Notes to the financial statements
+    </div>
+  </div>
+</StandardPageLayout>

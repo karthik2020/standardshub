@@ -1,0 +1,66 @@
+---
+import StandardLifecycleNotice from "../../../components/StandardLifecycleNotice.astro";
+import StandardPageLayout from "../../../layouts/StandardPageLayout.astro";
+import PageToc from "../../../components/PageToc.astro";
+import "../../../styles/standards-poster.css";
+import "../../../styles/extended.css";
+import metadata from "../../../data/standards/hgb/drs01.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  subtitle={metadata.nativeTitle}
+  framework="hgb"
+  status={metadata.status}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Part of the DRS consolidation wave" },
+        { id: "s2", label: "Why withdrawn" },
+        { id: "s3", label: "Status summary" },
+      ]}
+    />
+  </Fragment>
+
+  <StandardLifecycleNotice
+    type="withdrawn"
+    explanation="This standard has been withdrawn."
+    targetStatus="DRÄS 2"
+    
+    
+  />
+
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Part of the DRS consolidation wave</h2><span class="line"></span></div>
+  <div class="cols-1">
+    <div class="card warn">
+<div class="ctitle">Part of the DRS consolidation wave</div>
+<div class="principle">DRS 1 and its companion DRS 1a were among the DRSC's earliest standards (1998–2000 era), addressing a narrow and now-obsolete transitional question: German parent companies that prepared their Konzernabschluss under an internationally recognised framework (rather than HGB's own §§290 et seq.) could, under the old §292a HGB, be EXEMPTED from the domestic German consolidation requirements entirely. DRS 1/1a supplied the detailed conditions for this exemption, with DRS 1a specifically addressing how goodwill and other intangible assets should be treated within that exempting framework.</div>
+</div>
+  </div>
+
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Why withdrawn</h2><span class="line"></span></div>
+  <div class="cols-1">
+    <div class="card info">
+<div class="ctitle">Why withdrawn</div>
+<div class="principle">§292a HGB was itself a TRANSITIONAL provision, bridging the period before EU Regulation 1606/2002 made IFRS mandatory for listed groups' consolidated accounts (the "dual system" this whole HGB poster series has documented via §315e). Once §315e's own, more comprehensive IFRS-permission framework was firmly established and §292a itself was repealed, DRS 1 and DRS 1a lost their entire legal anchor and were formally withdrawn via DRÄS 2 (a Deutscher Rechnungslegungs Änderungsstandard — an "amendment standard," the DRSC's own mechanism for updating or retiring existing DRS, directly analogous to how IASB uses annual improvements or amendment standards to update IFRS).</div>
+</div>
+  </div>
+
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Status summary</h2><span class="line"></span></div>
+  <div class="cols-1">
+    <div class="card">
+<div class="ctitle">Status summary</div>
+<div class="td-table">
+<div class="th"><span>Field</span><span>Detail</span></div>
+<div class="tr"><span>Original topic</span><span>Exemption from HGB group accounting for parents using an internationally recognised framework</span></div>
+<div class="tr"><span>Withdrawn via</span><span>DRÄS 2</span></div>
+<div class="tr"><span>Reason</span><span>Underlying §292a HGB legal basis repealed; superseded by §315e's own EU-IFRS permission</span></div>
+<div class="tr"><span>Successor concept</span><span>No direct DRS successor — the substantive question is now addressed entirely by HGB §315e itself</span></div>
+</div>
+</div>
+  </div>
+
+</StandardPageLayout>

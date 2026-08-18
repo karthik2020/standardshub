@@ -14,7 +14,7 @@ panel as a secondary document collection.
 import standards from "../data/standards.json";
 import StandardGroup from "./StandardGroup.astro";
 import { FRAMEWORK_CONFIG } from "../data/frameworks";
-import { Search, X, Home, Leaf, BookOpen, Building2, ScrollText, ChevronRight, ArrowUpRight } from "@lucide/astro";
+import { Search, X, Home, ArrowUpRight } from "@lucide/astro";
 
 const currentPath = Astro.url.pathname;
 
@@ -27,7 +27,7 @@ function resolveActiveFramework(pathname: string) {
   if (pathname.startsWith("/ukgaap")) return "ukgaap";
   if (pathname.startsWith("/asbe")) return "asbe";
   if (pathname.startsWith("/aspe")) return "aspe";
-  if (pathname.startsWith("/japangaap")) return "japangaap";
+  if (pathname.startsWith("/asbj")) return "asbj";
   if (pathname.startsWith("/hgb") || pathname.startsWith("/germany/drs")) return "hgb";
   return "home";
 }
@@ -44,23 +44,13 @@ const codeToKey = (code: string) => {
   if (code === "UK GAAP") return "UKGAAP";
   if (code === "ASBE") return "ASBE";
   if (code === "ASPE") return "ASPE";
-  if (code === "Japan GAAP") return "JapanGAAP";
+  if (code === "ASBJ") return "ASBJ";
   if (code === "HGB") return "HGB";
   if (code === "DRS") return "DRS";
   return code;
 };
 
 const itemsFor = (id: string) => standards[codeToKey(FRAMEWORK_CONFIG[id].code)] ?? [];
-
-const IFRS_SUBFOLDERS = ["ifrssustainability", "ifrspublications", "ifrsforsmes", "ifric", "sic"] as const;
-
-const ICON_MAP: Record<string, any> = {
-  ifrssustainability: Leaf,
-  ifrspublications: BookOpen,
-  ifrsforsmes: Building2,
-  ifric: ScrollText,
-  sic: ScrollText,
-};
 ---
 
 <div class="standards-panel" data-panel data-active-framework={active}>
@@ -152,13 +142,13 @@ const ICON_MAP: Record<string, any> = {
       </div>
     </div>
 
-    <div class="fw-panel" data-framework-panel="japangaap">
-      <a href={FRAMEWORK_CONFIG.japangaap.route} class="panel-overview-link">
+    <div class="fw-panel" data-framework-panel="asbj">
+      <a href={FRAMEWORK_CONFIG.asbj.route} class="panel-overview-link">
         <span>Framework Overview</span>
         <ArrowUpRight size={30} strokeWidth={4} class="panel-overview-arrow" />
       </a>
-      <div class="section" data-section="japangaap">
-        <StandardGroup items={itemsFor("japangaap")} sectionId="japangaap" categories={FRAMEWORK_CONFIG.japangaap.categories} />
+      <div class="section" data-section="asbj">
+        <StandardGroup items={itemsFor("asbj")} sectionId="asbj" categories={FRAMEWORK_CONFIG.asbj.categories} />
       </div>
     </div>
 
@@ -181,27 +171,31 @@ const ICON_MAP: Record<string, any> = {
         <ArrowUpRight size={30} strokeWidth={4} class="panel-overview-arrow" />
       </a>
       <div class="section" data-section="ifrs">
-        <StandardGroup items={itemsFor("ifrs")} sectionId="ifrs" label="IFRS Standards" />
+        <div class="sidebar-category-group">
+          <div class="sidebar-category-label">IFRS Standards</div>
+          <StandardGroup items={standards.IFRS} sectionId="ifrs" />
+        </div>
+        <div class="sidebar-category-group">
+          <div class="sidebar-category-label">IFRS for SMEs</div>
+          <StandardGroup items={standards.IFRSForSMEs} sectionId="ifrsforsmes" />
+        </div>
+        <div class="sidebar-category-group">
+          <div class="sidebar-category-label">IFRS Publications</div>
+          <StandardGroup items={standards.IFRSPublications} sectionId="ifrspublications" />
+        </div>
+        <div class="sidebar-category-group">
+          <div class="sidebar-category-label">IFRS Sustainability</div>
+          <StandardGroup items={standards.IFRSSustainability} sectionId="ifrssustainability" />
+        </div>
+        <div class="sidebar-category-group">
+          <div class="sidebar-category-label">IFRIC</div>
+          <StandardGroup items={standards.IFRIC} sectionId="ifric" />
+        </div>
+        <div class="sidebar-category-group">
+          <div class="sidebar-category-label">SIC</div>
+          <StandardGroup items={standards.SIC} sectionId="sic" />
+        </div>
       </div>
-      {
-        IFRS_SUBFOLDERS.map((id) => (
-          <details class={`section section-${id}`} data-section={id}>
-            <summary class="sidebar-section-header">
-              <div class="section-title">
-                {ICON_MAP[id] && <ICON_MAP[id] size={17} strokeWidth={2} />}
-                <span>{FRAMEWORK_CONFIG[id].displayName}</span>
-              </div>
-              <div class="section-actions">
-                <span class="count-badge">{itemsFor(id).length}</span>
-                <ChevronRight class="section-chevron" size={16} strokeWidth={2.4} />
-              </div>
-            </summary>
-            <div class="section-items">
-              <StandardGroup items={itemsFor(id)} sectionId={id} />
-            </div>
-          </details>
-        ))
-      }
     </div>
 
     <div class="fw-panel" data-framework-panel="ipsas">

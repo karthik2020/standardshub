@@ -1,0 +1,277 @@
+---
+import StandardPageLayout from "../../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../../components/FinancialStatementKey.astro";
+import Glossary from "../../../components/Glossary.astro";
+import PageToc from "../../../components/PageToc.astro";
+import "../../../styles/standards-poster.css";
+import "../../../styles/extended.css";
+import HistoryTimeline from "../../../components/HistoryTimeline.astro";
+import history from "../../../data/history.json";
+import metadata from "../../../data/standards/ifric/ifric1.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType="IFRS"
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework" },
+        { id: "s2", label: "Scope & Definitions" },
+        { id: "s3", label: "The Three Change Drivers" },
+        { id: "s4", label: "Cost Model Treatment" },
+        { id: "s5", label: "Revalued Asset Treatment" },
+        { id: "s6", label: "Unwinding of Discount" },
+        { id: "s7", label: "Ceiling Tests" },
+        { id: "s8", label: "Interaction with Impairment" },
+        { id: "s9", label: "Disclosure" },
+        { id: "s10", label: "Judgments & Estimates" },
+        { id: "s11", label: "IFRIC 1 vs US GAAP" },
+        { id: "s12", label: "Statement Mapping" },
+        { id: "s13", label: "Related Standards" },
+        { id: "s14", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Why IFRIC 1 exists as a bridge interpretation</div>
+        <div class="principle">IAS 16 requires the initial estimate of decommissioning, restoration, and similar obligations to be capitalised as part of an asset's cost; IAS 37 governs how that provision is subsequently remeasured. Neither standard, on its own, specified what happens to the ASSET when the LIABILITY changes after initial recognition — IFRIC 1 closes that gap.</div>
+        <div class="note">Without IFRIC 1, entities could faithfully apply IAS 16 and IAS 37 individually yet reach inconsistent answers on where a subsequent remeasurement of the liability should land — asset cost, equity, or profit or loss.</div>
+      </div>
+      <div class="card cs">
+        <div class="ctitle cs">Faithful representation of a genuinely two-sided event</div>
+        <div class="principle">A change in a decommissioning estimate is not simply an income statement event — it originates in a re-estimation of a future cash outflow that is directly linked to an asset already capitalised. IFRIC 1's cost-model mechanics preserve the historical-cost linkage between asset and liability wherever that remains a faithful representation, and default to profit or loss only where capitalisation would no longer depict an economic reality.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope & Definitions</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What IFRIC 1 covers</div>
+        <div class="principle">IFRIC 1 applies to changes in the measurement of any existing decommissioning, restoration, or similar liability that is BOTH recognised as a provision under IAS 37 AND included as part of the cost of an item of property, plant and equipment under IAS 16 (or, by extension, a right-of-use asset or similar capitalised cost base).</div>
+        <div class="elabel">TYPICAL FACT PATTERNS</div>
+        <div class="dot-list">
+          <span>Nuclear plant decommissioning obligations</span>
+          <span>Mine site restoration and rehabilitation obligations</span>
+          <span>Oil and gas platform removal obligations</span>
+          <span>Leasehold restoration obligations linked to a right-of-use asset</span>
+        </div>
+      </div>
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Decommissioning, restoration and similar liability</div>
+          <div class="glossary-def">A provision recognised under IAS 37 for the estimated cost of dismantling, removing, or restoring an item of property, plant and equipment, capitalised as part of that asset's cost under IAS 16.</div>
+        </div>
+        <div class="glossary-item" style="border-bottom:none;">
+          <div class="glossary-term">Unwinding of the discount</div>
+          <div class="glossary-def">The periodic increase in the provision that reflects the passage of time, since the liability is initially measured at a discounted, present-value amount.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>The Three Change Drivers</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">What can cause the liability to move after initial recognition</div>
+        <div class="td-table">
+          <div class="th cols-1-2"><span>Driver</span><span>Description</span></div>
+          <div class="tr cols-1-2"><span>Change in estimated outflow</span><span>A revision to the estimated amount or timing of the resources required to settle the obligation</span></div>
+          <div class="tr alt cols-1-2"><span>Change in the discount rate</span><span>A change in the current market-based discount rate used to measure the provision</span></div>
+          <div class="tr cols-1-2"><span>Unwinding of the discount</span><span>The routine increase in the liability reflecting the passage of time — NOT a remeasurement in the same sense as the first two</span></div>
+        </div>
+        <div class="callout warn callout--flush">⚠️ Only the first two drivers are "changes in measurement" that IFRIC 1's asset-adjustment mechanics apply to. The unwinding of the discount is deliberately carved out and always hits profit or loss as a finance cost.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Cost Model Treatment</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs">
+        <div class="ctitle cs">The core mechanic</div>
+        <div class="principle">Under the cost model, a change in the liability is added to, or deducted from, the cost of the related asset in the current period. The adjusted depreciable amount is then depreciated PROSPECTIVELY over the asset's remaining useful life — no restatement of prior depreciation.</div>
+        <div class="formula-box">
+          <div class="f-label">CEILING RULE</div>
+          <div class="f-eq">The amount deducted from asset cost cannot exceed the asset's carrying amount. If a decrease in the liability would exceed the carrying amount, the excess is recognised IMMEDIATELY in profit or loss.</div>
+        </div>
+      </div>
+      <div class="card cw">
+        <div class="ctitle cw">Worked example — upward revision of a closure estimate</div>
+        <div class="worked">
+          <div class="wk-title">Example: Increase in decommissioning estimate</div>
+          <div class="wk-body">A mining company's asset has a carrying amount of $2,400,000 and 8 years of remaining useful life. An updated environmental survey increases the present value of the restoration obligation by $360,000.</div>
+          <div class="wk-answer"><strong>Entry:</strong> Debit Asset cost $360,000 / Credit Decommissioning provision $360,000.<br><strong>Revised carrying amount</strong> = $2,760,000, depreciated over the remaining 8 years.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Revalued Asset Treatment</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">The core mechanic</div>
+        <div class="principle">For assets carried under the revaluation model, a change in the liability alters the revaluation surplus or deficit previously recognised on that specific asset. A DECREASE in the liability is credited to other comprehensive income and increases the revaluation surplus — UNLESS it reverses a revaluation deficit previously recognised in profit or loss.</div>
+        <div class="elabel">INCREASE IN THE LIABILITY</div>
+        <div class="dot-list">
+          <span>Recognised in profit or loss, EXCEPT to the extent there is a credit balance in the revaluation surplus for that asset</span>
+        </div>
+      </div>
+      <div class="card ci">
+        <div class="ctitle ci">Worked example — revalued asset, increase in liability</div>
+        <div class="worked">
+          <div class="wk-title">Example: Increase absorbed partly by revaluation surplus</div>
+          <div class="wk-body">A revalued oil platform asset carries a revaluation surplus of $150,000. A change in discount rate increases the decommissioning provision by $200,000.</div>
+          <div class="wk-answer">$150,000 of the increase is debited against the existing revaluation surplus (OCI); the remaining $50,000 is recognised as an expense in profit or loss.</div>
+        </div>
+        <div class="callout danger callout--flush">⚠️ A revaluation surplus/deficit adjustment under IFRIC 1 may also indicate the whole class of assets needs to be revalued, to ensure the carrying amount does not differ materially from fair value.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>The Unwinding of Discount</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Always a finance cost, never capitalised</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">The periodic increase in the provision that reflects the passage of time is recognised in profit or loss as a finance cost AS IT OCCURS — it is explicitly excluded from the asset-cost adjustment mechanics that apply to genuine remeasurements.</div>
+        <div class="formula-box">
+          <div class="f-label">TYPICAL ENTRY EACH PERIOD</div>
+          <div class="f-eq">Debit Finance cost (profit or loss) / Credit Decommissioning provision — for the discount unwinding amount only</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Ceiling Tests</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">When the decrease exceeds carrying amount</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Because a decommissioning asset is depreciated over time while the related liability can still be revised upward or downward, it is possible for a downward revision to the liability to exceed the asset's remaining carrying amount. In that case, the amount that CANNOT be absorbed into asset cost is recognised IMMEDIATELY in profit or loss instead.</div>
+        <div class="worked">
+          <div class="wk-title">Example: Decrease exceeding carrying amount</div>
+          <div class="wk-body">An asset nearing the end of its useful life has a carrying amount of $40,000. A favourable revision to closure cost estimates reduces the provision by $65,000.</div>
+          <div class="wk-answer">$40,000 reduces the asset's carrying amount to nil; the remaining $25,000 is recognised immediately as a gain in profit or loss.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Interaction with Impairment (IAS 36)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">A capitalised increase can itself trigger an impairment test</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Because an upward revision to a decommissioning liability increases asset cost without necessarily increasing the asset's recoverable amount, entities must consider whether the resulting higher carrying amount is an indicator of impairment under IAS 36, and test accordingly.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">What IFRIC 1 requires</div>
+        <div class="check-list">
+          <span>Nature and amount of changes in decommissioning estimates recognised during the period</span>
+          <span>Whether recognised in the asset, profit or loss, or other comprehensive income</span>
+          <span>Discount rate(s) used and the basis for the estimate</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments & Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where judgement matters most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Whether a revised cost estimate reflects a genuine change in obligation versus a change in the entity's own execution plan</span>
+              <span>Selecting a current market-based discount rate appropriate to the currency and term of the obligation</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>Estimated cost of decommissioning and the timing of cash outflows</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>IFRIC 1 vs US GAAP</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — IFRIC 1 vs ASC 410 (Asset Retirement Obligations)</div>
+        <div class="td-table">
+          <div class="th cols-12-1-1"><span>Feature</span><span>IFRIC 1 (IFRS)</span><span>US GAAP (ASC 410)</span></div>
+          <div class="tr cols-12-1-1"><span>Discount rate on remeasurement</span><span>Current market-based rate applied to the WHOLE revised liability</span><span>A "layered" approach — each upward revision is discounted at the rate at the time of the revision</span></div>
+          <div class="tr alt cols-12-1-1"><span>Revalued assets</span><span>Explicit mechanics linking liability changes to revaluation surplus/OCI</span><span>Not applicable — revaluation of PPE is not permitted under US GAAP</span></div>
+          <div class="tr cols-12-1-1"><span>Ceiling on downward asset adjustment</span><span>Decrease capped at carrying amount, excess to profit or loss</span><span>Broadly similar outcome in substance</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Where every IFRIC 1 event lands</div>
+        <div class="td-table">
+          <div class="th cols-16-1-14"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr cols-16-1-14"><span>Increase/decrease in liability — cost model, within carrying amount</span><span><span class="badge bs">SOFP</span></span><span>Asset cost and provision both adjusted; no immediate SOPL impact</span></div>
+          <div class="tr alt cols-16-1-14"><span>Decrease exceeding carrying amount</span><span><span class="badge bs">SOFP</span> <span class="badge bp">SOPL</span></span><span>Excess recognised immediately as a gain</span></div>
+          <div class="tr cols-16-1-14"><span>Decrease on a revalued asset</span><span><span class="badge bo">OCI</span> <span class="badge bs">SOFP</span></span><span>Credited to revaluation surplus, unless reversing a prior SOPL deficit</span></div>
+          <div class="tr alt cols-16-1-14"><span>Increase on a revalued asset, beyond available surplus</span><span><span class="badge bp">SOPL</span> <span class="badge bo">OCI</span></span><span>Absorbed by surplus first, excess to profit or loss</span></div>
+          <div class="tr cols-16-1-14"><span>Unwinding of the discount</span><span><span class="badge bp">SOPL</span></span><span>Finance cost, every period</span></div>
+          <div class="tr alt cols-16-1-14"><span>Revised depreciation charge</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Prospective only — no restatement of prior periods</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Cross-reference map</div>
+        <div class="td-table">
+          <div class="th cols-08-2"><span>Standard</span><span>Connection</span></div>
+          <div class="tr cols-08-2"><span>IAS 16</span><span>Governs initial capitalisation of the obligation and depreciation of the resulting asset cost</span></div>
+          <div class="tr alt cols-08-2"><span>IAS 37</span><span>Governs recognition and measurement of the underlying provision</span></div>
+          <div class="tr cols-08-2"><span>IAS 36</span><span>Impairment testing may be triggered by an upward asset-cost adjustment</span></div>
+          <div class="tr alt cols-08-2"><span>IFRS 16</span><span>Restoration obligations linked to leased assets follow analogous logic</span></div>
+        </div>
+      </div>
+      <div class="card cn">
+        <div class="ctitle cn">Quick-reference glossary</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Revaluation surplus</div>
+          <div class="glossary-def">The cumulative OCI balance representing the excess of an asset's revalued amount over its historical cost carrying amount.</div>
+        </div>
+        <div class="glossary-item" style="border-bottom:none;">
+          <div class="glossary-term">Obligating event</div>
+          <div class="glossary-def">The past event that creates a present legal or constructive obligation under IAS 37, giving rise to the decommissioning provision.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Cost model", definition: "The IAS 16 measurement model under which PPE is carried at cost less accumulated depreciation and impairment — the default model to which IFRIC 1's asset-cost-adjustment mechanics most directly apply." },
+      { term: "Revaluation model", definition: "The alternative IAS 16 measurement model under which PPE is carried at fair value less subsequent depreciation — triggers the OCI/revaluation-surplus mechanics under IFRIC 1." },
+      { term: "Ceiling rule", definition: "The IFRIC 1 rule that the amount deducted from asset cost cannot exceed the asset's carrying amount; any excess is recognised immediately in profit or loss." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.IFRIC1} />
+  </section>
+</StandardPageLayout>
+
+
+
+

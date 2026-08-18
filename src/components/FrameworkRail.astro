@@ -24,7 +24,7 @@ import FrameworkBookGlobe from "./FrameworkBookGlobe.astro";
 
 const RAIL_FRAMEWORKS = ["ias", "ifrs", "ipsas", "indas", "usgaap", "ukgaap", "asbe", "aspe", "hgb"] as const;
 
-const NATIONAL_FRAMEWORKS = new Set(["indas", "usgaap", "ukgaap", "asbe", "aspe", "hgb"]);
+const NATIONAL_FRAMEWORKS = new Set(["indas", "usgaap", "ukgaap", "asbe", "aspe", "asbj", "hgb"]);
 
 const FLAG_MAP: Record<string, string> = {
   indas: "/svg/india-flag.svg",
@@ -32,11 +32,12 @@ const FLAG_MAP: Record<string, string> = {
   ukgaap: "/svg/uk-flag.svg",
   asbe: "/svg/china-flag.svg",
   aspe: "/svg/canada-flag.svg",
+  asbj: "/svg/japan-flag.svg",
   hgb: "/svg/germany-flag.svg",
 };
 
 function resolveActiveFramework(pathname: string) {
-  if (pathname.startsWith("/ifrs") || pathname.startsWith("/ifric") || pathname.startsWith("/sic")) return "ifrs";
+  if (pathname.startsWith("/ifrs")) return "ifrs";
   if (pathname.startsWith("/ipsas")) return "ipsas";
   if (pathname.startsWith("/ias")) return "ias";
   if (pathname.startsWith("/indas")) return "indas";
@@ -44,7 +45,7 @@ function resolveActiveFramework(pathname: string) {
   if (pathname.startsWith("/ukgaap")) return "ukgaap";
   if (pathname.startsWith("/asbe")) return "asbe";
   if (pathname.startsWith("/aspe")) return "aspe";
-  if (pathname.startsWith("/japangaap")) return "japangaap";
+  if (pathname.startsWith("/asbj")) return "asbj";
   if (pathname.startsWith("/hgb") || pathname.startsWith("/germany/drs")) return "hgb";
   return "home";
 }

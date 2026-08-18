@@ -1,0 +1,200 @@
+---
+import StandardPageLayout from "../../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../../components/FinancialStatementKey.astro";
+import Glossary from "../../../components/Glossary.astro";
+import PageToc from "../../../components/PageToc.astro";
+import "../../../styles/standards-poster.css";
+import "../../../styles/extended.css";
+import HistoryTimeline from "../../../components/HistoryTimeline.astro";
+import history from "../../../data/history.json";
+import metadata from "../../../data/standards/ifrsforsmes/ifrsforsmes.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType="IFRS"
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope & SME Definition" },
+        { id: "s3", label: "Structure — 35 Sections Overview" },
+        { id: "s4", label: "Key Simplification Philosophy" },
+        { id: "s5", label: "Financial Statement Presentation" },
+        { id: "s6", label: "Goodwill & Intangibles — Mandatory Amortisation" },
+        { id: "s7", label: "Financial Instruments — Sections 11/12" },
+        { id: "s8", label: "PP&E, Investment Property & Borrowing Costs" },
+        { id: "s9", label: "Income Tax & Business Combinations" },
+        { id: "s10", label: "Disclosure — Reduced Volume" },
+        { id: "s11", label: "Worked Example — Goodwill Amortisation" },
+        { id: "s12", label: "Transition to the IFRS for SMEs Standard" },
+        { id: "s13", label: "IFRS for SMEs vs Full IFRS vs US GAAP" },
+        { id: "s14", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Cost-benefit as an organising principle</div>
+        <div class="principle">Full IFRS is designed for entities with public accountability, where the volume and complexity of disclosure serves capital market participants with diverse, sophisticated information needs. For SMEs, whose users typically have DIRECT ACCESS to management and narrower information needs, the FULL cost-benefit balance shifts — the IFRS for SMEs Standard deliberately simplifies recognition, measurement, and disclosure to reduce preparation burden without abandoning the underlying qualitative characteristics of useful financial information.</div>
+      </div>
+      <div class="card cs">
+        <div class="ctitle cs">A genuinely standalone Standard, not a "lite" cross-reference</div>
+        <div class="principle">The IFRS for SMEs Standard is a SELF-CONTAINED document — an entity applying it does not need to refer back to full IFRS Standards for its day-to-day accounting. It is organised in 35 numbered sections (a fundamentally different structure from the individually numbered IAS/IFRS Standards), each addressing a specific topic area.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope & SME Definition</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">Defined by absence of public accountability, not by size</div>
+        <div class="principle">An entity is an SME, for purposes of this Standard, if it does NOT have public accountability and it PUBLISHES general purpose financial statements for external users. Public accountability exists if the entity's debt or equity instruments are traded in a public market (or it is in the process of issuing such instruments), OR it holds assets in a fiduciary capacity for a broad group of outsiders as one of its primary businesses (e.g. banks, insurers, brokers).</div>
+        <div class="note">Notably, the Standard does NOT set quantified size thresholds (revenue, assets, employees) itself — individual jurisdictions adopting the Standard often layer their own size criteria on top when incorporating it into local law.</div>
+      </div>
+      <div class="card cd">
+        <div class="ctitle cd">Subsidiaries of listed groups</div>
+        <div class="principle">A subsidiary whose PARENT uses full IFRS Standards in its consolidated financial statements is not thereby prevented from using the IFRS for SMEs Standard in its OWN financial statements, provided the subsidiary itself does not have public accountability.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Structure — 35 Sections Overview</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Broad topic groupings</div>
+        <div class="td-table">
+          <div class="th cols-12-18"><span>Section range</span><span>Broad topic area</span></div>
+          <div class="tr cols-12-18"><span>Sections 1–8</span><span>Concepts, pervasive principles, and general financial statement presentation</span></div>
+          <div class="tr alt cols-12-18"><span>Sections 9–19</span><span>Consolidated/separate financial statements, accounting policies, financial instruments, inventories, investments, PP&E, investment property, intangibles/goodwill, leases, provisions</span></div>
+          <div class="tr cols-12-18"><span>Sections 20–29</span><span>Leases, provisions and contingencies, equity, revenue, government grants, borrowing costs, share-based payment, impairment, employee benefits, and income tax</span></div>
+          <div class="tr alt cols-12-18"><span>Sections 30–35</span><span>Foreign currency translation, hyperinflation, events after the reporting period, related party disclosures, specialised activities, and transition</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Key Simplification Philosophy</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Where the Standard consistently diverges from full IFRS</div>
+        <div class="check-list">
+          <span>Fewer available accounting policy CHOICES than full IFRS</span>
+          <span>Amortisation of goodwill and other intangibles with indefinite useful life, rather than the annual impairment-only model</span>
+          <span>Simplified financial instrument classification (Sections 11–12), avoiding much of IFRS 9's complexity</span>
+          <span>Reduced disclosure volume throughout (see Section 10)</span>
+          <span>Topics NOT addressed at all where irrelevant to typical SMEs (e.g. earnings per share, interim financial reporting, segment reporting are omitted)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Financial Statement Presentation</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">A familiar set of statements, presented more simply</div>
+        <div class="text-supporting">A complete set of financial statements comprises a STATEMENT OF FINANCIAL POSITION (SOFP), a STATEMENT OF PROFIT OR LOSS (SOPL) — with an option to present a single combined statement of comprehensive income where OCI items exist — a STATEMENT OF CHANGES IN EQUITY, a STATEMENT OF CASH FLOWS, and NOTES. The structure closely parallels IAS 1's requirements but with a smaller mandatory disclosure set.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Goodwill & Intangibles — Mandatory Amortisation</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">The single most-cited divergence from full IFRS</div>
+        <div class="text-supporting">Unlike full IFRS (IAS 36/IFRS 3), where goodwill and indefinite-life intangibles are NOT amortised but tested for impairment annually, the IFRS for SMEs Standard requires ALL intangible assets, including goodwill, to be AMORTISED over their useful lives. If an entity is unable to make a reliable estimate of the useful life, the life is presumed NOT to exceed 10 YEARS. This avoids the cost and judgement burden of annual impairment testing.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Financial Instruments — Sections 11/12</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">A two-tier approach avoiding IFRS 9's full complexity</div>
+        <div class="text-supporting"><strong>Section 11 (Basic Financial Instruments)</strong> covers straightforward instruments — most trade receivables/payables, bank loans — generally measured at AMORTISED COST. <strong>Section 12 (Other Financial Instrument Issues)</strong> covers more complex instruments (derivatives, hedge accounting), generally measured at FAIR VALUE through profit or loss. This structure avoids IFRS 9's full expected-credit-loss impairment model and complex classification categories.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>PP&E, Investment Property & Borrowing Costs</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">PP&E and investment property</div>
+        <div class="principle">PP&E follows the cost model, largely consistent with IAS 16. Investment property is measured at FAIR VALUE THROUGH PROFIT OR LOSS if fair value can be measured reliably without undue cost or effort — otherwise, the entity falls back to the PP&E cost model. This differs from full IFRS's IAS 40, which offers a genuine free choice between the cost and fair value models.</div>
+      </div>
+      <div class="card cd">
+        <div class="ctitle cd">Borrowing costs</div>
+        <div class="principle">Unlike full IFRS (IAS 23), which REQUIRES capitalisation of borrowing costs directly attributable to qualifying assets, the IFRS for SMEs Standard requires ALL borrowing costs to be EXPENSED as incurred — a deliberate simplification removing an area of judgement.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Income Tax & Business Combinations</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Broadly aligned, with narrower guidance</div>
+        <div class="text-supporting">Income tax (Section 29) follows a temporary-difference deferred tax approach broadly consistent with IAS 12's core mechanics. Business combinations (Section 19) require the PURCHASE method, consistent with IFRS 3, but with simpler guidance — and resulting goodwill is amortised rather than tested only for impairment.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Disclosure — Reduced Volume</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">A deliberately lighter disclosure footprint</div>
+        <div class="text-supporting">Disclosure requirements throughout the Standard are substantially REDUCED relative to full IFRS — reflecting that SME users typically have more direct access to supplementary information from management, reducing their reliance on extensive note disclosure. Areas with the most significant reduction include financial instruments, employee benefits, and share-based payment.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Worked Example — Goodwill Amortisation</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Contrasting the SME and full IFRS outcomes</div>
+        <div class="worked" style="margin-bottom:0;">
+          <div class="wk-title">Example: Goodwill following an acquisition, useful life not reliably estimable</div>
+          <div class="wk-body">An SME acquires a business, recognising goodwill of $900,000. Management cannot make a reliable estimate of goodwill's useful life.</div>
+          <div class="wk-answer">Under the IFRS for SMEs Standard, the useful life is PRESUMED not to exceed 10 years — the SME amortises $90,000 per year on a straight-line basis. Under FULL IFRS (IFRS 3/IAS 36), the same $900,000 would instead remain UNAMORTISED and be tested for impairment annually — potentially remaining at $900,000 indefinitely if no impairment is triggered.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Transition to the IFRS for SMEs Standard</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">A dedicated transition section (Section 35)</div>
+        <div class="text-supporting">An entity adopting the IFRS for SMEs Standard for the first time applies Section 35, which — much like IFRS 1 for full IFRS — generally requires FULL RETROSPECTIVE application, subject to specified mandatory exceptions and optional exemptions designed to ease the transition.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>IFRS for SMEs vs Full IFRS vs US GAAP</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison across three frameworks</div>
+        <div class="td-table">
+          <div class="th cols-1-1-1-1"><span>Feature</span><span>IFRS for SMEs</span><span>Full IFRS</span><span>US GAAP (with PCC alternatives)</span></div>
+          <div class="tr cols-1-1-1-1"><span>Goodwill</span><span>Amortised (≤10yr presumption)</span><span>Impairment-only, never amortised</span><span>US private companies MAY elect to amortise goodwill over 10 years</span></div>
+          <div class="tr alt cols-1-1-1-1"><span>Borrowing costs</span><span>Always expensed</span><span>Capitalised for qualifying assets</span><span>Capitalisation generally required</span></div>
+          <div class="tr cols-1-1-1-1"><span>Structural approach</span><span>Single, self-contained 35-section Standard</span><span>Many separate numbered Standards</span><span>No single "SME" codification</span></div>
+        </div>
+        <div class="note">The PCC's targeted alternatives represent a philosophically similar but STRUCTURALLY different approach: the US opted to bolt private-company relief onto its single GAAP codification, rather than issue a fully separate, self-contained standard.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Public accountability", definition: "The defining scope test for the IFRS for SMEs Standard — an entity has public accountability if its debt/equity trades in a public market, or it holds assets in a fiduciary capacity for a broad group of outsiders." },
+      { term: "Undue cost or effort", definition: "A recurring threshold throughout the Standard permitting a fallback to a simpler treatment where the cost of applying a requirement would clearly outweigh the benefit to users." },
+      { term: "Section (vs Standard)", definition: "The IFRS for SMEs Standard's internal organisational unit — 35 numbered Sections within one document." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.IFRSForSMEs} />
+  </section>
+</StandardPageLayout>
+
+
+

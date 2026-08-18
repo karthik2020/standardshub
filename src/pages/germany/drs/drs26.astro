@@ -1,0 +1,49 @@
+---
+import StandardPageLayout from "../../../layouts/StandardPageLayout.astro";
+import PageToc from "../../../components/PageToc.astro";
+import "../../../styles/standards-poster.css";
+import "../../../styles/extended.css";
+import metadata from "../../../data/standards/hgb/drs26.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  subtitle={metadata.nativeTitle}
+  framework="hgb"
+  status={metadata.status}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Scope" },        { id: "s2", label: "Loss absorption" },        { id: "s3", label: "Worked example" },        { id: "s4", label: "IFRS" }
+      ]}
+    />
+  </Fragment>
+
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Scope — Elaborating §§311–312's Own Equity Method</h2><span class="line"></span></div><div class="grid">
+<div class="card info span2">
+<div class="ctitle">Filling in the practical mechanics of the third consolidation technique</div>
+<div class="principle">DRS 26 elaborates the equity method mechanics established under §§311–312 HGB — the third of the three major consolidation techniques this poster series documented (alongside full and proportionate consolidation), covering the significant-influence threshold, initial measurement choice, annual share-of-profit adjustment, and dividend treatment already established in detail in that earlier HGB poster.</div>
+</div>
+</div><div class="section-header" id="s2"><span class="num">2</span><h2>Loss Absorption — What Happens When the Associate's Losses Exceed the Investment</h2><span class="line"></span></div><div class="grid">
+<div class="card warn span2">
+<div class="ctitle">A genuinely important boundary condition §312 alone doesn't fully resolve</div>
+<div class="principle">DRS 26 provides detailed guidance for a scenario the bare §312 statutory text doesn't fully address: what happens when an associate's own cumulative losses would reduce the investment's carrying amount BELOW ZERO? Unlike a subsidiary (where NCI can absorb losses into a genuine deficit, per §307), an equity-method investment generally stops recognising FURTHER losses once the investment carrying amount reaches zero — UNLESS the investor has incurred legal or constructive obligations to fund the associate's own further losses, in which case additional loss recognition continues via a separate provision.</div>
+</div>
+</div><div class="section-header" id="s3"><span class="num">3</span><h2>Worked Example — an Associate's Losses Reaching the Investment Floor</h2><span class="line"></span></div><div class="grid">
+<div class="card span2">
+<div class="worked">
+<div class="wk-title">Stopping loss recognition once the carrying amount hits zero</div>
+<div class="wk-body">Continuing the equity-method investment example from the earlier HGB poster: an investment's carrying amount is €1,850,000. In a subsequent year, the associate incurs severe losses, with the investor's own 25% share amounting to €2,400,000 — genuinely EXCEEDING the remaining investment balance. The investor has made no further legal or constructive commitment to fund the associate.</div>
+<div class="wk-answer">Under DRS 26, the investor recognises its share of losses only DOWN TO ZERO — reducing the investment from €1,850,000 to €0, recognising €1,850,000 of loss (not the full €2,400,000) — and STOPS recognising further losses at that point, given the absence of any obligation to fund the associate beyond its own original investment.</div>
+</div>
+</div>
+</div><div class="section-header" id="s4"><span class="num">4</span><h2>Relationship to IFRS (IAS 28)</h2><span class="line"></span></div><div class="grid">
+<div class="card span2">
+<div class="ctitle">Continuing the strong convergence flagged in the original HGB posting</div>
+<div class="principle">DRS 26's own loss-absorption-floor rule closely mirrors IAS 28's own treatment — an investor generally discontinues recognising further equity-method losses once the investment (plus any long-term interests forming part of the net investment) reaches zero, absent a genuine funding obligation. This continues the SAME genuinely strong overall convergence between HGB's equity method and IAS 28 flagged when the underlying §§311–312 provisions were first covered.</div>
+</div>
+</div>
+</StandardPageLayout>

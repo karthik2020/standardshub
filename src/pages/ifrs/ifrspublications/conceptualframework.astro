@@ -1,0 +1,221 @@
+---
+import StandardPageLayout from "../../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../../components/FinancialStatementKey.astro";
+import Glossary from "../../../components/Glossary.astro";
+import PageToc from "../../../components/PageToc.astro";
+import "../../../styles/standards-poster.css";
+import "../../../styles/extended.css";
+import HistoryTimeline from "../../../components/HistoryTimeline.astro";
+import history from "../../../data/history.json";
+import metadata from "../../../data/standards/ifrspublications/conceptualframework.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType="IFRS"
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Purpose & Status" },
+        { id: "s2", label: "Objective of Financial Reporting" },
+        { id: "s3", label: "Fundamental Qualitative Characteristics" },
+        { id: "s4", label: "Enhancing Qualitative Characteristics" },
+        { id: "s5", label: "The Reporting Entity" },
+        { id: "s6", label: "Elements — Assets & Liabilities" },
+        { id: "s7", label: "Elements — Equity, Income & Expenses" },
+        { id: "s8", label: "Recognition & Derecognition" },
+        { id: "s9", label: "Measurement Bases" },
+        { id: "s10", label: "Presentation & Disclosure" },
+        { id: "s11", label: "Capital & Capital Maintenance" },
+        { id: "s12", label: "Worked Example — Applying the Definitions" },
+        { id: "s13", label: "IFRS vs US GAAP Conceptual Frameworks" },
+        { id: "s14", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Purpose & Status</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">What the Conceptual Framework is for</div>
+        <div class="principle">The Conceptual Framework assists the IASB in developing Standards, helps preparers develop consistent accounting policies when no Standard specifically applies to a transaction, and assists all parties in understanding and interpreting Standards. It describes the objective of, and the concepts for, general purpose financial reporting.</div>
+      </div>
+      <div class="card cd">
+        <div class="ctitle cd">Crucially, it is NOT a Standard</div>
+        <div class="principle">The Conceptual Framework is NOT an IFRS Standard and does NOT override any specific IFRS Standard. Nothing in the Conceptual Framework overrides any Standard or any requirement in a Standard. In the rare cases where a conflict exists between the Conceptual Framework and a Standard, the Standard PREVAILS.</div>
+        <div class="note">The IASB may, on occasion, decide to depart from an aspect of the Conceptual Framework when developing a new or revised Standard, if it concludes doing so results in more useful information.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>The Objective of General Purpose Financial Reporting</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Providing information useful to primary users</div>
+        <div class="principle">The objective of general purpose financial reporting is to provide financial information about the reporting entity that is USEFUL to existing and potential investors, lenders, and other creditors in making decisions about providing resources to the entity — primarily by helping users assess the entity's prospects for future net cash inflows and management's stewardship of the entity's economic resources.</div>
+        <div class="elabel">PRIMARY USERS (the Framework's focus)</div>
+        <div class="dot-list">
+          <span>Existing and potential investors</span>
+          <span>Lenders</span>
+          <span>Other creditors</span>
+        </div>
+        <div class="note">General purpose financial reports do not and cannot provide all the information primary users need — users must also consider information from other sources, and the reports are not designed to show the entity's value.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Fundamental Qualitative Characteristics</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Relevance</div>
+        <div class="principle">Financial information is relevant if it is capable of making a difference in users' decisions — it has PREDICTIVE VALUE, CONFIRMATORY VALUE, or both. Materiality is an entity-specific aspect of relevance: information is material if omitting, misstating, or obscuring it could reasonably be expected to influence decisions of primary users.</div>
+      </div>
+      <div class="card cs">
+        <div class="ctitle cs">Faithful representation</div>
+        <div class="principle">To be useful, information must not only represent relevant phenomena but faithfully represent the SUBSTANCE of what it purports to represent. A faithful representation is, to the maximum extent possible: <strong>COMPLETE</strong> (includes all necessary depictions and explanations), <strong>NEUTRAL</strong> (without bias, supported by the exercise of prudence), and <strong>FREE FROM ERROR</strong> (no errors or omissions in describing the phenomenon, with estimation processes correctly applied).</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Enhancing Qualitative Characteristics</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">Enhance the usefulness of relevant, faithfully represented information</div>
+        <div class="td-table">
+          <div class="th cols-1-2"><span>Characteristic</span><span>What it means</span></div>
+          <div class="tr cols-1-2"><span>Comparability</span><span>Enables users to identify and understand similarities and differences among items, both across entities and across periods for the same entity</span></div>
+          <div class="tr alt cols-1-2"><span>Verifiability</span><span>Different knowledgeable, independent observers could reach general consensus that a depiction is a faithful representation</span></div>
+          <div class="tr cols-1-2"><span>Timeliness</span><span>Information is available to decision-makers in time to be capable of influencing their decisions</span></div>
+          <div class="tr alt cols-1-2"><span>Understandability</span><span>Information is classified, characterised, and presented clearly and concisely</span></div>
+        </div>
+        <div class="callout warn callout--flush">Enhancing characteristics should be maximised to the extent possible, but cannot make information useful if it is fundamentally irrelevant or not faithfully represented — they are secondary to the two fundamental characteristics.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>The Reporting Entity</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Not necessarily a legal entity</div>
+        <div class="text-supporting">A reporting entity is an entity that is required, or chooses, to prepare financial statements — it is NOT necessarily a legal entity; it could comprise a portion of an entity, or two or more entities. Financial statements may be CONSOLIDATED (parent and all subsidiaries), UNCONSOLIDATED (parent alone), or COMBINED (two or more entities not linked by a parent-subsidiary relationship).</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Elements of Financial Statements — Assets & Liabilities</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Asset</div>
+        <div class="principle">A present ECONOMIC RESOURCE controlled by the entity as a result of past events. An economic resource is a right that has the potential to produce economic benefits. Control links the resource to the entity such that it can direct the resource's use and obtain the benefits that flow from it.</div>
+      </div>
+      <div class="card cs">
+        <div class="ctitle cs">Liability</div>
+        <div class="principle">A present OBLIGATION of the entity to transfer an economic resource as a result of past events. Three criteria must all be met: the entity has an obligation; the obligation is to transfer an economic resource; and the obligation is a present obligation that exists as a result of past events.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Elements — Equity, Income & Expenses</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">Equity</div>
+        <div class="principle">The RESIDUAL INTEREST in the assets of the entity after deducting all its liabilities. Equity claims are claims on the residual interest, ranking after liability claims in a winding-up.</div>
+      </div>
+      <div class="card cd">
+        <div class="ctitle cd">Income & Expenses</div>
+        <div class="principle"><strong>Income</strong> is increases in assets, or decreases in liabilities, that result in increases in equity, OTHER than those relating to contributions from holders of equity claims. <strong>Expenses</strong> are decreases in assets, or increases in liabilities, that result in decreases in equity, other than those relating to distributions to holders of equity claims.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Recognition & Derecognition</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs">
+        <div class="ctitle cs">Recognition</div>
+        <div class="principle">The process of capturing, for inclusion in the SOFP or SOPL, an item that meets the definition of an asset, liability, equity, income, or expense. Recognition links the elements to those statements through a structured summary depicting monetary amounts. An item is recognised only if doing so provides users with relevant information AND a faithful representation — recognition may be inappropriate if, for example, it is uncertain whether an asset/liability exists, or the probability of an inflow/outflow is low, or measurement uncertainty is unacceptably high.</div>
+      </div>
+      <div class="card ci">
+        <div class="ctitle ci">Derecognition</div>
+        <div class="principle">The removal of all or part of a recognised asset or liability from an entity's statement of financial position — normally occurring when the item no longer meets the definition of an asset or liability (e.g. the entity loses control of the asset, or no longer has a present obligation for the liability).</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Measurement Bases</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Historical cost vs current value</div>
+        <div class="td-table">
+          <div class="th cols-1-2"><span>Basis</span><span>What it reflects</span></div>
+          <div class="tr cols-1-2"><span>Historical cost</span><span>Value of the resource, claim, or item of income/expense derived, at least in part, from the price of the transaction/event that gave rise to it</span></div>
+          <div class="tr alt cols-1-2"><span>Fair value</span><span>Price to sell an asset (or transfer a liability) in an orderly transaction between market participants at the measurement date</span></div>
+          <div class="tr cols-1-2"><span>Value in use / fulfilment value</span><span>Present value of cash flows an entity expects to derive from an asset's use/disposal, or expects to transfer in fulfilling a liability</span></div>
+          <div class="tr alt cols-1-2"><span>Current cost</span><span>Cost of an equivalent asset at the measurement date, comprising the consideration that would be paid, plus transaction costs</span></div>
+        </div>
+        <div class="note">Choosing a measurement basis involves considering relevance and faithful representation, factoring in the nature of the resulting information and measurement uncertainty — no single basis is universally superior across all elements.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Presentation & Disclosure</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">Communication tools, not just recognition outcomes</div>
+        <div class="text-supporting">Effective communication of information makes it more relevant and contributes to a faithful representation. Classification — the sorting of assets, liabilities, equity, income, or expenses on the basis of shared characteristics — is applied both to elements recognised in the primary financial statements AND to information disclosed in the notes. Income and expenses are classified as included either within the STATEMENT OF PROFIT OR LOSS, or, in limited circumstances specified by a Standard, in OTHER COMPREHENSIVE INCOME (OCI).</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Concepts of Capital & Capital Maintenance</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Financial vs physical capital</div>
+        <div class="principle">Under a FINANCIAL concept of capital (adopted by most entities), capital is the net assets or equity of the entity. Under a PHYSICAL concept, capital is the entity's productive capacity, e.g. units of output per day.</div>
+      </div>
+      <div class="card cn">
+        <div class="ctitle cn">Profit only after capital is maintained</div>
+        <div class="principle">Under either concept, PROFIT represents the increase in wealth only after allowing the entity to maintain the level of capital it held at the start of the period — capital maintenance adjustments are needed to distinguish real profit from the effects of price changes, and are treated as adjustments to equity, not profit or loss.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Worked Example — Applying the Definitions</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">Does a contingent legal claim meet the definition of an asset?</div>
+        <div class="worked" style="margin-bottom:0;">
+          <div class="wk-title">Example: Applying the asset definition to a pending lawsuit</div>
+          <div class="wk-body">A company has filed a lawsuit against a supplier for breach of contract, seeking $2,000,000 in damages. Legal counsel assesses the outcome as uncertain, with no reliable basis to conclude a favourable outcome is more likely than not.</div>
+          <div class="wk-answer">Applying the Framework: the company has a RIGHT (to pursue the claim) with the POTENTIAL to produce economic benefits — this could satisfy the economic resource element of the asset definition. However, given the SIGNIFICANT uncertainty over whether an inflow will occur, RECOGNITION would likely fail the "relevant information" test in Section 8 (low probability, high measurement uncertainty) — the claim is not recognised as an asset, though it may warrant disclosure as a contingent asset under the applicable Standard (IAS 37) if the inflow is probable.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>IFRS vs US GAAP Conceptual Frameworks</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — IASB Conceptual Framework vs FASB Conceptual Framework</div>
+        <div class="td-table">
+          <div class="th cols-12-1-1"><span>Feature</span><span>IASB Conceptual Framework</span><span>FASB Conceptual Framework (CON series)</span></div>
+          <div class="tr cols-12-1-1"><span>Status</span><span>Single, unified document (2018 revision)</span><span>A series of separate Statements of Financial Accounting Concepts (CON 1-8), issued and amended incrementally over decades</span></div>
+          <div class="tr alt cols-12-1-1"><span>Prudence</span><span>Explicitly reintroduced in the 2018 revision as supporting neutrality</span><span>US GAAP's framework has historically been more cautious about explicitly endorsing "prudence" as a distinct qualitative characteristic</span></div>
+          <div class="tr cols-12-1-1"><span>Binding effect</span><span>Explicitly NOT a Standard; specific Standards prevail in a conflict</span><span>Similarly non-authoritative for GAAP purposes</span></div>
+        </div>
+        <div class="note">Despite decades of separate development, the two frameworks have converged substantially on core concepts (asset/liability definitions, qualitative characteristics), partly due to a joint IASB-FASB conceptual framework project conducted between 2004 and 2010.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Prudence", definition: "The exercise of caution when making judgements under conditions of uncertainty, supporting neutrality." },
+      { term: "Substance over form", definition: "Representing transactions and events in accordance with their economic substance, not merely their legal form." },
+      { term: "Unit of account", definition: "The right or the group of rights, obligation or group of obligations, to which recognition criteria and measurement concepts are applied." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.ConceptualFramework} />
+  </section>
+</StandardPageLayout>
+
+
+

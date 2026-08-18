@@ -110,16 +110,24 @@ const IPSAS_FAMILY_DESCRIPTIONS: Record<string, string> = {
   </div>
 
   <div id="category-view" style="display:none;">
-
+    <div class="standards-grid">
     {
-      (framework.categories ?? []).map((category) => (
-        <div class="category-group" key={category}>
-          <h2>{category}</h2>
-          <p class="category-description">{IPSAS_FAMILY_DESCRIPTIONS[category]}</p>
-        </div>
+      (framework.categories ?? []).map((category, index) => (
+        <a href={`#${category.replace(/[^a-zA-Z0-9]/g, "-").toLowerCase()}`} class="standard-card" style={`--icon-bg: ${framework.light}; --icon-color: ${framework.dark};`}>
+          <div class="standard-top">
+            <div class="standard-icon" set:html={`<i class="fa-solid fa-${framework.faIcon}"></i>`} />
+            <div class="standard-code">{category}</div>
+          </div>
+          <div class="standard-title">{IPSAS_FAMILY_DESCRIPTIONS[category]}</div>
+          <div class="standard-arrow" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </div>
+        </a>
       ))
     }
-
+    </div>
   </div>
 
   <script>

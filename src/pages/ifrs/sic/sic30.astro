@@ -1,0 +1,89 @@
+---
+import StandardPageLayout from "../../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../../components/FinancialStatementKey.astro";
+import Glossary from "../../../components/Glossary.astro";
+import PageToc from "../../../components/PageToc.astro";
+import LifecycleNotice from "../../../components/StandardLifecycleNotice.astro";
+import "../../../styles/standards-poster.css";
+import "../../../styles/extended.css";
+import HistoryTimeline from "../../../components/HistoryTimeline.astro";
+import history from "../../../data/history.json";
+import metadata from "../../../data/standards/sic/sic30.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType="IFRS"
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "What SIC-30 Addressed (Historical)" },
+        { id: "s2", label: "The Conclusion It Reached (Historical)" },
+        { id: "s3", label: "Where This Guidance Lives Today" },
+        { id: "s4", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="historical-reference"
+    explanation="SIC-30 was withdrawn in March 2003 when the IASB issued a revised IAS 21 The Effects of Changes in Foreign Exchange Rates, which superseded SIC-30 by incorporating presentation currency translation guidance directly into IAS 21."
+    historical="This page is retained for historical and comparative reference. Entities should refer to the current standard that superseded this interpretation for authoritative guidance."
+    link="/ias/ias21"
+    linkText="IAS 21 The Effects of Changes in Foreign Exchange Rates"
+  />
+
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>What SIC-30 Addressed (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">What SIC-30 addressed</div>
+        <div class="principle">SIC-30 addressed how to translate financial statements from measurement currency to presentation currency when the two differ. It considered the appropriate exchange rates to use and whether the resulting translation differences should be recognised in equity or profit or loss.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>The Conclusion It Reached (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">The conclusion it reached</div>
+        <div class="principle">SIC-30 concluded that when translating financial statements from measurement currency to presentation currency, assets and liabilities should be translated at the closing rate at the date of the balance sheet, while income and expenses should be translated at the exchange rates at the dates of the transactions. Any translation differences arising should be recognised directly in equity.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Where This Guidance Lives Today</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card">
+        <div class="ctitle">Where this guidance lives today</div>
+        <div class="td-table">
+          <div class="tr"><span>Superseded by</span><span>IAS 21 The Effects of Changes in Foreign Exchange Rates</span></div>
+          <div class="tr alt"><span>Why withdrawn</span><span>The 2003 revision incorporated presentation currency translation guidance directly into IAS 21</span></div>
+          <div class="tr"><span>Current status</span><span>Superseded</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><h2>Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Measurement currency", definition: "The currency used for measuring individual items in the financial statements before translation, now referred to as functional currency under IAS 21." },
+      { term: "Presentation currency", definition: "The currency in which the financial statements are presented, which may differ from the functional currency when the entity translates its financial statements." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.SIC30} />
+  </section>
+</StandardPageLayout>
+
+
+
+

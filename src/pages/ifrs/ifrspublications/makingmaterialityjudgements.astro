@@ -1,0 +1,196 @@
+---
+import StandardPageLayout from "../../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../../components/FinancialStatementKey.astro";
+import Glossary from "../../../components/Glossary.astro";
+import PageToc from "../../../components/PageToc.astro";
+import "../../../styles/standards-poster.css";
+import "../../../styles/extended.css";
+import HistoryTimeline from "../../../components/HistoryTimeline.astro";
+import history from "../../../data/history.json";
+import metadata from "../../../data/standards/ifrspublications/makingmaterialityjudgements.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType="IFRS"
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Purpose & Status" },
+        { id: "s2", label: "Scope & Applicability" },
+        { id: "s3", label: "Materiality Is Entity-Specific, Not Fixed" },
+        { id: "s4", label: "The Four-Step Materiality Process — Overview" },
+        { id: "s5", label: "Step 1 — Identify" },
+        { id: "s6", label: "Step 2 — Assess" },
+        { id: "s7", label: "Step 3 — Organise" },
+        { id: "s8", label: "Step 4 — Review" },
+        { id: "s9", label: "Quantitative & Qualitative Factors" },
+        { id: "s10", label: "Obscuring Information" },
+        { id: "s11", label: "Worked Example — Aggregation and Obscuring" },
+        { id: "s12", label: "Materiality of Accounting Policy Disclosures" },
+        { id: "s13", label: "IFRS Materiality Guidance vs US GAAP/SEC Materiality" },
+        { id: "s14", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Purpose & Status</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Guidance, not a new requirement</div>
+        <div class="principle">This Practice Statement provides NON-MANDATORY guidance on how to apply the concept of materiality when preparing general purpose financial statements in accordance with IFRS Standards. It does NOT change the definition of materiality in IAS 1 or the Conceptual Framework, nor does it create new disclosure requirements — it exists purely to help preparers exercise the JUDGEMENT that materiality inherently requires.</div>
+      </div>
+      <div class="card cs">
+        <div class="ctitle cs">Responding to a real practice problem — "disclosure overload"</div>
+        <div class="principle">The Practice Statement was developed partly in response to widespread concern about "disclosure overload" — financial statements cluttered with immaterial information that obscures genuinely material information, making them harder, not easier, for users to understand. The guidance is aimed squarely at helping preparers resist a checklist mentality and instead apply genuine, entity-specific judgement.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope & Applicability</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">Applies wherever materiality judgements are made</div>
+        <div class="principle">The guidance applies to materiality judgements made in preparing financial statements in accordance with IFRS Standards generally — it is organised around a four-step process (Section 4) that can be applied to individual disclosure decisions as well as to reviewing the financial statements as a whole.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Materiality Is Entity-Specific, Not Fixed</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">No universal quantified threshold</div>
+        <div class="text-supporting">Information is MATERIAL if omitting, misstating, or obscuring it could reasonably be expected to influence decisions that primary users make on the basis of the financial statements. This is an ENTITY-SPECIFIC assessment of relevance based on the nature or magnitude (or both) of the items to which the information relates, in the context of that entity's own financial report — it is NOT a fixed percentage or uniform threshold applied mechanically across all entities.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>The Four-Step Materiality Process — Overview</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">A structured, iterative process</div>
+        <div class="td-table">
+          <div class="th cols-03-17"><span>Step</span><span>Name</span><span>What it does</span></div>
+          <div class="tr cols-03-17"><span>1</span><span>Identify</span><span>Identify information that has the potential to be material</span></div>
+          <div class="tr alt cols-03-17"><span>2</span><span>Assess</span><span>Assess whether that information is, in fact, material</span></div>
+          <div class="tr cols-03-17"><span>3</span><span>Organise</span><span>Organise information within the draft financial statements to communicate clearly and effectively</span></div>
+          <div class="tr alt cols-03-17"><span>4</span><span>Review</span><span>Review the draft financial statements to determine whether all material information has been identified and materiality appropriately applied</span></div>
+        </div>
+        <div class="note">This is presented as a process for illustrative purposes — the Practice Statement does not mandate following these exact steps in this exact order, and the process is typically ITERATIVE rather than strictly linear.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Step 1 — Identify</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Casting a wide net before narrowing</div>
+        <div class="text-supporting">The entity identifies information about transactions, other events, and conditions that primary users might reasonably expect to be disclosed, drawing on the requirements of IFRS Standards as a starting point but also considering the entity's specific circumstances — including matters primary users have shown particular interest in, such as through investor communications or analyst questions.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Step 2 — Assess</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">Applying judgement to the identified information</div>
+        <div class="text-supporting">The entity assesses whether the identified information is, in fact, material — using judgement that considers BOTH quantitative and qualitative factors (see Section 9), how the information relates to other information in the financial statements, and the entity's own specific circumstances. This step is where the genuinely entity-specific character of materiality is applied in practice.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Step 3 — Organise</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Structure matters as much as content</div>
+        <div class="text-supporting">Once material information has been identified, it must be ORGANISED within the financial statements in a way that communicates clearly and effectively — considering how items are ordered, grouped, and cross-referenced. Good organisation is itself part of avoiding "obscuring" (Section 10), since even genuinely material information can fail to communicate effectively if buried within a poorly structured document.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Step 4 — Review</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">A final, holistic check</div>
+        <div class="text-supporting">Before finalising the financial statements, the entity steps back and reviews the DRAFT as a WHOLE — from a fresh perspective — to assess whether all material information has genuinely been captured, whether IMMATERIAL information has been appropriately excluded or reduced, and whether the overall set of financial statements, taken together, provides a fair and balanced picture, considering AGGREGATION of individually immaterial items that might collectively be material.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Quantitative & Qualitative Factors</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Materiality is never a pure percentage test</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">QUANTITATIVE FACTORS</div>
+            <div class="text-supporting">The relative SIZE of an item — commonly benchmarked (though never mechanically determinative) against measures such as profit, revenue, or total assets — provides a useful starting point, but is never sufficient on its own.</div>
+          </div>
+          <div>
+            <div class="elabel">QUALITATIVE FACTORS</div>
+            <div class="text-supporting">Factors such as the NATURE of an item (e.g. related party transactions, items affecting compliance with loan covenants, or items indicating a change in trend) can make relatively small amounts material regardless of their quantitative size.</div>
+          </div>
+        </div>
+        <div class="callout danger callout--flush">A purely mechanical "X% of profit" threshold, applied without qualitative judgement, is explicitly NOT what the Practice Statement endorses — quantitative benchmarks are a starting point for judgement, not a substitute for it.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Obscuring Information</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">A distinct way materiality can be breached</div>
+        <div class="text-supporting">The materiality definition applies not only to OMISSIONS and MISSTATEMENTS, but also to information being OBSCURED. Information can be obscured by: providing IMMATERIAL information that dilutes material information; inappropriately AGGREGATING material items that should be disaggregated (or vice versa); using unclear language or poor structure; or scattering related information throughout the financial statements rather than presenting it together.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Worked Example — Aggregation and Obscuring</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">Individually immaterial items, collectively material</div>
+        <div class="worked" style="margin-bottom:0;">
+          <div class="wk-title">Example: A collection of small provisions</div>
+          <div class="wk-body">An entity has 40 separate legal claim provisions, each individually below its quantitative materiality threshold, but totalling $12,000,000 — a genuinely material amount relative to the entity's profit before tax of $50,000,000.</div>
+          <div class="wk-answer">Under Step 4 (Review), the entity must consider whether these individually immaterial items are, in AGGREGATE, material — and if so, disclose them collectively (e.g. as a class of similar provisions with a combined description and total), rather than omitting all 40 individually on the basis that each alone falls below the threshold. Failing to do so would OBSCURE material information through inappropriate disaggregation.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Materiality of Accounting Policy Disclosures</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Not every accounting policy needs disclosure</div>
+        <div class="text-supporting">The Practice Statement (aligned with 2021 amendments to IAS 1) clarifies that an accounting POLICY is material if, when considered together with other information in the financial statements, it can reasonably be expected to influence decisions of primary users — this shifts emphasis away from disclosing STANDARDISED ("boilerplate") accounting policy information merely because it summarises a requirement of an IFRS Standard, toward disclosing policies that are genuinely entity-specific and decision-useful.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>IFRS Materiality Guidance vs US GAAP/SEC Materiality</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — IFRS Practice Statement 2 vs US materiality doctrine</div>
+        <div class="td-table">
+          <div class="th cols-12-1-1"><span>Feature</span><span>IFRS Practice Statement 2</span><span>US GAAP / SEC guidance</span></div>
+          <div class="tr cols-12-1-1"><span>Underlying legal/conceptual test</span><span>"Could reasonably be expected to influence" primary users' decisions</span><span>A substantially similar "reasonable investor" standard, historically rooted in US Supreme Court case law</span></div>
+          <div class="tr alt cols-12-1-1"><span>Explicit rejection of pure quantitative thresholds</span><span>Yes — quantitative benchmarks are a starting point only</span><span>SAB 99 similarly and explicitly rejects reliance on a numerical threshold alone</span></div>
+          <div class="tr cols-12-1-1"><span>Structured four-step process</span><span>Yes — Identify, Assess, Organise, Review</span><span>No single codified four-step process; US guidance is more principles-based case law</span></div>
+        </div>
+        <div class="note">The underlying philosophy is strikingly similar between the two regimes — both reject mechanical percentage tests in favour of holistic, qualitative-inclusive judgement — though the IFRS Practice Statement is unusual in offering an explicit, structured process.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Obscuring", definition: "A way material information can effectively be lost to users — through dilution by immaterial information, inappropriate aggregation/disaggregation, unclear language, or poor structural organisation." },
+      { term: "Primary users", definition: "Existing and potential investors, lenders, and other creditors — the reference group against whose decision-making materiality is assessed." },
+      { term: "Disclosure overload", definition: "A practice problem where financial statements become cluttered with excessive immaterial detail, reducing overall clarity and usefulness." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.MakingMaterialityJudgements} />
+  </section>
+</StandardPageLayout>
+
+
+

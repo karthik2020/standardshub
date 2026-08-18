@@ -1,0 +1,297 @@
+---
+import StandardPageLayout from "../../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../../components/FinancialStatementKey.astro";
+import Glossary from "../../../components/Glossary.astro";
+import PageToc from "../../../components/PageToc.astro";
+import LifecycleNotice from "../../../components/StandardLifecycleNotice.astro";
+import "../../../styles/standards-poster.css";
+import "../../../styles/extended.css";
+import HistoryTimeline from "../../../components/HistoryTimeline.astro";
+import history from "../../../data/history.json";
+import metadata from "../../../data/standards/ifric/ifric18.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType="IFRS"
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework (Historical)" },
+        { id: "s2", label: "Scope & Definitions (Historical)" },
+        { id: "s3", label: "Does the Transferred Item Meet the Definition of an Asset? (Historical)" },
+        { id: "s4", label: "Identifying the Separate Deliverables (Historical)" },
+        { id: "s5", label: "Recognising Revenue for Connection Services (Historical)" },
+        { id: "s6", label: "Recognising Revenue for Ongoing Access (Historical)" },
+        { id: "s7", label: "How This Guidance Became Part of IFRS 15" },
+        { id: "s8", label: "Common Application Sectors" },
+        { id: "s9", label: "Disclosure (Historical)" },
+        { id: "s10", label: "Judgments & Estimates (Historical)" },
+        { id: "s11", label: "IFRIC 18 vs the Current IFRS 15 Approach" },
+        { id: "s12", label: "Statement Mapping (Historical)" },
+        { id: "s13", label: "Related Standards" },
+        { id: "s14", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="withdrawn"
+    explanation="IFRIC 18 addressed accounting for an entity receiving an item of property, plant and equipment from a customer which the entity must use to connect the customer to a network or provide ongoing access. This guidance was withdrawn and replaced by IFRS 15's general model."
+    historical="This poster is retained for historical and comparative reference. Entities must now apply IFRS 15's performance obligation and non-cash consideration framework to customer asset transfer arrangements."
+    link="/ifrs/ifrs15"
+    linkText="IFRS 15 Revenue from Contracts with Customers"
+  />
+
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Why the transferred asset is not a simple gift</div>
+        <div class="principle">IFRIC 18 recognised that a customer transferring an item of PPE to an entity is NOT simply making a donation — the customer receives something of value in return: CONNECTION to a network, or ONGOING ACCESS to goods/services. The transferred asset therefore has economic substance as part of a BARTER TRANSACTION, requiring recognition as revenue (or a related cost reduction) rather than being ignored or treated as a government grant.</div>
+        <div class="elabel">THE CORE ECONOMIC SUBSTANCE</div>
+        <div class="dot-list">
+          <span>The customer provides the asset in exchange for a FUTURE service from the entity</span>
+          <span>The entity gains control of the asset and must recognise it under IAS 16</span>
+          <span>The customer's contribution is NOT a donation — it is part of a reciprocal arrangement</span>
+        </div>
+      </div>
+      <div class="card cs">
+        <div class="ctitle cs">Revenue recognition when the customer "pays" with assets</div>
+        <div class="principle">IFRIC 18 applies the same economic substance principle that underlies all revenue standards: the entity must recognise revenue when (or as) it satisfies a PERFORMANCE OBLIGATION to the customer. When the customer pays with an asset rather than cash, the revenue recognition logic is unchanged — only the form of consideration differs. The transferred asset becomes the entity's cost base for delivering the promised future service.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope & Definitions (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What IFRIC 18 covered</div>
+        <div class="principle">IFRIC 18 addressed accounting for an entity RECEIVING an item of property, plant and equipment from a customer, which the entity must use to CONNECT THE CUSTOMER to a network or PROVIDE ONGOING ACCESS to goods/services. The interpretation applies to ANY such arrangement — not just utilities — and covers both items of PPE that become part of the entity's network infrastructure and items that the entity operates on the customer's behalf.</div>
+        <div class="elabel">TYPICAL FACT PATTERNS</div>
+        <div class="dot-list">
+          <span>Utilities customers transferring land or infrastructure to connect to the electricity/gas/water network</span>
+          <span>Telecommunications customers contributing equipment to connect to broadband services</span>
+          <span>Airport customers transferring taxiways or access roads to the airport operator</span>
+          <span>Rail customers providing track connections to the national rail network</span>
+        </div>
+      </div>
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions (historical)</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Item of property, plant and equipment</div>
+          <div class="glossary-def">A physical asset transferred by the customer to the entity, which meets the definition of PPE under IAS 16 — land, buildings, infrastructure, or equipment that the entity controls and uses.</div>
+        </div>
+        <div class="glossary-item" style="border-bottom:none;">
+          <div class="glossary-term">Ongoing access</div>
+          <div class="glossary-def">The right of the customer to receive goods or services on an ongoing basis from the network or infrastructure to which the customer has connected — the performance obligation the entity satisfies in exchange for the transferred asset.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Does the Transferred Item Meet the Definition of an Asset? (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">The first step — recognising the transferred PPE</div>
+        <div class="principle">Before any revenue accounting can occur, the entity must determine whether the transferred item MEETS THE DEFINITION OF PPE under IAS 16. If it does, the entity RECOGNISES IT as PPE at its cost — which, under IFRIC 18, is its FAIR VALUE at the date of acquisition. The fair value of the asset becomes the starting point for the revenue recognition analysis.</div>
+        <div class="elabel">WHETHER THE ITEM MEETS THE DEFINITION OF PPE</div>
+        <div class="dot-list">
+          <span>The entity must CONTROL the item (not merely have temporary custody)</span>
+          <span>The item must be held for use in production, supply of goods/services, or administrative purposes</span>
+          <span>The item must be expected to be used for more than one period</span>
+          <span>If the item does NOT meet the PPE definition, it is recognised as an expense immediately</span>
+        </div>
+        <div class="callout warn callout--flush">⚠️ The fair value of the transferred asset becomes the "cost" at which the entity recognises PPE — this is a departure from the normal cost-based measurement under IAS 16, justified by the fact that the entity's "cost" is the fair value of what it received from the customer.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Identifying the Separate Deliverables (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">The two distinct performance obligations</div>
+        <div class="principle">IFRIC 18 identifies that the arrangement typically contains TWO SEPARATE PERFORMANCE OBLIGATIONS: (1) the ONE-OFF obligation to CONSTRUCT and ACTIVATE the connection, and (2) the ONGOING obligation to provide ACCESS to the network or supply goods/services. These are separately identifiable because the customer can benefit from the connection service independently of the ongoing access, or the entity's promise to connect is separately identifiable from the ongoing supply.</div>
+        <div class="td-table">
+          <div class="th cols-13-1"><span>Performance obligation</span><span>Revenue timing</span></div>
+          <div class="tr cols-13-1"><span>Connection service (one-off)</span><span>Recognised at the point in time when the connection is complete and the customer can use it</span></div>
+          <div class="tr alt cols-13-1"><span>Ongoing access (continuous)</span><span>Recognised over time as the entity provides access — typically straight-line over the contract period</span></div>
+        </div>
+        <div class="callout info">IFRIC 18's two-performance-obligation model was a direct forerunner to the performance obligation identification logic in IFRS 15. The distinction between one-off and ongoing deliverables is a key IFRS 15 concept.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Recognising Revenue for Connection Services (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs">
+        <div class="ctitle cs">The connection revenue</div>
+        <div class="principle">Revenue for the CONNECTION SERVICE is recognised at the POINT IN TIME when the connection is COMPLETE and the customer can BEGIN TO USE the network or service. The amount of revenue recognised equals the FAIR VALUE of the transferred PPE asset — because the customer effectively "paid" for the connection by transferring the asset. If the fair value of the PPE cannot be measured reliably, the entity uses the CONSTRUCTED COST of the connection as a proxy.</div>
+        <div class="formula-box">
+          <div class="f-label">CONNECTION REVENUE CALCULATION</div>
+          <div class="f-eq">Connection revenue = Fair value of transferred PPE (or construction cost if fair value unreliable)</div>
+        </div>
+      </div>
+      <div class="card cw">
+        <div class="ctitle cw">Worked example — connection service revenue</div>
+        <div class="worked">
+          <div class="wk-title">Example: Utility network connection</div>
+          <div class="wk-body">A customer transfers land with fair value £500,000 to a utility company to connect a new factory to the gas network. The utility constructs the connecting pipeline at a cost of £300,000.</div>
+          <div class="wk-answer"><strong>Step 1 — Recognise PPE:</strong> Land recognised at fair value £500,000.<br><strong>Step 2 — Connection revenue:</strong> £500,000 (fair value of transferred land).<br><strong>Step 3 — Connection cost:</strong> £300,000 recognised as cost of sales.<br><strong>Step 4 — Gross margin:</strong> £500,000 - £300,000 = £200,000 on the connection service.<br><strong>Step 5 — Ongoing access:</strong> Revenue for ongoing gas supply recognised over the 20-year contract period.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Recognising Revenue for Ongoing Access (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">The ongoing access revenue</div>
+        <div class="principle">Revenue for the ONGOING ACCESS service is recognised OVER TIME — typically straight-line over the period of access. The amount recognised in each period represents the portion of the TRANSACTION PRICE relating to the ongoing supply of goods/services, which may include: (a) explicit charges for goods/services consumed, (b) standing charges for network access, or (c) implicit consideration embedded in the overall arrangement.</div>
+        <div class="elabel">MEASURING THE ONGOING ACCESS PRICE</div>
+        <div class="dot-list">
+          <span>If the arrangement specifies a price for ongoing access, that price is used directly</span>
+          <span>If no separate price is specified, the entity estimates the stand-alone selling price of the ongoing access</span>
+          <span>The allocation between connection and ongoing access uses relative fair values</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>How This Guidance Became Part of IFRS 15</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">A seamless transition to IFRS 15's performance obligation model</div>
+        <div class="principle">IFRS 15 absorbed IFRIC 18's two-performance-obligation framework directly into its own five-step model. Customer asset transfers became a specific instance of non-cash consideration under IFRS 15 Step 3, and the connection/ongoing access distinction became simply an application of IFRS 15's performance obligation identification and allocation. The Conceptual Framework and core principles are identical — IFRIC 18's guidance is now fully embedded in IFRS 15's general model.</div>
+        <div class="callout info">IFRS 15's Revenue Implementation Guidance specifically addresses non-cash consideration and customer contributions, confirming that IFRIC 18's approach was conceptually correct and merely needed to be generalised to cover all customer contributions, not just PPE.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Common Application Sectors</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Industries where customer asset transfers are most prevalent</div>
+        <div class="td-table">
+          <div class="th cols-16-1-14"><span>Sector</span><span>Typical transfer structure</span><span>IFRIC 18 relevance</span></div>
+          <div class="tr cols-16-1-14"><span>Utilities</span><span>Customers transfer land/pipelines for electricity/gas/water connection; ongoing supply contracts</span><span>Core example — IFRIC 18 specifically references utility network connections</span></div>
+          <div class="tr alt cols-16-1-14"><span>Telecommunications</span><span>Customers transfer cable/fibre infrastructure for broadband connection; ongoing service fees</span><span>Significant PPE balances from customer-contributed infrastructure</span></div>
+          <div class="tr cols-16-1-14"><span>Transport infrastructure</span><span>Customers provide access roads, taxiways, or rail connections; ongoing use rights</span><span>Airport and rail operators commonly receive customer-contributed infrastructure</span></div>
+          <div class="tr alt cols-16-1-14"><span>Waste management</span><span>Customers provide site access or transfer land for waste processing facilities; ongoing service contracts</span><span>Less common but same economic substance applies</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Historical disclosure requirements under IFRIC 18</div>
+        <div class="check-list">
+          <span>Nature and amount of PPE received from customers during the period</span>
+          <span>Revenue recognised for connection services and ongoing access services separately</span>
+          <span>Method used to measure the fair value of transferred PPE when no active market exists</span>
+          <span>Carrying amount of PPE recognised from customer transfers at the reporting date</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Judgments & Estimates (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where judgement historically mattered most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Whether the transferred item meets the definition of PPE under IAS 16</span>
+              <span>Whether the connection and ongoing access are separate performance obligations</span>
+              <span>Whether the fair value of transferred PPE can be reliably measured</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>Fair value of transferred PPE when no active market exists</span>
+              <span>Allocation of transaction price between connection and ongoing access when no explicit prices are specified</span>
+              <span>Useful life of transferred PPE for depreciation purposes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>IFRIC 18 vs the Current IFRS 15 Approach</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">What changed and what did not</div>
+        <div class="td-table">
+          <div class="th cols-12-1-1"><span>Feature</span><span>IFRIC 18 (historical)</span><span>IFRS 15 (current)</span></div>
+          <div class="tr cols-12-1-1"><span>Transferred PPE recognition</span><span>Recognised at fair value under IAS 16</span><span>Same treatment — non-cash consideration measured at fair value</span></div>
+          <div class="tr alt cols-12-1-1"><span>Revenue allocation</span><span>Two separate performance obligations: connection and ongoing access</span><span>Same two-obligation model embedded in IFRS 15's five-step framework</span></div>
+          <div class="tr cols-12-1-1"><span>Connection revenue timing</span><span>At point in time when connection is complete</span><span>Same point-in-time recognition</span></div>
+          <div class="tr alt cols-12-1-1"><span>Ongoing access revenue</span><span>Over time as access is provided</span><span>Same over-time recognition</span></div>
+          <div class="tr cols-12-1-1"><span>Scope</span><span>Specific to customer-contributed PPE for network connections</span><span>Generalised to all customer contributions and non-cash consideration</span></div>
+          <div class="tr alt cols-12-1-1"><span>Withdrawn</span><span>Yes — 2016</span><span>N/A</span></div>
+        </div>
+        <div class="note">IFRS 15 generalised IFRIC 18's specific customer-contributed PPE guidance to cover ALL forms of customer contributions and non-cash consideration — not just PPE for network connections. Entities now apply the same logic to a broader range of arrangements.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Where IFRIC 18 items historically appeared</div>
+        <div class="td-table">
+          <div class="th cols-16-1-14"><span>Item</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr cols-16-1-14"><span>Transferred PPE recognised at fair value</span><span><span class="badge bs">Balance Sheet</span></span><span>IAS 16 PPE at fair value</span></div>
+          <div class="tr alt cols-16-1-14"><span>Connection service revenue</span><span><span class="badge bp">P&L</span></span><span>Recognised at point in time when connection is complete</span></div>
+          <div class="tr cols-16-1-14"><span>Ongoing access revenue</span><span><span class="badge bp">P&L</span></span><span>Recognised over time as access is provided</span></div>
+          <div class="tr alt cols-16-1-14"><span>Connection cost (pipeline/infrastructure)</span><span><span class="badge bp">P&L</span></span><span>Recognised as cost of sales when revenue is recognised</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Cross-reference map</div>
+        <div class="td-table">
+          <div class="th cols-08-2"><span>Standard</span><span>Connection</span></div>
+          <div class="tr cols-08-2"><span>IFRS 15</span><span>The current successor standard generalising IFRIC 18's multi-element and non-cash consideration logic</span></div>
+          <div class="tr alt cols-08-2"><span>IAS 16</span><span>Governs recognition of the transferred asset itself at fair value</span></div>
+          <div class="tr cols-08-2"><span>IAS 20</span><span>A related but distinct government/customer contribution concept for grants rather than customer transfers</span></div>
+        </div>
+      </div>
+      <div class="card cn">
+        <div class="ctitle cn">Quick-reference glossary</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Non-cash consideration</div>
+          <div class="glossary-def">Consideration from a customer that is NOT in the form of cash — under IFRS 15, measured at fair value, generalising IFRIC 18's transferred PPE approach.</div>
+        </div>
+        <div class="glossary-item" style="border-bottom:none;">
+          <div class="glossary-term">Customer contribution</div>
+          <div class="glossary-def">An asset transferred from a customer to an entity in connection with a contract for goods or services — the broader category that includes IFRIC 18's PPE transfers.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Customer-contributed PPE", definition: "An item of property, plant and equipment transferred by a customer to an entity, which the entity must use to connect the customer or provide ongoing access — the core subject of IFRIC 18." },
+      { term: "Non-cash consideration", definition: "Consideration from a customer that is not in the form of cash — measured at fair value under IFRS 15, generalising IFRIC 18's approach." },
+      { term: "Connection service", definition: "The one-off performance obligation to construct and activate a network connection for the customer — recognised at a point in time when complete." },
+      { term: "Ongoing access", definition: "The continuous performance obligation to provide the customer with access to goods or services from the network — recognised over time." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.IFRIC18} />
+  </section>
+</StandardPageLayout>
+
+
+
+

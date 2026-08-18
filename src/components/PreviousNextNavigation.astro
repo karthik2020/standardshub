@@ -23,6 +23,21 @@ const { current, framework } = Astro.props;
 
 const frameworkConfig = getFramework(framework) ?? getFramework("ias")!;
 
+const currentPath = Astro.url.pathname;
+const pathFrameworkId =
+  currentPath.startsWith("/ifrs/ifric")
+    ? "ifric"
+    : currentPath.startsWith("/ifrs/sic")
+      ? "sic"
+      : currentPath.startsWith("/ifrs/ifrsforsmes")
+        ? "ifrsforsmes"
+        : currentPath.startsWith("/ifrs/ifrspublications")
+          ? "ifrspublications"
+          : currentPath.startsWith("/ifrs/ifrssustainability")
+            ? "ifrssustainability"
+            : frameworkConfig.id;
+const pathFrameworkConfig = getFramework(pathFrameworkId) ?? frameworkConfig;
+
 const allIAS = [
   ...standards.IAS.filter((s) => !s.status),
   ...standards.IAS.filter((s) => s.status),
@@ -39,69 +54,74 @@ const codeToKey = (code: string) => {
   if (code === "UK GAAP") return "UKGAAP";
   if (code === "ASBE") return "ASBE";
   if (code === "ASPE") return "ASPE";
-  if (code === "Japan GAAP") return "JapanGAAP";
+  if (code === "ASBJ") return "ASBJ";
+  if (code === "HGB") return "HGB";
   return code;
 };
 
 const standardsList =
-  frameworkConfig.code === "IAS"
+  pathFrameworkConfig.code === "IAS"
     ? allIAS
-    : frameworkConfig.code === "Ind AS"
+    : pathFrameworkConfig.code === "Ind AS"
       ? [
           ...standards.IndAS.filter((s) => !s.status),
           ...standards.IndAS.filter((s) => s.status),
         ]
-      : frameworkConfig.code === "IFRS Sustainability"
+      : pathFrameworkConfig.code === "IFRS Sustainability"
         ? [
             ...standards.IFRSSustainability.filter((s) => !s.status),
             ...standards.IFRSSustainability.filter((s) => s.status),
           ]
-        : frameworkConfig.code === "IFRS Publications"
+        : pathFrameworkConfig.code === "IFRS Publications"
           ? [
               ...standards.IFRSPublications.filter((s) => !s.status),
               ...standards.IFRSPublications.filter((s) => s.status),
             ]
-          : frameworkConfig.code === "IFRS for SMEs"
+          : pathFrameworkConfig.code === "IFRS for SMEs"
             ? [
                 ...standards.IFRSForSMEs.filter((s) => !s.status),
                 ...standards.IFRSForSMEs.filter((s) => s.status),
               ]
-             : frameworkConfig.code === "IFRIC"
+             : pathFrameworkConfig.code === "IFRIC"
                 ? [
                     ...standards.IFRIC.filter((s) => !s.status),
                     ...standards.IFRIC.filter((s) => s.status),
                   ]
-                : frameworkConfig.code === "SIC"
+                : pathFrameworkConfig.code === "SIC"
                   ? [
                       ...standards.SIC.filter((s) => !s.status),
                       ...standards.SIC.filter((s) => s.status),
                     ]
-                   : frameworkConfig.code === "US GAAP"
+                   : pathFrameworkConfig.code === "US GAAP"
                      ? [
                          ...standards.USGAAP.filter((s) => !s.status),
                          ...standards.USGAAP.filter((s) => s.status),
                        ]
-                     : frameworkConfig.code === "UK GAAP"
+                     : pathFrameworkConfig.code === "UK GAAP"
                        ? [
                            ...standards.UKGAAP.filter((s) => !s.status),
                            ...standards.UKGAAP.filter((s) => s.status),
                          ]
-                        : frameworkConfig.code === "ASBE"
+                        : pathFrameworkConfig.code === "ASBE"
                           ? [
                               ...standards.ASBE.filter((s) => !s.status),
                               ...standards.ASBE.filter((s) => s.status),
                             ]
-                           : frameworkConfig.code === "ASPE"
+                           : pathFrameworkConfig.code === "ASPE"
                              ? [
                                  ...standards.ASPE.filter((s) => !s.status),
                                  ...standards.ASPE.filter((s) => s.status),
                                ]
-                             : frameworkConfig.code === "Japan GAAP"
-                               ? [
-                                   ...standards.JapanGAAP.filter((s) => !s.status),
-                                   ...standards.JapanGAAP.filter((s) => s.status),
-                                 ]
-                               : standards[codeToKey(frameworkConfig.code)] ?? [];
+                                : pathFrameworkConfig.code === "ASBJ"
+                                  ? (() => {
+                                      const cur = standards.ASBJ.find((s) => s.code === current);
+                                      return cur?.category
+                                        ? standards.ASBJ.filter((s) => s.category === cur.category)
+                                        : standards.ASBJ;
+                                  })()
+                                  : pathFrameworkConfig.code === "HGB" && current.startsWith("DRS")
+                                    ? standards.DRS
+                                    : standards[codeToKey(pathFrameworkConfig.code)] ?? [];
 
 const currentIndex = standardsList.findIndex((standard) => standard.code === current);
 const previous =

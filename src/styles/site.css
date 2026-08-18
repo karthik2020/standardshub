@@ -82,10 +82,10 @@
     --aspe-soft: #FECACA;
     --aspe-light: #FEE2E2;
     --aspe-dark: #7F1D1D;
-  --japangaap: #394931;
-  --japangaap-soft: #eaf7e4;
-  --japangaap-light: #d4d0b9;
-  --japangaap-dark: #90997f;
+  --asbj: #394931;
+  --asbj-soft: #eaf7e4;
+  --asbj-light: #d4d0b9;
+  --asbj-dark: #90997f;
   --hgb: #B58900;
   --hgb-soft: #F4E7B0;
   --hgb-light: #FCF8EA;
@@ -360,18 +360,9 @@ body {
 
 .sidebar-items {
     position: relative;
-    padding-top: 6px;
-}
-
-.sidebar-items::before {
-    content: "";
-    position: absolute;
-    left: 7px;
-    top: 8px;
-    bottom: 8px;
-    width: 1px;
-    background: var(--border);
-    border-radius: var(--radius-pill);
+    padding: 6px 0 0 0;
+    margin: 0;
+    list-style: none;
 }
 
 .sidebar-group-label {
@@ -387,12 +378,12 @@ body {
 .sidebar-category-label, .sidebar-subfolder-label  {
     font-size: var(--text-small);
     font-weight: var(--weight-semibold);
-    color: var(--framework-accent);
+    color: white;
     letter-spacing: .04em;
     text-transform: none;
     padding: 6px 18px 6px;
     margin-top: 4px;
-    background: color-mix(in srgb, var(--framework-accent) 10%, transparent);
+    background: color-mix(in srgb, var(--framework-accent) 80%, transparent);
 }
 
 .sidebar-category-group {
@@ -403,46 +394,6 @@ body {
     border-top: 1px solid var(--border);
     margin-top: 4px;
     padding-top: 4px;
-}
-
-.section-ias .sidebar-items::before {
-    background: color-mix(in srgb, var(--ias) 18%, transparent);
-}
-
-.section-ifrs .sidebar-items::before {
-    background: color-mix(in srgb, var(--ifrs) 18%, transparent);
-}
-
-.section-indas .sidebar-items::before {
-    background: color-mix(in srgb, var(--indas) 18%, transparent);
-}
-
-.section-ipsas .sidebar-items::before {
-    background: color-mix(in srgb, var(--ipsas) 18%, transparent);
-}
-
-.section-usgaap .sidebar-items::before {
-    background: color-mix(in srgb, var(--usgaap) 18%, transparent);
-}
-
-.section-ukgaap .sidebar-items::before {
-    background: color-mix(in srgb, var(--ukgaap) 18%, transparent);
-}
-
-.section-asbe .sidebar-items::before {
-    background: color-mix(in srgb, var(--asbe) 18%, transparent);
-}
-
-.section-aspe .sidebar-items::before {
-    background: color-mix(in srgb, var(--aspe) 18%, transparent);
-}
-
-.section-hgb .sidebar-items::before {
-    background: color-mix(in srgb, var(--hgb) 18%, transparent);
-}
-
-.section-drs .sidebar-items::before {
-    background: color-mix(in srgb, var(--hgb) 18%, transparent);
 }
 
 .sidebar-item:hover {
@@ -457,13 +408,9 @@ body {
     font-weight: 600;
 }
 
-html[data-theme="dark"] .sidebar-category-label, .sidebar-subfolder-label {
+html[data-theme="dark"] .sidebar-category-label, html[data-theme="dark"] .sidebar-subfolder-label {
     background: color-mix(in srgb, var(--framework-accent) 80%, transparent);
     color: white;
-}
-
-.sidebar-items .nav-link {
-    margin-left: -1px;
 }
 
 /*.sidebar {
@@ -551,8 +498,9 @@ html[data-theme="dark"] .sidebar-category-label, .sidebar-subfolder-label {
 }
 
 .section {
-    padding: 0 4px;
+    padding: 0;
     margin-bottom: 14px;
+    border-radius: 0;
 }
 
 .section-header {
@@ -981,25 +929,31 @@ section li:last-child {
     text-decoration: none;
     color: var(--text-secondary);
     font-size: var(--text-xs);
-    margin: 2px 8px 2px 10px;
+    margin: 0;
     padding: 4px 14px;
-    border-radius: var(--radius-sm);
+    border-radius: 0;
     transition: background .18s ease, color .18s ease;
 }
 
 .nav-link:hover,
 .nav-link:focus-visible {
-    background: var(--surface-alt);
+    background: var(--surface-hover);
+    color: var(--text-secondary);
+    border: none;
+    outline: none;
+    box-shadow: none;
 }
 
-.nav-link.active::before {
+.nav-link::before {
     content: "";
     position: absolute;
-    left: 8px;
-    top: 6px;
-    bottom: 6px;
+    left: 0;
+    top: 0;
     width: 3px;
-    border-radius: var(--radius-pill);
+    bottom: 0;
+    background: transparent;
+    border-radius: 3px;
+    transition: var(--transition-fast);
 }
 
 .nav-link.active.nav-ias {
@@ -1009,7 +963,7 @@ section li:last-child {
 .nav-link.active.nav-ias::before {
     content: "";
     position: absolute;
-    left: -8px;
+    /* left: -8px; */
     top: 6px;
     bottom: 6px;
     width: 3px;
@@ -1024,7 +978,7 @@ section li:last-child {
 .nav-link.active.nav-ifrs::before {
     content: "";
     position: absolute;
-    left: -8px;
+    /* left: -8px; */
     top: 6px;
     bottom: 6px;
     width: 3px;
@@ -1039,7 +993,7 @@ section li:last-child {
 .nav-link.active.nav-indas::before {
     content: "";
     position: absolute;
-    left: -8px;
+    /* left: -8px; */
     top: 6px;
     bottom: 6px;
     width: 3px;
@@ -1054,7 +1008,7 @@ section li:last-child {
 .nav-link.active.nav-usgaap::before {
     content: "";
     position: absolute;
-    left: -8px;
+    /* left: -8px; */
     top: 6px;
     bottom: 6px;
     width: 3px;
@@ -1069,7 +1023,7 @@ section li:last-child {
 .nav-link.active.nav-ukgaap::before {
     content: "";
     position: absolute;
-    left: -8px;
+    /* left: -8px; */
     top: 6px;
     bottom: 6px;
     width: 3px;
@@ -1084,7 +1038,7 @@ section li:last-child {
 .nav-link.active.nav-asbe::before {
     content: "";
     position: absolute;
-    left: -8px;
+    /* left: -8px; */
     top: 6px;
     bottom: 6px;
     width: 3px;
@@ -1099,7 +1053,7 @@ section li:last-child {
 .nav-link.active.nav-aspe::before {
     content: "";
     position: absolute;
-    left: -8px;
+    /* left: -8px; */
     top: 6px;
     bottom: 6px;
     width: 3px;
@@ -1163,28 +1117,28 @@ html[data-theme="dark"] .nav-link.active.nav-aspe::before {
     background: var(--aspe);
 }
 
-.nav-link.active.nav-japangaap {
-    background: var(--japangaap-light);
+.nav-link.active.nav-asbj {
+    background: var(--asbj-light);
 }
 
-.nav-link.active.nav-japangaap::before {
+.nav-link.active.nav-asbj::before {
     content: "";
     position: absolute;
-    left: -8px;
+    /* left: -8px; */
     top: 6px;
     bottom: 6px;
     width: 3px;
     border-radius: var(--radius-pill);
-    background: var(--japangaap);
+    background: var(--asbj);
 }
 
-html[data-theme="dark"] .nav-link.active.nav-japangaap {
+html[data-theme="dark"] .nav-link.active.nav-asbj {
     background: var(--surface-hover);
     color: var(--text);
 }
 
-html[data-theme="dark"] .nav-link.active.nav-japangaap::before {
-    background: var(--japangaap);
+html[data-theme="dark"] .nav-link.active.nav-asbj::before {
+    background: var(--asbj);
 }
 
 .nav-link.active.nav-ipsas {
@@ -1194,7 +1148,7 @@ html[data-theme="dark"] .nav-link.active.nav-japangaap::before {
 .nav-link.active.nav-ipsas::before {
     content: "";
     position: absolute;
-    left: -8px;
+    /* left: -8px; */
     top: 6px;
     bottom: 6px;
     width: 3px;
@@ -1218,7 +1172,7 @@ html[data-theme="dark"] .nav-link.active.nav-ipsas::before {
 .nav-link.active.nav-hgb::before {
     content: "";
     position: absolute;
-    left: -8px;
+    /* left: -8px; */
     top: 6px;
     bottom: 6px;
     width: 3px;
@@ -1233,7 +1187,7 @@ html[data-theme="dark"] .nav-link.active.nav-ipsas::before {
 .nav-link.active.nav-drs::before {
     content: "";
     position: absolute;
-    left: -8px;
+    /* left: -8px; */
     top: 6px;
     bottom: 6px;
     width: 3px;
@@ -1257,6 +1211,36 @@ html[data-theme="dark"] .nav-link.active.nav-drs {
 
 html[data-theme="dark"] .nav-link.active.nav-drs::before {
     background: var(--hgb);
+}
+
+/* Sidebar nav links follow the selected rail framework.
+   Page-content nav links (PNN, RelatedStandards) keep their own
+   framework colours because they are outside .standards-panel. */
+.standards-panel .nav-link.active::before {
+    background: var(--toc-active, var(--ias));
+}
+
+.standards-panel .nav-link.active {
+    background: color-mix(in srgb, var(--framework-accent) 15%, transparent);
+    color: var(--toc-active, var(--ias));
+}
+
+.standards-panel .nav-link:hover,
+.standards-panel .nav-link:focus-visible {
+    background: var(--surface-hover);
+    color: var(--text-secondary);
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+html[data-theme="dark"] .standards-panel .nav-link.active {
+    background: color-mix(in srgb, var(--framework-accent) 15%, transparent);
+    color: var(--framework-accent-soft);
+}
+
+html[data-theme="dark"] .standards-panel .nav-link.active::before {
+    background: var(--toc-active, var(--ias));
 }
 
 .nav-link.active {
@@ -1388,8 +1372,8 @@ html[data-theme="dark"] .nav-link.active.nav-drs::before {
     border-left: 4px solid var(--aspe);
 }
 
-.card-japangaap {
-    border-left: 4px solid var(--japangaap);
+.card-asbj {
+    border-left: 4px solid var(--asbj);
 }
 
 .card-hgb {
@@ -2645,16 +2629,16 @@ html[data-theme="dark"] .search-placeholder {
     --toggle-active: var(--aspe);
 }
 
-.app-body[data-framework="japangaap"] {
-    --framework-accent: var(--japangaap);
-    --framework-accent-soft: var(--japangaap-soft);
-    --toc-active: var(--japangaap);
-    --toc-active-soft: var(--japangaap-soft);
-    --section-accent: var(--japangaap);
-    --history-accent: var(--japangaap);
-    --history-accent-soft: var(--japangaap-soft);
-    --history-accent-light: var(--japangaap-light);
-    --toggle-active: var(--japangaap);
+.app-body[data-framework="asbj"] {
+    --framework-accent: var(--asbj);
+    --framework-accent-soft: var(--asbj-soft);
+    --toc-active: var(--asbj);
+    --toc-active-soft: var(--asbj-soft);
+    --section-accent: var(--asbj);
+    --history-accent: var(--asbj);
+    --history-accent-soft: var(--asbj-soft);
+    --history-accent-light: var(--asbj-light);
+    --toggle-active: var(--asbj);
 }
 
 .app-body[data-framework="hgb"] {
@@ -4100,9 +4084,9 @@ html[data-theme="dark"] .toc a.active {
     box-shadow: 0 0 0 3px var(--aspe-soft);
 }
 
-.nav-japangaap:hover,
-.nav-japangaap:focus-visible {
-    box-shadow: 0 0 0 3px var(--japangaap-soft);
+.nav-asbj:hover,
+.nav-asbj:focus-visible {
+    box-shadow: 0 0 0 3px var(--asbj-soft);
 }
 
 .nav-hgb:hover,
@@ -4225,8 +4209,8 @@ html[data-theme="dark"] .toc a.active {
     color: var(--aspe);
 }
 
-.nav-japangaap .pnn-code {
-    color: var(--japangaap);
+.nav-asbj .pnn-code {
+    color: var(--asbj);
 }
 
 .nav-hgb .pnn-code {
@@ -4237,8 +4221,8 @@ html[data-theme="dark"] .toc a.active {
     color: var(--hgb);
 }
 
-html[data-theme="dark"] .nav-japangaap .pnn-code {
-    color: var(--japangaap-soft);
+html[data-theme="dark"] .nav-asbj .pnn-code {
+    color: var(--asbj-soft);
 }
 
 .pnn-next > * {
@@ -4422,10 +4406,10 @@ html[data-theme="dark"] .rail-item.active {
     --rail-accent-text: var(--aspe-dark);
 }
 
-.framework-rail:has([data-rail-item="japangaap"].active) {
-    --rail-accent: var(--japangaap);
-    --rail-accent-soft: var(--japangaap-soft);
-    --rail-accent-text: var(--japangaap-dark);
+.framework-rail:has([data-rail-item="asbj"].active) {
+    --rail-accent: var(--asbj);
+    --rail-accent-soft: var(--asbj-soft);
+    --rail-accent-text: var(--asbj-dark);
 }
 
 .framework-rail:has([data-rail-item="hgb"].active) {
@@ -4463,10 +4447,65 @@ html[data-theme="dark"] .rail-item.active {
 .standards-panel[data-active-framework="ukgaap"] .fw-panel[data-framework-panel="ukgaap"],
 .standards-panel[data-active-framework="asbe"] .fw-panel[data-framework-panel="asbe"],
 .standards-panel[data-active-framework="aspe"] .fw-panel[data-framework-panel="aspe"],
-.standards-panel[data-active-framework="japangaap"] .fw-panel[data-framework-panel="japangaap"],
+.standards-panel[data-active-framework="asbj"] .fw-panel[data-framework-panel="asbj"],
 .standards-panel[data-active-framework="hgb"] .fw-panel[data-framework-panel="hgb"],
 .standards-panel[data-active-framework="ipsas"] .fw-panel[data-framework-panel="ipsas"] {
     display: block;
+}
+
+.standards-panel[data-active-framework="home"] {
+    --framework-accent: #475569;
+    --framework-accent-soft: #f1f5f9;
+}
+
+.standards-panel[data-active-framework="ias"] {
+    --framework-accent: var(--ias);
+    --framework-accent-soft: var(--ias-soft);
+}
+
+.standards-panel[data-active-framework="ifrs"] {
+    --framework-accent: var(--ifrs);
+    --framework-accent-soft: var(--ifrs-soft);
+}
+
+.standards-panel[data-active-framework="indas"] {
+    --framework-accent: var(--indas);
+    --framework-accent-soft: var(--indas-soft);
+}
+
+.standards-panel[data-active-framework="usgaap"] {
+    --framework-accent: var(--usgaap);
+    --framework-accent-soft: var(--usgaap-soft);
+}
+
+.standards-panel[data-active-framework="ukgaap"] {
+    --framework-accent: var(--ukgaap);
+    --framework-accent-soft: var(--ukgaap-soft);
+}
+
+.standards-panel[data-active-framework="asbe"] {
+    --framework-accent: var(--asbe);
+    --framework-accent-soft: var(--asbe-soft);
+}
+
+.standards-panel[data-active-framework="aspe"] {
+    --framework-accent: var(--aspe);
+    --framework-accent-soft: var(--aspe-soft);
+}
+
+.standards-panel[data-active-framework="asbj"] {
+    --framework-accent: var(--asbj);
+    --framework-accent-soft: var(--asbj-soft);
+}
+
+.standards-panel[data-active-framework="hgb"] {
+    --framework-accent: var(--hgb);
+    --framework-accent-soft: var(--hgb-soft);
+}
+
+.standards-panel[data-active-framework="ipsas"] {
+    --framework-accent: var(--ipsas);
+    --framework-accent-soft: var(--ipsas-soft);
 }
 
 /* While a search term is active, show every framework's matches at once. */

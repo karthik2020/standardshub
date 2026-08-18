@@ -117,7 +117,7 @@ export const FRAMEWORK_CONFIG: Record<string, FrameworkConfig> = {
     fullName: "IFRS Sustainability Disclosure Standards",
     description:
       "IFRS Sustainability Disclosure Standards are issued by the International Sustainability Standards Board (ISSB) to provide a global baseline for sustainability-related financial disclosures.",
-    route: "/ifrssustainability",
+    route: "/ifrs/ifrssustainability",
     primary: "#16A34A",
     light: "#DCFCE7",
     soft: "#F0FDF4",
@@ -133,7 +133,7 @@ export const FRAMEWORK_CONFIG: Record<string, FrameworkConfig> = {
     fullName: "IFRS Foundation Publications",
     description:
       "IFRS Foundation publications include the Conceptual Framework, Preface to IFRS Standards, IFRS Practice Statements, and the IFRS for SMEs Standard.",
-    route: "/ifrspublications",
+    route: "/ifrs/ifrspublications",
     primary: "#16A34A",
     light: "#DCFCE7",
     soft: "#F0FDF4",
@@ -149,7 +149,7 @@ export const FRAMEWORK_CONFIG: Record<string, FrameworkConfig> = {
     fullName: "IFRS for Small and Medium-sized Entities",
     description:
       "The IFRS for SMEs Standard is a self-contained, simplified accounting standard developed by the IASB for entities without public accountability.",
-    route: "/ifrsforsmes",
+    route: "/ifrs/ifrsforsmes",
     primary: "#16A34A",
     light: "#DCFCE7",
     soft: "#F0FDF4",
@@ -270,7 +270,7 @@ export const FRAMEWORK_CONFIG: Record<string, FrameworkConfig> = {
     fullName: "IFRIC Interpretations",
     description:
       "IFRIC Interpretations are issued by the IFRS Interpretations Committee to provide guidance on applying IFRS Accounting Standards, addressing specific accounting issues not explicitly covered by the standards themselves.",
-    route: "/ifric",
+    route: "/ifrs/ifric",
     primary: "#16A34A",
     light: "#DCFCE7",
     soft: "#F0FDF4",
@@ -280,13 +280,13 @@ export const FRAMEWORK_CONFIG: Record<string, FrameworkConfig> = {
     status: "active",
   },
    sic: {
-    id: "sic",
-    code: "SIC",
-    displayName: "SIC",
-    fullName: "SIC Interpretations",
-    description:
-      "SIC Interpretations were issued by the Standing Interpretations Committee and address specific accounting issues not explicitly covered by IAS Standards.",
-    route: "/sic",
+     id: "sic",
+     code: "SIC",
+     displayName: "SIC",
+     fullName: "SIC Interpretations",
+     description:
+       "SIC Interpretations were issued by the Standing Interpretations Committee and address specific accounting issues not explicitly covered by IAS Standards.",
+     route: "/ifrs/sic",
     primary: "#16A34A",
     light: "#DCFCE7",
     soft: "#F0FDF4",
@@ -295,14 +295,14 @@ export const FRAMEWORK_CONFIG: Record<string, FrameworkConfig> = {
     faIcon: "scroll",
     status: "active",
   },
-   japangaap: {
-    id: "japangaap",
-    code: "Japan GAAP",
-    displayName: "Japan GAAP",
-    fullName: "Japanese Generally Accepted Accounting Principles",
+   asbj: {
+    id: "asbj",
+    code: "ASBJ",
+    displayName: "ASBJ",
+    fullName: "Accounting Standards Board of Japan",
     description:
       "Japanese Generally Accepted Accounting Principles (Japan GAAP) comprise the financial reporting standards issued by the Accounting Standards Board of Japan (ASBJ), covering topics such as financial instruments, revenue, leases, and business combinations.",
-    route: "/japangaap",
+    route: "/asbj",
     primary: "#394931",
     light: "#d4d0b9",
     soft: "#afb59d",
@@ -311,8 +311,8 @@ export const FRAMEWORK_CONFIG: Record<string, FrameworkConfig> = {
     faIcon: "landmark",
     categories: [
       "ASBJ Statements",
-      "Implementation Guidance",
       "JMIS Standards",
+      "Implementation Guidance",
       "Practical Solutions",
     ],
     status: "active",
@@ -351,7 +351,7 @@ export const FRAMEWORK_CONFIG: Record<string, FrameworkConfig> = {
   },
 };
 
-export const FRAMEWORK_ORDER = ["ias", "ifrs", "ipsas", "indas", "ifrssustainability", "ifrspublications", "ifrsforsmes", "usgaap", "ukgaap", "asbe", "aspe", "japangaap", "ifric", "sic", "hgb"] as const;
+export const FRAMEWORK_ORDER = ["ias", "ifrs", "ipsas", "indas", "usgaap", "ukgaap", "asbe", "aspe", "asbj", "hgb"] as const;
 
 export type FrameworkId = keyof typeof FRAMEWORK_CONFIG;
 

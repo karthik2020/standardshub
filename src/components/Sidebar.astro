@@ -41,6 +41,23 @@ const lucideIconMap: Record<string, any> = {
 };
 
 const currentPath = Astro.url.pathname;
+
+const IFRS_SIDEBAR_CATEGORIES = [
+  { label: "IFRS Standards", items: standards.IFRS },
+  { label: "IFRS for SMEs", items: standards.IFRSForSMEs },
+  { label: "IFRS Publications", items: standards.IFRSPublications },
+  { label: "IFRS Sustainability", items: standards.IFRSSustainability },
+  { label: "IFRIC", items: standards.IFRIC },
+  { label: "SIC", items: standards.SIC },
+] as const;
+
+const drsStandards = standards.DRS ?? [];
+const drsPrimary = drsStandards.filter(
+  (item) => !item.status || item.status === "Upcoming" || item.status === "Amended" || item.status === "Active" || item.status === "Revised 2026"
+);
+const drsRetired = drsStandards.filter(
+  (item) => item.status && item.status !== "Upcoming" && item.status !== "Amended" && item.status !== "Active" && item.status !== "Revised 2026"
+);
 ---
 
 <aside class="sidebar">
@@ -85,7 +102,7 @@ const currentPath = Astro.url.pathname;
           if (code === "UK GAAP") return "UKGAAP";
           if (code === "ASBE") return "ASBE";
           if (code === "ASPE") return "ASPE";
-          if (code === "Japan GAAP") return "JapanGAAP";
+          if (code === "ASBJ") return "ASBJ";
           return code;
         };
         const sectionStandards: StandardSummary[] = standards[codeToKey(framework.code)] ?? [];
@@ -112,7 +129,48 @@ const currentPath = Astro.url.pathname;
 
             <div class="section-items">
               {
-                framework.categories
+                framework.id === "ifrs" ? (
+                  IFRS_SIDEBAR_CATEGORIES.map(({ label, items }) => (
+                    <div class="sidebar-category-group">
+                      <div class="sidebar-category-label">{label}</div>
+                      <ul class="sidebar-items">
+                        {
+                          items.filter((item) => (!item.status || item.status === "Upcoming")).map((item) => (
+                            <li>
+                              <NavLink
+                                href={item.url}
+                                title={item.title}
+                                section={framework.id}
+                                code={item.code}
+                                standardTitle={item.title}
+                              >
+                                {item.code}
+                              </NavLink>
+                            </li>
+                          ))
+                        }
+                      </ul>
+                      <ul class="sidebar-items">
+                        <li class="sidebar-group-label">Historical Standards</li>
+                        {
+                          items.filter((item) => (item.status && item.status !== "Upcoming")).map((item) => (
+                            <li>
+                              <NavLink
+                                href={item.url}
+                                title={item.title}
+                                section={framework.id}
+                                code={item.code}
+                                standardTitle={item.title}
+                              >
+                                {item.code}
+                              </NavLink>
+                            </li>
+                          ))
+                        }
+                      </ul>
+                    </div>
+                  ))
+                ) : framework.categories
                   ? framework.categories.map((category) => {
                       const activeItems = sectionStandards.filter(
                         (item) => (!item.status || item.status === "Upcoming") && item.category === category
@@ -132,15 +190,17 @@ const currentPath = Astro.url.pathname;
                             {
                               activeItems.map((item) => (
                                 <li>
-                                  <NavLink
-                                    href={item.url}
-                                    title={item.title}
-                                    section={framework.id}
-                                    code={item.code}
-                                    standardTitle={item.title}
-                                  >
-                                    {framework.id === "aspe" ? item.code.replace("Section ", "") : item.code}
-                                  </NavLink>
+                                    <NavLink
+                                      href={item.url}
+                                      title={item.title}
+                                      section={framework.id}
+                                      code={item.code}
+                                      standardTitle={item.title}
+                                      badge={framework.id === "asbj" && item.status === "Revised 2026" ? "Revised 2026" : undefined}
+                                      badgeVariant={framework.id === "asbj" && item.status === "Revised 2026" ? "upcoming" : undefined}
+                                    >
+                                      {framework.id === "aspe" ? item.code.replace("Section ", "") : (framework.id === "asbj" ? item.code.replace(" (Revised 2026)", "") : item.code)}
+                                    </NavLink>
                                 </li>
                               ))
                             }
@@ -152,15 +212,17 @@ const currentPath = Astro.url.pathname;
                                 {
                                     historicalItems.map((item) => (
                                       <li>
-                                        <NavLink
-                                          href={item.url}
-                                          title={item.title}
-                                          section={framework.id}
-                                          code={item.code}
-                                          standardTitle={item.title}
-                                        >
-                                          {framework.id === "aspe" ? item.code.replace("Section ", "") : item.code}
-                                        </NavLink>
+                                          <NavLink
+                                            href={item.url}
+                                            title={item.title}
+                                            section={framework.id}
+                                            code={item.code}
+                                            standardTitle={item.title}
+                                            badge={framework.id === "asbj" && item.status === "Revised 2026" ? "Revised 2026" : undefined}
+                                            badgeVariant={framework.id === "asbj" && item.status === "Revised 2026" ? "upcoming" : undefined}
+                                          >
+                                            {framework.id === "aspe" ? item.code.replace("Section ", "") : (framework.id === "asbj" ? item.code.replace(" (Revised 2026)", "") : item.code)}
+                                          </NavLink>
                                       </li>
                                     ))
                                 }
@@ -207,6 +269,50 @@ const currentPath = Astro.url.pathname;
                           ))
                         }
                       </ul>
+                      {
+                        framework.id === "hgb" && (
+                          <div class="sidebar-category-group">
+                            <div class="sidebar-category-label">DRS Standards</div>
+                            <ul class="sidebar-items">
+                              {
+                                drsPrimary.map((item) => (
+                                  <li>
+                                    <NavLink
+                                      href={item.url}
+                                      title={item.title}
+                                      section="drs"
+                                      code={item.code}
+                                      standardTitle={item.title}
+                                    >
+                                      {item.code}
+                                    </NavLink>
+                                  </li>
+                                ))
+                              }
+                            </ul>
+                            {drsRetired.length > 0 && (
+                              <ul class="sidebar-items">
+                                <li class="sidebar-group-label">Historical Standards</li>
+                                {
+                                  drsRetired.map((item) => (
+                                    <li>
+                                      <NavLink
+                                        href={item.url}
+                                        title={item.title}
+                                        section="drs"
+                                        code={item.code}
+                                        standardTitle={item.title}
+                                      >
+                                        {item.code}
+                                      </NavLink>
+                                    </li>
+                                  ))
+                                }
+                              </ul>
+                            )}
+                          </div>
+                        )
+                      }
                     </>
                   )
               }

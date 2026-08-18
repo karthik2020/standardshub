@@ -1,5 +1,5 @@
 function resolveActiveFramework(pathname) {
-  if (pathname.startsWith("/ifrs") || pathname.startsWith("/ifric") || pathname.startsWith("/sic")) return "ifrs";
+  if (pathname.startsWith("/ifrs")) return "ifrs";
   if (pathname.startsWith("/ipsas")) return "ipsas";
   if (pathname.startsWith("/ias")) return "ias";
   if (pathname.startsWith("/indas")) return "indas";
@@ -7,7 +7,7 @@ function resolveActiveFramework(pathname) {
   if (pathname.startsWith("/ukgaap")) return "ukgaap";
   if (pathname.startsWith("/asbe")) return "asbe";
   if (pathname.startsWith("/aspe")) return "aspe";
-  if (pathname.startsWith("/japangaap")) return "japangaap";
+  if (pathname.startsWith("/asbj")) return "asbj";
   if (pathname.startsWith("/hgb") || pathname.startsWith("/germany/drs")) return "hgb";
   return "home";
 }
@@ -28,11 +28,6 @@ function initRailPanel() {
     function setActive(id, persist = true) {
 
         panel.dataset.activeFramework = id;
-
-        const appBody = document.querySelector(".app-body");
-        if (appBody) {
-            appBody.dataset.framework = id;
-        }
 
         rail.querySelectorAll("[data-rail-item]").forEach((item) => {
             const isActive = item.dataset.railItem === id;

@@ -1,0 +1,65 @@
+---
+import StandardLifecycleNotice from "../../../components/StandardLifecycleNotice.astro";
+import StandardPageLayout from "../../../layouts/StandardPageLayout.astro";
+import PageToc from "../../../components/PageToc.astro";
+import "../../../styles/standards-poster.css";
+import "../../../styles/extended.css";
+import metadata from "../../../data/standards/hgb/drs05.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  subtitle={metadata.nativeTitle}
+  framework="hgb"
+  status={metadata.status}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Part of the DRS consolidation wave" },
+        { id: "s2", label: "Why withdrawn" },
+        { id: "s3", label: "Status summary" },
+      ]}
+    />
+  </Fragment>
+
+  <StandardLifecycleNotice
+    type="withdrawn"
+    explanation="This standard has been withdrawn."
+    targetStatus="Replaced by DRS 20"
+    link="/germany/drs/drs20"
+    linkText="View DRS 20"
+  />
+
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Part of the DRS consolidation wave</h2><span class="line"></span></div>
+  <div class="cols-1">
+    <div class="card warn">
+<div class="ctitle">Part of the DRS consolidation wave</div>
+<div class="principle">DRS 5 elaborated the risk-reporting component of the Konzernlagebericht, addressing the statutory requirement (§315(1) HGB, covered in the earlier HGB poster series) to report on risks likely to affect the group's future development. As with the cash flow and segment standards, dedicated sector variants existed for credit/financial services institutions (DRS 5-10) and insurers (DRS 5-20), given how differently financial institutions' own risk profiles are structured and disclosed.</div>
+</div>
+  </div>
+
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Why withdrawn — consolidated into a single, comprehensive management-report standard</h2><span class="line"></span></div>
+  <div class="cols-1">
+    <div class="card info">
+<div class="ctitle">Why withdrawn — consolidated into a single, comprehensive management-report standard</div>
+<div class="principle">Rather than persisting as a standalone risk-reporting standard, DRS 5 (and its sector variants) was folded directly into the new DRS 20 "Konzernlagebericht" — a genuinely comprehensive standard unifying ALL group management report content (business review, forecast, risk, opportunity, and internal control reporting) into one document, itself the product of a DRSC review finding the earlier, fragmented approach across several separate Lagebericht-related standards was creating real inconsistency and quality problems in practice. DRS 20 was adopted 14 September 2012 and announced 4 December 2012.</div>
+</div>
+  </div>
+
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Status summary</h2><span class="line"></span></div>
+  <div class="cols-1">
+    <div class="card">
+<div class="ctitle">Status summary</div>
+<div class="td-table">
+<div class="th"><span>Field</span><span>Detail</span></div>
+<div class="tr"><span>Original topic</span><span>Risk reporting within the Konzernlagebericht</span></div>
+<div class="tr"><span>Successor</span><span><strong>DRS 20 — Konzernlagebericht</strong> (unified management-report standard, risk reporting handled in its own dedicated section, with sector-specific annexes)</span></div>
+<div class="tr"><span>DRS 20 adopted / announced</span><span>14.09.2012 / 04.12.2012</span></div>
+</div>
+</div>
+  </div>
+
+</StandardPageLayout>
