@@ -3177,8 +3177,8 @@ html[data-theme="dark"] .toc a.active {
     }
 }
 
-/* Close bar: hidden on desktop, shown inside @media query below */
-.sidebar-close-bar {
+/* Close button: hidden on desktop, absolute-positioned on mobile */
+.sidebar-close-btn {
     display: none;
 }
 
@@ -3198,53 +3198,40 @@ body.sidebar-open {
         display: flex;
     }
 
-    /* Full-height drawer anchored to left edge, with gap on the right
-       so the dimmed content area is visible and tappable to close. */
+    /* Full-height edge drawer. The standards-sidebar inside keeps its
+       row layout (rail + panel side by side) — we do NOT override flex-direction. */
     .sidebar {
         position: fixed;
         top: var(--header-height);
         left: 0;
         bottom: 0;
-        width: min(320px, 85vw);
+        /* Wide enough to show both rail + standards panel comfortably */
+        width: min(380px, 90vw);
         border-radius: 0;
         z-index: var(--z-sidebar);
         transform: translateX(-100%);
         transition: transform var(--duration-normal) var(--ease);
-        box-shadow: 4px 0 24px rgba(0, 0, 0, 0.18);
+        box-shadow: 4px 0 32px rgba(0, 0, 0, 0.22);
         overflow: hidden;
-        display: flex;
-        flex-direction: column;
     }
 
     .sidebar.open {
         transform: translateX(0);
     }
 
-    .sidebar-close-bar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 12px 14px 12px 16px;
-        border-bottom: 1px solid var(--border);
-        flex-shrink: 0;
-        background: var(--surface);
-    }
-
-    .sidebar-close-title {
-        font-size: 13px;
-        font-weight: var(--weight-semibold);
-        color: var(--text);
-        letter-spacing: 0.01em;
-    }
-
+    /* Small floating × button — absolute in the top-right corner of the standards panel area */
     .sidebar-close-btn {
         display: flex;
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        z-index: 20;
         align-items: center;
         justify-content: center;
-        width: 36px;
-        height: 36px;
+        width: 30px;
+        height: 30px;
         border: none;
-        background: transparent;
+        background: var(--surface-hover);
         color: var(--text-secondary);
         border-radius: var(--radius-sm);
         cursor: pointer;
@@ -3252,44 +3239,18 @@ body.sidebar-open {
     }
 
     .sidebar-close-btn:hover {
-        background: var(--surface-hover);
+        background: var(--surface-alt);
         color: var(--text);
     }
 
-    /* On mobile, hide the rail — the framework is already known from the URL.
-       The panel takes full width so standards names aren't cramped. */
-    .framework-rail {
-        display: none;
-    }
+    /* Keep the rail visible — user needs it to switch frameworks on mobile */
+    /* (no framework-rail display:none override here) */
 
     .standards-sidebar {
         width: 100%;
         border-right: none;
         height: 100%;
         min-height: 0;
-    }
-
-    /* Mobile framework context bar — shows which framework is active
-       as a sticky pill at the top of the panel so the user doesn't lose context. */
-    .standards-panel::before {
-        content: attr(data-active-framework);
-        display: block;
-        position: sticky;
-        top: 0;
-        z-index: 10;
-        padding: 6px 14px;
-        font-size: 11px;
-        font-weight: var(--weight-bold);
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        background: color-mix(in srgb, var(--framework-accent) 12%, var(--surface));
-        color: var(--framework-accent);
-        border-bottom: 1px solid color-mix(in srgb, var(--framework-accent) 20%, transparent);
-    }
-
-    /* Hide the framework context bar when on home (no specific framework) */
-    .standards-panel[data-active-framework="home"]::before {
-        display: none;
     }
 
     .standards-panel {
