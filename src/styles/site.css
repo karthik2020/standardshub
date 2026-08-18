@@ -885,8 +885,8 @@ html[data-theme="dark"] .sidebar-scroll::-webkit-scrollbar-thumb:hover {
 }
 
 .section {
-    border-radius: 0;
-    overflow: visible;
+    border-radius: var(--radius-md);
+    overflow: hidden;
 }
 
 section h2 {
@@ -928,24 +928,20 @@ section li:last-child {
     align-items: center;
     text-decoration: none;
     color: var(--text-secondary);
-    font-size: 13px;
+    font-size: var(--text-xs);
     margin: 0;
-    padding: 8px 14px;
-    min-height: 36px;
+    padding: 4px 14px;
     border-radius: 0;
     transition: background .18s ease, color .18s ease;
 }
 
-.nav-link:hover {
-    background: var(--surface-hover);
-    color: var(--text-secondary);
-}
-
+.nav-link:hover,
 .nav-link:focus-visible {
     background: var(--surface-hover);
     color: var(--text-secondary);
-    outline: 2px solid var(--framework-accent);
-    outline-offset: -2px;
+    border: none;
+    outline: none;
+    box-shadow: none;
 }
 
 .nav-link::before {
@@ -953,30 +949,117 @@ section li:last-child {
     position: absolute;
     left: 0;
     top: 0;
-    bottom: 0;
     width: 3px;
+    bottom: 0;
     background: transparent;
-    /* No border-radius — flush against the panel edge */
-    transition: background var(--transition-fast);
+    border-radius: 3px;
+    transition: var(--transition-fast);
 }
 
-/* ── Light mode: active bg per framework (outside .standards-panel) ── */
-.nav-link.active.nav-ias  { background: var(--ias-light); }
-.nav-link.active.nav-ifrs { background: var(--ifrs-light); }
-.nav-link.active.nav-indas { background: var(--indas-light); }
-.nav-link.active.nav-usgaap { background: var(--usgaap-light); }
-.nav-link.active.nav-ukgaap { background: var(--ukgaap-light); }
-.nav-link.active.nav-asbe { background: var(--asbe-light); }
-.nav-link.active.nav-aspe { background: var(--aspe-light); }
+.nav-link.active.nav-ias {
+    background: var(--ias-light);
+}
 
-/* ── Active indicator colour per framework (light mode) ── */
-.nav-link.active.nav-ias::before   { background: var(--ias); }
-.nav-link.active.nav-ifrs::before  { background: var(--ifrs); }
-.nav-link.active.nav-indas::before { background: var(--indas); }
-.nav-link.active.nav-usgaap::before { background: var(--usgaap); }
-.nav-link.active.nav-ukgaap::before { background: var(--ukgaap); }
-.nav-link.active.nav-asbe::before  { background: var(--asbe); }
-.nav-link.active.nav-aspe::before  { background: var(--aspe); }
+.nav-link.active.nav-ias::before {
+    content: "";
+    position: absolute;
+    /* left: -8px; */
+    top: 6px;
+    bottom: 6px;
+    width: 3px;
+    border-radius: var(--radius-pill);
+    background: var(--ias);
+}
+
+.nav-link.active.nav-ifrs {
+    background: var(--ifrs-light);
+}
+
+.nav-link.active.nav-ifrs::before {
+    content: "";
+    position: absolute;
+    /* left: -8px; */
+    top: 6px;
+    bottom: 6px;
+    width: 3px;
+    border-radius: var(--radius-pill);
+    background: var(--ifrs);
+}
+
+.nav-link.active.nav-indas {
+    background: var(--indas-light);
+}
+
+.nav-link.active.nav-indas::before {
+    content: "";
+    position: absolute;
+    /* left: -8px; */
+    top: 6px;
+    bottom: 6px;
+    width: 3px;
+    border-radius: var(--radius-pill);
+    background: var(--indas);
+}
+
+.nav-link.active.nav-usgaap {
+    background: var(--usgaap-light);
+}
+
+.nav-link.active.nav-usgaap::before {
+    content: "";
+    position: absolute;
+    /* left: -8px; */
+    top: 6px;
+    bottom: 6px;
+    width: 3px;
+    border-radius: var(--radius-pill);
+    background: var(--usgaap);
+}
+
+.nav-link.active.nav-ukgaap {
+    background: var(--ukgaap-light);
+}
+
+.nav-link.active.nav-ukgaap::before {
+    content: "";
+    position: absolute;
+    /* left: -8px; */
+    top: 6px;
+    bottom: 6px;
+    width: 3px;
+    border-radius: var(--radius-pill);
+    background: var(--ukgaap);
+}
+
+.nav-link.active.nav-asbe {
+    background: var(--asbe-light);
+}
+
+.nav-link.active.nav-asbe::before {
+    content: "";
+    position: absolute;
+    /* left: -8px; */
+    top: 6px;
+    bottom: 6px;
+    width: 3px;
+    border-radius: var(--radius-pill);
+    background: var(--asbe);
+}
+
+.nav-link.active.nav-aspe {
+    background: var(--aspe-light);
+}
+
+.nav-link.active.nav-aspe::before {
+    content: "";
+    position: absolute;
+    /* left: -8px; */
+    top: 6px;
+    bottom: 6px;
+    width: 3px;
+    border-radius: var(--radius-pill);
+    background: var(--aspe);
+}
 
 .nav-link.active {
     font-weight: 600;
@@ -1034,15 +1117,83 @@ html[data-theme="dark"] .nav-link.active.nav-aspe::before {
     background: var(--aspe);
 }
 
-.nav-link.active.nav-asbj  { background: var(--asbj-light); }
-.nav-link.active.nav-ipsas { background: var(--ipsas-light); }
-.nav-link.active.nav-hgb   { background: var(--hgb-light); }
-.nav-link.active.nav-drs   { background: var(--hgb-light); }
+.nav-link.active.nav-asbj {
+    background: var(--asbj-light);
+}
 
-.nav-link.active.nav-asbj::before  { background: var(--asbj); }
-.nav-link.active.nav-ipsas::before { background: var(--ipsas); }
-.nav-link.active.nav-hgb::before   { background: var(--hgb); }
-.nav-link.active.nav-drs::before   { background: var(--hgb); }
+.nav-link.active.nav-asbj::before {
+    content: "";
+    position: absolute;
+    /* left: -8px; */
+    top: 6px;
+    bottom: 6px;
+    width: 3px;
+    border-radius: var(--radius-pill);
+    background: var(--asbj);
+}
+
+html[data-theme="dark"] .nav-link.active.nav-asbj {
+    background: var(--surface-hover);
+    color: var(--text);
+}
+
+html[data-theme="dark"] .nav-link.active.nav-asbj::before {
+    background: var(--asbj);
+}
+
+.nav-link.active.nav-ipsas {
+    background: var(--ipsas-light);
+}
+
+.nav-link.active.nav-ipsas::before {
+    content: "";
+    position: absolute;
+    /* left: -8px; */
+    top: 6px;
+    bottom: 6px;
+    width: 3px;
+    border-radius: var(--radius-pill);
+    background: var(--ipsas);
+}
+
+html[data-theme="dark"] .nav-link.active.nav-ipsas {
+    background: var(--surface-hover);
+    color: var(--text);
+}
+
+html[data-theme="dark"] .nav-link.active.nav-ipsas::before {
+    background: var(--ipsas);
+}
+
+.nav-link.active.nav-hgb {
+    background: var(--hgb-light);
+}
+
+.nav-link.active.nav-hgb::before {
+    content: "";
+    position: absolute;
+    /* left: -8px; */
+    top: 6px;
+    bottom: 6px;
+    width: 3px;
+    border-radius: var(--radius-pill);
+    background: var(--hgb);
+}
+
+.nav-link.active.nav-drs {
+    background: var(--hgb-light);
+}
+
+.nav-link.active.nav-drs::before {
+    content: "";
+    position: absolute;
+    /* left: -8px; */
+    top: 6px;
+    bottom: 6px;
+    width: 3px;
+    border-radius: var(--radius-pill);
+    background: var(--hgb);
+}
 
 html[data-theme="dark"] .nav-link.active.nav-hgb {
     background: var(--surface-hover);
@@ -2859,16 +3010,12 @@ html[data-theme="dark"] .toc a.active {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.45);
-    backdrop-filter: blur(3px);
+    background: rgba(0, 0, 0, 0.3);
     z-index: calc(var(--z-sidebar) - 1);
-    opacity: 0;
-    transition: opacity var(--duration-normal) var(--ease);
 }
 
 .sidebar-overlay.visible {
     display: block;
-    opacity: 1;
 }
 
 .footer-link {
@@ -3178,16 +3325,6 @@ html[data-theme="dark"] .toc a.active {
     }
 }
 
-/* Close button: hidden on desktop, absolute-positioned on mobile */
-.sidebar-close-btn {
-    display: none;
-}
-
-/* Body scroll lock when mobile sidebar is open */
-body.sidebar-open {
-    overflow: hidden;
-}
-
 @media (max-width: 900px) {
     --header-height: 64px;
 
@@ -3199,64 +3336,24 @@ body.sidebar-open {
         display: flex;
     }
 
-    /* Full-height edge drawer. The standards-sidebar inside keeps its
-       row layout (rail + panel side by side) — we do NOT override flex-direction. */
     .sidebar {
         position: fixed;
-        top: var(--header-height);
-        left: 0;
-        bottom: 0;
-        /* Wide enough to show both rail + standards panel comfortably,
-           but leave at least 44px on the right for the close button so it doesn't overflow the viewport */
-        width: min(380px, calc(100vw - 44px));
-        border-radius: 0;
+        top: calc(var(--header-height) + 16px);
+        left: 16px;
+        width: min(320px, calc(100vw - 32px));
+        bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+        border-radius: var(--radius-xl);
         z-index: var(--z-sidebar);
-        transform: translateX(-100%);
+        transform: translateX(-120%);
         transition: transform var(--duration-normal) var(--ease);
-        box-shadow: 4px 0 32px rgba(0, 0, 0, 0.22);
-        /* Must be visible so the hanging close button isn't clipped */
-        overflow: visible;
+        box-shadow: var(--shadow-lg);
+        overflow: hidden;
+        padding-top: 16px;
     }
 
     .sidebar.open {
         transform: translateX(0);
     }
-
-    /* Close button hangs off the RIGHT edge of the sidebar like a bookmark tab */
-    .sidebar-close-btn {
-        display: flex;
-        position: absolute;
-        right: -36px;
-        top: 24px;
-        z-index: calc(var(--z-sidebar) + 1);
-        align-items: center;
-        justify-content: center;
-        width: 36px;
-        height: 36px;
-        border: none;
-        background: var(--surface);
-        color: var(--text-secondary);
-        border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-        box-shadow: 3px 2px 8px rgba(0, 0, 0, 0.18);
-        cursor: pointer;
-        transition: background var(--transition-fast), color var(--transition-fast), opacity var(--transition-fast);
-        /* Only visible when sidebar is open */
-        opacity: 0;
-        pointer-events: none;
-    }
-
-    .sidebar.open .sidebar-close-btn {
-        opacity: 1;
-        pointer-events: auto;
-    }
-
-    .sidebar-close-btn:hover {
-        background: var(--surface-hover);
-        color: var(--text);
-    }
-
-    /* Keep the rail visible — user needs it to switch frameworks on mobile */
-    /* (no framework-rail display:none override here) */
 
     .standards-sidebar {
         width: 100%;
@@ -3274,7 +3371,7 @@ body.sidebar-open {
         flex: 1;
         min-height: 0;
         overflow-y: auto;
-        padding: 0 0 calc(32px + env(safe-area-inset-bottom, 0px));
+        padding: 0px 0;
     }
 
     /* .sidebar-subfolder-label {
@@ -3291,8 +3388,7 @@ body.sidebar-open {
     }
 
     .nav-link {
-        padding: 10px 14px;
-        min-height: 44px;
+        padding: 6px 14px;
     }
 
     .content {
@@ -3769,8 +3865,7 @@ body.sidebar-open {
     }
 
     .sidebar {
-        /* Full height — no max-height clipping on small phones */
-        max-height: none;
+        max-height: 55vh;
     }
 
     .section-header,
@@ -4219,7 +4314,7 @@ html[data-theme="dark"] .nav-asbj .pnn-code {
     border-radius: var(--radius-sm);
     color: var(--text-secondary);
     text-decoration: none;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: var(--weight-medium);
     transition: var(--transition-fast);
     border: none;
