@@ -112,10 +112,96 @@ function initSidebar() {
     const normalize = (value) =>
         value.toLowerCase().replace(/\s+/g, "");
 
+    const FRAMEWORK_DISPLAY_NAMES = {
+        home: "Home",
+        ias: "IAS",
+        ifrs: "IFRS",
+        ipsas: "IPSAS",
+        indas: "Ind AS",
+        usgaap: "US GAAP",
+        ukgaap: "UK GAAP",
+        asbe: "ASBE",
+        aspe: "ASPE",
+        asbj: "ASBJ",
+        hgb: "HGB"
+    };
+
+    function getFrameworkDisplayName(panelId) {
+        return FRAMEWORK_DISPLAY_NAMES[panelId] || panelId;
+    }
+
+    function clearSearchGroups() {
+        document.querySelectorAll(".search-framework-group").forEach(group => {
+            group.remove();
+        });
+        document.querySelectorAll(".fw-panel").forEach(fwPanel => {
+            fwPanel.style.display = "";
+            fwPanel.querySelectorAll(".section").forEach(section => {
+                section.style.display = "";
+            });
+        });
+        document.querySelectorAll(".panel-overview-link").forEach(el => {
+            el.style.display = "";
+        });
+    }
+
+    function buildSearchGroups() {
+        document.querySelectorAll(".fw-panel").forEach(fwPanel => {
+            const panelId = fwPanel.dataset.frameworkPanel;
+
+            if (panelId === "home") return;
+
+            // Remove existing group BEFORE selecting visible links to prevent duplicates!
+            const existingGroup = fwPanel.querySelector(".search-framework-group");
+            if (existingGroup) existingGroup.remove();
+
+            const visibleLinks = [...fwPanel.querySelectorAll(".nav-link")].filter(
+                link => link.style.display !== "none"
+            );
+
+            fwPanel.querySelectorAll(".section").forEach(section => {
+                section.style.display = "none";
+            });
+            const overviewLink = fwPanel.querySelector(".panel-overview-link");
+            if (overviewLink) overviewLink.style.display = "none";
+
+            if (visibleLinks.length > 0) {
+                const group = document.createElement("div");
+                group.className = "search-framework-group";
+                group.style.setProperty("--framework-accent", `var(--${panelId})`);
+                group.style.setProperty("--framework-accent-soft", `var(--${panelId}-soft)`);
+
+                const header = document.createElement("div");
+                header.className = "search-framework-header";
+                header.textContent = getFrameworkDisplayName(panelId);
+                group.appendChild(header);
+
+                const items = document.createElement("div");
+                items.className = "search-framework-items";
+
+                visibleLinks.forEach(link => {
+                    const clone = link.cloneNode(true);
+                    clone.style.display = "";
+                    items.appendChild(clone);
+                });
+
+                group.appendChild(items);
+                fwPanel.appendChild(group);
+            } else {
+                fwPanel.style.display = "none";
+            }
+        });
+    }
+
     function applyFilter(rawTerm) {
 
         const term = normalize(rawTerm);
         const hasTerm = term !== "";
+
+        const panel = document.querySelector(".standards-panel");
+        if (panel) {
+            panel.classList.toggle("searching", hasTerm);
+        }
 
         if (filterContainer) {
             filterContainer.classList.toggle("has-value", hasTerm);
@@ -231,6 +317,12 @@ function initSidebar() {
 
         });
 
+        if (hasTerm) {
+            buildSearchGroups();
+        } else {
+            clearSearchGroups();
+        }
+
         if (emptyState) {
             emptyState.hidden = !(hasTerm && totalVisible === 0);
         }
@@ -290,14 +382,16 @@ function initSidebar() {
             }
         }
 
+        let scrollTimeout;
         sidebar.addEventListener("scroll", () => {
-
-            sessionStorage.setItem(
-                "sidebar-scroll",
-                sidebar.scrollTop
-            );
-
-        });
+            if (scrollTimeout) clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                sessionStorage.setItem(
+                    "sidebar-scroll",
+                    sidebar.scrollTop
+                );
+            }, 150);
+        }, { passive: true });
 
         document.querySelectorAll(".nav-link").forEach((link) => {
             link.addEventListener("click", () => {
@@ -452,6 +546,8 @@ window.syncSidebarFromUrl = function(pathname) {
             if (parentUl) parentUl.style.display = "";
         });
     });
+
+    clearSearchGroups();
 
     // ==========================================================
     // Navigation sync

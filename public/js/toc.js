@@ -63,26 +63,61 @@ document.addEventListener("DOMContentLoaded", () => {
     const READING_RATIO = 0.66; // band height as a fraction of the viewport
     const MIN_BAND = 140; // keep the band usable on short viewports
 
+    let lastActiveLink = null;
+
     // Keeps the TOC list scrolled so the active item stays in view.
     function keepActiveInView(activeLinks, force = false) {
-        const activeLink = activeLinks[0];
+        // Use the last active link (deepest section) to keep in view
+        const activeLink = activeLinks[activeLinks.length - 1];
         if (!activeLink || !tocContainer) return;
 
+        // Respect user manual scrolling pause
         if (!force && pageToc && pageToc.classList.contains("page-toc--user-scrolling")) {
             return;
         }
 
         const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        const tocRect = pageToc.getBoundingClientRect();
-        const linkRect = activeLink.getBoundingClientRect();
 
-        if (linkRect.top < tocRect.top || linkRect.bottom > tocRect.bottom) {
-            activeLink.scrollIntoView({
-                behavior: prefersReducedMotion ? "auto" : "smooth",
-                block: "nearest",
-                inline: "nearest",
-            });
+        // Reset to top when at first link or near top of page
+        if (activeLink === links[0] || window.scrollY < 100) {
+            if (lastActiveLink !== activeLink) {
+                lastActiveLink = activeLink;
+                // Scroll the outer container (pageToc) to top
+                pageToc.scrollTo({
+                    top: 0,
+                    behavior: prefersReducedMotion ? "auto" : "smooth"
+                });
+            }
+            return;
         }
+
+        if (lastActiveLink === activeLink) {
+            // Check if activeLink is already within the container's visible bounds.
+            const container = pageToc;
+            const containerScrollTop = container.scrollTop;
+            const containerHeight = container.clientHeight;
+            const linkTop = activeLink.offsetTop;
+            const linkHeight = activeLink.offsetHeight;
+
+            // If the link is fully within the visible height (with a small padding buffer), do nothing.
+            const buffer = 15;
+            if (linkTop >= containerScrollTop + buffer && (linkTop + linkHeight) <= (containerScrollTop + containerHeight - buffer)) {
+                return;
+            }
+        }
+
+        lastActiveLink = activeLink;
+
+        // Ensure the active link is visible within the TOC container
+        const container = pageToc;
+        const linkTop = activeLink.offsetTop;
+        const linkHeight = activeLink.offsetHeight;
+        const containerHeight = container.clientHeight;
+        const desiredScrollTop = linkTop - (containerHeight / 2) + (linkHeight / 2);
+        container.scrollTo({
+            top: desiredScrollTop,
+            behavior: prefersReducedMotion ? "auto" : "smooth"
+        });
     }
 
     function computeActive() {
@@ -122,7 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (isActive) activeLinks.push(item.link);
         }
 
-        keepActiveInView(activeLinks);
+        keepActiveInView(activeLinks, true);
     }
 
     // --- Intelligent TOC scrolling ------------------------------------------

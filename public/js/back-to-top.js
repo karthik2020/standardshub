@@ -58,12 +58,17 @@
         onScroll();
     }
 
+    // Enhanced back‑to‑top: ensure we scroll to the absolute top even if browser offsets exist
     btn.addEventListener('click', function () {
+        // Scroll the main document and any potential scrolling element to the top
         window.scrollTo({
             top: 0,
             left: 0,
             behavior: prefersReducedMotion() ? 'auto' : 'smooth'
         });
+        // Fallback for browsers that may keep a residual scroll position on the <html> element
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
     });
 
     var observer = new MutationObserver(onScroll);

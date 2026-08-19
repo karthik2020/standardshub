@@ -60,6 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
         function scheduleNext() {
 
             clearTimeout(timer);
+            if (document.hidden) return;
 
             const delay = firstRotation ? 2000 : 3000;
 
@@ -68,6 +69,14 @@ document.addEventListener("DOMContentLoaded", () => {
             timer = setTimeout(rotatePlaceholder, delay);
 
         }
+
+        document.addEventListener("visibilitychange", () => {
+            if (document.hidden) {
+                clearTimeout(timer);
+            } else {
+                scheduleNext();
+            }
+        });
 
         function updateClearButton() {
 

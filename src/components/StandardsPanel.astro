@@ -18,6 +18,9 @@ import { Search, X, Home, ArrowUpRight } from "@lucide/astro";
 
 const currentPath = Astro.url.pathname;
 
+// Calculate total standards in the library
+const totalStandards = Object.values(standards).reduce((acc, curr: any) => acc + (curr?.length ?? 0), 0);
+
 function resolveActiveFramework(pathname: string) {
   if (pathname.startsWith("/ifrs") || pathname.startsWith("/ifric") || pathname.startsWith("/sic")) return "ifrs";
   if (pathname.startsWith("/ipsas")) return "ipsas";
@@ -76,9 +79,37 @@ const itemsFor = (id: string) => standards[codeToKey(FRAMEWORK_CONFIG[id].code)]
 
   <div class="sidebar-scroll">
     <div class="fw-panel" data-framework-panel="home">
-      <div class="panel-home-empty">
-        <Home size={26} strokeWidth={1.6} />
-        <p>Select a framework on the left to browse its standards.</p>
+      <div class="panel-home-dashboard">
+        <div class="dashboard-header">
+          <Home size={16} />
+          <span>Library Dashboard</span>
+        </div>
+        
+        <div class="dashboard-section" id="recently-viewed-section" style="display: none;">
+          <div class="dashboard-section-title">Recently Viewed</div>
+          <div class="dashboard-recent-list" id="recently-viewed-list">
+            <!-- Rendered client-side -->
+          </div>
+        </div>
+
+        <div class="dashboard-section">
+          <div class="dashboard-section-title">Library Statistics</div>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <span class="stat-num">10</span>
+              <span class="stat-label">Frameworks</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-num">{totalStandards}</span>
+              <span class="stat-label">Standards</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="dashboard-tip">
+          <div class="tip-title">Quick Tip</div>
+          <p>Click any framework on the left rail to instantly explore its list of standards.</p>
+        </div>
       </div>
     </div>
 
@@ -228,3 +259,37 @@ const itemsFor = (id: string) => standards[codeToKey(FRAMEWORK_CONFIG[id].code)]
     <!-- Reserved for upgrade / promo content later -->
   </footer>
 </div>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    try {
+      const recentList = document.getElementById("recently-viewed-list");
+      const recentSection = document.getElementById("recently-viewed-section");
+      if (!recentList || !recentSection) return;
+
+      const recent = JSON.parse(localStorage.getItem("recently-viewed") || "[]");
+      if (recent.length === 0) {
+        recentSection.style.display = "none";
+        return;
+      }
+
+      recentSection.style.display = "flex";
+      recentList.innerHTML = "";
+
+      recent.forEach(item => {
+        const itemEl = document.createElement("a");
+        itemEl.href = item.url;
+        itemEl.className = "recent-item";
+        
+        itemEl.innerHTML = `
+          <span class="recent-code">${item.code}</span>
+          <span class="recent-arrow">→</span>
+        `;
+        
+        recentList.appendChild(itemEl);
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  });
+</script>

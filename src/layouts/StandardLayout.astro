@@ -8,7 +8,7 @@ import Footer from "../components/Footer.astro";
 import Seo from "../components/Seo.astro";
 import { detectSeoType } from "../utils/seo";
 import { getFramework } from "../data/frameworks";
-import { ArrowUp, ChevronRight } from "@lucide/astro";
+import { ArrowUp, ChevronRight, Sun, Moon } from "@lucide/astro";
 
 interface Props {
   code: string;
@@ -114,6 +114,10 @@ const seoType = detectSeoType({ code, framework, standard, hideFramework });
             </nav>
           </div>
           <div class="header-right">
+            <button class="toolbar-btn mobile-theme-btn" data-theme-toggle aria-label="Toggle theme" title="Theme">
+              <Sun size={16} strokeWidth={2} class="theme-icon theme-icon-sun" />
+              <Moon size={16} strokeWidth={2} class="theme-icon theme-icon-moon" />
+            </button>
           </div>
         </header>
       ) : (
@@ -145,9 +149,8 @@ const seoType = detectSeoType({ code, framework, standard, hideFramework });
                 <slot name="toc" />
               </aside>
             )}
-
-            <Footer />
           </div>
+          <Footer />
         </main>
       </div>
 
@@ -193,15 +196,15 @@ const seoType = detectSeoType({ code, framework, standard, hideFramework });
       <div class="toc-sheet-backdrop" id="tocSheetBackdrop" aria-hidden="true"></div>
     </div>
 
-    <script is:inline src="/js/sidebar.js"></script>
-    <script is:inline src="/js/rail-panel.js"></script>
-    <script is:inline src="/js/toc.js"></script>
-    <script is:inline src="/js/toc-mobile.js"></script>
-    <script is:inline src="/js/back-to-top.js"></script>
-    <script is:inline src="/js/search.js"></script>
-    <script is:inline src="/js/reading-progress.js"></script>
-    <script is:inline src="/js/theme-engine.js"></script>
-    <script is:inline src="/js/table-short.js"></script>
+    <script is:inline defer src="/js/sidebar.js"></script>
+    <script is:inline defer src="/js/rail-panel.js"></script>
+    <script is:inline defer src="/js/toc.js"></script>
+    <script is:inline defer src="/js/toc-mobile.js"></script>
+    <script is:inline defer src="/js/back-to-top.js"></script>
+    <script is:inline defer src="/js/search.js"></script>
+    <script is:inline defer src="/js/reading-progress.js"></script>
+    <script is:inline defer src="/js/theme-engine.js"></script>
+    <script is:inline defer src="/js/table-short.js"></script>
 
     <style>
       .skip-link {
@@ -227,5 +230,18 @@ const seoType = detectSeoType({ code, framework, standard, hideFramework });
         outline-offset: 2px;
       }
     </style>
+    <script define:vars={{ code, title }}>
+      if (code && code.toLowerCase() !== "home") {
+        try {
+          const recent = JSON.parse(localStorage.getItem("recently-viewed") || "[]");
+          const currentItem = { code, title, url: window.location.pathname };
+          const filtered = recent.filter(item => item.url !== currentItem.url);
+          filtered.unshift(currentItem);
+          localStorage.setItem("recently-viewed", JSON.stringify(filtered.slice(0, 5)));
+        } catch (e) {
+          console.error(e);
+        }
+      }
+    </script>
   </body>
 </html>
