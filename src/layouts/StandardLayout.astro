@@ -8,7 +8,7 @@ import Footer from "../components/Footer.astro";
 import Seo from "../components/Seo.astro";
 import { detectSeoType } from "../utils/seo";
 import { getFramework } from "../data/frameworks";
-import { ArrowUp } from "@lucide/astro";
+import { ArrowUp, ChevronRight } from "@lucide/astro";
 
 interface Props {
   code: string;
@@ -70,6 +70,13 @@ const seoType = detectSeoType({ code, framework, standard, hideFramework });
         } catch (e) {}
       })();
     </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GERBZK6FCW"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GERBZK6FCW');
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900; 1, 14..32, 100..900&display=swap" />
@@ -100,7 +107,7 @@ const seoType = detectSeoType({ code, framework, standard, hideFramework });
               <a href="/" class="crumb breadcrumb-home">
                 <span>Home</span>
               </a>
-              <span class="breadcrumb-separator" aria-hidden="true">❯</span>
+              <ChevronRight size={14} strokeWidth={1.5} class="breadcrumb-separator" aria-hidden="true" />
               <span class="breadcrumb-current" aria-current="page">
                 <span class="breadcrumb-title">{title}</span>
               </span>
