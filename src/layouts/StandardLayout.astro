@@ -79,7 +79,7 @@ const seoType = detectSeoType({ code, framework, standard, hideFramework });
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900; 1, 14..32, 100..900&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@400..900&display=swap" />
     <Seo
       title={seoTitle}
       description={description}
@@ -124,7 +124,7 @@ const seoType = detectSeoType({ code, framework, standard, hideFramework });
         <Header code={code} title={title} framework={framework} />
       )}
 
-      <div class="app-body" data-framework={frameworkConfig.id}>
+      <div class="app-body" data-framework={code === "Home" ? "home" : frameworkConfig.id}>
         <div class="reading-progress" aria-hidden="true">
           <div class="reading-progress-bar"></div>
         </div>
@@ -205,6 +205,7 @@ const seoType = detectSeoType({ code, framework, standard, hideFramework });
     <script is:inline defer src="/js/reading-progress.js"></script>
     <script is:inline defer src="/js/theme-engine.js"></script>
     <script is:inline defer src="/js/table-short.js"></script>
+    <script is:inline defer src="/js/framework-landing.js"></script>
 
     <style>
       .skip-link {

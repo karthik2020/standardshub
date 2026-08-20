@@ -35,12 +35,16 @@ const codeToKey = (code: string) => {
 };
 
 const key = codeToKey(framework.code);
-const list = standards[key as keyof typeof standards] ?? [];
+const baseList = standards[key as keyof typeof standards] ?? [];
+// For HGB, include DRS standards in the counts since they share the landing page
+const list = framework.id === "hgb"
+  ? [...(baseList as any[]), ...(standards["DRS" as keyof typeof standards] as any[] ?? [])]
+  : baseList;
 
 // Calculate stats
-const totalCount = list.length;
-const activeCount = list.filter((s: any) => !s.status || s.status === "Active" || s.status === "Amended" || s.status === "Revised 2026").length;
-const historicalCount = list.filter((s: any) => s.status && s.status !== "Active" && s.status !== "Amended" && s.status !== "Revised 2026").length;
+const totalCount = (list as any[]).length;
+const activeCount = (list as any[]).filter((s: any) => !s.status || s.status === "Active" || s.status === "Amended" || s.status === "Revised 2026").length;
+const historicalCount = (list as any[]).filter((s: any) => s.status && s.status !== "Active" && s.status !== "Amended" && s.status !== "Revised 2026").length;
 ---
 
 <div class={`framework-hero-container hero-${framework.id}`} data-framework={framework.id}>

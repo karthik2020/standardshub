@@ -1,0 +1,57 @@
+---
+/*
+FrameworkToolbar
+
+Renders the segmented view control and live search bar side-by-side in a toolbar row.
+Replaces the standalone .segmented-control block on framework landing pages.
+*/
+
+import { getFramework } from "../data/frameworks";
+import { Search, X } from "@lucide/astro";
+
+interface Props {
+  frameworkId: string;
+  hasCategories?: boolean;
+}
+
+const { frameworkId, hasCategories = true } = Astro.props;
+const framework = getFramework(frameworkId)!;
+---
+
+<div class="framework-toolbar">
+  {hasCategories && (
+    <div class="segmented-control">
+      <div class="segmented-slider"></div>
+      <button id="btn-number" class="active" aria-pressed="true" aria-controls="number-view">
+        Standard Number
+      </button>
+      <button id="btn-category" aria-pressed="false" aria-controls="category-view">
+        Category
+      </button>
+    </div>
+  )}
+
+  <div class="toolbar-search-card hero-search-card">
+    <div class="search-input-wrapper">
+      <Search size={17} class="search-icon" />
+      <input
+        id="framework-search-input"
+        class="search-input"
+        type="text"
+        placeholder={`Search ${framework.code} standards…`}
+        aria-label={`Search ${framework.code} standards`}
+        autocomplete="off"
+      />
+      <button
+        class="search-action"
+        id="framework-search-clear"
+        type="button"
+        aria-label="Clear search"
+        title="Clear search"
+        style="display: none;"
+      >
+        <X size={15} />
+      </button>
+    </div>
+  </div>
+</div>

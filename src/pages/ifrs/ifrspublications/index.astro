@@ -4,6 +4,8 @@ import standards from "../../../data/standards.json";
 import StandardCard from "../../../components/StandardCard.astro";
 import { palette } from "../../../data/standardVisuals";
 import { FRAMEWORK_CONFIG, getFramework } from "../../../data/frameworks";
+import FrameworkSwitcher from "../../../components/FrameworkSwitcher.astro";
+import FrameworkToolbar from "../../../components/FrameworkToolbar.astro";
 import FrameworkHero from "../../../components/FrameworkHero.astro";
 
 const framework = getFramework("ifrspublications")!;
@@ -22,6 +24,8 @@ for (const item of standards.IFRSPublications) {
 <StandardLayout code={framework.code} title={`${framework.fullName} (${framework.code})`} framework="IFRS" hasToc={false}>
 
   <FrameworkHero frameworkId={framework.id} />
+  <FrameworkSwitcher activeId={framework.id} />
+  <FrameworkToolbar frameworkId={framework.id} />
 
   <div class="standards-group">
     <h2 class="standards-group-title">Publications</h2>

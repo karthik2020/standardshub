@@ -290,7 +290,11 @@ const searchData = Object.keys(standards).flatMap(key => {
           window.location.href = filteredResults[0].url;
         }
       } else if (e.key === "Escape") {
+        searchInput.value = "";
         searchDropdown.style.display = "none";
+        clearBtn.style.display = "none";
+        filteredResults = [];
+        activeIndex = -1;
         searchInput.blur();
       }
     });

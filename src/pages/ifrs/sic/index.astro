@@ -4,6 +4,8 @@ import standards from "../../../data/standards.json";
 import StandardCard from "../../../components/StandardCard.astro";
 import { palette } from "../../../data/standardVisuals";
 import { FRAMEWORK_CONFIG, getFramework } from "../../../data/frameworks";
+import FrameworkSwitcher from "../../../components/FrameworkSwitcher.astro";
+import FrameworkToolbar from "../../../components/FrameworkToolbar.astro";
 import FrameworkHero from "../../../components/FrameworkHero.astro";
 
 const framework = getFramework("sic")!;
@@ -22,17 +24,17 @@ for (const item of standards.SIC) {
 <StandardLayout code={framework.code} title={`${framework.fullName} (${framework.code})`} framework="IFRS" hasToc={false}>
 
   <FrameworkHero frameworkId={framework.id} />
-
-  <div class="view-toggle">
-
-    <button id="btn-number" class="active" aria-pressed="true" aria-controls="number-view">
-      Standard Number
-    </button>
-
-    <button id="btn-category" aria-pressed="false" aria-controls="category-view">
-      Category
-    </button>
-
+  <FrameworkSwitcher activeId={framework.id} />
+  <FrameworkToolbar frameworkId={framework.id} />
+<div id="no-standards-results" class="no-standards-results" style="display: none;">
+    <div class="no-results-icon">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="11" cy="11" r="8"/>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+    </div>
+    <h3>No matching standards found</h3>
+    <p>We couldn't find any standards matching your search term. Try searching for a different code or keyword.</p>
   </div>
 
   <div id="number-view">
@@ -155,49 +157,6 @@ for (const item of standards.SIC) {
 
   </div>
 
-  <script>
-
-    const btnNumber =
-      document.getElementById("btn-number");
-
-    const btnCategory =
-      document.getElementById("btn-category");
-
-    const numberView =
-      document.getElementById("number-view");
-
-    const categoryView =
-      document.getElementById("category-view");
-
-    btnNumber?.addEventListener("click", () => {
-
-      numberView.style.display = "block";
-      categoryView.style.display = "none";
-
-      btnNumber.classList.add("active");
-      btnNumber.setAttribute("aria-pressed", "true");
-      btnCategory.classList.remove("active");
-      btnCategory.setAttribute("aria-pressed", "false");
-
-    });
-
-    btnCategory?.addEventListener("click", () => {
-
-      numberView.style.display = "none";
-      categoryView.style.display = "block";
-
-      btnCategory.classList.add("active");
-      btnCategory.setAttribute("aria-pressed", "true");
-      btnNumber.classList.remove("active");
-      btnNumber.setAttribute("aria-pressed", "false");
-
-    });
-
-  </script>
+  
 
 </StandardLayout>
-
-
-
-
-
