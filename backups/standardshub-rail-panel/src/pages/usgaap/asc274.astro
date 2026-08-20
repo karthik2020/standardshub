@@ -1,0 +1,143 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc274.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope — Individuals Not Business Entities" },
+        { id: "s3", label: "Estimated Current Value — the Core Measurement Departure" },
+        { id: "s4", label: "Statement of Financial Condition" },
+        { id: "s5", label: "Estimated Income Taxes on Unrealised Appreciation" },
+        { id: "s6", label: "Statement of Changes in Net Worth" },
+        { id: "s7", label: "Worked Example — Building a Statement of Financial Condition" },
+        { id: "s8", label: "Disclosure Requirements" },
+        { id: "s9", label: "Critical Judgments & Estimates" },
+        { id: "s10", label: "ASC 274 vs IFRS — No International Equivalent" },
+        { id: "s11", label: "Statement Mapping" },
+        { id: "s12", label: "Related Topics" },
+        { id: "s13", label: "Glossary" },
+        { id: "history", label: "History & Development" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="hub"><div class="hub-box"><div class="hub-title">ASC 274 — Personal Financial Statements</div><div class="hub-sub">Extended reference poster · US GAAP · Subtopic: 274-10 Overall · Governs financial statements for INDIVIDUALS, not business entities · USD examples</div></div></div>
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci"><div class="ctitle ci">A genuinely different reporting objective</div><div class="principle">Almost every other Topic in the Codification serves the objective of general purpose financial reporting for BUSINESS entities to investors, lenders, and creditors. ASC 274 serves a narrower, different purpose entirely: presenting an INDIVIDUAL's (or married couple's) financial condition — typically for LENDING, ESTATE PLANNING, or similar personal financial purposes — where the most decision-useful measurement basis is CURRENT VALUE rather than historical cost, since users of personal financial statements care about a person's present net worth, not the historical cost of assets they happen to hold.</div></div>
+      <div class="card cs"><div class="ctitle cs">A narrow, personal-purpose Topic</div><div class="principle">Because ASC 274 serves personal rather than business reporting, its entire conceptual starting point differs from almost every other presentation Topic in the Codification. It is not concerned with conveying a business entity's financial performance or position to capital providers — it is concerned with establishing a person's NET WORTH for a lender or estate planner, making CURRENT VALUE measurement the natural and dominant basis throughout.</div></div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope — Individuals Not Business Entities</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">A genuinely unusual scope within the Codification</div><div class="principle">ASC 274 applies when an INDIVIDUAL, or a group of related individuals (such as a married couple), prepares FORMAL personal financial statements — most commonly for a bank loan application, estate or gift tax planning, or a similar personal financial purpose. It is one of the very few Topics in the entire Codification that does NOT govern a business entity's reporting at all.</div></div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Estimated Current Value — the Core Measurement Departure</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">A wholesale departure from ordinary GAAP's mixed measurement model</div><div class="principle">Unlike ordinary business-entity GAAP, which uses a MIXED measurement model (historical cost for many assets, fair value for others, depending on the specific Topic), ASC 274 requires ESSENTIALLY ALL assets and liabilities to be presented at their ESTIMATED CURRENT VALUE as of the statement date — including personal residences, investments, business interests, and personal property — a fundamentally different, single-measurement-basis approach unlike any other Topic in the Codification.</div></div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Statement of Financial Condition</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">The primary (and often only required) personal financial statement</div><div class="principle">The primary statement required is the STATEMENT OF FINANCIAL CONDITION, presenting: assets at estimated current value, liabilities at estimated current amounts (generally the discounted amount of cash to be paid), a provision for ESTIMATED INCOME TAXES on the difference between the estimated current values of assets/liabilities and their tax bases (Section 5), and NET WORTH as the residual — a structure conceptually similar to a business Balance Sheet, but built entirely around current-value measurement.</div></div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Estimated Income Taxes on Unrealised Appreciation</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">A genuinely distinctive recognition requirement</div><div class="principle">Because assets are stated at CURRENT VALUE rather than tax basis, ASC 274 requires recognising a PROVISION for the ESTIMATED INCOME TAXES that would become payable if the assets were sold (and liabilities settled) at their current statement-date amounts — computed using applicable tax rates and laws, factoring in the individual's specific tax attributes. This is presented BETWEEN liabilities and net worth, as a distinct line item — a measurement concept with no direct parallel elsewhere in ordinary business GAAP.</div></div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Statement of Changes in Net Worth</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">An optional, but common, companion statement</div><div class="principle">A STATEMENT OF CHANGES IN NET WORTH — showing the major sources of INCREASE (e.g. income, increases in the estimated current value of assets) and DECREASE (e.g. living expenses, income taxes, decreases in estimated current values) in an individual's net worth during the period — is not strictly REQUIRED but is commonly presented alongside the Statement of Financial Condition to give a fuller picture of how net worth evolved.</div></div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Worked Example — Building a Statement of Financial Condition</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">A simplified personal statement</div>
+      <div class="worked"><div class="wk-title">Example: Estimating net worth for a loan application</div><div class="wk-body">An individual's assets, at estimated current value: personal residence $1,200,000, investment portfolio $800,000, cash $150,000. Liabilities: mortgage $450,000. The combined tax basis of the residence and investments is $600,000 lower than their current value, and the applicable combined tax rate on that appreciation is estimated at 25%.</div><div class="wk-answer">Total assets = $1,200,000 + $800,000 + $150,000 = $2,150,000. Estimated income tax provision on unrealised appreciation = $600,000 × 25% = $150,000. Net worth = $2,150,000 − $450,000 (mortgage) − $150,000 (estimated tax provision) = <strong>$1,550,000</strong>.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">What ASC 274 requires</div><div class="check-list"><span>The methods used to estimate the current value of major asset categories</span><span>Face amount and interest rate of major liabilities</span><span>Nature and amount of the estimated income tax provision, including the tax rates and assumptions used</span><span>Description of any material contingencies or commitments</span></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+      <div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Appropriate valuation methodology for illiquid or unique personal assets (e.g. closely held business interests, real estate, collectibles)</span></div></div>
+      <div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Estimated current values of all major asset categories</span><span>Applicable tax rates and resulting estimated income tax provision on unrealised appreciation</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>ASC 274 vs IFRS — No International Equivalent</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">A genuinely unique US GAAP concept</div><div class="principle">There is NO IFRS standard addressing personal (non-business) financial statements in any comparable way — IFRS Standards are, per the Preface to IFRS Standards, designed specifically for the general purpose financial statements of PROFIT-ORIENTED business entities, and the IASB has never developed guidance for an individual's personal net-worth reporting. Where an individual in an IFRS jurisdiction needs a formal statement of personal net worth (e.g. for a loan application), practice typically relies on informal, unstandardised current-value statements, or country-specific banking/lending industry conventions, rather than any codified international accounting standard.</div></div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Where every ASC 274 event lands</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Change in estimated current value of an asset</span><span>Statement of Financial Condition</span><span>Recognised directly, flowing into net worth</span></div>
+      <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Estimated income tax provision on appreciation</span><span>Statement of Financial Condition</span><span>Presented between liabilities and net worth</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Sources of net worth change during the period</span><span>Statement of Changes in Net Worth</span><span>Optional companion statement</span></div>
+      </div>
+      <div class="note">ASC 274 uses its OWN distinct statement names (Statement of Financial Condition, Statement of Changes in Net Worth) rather than the ordinary Balance Sheet/Income Statement/Statement of Shareholders' Equity terminology used elsewhere in this library, reflecting its genuinely different subject matter.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Related Topics</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd"><div class="ctitle cd">Cross-reference map</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 820</span><span>Fair Value Measurement — supplies the general valuation techniques used to estimate current values of personal assets</span></div>
+      <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 740</span><span>Income Taxes — supplies general tax accounting principles informing the estimated tax provision, though applied here to an individual rather than a business entity</span></div>
+      </div>
+      </div>
+      <div class="card cn"><div class="ctitle cn">Quick-reference glossary preview</div>
+      <div class="glossary-item"><div class="glossary-term">Net worth (personal)</div><div class="glossary-def">Total assets at estimated current value, less liabilities at estimated current amounts and the provision for estimated income taxes on unrealised appreciation — the personal-statement equivalent of business equity.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Estimated current value</div><div class="glossary-def">The amount at which an asset or liability could be exchanged between a willing buyer and seller, the core measurement basis throughout ASC 274.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+
+    <Glossary entries={[
+      { term: "Statement of Financial Condition", definition: "The primary personal financial statement under ASC 274, analogous in role to a business Balance Sheet but measured entirely at estimated current value." },
+      { term: "Statement of Changes in Net Worth", definition: "An optional companion statement showing the major sources of increase and decrease in an individual's net worth during a period." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.ASC274 || []} />
+  </section>
+</StandardPageLayout>

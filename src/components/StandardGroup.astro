@@ -1,0 +1,97 @@
+---
+import NavLink from "./NavLink.astro";
+import type { StandardSummary } from "../data/standards";
+
+interface Props {
+  items: StandardSummary[];
+  sectionId: string;
+  categories?: readonly string[];
+  label?: string;
+}
+
+const { items, sectionId, categories, label } = Astro.props;
+
+function orderItems(list: StandardSummary[]) {
+  const primary = list.filter(
+    (item) => !item.status || item.status === "Upcoming" || item.status === "Revised 2026" || item.status === "Active"
+  );
+  const retired = list.filter(
+    (item) => item.status && item.status !== "Upcoming" && item.status !== "Revised 2026" && item.status !== "Active"
+  );
+  return [...primary, ...retired];
+}
+
+function badgeFor(item: StandardSummary) {
+  if ((sectionId === "drs" || sectionId === "asbj") && item.status === "Active") return undefined;
+  return item.status || undefined;
+}
+
+function badgeVariantFor(item: StandardSummary) {
+  if ((sectionId === "drs" || sectionId === "asbj") && item.status === "Active") return undefined;
+  if (!item.status) return undefined;
+  return item.status === "Upcoming" || item.status === "Revised 2026" ? "upcoming" : "retired";
+}
+
+const orderedItems = categories ? [] : orderItems(items);
+
+const categoryGroups = categories
+  ? categories
+      .map((category: string) => {
+        const inCategory = items.filter(
+          (item) => item.category === category
+        );
+        return { category, items: orderItems(inCategory) };
+      })
+      .filter((group) => group.items.length > 0)
+  : [];
+---
+
+<Fragment>
+  {label && <div class="sidebar-subfolder-label">{label}</div>}
+
+  {categories &&
+    categoryGroups.map((group) => (
+      <div class="sidebar-category-group">
+        <div class="sidebar-category-label">{group.category}</div>
+        <ul class="sidebar-items">
+          {group.items.map((item) => (
+            <li>
+              <NavLink
+                href={item.url}
+                title={item.title}
+                section={sectionId}
+                code={item.code}
+                standardTitle={item.title}
+                badge={badgeFor(item)}
+                badgeVariant={badgeVariantFor(item)}
+                aliases={item.aliases}
+               >
+                  {sectionId === "aspe" ? item.code.replace("Section ", "") : (sectionId === "asbj" ? item.code.replace(" (Revised 2026)", "") : item.code)}
+                </NavLink>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+
+  {!categories && (
+    <ul class="sidebar-items">
+      {orderedItems.map((item) => (
+        <li>
+          <NavLink
+            href={item.url}
+            title={item.title}
+            section={sectionId}
+            code={item.code}
+            standardTitle={item.title}
+            badge={badgeFor(item)}
+            badgeVariant={badgeVariantFor(item)}
+            aliases={item.aliases}
+           >
+              {sectionId === "aspe" ? item.code.replace("Section ", "") : (sectionId === "asbj" ? item.code.replace(" (Revised 2026)", "") : item.code)}
+            </NavLink>
+        </li>
+      ))}
+    </ul>
+  )}
+</Fragment>

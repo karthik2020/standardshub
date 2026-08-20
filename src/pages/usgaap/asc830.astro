@@ -1,0 +1,170 @@
+﻿---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc830.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  bannerNotice={metadata.bannerNotice}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope & Applicability" },
+        { id: "s3", label: "Foreign Currency Transactions" },
+        { id: "s4", label: "Functional Currency Determination" },
+        { id: "s5", label: "Recognition of Foreign Currency Gains and Losses" },
+        { id: "s6", label: "Translation of Foreign Entity Financial Statements" },
+        { id: "s7", label: "The Current Rate Method" },
+        { id: "s8", label: "The Temporal Method" },
+        { id: "s9", label: "Translation of Hyperinflationary Economies" },
+        { id: "s10", label: "Worked Example — Foreign Currency Translation" },
+        { id: "s11", label: "Disclosure Requirements" },
+        { id: "s12", label: "Critical Judgments & Estimates" },
+        { id: "s13", label: "ASC 830 vs IAS 21 — Comprehensive Comparison" },
+        { id: "s14", label: "Statement Mapping" },
+        { id: "s15", label: "Related Topics" },
+        { id: "s16", label: "Quick-Reference Glossary" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci"><div class="ctitle ci">Foreign currency as a measurement and presentation challenge</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 830 addresses one of the most persistent challenges in international financial reporting: how to measure and report the financial performance and position of an entity when transactions are denominated in currencies other than the functional currency. The standard balances two competing needs: (1) preserving the economic substance of foreign currency transactions by reflecting exchange rate changes in the financial statements, and (2) maintaining the practicality of reporting in a single reporting currency.</div></div>
+      <div class="card cs"><div class="ctitle cs">Broadly converged with IAS 21, with notable differences</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 830 and IAS 21 share the same fundamental approach to foreign currency translation — both use the functional currency concept, both require recognition of exchange differences in earnings or OCI depending on the nature of the item, and both use the current rate method for translating foreign entity financial statements. However, important differences remain in functional currency determination, the treatment of certain intra-entity transactions, and the translation of hyperinflationary foreign operations — particularly where US GAAP retains more prescriptive, rules-based guidance.</div></div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope & Applicability</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Foreign currency transactions and translation of foreign operations</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 830 applies to: (1) foreign currency transactions — transactions denominated in a currency other than the entity's functional currency, including sales, purchases, borrowings, and investments; (2) translation of financial statements of foreign entities — when an entity has a foreign subsidiary, branch, or other operation whose functional currency differs from the reporting currency; and (3) translation of foreign currency transactions that are hedges of a net investment in a foreign operation. The standard does NOT apply to the translation of financial statements of foreign operations that are themselves the reporting entity's functional currency.</div></div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Foreign Currency Transactions</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">Exchange rate differences recognised in earnings</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">A foreign currency transaction is recognised initially by converting the foreign currency amount to the functional currency using the spot exchange rate at the transaction date. At each subsequent reporting date, monetary assets and liabilities denominated in foreign currency are remeasured using the CURRENT exchange rate, with resulting exchange differences recognised in EARNINGS. Non-monetary items carried at historical cost are translated using the exchange rate at the transaction date — no exchange difference arises on remeasurement. Non-monetary items carried at fair value are translated using the exchange rate at the date the fair value was determined.</div></div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Functional Currency Determination</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">The primary economic environment indicator</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">The functional currency is the currency of the primary economic environment in which the entity operates. ASC 830 provides a hierarchy of factors for determining the functional currency: (1) the currency that mainly influences sales prices for goods and services; (2) the currency of the country whose competitive forces and regulations mainly determine sales prices; (3) the currency that mainly influences labour, material, and other costs of providing goods and services. For a foreign operation, its functional currency may be the same as the parent's reporting currency or different, depending on these economic indicators.</div></div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Recognition of Foreign Currency Gains and Losses</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">Monetary items — exchange differences in earnings; non-monetary items — generally no exchange difference</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">Exchange differences on monetary items (cash, receivables, payables, loans) are recognised in earnings because the amount of functional currency expected to be received or paid changes as exchange rates change. Exchange differences on non-monetary items carried at historical cost are NOT recognised in earnings — the historical cost is fixed in functional currency terms. For non-monetary items measured at fair value, the exchange difference is treated as part of the change in fair value and recognised in the same statement (earnings or OCI) as the fair value change.</div></div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Translation of Foreign Entity Financial Statements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Assets and liabilities at current rate; equity at historical rates</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">When a foreign entity's functional currency differs from the parent's reporting currency, the foreign entity's financial statements must be translated. Under ASC 830, all assets and liabilities are translated using the exchange rate at the balance sheet date (the current rate). Equity accounts are translated using historical rates — the rates in effect when the equity transactions occurred. Income statement items are translated using the exchange rate at the date of the transaction (or a weighted-average rate). Translation adjustments that arise from this process are reported as a separate component of OCI, not in earnings.</div></div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>The Current Rate Method</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Used when the foreign entity's functional currency is its local currency</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">The current rate method is the primary translation method when the foreign entity's functional currency is its local currency. Under this method, all assets and liabilities are translated at the CURRENT exchange rate; equity accounts at historical rates; and income statement items at the exchange rate at the transaction date or a weighted average. The resulting translation adjustment is accumulated in a separate component of OCI (the cumulative translation adjustment, or CTA) and is NOT reclassified into earnings until the foreign operation is sold or substantially liquidated.</div></div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>The Temporal Method</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">Used when the foreign entity's functional currency is the same as the parent's currency</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">The temporal method is required when the foreign entity's functional currency is the SAME as the parent's reporting currency (a highly integrated foreign operation). Under this method, monetary items are translated at the current exchange rate, non-monetary items carried at historical cost are translated at historical rates, and non-monetary items carried at fair value are translated at the rate in effect when the fair value was determined. Exchange differences under the temporal method are recognised in EARNINGS, not OCI — a critical distinction from the current rate method.</div></div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Translation of Hyperinflationary Economies</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2"><div class="ctitle cn">Restating before translating</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">When a foreign entity operates in a hyperinflationary economy, ASC 830 requires the foreign entity's financial statements to be RESTATED for changes in the general price level of the local currency using a general price index BEFORE being translated into the reporting currency. This restatement ensures that the financial statements reflect current purchasing power before the translation process begins. ASC 830's approach to hyperinflationary economies differs materially from IAS 29, which has its own comprehensive hyperinflationary accounting standard — IAS 29 generally replaces ASC 830's guidance for IFRS reporters in hyperinflationary environments.</div></div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Worked Example — Foreign Currency Translation</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Applying the current rate method to a foreign subsidiary</div>
+      <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Translating a Euro-functional subsidiary into USD</div><div class="wk-body">A US parent with a German subsidiary. The subsidiary's functional currency is EUR. At 31 December, the exchange rate is EUR 1 = USD 1.10. The subsidiary has EUR 2,000,000 of net assets (assets of EUR 10M, liabilities of EUR 8M) and EUR 300,000 of net income for the year. The beginning net assets were EUR 1,800,000, translated at the beginning rate of 1.08.</div><div class="wk-answer"><strong>Ending net assets in USD:</strong> EUR 2,000,000 × 1.10 = <strong>$2,200,000</strong><br><strong>Beginning net assets in USD:</strong> EUR 1,800,000 × 1.08 = <strong>$1,944,000</strong><br><strong>Net income in USD:</strong> EUR 300,000 × weighted-average rate of 1.09 = <strong>$327,000</strong><br><strong>Cumulative Translation Adjustment (CTA):</strong> $2,200,000 − $1,944,000 − $327,000 = <strong>($71,000)</strong><br>The CTA of ($71,000) is recognised in OCI — it represents the net exchange difference arising from translating the German subsidiary's financial statements at the current rate. This CTA accumulates in equity until the subsidiary is sold or liquidated.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">What ASC 830 requires</div><div class="check-list"><span>Exchange differences recognised in earnings, with a clear indication of the amount</span><span>Net foreign currency exchange differences included in OCI, and the cumulative amount of exchange differences recognised in OCI</span><span>The functional currency of each significant foreign entity and the reasons for selecting it</span><span>For foreign operations with a functional currency different from the US dollar: the amount of translation adjustment recognised in OCI and reclassified from OCI to earnings during the period</span><span>For hyperinflationary economies: the fact that the financial statements have been restated for changes in the general price level</span></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Critical Judgments & Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+      <div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Determining the functional currency of a foreign entity — particularly when multiple currencies influence the economic environment</span><span>Whether a foreign operation is highly integrated with the parent, requiring the temporal method instead of the current rate method</span><span>Whether a foreign economy is hyperinflationary, triggering restatement requirements</span></div></div>
+      <div><div class="elabel">SIGNIFICANT ESTIMATES</span></div><div class="dot-list"><span>Weighted-average exchange rates for translating income statement items</span><span>A Appropriateness of the general price index used for hyperinflationary restatement</span><span>Timing of reclassification of CTA from OCI to earnings upon disposal of a foreign operation</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>ASC 830 vs IAS 21 — Comprehensive Comparison</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Comparison — ASC 830 vs IAS 21</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">US GAAP (ASC 830)</span><span style="color:var(--color-text-info);">IFRS (IAS 21)</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Functional currency determination</span><span>Hierarchy of factors focusing on cash flows and financing</span><span>Same basic factors, but more emphasis on the currency of the economy that mainly influences costs</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Translation method for foreign subsidiaries</span><span>Current rate method (most common) and temporal method</span><span>Same two methods — IAS 21 uses 'functional currency' rather than 'temporal' terminology</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Translation adjustment presentation</span><span>CTA in OCI, recycled on disposal</span><span>Same approach — fully converged</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Hyperinflationary economies</span><span>Restate using general price index before translation; IAS 29 provides the IFRS equivalent approach</span><span>IAS 29 is the separate IFRS standard for hyperinflationary economies — replaces IAS 21's guidance in that context</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Intra-entity foreign currency transactions</span><span>Long-term intercompany balances are treated as foreign currency transactions with exchange differences in earnings</span><span>Similar treatment, but IAS 21 does not specifically address the temporal method nuance for highly integrated operations</span></div>
+      </div>
+      <div class="note">ASC 830 and IAS 21 are largely converged. The most notable differences relate to the treatment of highly integrated foreign operations, intra-entity transaction settlement, and the specific mechanics of functional currency determination.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Where every ASC 830 event lands</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Foreign currency transaction gain/loss</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Monetary items: exchange differences in earnings</span></div>
+      <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Translation adjustment (current rate method)</span><span><span class="badge bs">BS</span> <span class="badge bo">OCI</span></span><span>CTA in OCI; recycled to earnings on disposal</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Translation adjustment (temporal method)</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Exchange differences recognised directly in earnings</span></div>
+      <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Fair value non-monetary items</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span> <span class="badge bo">OCI</span></span><span>Exchange difference treated as part of fair value change</span></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s15"><span class="num">15</span><h2>Related Topics</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd"><div class="ctitle cd">Cross-reference map</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 220</span><span>Income Statement—Reporting Comprehensive Income — CTA presentation in OCI</span></div>
+      <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 815</span><span>Derivatives and Hedging — foreign currency hedges of net investments</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 740</span><span>Income Taxes — deferred tax consequences of foreign currency translation</span></div>
+      <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 21</span><span>The Effects of Changes in Foreign Exchange Rates — IFRS counterpart</span></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s16"><span class="num">16</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+      <div class="glossary-item"><div class="glossary-term">Functional currency</div><div class="glossary-def">The currency of the primary economic environment in which the entity operates.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Reporting currency</div><div class="glossary-def">The currency in which the entity prepares its financial statements — for US GAAP reporters, this is US dollars.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Cumulative Translation Adjustment (CTA)</div><div class="glossary-def">The OCI component arising from translating foreign entity financial statements using the current rate method; recycled to earnings only upon disposal of the foreign operation.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Spot exchange rate</div><div class="glossary-def">The exchange rate for immediate delivery of currencies at the measurement date.</div></div>
+      </div>
+    </div>
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.ASC830 || []} />
+  </section>
+</StandardPageLayout>
+

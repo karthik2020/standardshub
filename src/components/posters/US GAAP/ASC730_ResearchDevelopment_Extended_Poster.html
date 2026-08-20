@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASC 730 — Research and Development | Extended Reference</title>
+<style>
+  :root { --color-background-secondary:#f9fafb;--color-background-tertiary:#f3f4f6;--color-background-info:#eff6ff;--color-background-success:#f0fdf4;--color-background-warning:#fffbeb;--color-background-danger:#fff1f2;--color-border-secondary:#e5e7eb;--color-border-tertiary:#e5e7eb;--color-border-info:#3b82f6;--color-border-success:#22c55e;--color-border-warning:#f59e0b;--color-border-danger:#ef4444;--color-text-primary:#111827;--color-text-secondary:#374151;--color-text-tertiary:#9ca3af;--color-text-info:#2563eb;--color-text-success:#16a34a;--color-text-warning:#b45309;--color-text-danger:#dc2626;--border-radius-lg:10px;--border-radius-md:8px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#fff;color:#111827;margin:0;padding:0;}
+  body{padding:20px;max-width:1180px;margin:0 auto;}*{box-sizing:border-box;}.wrap{padding:1rem 0 .5rem;}
+  .hub{display:flex;justify-content:center;margin-bottom:8px;}.hub-box{padding:12px 28px;background:var(--color-background-secondary);border:1.5px solid var(--color-border-secondary);border-radius:var(--border-radius-lg);text-align:center;}
+  .hub-title{font-size:17px;font-weight:600;color:var(--color-text-primary);}.hub-sub{font-size:11px;color:var(--color-text-tertiary);margin-top:3px;}
+  .toc{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin:14px 0 26px;}.toc a{font-size:10.5px;font-weight:500;padding:4px 11px;border-radius:14px;background:var(--color-background-tertiary);color:var(--color-text-secondary);text-decoration:none;border:1px solid var(--color-border-tertiary);}
+  .section-header{display:flex;align-items:center;gap:8px;margin:30px 0 12px;}.section-header .num{font-size:11px;font-weight:700;color:#fff;background:var(--color-text-info);width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .section-header h2{font-size:14px;font-weight:600;color:var(--color-text-primary);margin:0;}.section-header .line{flex:1;height:1px;background:var(--color-border-tertiary);}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start;}.span2{grid-column:span 2;}
+  .card{border-radius:var(--border-radius-lg);border:1px solid var(--color-border-tertiary);padding:13px 14px;background:var(--color-background-secondary);}
+  .card.ci{border-left:3px solid var(--color-border-info);}.card.cs{border-left:3px solid var(--color-border-success);}.card.cw{border-left:3px solid var(--color-border-warning);}.card.cd{border-left:3px solid var(--color-border-danger);}.card.cn{border-left:3px solid var(--color-border-secondary);}
+  .ctitle{font-size:13px;font-weight:500;margin-bottom:7px;}.ctitle.ci{color:var(--color-text-info);}.ctitle.cs{color:var(--color-text-success);}.ctitle.cw{color:var(--color-text-warning);}.ctitle.cd{color:var(--color-text-danger);}.ctitle.cn{color:var(--color-text-primary);}
+  .principle{font-size:11px;color:var(--color-text-secondary);margin-bottom:9px;line-height:1.55;padding:6px 8px;background:var(--color-background-tertiary);border-radius:6px;}
+  .elabel{font-size:10px;font-weight:500;color:var(--color-text-tertiary);margin-bottom:5px;letter-spacing:.03em;}
+  .note{font-size:10px;color:var(--color-text-tertiary);font-style:italic;line-height:1.5;margin-top:4px;}
+  .callout{font-size:11px;line-height:1.5;padding:6px 9px;border-radius:6px;margin-bottom:8px;}
+  .callout.info{background:var(--color-background-info);color:var(--color-text-info);border:1px solid var(--color-border-info);}
+  .callout.warn{background:var(--color-background-warning);color:var(--color-text-warning);border:1px solid var(--color-border-warning);}
+  .callout.danger{background:var(--color-background-danger);color:var(--color-text-danger);border:1px solid var(--color-border-danger);}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start;}
+  .dot-list span,.check-list span,.cross-list span{display:block;padding-left:14px;position:relative;font-size:11px;color:var(--color-text-secondary);line-height:1.75;}
+  .dot-list span::before{content:"·";position:absolute;left:1px;color:var(--color-text-tertiary);}
+  .check-list span::before{content:"✓";position:absolute;left:0;color:var(--color-text-success);font-size:10px;top:2px;font-weight:700;}
+  .cross-list span::before{content:"✕";position:absolute;left:0;color:var(--color-text-danger);font-size:10px;top:2px;}
+  .td-table{border:1px solid var(--color-border-tertiary);border-radius:8px;overflow:hidden;font-size:10px;margin-bottom:8px;}
+  .td-table .th{display:grid;background:var(--color-background-tertiary);padding:5px 8px;font-weight:500;color:var(--color-text-secondary);}
+  .td-table .tr{display:grid;padding:4px 8px;border-top:1px solid var(--color-border-tertiary);color:var(--color-text-secondary);}.td-table .tr.alt{background:var(--color-background-tertiary);}
+  .worked{border:1px solid var(--color-border-info);border-radius:8px;padding:10px 12px;background:var(--color-background-info);margin-bottom:9px;}
+  .worked .wk-title{font-size:11px;font-weight:600;color:var(--color-text-info);margin-bottom:5px;}.worked .wk-body{font-size:11px;color:var(--color-text-secondary);line-height:1.6;}
+  .worked .wk-answer{margin-top:6px;padding-top:6px;border-top:1px dashed var(--color-border-info);font-size:11px;color:var(--color-text-primary);}
+  .glossary-item{padding:7px 0;border-bottom:1px solid var(--color-border-tertiary);}.glossary-term{font-size:11.5px;font-weight:600;color:var(--color-text-primary);}.glossary-def{font-size:11px;color:var(--color-text-secondary);line-height:1.5;margin-top:2px;}
+  .legend{margin-top:20px;padding:12px 16px;background:var(--color-background-secondary);border:1px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);}
+  .lrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:11px;color:var(--color-text-secondary);margin-top:4px;}.ltitle{font-size:11px;font-weight:500;color:var(--color-text-primary);}
+  .badge{font-size:9px;font-weight:500;padding:1px 5px;border-radius:4px;}.bs{background:var(--color-background-info);color:var(--color-text-info);}.bp{background:var(--color-background-danger);color:var(--color-text-danger);}.bo{background:var(--color-background-success);color:var(--color-text-success);}.be{background:var(--color-background-warning);color:var(--color-text-warning);}.bc{background:#ede9fe;color:#6d28d9;}
+  .footer-note{margin-top:24px;padding:12px 16px;background:var(--color-background-tertiary);border-radius:var(--border-radius-md);font-size:10.5px;color:var(--color-text-tertiary);text-align:center;}
+  @media (max-width:640px){.grid,.two-col{grid-template-columns:1fr;}.span2{grid-column:span 1;}}
+</style></head>
+<body><div class="wrap">
+
+<div class="hub"><div class="hub-box"><div class="hub-title">ASC 730 — Research and Development</div><div class="hub-sub">Extended reference poster · US GAAP · Subtopic: 730-10 Overall · One of the most consequential divergences from IAS 38 · USD examples</div></div></div>
+
+<div class="toc">
+<a href="#s1">1. Conceptual Framework Linkage</a><a href="#s2">2. Scope &amp; Applicability</a><a href="#s3">3. The General Rule — All R&amp;D Expensed as Incurred</a>
+<a href="#s4">4. Why This Is a Headline Divergence From IAS 38</a><a href="#s5">5. What Counts as R&amp;D — Definitions</a>
+<a href="#s6">6. Costs Included in R&amp;D</a><a href="#s7">7. Acquired In-Process R&amp;D (IPR&amp;D) — the Business Combination Exception</a>
+<a href="#s8">8. R&amp;D Funding Arrangements</a><a href="#s9">9. Worked Example — Contrasting R&amp;D Capitalisation (US vs IFRS)</a>
+<a href="#s10">10. Worked Example — Acquired IPR&amp;D in a Business Combination</a><a href="#s11">11. Disclosure Requirements</a>
+<a href="#s12">12. Critical Judgments &amp; Estimates</a><a href="#s13">13. ASC 730 vs IAS 38 — Comprehensive Comparison</a>
+<a href="#s14">14. Statement Mapping</a><a href="#s15">15. Related Topics</a><a href="#s16">16. Glossary</a>
+</div>
+
+<div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card ci"><div class="ctitle ci">Too uncertain to capitalise, in the FASB's view</div><div class="principle">The FASB's historical position (dating back to SFAS 2 in 1974, now codified in ASC 730) is that the FUTURE benefit of research and development activity is simply TOO UNCERTAIN, at the time costs are incurred, to justify capitalising it as an asset — favouring a simple, conservative, uniformly applied "expense as incurred" rule over attempting to distinguish which specific projects will ultimately succeed.</div></div>
+<div class="card cs"><div class="ctitle cs">One of THE most consequential US GAAP/IFRS divergences anywhere</div><div class="principle">IAS 38 draws a sharp line between RESEARCH (always expensed) and DEVELOPMENT (CAPITALISED once specific criteria are met) — a fundamentally different philosophy from ASC 730's blanket expense rule. This single difference can produce materially different reported ASSETS, EXPENSES, and EARNINGS for economically identical R&amp;D-intensive businesses (software, pharmaceuticals, technology), making Section 13 one of the most important comparisons in this entire library.</div>
+</div>
+</div>
+
+<div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cw span2"><div class="ctitle cw">Self-generated research and development activities</div><div class="principle">ASC 730 applies to SELF-GENERATED (internal) research and development costs — expenditures aimed at discovering new knowledge or translating that knowledge into new or improved products/processes. It does NOT govern software development costs subject to their own specific guidance (ASC 350-40 for internal-use software, or ASC 985-20 for software to be sold/licensed), nor ACQUIRED in-process R&amp;D in a business combination (Section 7).</div>
+</div>
+</div>
+
+<div class="section-header" id="s3"><span class="num">3</span><h2>The General Rule — All R&amp;D Expensed as Incurred</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">A blanket, bright-line rule</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">ALL research and development costs are <strong>EXPENSED AS INCURRED</strong> under US GAAP — with NO capitalisation permitted, regardless of the project's stage, its technical feasibility, or the probability of future commercial success. Unlike IAS 38, US GAAP draws NO distinction between "research" and "development" phases for the purpose of THIS general rule — both are treated IDENTICALLY, as an immediate expense.</div>
+</div>
+</div>
+
+<div class="section-header" id="s4"><span class="num">4</span><h2>Why This Is a Headline Divergence From IAS 38</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cw span2"><div class="ctitle cw">IAS 38's contrasting two-phase model</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">IAS 38 REQUIRES expensing RESEARCH costs (consistent with US GAAP), but <strong>REQUIRES CAPITALISING DEVELOPMENT costs</strong> once ALL of the following criteria are met (often remembered by the mnemonic "PIRATE"): <strong>P</strong>robability of future economic benefit; <strong>I</strong>ntention to complete the asset; <strong>R</strong>esources (technical, financial, other) adequate to complete; <strong>A</strong>bility to use or sell the resulting asset; <strong>T</strong>echnical feasibility of completing the asset; and <strong>E</strong>xpenditure can be reliably measured. Once these six criteria are met, DEVELOPMENT costs MUST be capitalised as an intangible asset and subsequently amortised — a fundamentally different treatment from US GAAP's blanket expense rule for the SAME underlying activity.</div>
+</div>
+</div>
+
+<div class="section-header" id="s5"><span class="num">5</span><h2>What Counts as R&amp;D — Definitions</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cs span2"><div class="ctitle cs">Similarly defined activities, differently accounted for</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">RESEARCH is planned search or critical investigation aimed at discovering new knowledge. DEVELOPMENT is the translation of research findings into a PLAN or DESIGN for a new or significantly improved product or process. These DEFINITIONS are broadly similar in substance to IAS 38's own research/development definitions — the divergence lies entirely in the ACCOUNTING CONSEQUENCE (expense vs potential capitalisation), not in how the underlying activities themselves are defined.</div>
+</div>
+</div>
+
+<div class="section-header" id="s6"><span class="num">6</span><h2>Costs Included in R&amp;D</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cw span2"><div class="ctitle cw">Materials, personnel, facilities, and allocable indirect costs</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">R&amp;D costs include materials, equipment, and facilities used for R&amp;D (unless they have an ALTERNATIVE FUTURE USE, in which case they are CAPITALISED and DEPRECIATED, with the depreciation charge itself included in R&amp;D expense), personnel costs for those engaged in R&amp;D, costs of services performed by others, and INDIRECT costs reasonably allocable to R&amp;D activities.</div>
+</div>
+</div>
+
+<div class="section-header" id="s7"><span class="num">7</span><h2>Acquired In-Process R&amp;D (IPR&amp;D) — the Business Combination Exception</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">A notable, largely converged exception to the general rule</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">R&amp;D projects ACQUIRED in a business combination are treated DIFFERENTLY from self-generated R&amp;D: acquired in-process R&amp;D (IPR&amp;D) is CAPITALISED at FAIR VALUE as an INDEFINITE-LIVED intangible asset (NOT immediately expensed), and tested for impairment under ASC 350 until the project is either COMPLETED (at which point it becomes a finite-lived asset, amortised over its useful life) or ABANDONED (expensed at that point). This is a genuine EXCEPTION to the "expense as incurred" rule, specific to the business combination context — and it is broadly CONVERGED with IFRS 3's own treatment, since ACQUIRED intangible assets meeting recognition criteria in a business combination are capitalised under IFRS 3 too, REGARDLESS of whether they would have been capitalised if self-generated. This specific carve-out is one of the few genuinely converged corners within an otherwise sharply divergent Topic.</div>
+</div>
+</div>
+
+<div class="section-header" id="s8"><span class="num">8</span><h2>R&amp;D Funding Arrangements</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cs span2"><div class="ctitle cs">Assessing genuine risk transfer vs disguised financing</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Where a THIRD PARTY funds an entity's R&amp;D activities (e.g. in exchange for future royalties or a repayment obligation contingent on the project's success), ASC 730 provides specific guidance for assessing whether the arrangement represents a GENUINE transfer of risk to the funding party (accounted for accordingly, potentially avoiding expense recognition by the researching entity) or is, IN SUBSTANCE, a FINANCING arrangement (requiring the researching entity to recognise a LIABILITY for the funds received, since it hasn't genuinely transferred the risk of the R&amp;D's failure).</div>
+</div>
+</div>
+
+<div class="section-header" id="s9"><span class="num">9</span><h2>Worked Example — Contrasting R&amp;D Capitalisation (US vs IFRS)</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cw span2"><div class="ctitle cw">The same software development project, two very different balance sheets</div>
+<div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: A technically feasible software development project</div><div class="wk-body">A technology company spends $8,000,000 over a year developing a new product. By mid-year, the project has reached TECHNICAL FEASIBILITY, management has demonstrated the intention and resources to complete it, and there's a clear ability to sell the finished product — meeting all of IAS 38's PIRATE criteria from that point forward. Of the $8,000,000, $3,000,000 was spent before mid-year and $5,000,000 after.</div><div class="wk-answer"><strong>Under US GAAP:</strong> the FULL $8,000,000 is EXPENSED as incurred — NOTHING is capitalised, regardless of the project's technical feasibility.<br><strong>Under IAS 38:</strong> the $3,000,000 spent BEFORE the PIRATE criteria were met is expensed (research-phase-equivalent spending), but the <strong>$5,000,000 spent AFTER the criteria were met is CAPITALISED</strong> as a development intangible asset, subsequently amortised once the product launches — producing a materially different balance sheet (a $5,000,000 asset under IFRS that simply doesn't exist under US GAAP) and a materially different current-period expense ($8,000,000 vs $3,000,000) for the identical underlying project.</div></div>
+</div>
+</div>
+
+<div class="section-header" id="s10"><span class="num">10</span><h2>Worked Example — Acquired IPR&amp;D in a Business Combination</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card ci span2"><div class="ctitle ci">Capitalised despite the general expense rule</div>
+<div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Acquiring a pharmaceutical company mid-trial</div><div class="wk-body">A pharmaceutical company acquires a target with a promising drug candidate still in clinical trials, with an estimated fair value of $60,000,000 attributable to that in-process R&amp;D project as part of the purchase price allocation.</div><div class="wk-answer">Despite ASC 730's general "expense as incurred" rule for SELF-GENERATED R&amp;D, the ACQUIRED $60,000,000 IPR&amp;D asset is <strong>CAPITALISED</strong> as an indefinite-lived intangible asset, tested annually for impairment under ASC 350, until the drug trial either succeeds (converting to a finite-lived, amortised asset) or fails (written off entirely) — a genuine exception, and one broadly MATCHED by IFRS 3's own treatment of the same acquired asset.</div></div>
+</div>
+</div>
+
+<div class="section-header" id="s11"><span class="num">11</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">What ASC 730 requires</div><div class="check-list"><span>Total R&amp;D costs charged to expense during the period</span><span>Nature and terms of significant R&amp;D funding arrangements with third parties</span><span>Nature and carrying amount of acquired in-process R&amp;D assets, and impairment testing results</span></div>
+</div>
+</div>
+
+<div class="section-header" id="s12"><span class="num">12</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+<div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Whether specific costs are genuinely R&amp;D in nature, versus ordinary production or administrative costs</span><span>Whether an R&amp;D funding arrangement genuinely transfers risk or is a disguised financing</span><span>Whether equipment/facilities used in R&amp;D have an alternative future use warranting capitalisation</span></div></div>
+<div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Fair value of acquired IPR&amp;D in a business combination</span><span>Impairment assessment for capitalised IPR&amp;D assets</span></div></div></div>
+</div>
+</div>
+
+<div class="section-header" id="s13"><span class="num">13</span><h2>ASC 730 vs IAS 38 — Comprehensive Comparison</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card ci span2"><div class="ctitle ci">Comparison — ASC 730 vs IAS 38</div>
+<div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">US GAAP (ASC 730)</span><span style="color:var(--color-text-info);">IFRS (IAS 38)</span></div>
+<div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Research costs</span><span>Expensed as incurred</span><span>Expensed as incurred — converged</span></div>
+<div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Development costs (self-generated)</span><span>ALSO expensed as incurred — no capitalisation path</span><span>CAPITALISED once the six PIRATE criteria are met — MANDATORY, not optional</span></div>
+<div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Acquired IPR&amp;D in a business combination</span><span>Capitalised at fair value as an indefinite-lived intangible</span><span>Also capitalised at fair value under IFRS 3 — converged</span></div>
+<div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Practical effect for R&amp;D-intensive industries</span><span>LOWER reported assets, HIGHER current-period expense volatility, but simpler/more conservative</span><span>HIGHER reported assets for successful projects, SMOOTHER expense recognition via amortisation, but requires ongoing judgement about when criteria are met</span></div>
+</div>
+<div class="callout danger" style="margin-bottom:0;">⚠️ Widely regarded as one of THE most consequential and frequently cited US GAAP/IFRS divergences — pharmaceutical, software, and technology companies can show MATERIALLY different balance sheets and profitability profiles purely due to this single accounting difference, even with economically identical R&amp;D programmes.</div>
+</div>
+</div>
+
+<div class="section-header" id="s14"><span class="num">14</span><h2>Statement Mapping</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cs span2"><div class="ctitle cs">Where every ASC 730 event lands</div>
+<div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+<div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Self-generated R&amp;D cost</span><span><span class="badge bp">IS</span></span><span>Expensed as incurred, no exceptions</span></div>
+<div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Acquired IPR&amp;D in a business combination</span><span><span class="badge bs">BS</span></span><span>Capitalised at fair value as an indefinite-lived intangible</span></div>
+<div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>IPR&amp;D project completion</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Converts to finite-lived, begins amortisation</span></div>
+<div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>IPR&amp;D project abandonment</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Written off entirely</span></div>
+</div>
+</div>
+</div>
+
+<div class="section-header" id="s15"><span class="num">15</span><h2>Related Topics</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd"><div class="ctitle cd">Cross-reference map</div>
+<div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+<div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 350</span><span>Governs subsequent amortisation/impairment testing of capitalised acquired IPR&amp;D once completed or ongoing</span></div>
+<div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 350-40</span><span>Governs internal-use software costs, outside this Topic's general R&amp;D scope</span></div>
+<div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 805</span><span>Business Combinations — supplies the initial fair value measurement for acquired IPR&amp;D</span></div>
+</div>
+</div>
+<div class="card cn"><div class="ctitle cn">Quick-reference glossary preview</div>
+<div class="glossary-item"><div class="glossary-term">In-process R&amp;D (IPR&amp;D)</div><div class="glossary-def">An R&D project acquired in a business combination, capitalised at fair value as an indefinite-lived intangible until completed or abandoned.</div></div>
+<div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">PIRATE criteria (IAS 38)</div><div class="glossary-def">The six conditions IAS 38 requires before development costs can be capitalised: Probability of benefit, Intention to complete, Resources adequate, Ability to use/sell, Technical feasibility, Expenditure reliably measurable.</div></div>
+</div>
+</div>
+
+<div class="section-header" id="s16"><span class="num">16</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cn span2">
+<div class="glossary-item"><div class="glossary-term">Research</div><div class="glossary-def">Planned search or critical investigation aimed at discovering new knowledge, always expensed as incurred under both frameworks.</div></div>
+<div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Development</div><div class="glossary-def">The translation of research findings into a plan or design for a new or improved product/process, expensed under US GAAP but capitalised under IAS 38 once specific criteria are met.</div></div>
+</div>
+</div>
+
+<div class="legend"><div class="ltitle">Financial statement key (US GAAP native terminology)</div><div class="lrow"><span class="badge bs">BS</span> Balance Sheet <span class="badge bp">IS</span> Income Statement <span class="badge bo">OCI</span> Other Comprehensive Income <span class="badge be">SE</span> Statement of Shareholders' Equity <span class="badge bc">SCF</span> Statement of Cash Flows</div></div>
+
+<div class="footer-note">ASC 730 — Research and Development · Extended Reference Poster · Self-contained, no internet connection required</div>
+</div></body></html>

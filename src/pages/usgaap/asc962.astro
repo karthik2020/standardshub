@@ -1,0 +1,141 @@
+﻿---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc962.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  bannerNotice={metadata.bannerNotice}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage — No Actuarial Obligation to Measure" },
+        { id: "s2", label: "Scope" },
+        { id: "s3", label: "Statement of Net Assets Available for Benefits" },
+        { id: "s4", label: "Statement of Changes in Net Assets Available for Benefits" },
+        { id: "s5", label: "Participant-Directed vs Nonparticipant-Directed Investment Programs" },
+        { id: "s6", label: "Worked Example — Participant Account Allocation" },
+        { id: "s7", label: "Disclosure Requirements" },
+        { id: "s8", label: "Critical Judgments &amp; Estimates" },
+        { id: "s9", label: "ASC 962 vs IAS 26 — Comparison" },
+        { id: "s10", label: "Statement Mapping" },
+        { id: "s11", label: "Related Topics" },
+        { id: "s12", label: "Glossary" }
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage — No Actuarial Obligation to Measure</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card ci span2"><div class="ctitle ci">The plan's obligation is simply the sum of participant account balances</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">Unlike a DEFINED BENEFIT plan (ASC 960), a DEFINED CONTRIBUTION plan (e.g. a 401(k) plan) makes NO promise of a specific future BENEFIT amount — each participant's ultimate benefit is simply whatever their INDIVIDUAL ACCOUNT balance happens to be worth at retirement, based on contributions made and investment performance. This means ASC 962 requires <strong>NO actuarial present value obligation</strong> disclosure of the kind ASC 960 requires — there is no defined benefit PROMISE to actuarially value in the first place, since the plan's total liability is, by definition, simply the sum of all individual account balances.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">Individual-account defined contribution plans</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 962 applies to the SEPARATE financial statements of DEFINED CONTRIBUTION pension plans — including 401(k), 403(b), profit-sharing, and money purchase pension plans — where benefits are based on individual participant account balances.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Statement of Net Assets Available for Benefits</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">Investments at fair value, consistent with plan accounting generally</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">Like ASC 960, the plan's primary statement presents INVESTMENTS at FAIR VALUE, less any liabilities, resulting in NET ASSETS AVAILABLE FOR BENEFITS — but here, this total is INHERENTLY equal (or very close, aside from minor unallocated amounts) to the SUM of all individual participant ACCOUNT BALANCES, since that's precisely what a defined contribution plan's assets represent.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Statement of Changes in Net Assets Available for Benefits</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cs span2"><div class="ctitle cs">Contributions in, investment activity, distributions out</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">This statement shows EMPLOYER and EMPLOYEE contributions received, investment income/gains ALLOCATED to individual participant accounts based on their elected investment options, LESS benefit distributions/withdrawals paid to participants and administrative expenses.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Participant-Directed vs Nonparticipant-Directed Investment Programs</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">A meaningful disclosure distinction based on who controls investment choices</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">A PARTICIPANT-DIRECTED investment program is one where INDIVIDUAL participants choose among available investment options for their OWN account (the typical modern 401(k) structure) — plans must disclose investment information for such programs with LESS granular detail than for NONPARTICIPANT-DIRECTED programs (where the plan itself, rather than individual participants, determines the investment allocation) — reflecting that participant-directed investment CHOICES are inherently more the individual's own responsibility.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Worked Example — Participant Account Allocation</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">Allocating investment performance to individual accounts</div>
+    <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Allocating annual investment return across participant accounts</div><div class="wk-body">A 401(k) plan's total investments earn a 12% annual return. A participant's account balance was $50,000 at the start of the year, with $6,000 of contributions made evenly throughout the year.</div><div class="wk-answer">The participant's account is credited with its PROPORTIONATE SHARE of the plan's overall 12% investment return, based on their account's actual balance over time (weighted for contribution timing) — resulting in an account balance that reflects BOTH their own contributions AND their allocated share of overall plan investment performance, WITHOUT any actuarial calculation being required, since the benefit is simply whatever the account is worth.</div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">What ASC 962 requires</div><div class="check-list"><span>Net assets available for benefits, by major investment category at fair value</span><span>Changes in net assets available for benefits</span><span>Description of participant-directed vs nonparticipant-directed investment programs</span></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+    <div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Classification of investment programs as participant-directed vs nonparticipant-directed for disclosure purposes</span></div></div>
+    <div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Fair value of less liquid or non-publicly-traded plan investments</span></div></div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>ASC 962 vs IAS 26 — Comparison</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card ci span2"><div class="ctitle ci">Comparison — ASC 962 vs IAS 26</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">US GAAP (ASC 962)</span><span style="color:var(--color-text-info);">IFRS (IAS 26)</span></div>
+    <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Investments at fair value</span><span>Required</span><span>Required — converged</span></div>
+    <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Actuarial obligation disclosure</span><span>NOT required — no defined benefit promise to value</span><span>NOT required for defined contribution plans under IAS 26 either — converged</span></div>
+    </div>
+    <div class="note">Defined contribution plan reporting is one of the SIMPLEST, most CONVERGED areas in the plan accounting library — both frameworks agree that, absent a defined benefit promise, there's simply no actuarial obligation to separately value.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cs span2"><div class="ctitle cs">Where every ASC 962 event lands (plan-level statements)</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+    <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Contributions received</span><span>Changes in net assets statement</span><span>Increases net assets available for benefits</span></div>
+    <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Investment income/loss allocated to accounts</span><span>Changes in net assets statement</span><span>Allocated proportionately to participant accounts</span></div>
+    </div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Related Topics</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">Cross-reference map</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+    <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 960</span><span>Plan Accounting—Defined Benefit Pension Plans — a related plan-level Topic with a more complex actuarial obligation disclosure</span></div>
+    <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 820</span><span>Supplies the fair value measurement framework for plan investments</span></div>
+    </div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cn span2">
+    <div class="glossary-item"><div class="glossary-term">Participant-directed investment program</div><div class="glossary-def">An investment arrangement where individual participants choose among available options for their own account.</div></div>
+    <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Net assets available for benefits</div><div class="glossary-def">A defined contribution plan's total investments at fair value, less liabilities, inherently equal to the sum of individual participant account balances.</div></div>
+    </div>
+    </div>
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.asc962 || []} />
+  </section>
+</StandardPageLayout>
+

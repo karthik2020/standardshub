@@ -1,0 +1,128 @@
+﻿---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc712.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope — Ongoing Benefits, Before Retirement" },
+        { id: "s3", label: "Two Categories — Vesting/Accumulating vs Neither" },
+        { id: "s4", label: "Recognition — Accrual vs Pay-As-You-Go" },
+        { id: "s5", label: "Measurement — Expected vs Actual Claims" },
+        { id: "s6", label: "Worked Example — Postemployment Health Care Accrual" },
+        { id: "s7", label: "Disclosure Requirements" },
+        { id: "s8", label: "Critical Judgments & Estimates" },
+        { id: "s9", label: "ASC 712 vs IAS 19 — Postemployment Benefits" },
+         { id: "s10", label: "Statement Mapping" },
+         { id: "s11", label: "Related Topics" },
+       ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Benefits earned after employment, before retirement</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 712 addresses benefits provided by an employer to former employees after employment has ended but BEFORE the employee reaches retirement age. These benefits represent a genuine economic obligation arising from services already rendered by former employees, creating a present obligation that must be recognised when the benefit eligibility is established through an employee-employer arrangement.</div></div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope — Ongoing Benefits, Before Retirement</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Health care, life insurance, and disability</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 712 covers nonretirement postemployment benefits including postemployment health care benefits (the most common), life insurance benefits, and disability benefits provided to former employees. It does NOT cover pension or other retirement benefits (ASC 715), nor does it cover compensated absences while still employed (ASC 710).</div></div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Two Categories — Vesting/Accumulating vs Neither</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">The key classification difference</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 712 distinguishes between two categories of nonretirement postemployment benefits: (1) benefits that VEST or ACCUMULATE — which must be recognised as they are earned by active employees; and (2) benefits that NEITHER vest nor accumulate — which are accounted for on a PAY-AS-YOU-GO basis, recognised as benefits are paid rather than accrued in advance.</div></div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Recognition — Accrual vs Pay-As-You-Go</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">When to accrue versus when to expense</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">For vesting/accumulating benefits, the employer must ACCRUE the expected cost of the benefits over the vesting period — similar to pension accounting under ASC 715, but typically simpler in structure. For benefits that neither vest nor accumulate, the employer recognises expense on a PAY-AS-YOU-GO basis, only recording costs as cash payments are made to former employees.</div></div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Measurement — Expected vs Actual Claims</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">Estimating future benefit costs</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">For accrued nonretirement postemployment benefits, the employer estimates the expected future cash outflows based on factors such as employee turnover, mortality, health care cost trends, and expected benefit utilisation. These expected costs are discounted to present value using a high-quality corporate bond rate where required.</div></div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Worked Example — Postemployment Health Care Accrual</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Accruing postemployment health care benefits</div>
+      <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Lump-sum health care subsidy</div><div class="wk-body">An entity promises postemployment health care benefits to employees who retire before age 65. The expected present value of benefits attributable to service rendered this year is $2,500,000. Medical cost trend is projected at 5% per year, discounted at 4%.</div><div class="wk-answer">The entity recognises <strong>$2,500,000</strong> of postemployment benefit expense for the year, increasing the accrued postemployment benefit liability. This expense is recognised immediately as employees render the service earning the benefit.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">What ASC 712 requires</div><div class="check-list"><span>Description of the benefit plans and the types of benefits provided</span><span>Funding policy and any plan assets</span><span>Expected employer contributions in the next fiscal year</span><span>Key assumptions used in measuring the obligation (discount rate, health care trend rates)</span></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Critical Judgments & Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+      <div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Whether benefits vest or accumulate, triggering accrual accounting</span><span>Whether the arrangement constitutes a postemployment benefit plan versus a one-time severance arrangement</span></div></div>
+      <div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Health care cost trend rates</span><span>Discount rate used to present-value the expected benefit cash flows</span><span>Employee turnover and retirement assumptions</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>ASC 712 vs IAS 19 — Postemployment Benefits</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Comparison — ASC 712 vs IAS 19</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">US GAAP (ASC 712)</span><span style="color:var(--color-text-info);">IFRS (IAS 19)</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Scope</span><span>Nonretirement postemployment benefits</span><span>Post-employment benefits broadly, including medical after retirement</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Accrual trigger</span><span>Vesting/accumulating vs pay-as-you-go classification</span><span>Similar distinction by vesting and benefit type</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Measurement</span><span>Expected present value, discounted</span><span>Present value of defined benefit obligation</span></div>
+      </div>
+      <div class="note">IAS 19 and ASC 712 are broadly aligned on nonretirement postemployment benefits, reflecting the same fundamental economic obligation even though structural guidance differs slightly.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Where every ASC 712 event lands</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Accrual of postemployment benefit cost</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Liability on BS; expense recognised when earned</span></div>
+      <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Actual benefit payments</span><span><span class="badge bs">BS</span> <span class="badge bc">SCF</span></span><span>Liability reduced; cash outflow</span></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Related Topics</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd"><div class="ctitle cd">Cross-reference map</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 715</span><span>Retirement Benefits — governs pension and other retirement benefits</span></div>
+      <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 710</span><span>Compensation—General — governs compensated absences while still employed</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 19</span><span>Employee Benefits — IFRS counterpart</span></div>
+      </div>
+      </div>
+    </div>
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.ASC712 || []} />
+  </section>
+</StandardPageLayout>
+

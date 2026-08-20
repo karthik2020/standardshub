@@ -1,0 +1,84 @@
+---
+/*
+FrameworkRail
+
+Narrow left column of the two-part standards sidebar. Shows Home plus the
+4 core frameworks (IAS, IFRS, Ind AS, US GAAP); IFRS's sub-frameworks
+(Sustainability, Publications, for SMEs, IFRIC, SIC) render as subfolders
+inside the IFRS panel rather than as their own rail item.
+
+The active item is resolved server-side from the URL for first paint /
+no-JS correctness; rail-panel.js takes over for client-side switching
+without a full page reload.
+*/
+
+import { FRAMEWORK_CONFIG } from "../data/frameworks";
+import { Home, BookText, LibraryBig, Files, BookOpen, Settings, Sun, Moon, Clock } from "@lucide/astro";
+
+const RAIL_FRAMEWORKS = ["ias", "ifrs", "indas", "usgaap"] as const;
+
+const lucideIconMap: Record<string, any> = { BookText, LibraryBig, Files, BookOpen };
+
+function resolveActiveFramework(pathname: string) {
+  if (pathname.startsWith("/ifrs") || pathname.startsWith("/ifric") || pathname.startsWith("/sic")) return "ifrs";
+  if (pathname.startsWith("/ias")) return "ias";
+  if (pathname.startsWith("/indas")) return "indas";
+  if (pathname.startsWith("/usgaap")) return "usgaap";
+  return "home";
+}
+
+const active = resolveActiveFramework(Astro.url.pathname);
+---
+
+<nav class="framework-rail" data-rail aria-label="Frameworks">
+  <a href="/" class="rail-logo" aria-label="StandardsHub home">
+    <span class="logo-mark"></span>
+  </a>
+
+  <a
+    href="/"
+    class:list={["rail-item", active === "home" && "active"]}
+    data-rail-item="home"
+    aria-current={active === "home" ? "page" : undefined}
+  >
+    <Home size={18} strokeWidth={2} />
+    <span>Home</span>
+  </a>
+
+  <div class="rail-divider" role="separator"></div>
+
+  {
+    RAIL_FRAMEWORKS.map((id) => {
+      const fw = FRAMEWORK_CONFIG[id];
+      const Icon = lucideIconMap[fw.lucideIcon] ?? BookText;
+      return (
+        <a
+          href={fw.route}
+          class:list={["rail-item", active === id && "active"]}
+          data-rail-item={id}
+          aria-current={active === id ? "page" : undefined}
+        >
+          <Icon size={18} strokeWidth={2} />
+          <span>{fw.displayName}</span>
+        </a>
+      );
+    })
+  }
+
+  <div class="rail-spacer"></div>
+
+  <button class="rail-icon-btn" id="rail-settings" type="button" aria-label="Settings">
+    <Settings size={17} strokeWidth={2} />
+  </button>
+
+  <button class="rail-icon-btn" id="rail-theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+    <Sun size={16} strokeWidth={2} class="theme-icon theme-icon-sun" />
+    <Moon size={16} strokeWidth={2} class="theme-icon theme-icon-moon" />
+  </button>
+
+  <a href="#" class="rail-icon-btn" aria-label="Recent">
+    <Clock size={17} strokeWidth={2} />
+  </a>
+
+  <div class="rail-avatar" aria-hidden="true">KV</div>
+</nav>

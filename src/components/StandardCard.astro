@@ -1,33 +1,60 @@
 ---
+/**
+ * StandardCard
+ *
+ * Reusable card component for framework landing pages.
+ *
+ * Props:
+ * - href: string
+ * - code: string (e.g. "IAS 16")
+ * - title: string
+ * - framework: "ias" | "ifrs" | "indas" | "ipsas"
+ * - theme: { bg: string; color: string }
+ * - status?: string (optional, e.g. "Superseded")
+ */
+
+import standards from "../data/standards.json";
+import { getStandardIconHtml } from "../data/standardVisuals";
+import { getFramework } from "../data/frameworks";
+
 interface Props {
-  number: string;
+  href: string;
+  code: string;
   title: string;
-  color?: string;
+  framework: "ias" | "ifrs" | "indas" | "ukgaap" | "asbe" | "aspe" | "asbj" | "hgb" | "ipsas";
+  theme: { bg: string; color: string };
+  status?: string;
+  displayCode?: string;
 }
 
-const {
-  number,
-  title,
-  color = "blue"
-} = Astro.props;
+const { href, code, title, framework, theme, status: statusProp, displayCode } = Astro.props;
+
+const frameworkConfig = getFramework(framework)!;
+const frameworkKey = frameworkConfig.code === "Ind AS" ? "IndAS" : frameworkConfig.code === "UK GAAP" ? "UKGAAP" : frameworkConfig.code === "ASBE" ? "ASBE" : frameworkConfig.code === "ASPE" ? "ASPE" : frameworkConfig.code === "ASBJ" ? "ASBJ" : frameworkConfig.code === "HGB" ? "HGB" : frameworkConfig.code;
+const standardData = standards[frameworkKey]?.find((s) => s.code === code);
+const resolvedStatus = statusProp ?? standardData?.status;
+
+const iconHtml = getStandardIconHtml(code);
 ---
 
-<div class={`standard-card-block ${color}`}>
+<a href={href} class="standard-card" style={`--icon-bg: ${theme.bg}; --icon-color: ${theme.color};`}>
+  <div class="standard-top">
+    <div class="standard-icon" set:html={iconHtml} />
 
-  <div class="card-number">
-    {number}
+    <div class="standard-code">{displayCode || code}</div>
+
+    {resolvedStatus && resolvedStatus !== "Active" && (
+      <div class={`standard-status standard-status--${resolvedStatus.toLowerCase().replace(/\s+/g, "-")}`}>
+        {resolvedStatus}
+      </div>
+    )}
   </div>
 
-  <h3 class="card-title">
-    {title}
-  </h3>
+  <div class="standard-title">{title}</div>
 
-  <div class="card-content">
-
-    <div class="card-summary">
-      <slot />
-    </div>
-
+  <div class="standard-arrow" aria-hidden="true">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12h14M12 5l7 7-7 7" />
+    </svg>
   </div>
-
-</div>
+</a>

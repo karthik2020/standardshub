@@ -1,0 +1,447 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import metadata from "../../data/standards/ipsas/ipsas2.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  covers={metadata.covers}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Objective, Scope & Benefits" },
+        { id: "s2", label: "Definitions" },
+        { id: "s3", label: "Three Activity Classes" },
+        { id: "s4", label: "Operating Activities" },
+        { id: "s5", label: "Investing & Financing Activities" },
+        { id: "s6", label: "Direct vs Indirect Method" },
+        { id: "s7", label: "Net Basis & Foreign Currency" },
+        { id: "s8", label: "Interest, Dividends & Taxes" },
+        { id: "s9", label: "Controlled Entities & Acquisitions" },
+        { id: "s10", label: "Noncash Transactions & Financing Liabilities" },
+        { id: "s11", label: "Cash Equivalents & Other Disclosures" },
+        { id: "s12", label: "Effective Date & Amendment Timeline" },
+        { id: "s13", label: "Relationship to IAS 7" },
+        { id: "s14", label: "Statement Templates" },
+        { id: "s15", label: "Statement / Process Mapping" },
+        { id: "s16", label: "Related Standards" },
+        { id: "s17", label: "Glossary" }
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="active"
+    explanation="IPSAS 2 Cash Flow Statements is the current, active cash-flow presentation standard issued by the IPSASB. It is effective for annual financial statements covering periods beginning on/after 1 July 2001 (earlier application encouraged). Former paras. 3–4 were deleted; the current Standard comprises paras. 1–64, all of equal authority."
+    link=""
+    linkText=""
+  />
+
+      <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; Benefits of Cash Flow Information</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Objective &amp; scope</div>
+        <div class="principle">The cash flow statement identifies (a) sources of cash inflows, (b) items on which cash was expended, and (c) the cash balance at the reporting date. It requires information about historical changes in cash and cash equivalents, classified by operating, investing, and financing activities.</div>
+        <div class="check-list">
+          <span>An entity preparing financial statements under the accrual basis shall prepare a cash flow statement AND present it as an integral part of its financial statements for each period presented</span>
+          <span>Required regardless of the nature of the entity's activities — even where cash is the "product" of the entity, as with a public financial institution</span>
+        </div>
+        <div class="note">Paras. 3–4 [Deleted]. All paragraphs (objective + 1–64) have equal authority.</div>
+      </div>
+
+      <div class="card cs">
+        <div class="ctitle cs">Why cash flow information matters</div>
+        <div class="dot-list">
+          <span>Predicts future cash requirements, ability to generate future cash flows, and ability to fund changes in scope/nature of activities</span>
+          <span>Discharges accountability for cash inflows and outflows during the period</span>
+          <span>Evaluates changes in net assets/equity, financial structure (liquidity, solvency), and ability to adapt to changing circumstances</span>
+          <span>Enhances comparability by eliminating the effects of different accounting treatments for the same transactions</span>
+        </div>
+        <div class="callout info callout--flush">Users assess (a) the entity's cash flows, (b) compliance with legislation/regulations including authorized budgets, and (c) whether to provide resources to, or transact with, the entity.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Definitions (paras. 8–17)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Core cash-flow definitions</div>
+        <div class="glossary-item"><div class="glossary-term">Cash</div><div class="glossary-def">Cash on hand and demand deposits.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Cash equivalents</div><div class="glossary-def">Short-term, highly liquid investments readily convertible to known amounts of cash, subject to an insignificant risk of changes in value — normally a maturity of 3 months or less from acquisition.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Cash flows</div><div class="glossary-def">Inflows and outflows of cash and cash equivalents.</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Control</div><div class="glossary-def">An entity controls another when it is exposed, or has rights, to variable benefits from involvement with the other entity and can affect the nature or amount of those benefits through power over it.</div></div>
+      </div>
+
+      <div class="card cn">
+        <div class="ctitle cn">Activity definitions &amp; cash management</div>
+        <div class="glossary-item"><div class="glossary-term">Operating activities</div><div class="glossary-def">Activities that are NOT investing or financing activities.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Investing activities</div><div class="glossary-def">Acquisition and disposal of long-term assets and other investments not included in cash equivalents.</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Financing activities</div><div class="glossary-def">Activities resulting in changes in the size and composition of contributed capital and borrowings.</div></div>
+        <div class="callout warn callout--flush"><strong>Bank overdrafts repayable on demand are generally FINANCING, but where they form an integral part of cash management (balance fluctuates positive/overdrawn), they're included in cash and cash equivalents.</strong></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Presentation of a Cash Flow Statement — Three Activity Classes (paras. 18–20)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Classify by operating, investing, and financing — in whatever manner suits the entity's activities</div>
+        <div class="principle">The cash flow statement shall report cash flows classified by operating, investing, and financing activities. Classification lets users assess the impact of those activities on financial position and the amount of cash/cash equivalents, and evaluate the relationships among them.</div>
+        <div class="callout warn callout--flush"><strong>Split transactions:</strong> a single transaction may include cash flows classified differently — e.g. a loan repayment combining interest (operating) and capital (financing) elements.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Operating Activities (paras. 21–24)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs">
+        <div class="ctitle cs">Why operating cash flow is a key indicator</div>
+        <div class="text-supporting">Net cash flow from operations shows the extent to which operations are funded — e.g. by taxes, other compulsory contributions/levies, transfers, or provision of goods/services in a binding arrangement. It also shows ability to maintain operating capability, repay obligations, pay distributions, and make new investments without external financing.</div>
+        <div class="note">Whole-of-government consolidated operating cash flows indicate the extent government has financed current activities through taxation and charges.</div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Examples of operating cash flows (para. 22)</div>
+        <div class="dot-list">
+          <span>Receipts from taxes, levies, fines; charges for goods/services; grants, transfers, budget authority</span>
+          <span>Royalties, fees, commissions; payments to beneficiaries of social benefit schemes</span>
+          <span>Payments to other public sector entities to finance operations (not loans); to suppliers; to/on behalf of employees</span>
+          <span>Insurance entity premiums/claims/annuities; contracts held for dealing/trading; litigation settlements</span>
+        </div>
+        <div class="callout info callout--flush">Dealing/trading securities and public financial institution loans/advances are classified as operating, since they relate to the main cash-generating activity — similar to inventory acquired for resale.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Investing &amp; Financing Activities (paras. 25–26)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Investing activities</div>
+        <div class="text-supporting">Important because they show cash outflows made for resources intended to contribute to future service delivery. Only cash outflows resulting in a recognized ASSET on the SOFP qualify.</div>
+        <div class="dot-list">
+          <span>Payments to acquire / receipts from sale of PP&amp;E, intangibles, other long-term assets</span>
+          <span>Payments/receipts for equity or debt instruments of other entities, and interests in joint ventures</span>
+          <span>Advances and loans to other parties, and repayments received (excl. public financial institutions)</span>
+          <span>Futures, forwards, options, swap contracts — unless held for trading or classified as financing</span>
+        </div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Financing activities</div>
+        <div class="text-supporting">Useful in predicting claims on future cash flows by providers of capital.</div>
+        <div class="dot-list">
+          <span>Proceeds from issuing debentures, loans, notes, bonds, mortgages, other borrowings</span>
+          <span>Repayments of amounts borrowed</span>
+          <span>Payments by a lessee for the reduction of the outstanding lease liability</span>
+        </div>
+        <div class="note">When a contract is a hedge of an identifiable position, its cash flows are classified the same way as the cash flows of the hedged position.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Reporting Operating Cash Flows — Direct vs Indirect Method (paras. 27–31)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs">
+        <div class="ctitle cs">Direct method — ENCOURAGED</div>
+        <div class="text-supporting">Major classes of gross cash receipts and gross cash payments are disclosed. Provides information useful in estimating future cash flows that is not available under the indirect method.</div>
+        <div class="elabel">SOURCED FROM</div>
+        <div class="dot-list">
+          <span>The accounting records directly; or</span>
+          <span>Adjusting operating revenue/expenses for changes in inventories, operating receivables/payables, other non-cash items, and items with investing/financing cash effects</span>
+        </div>
+        <div class="note">Entities using the direct method are also encouraged to reconcile surplus/deficit to net operating cash flow (in the statement or notes).</div>
+      </div>
+
+      <div class="card cn">
+        <div class="ctitle cn">Indirect method</div>
+        <div class="text-supporting">Surplus or deficit is adjusted for the effects of non-cash transactions, deferrals/accruals, and investing/financing items.</div>
+        <div class="elabel">ADJUSTMENTS INCLUDE (PARA. 30)</div>
+        <div class="dot-list">
+          <span>Changes in inventories and operating receivables/payables</span>
+          <span>Non-cash items: depreciation, provisions, deferred taxes, unrealized FX gains/losses, undistributed associate surpluses, non-controlling interests</span>
+          <span>All other items with investing/financing cash effects</span>
+        </div>
+        <div class="callout warn callout--flush">Both methods report separately the major classes of gross investing and financing cash receipts/payments (para. 31) — netting is the exception, not the rule (see §7).</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Reporting on a Net Basis &amp; Foreign Currency Cash Flows (paras. 32–39)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">When net reporting is permitted (para. 32)</div>
+        <div class="check-list">
+          <span>Cash receipts/payments on behalf of customers, taxpayers, or beneficiaries — where the flows reflect the OTHER party's activities, not the entity's own</span>
+          <span>Items where turnover is quick, amounts are large, and maturities are short (e.g. investment purchases/sales; borrowings ≤3 months)</span>
+        </div>
+        <div class="note">Examples: tax collection by one government level for another; demand deposit acceptance/repayment by a public financial institution; funds held for customers by a trust entity; rents collected on behalf of property owners. A public financial institution may also net deposits with fixed maturity, inter-institution placements, and customer advances/loans (para. 35).</div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Foreign currency cash flows (paras. 36–39)</div>
+        <div class="dot-list">
+          <span>Recorded in the functional currency using the exchange rate at the DATE OF THE CASH FLOW</span>
+          <span>Foreign controlled entity's cash flows translated at rates at the dates of the cash flows</span>
+          <span>A weighted average rate approximation is permitted (IPSAS 4) — but NOT the reporting-date rate for translating a foreign controlled entity's cash flows</span>
+        </div>
+        <div class="callout info callout--flush">Unrealized FX gains/losses are not cash flows, but the effect of rate changes on cash/cash equivalents held or due in a foreign currency IS reported — as a separate reconciling item between opening and closing cash and cash equivalents.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Interest, Dividends &amp; Taxes on Net Surplus (paras. 40–46)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Interest &amp; dividends — disclosed separately, classified consistently</div>
+        <div class="principle">Cash flows from interest and dividends/similar distributions received and paid shall each be disclosed separately, and classified consistently period to period as operating, investing, or financing.</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">PUBLIC FINANCIAL INSTITUTIONS</div>
+            <div class="text-supporting">Interest paid, and interest/dividends received, are usually classified as operating cash flows.</div>
+          </div>
+          <div>
+            <div class="elabel">OTHER ENTITIES — NO CONSENSUS</div>
+            <div class="text-supporting">Operating (enters surplus/deficit) OR financing/investing (cost of financing / return on investment) — either is acceptable.</div>
+          </div>
+        </div>
+        <div class="note">Total interest paid is disclosed whether expensed or capitalized under IPSAS 5's allowed alternative treatment.</div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Taxes on net surplus (paras. 44–46)</div>
+        <div class="principle">Cash flows from taxes on net surplus shall be separately disclosed and classified as operating, unless specifically identifiable with financing/investing activities.</div>
+        <div class="text-supporting">Public sector entities are generally tax-exempt, though some operate under tax-equivalent regimes. Tax cash flows are usually impracticable to match to the underlying transaction's own classification, so default to operating — unless practicably identifiable, in which case classify as investing/financing (with the total disclosed if allocated across classes).</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Investments in Controlled Entities, Associates &amp; Acquisitions/Disposals (paras. 47–53)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs">
+        <div class="ctitle cs">Equity/cost-method investees</div>
+        <div class="text-supporting">An investor restricts its cash flow statement to cash flows between itself and the investee — e.g. dividends/distributions and advances. An entity using the equity method for an associate/joint venture includes cash flows re: its investment and distributions/payments/receipts to and from it.</div>
+      </div>
+
+      <div class="card cd">
+        <div class="ctitle cd">Acquisitions &amp; disposals of controlled entities (para. 50)</div>
+        <div class="text-supporting">Presented separately, classified as investing, reported net of cash/cash equivalents acquired or disposed of. Disclose in aggregate, for both acquisitions and disposals:</div>
+        <div class="dot-list">
+          <span>Total purchase/disposal consideration</span>
+          <span>Portion discharged by cash and cash equivalents</span>
+          <span>Cash and cash equivalents in the entity/unit acquired or disposed of</span>
+          <span>Assets/liabilities (other than cash) recognized, by major category</span>
+        </div>
+        <div class="note">Cash flow effects of disposals are NOT netted against those of acquisitions. An investment entity (IPSAS 35) need not apply the (c)/(d) disclosures to an investment measured at FV through surplus/deficit. Changes in ownership NOT resulting in loss of control → classified as financing cash flows (para. 52A–52B).</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Noncash Transactions &amp; Changes in Liabilities from Financing Activities (paras. 54–55E)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Noncash transactions — excluded, but disclosed elsewhere</div>
+        <div class="principle">Investing/financing transactions not requiring cash shall be excluded from the cash flow statement, but disclosed elsewhere in the financial statements to convey all relevant information.</div>
+        <div class="dot-list">
+          <span>Acquisition of assets through exchange of assets, assumption of directly related liabilities, or by lease</span>
+          <span>Conversion of debt to equity</span>
+        </div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Changes in liabilities arising from financing activities (paras. 55A–55E)</div>
+        <div class="principle">An entity shall disclose enough to let users evaluate changes in financing liabilities — both cash-flow-driven and non-cash changes.</div>
+        <div class="elabel">DISCLOSE THESE CHANGES (55B)</div>
+        <div class="dot-list">
+          <span>Changes from financing cash flows</span>
+          <span>Changes from obtaining/losing control of controlled entities or operations</span>
+          <span>Effect of FX rate changes; changes in fair values; other changes</span>
+        </div>
+        <div class="note">Commonly met via a reconciliation between opening and closing SOFP balances for financing liabilities (para. 55D) — kept separate from changes in other assets/liabilities if combined with other disclosures (55E). See §14 for an illustrative reconciliation.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Components of Cash &amp; Cash Equivalents / Other Disclosures (paras. 56–62)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs">
+        <div class="ctitle cs">Components &amp; reconciliation</div>
+        <div class="check-list">
+          <span>Disclose the COMPONENTS of cash and cash equivalents</span>
+          <span>Present a reconciliation between the cash flow statement amount and the equivalent SOFP line item</span>
+          <span>Disclose the policy for determining the composition of cash and cash equivalents (given variety of cash management practices/banking arrangements)</span>
+        </div>
+        <div class="note">A change in that policy (e.g. reclassifying an investment previously in the investment portfolio) is accounted for under IPSAS 3.</div>
+      </div>
+
+      <div class="card cn">
+        <div class="ctitle cn">Encouraged &amp; required "other" disclosures</div>
+        <div class="elabel">REQUIRED (PARA. 59)</div>
+        <div class="text-supporting">Significant cash/cash-equivalent balances not available for use by the economic entity, with management commentary — e.g. controlled-entity balances subject to foreign exchange controls or legal restrictions.</div>
+        <div class="elabel">ENCOURAGED (PARA. 61)</div>
+        <div class="dot-list">
+          <span>Undrawn borrowing facilities available for future operating activities/capital commitments, with any restrictions noted</span>
+          <span>The amount and nature of restricted cash balances</span>
+        </div>
+        <div class="note">Where budgets are prepared on a cash basis, the cash flow statement may help users link entity activities to the government's budgetary information (cross-ref IPSAS 1).</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Effective Date &amp; Amendment Timeline (paras. 63–64)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Amendment history at a glance</div>
+        <div class="principle">Base Standard: periods beginning on/after <strong>1 July 2001</strong> (earlier application encouraged).</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1fr 2.2fr;"><span>Effective</span><span>Change</span></div>
+          <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2011</span><span>Para. 22 — Improvements to IPSAS (Jan 2010)</span></div>
+          <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2012</span><span>Para. 25 — Improvements to IPSAS (Nov 2010)</span></div>
+          <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>2015 (with IPSAS 35/37)</span><span>Paras. 8, 30(b), 47, 48, 61(b); new 50A, 52A, 52B</span></div>
+          <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2018</span><span>Paras. 3, 4, 16 deleted — The Applicability of IPSAS (Apr 2016)</span></div>
+          <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2021</span><span>New paras. 55A–55E — Improvements to IPSAS, 2018 (financing-liability reconciliation)</span></div>
+          <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>—</span><span>Para. 22 — IPSAS 42, Social Benefits (Jan 2019)</span></div>
+          <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2025</span><span>Paras. 26, 55 (IPSAS 43, Leases); para. 22 (IPSAS 44); para. 22 (IPSAS 45)</span></div>
+          <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2026</span><span>Paras. 21, 22 — IPSAS 47, Revenue</span></div>
+        </div>
+        <div class="note">Para. 64: when an entity adopts accrual-basis IPSAS after the effective date (per IPSAS 33), this Standard applies from the date of adoption.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Relationship to IAS/IFRS — Comparison with IAS 7</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — IPSAS 2 vs IAS 7</div>
+        <div class="principle">IPSAS 2 is drawn primarily from IAS 7, <em>Statement of Cash Flows</em>, including an amendment from the IASB's April 2009 Improvements to IFRS.</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.2fr 1.4fr 1.4fr;"><span>Topic</span><span style="color:var(--color-text-info);">IPSAS 2</span><span style="color:var(--color-text-warning);">IAS 7</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1.4fr 1.4fr;"><span>Terminology</span><span>"Revenue," "statement of financial performance," "net assets/equity"</span><span>"Income," "income statement," "equity"</span></div>
+          <div class="tr alt" style="grid-template-columns:1.2fr 1.4fr 1.4fr;"><span>Definitions (para. 8)</span><span>Distinct set of technical-term definitions</span><span>Different definition set</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1.4fr 1.4fr;"><span>Direct vs indirect method</span><span>Both allowed; direct method encourages a reconciliation note (para. 29)</span><span>Both allowed, same general approach</span></div>
+          <div class="tr alt" style="grid-template-columns:1.2fr 1.4fr 1.4fr;"><span>Illustrative examples</span><span>No financial-institution cash flow statement illustration</span><span>N/A</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Statement Templates — Illustrative Cash Flow Statements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Direct method (para. 27(a)) — condensed</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:2fr 1fr;"><span>Line item</span><span>20X2</span></div>
+          <div class="tr alt" style="grid-template-columns:2fr 1fr;"><span><strong>Operating — Receipts</strong></span><span></span></div>
+          <div class="tr" style="grid-template-columns:2fr 1fr;"><span>Taxation, sales, grants, interest received</span><span>X</span></div>
+          <div class="tr alt" style="grid-template-columns:2fr 1fr;"><span><strong>Operating — Payments</strong></span><span></span></div>
+          <div class="tr" style="grid-template-columns:2fr 1fr;"><span>Employee costs, suppliers, social benefits, interest paid</span><span>(X)</span></div>
+          <div class="tr alt" style="grid-template-columns:2fr 1fr;"><span><strong>Net cash flows — operating</strong></span><span><strong>X</strong></span></div>
+          <div class="tr" style="grid-template-columns:2fr 1fr;"><span>Purchase/sale of plant &amp; equipment, investments</span><span>X/(X)</span></div>
+          <div class="tr alt" style="grid-template-columns:2fr 1fr;"><span><strong>Net cash flows — investing</strong></span><span><strong>(X)</strong></span></div>
+          <div class="tr" style="grid-template-columns:2fr 1fr;"><span>Proceeds/repayment of borrowings, distributions to government</span><span>X/(X)</span></div>
+          <div class="tr alt" style="grid-template-columns:2fr 1fr;"><span><strong>Net cash flows — financing</strong></span><span><strong>X</strong></span></div>
+          <div class="tr" style="grid-template-columns:2fr 1fr;"><span><strong>Net increase/(decrease) in cash</strong></span><span><strong>X</strong></span></div>
+          <div class="tr alt" style="grid-template-columns:2fr 1fr;"><span>Cash at beginning / end of period</span><span>X</span></div>
+        </div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Indirect method (para. 27(b)) — condensed</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:2fr 1fr;"><span>Line item</span><span>20X2</span></div>
+          <div class="tr" style="grid-template-columns:2fr 1fr;"><span>Surplus/(deficit)</span><span>X</span></div>
+          <div class="tr alt" style="grid-template-columns:2fr 1fr;"><span>Depreciation, amortization</span><span>X</span></div>
+          <div class="tr" style="grid-template-columns:2fr 1fr;"><span>Increase in provision for doubtful debts, payables, borrowings, social benefits/employee-cost provisions</span><span>X</span></div>
+          <div class="tr alt" style="grid-template-columns:2fr 1fr;"><span>(Gains)/losses on sale of PP&amp;E, investments</span><span>(X)</span></div>
+          <div class="tr" style="grid-template-columns:2fr 1fr;"><span>Increase in other current assets, investments (revaluation), receivables</span><span>(X)</span></div>
+          <div class="tr alt" style="grid-template-columns:2fr 1fr;"><span><strong>Net cash flows from operating activities</strong></span><span><strong>X</strong></span></div>
+        </div>
+        <div class="note">Investing and financing sections are identical to the direct-method example above — only the operating section differs between the two methods.</div>
+      </div>
+    </div>
+
+    <div class="grid grid-spaced">
+      <div class="card cs span2">
+        <div class="ctitle cs">Reconciliation of liabilities arising from financing activities (paras. 55A–55E)</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;"><span>Liability</span><span>20X1</span><span>Cash flows</span><span>Non-cash changes</span><span>20X2</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;"><span>Long-term borrowings</span><span>X</span><span>X</span><span>X</span><span>X</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;"><span>Short-term borrowings</span><span>X</span><span>X</span><span>X</span><span>X</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;"><span>Lease liabilities</span><span>X</span><span>X</span><span>X</span><span>X</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;"><span>Assets held to hedge long-term borrowings</span><span>X</span><span>X</span><span>X</span><span>X</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;"><span><strong>Total financing liabilities</strong></span><span><strong>X</strong></span><span><strong>X</strong></span><span><strong>X</strong></span><span><strong>X</strong></span></div>
+        </div>
+        <div class="note">"Non-cash changes" is itself often split into acquisitions, foreign exchange movements, and fair value changes — one possible way of satisfying paras. 55A–55E; comparative-period amounts are also required per IPSAS 1.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s15"><span class="num">15</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Classification decision map</div>
+        <ol class="ordered-list">
+        <li>Does the cash flow relate to the entity's principal cash-generating activities, or is it not investing/financing? &rarr; OPERATING</li>
+        <li>Does it involve acquisition/disposal of long-term assets or investments not in cash equivalents, resulting in a recognized SOFP asset? &rarr; INVESTING</li>
+        <li>Does it change the size/composition of contributed capital or borrowings? &rarr; FINANCING</li>
+        <li>Does the flow reflect another party's activity (collections on behalf of others) or is it high-turnover/large/short-maturity? &rarr; may report NET</li>
+        <li>Is it a non-cash investing/financing event (e.g. debt-to-equity conversion, asset-for-asset exchange)? &rarr; EXCLUDE from the cash flow statement; disclose elsewhere</li>
+      </ol>
+      </div>
+    </div>
+
+    <div class="grid grid-spaced">
+      <div class="card cw span2">
+        <div class="ctitle cw">Concept-to-statement mapping table</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>IPSAS 2 concept</span><span>Statement</span><span>Notes</span></div>
+          <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Direct/indirect method choice</span><span><span class="badge bs">Cash Flow</span></span><span>Direct method encouraged; reconciliation note optional</span></div>
+          <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Interest/dividend classification policy</span><span><span class="badge bs">Cash Flow</span></span><span>Policy choice, applied consistently period to period</span></div>
+          <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Components of cash &amp; cash equivalents</span><span><span class="badge bp">Notes</span> <span class="badge bs">SOFP</span></span><span>Reconciliation to the SOFP line item required</span></div>
+          <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Restricted / unavailable cash balances</span><span><span class="badge bp">Notes</span></span><span>Required if significant; undrawn facilities encouraged</span></div>
+          <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Changes in financing liabilities</span><span><span class="badge bp">Notes</span></span><span>Reconciliation of opening to closing balances</span></div>
+          <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Noncash transactions</span><span><span class="badge bp">Notes</span></span><span>Excluded from the primary statement entirely</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s16"><span class="num">16</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">How IPSAS 2 connects across the IPSAS body of literature</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:0.7fr 2.2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+          <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 1</span><span>Complete-set-of-statements requirement; comparison of budget and actual figures (§1, §11)</span></div>
+          <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 3</span><span>Governs accounting for a change in the policy for determining cash-equivalent components (§11)</span></div>
+          <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 4</span><span>Governs the exchange rates used for translating foreign currency and foreign-operation cash flows (§7)</span></div>
+          <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 5</span><span>Allowed alternative treatment for capitalized interest — affects the total interest-paid disclosure (§8)</span></div>
+          <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 35 / 37</span><span>Consolidation and joint arrangement mechanics behind acquisitions/disposals and investment entity exceptions (§9)</span></div>
+          <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 41</span><span>Interest expense calculated using the effective interest method (§2 definitions)</span></div>
+          <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 43</span><span>Lessee lease liability reduction payments classified as financing cash flows (§5, §10)</span></div>
+          <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 45</span><span>Cash flows on assets held for rental then sale (para. 68 of IPSAS 45) — classified as operating (§4)</span></div>
+          <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 47</span><span>Revenue classification examples feeding operating cash receipt categories (§4)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s17"><span class="num">17</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <div class="three-col">
+      <div class="card cn">
+        <div class="glossary-item"><div class="glossary-term">Cash equivalents</div><div class="glossary-def">Short-term, highly liquid investments readily convertible to known cash amounts, insignificant risk of value change.</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Reporting date</div><div class="glossary-def">The date of the last day of the reporting period to which the financial statements relate.</div></div>
+      </div>
+      <div class="card cn">
+        <div class="glossary-item"><div class="glossary-term">Net investment approach (financing liabilities)</div><div class="glossary-def">A reconciliation between opening/closing SOFP balances of financing liabilities, distinguishing cash-flow-driven from non-cash changes.</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Direct method</div><div class="glossary-def">Discloses major classes of gross cash receipts and gross cash payments for operating activities.</div></div>
+      </div>
+      <div class="card cn">
+        <div class="glossary-item"><div class="glossary-term">Indirect method</div><div class="glossary-def">Adjusts surplus/deficit for non-cash items and investing/financing effects to derive operating cash flow.</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Economic entity</div><div class="glossary-def">A controlling entity and its controlled entities, for financial reporting purposes.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="litem"><span class="badge bs">Cash Flow</span> Cash flow statement</span>
+      <span class="litem"><span class="badge bp">Notes</span> Notes to the financial statements</span>
+    </div>
+  </StandardPageLayout>

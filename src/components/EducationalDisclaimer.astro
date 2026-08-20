@@ -1,0 +1,40 @@
+---
+/*
+  EducationalDisclaimer
+
+  A subtle footnote-style disclaimer that appears near the bottom of
+  educational standard pages.
+
+  Props:
+  - text?: string — custom disclaimer text
+
+  Example:
+    <EducationalDisclaimer />
+*/
+
+interface Props {
+  text?: string;
+}
+
+const { text } = Astro.props;
+
+const defaultText =
+  "This page is an educational summary and should be read alongside the official IFRS Accounting Standards issued by the IASB.";
+---
+
+<p class="educational-disclaimer">
+  {text ?? defaultText}
+</p>
+
+<style>
+  .educational-disclaimer {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin: var(--space-3xl) 0 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    text-align: left;
+  }
+</style>

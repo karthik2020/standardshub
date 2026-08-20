@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPSAS 33 — First-time Adoption of Accrual Basis IPSAS | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .eg  { margin-bottom: 7px; }
+  .egl { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; margin-bottom: 3px; }
+  .entry { display: flex; align-items: flex-start; gap: 4px; margin-bottom: 4px; }
+  .dr { font-size: 11px; font-weight: 500; color: var(--color-text-info);   min-width: 14px; padding-top: 1px; }
+  .cr { font-size: 11px; font-weight: 500; color: var(--color-text-danger); min-width: 14px; padding-top: 1px; padding-left: 6px; }
+  .etxt { font-size: 11px; color: var(--color-text-primary); flex: 1; line-height: 1.4; }
+  .badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .bc { background: #f3e8ff; color: #7e22ce; }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">IPSAS 33 — First-time Adoption of Accrual Basis International Public Sector Accounting Standards</div>
+      <div class="hub-sub">Extended reference poster · Full Handbook structure · Statement mapping · Related standards</div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <a href="#s1">1. Objective, Scope &amp; Out-of-Scope Circumstances</a>
+    <a href="#s2">2. Key Definitions</a>
+    <a href="#s3">3. The Opening Statement of Financial Position</a>
+    <a href="#s4">4. General Recognition &amp; Accounting Policy Principles</a>
+    <a href="#s5">5. Three-Year Relief — Assets &amp; Liabilities Not Recognized</a>
+    <a href="#s6">6. Three-Year Relief — Revenue &amp; Transfer Expenses</a>
+    <a href="#s7">7. Deemed Cost — the Core Transitional Tool</a>
+    <a href="#s8">8. Deemed Cost — Specific Applications</a>
+    <a href="#s9">9. Exemptions Not Affecting Fair Presentation</a>
+    <a href="#s10">10. Disclosure During the Period of Transition</a>
+    <a href="#s11">11. Worked Example — Deemed Cost of Investment Property</a>
+    <a href="#s12">12. Effective Date &amp; Amendment Timeline</a>
+    <a href="#s13">13. Relationship to IFRS 1</a>
+    <a href="#s14">14. Statement / Process Mapping</a>
+    <a href="#s15">15. Related Standards</a>
+    <a href="#s16">16. Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 — OBJECTIVE, SCOPE & OUT-OF-SCOPE CIRCUMSTANCES ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; Out-of-Scope Circumstances (paras. 1–6)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Objective — a bridge, not a permanent home</div>
+      <div class="principle">Guides a FIRST-TIME ADOPTER preparing financial statements on transition to accrual basis IPSAS, aiming for high-quality information that is (a) transparent about the transition, (b) a suitable starting point for accrual accounting regardless of the entity's PREVIOUS basis, and (c) worth its cost.</div>
+      <div class="note">Applies from the DATE OF ADOPTION and throughout the transition period — NOT to ordinary accounting policy changes by an entity ALREADY on accrual IPSAS (those follow IPSAS 3 instead) (para. 6).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">When this Standard does NOT apply (para. 3)</div>
+      <div class="cross-list">
+        <span>Stops presenting statements under prescribed requirements, having previously ALSO presented a set with an explicit unreserved IPSAS compliance statement</span>
+        <span>Presented statements in the PRIOR period with an explicit unreserved compliance statement</span>
+        <span>Presented such a compliant statement even if auditors modified their opinion on it</span>
+      </div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ Applying transitional exemptions in this Standard can genuinely PREVENT an entity from making an unreserved IPSAS compliance statement — full compliance resumes only once the relevant exemptions expire, or the items concerned are recognized/measured under the applicable IPSAS, whichever is earlier (para. 5).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 — KEY DEFINITIONS ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Key Definitions (para. 9)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The transition vocabulary</div>
+      <div class="glossary-item"><div class="glossary-term">Date of adoption of IPSAS</div><div class="glossary-def">The date accrual basis IPSAS is FIRST adopted — the start of the reporting period for the first transitional or first IPSAS financial statements.</div></div>
+      <div class="glossary-item"><div class="glossary-term">First-time adopter</div><div class="glossary-def">An entity adopting accrual basis IPSAS for the first time, presenting its first transitional or first IPSAS financial statements.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Period of transition</div><div class="glossary-def">The period during which a first-time adopter applies one or more exemptions in this Standard, before it can make an unreserved compliance statement.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Previous basis of accounting</div><div class="glossary-def">Whatever basis (cash, accrual, a modified version of either, or another prescribed basis) the entity used immediately before adopting accrual IPSAS.</div></div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Two DIFFERENT kinds of "first" financial statements</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.2fr 1.8fr;"><span>Term</span><span>Meaning</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1.8fr;"><span>Transitional IPSAS financial statements</span><span>Statements where the entity applies exemptions that AFFECT fair presentation — it CANNOT yet make an unreserved compliance statement</span></div>
+        <div class="tr alt" style="grid-template-columns:1.2fr 1.8fr;"><span>First IPSAS financial statements</span><span>The first statements where the entity CAN make the unreserved compliance statement — either because it never used fair-presentation-affecting exemptions, or because those exemptions have now expired</span></div>
+      </div>
+      <div class="note">The OPENING STATEMENT OF FINANCIAL POSITION is the entity's SOFP at the date of adoption — the starting point for everything that follows (§3).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 — THE OPENING STATEMENT OF FINANCIAL POSITION ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>The Opening Statement of Financial Position (paras. 15–19)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">The starting point for everything that follows</div>
+      <div class="principle">A first-time adopter MUST prepare and present an opening statement of financial position at the date of adoption — the foundation for all subsequent accrual-basis accounting (para. 15). On that date, IPSAS requirements are applied RETROSPECTIVELY, except where this Standard requires or permits otherwise (para. 16).</div>
+      <div class="dot-list">
+        <span>The SAME accounting policies apply in the opening SOFP and throughout ALL periods presented — except where a §5–§9 exemption is used (para. 17)</span>
+        <span>Policies must comply with EVERY IPSAS effective AT the date of adoption (not earlier or later versions) — though early application of a not-yet-mandatory new IPSAS is allowed if that IPSAS itself permits it (para. 19)</span>
+        <span>Using an exemption means AMENDING accounting policies once that exemption expires, or the relevant items are recognized/measured under the applicable IPSAS (whichever is earlier) (para. 18)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 — GENERAL RECOGNITION & ACCOUNTING POLICY PRINCIPLES ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>General Recognition &amp; Accounting Policy Principles (paras. 20–23)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The default rule (para. 20) — except as exempted</div>
+      <div class="check-list">
+        <span>RECOGNIZE all assets and liabilities IPSAS requires</span>
+        <span>Do NOT recognize items IPSAS doesn't permit as assets/liabilities</span>
+        <span>RECLASSIFY items recognized differently under the previous basis, if IPSAS treats them as a different type of asset/liability/net-assets-component</span>
+        <span>Apply IPSAS in MEASURING everything recognized</span>
+      </div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Where the adjustments land</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:8px;">Accounting policy differences between the new and previous basis produce adjustments arising from PRE-ADOPTION transactions/events/conditions. These go DIRECTLY to the opening balance of ACCUMULATED SURPLUS OR DEFICIT (or another net assets/equity category, if appropriate) — recognized in the period the items are recognized/measured, at the EARLIEST period presented (para. 21).</div>
+      <div class="note">Estimates made under IPSAS at the date of adoption must be CONSISTENT with those made under the previous basis (after adjusting for differing accounting policies), unless there's objective evidence those earlier estimates were in error (para. 23).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 — THREE-YEAR RELIEF: ASSETS & LIABILITIES NOT RECOGNIZED ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Three-Year Transitional Relief — Assets &amp; Liabilities (paras. 33–41B)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">The headline exemption — AFFECTS fair presentation</div>
+      <div class="formula-box">
+        <div class="f-eq">A first-time adopter is NOT REQUIRED to recognize and/or measure the following, for up to THREE YEARS from the date of adoption (para. 36)</div>
+      </div>
+      <div class="dot-list">
+        <span>Inventories (IPSAS 12) · Investment property (IPSAS 16) · PP&amp;E (IPSAS 45)</span>
+        <span>Defined benefit plans / other long-term employee benefits (IPSAS 39) — the obligation AND any related plan assets must be recognized TOGETHER, not selectively (para. 37)</span>
+        <span>Biological assets and agricultural produce (IPSAS 27) · Intangible assets (IPSAS 31)</span>
+        <span>Right-of-use assets and related lease liabilities (IPSAS 43)</span>
+        <span>Service concession assets and related liabilities, under EITHER model (IPSAS 32)</span>
+        <span>Financial instruments (IPSAS 41) · Social benefits (IPSAS 42)</span>
+      </div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ This exemption CANNOT be applied by analogy to other items not on this list (para. 33). A first-time adopter is ENCOURAGED, but not required, to comply in full as soon as possible (para. 34) — and while an item remains unrecognized, its ASSOCIATED presentation/disclosure requirements don't apply either (para. 35, §10).</div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card cn span2">
+      <div class="ctitle cn">Two flavors of relief, and their knock-on effects</div>
+      <div class="dot-list">
+        <span>NEVER recognized under the previous basis → the whole three-year window to recognize/measure per para. 36</span>
+        <span>ALREADY recognized under the previous basis → no REQUIREMENT to change the measurement policy for three years either (para. 38) — existing (even non-IPSAS-compliant) policies may continue</span>
+        <span>Deferring a FINANCIAL ASSET's recognition under this exemption also defers related REVENUE recognition under IPSAS 47 (para. 41); deferring a financial LIABILITY similarly defers related expense recognition under IPSAS 48 (para. 41B)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 — THREE-YEAR RELIEF: REVENUE & TRANSFER EXPENSES ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Three-Year Relief — Revenue &amp; Transfer Expenses, Plus Consequential Exemptions (paras. 42–48)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Revenue and transfer expenses — incremental adoption allowed</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">A first-time adopter needn't change its revenue (IPSAS 47) or transfer-expense (IPSAS 48) accounting policy for three years — and may apply the new Standards INCREMENTALLY, class by class (paras. 42–43). Example: property tax revenue might be IPSAS 47-compliant from day one, while income tax or binding-arrangement revenue takes the full three years to model reliably.</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Consequential relief for related Standards</div>
+      <div class="dot-list">
+        <span><strong style="font-weight:500">IPSAS 5 (Borrowing Costs)</strong> — no requirement to capitalize borrowing costs on qualifying assets under the allowed-alternative treatment while those assets remain outside the §5 relief (para. 44)</span>
+        <span><strong style="font-weight:500">IPSAS 43 (Leases)</strong> — deferring PP&amp;E/investment property/intangible/service-concession recognition under §5 automatically defers lease recognition too, since the underlying asset framework isn't yet in place (para. 46)</span>
+        <span><strong style="font-weight:500">IPSAS 19 (Provisions)</strong> — similar consequential relief where PP&amp;E recognition is deferred (para. 48)</span>
+      </div>
+      <div class="note">These consequential exemptions exist because several Standards' mechanics are INTERDEPENDENT — deferring one naturally defers others that build on it.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 — DEEMED COST: THE CORE TRANSITIONAL TOOL ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Deemed Cost — the Core Transitional Tool (paras. 64–70)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">What deemed cost solves</div>
+      <div class="formula-box">
+        <div class="f-eq">Deemed cost = a substitute for acquisition cost or depreciated cost, used ONLY where reliable historical cost information is genuinely UNAVAILABLE</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">May be elected for inventory, investment property (if the entity uses IPSAS 16's historical cost model), right-of-use assets, most intangible assets, financial instruments, service concession assets, and PP&amp;E (para. 64, 64A). Subsequent depreciation/amortization is based on the DEEMED cost, as if it WERE the acquisition cost.</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Not a revaluation — and where the adjustment lands</div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ Using deemed cost is explicitly NOT treated as a revaluation, or as adopting the current value model for subsequent measurement under other Standards (para. 66) — it's purely a ONE-TIME transitional measurement device. The resulting adjustment is recognized DIRECTLY in accumulated surplus or deficit, in the period the deemed cost is determined (whether at the date of adoption, or later within the three-year window) (IG39, para. 76).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 — DEEMED COST: SPECIFIC APPLICATIONS ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Deemed Cost — Specific Applications (paras. 64A, 67–75)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">PP&amp;E — current operational value or fair value</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Follows the SAME primary-objective test as IPSAS 45 itself: held for OPERATIONAL capacity → current operational value; held for FINANCIAL capacity → fair value (para. 64A). A PRE-EXISTING revaluation under the previous basis can be used as deemed cost if it was broadly comparable to the appropriate current-value basis at the time (para. 67) — including EVENT-DRIVEN valuations from a specific past event, whether that measurement date falls before OR during the transition period (para. 68).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Non-exchange acquisitions &amp; investments in controlled entities</div>
+      <div class="dot-list">
+        <span>An asset acquired via a NON-EXCHANGE transaction may use fair value (or current operational value/fair value for PP&amp;E) as deemed cost, where reliable cost data is unavailable (para. 71)</span>
+        <span>Investments in controlled entities/joint ventures/associates, measured at cost in SEPARATE financial statements (IPSAS 34) → elect COST or DEEMED COST (fair value at the date of adoption) (para. 72)</span>
+      </div>
+      <div class="note">If observable current-value inputs aren't available for inventory, specialized investment property, or PP&amp;E, other IPSAS 46 measurement techniques may be used to determine deemed cost (para. 70).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 — EXEMPTIONS NOT AFFECTING FAIR PRESENTATION ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Exemptions That Do NOT Affect Fair Presentation (paras. 63, 153)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">A second, gentler category — deemed cost lives here</div>
+      <div class="principle">Paragraphs 64–134 house a SEPARATE category of exemptions (including the deemed-cost provisions in §7–§8) that DO NOT prevent an entity from making an unreserved IPSAS compliance statement. An entity is REQUIRED to adopt some, and MAY ELECT others — but, like the §5 exemptions, none may be applied by analogy to items outside their stated scope (para. 63).</div>
+      <div class="note">Where a first-time adopter had ALREADY adopted transitional provisions under OTHER individual IPSAS (e.g. a Standard's own first-application relief), it continues applying THOSE until they expire — but if it instead elects THIS Standard's exemptions, the relief period cannot exceed what THIS Standard provides (para. 153).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 — DISCLOSURE DURING THE PERIOD OF TRANSITION ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Disclosure During the Period of Transition (paras. 151–152F)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Disclosure relief tracks recognition relief</div>
+      <div class="formula-box">
+        <div class="f-eq">Where a §5 three-year exemption applies to NOT recognize/measure an item → its ASSOCIATED IPSAS 1/18/other disclosure requirements don't apply EITHER, until the same trigger (expiry or recognition, whichever is earlier)</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Early voluntary disclosure is ENCOURAGED regardless (para. 152).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Current value measurement disclosures — a familiar package</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Mirrors the fair value hierarchy disclosure packages seen throughout this library (IPSAS 12, 16, 27, 31): for NON-RECURRING current operational value/fair value measurements, disclose the measurement at period end and reasons, the hierarchy level (or observable/unobservable basis), techniques/inputs used (with reasons for any technique change), and — for Level 3/unobservable-input measurements — the valuation PROCESSES used (paras. 152A–152F). Quantitative disclosures are presented in TABULAR format unless another format is clearly more appropriate.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 — WORKED EXAMPLE ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Worked Example — Deemed Cost of Investment Property (Implementation Guidance IG39)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Entity X adopts IPSAS on 1 January 20X4; deemed cost applied to investment property</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Previously recognized investment property: CU300,000. Deemed cost (fair value at adoption date): CU1,800,000. No comparative information presented.</div>
+        <div class="wk-answer">
+          <div class="td-table" style="margin-top:8px;margin-bottom:0;">
+            <div class="th" style="grid-template-columns:2fr 1fr;"><span>Investment property reconciliation</span><span>CU</span></div>
+            <div class="tr" style="grid-template-columns:2fr 1fr;"><span>Opening balance under previous basis of accounting</span><span>300,000</span></div>
+            <div class="tr alt" style="grid-template-columns:2fr 1fr;"><span>Additional value recognized per deemed cost (IPSAS 33)</span><span>1,500,000</span></div>
+            <div class="tr" style="grid-template-columns:2fr 1fr;"><span><strong>Restated opening balance, 1 Jan 20X4</strong></span><span><strong>1,800,000</strong></span></div>
+          </div>
+          <div style="margin-top:10px;">The CU1,500,000 adjustment is recognized DIRECTLY in accumulated surplus/deficit — NOT through surplus or deficit for the period. Opening net assets/equity moves from CU220,000 to a restated CU1,720,000 (accumulated surplus/deficit rises from CU210,000 to CU1,710,000; the CU10,000 "Other Reserves" balance is unaffected). The period's ordinary surplus of CU5,000 is added on top, giving a closing balance of CU1,725,000 at 31 December 20X4.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 — EFFECTIVE DATE & AMENDMENT TIMELINE ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Effective Date &amp; Amendment Timeline (paras. 153–154Q)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Amendment history at a glance</div>
+      <div class="principle">Base Standard: first IPSAS financial statements for periods beginning on/after <strong>1 January 2017</strong> — issued January 2015, one of the most heavily and consistently amended Standards in the Handbook, since EVERY new IPSAS typically adds its own transitional cross-reference here.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2.2fr;"><span>Effective</span><span>Change</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2018</span><span>Paras. 7, 8 deleted (Applicability of IPSAS); IPSAS 39 employee-benefit amendments</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2019</span><span>IPSAS 40, Public Sector Combinations amendments</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2023</span><span>IPSAS 41, Financial Instruments amendments (extensive)</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2025</span><span>IPSAS 42–48, IPSAS 50, and the Stripping Costs amendments — each adding its own three-year relief cross-reference into §5/§6</span></div>
+      </div>
+      <div class="note">A November 2020 COVID-19: Deferral of Effective Dates amendment gave jurisdictions additional transition flexibility during the pandemic period.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 — RELATIONSHIP TO IFRS 1 ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Relationship to IAS/IFRS — Comparison with IFRS 1</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">A conceptual parallel, not a direct derivation</div>
+      <div class="principle">Unlike most IPSAS, IPSAS 33 is NOT drawn from a specific IFRS Standard — the Handbook contains no "Comparison with IFRS 1" section, and no Acknowledgment tying it to that pronouncement. The IPSASB developed it independently, though IFRS 1, <em>First-time Adoption of International Financial Reporting Standards</em>, addresses a conceptually SIMILAR problem in the private sector.</div>
+      <div class="dot-list">
+        <span>IFRS 1 typically bridges a GAAP-to-GAAP transition (already-accrual entities switching frameworks); IPSAS 33 typically bridges a much LARGER leap — CASH to ACCRUAL basis entirely, for entities that may never have measured many asset/liability classes before</span>
+        <span>This scale difference explains IPSAS 33's much MORE GENEROUS relief — a full THREE-YEAR window to not recognize entire asset/liability categories, versus IFRS 1's narrower, more surgical exemptions</span>
+        <span>Both share the core "deemed cost" concept — a fair-value substitute for unavailable historical cost data — though IPSAS 33 extends it more broadly given public sector entities' frequent lack of any prior asset registers</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 — STATEMENT / PROCESS MAPPING ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Transition decision map</div>
+      <div class="dot-list">
+        <span>1. Establish the DATE OF ADOPTION and prepare an opening SOFP — the default is FULL retrospective application (§3, §4)</span>
+        <span>2. For each major asset/liability class, is reliable historical cost data AVAILABLE? If no → consider whether a THREE-YEAR relief exemption applies (§5) or DEEMED COST can be used instead (§7–§8)</span>
+        <span>3. Does the exemption chosen AFFECT fair presentation? → the entity produces TRANSITIONAL IPSAS financial statements, and cannot yet make an unreserved compliance statement (§1, §2)</span>
+        <span>4. Is the exemption one that does NOT affect fair presentation (deemed cost, and similar)? → the entity can still assert full compliance while using it (§9)</span>
+        <span>5. Track WHEN each exemption expires, or the relevant items are recognized/measured under the applicable IPSAS — that's when the entity's FIRST IPSAS financial statements arrive (§2)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card cs span2">
+      <div class="ctitle cs">Concept-to-statement mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>IPSAS 33 concept</span><span>Statement(s)</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Opening statement of financial position</span><span><span class="badge bs">SOFP</span></span><span>The starting point for accrual accounting</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Deemed cost adjustment</span><span><span class="badge be">NA/E</span></span><span>Direct to accumulated surplus/deficit, never through surplus/deficit</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Retrospective policy-change adjustments</span><span><span class="badge be">NA/E</span></span><span>Recognized at the earliest period presented</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Items covered by a 3-year relief exemption</span><span>—</span><span>Neither recognized nor disclosed, until the trigger event</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Transitional exemptions adopted, and progress toward compliance</span><span><span class="badge bp">Notes</span></span><span>Mandatory disclosure while exemptions remain in effect</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 15 — RELATED STANDARDS ============ -->
+  <div class="section-header" id="s15"><span class="num">15</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How IPSAS 33 connects across the IPSAS body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.7fr 2.2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 1</span><span>Governs the unreserved compliance statement that first-time adopters cannot yet make while using fair-presentation-affecting exemptions (§1, §2)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 3</span><span>Governs ordinary accounting policy changes AFTER first-time adoption is complete — outside this Standard's scope entirely (§1)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 5 / 19 / 43</span><span>Consequential relief flowing from the §5 asset-recognition exemptions (§6)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 12 / 16 / 27 / 31 / 32 / 39 / 41 / 42 / 45</span><span>The full list of asset/liability classes eligible for the three-year relief exemption (§5)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 34</span><span>Deemed-cost election for investments in controlled entities in separate financial statements (§8)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 46</span><span>Measurement methodology underpinning every deemed-cost application (§7, §8, §10)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 47 / 48</span><span>Revenue and transfer expense incremental-adoption relief (§6)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 16 — GLOSSARY ============ -->
+  <div class="section-header" id="s16"><span class="num">16</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Date of adoption of IPSAS</div><div class="glossary-def">The date accrual basis IPSAS is first adopted — the start of the period for the first transitional or first IPSAS financial statements.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">First-time adopter</div><div class="glossary-def">An entity adopting accrual basis IPSAS for the first time.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Deemed cost</div><div class="glossary-def">A substitute for acquisition or depreciated cost, used only when reliable historical cost data is unavailable.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Opening statement of financial position</div><div class="glossary-def">A first-time adopter's statement of financial position at the date of adoption of IPSAS.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Transitional IPSAS financial statements</div><div class="glossary-def">Statements prepared using fair-presentation-affecting exemptions — the entity cannot yet make an unreserved IPSAS compliance statement.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Previous basis of accounting</div><div class="glossary-def">The accounting basis used immediately before adopting accrual basis IPSAS.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bs">SOFP</span> Statement of financial position
+      <span class="badge be">NA/E</span> Net assets/equity (statement of changes)
+      <span class="badge bp">Notes</span> Notes to the financial statements
+    </div>
+  </div>
+
+  <div class="footer-note">IPSAS 33 — First-time Adoption of Accrual Basis International Public Sector Accounting Standards · Extended Reference Poster · Built from the 2025 IPSASB Handbook, Volume II · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

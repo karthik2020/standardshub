@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPSAS 38 — Disclosure of Interests in Other Entities | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .eg  { margin-bottom: 7px; }
+  .egl { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; margin-bottom: 3px; }
+  .entry { display: flex; align-items: flex-start; gap: 4px; margin-bottom: 4px; }
+  .dr { font-size: 11px; font-weight: 500; color: var(--color-text-info);   min-width: 14px; padding-top: 1px; }
+  .cr { font-size: 11px; font-weight: 500; color: var(--color-text-danger); min-width: 14px; padding-top: 1px; padding-left: 6px; }
+  .etxt { font-size: 11px; color: var(--color-text-primary); flex: 1; line-height: 1.4; }
+  .badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .bc { background: #f3e8ff; color: #7e22ce; }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">IPSAS 38 — Disclosure of Interests in Other Entities</div>
+      <div class="hub-sub">Extended reference poster · Full Handbook structure · Statement mapping · Related standards</div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <a href="#s1">1. Objective, Scope &amp; Out-of-Scope Interests</a>
+    <a href="#s2">2. Definitions — Interest, Structured Entity &amp; Binding Arrangement</a>
+    <a href="#s3">3. Significant Judgments, Assumptions &amp; Investment Entity Status</a>
+    <a href="#s4">4. Interests in Controlled Entities — Composition &amp; Non-Controlling Interests</a>
+    <a href="#s5">5. Restrictions, Structured Entity Risk &amp; Support Provided</a>
+    <a href="#s6">6. Ownership Changes &amp; Loss of Control</a>
+    <a href="#s7">7. Interests in Unconsolidated Controlled Entities (Investment Entities)</a>
+    <a href="#s8">8. Interests in Joint Arrangements &amp; Associates</a>
+    <a href="#s9">9. Interests in Structured Entities That Are Not Consolidated</a>
+    <a href="#s10">10. Non-Quantifiable Ownership Interests</a>
+    <a href="#s11">11. Controlling Interests Acquired with the Intention of Disposal</a>
+    <a href="#s12">12. Current Value Measurement Disclosures</a>
+    <a href="#s13">13. Effective Date &amp; Amendment Timeline</a>
+    <a href="#s14">14. Relationship to IFRS 12</a>
+    <a href="#s15">15. Statement / Process Mapping</a>
+    <a href="#s16">16. Related Standards</a>
+    <a href="#s17">17. Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 — OBJECTIVE, SCOPE & OUT-OF-SCOPE INTERESTS ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; Out-of-Scope Interests (paras. 1–4)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Objective</div>
+      <div class="principle">Requires an entity to disclose information enabling users to evaluate (a) the NATURE OF, AND RISKS associated with, its interests in controlled entities, unconsolidated controlled entities, joint arrangements and associates, and unconsolidated structured entities; and (b) the EFFECTS of those interests on financial position, financial performance, and cash flows.</div>
+      <div class="check-list">
+        <span>Applies to any entity with an interest in: controlled entities; joint arrangements; associates; or unconsolidated structured entities</span>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">What falls outside scope (para. 4)</div>
+      <div class="cross-list">
+        <span>Post-employment/long-term employee benefit plans (IPSAS 39)</span>
+        <span>An entity's OWN separate financial statements (IPSAS 34) — with two carve-backs: structured-entity interests still apply the §9 requirements if separate statements are the entity's ONLY statements; investment entities measuring ALL controlled entities at fair value still apply the investment-entity disclosures</span>
+        <span>Non-controlling participation in a joint arrangement — UNLESS it results in significant influence, or is itself a structured-entity interest</span>
+        <span>Interests accounted for under IPSAS 41 — EXCEPT associates/joint ventures fair-valued under IPSAS 36, or unconsolidated structured entity interests</span>
+      </div>
+      <div class="note">Held-for-sale/discontinued-operation classification (IPSAS 44) does NOT exempt an interest from this Standard's requirements, except in one narrow Application Guidance case (para. 3A).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 — DEFINITIONS ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Definitions — Interest, Structured Entity &amp; Binding Arrangement (para. 7)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">"Interest in another entity" — deliberately broad</div>
+      <div class="glossary-item">
+        <div class="glossary-term">Interest in another entity</div>
+        <div class="glossary-def">Involvement by binding arrangement or otherwise that EXPOSES the entity to VARIABILITY OF BENEFITS from the other entity's performance — evidenced by equity/debt holdings, or OTHER forms like funding, liquidity support, credit enhancement, and guarantees. Includes whatever gives control, joint control, or significant influence.</div>
+      </div>
+      <div class="callout info" style="margin-bottom:0;">ℹ️ A typical FUNDER/RECIPIENT or CUSTOMER/SUPPLIER relationship does NOT, by itself, create an "interest" under this Standard.</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Structured entity — a control test that looks BEYOND votes and administration</div>
+      <div class="principle">A STRUCTURED ENTITY is one DESIGNED so that the normal drivers of control DON'T apply: where administrative arrangements/legislation would normally dominate, it's designed so binding arrangements instead direct the relevant activities; where voting rights would normally dominate, it's designed so voting rights are merely administrative and binding arrangements direct the relevant activities instead.</div>
+      <div class="note">"Revenue from a structured entity" is DEFINED broadly — recurring/non-recurring fees, interest, dividends, remeasurement/derecognition gains or losses, and gains/losses from transferring assets/liabilities to the structured entity.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 — SIGNIFICANT JUDGMENTS, ASSUMPTIONS & INVESTMENT ENTITY STATUS ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Significant Judgments, Assumptions &amp; Investment Entity Status (paras. 9–16)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The overarching principle, and the judgment disclosures</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:8px;">If the specific disclosures in this Standard STILL don't meet the objective, additional information is required regardless (para. 10). An entity aggregates/disaggregates disclosures so useful information isn't OBSCURED — by either excess insignificant detail, or over-aggregation of dissimilar items (para. 11).</div>
+      <div class="check-list">
+        <span>Methodology for concluding CONTROL exists (IPSAS 35 paras. 18, 20)</span>
+        <span>Methodology for concluding JOINT CONTROL or SIGNIFICANT INFLUENCE exists</span>
+        <span>How the TYPE of joint arrangement was determined, where structured through a separate vehicle</span>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">The six counter-intuitive examples (para. 14) &amp; investment entity status</div>
+      <div class="dot-list">
+        <span>Controls an entity where the interest is NOT evidenced by equity/debt holdings</span>
+        <span>Does NOT control an entity despite holding MORE than half its voting rights</span>
+        <span>DOES control an entity despite holding LESS than half its voting rights</span>
+        <span>Is an AGENT or a PRINCIPAL</span>
+        <span>Lacks significant influence despite holding ≥20% voting rights — or HAS it despite holding &lt;20%</span>
+      </div>
+      <div class="note">Investment entities disclose the judgments behind that determination (unless meeting all three IPSAS 35 para. 61 characteristics) — and, on a STATUS CHANGE, the change itself, its reasons, and (for entities BECOMING investment entities) the fair value of newly-deconsolidated entities, any gain/loss, and its SOFPerformance line item (paras. 15–16).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 — INTERESTS IN CONTROLLED ENTITIES ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Interests in Controlled Entities — Composition &amp; Non-Controlling Interests (paras. 17–19)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The umbrella requirement (para. 17)</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Users must be able to UNDERSTAND the economic entity's composition and non-controlling interests' stake in its activities/cash flows, AND EVALUATE restrictions, structured-entity risk, ownership-change consequences, and loss-of-control consequences. Where a controlled entity's reporting date differs from the group's, disclose that date and the reason (para. 18).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Per controlled entity WITH material non-controlling interests (para. 19)</div>
+      <div class="check-list">
+        <span>Name, domicile, legal form, and operating jurisdiction</span>
+        <span>Proportion of ownership interests AND voting rights held by non-controlling interests (if different)</span>
+        <span>Surplus/deficit allocated to non-controlling interests during the period</span>
+        <span>Accumulated non-controlling interests at period-end</span>
+        <span>SUMMARIZED financial information about the controlled entity</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 — RESTRICTIONS, STRUCTURED ENTITY RISK & SUPPORT PROVIDED ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Significant Restrictions &amp; Risks From Consolidated Structured Entities (paras. 20–24)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs">
+      <div class="ctitle cs">Significant restrictions (para. 20)</div>
+      <div class="dot-list">
+        <span>Binding-arrangement restrictions on transferring cash/assets WITHIN the economic entity (statutory, contractual, regulatory)</span>
+        <span>Guarantees/requirements restricting DIVIDENDS, distributions, loans, or advances to/from group members</span>
+        <span>The nature/extent to which non-controlling interests' PROTECTIVE RIGHTS restrict asset access or liability settlement (e.g. a controlling entity obliged to settle a controlled entity's liabilities BEFORE its own)</span>
+        <span>The CARRYING AMOUNTS of assets/liabilities subject to these restrictions</span>
+      </div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Structured entity risk &amp; VOLUNTARY support provided</div>
+      <div class="dot-list">
+        <span>Terms of any binding arrangement that COULD require financial support to a consolidated structured entity, including loss-exposing events (liquidity arrangements, credit rating triggers) (para. 21)</span>
+        <span>Support provided WITHOUT a binding obligation — type, amount, and REASONS (para. 22)</span>
+        <span>Where such voluntary support RESULTED in the entity gaining control of a previously-unconsolidated structured entity → explain the factors behind that outcome (para. 23)</span>
+        <span>Any CURRENT intentions to provide future support (para. 24)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 — OWNERSHIP CHANGES & LOSS OF CONTROL ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Consequences of Ownership Changes &amp; Loss of Control (paras. 25–26)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Ownership change WITHOUT losing control</div>
+      <div class="formula-box">
+        <div class="f-eq">Present a SCHEDULE showing the effect on net assets/equity attributable to the controlling entity's owners, for any ownership-interest change that does NOT result in losing control</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Directly operationalizes the IPSAS 35 §11 mechanic (adjusting controlling/non-controlling carrying amounts) into a disclosed schedule (para. 25).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Losing control during the period</div>
+      <div class="dot-list">
+        <span>The gain or loss calculated under IPSAS 35 para. 52</span>
+        <span>The PORTION of that gain/loss attributable to remeasuring any RETAINED investment at fair value</span>
+        <span>The SOFPerformance line item(s) where the gain/loss is recognized (para. 26)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 — INTERESTS IN UNCONSOLIDATED CONTROLLED ENTITIES (INVESTMENT ENTITIES) ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Interests in Unconsolidated Controlled Entities — Investment Entities (paras. 27–34)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Per unconsolidated controlled entity (paras. 27–29)</div>
+      <div class="check-list">
+        <span>DISCLOSE the fact that the IPSAS 35 fair value exception was applied</span>
+        <span>Name, domicile, legal form, operating jurisdiction</span>
+        <span>Proportion of ownership interest AND voting rights (if different)</span>
+      </div>
+      <div class="note">Where an investment entity CONTROLS another investment entity, it provides the SAME disclosures for entities controlled by ITS OWN controlled investment entity — satisfiable by including that entity's own financial statements (para. 29).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Restrictions, support, and the non-investment-entity parent</div>
+      <div class="dot-list">
+        <span>Significant restrictions on the unconsolidated controlled entity's ability to transfer funds BACK to the investment entity (para. 30(a))</span>
+        <span>Current commitments/intentions to provide financial or other support (para. 30(b))</span>
+        <span>VOLUNTARY support actually provided, with type/amount/reasons (para. 31); structured-entity-specific binding arrangement terms (para. 32); explanation where voluntary support led to gaining control (para. 33)</span>
+      </div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ A controlling entity that is NOT ITSELF an investment entity, but controls one, discloses ALL the SAME §7 information in respect of its investment entity subsidiary's own unconsolidated controlled entities (para. 34).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 — INTERESTS IN JOINT ARRANGEMENTS & ASSOCIATES ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Interests in Joint Arrangements &amp; Associates (paras. 35–39)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Per MATERIAL joint arrangement/associate (para. 36)</div>
+      <div class="check-list">
+        <span>Name, nature of relationship (activities, strategic significance), domicile, legal form, jurisdiction</span>
+        <span>Proportion of ownership interest/participating share (and voting rights, if different)</span>
+        <span>For joint ventures/associates specifically: equity method or fair value measurement; SUMMARIZED financial information; and quoted fair value of the investment, if a market price exists</span>
+      </div>
+      <div class="note">For individually IMMATERIAL joint ventures/associates: AGGREGATE financial information — joint ventures and associates disclosed SEPARATELY from each other (para. 36(c)). Investment entities are exempt from the summarized-financial-information and aggregate disclosures (para. 37).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Restrictions, reporting-date mismatches, and unrecognized losses (para. 38)</div>
+      <div class="dot-list">
+        <span>Significant restrictions on funds transfer BACK to the entity (borrowing arrangements, regulatory requirements, investor binding arrangements)</span>
+        <span>Reporting-date mismatch: the joint venture/associate's own period-end, and WHY a different date is used</span>
+        <span>CUMULATIVE unrecognized share of losses, where the entity has stopped recognizing further losses under the IPSAS 36 deficit floor</span>
+      </div>
+      <div class="note">Risk disclosures (para. 39): joint-venture COMMITMENTS shown separately from other commitments; CONTINGENT LIABILITIES relating to joint venture/associate interests (including jointly-incurred shares) shown separately, per IPSAS 19, unless loss is remote.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 — INTERESTS IN STRUCTURED ENTITIES THAT ARE NOT CONSOLIDATED ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Interests in Structured Entities That Are Not Consolidated (paras. 40–48)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Nature of interests, and past involvement</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:8px;">Covers even PAST involvement (e.g. sponsorship) where the entity has NO current binding arrangement with the structured entity, if that past involvement still exposes it to risk (para. 41). Investment entities already providing §7 disclosures for a controlled-but-unconsolidated structured entity are exempt here (para. 42).</div>
+      <div class="dot-list">
+        <span>Qualitative AND quantitative information: nature, purpose, size, activities, and financing of the structured entity (para. 43)</span>
+        <span>For SPONSORED structured entities where no current interest exists: how "sponsored" was determined; revenue earned from them during the period (by type); and the carrying amount of assets transferred to them during the period — in TABULAR format (paras. 44–45)</span>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Nature of risks — a tabular risk summary (para. 46)</div>
+      <div class="check-list">
+        <span>Carrying amounts of recognized assets/liabilities relating to the interests, and their SOFP line items</span>
+        <span>MAXIMUM exposure to loss (with methodology) — or, if unquantifiable, that fact and why</span>
+        <span>A COMPARISON of carrying amounts against maximum exposure to loss</span>
+      </div>
+      <div class="note">Voluntary support provided during the period — WITHOUT a binding obligation — triggers the same type/amount/reasons disclosure as §5's consolidated-entity equivalent (para. 47).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 — NON-QUANTIFIABLE OWNERSHIP INTERESTS ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Non-Quantifiable Ownership Interests (paras. 49–50)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">A public-sector-specific catch-all — interests too poorly defined to measure</div>
+      <div class="principle">Some public sector ownership interests genuinely CAN'T be reliably measured (recall IPSAS 34/36's "poorly defined equity structure" carve-out from equity accounting) — but that doesn't exempt them from ALL disclosure. This Standard requires enough information for users to understand their NATURE and EXTENT.</div>
+      <div class="dot-list">
+        <span>Per MATERIAL non-quantifiable ownership interest: the NAME of the entity, and the NATURE of the ownership interest (para. 50)</span>
+      </div>
+      <div class="note">This closes a gap left open by IPSAS 34/36/37, which apply only to QUANTIFIABLE ownership interests — ensuring genuinely unquantifiable public sector "investments" (like the hospital-funding example in IPSAS 36 §1) still get SOME disclosure, even without recognition or measurement.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 — CONTROLLING INTERESTS ACQUIRED WITH THE INTENTION OF DISPOSAL ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Controlling Interests Acquired with the Intention of Disposal (paras. 51–57)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">The "government rescue" scenario — a genuinely distinctive public sector disclosure</div>
+      <div class="principle">Applies where, at the point control AROSE, the entity (other than an investment entity) already INTENDED to dispose of the interest — and, at the reporting date, still has an ACTIVE intention to dispose (para. 51).</div>
+      <div class="dot-list">
+        <span><strong style="font-weight:500">Failure intervention:</strong> a government may intervene to prevent a financial institution (or similar entity) from failing, obtaining control WITHOUT wanting to keep it — intending instead to sell or otherwise dispose, sometimes after a multi-year restructuring, potentially retaining residual assets/liabilities at the end (para. 53)</span>
+        <span><strong style="font-weight:500">Policy implementation:</strong> a government may direct an entity to acquire interests in OTHER entities purely to REDISTRIBUTE them, as a policy tool (para. 54)</span>
+      </div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ Even though disposal is intended, the entity is STILL CONSOLIDATED for every period control exists — which can have a MATERIAL impact on the consolidated statements. This disclosure package exists precisely because that consolidation might otherwise look permanent to a reader unaware of the disposal intention.</div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card ci span2">
+      <div class="ctitle ci">Required disclosures, at EVERY reporting date until disposal (or change of intention) (para. 55)</div>
+      <div class="check-list">
+        <span>Name and a description of the controlled entity's KEY ACTIVITIES</span>
+        <span>The RATIONALE for acquiring the controlling interest, and the factors establishing that control exists</span>
+        <span>The IMPACT of consolidation on the group statements — effect on assets, liabilities, revenue, expenses, net assets/equity</span>
+        <span>Current disposal STATUS — expected method and timing</span>
+      </div>
+      <div class="note">In the period the entity ACTUALLY disposes (or CEASES to intend disposal), disclose that fact and the effect on the consolidated statements (para. 56). Cross-referencing to other disclosures that already satisfy these requirements is permitted (para. 57).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 — CURRENT VALUE MEASUREMENT DISCLOSURES ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Current Value Measurement Disclosures (paras. 57A–57D)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">The familiar fair value hierarchy package — for interests in other entities</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:8px;">Mirrors the fair value disclosure packages seen throughout this library (IPSAS 12, 16, 27, 31, 33) — applied here specifically to interests in other entities measured at fair value in the SOFP after initial recognition, including measurements based on IPSAS 46.</div>
+      <div class="dot-list">
+        <span>Per CLASS of fair-valued interest: the measurement at period-end (recurring or non-recurring), with reasons for non-recurring measurements</span>
+        <span>The fair value HIERARCHY LEVEL (1, 2, or 3), in its entirety</span>
+        <span>For unobservable-input (Level 3) measurements: the technique(s) and inputs used, with any technique CHANGE and its reason</span>
+        <span>For Level 3 recurring measurements: the EFFECT on surplus/deficit or net assets/equity for the period</span>
+      </div>
+      <div class="note">Where existing disclosures (this Standard plus others) don't fully meet the para. 57A objectives, additional information is required regardless (para. 57B).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 — EFFECTIVE DATE & AMENDMENT TIMELINE ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Effective Date &amp; Amendment Timeline (paras. 61–61D)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Amendment history at a glance</div>
+      <div class="principle">Base Standard: periods beginning on/after <strong>1 January 2017</strong> — issued alongside IPSAS 34, 35, 36, and 37.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2.2fr;"><span>Effective</span><span>Change</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2018</span><span>Paras. 5, 6 deleted (Applicability of IPSAS); para. 4 amended — IPSAS 39, Employee Benefits</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2023</span><span>Para. 4 — IPSAS 41, Financial Instruments</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2025 (est.)</span><span>Paras. AG12, AG16 amended; new paras. 3A, AG16A — IPSAS 44, Non-current Assets Held for Sale and Discontinued Operations (May 2022)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 — RELATIONSHIP TO IFRS 12 ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Relationship to IAS/IFRS — Comparison with IFRS 12</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — IPSAS 38 vs IFRS 12</div>
+      <div class="principle">IPSAS 38 is drawn primarily from IFRS 12 (issued 2011, amendments to 31 December 2014), <em>Disclosure of Interests in Other Entities</em>.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1.9fr;"><span>Topic</span><span>Difference</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Terminology</span><span>"Net assets/equity," "economic entity," "controlling entity," "controlled entity," "revenue" (IPSAS 38) vs "equity," "group," "parent," "subsidiary," "income" (IFRS 12)</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Structured entity definition</span><span>IPSAS 38 EXPLICITLY acknowledges the differing ways control arises in the public sector (§2) — IFRS 12 has no equivalent public-sector framing</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Non-investment-entity parent of an investment entity</span><span>IPSAS 38 REQUIRES §7 disclosures; IFRS 12 has NO equivalent, because IFRS 10 simply requires such a parent to CONSOLIDATE the investment entity subsidiary instead</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Non-quantifiable ownership interests</span><span>IPSAS 38 REQUIRES disclosure (§10); IFRS 12 has no equivalent</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Controlling interests acquired with intention of disposal</span><span>IPSAS 38 requires this DEDICATED disclosure package (§11) — genuinely unique to the public sector's "rescue and dispose" pattern; IFRS 12 has none. (IFRS 5 addresses held-for-sale assets generally, but not this specific scenario.)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 15 — STATEMENT / PROCESS MAPPING ============ -->
+  <div class="section-header" id="s15"><span class="num">15</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Disclosure decision map — which package applies to which interest?</div>
+      <div class="dot-list">
+        <span>1. Disclose the significant JUDGMENTS behind every control/joint-control/significant-influence/investment-entity determination (§3)</span>
+        <span>2. CONTROLLED entity, consolidated? → composition, non-controlling interests, restrictions, structured-entity risk, ownership-change and loss-of-control consequences (§4–§6)</span>
+        <span>3. CONTROLLED entity, UNCONSOLIDATED (investment entity exception)? → the §7 package instead</span>
+        <span>4. JOINT ARRANGEMENT or ASSOCIATE? → the §8 package — nature, extent, financial effects, restrictions, and risk</span>
+        <span>5. STRUCTURED ENTITY, not consolidated? → the §9 package — nature and risk, including past sponsorship exposure</span>
+        <span>6. NON-QUANTIFIABLE ownership interest? → the minimal §10 disclosure (name and nature only)</span>
+        <span>7. Controlling interest acquired WITH DISPOSAL INTENT, still held? → the dedicated §11 package, every period until disposal</span>
+        <span>8. Any interest measured at FAIR VALUE in the SOFP? → the §12 hierarchy disclosures on top of whichever package above applies</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card cs span2">
+      <div class="ctitle cs">Concept-to-statement mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>IPSAS 38 concept</span><span>Statement(s)</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>All disclosure requirements in this Standard</span><span><span class="badge bp">Notes</span></span><span>IPSAS 38 is itself a disclosure-only Standard</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Ownership-change-without-loss-of-control schedule</span><span><span class="badge be">NA/E</span> <span class="badge bp">Notes</span></span><span>Effect on controlling-entity-owner net assets/equity</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Loss-of-control gain/loss</span><span><span class="badge bp">SOFPerf</span> <span class="badge bp">Notes</span></span><span>Amount and SOFPerformance line item disclosed</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Structured entity support/exposure tables</span><span><span class="badge bp">Notes</span></span><span>Tabular format required unless another format is more appropriate</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Disposal-intent controlled entity impact</span><span><span class="badge bp">Notes</span></span><span>Every reporting date until disposal or change of intention</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 16 — RELATED STANDARDS ============ -->
+  <div class="section-header" id="s16"><span class="num">16</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How IPSAS 38 connects across the IPSAS body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.7fr 2.2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 19</span><span>Governs contingent liability disclosure for joint venture/associate interests, referenced directly (§8)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 20</span><span>Related party principles intersect with the "sponsored structured entity" and voluntary support disclosures (§5, §9)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 34</span><span>Structured-entity and investment-entity disclosures still apply even when separate statements are an entity's only statements (§1)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 35</span><span>THE source Standard for control, non-controlling interests, ownership changes, loss of control, and investment entities — this Standard discloses what THAT one recognizes (§3, §4, §6, §7)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 36</span><span>Source of the equity method, significant influence, and the deficit-floor mechanic disclosed in §8</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 37</span><span>Source of joint arrangement classification, disclosed via §8's requirements</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 41</span><span>Governs interests accounted for as financial instruments, largely outside this Standard's scope (§1)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 44</span><span>Held-for-sale/discontinued-operations classification interacts with, but doesn't exempt from, this Standard's requirements (§1)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 46</span><span>Fair value hierarchy methodology underlying the §12 disclosure package</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 17 — GLOSSARY ============ -->
+  <div class="section-header" id="s17"><span class="num">17</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Interest in another entity</div><div class="glossary-def">Involvement exposing an entity to variability of benefits from another entity's performance.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Structured entity</div><div class="glossary-def">An entity designed so that voting rights or administrative arrangements are not the dominant factor in deciding control.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Non-quantifiable ownership interest</div><div class="glossary-def">An ownership interest that cannot be reliably measured, and so falls outside IPSAS 34/36/37's scope.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Revenue from a structured entity</div><div class="glossary-def">Fees, interest, dividends, remeasurement/derecognition gains or losses, and asset-transfer gains or losses from a structured entity.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bp">SOFPerf</span> Statement of financial performance
+      <span class="badge be">NA/E</span> Net assets/equity (statement of changes)
+      <span class="badge bp">Notes</span> Notes to the financial statements
+    </div>
+  </div>
+
+  <div class="footer-note">IPSAS 38 — Disclosure of Interests in Other Entities · Extended Reference Poster · Built from the 2025 IPSASB Handbook, Volume II · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

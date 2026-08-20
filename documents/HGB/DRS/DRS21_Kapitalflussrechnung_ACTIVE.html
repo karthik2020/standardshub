@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DRS 21 — Kapitalflussrechnung | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb; --color-background-tertiary: #f3f4f6; --color-background-info: #eff6ff;
+    --color-background-success: #f0fdf4; --color-background-warning: #fffbeb;
+    --color-border-tertiary: #e5e7eb; --color-border-info: #3b82f6; --color-border-success: #22c55e; --color-border-warning: #f59e0b;
+    --color-text-primary: #111827; --color-text-secondary: #374151; --color-text-tertiary: #9ca3af;
+    --color-text-info: #2563eb; --color-text-success: #16a34a; --color-text-warning: #b45309;
+    --border-radius-lg: 10px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 980px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .hub { text-align: center; padding: 14px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); margin-bottom: 10px; }
+  .hub-title { font-size: 17px; font-weight: 600; }
+  .hub-sub { font-size: 11px; color: var(--color-text-tertiary); margin-top: 4px; }
+  .status-badge { display: inline-block; margin-top: 8px; padding: 4px 12px; border-radius: 14px; font-size: 11px; font-weight: 600; background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 12px 0 20px; }
+  .toc a { font-size: 10px; font-weight: 500; padding: 4px 10px; border-radius: 12px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 22px 0 10px; }
+  .section-header .num { font-size: 10px; font-weight: 700; color: #fff; background: var(--color-text-info); width: 20px; height: 20px; border-radius: 5px; display: flex; align-items: center; justify-content: center; }
+  .section-header h2 { font-size: 13px; font-weight: 600; margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .span2 { grid-column: span 2; }
+  .card { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 12px 14px; background: var(--color-background-secondary); }
+  .card.info { border-left: 3px solid var(--color-border-info); }
+  .card.warn { border-left: 3px solid var(--color-border-warning); }
+  .ctitle { font-size: 12px; font-weight: 600; margin-bottom: 6px; }
+  .principle { font-size: 11px; color: var(--color-text-secondary); line-height: 1.55; }
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 9px 11px; background: var(--color-background-info); }
+  .worked .wk-title { font-size: 10.5px; font-weight: 600; color: var(--color-text-info); margin-bottom: 4px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.55; }
+  .worked .wk-answer { margin-top: 5px; padding-top: 5px; border-top: 1px dashed var(--color-border-info); font-size: 11px; }
+  .check-list span { display: block; padding-left: 12px; position: relative; font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 9px; top: 2px; font-weight: 700; }
+  .footer-note { margin-top: 18px; padding: 10px 14px; background: var(--color-background-tertiary); border-radius: 8px; font-size: 10px; color: var(--color-text-tertiary); text-align: center; }
+  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } .span2 { grid-column: span 1; } }
+</style>
+</head>
+<body>
+
+  <div class="hub">
+    <div class="hub-title">DRS 21 — Kapitalflussrechnung</div>
+    <div class="hub-sub">Cash flow statement — unified standard with sector-specific annexes</div>
+    <div class="status-badge">✅ ACTIVE — successor to DRS 2, 2-10, 2-20</div>
+  </div>
+
+  <div class="toc">
+    <a href="#s1">Scope</a><a href="#s2">Structure</a><a href="#s3">Methods</a><a href="#s4">Worked example</a><a href="#s5">IFRS</a>
+  </div>
+
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Scope — Elaborating §297(1) HGB's Cash Flow Requirement</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card info span2">
+      <div class="ctitle">A single unified standard, not three separate documents</div>
+      <div class="principle">DRS 21 replaced the earlier three-document cluster (general DRS 2, plus credit-institution DRS 2-10 and insurance DRS 2-20, both covered in the withdrawn tier) with ONE standard containing dedicated internal annexes for the sector-specific adaptations — elaborating the Kapitalflussrechnung mandatory content §297(1) HGB requires for capital-market-oriented parents (and voluntary for others), established in detail in the earlier HGB poster series.</div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s2"><span class="num">2</span><h2>The Three-Category Structure</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card">
+      <div class="ctitle">Operating, investing, financing</div>
+      <div class="check-list">
+        <span>Cash flow from operating activities (laufende Geschäftstätigkeit)</span>
+        <span>Cash flow from investing activities (Investitionstätigkeit)</span>
+        <span>Cash flow from financing activities (Finanzierungstätigkeit)</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="ctitle">Sector-specific adaptations (annexes)</div>
+      <div class="principle">Credit institutions present cash flows reflecting the trading-book netting concept established in the earlier HGB credit institutions poster; insurers present cash flows reflecting their own technical-provision-dominated balance sheet structure — both genuinely different from an ordinary trading/manufacturing enterprise's own three-category presentation.</div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Direct vs. Indirect Method — Both Permitted, One Preferred</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card warn span2">
+      <div class="ctitle">A genuine choice, with a stated preference</div>
+      <div class="principle">DRS 21 permits BOTH the direct method (showing actual gross cash receipts and payments) and the indirect method (starting from net income and adjusting for non-cash items) for the operating activities section — while explicitly RECOMMENDING the indirect method as the more common and practically manageable approach, particularly given how it more naturally reconciles to the Konzern-GuV already prepared. In practice, the vast majority of German groups use the indirect method.</div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Worked Example — Reconciling Net Income to Operating Cash Flow</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card span2">
+      <div class="worked">
+        <div class="wk-title">Building the indirect-method operating section</div>
+        <div class="wk-body">A group reports €5,000,000 net income for the year, including €800,000 of depreciation/amortisation (a non-cash expense), a €300,000 increase in trade receivables (cash NOT yet collected), and a €150,000 increase in trade payables (cash NOT yet paid).</div>
+        <div class="wk-answer">Operating cash flow = €5,000,000 + €800,000 (add back non-cash depreciation) − €300,000 (increase in receivables reduces cash) + €150,000 (increase in payables preserves cash) = <strong>€5,650,000</strong> — reconciling accrual-basis net income to the group's own genuine cash generation for the period.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Relationship to IFRS (IAS 7)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card span2">
+      <div class="ctitle">One of the strongest convergence points in the entire DRS library</div>
+      <div class="principle">DRS 21's three-category structure and direct/indirect method choice closely mirror IAS 7 in almost every material respect — genuinely one of the cleanest convergence points this whole poster series (HGB and DRS combined) has documented, reflecting how the cash flow statement's own underlying logic (cash is cash, regardless of accounting framework) leaves comparatively little room for genuine national divergence.</div>
+    </div>
+  </div>
+
+  <div class="footer-note">DRS 21 — Kapitalflussrechnung · Part D — DRS Library · Active Standard, successor to DRS 2 (+2-10, 2-20)</div>
+
+</body>
+</html>

@@ -1,0 +1,250 @@
+﻿---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import metadata from "../../data/standards/ias/ias6.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope & Applicability" },
+        { id: "s3", label: "The Historical Cost Weakness" },
+        { id: "s4", label: "Encouraged, Not Mandated, Disclosure" },
+        { id: "s5", label: "Approaches Considered" },
+        { id: "s6", label: "Why No Single Method Was Mandated" },
+        { id: "s7", label: "The Broader 1970s-80s Inflation Debate" },
+        { id: "s8", label: "Why IAS 6 Was Withdrawn" },
+        { id: "s9", label: "Disclosure Requirements" },
+        { id: "s10", label: "Critical Judgments & Estimates" },
+        { id: "s11", label: "IAS 6 vs Modern IAS 29" },
+        { id: "s12", label: "Statement Mapping" },
+        { id: "s13", label: "Related Standards" },
+        { id: "s14", label: "Quick-Reference Glossary" },
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="withdrawn"
+    explanation="IAS 6 (issued 1977) was a genuinely transitional standard responding to the high-inflation environment of the 1970s, encouraging (but not mandating) supplementary disclosures reflecting the effects of changing prices. It was withdrawn in 1989, replaced in substance by the more rigorous IAS 15 Information Reflecting the Effects of Changing Prices (itself later withdrawn in 2003) and, for hyperinflationary economies specifically, IAS 29."
+    historical="It is retained here for historical reference. For current requirements addressing price-level distortion, always apply IAS 29 Financial Reporting in Hyperinflationary Economies."
+    link="/ias/ias29"
+    linkText="IAS 29 Financial Reporting in Hyperinflationary Economies"
+  />
+
+  <div class="wrap">
+    <!-- ============ SECTION 1 ============ -->
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Historical cost's most fundamental weakness</div>
+        <div class="principle">Historical cost accounting, by design, measures assets and transactions at the price paid at the time of acquisition. In periods of significant inflation, this can badly distort the Conceptual Framework's faithful representation objective — a factory purchased decades ago for a fraction of its current replacement cost appears misleadingly "cheap" on the SOFP, and profit measured against historical-cost expenses can overstate real economic performance. IAS 6 was the IASC's first, tentative response to this problem.</div>
+        <div class="elabel">HOW IAS 6 MAPPED TO THE FRAMEWORK</div>
+        <div class="check-list">
+          <span><strong style="font-weight:500">Faithful representation</strong> — in high-inflation environments, historical cost figures can genuinely misrepresent current economic reality, understating both asset values and true costs of resources consumed</span>
+          <span><strong style="font-weight:500">A cautious, non-prescriptive first step</strong> — rather than mandating a specific alternative measurement basis, IAS 6 merely encouraged entities to disclose supplementary information about price change effects, reflecting genuine international disagreement at the time about the "right" solution</span>
+          <span><strong style="font-weight:500">Comparability tension</strong> — by not mandating a single method, IAS 6 tolerated significant diversity in how (or whether) entities addressed changing prices — a limitation later standards attempted to resolve</span>
+        </div>
+        <div class="note">IAS 6 emerged directly from the severe global inflation of the 1970s (oil price shocks, stagflation) — a period when historical cost accounting's limitations became acutely, practically visible to users and regulators worldwide.</div>
+      </div>
+
+      <div class="card cs">
+        <div class="ctitle cs">The competing approaches debated at the time</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.3fr 1fr;"><span>Approach</span><span>Core idea</span></div>
+          <div class="tr" style="grid-template-columns:1.3fr 1fr;"><span>Current purchasing power (CPP)</span><span>Restate historical cost figures using a general price index (e.g. CPI)</span></div>
+          <div class="tr alt" style="grid-template-columns:1.3fr 1fr;"><span>Current cost accounting (CCA)</span><span>Measure specific assets at their current replacement cost, not a general index</span></div>
+        </div>
+        <div class="callout info callout--chip" style="margin-bottom:0;">IAS 6 deliberately did NOT choose between these — reflecting genuine, unresolved international disagreement at the time about which approach better served the Framework's objectives.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 2 ============ -->
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What IAS 6 covered</div>
+        <div class="principle">IAS 6 applied to entities considering whether, and how, to present supplementary information reflecting the effects of changing prices on their financial statements — it was framed as encouragement and exploration, not a mandatory recognition/measurement standard.</div>
+        <div class="note">This entirely encouragement-based, non-mandatory framing is highly unusual for an IFRS/IAS standard — very few other standards in the numbered series were ever framed this way.</div>
+      </div>
+
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions you must know (historical)</div>
+        <div class="glossary-item">
+          <div class="glossary-term">General price level</div>
+          <div class="glossary-def">A broad measure of price changes across the economy (e.g. a consumer price index), used in the current purchasing power approach.</div>
+        </div>
+        <div class="glossary-item" style="border-bottom:none;">
+          <div class="glossary-term">Current cost / replacement cost</div>
+          <div class="glossary-def">The cost of replacing a specific asset with an equivalent one at current prices — the basis of the current cost accounting approach.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 3 ============ -->
+    <div class="section-header" id="s3"><span class="num">3</span><h2>The Historical Cost Weakness IAS 6 Addressed</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Illustrating the distortion, conceptually</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">During periods of significant inflation, historical cost profit can be misleading in two specific ways: (1) depreciation charges based on original cost understate the true cost of maintaining productive capacity, since replacing the asset would cost significantly more; and (2) holding gains on inventory (the difference between the price paid and the current replacement price) can be inadvertently included within reported profit, overstating genuinely distributable earnings.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 4 ============ -->
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Encouraged, Not Mandated, Disclosure</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">A genuinely voluntary standard</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">IAS 6 encouraged, but did not require, entities to present supplementary information showing the effects of price changes — reflecting the IASC's judgement that international consensus on a specific mandatory method had not yet been reached, and that experimentation with disclosure was preferable to premature, potentially flawed standardisation.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 5 ============ -->
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Approaches Considered</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">A survey of methods, not a single prescribed answer</div>
+        <div class="check-list">
+          <span><strong style="font-weight:500">General purchasing power adjustment</strong> — restating the entire set of financial statements using a general price index, preserving historical cost's underlying transactions but adjusting for currency purchasing power erosion</span>
+          <span><strong style="font-weight:500">Current cost adjustment</strong> — adjusting specific assets (inventory, PPE) to their current replacement cost, with corresponding "backlog depreciation" and holding gain/loss recognition</span>
+          <span><strong style="font-weight:500">Combination approaches</strong> — some jurisdictions experimented with blending elements of both methods</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 6 ============ -->
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Why No Single Method Was Mandated</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Genuine international disagreement</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Different national standard-setters had already adopted different approaches (e.g. the UK experimented with current cost accounting; the US explored current purchasing power) — the IASC, lacking the authority (or consensus) to override these established national practices, chose the cautious path of encouraging experimentation and disclosure rather than mandating a single global method.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 7 ============ -->
+    <div class="section-header" id="s7"><span class="num">7</span><h2>The Broader 1970s-80s Inflation Accounting Debate</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">A debate that eventually faded, then resurfaced narrowly</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">As global inflation moderated significantly through the 1980s and 1990s, the urgency of the inflation accounting debate diminished considerably for most economies — leading standard-setters to largely abandon general inflation-adjustment requirements. The concern was not eliminated entirely, however — it was eventually narrowed and refocused specifically onto economies experiencing genuinely extreme (hyperinflationary) conditions, addressed today by the much more targeted IAS 29.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 8 ============ -->
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Why IAS 6 Was Withdrawn</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Superseded by a more developed (and later itself withdrawn) standard</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">IAS 6 was replaced by IAS 15 "Information Reflecting the Effects of Changing Prices" (1981), a more developed (though still largely voluntary) standard on the same topic. IAS 15 itself was eventually withdrawn in 2003 as global inflation rates stabilised and the perceived need for general price-level disclosure diminished — leaving IAS 29 as the only remaining IFRS standard addressing price-level distortion, but narrowly confined to hyperinflationary economies specifically.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 9 ============ -->
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure Requirements (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Encouraged (not required) disclosures under IAS 6</div>
+        <div class="check-list">
+          <span>Supplementary statements showing the effect of price changes on depreciation and cost of sales</span>
+          <span>The general price index or specific current costs used, and the methodology applied</span>
+          <span>A general narrative explaining the purpose and limitations of the supplementary disclosure</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 10 ============ -->
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments &amp; Estimates (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where management judgement mattered most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Whether to provide supplementary price-change disclosures at all, given the entirely voluntary nature</span>
+              <span>Which approach (CPP, CCA, or a blend) to apply if disclosure was provided</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>Current replacement cost of specific assets, under the CCA approach</span>
+              <span>Appropriate general price index, under the CPP approach</span>
+            </div>
+          </div>
+        </div>
+        <div class="callout warn callout--chip" style="margin-top:8px;margin-bottom:0;">Because disclosure was entirely voluntary and methods varied, comparability across entities applying IAS 6 was inherently limited — a significant weakness that contributed to the eventual withdrawal of general price-level guidance altogether.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 11 ============ -->
+    <div class="section-header" id="s11"><span class="num">11</span><h2>IAS 6 vs Modern IAS 29</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — IAS 6 (1977, general inflation) vs IAS 29 (current, hyperinflation only)</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Feature</span><span style="color:var(--color-text-info);">IAS 6 (withdrawn)</span><span style="color:var(--color-text-warning);">Current (IAS 29)</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Applicable environments</span><span>Any entity, in any inflationary environment</span><span>Only economies meeting the hyperinflationary threshold (broadly, cumulative 3-year inflation approaching/exceeding 100%)</span></div>
+          <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Mandatory vs voluntary</span><span>Entirely voluntary, encouraged only</span><span>Mandatory restatement using a general price index, once the hyperinflation threshold is met</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Method prescribed</span><span>No single method mandated (CPP, CCA, or blend)</span><span>A specific current purchasing power-style restatement method is mandated</span></div>
+        </div>
+        <div class="note">The evolution from IAS 6 to IAS 29 shows a clear narrowing — from a broad, voluntary, methodologically undecided standard, to a narrow, mandatory, methodologically precise standard applicable only in genuinely extreme circumstances.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 12 ============ -->
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping (Historical, Under IAS 6)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Comprehensive event-to-statement mapping table</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event / transaction</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Supplementary price-change disclosure (if provided)</span><span><span class="badge bp">Notes</span></span><span>Entirely voluntary supplementary statement, NOT part of the primary financial statements</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Primary financial statements themselves</span><span><span class="badge bs">SOFP</span> <span class="badge bp">SOPL</span></span><span>Remained on historical cost basis, unaffected by any supplementary disclosure</span></div>
+        </div>
+        <div class="note">Critically, IAS 6 never changed the primary financial statements' measurement basis — any price-change information was purely supplementary, alongside the unchanged historical cost figures.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 13 ============ -->
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">How IAS 6's legacy connects across the IFRS body of literature</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 15 (also withdrawn)</span><span>The immediate, more developed successor, itself later withdrawn in 2003</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 29</span><span>The only surviving IFRS guidance on price-level distortion, narrowly confined to hyperinflationary economies</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 21</span><span>Governs foreign currency translation, a related but distinct concept from general domestic price-level change</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 14 ============ -->
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Current purchasing power (CPP)", definition: "An inflation-adjustment method restating financial statements using a general price index." },
+      { term: "Backlog depreciation", definition: "Additional depreciation recognised under current cost accounting to reflect the increased replacement cost of an asset over its life to date." },
+      { term: "General price level", definition: "A broad measure of price changes across the economy (e.g. a consumer price index), used in the current purchasing power approach." },
+      { term: "Current cost / replacement cost", definition: "The cost of replacing a specific asset with an equivalent one at current prices." },
+      { term: "Holding gain", definition: "The difference between the price paid for an asset and its current replacement price — inadvertently included in reported profit under historical cost accounting during inflation." }
+    ]} />
+
+    <FinancialStatementKey />
+  </div>
+</StandardPageLayout>

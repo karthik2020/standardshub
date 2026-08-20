@@ -1,0 +1,168 @@
+﻿---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc930.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  bannerNotice={metadata.bannerNotice}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope" },
+        { id: "s3", label: "Exploration and Evaluation Costs — Capitalization Criteria" },
+        { id: "s4", label: "THE KEY DIVERGENCE — IFRS 6's Unusual \"Grandfather Existing Policy\" Approach" },
+        { id: "s5", label: "Stripping Costs During the Production Phase" },
+        { id: "s6", label: "Asset Retirement Obligations (Reclamation)" },
+        { id: "s7", label: "Impairment of Mining Assets" },
+        { id: "s8", label: "Worked Example — Stripping Cost Capitalization" },
+        { id: "s9", label: "Worked Example — Exploration Cost Capitalization" },
+        { id: "s10", label: "Disclosure Requirements" },
+        { id: "s11", label: "Critical Judgments &amp; Estimates" },
+        { id: "s12", label: "ASC 930 vs IFRS 6 / IFRIC 20 — Comprehensive Comparison" },
+        { id: "s13", label: "Statement Mapping" },
+        { id: "s14", label: "Related Topics" },
+        { id: "s15", label: "Glossary" }
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card ci"><div class="ctitle ci">Extractive costs pose a genuinely different capitalization question</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">Mining involves substantial up-front EXPLORATION spending long before it's known whether a commercially viable ore body even exists, followed by ongoing STRIPPING (waste removal) costs during production that provide improved future access to ore. ASC 930 addresses when these COSTS should be CAPITALISED as assets versus expensed, and how stripping costs specifically should be treated once production has begun.</div></div>
+    <div class="card cd"><div class="ctitle cd">IFRS 6 is a deliberately unusual, narrow standard</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">IFRS 6 (Exploration for and Evaluation of Mineral Resources) is famous for its deliberately NARROW, PERMISSIVE approach — rather than mandating a specific accounting policy, it largely allows entities to CONTINUE applying their EXISTING accounting policies for exploration and evaluation costs. ASC 930 takes a more CONVENTIONAL approach, requiring costs to meet normal asset recognition criteria (Section 4).</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">Mining exploration, development, and production entities</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 930 applies to entities engaged in the exploration, development, and production of MINERALS (metals, coal, industrial minerals) — excluding oil and gas, which is separately addressed by ASC 932.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Exploration and Evaluation Costs — Capitalization Criteria</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">Capitalised where directly attributable to a specific mineral property with probable future benefit</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">Costs DIRECTLY attributable to FINDING and EVALUATING specific mineral properties — geological surveys, exploratory drilling, sample analysis — are CAPITALISED as an asset if it is PROBABLE they will provide FUTURE ECONOMIC BENEFIT (i.e. lead to an economically viable ore body); costs incurred before a specific property is identified, or where NO future benefit is probable, are EXPENSED as incurred. This reflects normal GAAP asset-recognition principles, applied contextually to the mining exploration setting.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>THE KEY DIVERGENCE — IFRS 6's Unusual "Grandfather Existing Policy" Approach</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">A deliberately non-prescriptive standard, unlike anything on the US GAAP side</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">IFRS 6 takes a genuinely UNUSUAL regulatory approach: rather than PRESCRIBING a specific method for exploration and evaluation (E&amp;E) cost accounting, it largely permits an entity to CONTINUE applying whatever accounting policy it was ALREADY using immediately before adopting IFRS 6 — effectively "GRANDFATHERING" pre-existing diverse practice, subject only to some baseline consistency and impairment-indicator requirements. This was a deliberate, TEMPORARY compromise by the IASB, reflecting the difficulty of achieving international consensus on E&amp;E accounting given widely varying pre-existing national practices. <strong>ASC 930 has NO equivalent "grandfather your existing policy" mechanism</strong> — US GAAP requires E&amp;E costs to meet NORMAL asset recognition criteria (Section 3) consistently, without the same policy-continuation allowance IFRS 6 provides. This is a genuinely unusual, STRUCTURAL divergence — not a difference in specific rules, but a difference in whether a codified, CONSISTENT capitalisation policy is required AT ALL.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Stripping Costs During the Production Phase</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cs span2"><div class="ctitle cs">Capitalised as a "stripping activity asset" where improved access provides future benefit</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">STRIPPING costs (removing waste/overburden material to access ore) incurred DURING the production phase are CAPITALISED if they create a PROBABLE future economic benefit in the form of IMPROVED ACCESS to the ore body — amortised over the RESERVES benefited by the specific stripping campaign, rather than expensed as a period production cost. This closely mirrors IFRIC 20's OWN "stripping activity asset" concept (also requiring capitalisation of stripping costs providing improved access, to the extent the benefit is realised as inventory) — a genuinely CONVERGED area, since IFRIC 20 was informed by pre-existing industry practice similar to that already used under US GAAP.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Asset Retirement Obligations (Reclamation)</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">Governed by the general ASC 410 framework</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">Legal obligations to RECLAIM mined land (restore the site to a required post-mining condition) are recognised as ASSET RETIREMENT OBLIGATIONS under the GENERAL ASC 410 framework — recognised at fair value when the obligation is incurred, with a corresponding increase to the related asset's carrying amount, accreted over time and depreciated alongside the asset.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Impairment of Mining Assets</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">Normal long-lived asset impairment principles apply</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">Capitalised mining assets (including stripping activity assets and E&amp;E costs) are tested for impairment under the GENERAL long-lived asset impairment framework (ASC 360) — a two-step test comparing UNDISCOUNTED expected future cash flows to carrying amount, then measuring any impairment loss based on FAIR VALUE if the undiscounted test fails, with NO industry-specific formulaic "ceiling test" of the kind used in oil and gas accounting (ASC 932).</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Worked Example — Stripping Cost Capitalization</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">Capitalising costs that improve future access</div>
+    <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: An open-pit mine's deep stripping campaign</div><div class="wk-body">A mining company incurs $12,000,000 of stripping costs to access a NEW, deeper ore zone that will be mined over the following 4 years, well beyond the immediate benefit of current-period ore extraction.</div><div class="wk-answer">Since the stripping activity provides IMPROVED ACCESS to a SPECIFIC, IDENTIFIABLE future ore zone (rather than merely sustaining current-period production), the $12,000,000 is CAPITALISED as a stripping activity asset, and AMORTISED over the 4-year period the newly accessed ore zone is expected to be mined — rather than expensed immediately as a current production cost.</div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Worked Example — Exploration Cost Capitalization</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card ci span2"><div class="ctitle ci">A specific property with probable future benefit</div>
+    <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Drilling costs on an identified claim</div><div class="wk-body">A company incurs $3,000,000 of exploratory drilling costs on a SPECIFIC, staked mineral claim, with preliminary results indicating a probable economically viable deposit.</div><div class="wk-answer">Since the costs are DIRECTLY attributable to a SPECIFIC, identified property, and future economic benefit is deemed PROBABLE based on preliminary results, the $3,000,000 is CAPITALISED as an exploration and evaluation asset — to be further evaluated for eventual reclassification to development/production assets, or for impairment if subsequent results prove unfavourable.</div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">What ASC 930 requires</div><div class="check-list"><span>Accounting policy for exploration and evaluation cost capitalisation</span><span>Stripping activity assets recognised, and the amortisation methodology applied</span><span>Mineral reserve estimates, generally required under SEC S-K 1300 modernised reserve reporting rules for public mining registrants</span></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+    <div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Whether future economic benefit from exploration costs is probable, warranting capitalisation</span><span>Whether stripping costs provide genuine improved future access versus merely sustaining current production</span></div></div>
+    <div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Mineral reserve quantities, underlying depletion and amortisation calculations</span><span>Reclamation/asset retirement obligation cost estimates and discount rates</span></div></div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>ASC 930 vs IFRS 6 / IFRIC 20 — Comprehensive Comparison</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card ci span2"><div class="ctitle ci">Comparison — ASC 930 vs IFRS 6 / IFRIC 20</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">US GAAP (ASC 930)</span><span style="color:var(--color-text-info);">IFRS (IFRS 6 / IFRIC 20)</span></div>
+    <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>E&amp;E cost accounting policy</span><span>Must meet normal, consistent asset recognition criteria</span><span>IFRS 6 permits CONTINUING pre-existing accounting policy — a genuinely unusual "grandfather" allowance</span></div>
+    <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Stripping cost capitalisation</span><span>Capitalised as a stripping activity asset if improved future access is probable</span><span>IFRIC 20's stripping activity asset — broadly converged concept</span></div>
+    <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Impairment testing</span><span>Normal ASC 360 two-step long-lived asset test</span><span>IAS 36 recoverable amount (higher of fair value less costs to sell and value in use) — a different mechanical test, though broadly similar in spirit</span></div>
+    </div>
+    <div class="note">The stripping cost treatment is genuinely CONVERGED — but the E&amp;E cost POLICY-CONTINUATION allowance under IFRS 6 remains a structurally unusual divergence, reflecting IFRS 6's origin as a deliberately temporary, non-prescriptive compromise standard.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cs span2"><div class="ctitle cs">Where every ASC 930 event lands</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+    <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Capitalised exploration costs</span><span><span class="badge bs">BS</span></span><span>Recognised as an asset if future benefit is probable</span></div>
+    <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Stripping activity asset</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Capitalised, then amortised over benefited reserves</span></div>
+    <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Reclamation ARO</span><span><span class="badge bs">BS</span></span><span>Recognised at fair value with a corresponding asset increase</span></div>
+    </div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Related Topics</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">Cross-reference map</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+    <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 410</span><span>Supplies the general asset retirement obligation framework applied to reclamation liabilities</span></div>
+    <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 360</span><span>Supplies the general long-lived asset impairment framework applied to mining assets</span></div>
+    <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 932</span><span>Extractive Activities—Oil and Gas — a related industry Topic with its own distinctive capitalisation methods</span></div>
+    </div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s15"><span class="num">15</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cn span2">
+    <div class="glossary-item"><div class="glossary-term">Stripping activity asset</div><div class="glossary-def">An asset capitalised for production-phase waste removal costs that provide probable improved future access to an identifiable ore body.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Exploration and evaluation (E&amp;E) costs</div><div class="glossary-def">Costs of finding and evaluating specific mineral properties, capitalised when future economic benefit is probable.</div></div>
+    <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Reclamation</div><div class="glossary-def">The legal obligation to restore mined land to a required post-mining condition, accounted for as an asset retirement obligation.</div></div>
+    </div>
+    </div>
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.asc930 || []} />
+  </section>
+</StandardPageLayout>
+

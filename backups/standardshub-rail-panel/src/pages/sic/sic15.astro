@@ -1,0 +1,85 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/sic/sic15.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "What SIC-15 Addressed (Historical)" },
+        { id: "s2", label: "The Conclusion It Reached (Historical)" },
+        { id: "s3", label: "Where This Guidance Lives Today" },
+        { id: "s4", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="historical-reference"
+    explanation="SIC-15 was superseded in January 2016 when the IASB issued IFRS 16 Leases, which replaced operating lease incentives with the right-of-use asset measurement model for lessees and changed the accounting for lease incentives."
+    historical="This page is retained for historical and comparative reference. Entities should refer to the current standard that superseded this interpretation for authoritative guidance."
+    link="/ifrs/ifrs16"
+    linkText="IFRS 16 Leases"
+  />
+
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>What SIC-15 Addressed (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">What SIC-15 addressed</div>
+        <div class="principle">SIC-15 addressed how lessees and lessors should account for lease incentives provided in connection with an operating lease. It clarified whether incentives should be recognised as a reduction of rental expense or income, or whether they should be treated as a separate financing arrangement.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>The Conclusion It Reached (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">The conclusion it reached</div>
+        <div class="principle">SIC-15 concluded that lease incentives should be recognised as part of the net consideration for the use of the leased asset. Lessees should recognise the benefit of incentives as a reduction of rental expense over the lease term, while lessors should recognise the cost of incentives as a reduction of rental income over the lease term, both on a straight-line basis or another systematic basis.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Where This Guidance Lives Today</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card">
+        <div class="ctitle">Where this guidance lives today</div>
+        <div class="td-table">
+          <div class="tr"><span>Superseded by</span><span>IFRS 16 Leases</span></div>
+          <div class="tr alt"><span>Why withdrawn</span><span>IFRS 16 replaced operating lease incentives with right-of-use asset measurement for lessees</span></div>
+          <div class="tr"><span>Current status</span><span>Superseded</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Lease incentive", definition: "An inducement offered by the lessor to the lessee to enter into an operating lease, such as rent-free periods or payments for relocation costs." },
+      { term: "Right-of-use asset", definition: "An asset that represents the lessee's right to use the underlying leased asset during the lease term, as introduced by IFRS 16." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.SIC15} />
+  </section>
+</StandardPageLayout>

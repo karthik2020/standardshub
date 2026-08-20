@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASC 860 — Transfers and Servicing | Extended Reference</title>
+<style>
+  :root { --color-background-secondary:#f9fafb;--color-background-tertiary:#f3f4f6;--color-background-info:#eff6ff;--color-background-success:#f0fdf4;--color-background-warning:#fffbeb;--color-background-danger:#fff1f2;--color-border-secondary:#e5e7eb;--color-border-tertiary:#e5e7eb;--color-border-info:#3b82f6;--color-border-success:#22c55e;--color-border-warning:#f59e0b;--color-border-danger:#ef4444;--color-text-primary:#111827;--color-text-secondary:#374151;--color-text-tertiary:#9ca3af;--color-text-info:#2563eb;--color-text-success:#16a34a;--color-text-warning:#b45309;--color-text-danger:#dc2626;--border-radius-lg:10px;--border-radius-md:8px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#fff;color:#111827;margin:0;padding:0;}
+  body{padding:20px;max-width:1180px;margin:0 auto;}*{box-sizing:border-box;}.wrap{padding:1rem 0 .5rem;}
+  .hub{display:flex;justify-content:center;margin-bottom:8px;}.hub-box{padding:12px 28px;background:var(--color-background-secondary);border:1.5px solid var(--color-border-secondary);border-radius:var(--border-radius-lg);text-align:center;}
+  .hub-title{font-size:17px;font-weight:600;color:var(--color-text-primary);}.hub-sub{font-size:11px;color:var(--color-text-tertiary);margin-top:3px;}
+  .toc{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin:14px 0 26px;}.toc a{font-size:10.5px;font-weight:500;padding:4px 11px;border-radius:14px;background:var(--color-background-tertiary);color:var(--color-text-secondary);text-decoration:none;border:1px solid var(--color-border-tertiary);}
+  .section-header{display:flex;align-items:center;gap:8px;margin:30px 0 12px;}.section-header .num{font-size:11px;font-weight:700;color:#fff;background:var(--color-text-info);width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .section-header h2{font-size:14px;font-weight:600;color:var(--color-text-primary);margin:0;}.section-header .line{flex:1;height:1px;background:var(--color-border-tertiary);}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start;}.span2{grid-column:span 2;}
+  .card{border-radius:var(--border-radius-lg);border:1px solid var(--color-border-tertiary);padding:13px 14px;background:var(--color-background-secondary);}
+  .card.ci{border-left:3px solid var(--color-border-info);}.card.cs{border-left:3px solid var(--color-border-success);}.card.cw{border-left:3px solid var(--color-border-warning);}.card.cd{border-left:3px solid var(--color-border-danger);}.card.cn{border-left:3px solid var(--color-border-secondary);}
+  .ctitle{font-size:13px;font-weight:500;margin-bottom:7px;}.ctitle.ci{color:var(--color-text-info);}.ctitle.cs{color:var(--color-text-success);}.ctitle.cw{color:var(--color-text-warning);}.ctitle.cd{color:var(--color-text-danger);}.ctitle.cn{color:var(--color-text-primary);}
+  .principle{font-size:11px;color:var(--color-text-secondary);margin-bottom:9px;line-height:1.55;padding:6px 8px;background:var(--color-background-tertiary);border-radius:6px;}
+  .elabel{font-size:10px;font-weight:500;color:var(--color-text-tertiary);margin-bottom:5px;letter-spacing:.03em;}
+  .note{font-size:10px;color:var(--color-text-tertiary);font-style:italic;line-height:1.5;margin-top:4px;}
+  .callout{font-size:11px;line-height:1.5;padding:6px 9px;border-radius:6px;margin-bottom:8px;}
+  .callout.info{background:var(--color-background-info);color:var(--color-text-info);border:1px solid var(--color-border-info);}
+  .callout.warn{background:var(--color-background-warning);color:var(--color-text-warning);border:1px solid var(--color-border-warning);}
+  .callout.danger{background:var(--color-background-danger);color:var(--color-text-danger);border:1px solid var(--color-border-danger);}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start;}
+  .dot-list span,.check-list span,.cross-list span{display:block;padding-left:14px;position:relative;font-size:11px;color:var(--color-text-secondary);line-height:1.75;}
+  .dot-list span::before{content:"·";position:absolute;left:1px;color:var(--color-text-tertiary);}
+  .check-list span::before{content:"✓";position:absolute;left:0;color:var(--color-text-success);font-size:10px;top:2px;font-weight:700;}
+  .cross-list span::before{content:"✕";position:absolute;left:0;color:var(--color-text-danger);font-size:10px;top:2px;}
+  .td-table{border:1px solid var(--color-border-tertiary);border-radius:8px;overflow:hidden;font-size:10px;margin-bottom:8px;}
+  .td-table .th{display:grid;background:var(--color-background-tertiary);padding:5px 8px;font-weight:500;color:var(--color-text-secondary);}
+  .td-table .tr{display:grid;padding:4px 8px;border-top:1px solid var(--color-border-tertiary);color:var(--color-text-secondary);}.td-table .tr.alt{background:var(--color-background-tertiary);}
+  .worked{border:1px solid var(--color-border-info);border-radius:8px;padding:10px 12px;background:var(--color-background-info);margin-bottom:9px;}
+  .worked .wk-title{font-size:11px;font-weight:600;color:var(--color-text-info);margin-bottom:5px;}.worked .wk-body{font-size:11px;color:var(--color-text-secondary);line-height:1.6;}
+  .worked .wk-answer{margin-top:6px;padding-top:6px;border-top:1px dashed var(--color-border-info);font-size:11px;color:var(--color-text-primary);}
+  .glossary-item{padding:7px 0;border-bottom:1px solid var(--color-border-tertiary);}.glossary-term{font-size:11.5px;font-weight:600;color:var(--color-text-primary);}.glossary-def{font-size:11px;color:var(--color-text-secondary);line-height:1.5;margin-top:2px;}
+  .legend{margin-top:20px;padding:12px 16px;background:var(--color-background-secondary);border:1px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);}
+  .lrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:11px;color:var(--color-text-secondary);margin-top:4px;}.ltitle{font-size:11px;font-weight:500;color:var(--color-text-primary);}
+  .badge{font-size:9px;font-weight:500;padding:1px 5px;border-radius:4px;}.bs{background:var(--color-background-info);color:var(--color-text-info);}.bp{background:var(--color-background-danger);color:var(--color-text-danger);}.bo{background:var(--color-background-success);color:var(--color-text-success);}.be{background:var(--color-background-warning);color:var(--color-text-warning);}.bc{background:#ede9fe;color:#6d28d9;}
+  .footer-note{margin-top:24px;padding:12px 16px;background:var(--color-background-tertiary);border-radius:var(--border-radius-md);font-size:10.5px;color:var(--color-text-tertiary);text-align:center;}
+  @media (max-width:640px){.grid,.two-col{grid-template-columns:1fr;}.span2{grid-column:span 1;}}
+</style></head>
+<body><div class="wrap">
+
+<div class="hub"><div class="hub-box"><div class="hub-title">ASC 860 — Transfers and Servicing</div><div class="hub-sub">Extended reference poster · US GAAP · Subtopics: 860-10 through 860-50 · Counterpart of IFRS 9's derecognition provisions · USD examples</div></div></div>
+
+<div class="toc">
+<a href="#s1">1. Conceptual Framework Linkage</a><a href="#s2">2. Scope</a><a href="#s3">3. The Three Conditions for Sale Accounting — Surrender of Control</a>
+<a href="#s4">4. Legal Isolation — the "True Sale" Analysis</a><a href="#s5">5. Transferee's Right to Pledge or Exchange</a>
+<a href="#s6">6. Absence of Effective Control by the Transferor</a><a href="#s7">7. THE KEY DIVERGENCE — Control-Only Test vs IFRS 9's Risk-and-Rewards Approach</a>
+<a href="#s8">8. Sale Accounting Mechanics</a><a href="#s9">9. Secured Borrowing Accounting (Failed Sale)</a><a href="#s10">10. Servicing Assets and Liabilities</a>
+<a href="#s11">11. Repurchase Agreements (Repos)</a><a href="#s12">12. Worked Example — Sale Accounting (All Three Conditions Met)</a>
+<a href="#s13">13. Worked Example — Secured Borrowing (Effective Control Retained)</a><a href="#s14">14. Worked Example — Servicing Asset Recognition</a>
+<a href="#s15">15. Disclosure Requirements</a><a href="#s16">16. Critical Judgments &amp; Estimates</a>
+<a href="#s17">17. ASC 860 vs IFRS 9 — Comprehensive Comparison</a><a href="#s18">18. Statement Mapping</a><a href="#s19">19. Related Topics</a><a href="#s20">20. Glossary</a>
+</div>
+
+<div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card ci"><div class="ctitle ci">Was it really a sale, or just borrowing dressed up as one?</div><div class="principle">When an entity TRANSFERS financial assets (receivables, loans, mortgage pools) to another party, a fundamental question arises: has the transferor genuinely GIVEN UP its economic stake, warranting DERECOGNITION (sale accounting) — or has it merely borrowed money using those assets as COLLATERAL, in which case the assets should REMAIN on its balance sheet (secured borrowing accounting)? ASC 860 answers this through a "SURRENDER OF CONTROL" test (Section 3).</div></div>
+<div class="card cd"><div class="ctitle cd">A genuinely different analytical starting point than IFRS 9</div><div class="principle">ASC 860's CONTROL-based test is essentially the SOLE gatekeeping analysis for derecognition under US GAAP — there's no separate risks-and-rewards gate. IFRS 9, by contrast, uses a RISKS-AND-REWARDS test as its PRIMARY analysis, falling back to a control test only in specific circumstances — a genuine STRUCTURAL divergence in how each framework approaches the same underlying question (Section 7).</div>
+</div>
+</div>
+
+<div class="section-header" id="s2"><span class="num">2</span><h2>Scope</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cw span2"><div class="ctitle cw">Transfers of financial assets, servicing, and secured borrowings</div><div class="principle">ASC 860 governs the accounting for TRANSFERS of financial assets (including participations, securitizations, and factoring arrangements), the accounting for SERVICING of financial assets (whether retained by a transferor or acquired separately), and the distinction between SALE and SECURED BORROWING treatment for such transfers.</div>
+</div>
+</div>
+
+<div class="section-header" id="s3"><span class="num">3</span><h2>The Three Conditions for Sale Accounting — Surrender of Control</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">ALL THREE conditions must be met</div>
+<div class="td-table"><div class="th" style="grid-template-columns:0.4fr 2.6fr;"><span>Condition</span><span>Requirement</span></div>
+<div class="tr" style="grid-template-columns:0.4fr 2.6fr;"><span>1</span><span>The transferred assets have been ISOLATED from the transferor — put presumptively beyond the reach of the transferor AND its creditors, even in bankruptcy or receivership (a genuine "TRUE SALE" legal analysis)</span></div>
+<div class="tr alt" style="grid-template-columns:0.4fr 2.6fr;"><span>2</span><span>The TRANSFEREE has the RIGHT to pledge or exchange the transferred assets (or, for a securitization entity, its beneficial interest holders have that right), free of conditions that constrain that right and provide the transferor more than a trivial benefit</span></div>
+<div class="tr" style="grid-template-columns:0.4fr 2.6fr;"><span>3</span><span>The transferor does NOT maintain EFFECTIVE CONTROL over the transferred assets — e.g. no agreement requiring the transferor to repurchase the assets before maturity, and no unilateral ability to reclaim specific transferred assets</span></div>
+</div>
+<div class="note">ALL THREE conditions must be satisfied for SALE accounting; failing even ONE means the transfer is accounted for as a SECURED BORROWING instead (Section 9).</div>
+</div>
+</div>
+
+<div class="section-header" id="s4"><span class="num">4</span><h2>Legal Isolation — the "True Sale" Analysis</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cs span2"><div class="ctitle cs">A genuinely legal question, often requiring a legal opinion</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Legal isolation asks whether the transferred assets would genuinely be BEYOND THE REACH of the transferor and its creditors — INCLUDING in the event of the transferor's bankruptcy — often requiring a formal LEGAL "TRUE SALE" opinion from counsel, particularly for securitization structures, confirming that a bankruptcy court would NOT treat the transfer as merely a secured financing subject to substantive consolidation with the transferor's estate.</div>
+</div>
+</div>
+
+<div class="section-header" id="s5"><span class="num">5</span><h2>Transferee's Right to Pledge or Exchange</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cw span2"><div class="ctitle cw">Genuine, unconstrained rights over the transferred assets</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">The TRANSFEREE (or, for securitizations, the beneficial interest holders) must have the practical ability to PLEDGE or EXCHANGE the transferred assets, WITHOUT conditions that both CONSTRAIN that ability AND provide the TRANSFEROR more than a trivial benefit — a condition designed to catch arrangements where the transferor retains an effectively controlling degree of influence over what the "transferee" can do with the assets.</div>
+</div>
+</div>
+
+<div class="section-header" id="s6"><span class="num">6</span><h2>Absence of Effective Control by the Transferor</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">No repurchase agreements or unilateral reclaim rights</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">The transferor must NOT maintain effective control — indicators of RETAINED effective control include an agreement that BOTH obligates the transferor to repurchase the assets AND provides the transferee with the right to require repurchase (before maturity, at a fixed/determinable price), or the transferor's UNILATERAL ability to reclaim SPECIFIC transferred assets (as opposed to merely substantially-the-same assets in a general sense).</div>
+</div>
+</div>
+
+<div class="section-header" id="s7"><span class="num">7</span><h2>THE KEY DIVERGENCE — Control-Only Test vs IFRS 9's Risk-and-Rewards Approach</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">Two genuinely different analytical starting points</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">US GAAP's ASC 860 uses a <strong>CONTROL-BASED test as its PRIMARY (and essentially ONLY) gatekeeping analysis</strong> for derecognition — there is no separate risks-and-rewards threshold that must be cleared first. <strong>IFRS 9 takes a genuinely DIFFERENT structural approach</strong>: it FIRST asks whether the transferor has transferred SUBSTANTIALLY ALL the RISKS AND REWARDS of ownership (e.g. credit risk, prepayment risk, interest rate risk) — if YES, derecognise; if the transferor has RETAINED substantially all risks and rewards, CONTINUE recognising the asset (secured borrowing-style outcome); ONLY in the INTERMEDIATE case — where risks and rewards are NEITHER substantially transferred NOR substantially retained — does IFRS 9 fall back to a SECONDARY CONTROL test (has the transferee obtained the practical ability to unilaterally sell the asset to an unrelated third party?) to determine whether partial derecognition is appropriate. This is a genuine STRUCTURAL divergence: identical transfer arrangements can, in principle, be analysed to DIFFERENT conclusions depending on which framework's STARTING analytical gate (control vs risks-and-rewards) is applied first, even though both frameworks ultimately care about the same underlying economic substance.</div>
+</div>
+</div>
+
+<div class="section-header" id="s8"><span class="num">8</span><h2>Sale Accounting Mechanics</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cs span2"><div class="ctitle cs">Derecognition, with any retained interests recognised at fair value</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Once all three sale conditions are met, the transferor DERECOGNISES the transferred financial assets, recognises any assets OBTAINED and liabilities INCURRED as part of the transfer (e.g. a SERVICING asset, if servicing is retained, or any RETAINED interest in the transferred assets) at FAIR VALUE, and recognises a GAIN or LOSS for the difference between the proceeds (plus any retained/obtained items) and the carrying amount of the assets transferred.</div>
+</div>
+</div>
+
+<div class="section-header" id="s9"><span class="num">9</span><h2>Secured Borrowing Accounting (Failed Sale)</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">Assets stay on the books, proceeds recorded as a liability</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">If ANY of the three sale conditions is NOT met, the transfer is accounted for as a <strong>SECURED BORROWING</strong> — the transferred assets REMAIN on the transferor's balance sheet (no derecognition), and the CASH PROCEEDS received are recorded as a LIABILITY (essentially collateralised debt), with interest expense recognised on that liability over time.</div>
+</div>
+</div>
+
+<div class="section-header" id="s10"><span class="num">10</span><h2>Servicing Assets and Liabilities</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cw span2"><div class="ctitle cw">Recognised when servicing is retained and not proportionate to the benefits of ownership</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">When an entity SELLS financial assets but RETAINS the right/obligation to SERVICE them (e.g. collecting mortgage payments on behalf of the new owner), a SERVICING asset (if compensation exceeds an adequate arm's-length fee) or SERVICING liability (if compensation is less than adequate) is recognised — measured initially at FAIR VALUE. Entities may elect, on a CLASS-BY-CLASS basis, to subsequently measure a class of servicing assets/liabilities using either the FAIR VALUE method or the AMORTISATION method.</div>
+</div>
+</div>
+
+<div class="section-header" id="s11"><span class="num">11</span><h2>Repurchase Agreements (Repos)</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">Typically fail the effective control test, resulting in secured borrowing treatment</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">A typical REPURCHASE AGREEMENT (repo) — where the transferor sells securities while simultaneously agreeing to REPURCHASE substantially the same securities at a fixed price before maturity — generally FAILS the "absence of effective control" condition (Section 6), since the agreement both obligates repurchase AND typically involves substantially-the-same assets at a fixed price — resulting in <strong>SECURED BORROWING</strong> treatment rather than sale accounting, consistent with the economic substance of a repo as a form of collateralised financing.</div>
+</div>
+</div>
+
+<div class="section-header" id="s12"><span class="num">12</span><h2>Worked Example — Sale Accounting (All Three Conditions Met)</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cw span2"><div class="ctitle cw">A genuine transfer of receivables</div>
+<div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Selling a pool of trade receivables</div><div class="wk-body">An entity sells a $10,000,000 pool of trade receivables (carrying amount $9,800,000, given expected credit losses) to an unrelated finance company for $9,900,000 cash, with no recourse, no repurchase obligation, and the buyer free to resell the receivables to anyone. Legal counsel confirms the transfer would survive the transferor's bankruptcy as a true sale.</div><div class="wk-answer">All three conditions are met: (1) legal isolation confirmed by counsel; (2) the finance company can freely pledge/sell the receivables; (3) no repurchase obligation or unilateral reclaim right. The entity DERECOGNISES the $9,800,000 receivables and recognises a <strong>GAIN of $9,900,000 − $9,800,000 = $100,000</strong>.</div></div>
+</div>
+</div>
+
+<div class="section-header" id="s13"><span class="num">13</span><h2>Worked Example — Secured Borrowing (Effective Control Retained)</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card ci span2"><div class="ctitle ci">Failing condition 3</div>
+<div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: A repurchase agreement</div><div class="wk-body">An entity "sells" $5,000,000 of government bonds to a counterparty for $4,900,000 cash, simultaneously agreeing to repurchase the SAME bonds in 30 days for $4,910,000.</div><div class="wk-answer">Since the entity is BOTH obligated to repurchase the SAME bonds AND the price is fixed, condition 3 (absence of effective control) FAILS. The transaction is accounted for as a <strong>SECURED BORROWING</strong>: the bonds REMAIN on the entity's balance sheet, the $4,900,000 received is recorded as a LIABILITY, and the $10,000 difference ($4,910,000 − $4,900,000) is recognised as INTEREST EXPENSE over the 30-day term.</div></div>
+</div>
+</div>
+
+<div class="section-header" id="s14"><span class="num">14</span><h2>Worked Example — Servicing Asset Recognition</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cn span2"><div class="ctitle cn">Retaining servicing on a mortgage sale</div>
+<div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Selling mortgages while retaining servicing rights</div><div class="wk-body">An entity sells a $20,000,000 mortgage pool (qualifying for sale accounting), retaining the right to service the loans for a fee of 0.30% annually — determined to be MORE than an adequate arm's-length servicing fee (0.25%) for this type of loan.</div><div class="wk-answer">Since the retained servicing fee EXCEEDS an adequate arm's-length fee, the entity recognises a <strong>SERVICING ASSET</strong> at its FAIR VALUE at the sale date (representing the present value of the excess future servicing fees expected to be collected) — this servicing asset is included as part of the proceeds/retained interests in computing the overall gain/loss on the sale.</div></div>
+</div>
+</div>
+
+<div class="section-header" id="s15"><span class="num">15</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">What ASC 860 requires</div><div class="check-list"><span>Nature and risks of continuing involvement with transferred financial assets</span><span>Accounting policies for servicing assets/liabilities, and the fair value/amortisation measurement method elected by class</span><span>Gains/losses recognised on sales/securitizations during the period</span><span>Key assumptions used to measure retained interests and servicing assets/liabilities at fair value</span></div>
+</div>
+</div>
+
+<div class="section-header" id="s16"><span class="num">16</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+<div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Whether all three sale conditions are met, particularly the "true sale" legal isolation analysis</span><span>Whether servicing compensation is more than, less than, or adequate arm's-length compensation</span></div></div>
+<div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Fair value of retained interests and servicing assets/liabilities, often using discounted cash flow models</span><span>Prepayment speeds, discount rates, and credit loss assumptions used in those fair value models</span></div></div></div>
+</div>
+</div>
+
+<div class="section-header" id="s17"><span class="num">17</span><h2>ASC 860 vs IFRS 9 — Comprehensive Comparison</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card ci span2"><div class="ctitle ci">Comparison — ASC 860 vs IFRS 9's derecognition provisions</div>
+<div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">US GAAP (ASC 860)</span><span style="color:var(--color-text-info);">IFRS (IFRS 9)</span></div>
+<div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Primary derecognition test</span><span>CONTROL — three conditions, no separate risks/rewards gate</span><span>RISKS AND REWARDS TRANSFER, assessed first</span></div>
+<div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Secondary/fallback test</span><span>None — control is essentially the sole test</span><span>Control test used ONLY in the intermediate case (risks/rewards neither substantially transferred nor retained)</span></div>
+<div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Partial derecognition possibility</span><span>Less structurally prominent as a distinct outcome category</span><span>Explicit intermediate outcome — partial derecognition based on continuing involvement</span></div>
+<div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Repo treatment</span><span>Generally secured borrowing (fails effective control test)</span><span>Generally secured borrowing (fails risks/rewards transfer test) — same practical outcome via a different route</span></div>
+</div>
+<div class="note">Despite the structural difference in ANALYTICAL SEQUENCE, both frameworks tend to reach the SAME practical conclusion for straightforward transactions (e.g. repos are secured borrowings under both) — the divergence becomes most consequential for COMPLEX or PARTIAL transfer arrangements where the analytical starting point genuinely can change the outcome.</div>
+</div>
+</div>
+
+<div class="section-header" id="s18"><span class="num">18</span><h2>Statement Mapping</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cs span2"><div class="ctitle cs">Where every ASC 860 event lands</div>
+<div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+<div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Sale accounting</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Assets derecognised, gain/loss recognised, retained interests recorded at fair value</span></div>
+<div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Secured borrowing</span><span><span class="badge bs">BS</span></span><span>Assets remain recognised; proceeds recorded as a liability</span></div>
+<div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Servicing asset/liability</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Recognised at fair value; subsequently measured per elected method</span></div>
+</div>
+</div>
+</div>
+
+<div class="section-header" id="s19"><span class="num">19</span><h2>Related Topics</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">Cross-reference map</div>
+<div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+<div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 810</span><span>Consolidation — governs whether a securitization vehicle itself must be consolidated by the transferor, a related but distinct question from derecognition</span></div>
+<div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 820</span><span>Supplies the fair value measurement framework for retained interests and servicing assets/liabilities</span></div>
+<div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 326</span><span>Supplies the credit loss estimation framework relevant to fair value assumptions for retained interests</span></div>
+</div>
+</div>
+</div>
+
+<div class="section-header" id="s20"><span class="num">20</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cn span2">
+<div class="glossary-item"><div class="glossary-term">Legal isolation</div><div class="glossary-def">The requirement that transferred assets be presumptively beyond the reach of the transferor and its creditors, even in bankruptcy — the "true sale" analysis.</div></div>
+<div class="glossary-item"><div class="glossary-term">Effective control</div><div class="glossary-def">Retained influence over transferred assets, such as through a repurchase agreement or unilateral reclaim right, that precludes sale accounting.</div></div>
+<div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Servicing asset/liability</div><div class="glossary-def">An asset or liability recognised when an entity retains the right/obligation to service transferred financial assets for compensation that is more or less than adequate.</div></div>
+</div>
+</div>
+
+<div class="legend"><div class="ltitle">Financial statement key (US GAAP native terminology)</div><div class="lrow"><span class="badge bs">BS</span> Balance Sheet <span class="badge bp">IS</span> Income Statement <span class="badge bo">OCI</span> Other Comprehensive Income <span class="badge be">SE</span> Statement of Shareholders' Equity <span class="badge bc">SCF</span> Statement of Cash Flows</div></div>
+
+<div class="footer-note">ASC 860 — Transfers and Servicing · Extended Reference Poster · Self-contained, no internet connection required</div>
+</div></body></html>

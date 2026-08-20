@@ -1,0 +1,255 @@
+﻿---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import metadata from "../../data/standards/ias/ias13.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope & Applicability" },
+        { id: "s3", label: "The Original Current/Non-Current Test" },
+        { id: "s4", label: "The Operating Cycle Concept" },
+        { id: "s5", label: "Working Capital Presentation" },
+        { id: "s6", label: "Classification of Specific Items" },
+        { id: "s7", label: "Offsetting Current Items" },
+        { id: "s8", label: "Why IAS 13 Was Absorbed into IAS 1" },
+        { id: "s9", label: "Disclosure Requirements" },
+        { id: "s10", label: "Critical Judgments & Estimates" },
+        { id: "s11", label: "IAS 13 vs Modern IAS 1" },
+        { id: "s12", label: "Statement Mapping" },
+        { id: "s13", label: "Related Standards" },
+        { id: "s14", label: "Quick-Reference Glossary" },
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="withdrawn"
+    explanation="IAS 13 (issued 1979) established the original principles for classifying and presenting current assets and current liabilities separately from non-current items. It was superseded by IAS 1 Presentation of Financial Statements (1997), which absorbed and substantially refined its classification criteria."
+    historical="It is retained here for historical reference and because its operating cycle concept survives essentially unchanged as a core feature of IAS 1's own current/non-current classification test today. For current SOFP presentation requirements, always apply IAS 1."
+    link="/ias/ias1"
+    linkText="IAS 1 Presentation of Financial Statements"
+  />
+
+  <div class="wrap">
+    <!-- ============ SECTION 1 ============ -->
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Why liquidity classification matters to users</div>
+        <div class="principle">The Conceptual Framework's relevance objective requires users to assess an entity's liquidity — its ability to meet short-term obligations. IAS 13 established that simply listing assets and liabilities without distinguishing those expected to convert to cash (or fall due) within the near term from longer-term items would obscure this critical information — a genuinely foundational classification principle.</div>
+        <div class="elabel">HOW IAS 13 MAPPED TO THE FRAMEWORK</div>
+        <div class="check-list">
+          <span><strong style="font-weight:500">Relevance</strong> — separating current from non-current items directly serves users assessing short-term liquidity and working capital adequacy</span>
+          <span><strong style="font-weight:500">Understandability</strong> — a clear, consistent classification convention (rather than an undifferentiated list) makes the SOFP far easier for users to interpret</span>
+          <span><strong style="font-weight:500">The operating cycle as the classification anchor</strong> — IAS 13 recognised that a rigid 12-month cutoff would misclassify items for businesses with longer natural operating cycles (e.g. long-term construction, wine production), introducing the operating cycle concept as an alternative benchmark</span>
+        </div>
+        <div class="note">IAS 13's operating cycle concept — allowing the current/non-current cutoff to extend beyond 12 months for businesses with a longer natural cycle — survives essentially unchanged as a core feature of IAS 1's own current/non-current classification test today.</div>
+      </div>
+
+      <div class="card cs">
+        <div class="ctitle cs">The classification test, then and now</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.3fr 1fr;"><span>Concept</span><span>Status</span></div>
+          <div class="tr" style="grid-template-columns:1.3fr 1fr;"><span>12-month OR operating cycle test</span><span>Established by IAS 13; unchanged today</span></div>
+          <div class="tr alt" style="grid-template-columns:1.3fr 1fr;"><span>Mandatory current/non-current presentation</span><span>Encouraged by IAS 13; mandatory (with narrow exception) under IAS 1</span></div>
+        </div>
+        <div class="callout info callout--chip" style="margin-bottom:0;">IAS 13's core classification logic is intact; IAS 1 made its application more consistently mandatory.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 2 ============ -->
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What IAS 13 covered</div>
+        <div class="principle">IAS 13 applied to the presentation of current assets and current liabilities in financial statements, establishing definitions and classification principles applicable across all entities.</div>
+        <div class="note">This general applicability, without industry carve-outs, is retained identically in IAS 1's own current/non-current guidance today.</div>
+      </div>
+
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions you must know (historical)</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Current asset (original)</div>
+          <div class="glossary-def">Cash, or an asset held primarily for the purpose of being traded, or expected to be realised, sold, or consumed within the normal operating cycle, or within 12 months.</div>
+        </div>
+        <div class="glossary-item" style="border-bottom:none;">
+          <div class="glossary-term">Operating cycle (original)</div>
+          <div class="glossary-def">The time between the acquisition of materials entering a process and their realisation in cash or cash equivalents.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 3 ============ -->
+    <div class="section-header" id="s3"><span class="num">3</span><h2>The Original Current/Non-Current Test (with worked example)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Whichever is longer — 12 months, or the operating cycle</div>
+        <div class="principle">IAS 13 classified an asset as current if it was expected to be realised, or was held for sale/consumption, in the normal course of the entity's operating cycle, or within 12 months of the reporting date — whichever period was longer.</div>
+        <div class="worked" style="margin-bottom:0;">
+          <div class="wk-title">Example 1: A wine producer's extended operating cycle</div>
+          <div class="wk-body">A winery's normal operating cycle — from grape harvest through fermentation, ageing, and eventual sale — takes approximately 30 months. At the reporting date, the winery holds wine inventory expected to be sold in 24 months.</div>
+          <div class="wk-answer">Even though the 24-month expected sale period exceeds the standard 12-month benchmark, the inventory is still classified as a current asset — because it falls within the winery's normal 30-month operating cycle, which is the relevant (longer) benchmark in this case.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 4 ============ -->
+    <div class="section-header" id="s4"><span class="num">4</span><h2>The Operating Cycle Concept</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Recognising that "12 months" doesn't fit every business</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">IAS 13 recognised that a rigid 12-month rule would misclassify inventory and related working capital items for industries with naturally longer production/sale cycles (shipbuilding, aged spirits, long-term construction). Where the operating cycle could not be clearly identified, a default assumption of 12 months was used instead — a fallback still applied identically under IAS 1 today.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 5 ============ -->
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Working Capital Presentation</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Encouraging (though not universally mandating) a working capital subtotal</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">IAS 13 encouraged presentation of a working capital subtotal (current assets less current liabilities) on the face of the SOFP, viewing this as a genuinely useful liquidity indicator for users — a presentation convention many entities still follow today, even though IAS 1 does not mandate this specific subtotal in all circumstances.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 6 ============ -->
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Classification of Specific Items</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Early guidance on borderline cases</div>
+        <div class="check-list">
+          <span>Cash restricted for a purpose beyond 12 months was classified as non-current, an early recognition that legal/contractual restrictions could override a simple "it's cash" presumption</span>
+          <span>Trade receivables/payables due beyond 12 months, but within the normal operating cycle, remained current</span>
+          <span>The current portion of long-term debt (principal due within 12 months) was classified as a current liability, even though the debt instrument as a whole was long-term in nature</span>
+        </div>
+        <div class="note">Each of these early classification principles survives essentially unchanged as specific guidance within IAS 1 today.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 7 ============ -->
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Offsetting Current Items</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">A general presumption against netting</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">IAS 13 established that current assets and current liabilities should generally not be offset against each other, unless a legal right of set-off existed and the entity intended to settle net — a principle carried forward identically into IAS 1's own general offsetting prohibition today.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 8 ============ -->
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Why IAS 13 Was Absorbed into IAS 1</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Consolidated into a comprehensive presentation standard</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">As IAS 1 developed into a comprehensive standard governing the entire structure and presentation of financial statements, it made sense to absorb IAS 13's current/non-current classification guidance directly, rather than maintaining it as a separate, narrower standard — IAS 13 was withdrawn upon IAS 1's original 1997 issuance.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 9 ============ -->
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure Requirements (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Required disclosures under IAS 13</div>
+        <div class="check-list">
+          <span>Separate presentation of current and non-current assets and liabilities on the face of the SOFP</span>
+          <span>The basis used to determine the operating cycle, where it differed from 12 months</span>
+          <span>Details of any restrictions on cash or other current assets</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 10 ============ -->
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments &amp; Estimates (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where management judgement mattered most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Determining the entity's normal operating cycle, where it extended beyond 12 months</span>
+              <span>Classifying borderline items (restricted cash, long-term receivables due within the operating cycle)</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>Expected realisation/settlement timing for specific current assets/liabilities</span>
+            </div>
+          </div>
+        </div>
+        <div class="callout warn callout--chip" style="margin-top:8px;margin-bottom:0;">Determining the "normal operating cycle" for industries without a clearly defined production process (e.g. service businesses) was, even then, a genuinely difficult judgement — a limitation that persists identically under IAS 1 today.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 11 ============ -->
+    <div class="section-header" id="s11"><span class="num">11</span><h2>IAS 13 vs Modern IAS 1</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — IAS 13 (1979) vs current IAS 1</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Feature</span><span style="color:var(--color-text-info);">IAS 13 (withdrawn)</span><span style="color:var(--color-text-warning);">Current (IAS 1)</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>12-month/operating cycle test</span><span>Established</span><span>Identical test, carried forward unchanged</span></div>
+          <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Mandatory current/non-current split</span><span>Encouraged, not universally mandatory</span><span>Mandatory unless a liquidity-based presentation is more relevant (a narrow exception)</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Minimum SOFP line items</span><span>Not prescribed in detail</span><span>Detailed minimum line item list specified</span></div>
+        </div>
+        <div class="note">IAS 13's core classification logic survives entirely intact — IAS 1 primarily added rigour around when the split is mandatory and what minimum line items must appear.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 12 ============ -->
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping (Historical, Under IAS 13)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Comprehensive event-to-statement mapping table</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event / transaction</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Current/non-current classification of assets/liabilities</span><span><span class="badge bs">SOFP</span></span><span>Based on the 12-month/operating cycle test</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Working capital subtotal presentation</span><span><span class="badge bs">SOFP</span></span><span>Encouraged, not mandatory</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Restricted cash classification</span><span><span class="badge bs">SOFP</span></span><span>Non-current if restricted beyond 12 months</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 13 ============ -->
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Cross-reference map</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Standard</span><span>Connection</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 1</span><span>The direct successor, absorbing IAS 13's classification test and expanding presentation requirements substantially</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 5</span><span>Governs the separate presentation of assets/liabilities held for sale, a related but distinct classification concept</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 7</span><span>Uses similar operating cycle concepts in classifying cash flow activities</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 14 ============ -->
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Operating cycle", definition: "The time between acquiring materials for a process and realising cash from their sale — the benchmark used (if longer than 12 months) for current/non-current classification." },
+      { term: "Working capital", definition: "Current assets less current liabilities — a liquidity indicator IAS 13 encouraged presenting as a subtotal." },
+      { term: "Current asset (original)", definition: "Cash, or an asset held primarily for trading, or expected to be realised, sold, or consumed within the normal operating cycle, or within 12 months." },
+      { term: "Current liability (original)", definition: "An obligation that is expected to be settled in the normal operating cycle, or within 12 months, or held primarily for trading." },
+      { term: "Offsetting", definition: "The practice of deducting a liability from an asset, or an expense from revenue — generally prohibited unless a legal right of set-off exists and the entity intends to settle net." }
+    ]} />
+
+    <FinancialStatementKey />
+  </div>
+</StandardPageLayout>

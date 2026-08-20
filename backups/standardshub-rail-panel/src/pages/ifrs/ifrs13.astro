@@ -1,0 +1,279 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/ifrs/ifrs13.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope & Applicability" },
+        { id: "s3", label: "Principal / Most Advantageous Market" },
+        { id: "s4", label: "Highest and Best Use" },
+        { id: "s5", label: "Valuation Techniques" },
+        { id: "s6", label: "Fair Value Hierarchy" },
+        { id: "s7", label: "Liabilities & Own Equity" },
+        { id: "s8", label: "Day-One Gains and Losses" },
+        { id: "s9", label: "Disclosure" },
+        { id: "s10", label: "Critical Judgments & Estimates" },
+        { id: "s11", label: "IFRS vs US GAAP" },
+        { id: "s12", label: "Statement Mapping" },
+        { id: "s13", label: "Related Standards" },
+        { id: "s14", label: "Glossary" },
+        { id: "history", label: "History & Development" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <!-- ============ SECTION 1 ============ -->
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Why fair value needed a SINGLE definition and framework</div>
+        <div class="principle">The Conceptual Framework recognises fair value as a valid measurement basis but, before IFRS 13, its definition and application VARIED across different IFRS Standards. IFRS 13 unified this into ONE consistent definition — an EXIT PRICE, from a MARKET PARTICIPANT'S perspective — applied consistently wherever ANY OTHER Standard requires or permits fair value measurement.</div>
+        <div class="elabel">HOW IFRS 13 MAPS TO THE FRAMEWORK</div>
+        <div class="check-list">
+          <span><strong>Faithful representation</strong> — an EXIT price (what would be received to SELL, not what was paid to acquire) reflects the asset's genuine current economic value from a market perspective</span>
+          <span><strong>Comparability</strong> — a SINGLE fair value framework applied consistently across IFRS 9, IAS 40, IAS 41, IFRS 3, and others eliminates inconsistent fair value definitions previously scattered across individual Standards</span>
+          <span><strong>Market participant perspective</strong> — fair value reflects ASSUMPTIONS market participants would use, NOT the reporting entity's own specific intentions, ensuring an objective, faithfully representative measure</span>
+        </div>
+        <div class="note">IFRS 13 does NOT determine WHEN fair value is required — that remains the role of each individual Standard (IFRS 9, IAS 40, etc.); IFRS 13 only determines HOW to measure fair value once another Standard requires or permits it.</div>
+      </div>
+      <div class="card cs">
+        <div class="ctitle cs">The core exit price definition</div>
+        <div class="formula-box">
+          <div class="f-eq">Fair value = the price that would be received to SELL an asset, or paid to TRANSFER a liability, in an ORDERLY transaction between MARKET PARTICIPANTS at the MEASUREMENT DATE</div>
+        </div>
+        <div class="callout info callout--flush">ℹ️ "Orderly transaction" EXCLUDES forced liquidations or distress sales — fair value assumes NORMAL market exposure, not fire-sale conditions.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 2 ============ -->
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What IFRS 13 covers</div>
+        <div class="principle">IFRS 13 applies when ANOTHER IFRS Standard REQUIRES OR PERMITS fair value measurements or disclosures — it applies to BOTH initial and subsequent measurement, wherever fair value is used.</div>
+        <div class="note">Scope exclusions include share-based payment transactions (IFRS 2), leases (IFRS 16), and net realisable value under IAS 2 — measurements that RESEMBLE fair value but are governed by their own specific Standards.</div>
+      </div>
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions you must know</div>
+        <div class="glossary-item"><div class="glossary-term">Principal market</div><div class="glossary-def">The market with the GREATEST volume and level of activity for the asset/liability.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Most advantageous market</div><div class="glossary-def">The market that MAXIMISES the amount received (asset) or MINIMISES the amount paid (liability), after transaction and transport costs — used ONLY if there is NO principal market.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Highest and best use</div><div class="glossary-def">The use of a NON-FINANCIAL asset by market participants that would MAXIMISE its value — physically possible, legally permissible, and financially feasible.</div></div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 3 ============ -->
+    <div class="section-header" id="s3"><span class="num">3</span><h2>The Principal (or Most Advantageous) Market</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Determining WHICH market's price to use</div>
+        <div class="principle">Fair value is measured using the price in the PRINCIPAL market (assumed to be the market the entity would normally transact in, absent evidence to the contrary) — or, if there is NO principal market, the MOST ADVANTAGEOUS market.</div>
+        <div class="worked worked--flush">
+          <div class="wk-title">Example 1: Principal vs most advantageous market</div>
+          <div class="wk-body">An entity's commodity can be sold in Market A (highest transaction VOLUME, price $98, transaction costs $2) or Market B (lower volume, price $100, transaction costs $5).</div>
+          <div class="wk-answer">Since Market A has the GREATEST volume of activity, it is the PRINCIPAL market — fair value is based on Market A's price of <strong>$98</strong> (BEFORE deducting transaction costs, which are NOT part of fair value itself, though they DO factor into which market is "most advantageous" when no principal market exists).</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 4 ============ -->
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Highest and Best Use — Non-Financial Assets</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Valuing based on the market's use, not necessarily the entity's own use</div>
+        <div class="principle">For NON-FINANCIAL assets, fair value considers a market participant's ability to generate economic benefit by using the asset in its HIGHEST AND BEST USE, or by SELLING it to another market participant who would use it in its highest and best use — this may DIFFER from how the entity itself currently uses the asset.</div>
+        <div class="worked worked--flush">
+          <div class="wk-title">Example 2: Land valued for a DIFFERENT use than current</div>
+          <div class="wk-body">An entity owns land currently used for light industrial purposes, valued at $2,000,000 in that use. However, the land is legally zoned for residential development, and market evidence shows comparable residential-zoned land trades at $5,500,000, with redevelopment being both physically possible and financially feasible.</div>
+          <div class="wk-answer">Fair value is based on the HIGHEST AND BEST USE — residential development — at <strong>$5,500,000</strong>, NOT the entity's current $2,000,000 industrial use value, since market participants would recognise and pay for the land's greater potential.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 5 ============ -->
+    <div class="section-header" id="s5"><span class="num">5</span><h2>The Three Valuation Techniques</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Market, cost, and income approaches</div>
+        <div class="td-table">
+          <div class="th cols-1-16"><span>Approach</span><span>Description</span></div>
+          <div class="tr cols-1-16"><span>Market approach</span><span>Uses prices/information from market transactions involving IDENTICAL or COMPARABLE assets/liabilities</span></div>
+          <div class="tr alt cols-1-16"><span>Cost approach</span><span>Reflects the amount CURRENTLY required to replace the SERVICE CAPACITY of an asset (current replacement cost)</span></div>
+          <div class="tr cols-1-16"><span>Income approach</span><span>Converts FUTURE amounts (cash flows/income/expenses) to a SINGLE current (discounted) amount</span></div>
+        </div>
+        <div class="note">An entity uses the valuation technique(s) APPROPRIATE in the circumstances, maximising the use of RELEVANT OBSERVABLE inputs and minimising unobservable inputs — techniques are applied CONSISTENTLY, though a change may be warranted if it results in a measurement equally or more representative of fair value.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 6 ============ -->
+    <div class="section-header" id="s6"><span class="num">6</span><h2>The Fair Value Hierarchy</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">The three levels, originating from IFRS 13</div>
+        <div class="td-table">
+          <div class="th cols-06-2"><span>Level</span><span>Input basis</span></div>
+          <div class="tr cols-06-2"><span>Level 1</span><span>Quoted prices (unadjusted) in ACTIVE markets for IDENTICAL assets/liabilities the entity can access at the measurement date</span></div>
+          <div class="tr alt cols-06-2"><span>Level 2</span><span>Inputs OTHER than Level 1 quoted prices that are OBSERVABLE, directly or indirectly</span></div>
+          <div class="tr cols-06-2"><span>Level 3</span><span>UNOBSERVABLE inputs, used when relevant observable inputs are not available</span></div>
+        </div>
+        <div class="note">This hierarchy is DEFINED in IFRS 13 but its detailed DISCLOSURE requirements are largely specified in IFRS 7 (for financial instruments) and IFRS 13 itself (for all fair value measurements generally).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 7 ============ -->
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Fair Value of Liabilities &amp; Own Equity</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">A transfer notion, including non-performance risk</div>
+        <div class="text-supporting">Fair value of a liability assumes it is TRANSFERRED to a market participant at the measurement date (it is NOT settled or extinguished), and reflects the effect of NON-PERFORMANCE RISK — including the entity's OWN CREDIT RISK — assumed to be the SAME before and after the transfer. Where a quoted price for transferring an identical liability is not available, an entity may use the quoted price of the SAME liability when held as an ASSET by another party, as a proxy.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 8 ============ -->
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Day-One Gains and Losses</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Transaction price vs fair value at initial recognition</div>
+        <div class="text-supporting">The transaction price is often (but NOT always) equal to fair value at initial recognition. If fair value DIFFERS from the transaction price, the resulting "day-one" gain/loss is recognised per the requirements of the OTHER applicable IFRS Standard (e.g. IFRS 9 for financial instruments), which may or may not permit IMMEDIATE recognition depending on whether the fair value is evidenced by a quoted price in an active market or a valuation technique using only observable data.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 9 ============ -->
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Required disclosures</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">FOR RECURRING/NON-RECURRING FAIR VALUE MEASUREMENTS</div>
+            <div class="check-list">
+              <span>Fair value hierarchy level for each class of asset/liability measured at fair value</span>
+              <span>Valuation techniques and inputs used, including any changes in technique</span>
+              <span>For Level 3: a reconciliation from opening to closing balances, and sensitivity to changes in unobservable inputs</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">GENERAL</div>
+            <div class="check-list">
+              <span>The valuation process used by the entity for Level 3 fair value measurements (e.g. valuation committee, external valuers)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 10 ============ -->
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where management judgement matters most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Identifying the principal (or most advantageous) market</span>
+              <span>Determining highest and best use for non-financial assets, and whether it differs from current use</span>
+              <span>Selecting the appropriate valuation technique(s), and classifying inputs by hierarchy level</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>Unobservable inputs used in Level 3 valuation techniques</span>
+              <span>Non-performance risk (including own credit risk) incorporated into liability fair values</span>
+            </div>
+          </div>
+        </div>
+        <div class="callout warn callout--warn-flush">⚠️ Level 3 valuations, by definition, rely on management's OWN unobservable assumptions — making them the MOST judgemental, and often the most scrutinised by auditors and regulators, of all fair value measurements.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 11 ============ -->
+    <div class="section-header" id="s11"><span class="num">11</span><h2>IFRS vs US GAAP</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — IFRS 13 vs US GAAP (ASC 820)</div>
+        <div class="td-table">
+          <div class="th cols-12-1-1"><span>Feature</span><span>IFRS (IFRS 13)</span><span>US GAAP</span></div>
+          <div class="tr cols-12-1-1"><span>Core exit price definition</span><span>Exit price, market participant perspective</span><span>SAME exit price definition — near-identical, converged through joint standard-setting</span></div>
+          <div class="tr alt cols-12-1-1"><span>Fair value hierarchy</span><span>Three levels</span><span>SAME three levels, essentially identical mechanics</span></div>
+          <div class="tr cols-12-1-1"><span>Highest and best use</span><span>Applies to non-financial assets</span><span>Same concept, converged</span></div>
+        </div>
+        <div class="note">IFRS 13 and ASC 820 are AMONG THE MOST CONVERGED standards in the entire IFRS/US GAAP landscape, having been developed through a genuinely JOINT IASB/FASB project specifically to eliminate prior definitional inconsistencies.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 12 ============ -->
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Comprehensive event-to-statement mapping table</div>
+        <div class="td-table">
+          <div class="th cols-16-1-14"><span>Event / transaction</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr cols-16-1-14"><span>Fair value measurement (per host Standard)</span><span><span class="badge bs">SOFP</span></span><span>Basis and measurement determined per IFRS 13; recognition rules per the host Standard</span></div>
+          <div class="tr alt cols-16-1-14"><span>Change in fair value (host Standard dependent)</span><span><span class="badge bp">SOPL</span> <span class="badge bo">OCI</span></span><span>Location determined by the HOST Standard (e.g. IFRS 9, IAS 40), not IFRS 13 itself</span></div>
+          <div class="tr cols-16-1-14"><span>Day-one gain/loss recognition</span><span><span class="badge bp">SOPL</span></span><span>Per the host Standard's specific criteria for immediate recognition</span></div>
+          <div class="tr alt cols-16-1-14"><span>Hierarchy classification, valuation technique, Level 3 reconciliation</span><span><span class="badge bp">Notes</span></span><span>Mandatory disclosure</span></div>
+        </div>
+        <div class="note">IFRS 13 itself has NO recognition consequences — it supplies the MEASUREMENT and DISCLOSURE mechanics that the host Standard's own recognition rules then apply.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 13 ============ -->
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Cross-reference map</div>
+        <div class="td-table">
+          <div class="th cols-08-2"><span>Standard</span><span>Connection</span></div>
+          <div class="tr cols-08-2"><span>IFRS 9</span><span>Uses IFRS 13's framework for FVTPL/FVOCI measurement</span></div>
+          <div class="tr alt cols-08-2"><span>IAS 40 / IAS 41</span><span>Use IFRS 13's fair value framework for investment property and biological assets respectively</span></div>
+          <div class="tr cols-08-2"><span>IFRS 3</span><span>Uses IFRS 13's fair value framework almost universally in the acquisition method</span></div>
+          <div class="tr alt cols-08-2"><span>IFRS 7</span><span>Supplies additional disclosure requirements specifically for financial instrument fair values</span></div>
+        </div>
+      </div>
+      <div class="card cn">
+        <div class="ctitle cn">Quick-reference glossary</div>
+        <div class="glossary-item"><div class="glossary-term">Orderly transaction</div><div class="glossary-def">A transaction assuming exposure to the market for a period allowing usual marketing activities — excludes forced liquidations.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Non-performance risk</div><div class="glossary-def">The risk an obligation will not be fulfilled, including the entity's own credit risk, factored into liability fair values.</div></div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 14 ============ -->
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+<Glossary entries={[
+      { term: "Fair value", definition: "The price that would be received to sell an asset, or paid to transfer a liability, in an orderly transaction between market participants at the measurement date." },
+      { term: "Principal market", definition: "The market with the GREATEST volume and level of activity for the asset/liability." },
+      { term: "Most advantageous market", definition: "The market that MAXIMISES the amount received (asset) or MINIMISES the amount paid (liability), after transaction and transport costs — used ONLY if there is NO principal market." },
+      { term: "Highest and best use", definition: "The use of a NON-FINANCIAL asset by market participants that would MAXIMISE its value — physically possible, legally permissible, and financially feasible." },
+      { term: "Orderly transaction", definition: "A transaction assuming exposure to the market for a period allowing usual marketing activities — excludes forced liquidations." },
+      { term: "Non-performance risk", definition: "The risk an obligation will not be fulfilled, including the entity's own credit risk, factored into liability fair values." }
+    ]} />
+
+<FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.IFRS13} />
+  </section>
+</StandardPageLayout>

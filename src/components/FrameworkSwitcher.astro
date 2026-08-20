@@ -1,0 +1,35 @@
+---
+/*
+FrameworkSwitcher
+
+Renders an inline horizontal scrolling ribbon of framework chips.
+Used on landing pages to allow quick jumping between frameworks.
+*/
+
+import { FRAMEWORK_CONFIG, FRAMEWORK_ORDER } from "../data/frameworks";
+
+interface Props {
+  activeId: string;
+}
+
+const { activeId } = Astro.props;
+---
+
+<div class="framework-switcher-ribbon">
+  <span class="ribbon-label">Jump to:</span>
+  <div class="ribbon-chips">
+    {FRAMEWORK_ORDER.map((id) => {
+      const config = FRAMEWORK_CONFIG[id];
+      const isActive = id === activeId;
+      return (
+        <a
+          href={config.route}
+          class={`ribbon-chip ${isActive ? "active" : ""}`}
+          style={isActive ? `--accent: ${config.primary};` : ""}
+        >
+          {config.displayName}
+        </a>
+      );
+    })}
+  </div>
+</div>

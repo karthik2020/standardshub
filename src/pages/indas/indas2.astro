@@ -1,0 +1,250 @@
+﻿---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import metadata from "../../data/standards/indas/indas2.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  bannerNotice={metadata.bannerNotice}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope & Applicability" },
+        { id: "s3", label: "Measurement — Lower of Cost and NRV" },
+        { id: "s4", label: "Costs Included in Inventory" },
+        { id: "s5", label: "Cost Formulas — FIFO and Weighted Average" },
+        { id: "s6", label: "Net Realisable Value" },
+        { id: "s7", label: "GST Input Tax Credit — Indian Context" },
+        { id: "s8", label: "Recognition as an Expense" },
+        { id: "s9", label: "Disclosure Requirements" },
+        { id: "s10", label: "Critical Judgments & Estimates" },
+        { id: "s11", label: "Ind AS 2 vs IAS 2 — Full Comparison" },
+        { id: "s12", label: "Statement Mapping" },
+        { id: "s13", label: "Related Standards" },
+        { id: "s14", label: "Quick-Reference Glossary" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <!-- ============ SECTION 1 — CONCEPTUAL FRAMEWORK LINK ============ -->
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Identical lower-of-cost-and-NRV philosophy to IAS 2</div>
+        <div class="principle">Ind AS 2 applies the IDENTICAL principle as IAS 2 — inventories are measured at the LOWER of cost and net realisable value, ensuring assets are not carried above amounts expected to be recovered through sale.</div>
+        <div class="elabel">HOW IND AS 2 MAPS TO THE FRAMEWORK</div>
+        <div class="check-list">
+          <span><strong>Prudence</strong> — writing inventory down to NRV when cost is not recoverable — identical to IAS 2</span>
+          <span><strong>Interaction with India's GST regime</strong> — inventory cost EXCLUDES GST amounts for which the entity is entitled to input tax credit, since such credits are not a genuine cost to the entity — a practical Indian tax-interaction point, not a substantive accounting divergence from IAS 2's own "cost excludes recoverable taxes" principle</span>
+        </div>
+        <div class="note">Ind AS 2 introduced NO substantive change to the cost/NRV measurement model relative to IAS 2 — its practical application in India is most distinctive for the GST input credit netting mechanism.</div>
+      </div>
+      <div class="card cs">
+        <div class="ctitle cs">The core formula — identical to IAS 2</div>
+        <div class="formula-box formula-box--chip"><div class="f-eq">Inventory value = Lower of (Cost, Net realisable value)</div></div>
+        <div class="callout info callout--chip callout--flush">IDENTICAL to IAS 2 — no Indian-specific modification to this core measurement rule.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 2 — SCOPE & DEFINITIONS ============ -->
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What Ind AS 2 covers</div>
+        <div class="principle">Ind AS 2 applies to all inventories except work in progress under construction contracts, financial instruments, and biological assets — IDENTICAL scope to IAS 2.</div>
+      </div>
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions you must know</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Net realisable value</div>
+          <div class="glossary-def">IDENTICAL definition to IAS 2 — estimated selling price less estimated costs of completion and sale.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">GST input tax credit</div>
+          <div class="glossary-def">A credit an Indian registered entity can claim against GST paid on purchases, EXCLUDED from inventory cost to the extent recoverable.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 3 — MEASUREMENT ============ -->
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Measurement — Lower of Cost and NRV</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Identical to IAS 2</div>
+        <div class="text-supporting">Comparison of cost and NRV is generally made item by item, or by groups of similar items — IDENTICAL to IAS 2.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 4 — COSTS INCLUDED (worked example) ============ -->
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Costs Included in Inventory</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Identical cost components to IAS 2</div>
+        <div class="worked worked--flush">
+          <div class="wk-title">Example 1: Purchase cost including and excluding GST</div>
+          <div class="wk-body">An Indian manufacturer purchases raw materials for ₹10,00,000 plus GST of ₹1,80,000, and is entitled to claim the FULL ₹1,80,000 as input tax credit against its GST liability on sales.</div>
+          <div class="wk-answer">The inventory is recognised at ₹10,00,000 — the GST amount is EXCLUDED from cost because it is FULLY recoverable via input tax credit, consistent with IAS 2's own principle that recoverable taxes are excluded from cost — an IDENTICAL underlying rule to IAS 2, applied here in the specific Indian GST context.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 5 — COST FORMULAS ============ -->
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Cost Formulas — FIFO and Weighted Average</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Identical to IAS 2</div>
+        <div class="text-supporting">FIFO or weighted average cost formulas are permitted for interchangeable items; specific identification is required for items that are NOT ordinarily interchangeable — IDENTICAL to IAS 2, with LIFO prohibited under both.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 6 — NET REALISABLE VALUE ============ -->
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Net Realisable Value</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Identical to IAS 2</div>
+        <div class="text-supporting">NRV estimates are based on the most reliable evidence available at the time of estimation, considering fluctuations in price/cost directly relating to events after the reporting period — IDENTICAL to IAS 2.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 7 — GST INPUT TAX CREDIT (worked example) ============ -->
+    <div class="section-header" id="s7"><span class="num">7</span><h2>GST Input Tax Credit — Indian Cost Measurement Context</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">A genuinely important Indian practical application area</div>
+        <div class="principle">India's GST regime allows registered businesses to claim input tax credit for GST paid on eligible purchases, offsetting it against GST collected on sales. Under Ind AS 2's "cost excludes recoverable taxes" principle (IDENTICAL to IAS 2), the RECOVERABLE portion of GST is EXCLUDED from inventory cost, while any NON-RECOVERABLE portion (e.g. GST on inputs used for exempt supplies, or blocked credits under GST law) IS included in cost.</div>
+        <div class="worked worked--flush">
+          <div class="wk-title">Example 2: Partially blocked GST credit</div>
+          <div class="wk-body">An Indian company purchases inventory for ₹5,00,000 plus GST of ₹90,000, but is only entitled to claim ₹60,000 as input tax credit due to partial use in exempt supply activities (the remaining ₹30,000 is a "blocked credit" under GST law).</div>
+          <div class="wk-answer">The inventory is recognised at ₹5,30,000 (₹5,00,000 + the ₹30,000 NON-recoverable GST portion), while the ₹60,000 recoverable portion is excluded from cost — an application of Ind AS 2's IDENTICAL cost principle to IAS 2, adapted to India's specific GST recoverability rules.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 8 — RECOGNITION AS AN EXPENSE ============ -->
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Recognition as an Expense</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Identical to IAS 2</div>
+        <div class="text-supporting">The carrying amount of inventories is recognised as an expense (cost of sales) in the period the related revenue is recognised — IDENTICAL to IAS 2, with write-downs to NRV and reversals also recognised in the period they occur/reverse.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 9 — DISCLOSURE ============ -->
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Identical disclosure requirements to IAS 2</div>
+        <div class="check-list">
+          <span>Accounting policies, cost formulas used</span>
+          <span>Total carrying amount, and carrying amount classified appropriately</span>
+          <span>Amount recognised as expense, write-downs, and reversals</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 10 — JUDGMENTS & ESTIMATES ============ -->
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where management judgement matters most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Determining recoverability of GST input tax credits at the point of purchase</span>
+              <span>Grouping of similar items for NRV comparison</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>Estimated selling price and costs to complete/sell for NRV</span>
+              <span>Obsolescence/slow-moving inventory write-down estimates</span>
+            </div>
+          </div>
+        </div>
+        <div class="callout warn callout--chip callout--warn-flush">Indian companies with MIXED taxable/exempt supply activities must carefully track GST input credit recoverability at an item or activity level to correctly determine inventory cost.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 11 — IND AS 2 vs IAS 2 ============ -->
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Ind AS 2 vs IAS 2 — Full Comparison</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comprehensive comparison table</div>
+        <div class="td-table">
+          <div class="th cols-12-1-1"><span>Feature</span><span>IAS 2</span><span>Ind AS 2</span></div>
+          <div class="tr cols-12-1-1"><span>Measurement, cost formulas, NRV</span><span>Standard model</span><span>IDENTICAL — no substantive divergence</span></div>
+          <div class="tr alt cols-12-1-1"><span>Recoverable tax exclusion</span><span>General "recoverable taxes excluded" principle</span><span>Applied specifically to India's GST input tax credit mechanism, including partial/blocked credits</span></div>
+        </div>
+        <div class="note">Ind AS 2 is essentially IDENTICAL to IAS 2 in substance — the meaningful Indian context is the GST input credit interaction, not any divergence in the standard's own recognition/measurement principles.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 12 — STATEMENT MAPPING ============ -->
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Comprehensive event-to-statement mapping table</div>
+        <div class="td-table">
+          <div class="th cols-16-1-14"><span>Event / transaction</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr cols-16-1-14"><span>Inventory purchase</span><span><span class="badge bs">Balance Sheet</span></span><span>Recognised at cost, excluding recoverable GST</span></div>
+          <div class="tr alt cols-16-1-14"><span>Sale of inventory</span><span><span class="badge bp">P&amp;L</span></span><span>Cost of sales recognised when related revenue is recognised</span></div>
+          <div class="tr cols-16-1-14"><span>Write-down to NRV / reversal</span><span><span class="badge bp">P&amp;L</span></span><span>Identical to IAS 2</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 13 — RELATED STANDARDS ============ -->
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Cross-reference map</div>
+        <div class="td-table">
+          <div class="th cols-08-2"><span>Standard</span><span>Connection</span></div>
+          <div class="tr cols-08-2"><span>IAS 2</span><span>The global counterpart standard, near-identically converged</span></div>
+          <div class="tr alt cols-08-2"><span>Ind AS 115</span><span>Governs the revenue recognition point at which cost of sales is matched</span></div>
+          <div class="tr cols-08-2"><span>CGST/SGST Act (GST law)</span><span>Determines input tax credit recoverability affecting inventory cost</span></div>
+        </div>
+      </div>
+      <div class="card cn">
+        <div class="ctitle cn">Quick-reference glossary</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Blocked credit</div>
+          <div class="glossary-def">GST input tax credit that cannot be claimed under specific GST law provisions, and is therefore included in inventory cost.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">CGST/SGST</div>
+          <div class="glossary-def">Central and State Goods and Services Tax — India's dual GST structure relevant to input credit determination.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 14 — GLOSSARY ============ -->
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Net realisable value", definition: "The estimated selling price in the ordinary course of business, less the estimated costs of completion and the estimated costs necessary to make the sale — identical to IAS 2." },
+      { term: "GST input tax credit", definition: "A credit an Indian registered entity can claim against GST paid on eligible purchases; excluded from inventory cost to the extent recoverable." },
+      { term: "Blocked credit", definition: "GST input tax credit that cannot be claimed under specific GST law provisions, and is therefore included in inventory cost." },
+      { term: "CGST/SGST", definition: "Central and State Goods and Services Tax — India's dual GST structure relevant to input credit determination." },
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+</StandardPageLayout>

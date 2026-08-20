@@ -1,0 +1,47 @@
+---
+/*
+Page table of contents.
+
+Props:
+- items
+
+Renders a linked list of sections for the current page. Section numbers are extracted from item IDs matching the pattern s<N>. Labels are slugified for URL hashes.
+*/
+
+interface Item {
+    id: string;
+
+    label: string;
+}
+
+interface Props {
+    items: Item[];
+}
+
+const { items = [] } = Astro.props;
+
+const slugify = (text: string) =>
+    text.replace(/[^a-zA-Z0-9]+/g, "_").replace(/^_+|_+$/g, "");
+---
+
+<nav class="toc" aria-label="Table of contents">
+    <div class="toc-title">Contents</div>
+
+    <ul>
+        {
+            items.map((item) => {
+                const href = `#${item.id}_${slugify(item.label)}`;
+                const numMatch = item.id.match(/^s(\d+)$/);
+                const number = numMatch ? parseInt(numMatch[1], 10) : null;
+                return (
+                    <li>
+                        <a href={href} data-section={item.id}>
+                            <span class="toc-number">{number !== null ? number : ""}</span>
+                            <span class="toc-label">{item.label}</span>
+                        </a>
+                    </li>
+                );
+            })
+        }
+    </ul>
+</nav>

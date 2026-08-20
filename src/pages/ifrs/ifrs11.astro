@@ -1,0 +1,264 @@
+﻿---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/ifrs/ifrs11.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope & Applicability" },
+        { id: "s3", label: "Joint Control Threshold" },
+        { id: "s4", label: "Classifying the Arrangement" },
+        { id: "s5", label: "Joint Operations Accounting" },
+        { id: "s6", label: "Joint Ventures Accounting" },
+        { id: "s7", label: "Separate Vehicle Assessment" },
+        { id: "s8", label: "Parties Without Joint Control" },
+        { id: "s9", label: "Disclosure" },
+        { id: "s10", label: "Critical Judgments & Estimates" },
+        { id: "s11", label: "IFRS vs US GAAP" },
+        { id: "s12", label: "Statement Mapping" },
+        { id: "s13", label: "Related Standards" },
+        { id: "s14", label: "Glossary" },
+        { id: "history", label: "History & Development" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <!-- ============ SECTION 1 ============ -->
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Why classification follows RIGHTS AND OBLIGATIONS, not legal form</div>
+        <div class="principle">The Conceptual Framework's asset/liability definitions ask what an entity genuinely CONTROLS or OWES. IFRS 11 applies this directly to joint arrangements: classification depends on the parties' RIGHTS to assets and OBLIGATIONS for liabilities of the arrangement, NOT on the legal structure alone — even a separate legal vehicle can be a "joint operation" if the parties' rights/obligations relate directly to the underlying assets/liabilities.</div>
+        <div class="elabel">HOW IFRS 11 MAPS TO THE FRAMEWORK</div>
+        <div class="check-list">
+          <span><strong>Substance over form</strong> — a separate legal vehicle does NOT automatically mean the parties only have a net equity interest; contractual terms can preserve direct rights/obligations</span>
+          <span><strong>Faithful representation</strong> — joint operators recognise THEIR OWN share of assets/liabilities directly, reflecting genuine direct exposure, rather than a single net investment figure</span>
+          <span><strong>Comparability</strong> — replacing IAS 31's proportionate consolidation CHOICE with a single mandatory equity method for joint ventures removed a major comparability weakness</span>
+        </div>
+        <div class="note">IFRS 11 was issued alongside IFRS 10 and IFRS 12 as part of a coordinated "consolidation package," directly replacing IAS 31 and its criticised policy-choice structure.</div>
+      </div>
+      <div class="card cs">
+        <div class="ctitle cs">The two-category structure</div>
+        <div class="principle">IFRS 11 replaced IAS 31's three structural forms with just TWO categories, each with a single mandatory accounting treatment.</div>
+        <div class="td-table">
+          <div class="th cols-13-1"><span>Type</span><span>Accounting</span></div>
+          <div class="tr cols-13-1"><span>Joint operation</span><span>Each party recognises its OWN share of assets, liabilities, revenue, expenses directly</span></div>
+          <div class="tr alt cols-13-1"><span>Joint venture</span><span>MANDATORY equity method (IAS 28) — NO proportionate consolidation option</span></div>
+        </div>
+        <div class="callout info callout--chip callout--flush">Removing the IAS 31 CHOICE for joint ventures directly improved <strong>comparability</strong>, at some cost to the granularity IAS 31's proportionate consolidation once provided.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 2 ============ -->
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What IFRS 11 covers</div>
+        <div class="principle">IFRS 11 applies to ALL entities that are a PARTY to a joint arrangement — an arrangement of which two or more parties have JOINT CONTROL.</div>
+        <div class="note">A joint arrangement has two essential characteristics: parties are bound by a CONTRACTUAL ARRANGEMENT, and that contractual arrangement gives two or more parties JOINT CONTROL.</div>
+      </div>
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions you must know</div>
+        <div class="glossary-item"><div class="glossary-term">Joint control</div><div class="glossary-def">The contractually agreed sharing of control, which exists ONLY when decisions about relevant activities require the UNANIMOUS consent of the parties sharing control.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Joint operation</div><div class="glossary-def">A joint arrangement whereby parties with joint control have RIGHTS to the ASSETS and OBLIGATIONS for the LIABILITIES relating to the arrangement.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Joint venture</div><div class="glossary-def">A joint arrangement whereby parties with joint control have RIGHTS to the NET ASSETS of the arrangement.</div></div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 3 ============ -->
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Joint Control — The Threshold</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Unanimous consent — a genuinely high bar</div>
+        <div class="principle">An entity assesses whether ALL the parties, or a GROUP of the parties, control the arrangement COLLECTIVELY (per IFRS 10's control definition), and then whether decisions about RELEVANT ACTIVITIES require the UNANIMOUS consent of those parties sharing control.</div>
+        <div class="worked worked--flush">
+          <div class="wk-title">Example 1: Testing for unanimous consent</div>
+          <div class="wk-body">Three parties hold 40%, 35%, and 25% of the voting rights in an arrangement. The contractual agreement requires decisions about relevant activities to be approved by AT LEAST 75% of the voting rights.</div>
+          <div class="wk-answer">NO single party can unilaterally approve decisions (none holds 75% alone), but multiple DIFFERENT combinations of two parties CAN reach 75% (e.g. 40%+35%=75%, or 40%+25%... does not reach 75% alone with only two, need to check: 40+35=75, 35+25=60, 40+25=65). Since MORE THAN ONE combination of parties could together reach the required percentage, NO single combination has EXCLUSIVE joint control — this arrangement likely does NOT meet the joint control threshold, since unanimous consent of a SPECIFIC identifiable set of parties is not established.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 4 ============ -->
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Classifying the Arrangement</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Structure, legal form, contractual terms, and other facts</div>
+        <div class="principle">Classification as a joint operation or joint venture depends on the parties' RIGHTS AND OBLIGATIONS arising from the arrangement, assessed by considering: the STRUCTURE of the arrangement (separate vehicle or not); when structured through a separate vehicle, the LEGAL FORM of that vehicle; the terms of the CONTRACTUAL ARRANGEMENT; and, when relevant, OTHER FACTS AND CIRCUMSTANCES.</div>
+        <div class="note">An arrangement NOT structured through a separate vehicle is ALWAYS a joint operation — the separate vehicle analysis (Section 7) only becomes necessary once a distinct legal entity/vehicle exists.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 5 ============ -->
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Joint Operations Accounting</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Recognising the joint operator's OWN direct share</div>
+        <div class="principle">A joint operator recognises, in relation to its interest: its ASSETS, including its share of any assets held jointly; its LIABILITIES, including its share of any liabilities incurred jointly; its REVENUE from the sale of its share of output; its share of REVENUE from the sale of output by the joint operation; and its EXPENSES, including its share of any expenses incurred jointly.</div>
+        <div class="worked worked--flush">
+          <div class="wk-title">Example 2: A joint operation in oil exploration</div>
+          <div class="wk-body">Two companies jointly operate an oil field through a contractual arrangement (no separate vehicle), each entitled to 50% of extracted oil and jointly liable for decommissioning costs. Company A's own extraction costs for the period: $2,000,000. Jointly incurred decommissioning provision: $6,000,000.</div>
+          <div class="wk-answer">Company A recognises its OWN $2,000,000 extraction costs directly, PLUS its 50% share of the joint decommissioning liability = 6,000,000 × 50% = <strong>$3,000,000</strong>, recognised directly on ITS OWN SOFP — no separate joint venture entity accounting is needed.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 6 ============ -->
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Joint Ventures Accounting</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Mandatory equity method — no alternative</div>
+        <div class="text-supporting">A joint venturer recognises its interest in a joint venture as an INVESTMENT, and accounts for that investment using the EQUITY METHOD in accordance with IAS 28 — UNLESS the entity is exempted from applying the equity method per IAS 28's own scope exceptions (e.g. certain investment entities, or entities meeting specific parent-level exemption conditions).</div>
+        <div class="note">This is a DIRECT departure from IAS 31 — there is NO proportionate consolidation option available for joint ventures under IFRS 11, regardless of preparer preference.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 7 ============ -->
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Separate Vehicle Assessment — The Key Judgement</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">When a separate vehicle can STILL be a joint operation</div>
+        <div class="principle">Even where an arrangement IS structured through a separate vehicle, it can still be a JOINT OPERATION if the LEGAL FORM, contractual terms, or OTHER FACTS/CIRCUMSTANCES indicate the parties have rights to assets and obligations for liabilities (rather than merely rights to net assets).</div>
+        <div class="worked worked--flush">
+          <div class="wk-title">Example 3: A separate vehicle that is still a joint operation</div>
+          <div class="wk-body">Two companies establish a separate legal entity to construct and operate a pipeline. Although the pipeline is legally owned by the separate entity, the contractual arrangement specifies that the OUTPUT (transported gas capacity) is entirely allocated to the two parties in proportion to their interests, and each party is contractually obligated to fund the entity's operating costs and any cash shortfalls in that SAME proportion.</div>
+          <div class="wk-answer">Despite the SEPARATE legal vehicle, the CONTRACTUAL TERMS give each party DIRECT rights to substantially all the output and DIRECT obligations to fund costs — this indicates the arrangement is a <strong>JOINT OPERATION</strong>, NOT a joint venture, despite the separate legal entity's existence. Each party accounts for its own share of assets/liabilities/revenue/expenses directly, per Section 5.</div>
+        </div>
+        <div class="callout warn callout--chip callout--flush">This is one of the MOST heavily tested and counter-intuitive aspects of IFRS 11 — a separate legal vehicle does NOT automatically mean joint venture (equity method) treatment; the underlying CONTRACTUAL substance can still produce joint OPERATION accounting.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 8 ============ -->
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Accounting for Parties Without Joint Control</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Participants who lack joint control</div>
+        <div class="text-supporting">A party participating in, but NOT having joint control of, a joint operation ALSO accounts for its interest in the assets, liabilities, revenue, and expenses relating to its involvement, IF it has rights to assets and obligations for liabilities. A party participating in, but not having joint control of, a joint VENTURE accounts for its interest per IFRS 9 (as a financial asset), UNLESS it has SIGNIFICANT INFLUENCE, in which case IAS 28's equity method applies instead.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 9 ============ -->
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Required disclosures (largely detailed further in IFRS 12)</div>
+        <div class="check-list">
+          <span>Nature, extent, and financial effects of interests in joint arrangements, including the name, principal place of business, and proportion of ownership interest</span>
+          <span>Nature of the relationship with the joint arrangement (e.g. description of activities, strategic nature)</span>
+          <span>Significant judgements made in determining joint control and classification as a joint operation or joint venture</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 10 ============ -->
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where management judgement matters most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Whether unanimous consent genuinely exists among an identifiable group of parties</span>
+              <span>Classifying a separate-vehicle arrangement as a joint operation vs joint venture based on contractual substance</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>Allocating shared assets/liabilities/costs between joint operators where contractual terms require estimation</span>
+            </div>
+          </div>
+        </div>
+        <div class="callout warn callout--chip callout--warn-flush">The separate vehicle classification judgement (Section 7) is consistently one of the most challenging and frequently misapplied areas of the entire consolidation suite.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 11 ============ -->
+    <div class="section-header" id="s11"><span class="num">11</span><h2>IFRS vs US GAAP</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — IFRS 11 vs US GAAP</div>
+        <div class="td-table">
+          <div class="th cols-12-1-1"><span>Feature</span><span>IFRS (IFRS 11)</span><span>US GAAP</span></div>
+          <div class="tr cols-12-1-1"><span>Joint venture accounting</span><span>MANDATORY equity method only</span><span>Equity method is also the general approach, though proportionate consolidation is permitted in SOME specific industries (e.g. certain oil and gas/construction arrangements) under US GAAP</span></div>
+          <div class="tr alt cols-12-1-1"><span>Classification driver</span><span>Rights and obligations (structure, legal form, contractual terms, other facts)</span><span>Similar substance-based analysis, though with different specific guidance</span></div>
+        </div>
+        <div class="note">US GAAP retains a NARROW proportionate consolidation option in specific industries that IFRS 11 does not permit at all — a residual divergence despite otherwise broadly similar philosophy.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 12 ============ -->
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Comprehensive event-to-statement mapping table</div>
+        <div class="td-table">
+          <div class="th cols-16-1-14"><span>Event / transaction</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr cols-16-1-14"><span>Joint operation — own/shared assets, liabilities</span><span><span class="badge bs">SOFP</span></span><span>Recognised directly, per the operator's contractual share</span></div>
+          <div class="tr alt cols-16-1-14"><span>Joint operation — own/shared revenue, expenses</span><span><span class="badge bp">SOPL</span></span><span>Recognised directly, per contractual entitlement</span></div>
+          <div class="tr cols-16-1-14"><span>Joint venture investment recognition</span><span><span class="badge bs">SOFP</span></span><span>Single equity-method investment line (IAS 28)</span></div>
+          <div class="tr alt cols-16-1-14"><span>Joint venture share of profit/loss</span><span><span class="badge bp">SOPL</span></span><span>Recognised via equity method, adjusting investment carrying amount</span></div>
+          <div class="tr cols-16-1-14"><span>Significant judgements, classification, ownership details</span><span><span class="badge bp">Notes</span></span><span>Mandatory disclosure</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 13 ============ -->
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Cross-reference map</div>
+        <div class="td-table">
+          <div class="th cols-08-2"><span>Standard</span><span>Connection</span></div>
+          <div class="tr cols-08-2"><span>IFRS 10</span><span>Supplies the underlying "control" concept used to assess joint control collectively</span></div>
+          <div class="tr alt cols-08-2"><span>IAS 28</span><span>Supplies the mandatory equity method mechanics for joint ventures</span></div>
+          <div class="tr cols-08-2"><span>IFRS 12</span><span>Supplies detailed disclosure requirements for interests in joint arrangements</span></div>
+          <div class="tr alt cols-08-2"><span>IAS 24</span><span>Joint ventures/operations and their operators are related parties requiring disclosure</span></div>
+        </div>
+      </div>
+      <div class="card cn">
+        <div class="ctitle cn">Quick-reference glossary</div>
+        <div class="glossary-item"><div class="glossary-term">Separate vehicle</div><div class="glossary-def">A separately identifiable financial structure, including separate legal entities or entities recognised by statute, regardless of whether those entities have separate legal personality.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Party to a joint arrangement</div><div class="glossary-def">An entity participating in a joint arrangement, regardless of whether it has joint control.</div></div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 14 ============ -->
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+<Glossary entries={[
+      { term: "Joint control", definition: "The contractually agreed sharing of control, which exists ONLY when decisions about relevant activities require the UNANIMOUS consent of the parties sharing control." },
+      { term: "Joint operation", definition: "A joint arrangement whereby parties with joint control have RIGHTS to the ASSETS and OBLIGATIONS for the LIABILITIES relating to the arrangement." },
+      { term: "Joint venture", definition: "A joint arrangement whereby parties with joint control have RIGHTS to the NET ASSETS of the arrangement." },
+      { term: "Separate vehicle", definition: "A separately identifiable financial structure, including separate legal entities or entities recognised by statute, regardless of whether those entities have separate legal personality." },
+      { term: "Party to a joint arrangement", definition: "An entity participating in a joint arrangement, regardless of whether it has joint control." },
+      { term: "Unanimous consent", definition: "The requirement that decisions about relevant activities must be approved by all parties sharing control — the defining threshold for joint control." }
+    ]} />
+
+<FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.IFRS11} />
+  </section>
+</StandardPageLayout>

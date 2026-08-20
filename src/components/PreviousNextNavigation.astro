@@ -1,0 +1,163 @@
+---
+/*
+Previous / next standard navigation.
+
+Props:
+- current
+- framework
+
+Renders linked previous and next standard cards based on the framework's ordered index. Only displays when at least one neighbour exists. Grid pins each card to its own column so positions stay stable when one side is missing.
+*/
+
+import { ArrowLeft, ArrowRight } from "@lucide/astro";
+import standards from "../data/standards.json";
+import type { Framework } from "../data/standards/metadata.types";
+import { getFramework } from "../data/frameworks";
+
+interface Props {
+  current: string;
+  framework: Framework;
+}
+
+const { current, framework } = Astro.props;
+
+const frameworkConfig = getFramework(framework) ?? getFramework("ias")!;
+
+const currentPath = Astro.url.pathname;
+const pathFrameworkId =
+  currentPath.startsWith("/ifrs/ifric")
+    ? "ifric"
+    : currentPath.startsWith("/ifrs/sic")
+      ? "sic"
+      : currentPath.startsWith("/ifrs/ifrsforsmes")
+        ? "ifrsforsmes"
+        : currentPath.startsWith("/ifrs/ifrspublications")
+          ? "ifrspublications"
+          : currentPath.startsWith("/ifrs/ifrssustainability")
+            ? "ifrssustainability"
+            : frameworkConfig.id;
+const pathFrameworkConfig = getFramework(pathFrameworkId) ?? frameworkConfig;
+
+const allIAS = [
+  ...standards.IAS.filter((s) => !s.status),
+  ...standards.IAS.filter((s) => s.status),
+];
+
+const codeToKey = (code: string) => {
+  if (code === "Ind AS") return "IndAS";
+  if (code === "IFRS Sustainability") return "IFRSSustainability";
+  if (code === "IFRS Publications") return "IFRSPublications";
+  if (code === "IFRS for SMEs") return "IFRSForSMEs";
+  if (code === "IFRIC") return "IFRIC";
+  if (code === "SIC") return "SIC";
+  if (code === "US GAAP") return "USGAAP";
+  if (code === "UK GAAP") return "UKGAAP";
+  if (code === "ASBE") return "ASBE";
+  if (code === "ASPE") return "ASPE";
+  if (code === "ASBJ") return "ASBJ";
+  if (code === "HGB") return "HGB";
+  return code;
+};
+
+const standardsList =
+  pathFrameworkConfig.code === "IAS"
+    ? allIAS
+    : pathFrameworkConfig.code === "Ind AS"
+      ? [
+          ...standards.IndAS.filter((s) => !s.status),
+          ...standards.IndAS.filter((s) => s.status),
+        ]
+      : pathFrameworkConfig.code === "IFRS Sustainability"
+        ? [
+            ...standards.IFRSSustainability.filter((s) => !s.status),
+            ...standards.IFRSSustainability.filter((s) => s.status),
+          ]
+        : pathFrameworkConfig.code === "IFRS Publications"
+          ? [
+              ...standards.IFRSPublications.filter((s) => !s.status),
+              ...standards.IFRSPublications.filter((s) => s.status),
+            ]
+          : pathFrameworkConfig.code === "IFRS for SMEs"
+            ? [
+                ...standards.IFRSForSMEs.filter((s) => !s.status),
+                ...standards.IFRSForSMEs.filter((s) => s.status),
+              ]
+             : pathFrameworkConfig.code === "IFRIC"
+                ? [
+                    ...standards.IFRIC.filter((s) => !s.status),
+                    ...standards.IFRIC.filter((s) => s.status),
+                  ]
+                : pathFrameworkConfig.code === "SIC"
+                  ? [
+                      ...standards.SIC.filter((s) => !s.status),
+                      ...standards.SIC.filter((s) => s.status),
+                    ]
+                   : pathFrameworkConfig.code === "US GAAP"
+                     ? [
+                         ...standards.USGAAP.filter((s) => !s.status),
+                         ...standards.USGAAP.filter((s) => s.status),
+                       ]
+                     : pathFrameworkConfig.code === "UK GAAP"
+                       ? [
+                           ...standards.UKGAAP.filter((s) => !s.status),
+                           ...standards.UKGAAP.filter((s) => s.status),
+                         ]
+                        : pathFrameworkConfig.code === "ASBE"
+                          ? [
+                              ...standards.ASBE.filter((s) => !s.status),
+                              ...standards.ASBE.filter((s) => s.status),
+                            ]
+                           : pathFrameworkConfig.code === "ASPE"
+                             ? [
+                                 ...standards.ASPE.filter((s) => !s.status),
+                                 ...standards.ASPE.filter((s) => s.status),
+                               ]
+                                : pathFrameworkConfig.code === "ASBJ"
+                                  ? (() => {
+                                      const cur = standards.ASBJ.find((s) => s.code === current);
+                                      return cur?.category
+                                        ? standards.ASBJ.filter((s) => s.category === cur.category)
+                                        : standards.ASBJ;
+                                  })()
+                                  : pathFrameworkConfig.code === "HGB" && current.startsWith("DRS")
+                                    ? standards.DRS
+                                    : standards[codeToKey(pathFrameworkConfig.code)] ?? [];
+
+const currentIndex = standardsList.findIndex((standard) => standard.code === current);
+const previous =
+  currentIndex > 0 ? standardsList[currentIndex - 1] : undefined;
+const next =
+  currentIndex >= 0 && currentIndex < standardsList.length - 1
+    ? standardsList[currentIndex + 1]
+    : undefined;
+
+const frameworkClass = frameworkConfig.id;
+---
+
+{
+  (previous || next) && (
+    <nav class="pnn-nav" aria-label="Previous and next standards">
+      {previous && (
+        <a class={`pnn-card pnn-prev nav-${frameworkClass}`} href={previous.url}>
+          <span class="pnn-label" aria-hidden="true">Previous</span>
+          <span class="pnn-code">
+            <ArrowLeft size={17} class="pnn-arrow" aria-hidden="true" />
+            {previous.code}
+          </span>
+          <span class="pnn-title">{previous.title}</span>
+        </a>
+      )}
+
+      {next && (
+        <a class={`pnn-card pnn-next nav-${frameworkClass}`} href={next.url}>
+          <span class="pnn-label" aria-hidden="true">Next</span>
+          <span class="pnn-code">
+            {next.code}
+            <ArrowRight size={17} class="pnn-arrow" aria-hidden="true" />
+          </span>
+          <span class="pnn-title">{next.title}</span>
+        </a>
+      )}
+    </nav>
+  )
+}

@@ -1,0 +1,251 @@
+---
+import StandardPageLayout from "../../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../../components/FinancialStatementKey.astro";
+import Glossary from "../../../components/Glossary.astro";
+import PageToc from "../../../components/PageToc.astro";
+import "../../../styles/standards-poster.css";
+import "../../../styles/extended.css";
+import HistoryTimeline from "../../../components/HistoryTimeline.astro";
+import history from "../../../data/history.json";
+import metadata from "../../../data/standards/ifric/ifric12.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType="IFRS"
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework" },
+        { id: "s2", label: "Scope — The Two-Part Control Test" },
+        { id: "s3", label: "Why Infrastructure Stays Off the Operator's PPE" },
+        { id: "s4", label: "The Financial Asset Model" },
+        { id: "s5", label: "The Intangible Asset Model" },
+        { id: "s6", label: "The Bifurcated Model" },
+        { id: "s7", label: "Construction & Upgrade Revenue" },
+        { id: "s8", label: "Borrowing Costs & Restoration Obligations" },
+        { id: "s9", label: "Disclosure" },
+        { id: "s10", label: "Judgments & Estimates" },
+        { id: "s11", label: "IFRIC 12 vs US GAAP" },
+        { id: "s12", label: "Statement Mapping" },
+        { id: "s13", label: "Related Standards" },
+        { id: "s14", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Why the operator often does NOT control the infrastructure</div>
+        <div class="principle">Recognition of an asset under the Conceptual Framework depends on control — the ability to direct the use of, and obtain substantially all the remaining benefits from, a resource. In a public-to-private service concession, the GRANTOR retains control over the underlying infrastructure's use, pricing, and ultimate disposition. IFRIC 12 concludes the operator, despite building and operating the infrastructure, typically does not control it in the IAS 16 sense — its real asset is a RIGHT (to cash or to charge users), not the infrastructure itself.</div>
+      </div>
+      <div class="card cs">
+        <div class="ctitle cs">Faithful representation of what the operator actually holds</div>
+        <div class="principle">Recognising the infrastructure as the operator's own PPE would overstate the operator's control and misrepresent the substance of the arrangement — the operator's real economic position is a contractual right to be paid for the services it provides, which IFRIC 12's financial-asset or intangible-asset models represent more faithfully.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope — The Two-Part Control Test</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">Both conditions must be met for IFRIC 12 to apply</div>
+        <div class="td-table">
+          <div class="th cols-04-26"><span>Condition</span><span>Requirement</span></div>
+          <div class="tr cols-04-26"><span>(a)</span><span>The grantor CONTROLS OR REGULATES what services the operator must provide with the infrastructure, to whom, and at what price</span></div>
+          <div class="tr alt cols-04-26"><span>(b)</span><span>The grantor CONTROLS — through ownership, beneficial entitlement, or otherwise — any significant residual interest in the infrastructure at the end of the arrangement</span></div>
+        </div>
+        <div class="callout warn callout--flush">⚠️ Infrastructure the operator uses under an arrangement that does NOT meet BOTH conditions — for example, if the operator can freely price its services or keeps significant residual value — falls OUTSIDE IFRIC 12's scope and is accounted for as ordinary PPE or a lease instead.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Why Infrastructure Stays Off the Operator's PPE</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">The central mechanic</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Infrastructure within IFRIC 12's scope is NOT recognised as property, plant and equipment of the OPERATOR, even though the operator builds, maintains, and operates it — because the grantor's control over usage and residual value means the operator lacks the control IAS 16 requires for asset recognition. The operator instead recognises a FINANCIAL ASSET, an INTANGIBLE ASSET, or a combination of both.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>The Financial Asset Model</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs">
+        <div class="ctitle cs">When it applies</div>
+        <div class="principle">The operator recognises a FINANCIAL ASSET to the extent it has an UNCONDITIONAL CONTRACTUAL RIGHT to receive cash or another financial asset from (or at the direction of) the grantor — because the grantor has GUARANTEED payment for the construction or upgrade services, regardless of actual usage of the infrastructure by end users.</div>
+      </div>
+      <div class="card ci">
+        <div class="ctitle ci">Worked example — grantor-guaranteed toll road</div>
+        <div class="worked">
+          <div class="wk-title">Example: Availability-payment concession</div>
+          <div class="wk-body">An operator builds a $200,000,000 toll road under an arrangement where the grantor unconditionally guarantees fixed availability payments over 25 years, regardless of actual traffic volumes.</div>
+          <div class="wk-answer">The operator recognises a FINANCIAL ASSET (typically a receivable measured under IFRS 9) for the construction services provided, since the grantor bears demand risk entirely and the operator's right to payment does not depend on usage.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>The Intangible Asset Model</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">When it applies</div>
+        <div class="principle">The operator recognises an INTANGIBLE ASSET to the extent it receives a RIGHT to charge users of the public service — because the grantor does NOT guarantee payment, and the operator instead bears DEMAND RISK for usage of the infrastructure.</div>
+      </div>
+      <div class="card cd">
+        <div class="ctitle cd">Worked example — user-pays toll road</div>
+        <div class="worked">
+          <div class="wk-title">Example: Pure demand-risk concession</div>
+          <div class="wk-body">An operator builds a $150,000,000 toll road and is granted the right to collect and retain tolls directly from drivers for 30 years, with no minimum revenue guarantee from the grantor.</div>
+          <div class="wk-answer">The operator recognises an INTANGIBLE ASSET for the right to charge users (accounted for under IAS 38), amortised over the concession period, since it bears the full risk that usage — and therefore recovery of its investment — may fall short of expectations.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>The Bifurcated Model</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">When consideration is split between guaranteed and demand-based</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Where the operator is compensated PARTLY through an unconditional guarantee and PARTLY through a right to charge users, EACH component is accounted for separately: the guaranteed portion as a financial asset, and the demand-risk portion as an intangible asset — requiring the entity to allocate the fair value of consideration receivable between the two components at inception.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Construction & Upgrade Revenue</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Recognised under IFRS 15, like any other service</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Construction or upgrade services the operator provides to the grantor are RECOGNISED AS REVENUE under IFRS 15, measured at the fair value of the consideration receivable (whether that consideration takes the form of the financial asset, the intangible asset, or a combination). Operating and maintenance services provided during the operating phase are also recognised as revenue under IFRS 15.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Borrowing Costs & Restoration Obligations</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">Two distinct interactions to track</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">BORROWING COSTS (IAS 23)</div>
+            <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Generally expensed as incurred UNLESS the operator has a contractual right to receive an INTANGIBLE ASSET — in which case borrowing costs attributable to the construction phase may be capitalised.</div>
+          </div>
+          <div>
+            <div class="elabel">RESTORATION OBLIGATIONS (IAS 37)</div>
+            <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">A contractual obligation to restore the infrastructure to a specified level of serviceability before it is handed back to the grantor is recognised and measured in accordance with IAS 37.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">What IFRIC 12 requires</div>
+        <div class="check-list">
+          <span>Description of the arrangement, including significant terms affecting amount, timing, and certainty of future cash flows</span>
+          <span>Nature and extent of rights to use specified assets, obligations to provide or rights to expect provision of services</span>
+          <span>Changes in the arrangement occurring during the period</span>
+          <span>How the service arrangement has been classified (financial asset, intangible asset, or bifurcated)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments & Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where judgement matters most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Whether the two-part scope test is met</span>
+              <span>Classification between the financial asset, intangible asset, or bifurcated model</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>Fair value of construction or upgrade services</span>
+              <span>Allocation of consideration between financial and intangible asset components under the bifurcated model</span>
+              <span>Estimated restoration costs and useful life over which the intangible asset is amortised</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>IFRIC 12 vs US GAAP</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — IFRIC 12 vs US GAAP (ASC 853)</div>
+        <div class="td-table">
+          <div class="th cols-12-1-1"><span>Feature</span><span>IFRS (IFRIC 12)</span><span>US GAAP (ASC 853)</span></div>
+          <div class="tr cols-12-1-1"><span>Overall approach</span><span>Financial asset or intangible asset or bifurcated model, based on demand-risk allocation</span><span>Broadly converged — ASC 853 was substantially modelled on IFRIC 12</span></div>
+          <div class="tr alt cols-12-1-1"><span>Revenue recognition for construction services</span><span>Under IFRS 15</span><span>Under ASC 606, reaching largely converged outcomes</span></div>
+        </div>
+        <div class="note">Service concession accounting is one of the more CONVERGED areas between IFRS and US GAAP, since ASC 853 was developed with direct reference to IFRIC 12's framework.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Where every IFRIC 12 event lands</div>
+        <div class="td-table">
+          <div class="th cols-16-1-14"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr cols-16-1-14"><span>Construction or upgrade services performed</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Revenue under IFRS 15; corresponding financial or intangible asset recognised</span></div>
+          <div class="tr alt cols-16-1-14"><span>Recognition of the financial asset</span><span><span class="badge bs">SOFP</span></span><span>Subsequently measured under IFRS 9</span></div>
+          <div class="tr cols-16-1-14"><span>Recognition of the intangible asset</span><span><span class="badge bs">SOFP</span></span><span>Subsequently amortised over the concession term under IAS 38</span></div>
+          <div class="tr alt cols-16-1-14"><span>Operating or maintenance services performed</span><span><span class="badge bp">SOPL</span></span><span>Revenue under IFRS 15</span></div>
+          <div class="tr cols-16-1-14"><span>Restoration obligation</span><span><span class="badge bs">SOFP</span> <span class="badge bp">SOPL</span></span><span>Provision under IAS 37</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Cross-reference map</div>
+        <div class="td-table">
+          <div class="th cols-08-2"><span>Standard</span><span>Connection</span></div>
+          <div class="tr cols-08-2"><span>IFRS 15</span><span>Governs recognition and measurement of both construction or upgrade and operating or maintenance revenue</span></div>
+          <div class="tr alt cols-08-2"><span>IFRS 9</span><span>Governs subsequent measurement of the financial asset model receivable</span></div>
+          <div class="tr cols-08-2"><span>IAS 38</span><span>Governs subsequent amortisation of the intangible asset model right to charge users</span></div>
+          <div class="tr alt cols-08-2"><span>IAS 23</span><span>Governs capitalisation of borrowing costs, available only under the intangible asset model</span></div>
+          <div class="tr cols-08-2"><span>IAS 37</span><span>Governs restoration obligations arising under the concession contract</span></div>
+        </div>
+      </div>
+      <div class="card cn">
+        <div class="ctitle cn">Quick-reference glossary</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Grantor</div>
+          <div class="glossary-def">The public sector body (or private entity) that grants the service arrangement to the operator and retains control over the infrastructure's use and residual value.</div>
+        </div>
+        <div class="glossary-item" style="border-bottom:none;">
+          <div class="glossary-term">Demand risk</div>
+          <div class="glossary-def">The risk that actual usage of infrastructure by end users falls short of expectations, borne by the operator under the intangible asset model and by the grantor under the financial asset model.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Grantor", definition: "The public sector body that grants the service arrangement to the operator and retains control over the infrastructure's use and residual value." },
+      { term: "Demand risk", definition: "The risk that actual usage of infrastructure by end users falls short of expectations, borne by the operator under the intangible asset model." },
+      { term: "Service concession arrangement", definition: "An arrangement whereby a government or public sector body contracts with a private operator to develop, finance, operate, and maintain infrastructure used to provide a public service." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.IFRIC12} />
+  </section>
+</StandardPageLayout>
+
+
+
+

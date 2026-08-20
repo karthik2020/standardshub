@@ -1,0 +1,383 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import metadata from "../../data/standards/ipsas/ipsas10.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  covers={metadata.covers}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Objective, Scope & Definitions" },
+        { id: "s2", label: "Identifying Hyperinflation" },
+        { id: "s3", label: "Restating the Statement of Financial Position" },
+        { id: "s4", label: "Restating the Statement of Financial Performance" },
+        { id: "s5", label: "Gain / Loss on Net Monetary Position" },
+        { id: "s6", label: "Consolidated Statements & Corresponding Figures" },
+        { id: "s7", label: "Economies Ceasing to Be Hyperinflationary" },
+        { id: "s8", label: "Appendix A — First-Year Restatement & Deferred Tax" },
+        { id: "s9", label: "Worked Example — Full Restatement" },
+        { id: "s10", label: "Disclosure & Effective Date" },
+        { id: "s11", label: "Relationship to IAS 29" },
+        { id: "s12", label: "Statement / Process Mapping" },
+        { id: "s13", label: "Related Standards" },
+        { id: "s14", label: "Glossary" }
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="active"
+    explanation="IPSAS 10 Financial Reporting in Hyperinflationary Economies is the current, active standard issued by the IPSASB for entities whose functional currency is that of a hyperinflationary economy. It is effective for annual financial statements covering periods beginning on or after 1 July 2002 (earlier application encouraged). Paras. 2–3 were deleted; the current Standard comprises paras. 1–39 (plus Appendix A, added 2025)."
+    historical="IPSAS 10 is drawn from IAS 29 Financial Reporting in Hyperinflationary Economies, adapted for the public sector and expanded with Appendix A based on IFRIC 7 guidance (embedded as authoritative text in §8)."
+    link=""
+    linkText=""
+  />
+
+
+
+  <!-- ============ SECTION 1 — OBJECTIVE, SCOPE & DEFINITIONS ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; Definitions (paras. 1–7)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Objective &amp; scope</div>
+      <div class="principle">Prescribes the accounting treatment, in consolidated and individual financial statements, for an entity whose FUNCTIONAL CURRENCY is that of a hyperinflationary economy — plus the treatment when the economy ceases to be hyperinflationary.</div>
+      <div class="check-list">
+        <span>Applies to an entity preparing accrual-basis financial statements (including consolidated statements) whose functional currency is hyperinflationary</span>
+      </div>
+      <div class="callout danger callout--flush"><strong>Why unrestated reporting fails:</strong> in a hyperinflationary economy, money loses purchasing power so fast that comparing amounts from transactions occurring at different times — even within the SAME reporting period — is misleading (para. 4).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Key definitions (para. 7)</div>
+      <div class="glossary-item"><div class="glossary-term">Carrying amount of an asset</div><div class="glossary-def">The amount recognized in the SOFP, after deducting accumulated depreciation and accumulated impairment losses.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Carrying amount of a liability</div><div class="glossary-def">The amount recognized in the SOFP.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Non-monetary items</div><div class="glossary-def">Items that are NOT monetary items (per IPSAS 4's monetary-item definition).</div></div>
+      <div class="note">Paras. 2–3 [Deleted]. All paragraphs, 1–39, have equal authority.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 — IDENTIFYING HYPERINFLATION ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Identifying Hyperinflation (paras. 5–6)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">No bright-line rate — a matter of judgment, guided by these characteristics</div>
+      <div class="principle">IPSAS 10 does NOT establish an absolute inflation rate that triggers restatement. Judgment is required, informed by characteristics of the economic environment:</div>
+      <div class="dot-list">
+        <span>The general population prefers to hold wealth in non-monetary assets or a stable foreign currency; local currency held is immediately invested to preserve purchasing power</span>
+        <span>The population thinks in terms of a stable foreign currency rather than the local currency; prices may be quoted in it</span>
+        <span>Credit sales/purchases price in the expected purchasing-power loss over the credit period, even if short</span>
+        <span>Interest rates, wages, and prices are LINKED to a price index</span>
+        <span>The cumulative inflation rate over three years is APPROACHING OR EXCEEDS 100%</span>
+      </div>
+      <div class="callout info callout--flush">It's preferable that all entities reporting in the same hyperinflationary currency start applying the Standard from the SAME date — but each entity applies it from the beginning of the period in which IT identifies hyperinflation, regardless of what others do (para. 6).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 — RESTATING THE SOFP ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Restating the Statement of Financial Position (paras. 11, 14–26)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The core requirement &amp; monetary items</div>
+      <div class="formula-box">
+        <div class="f-eq">All SOFP amounts → stated in terms of the measuring unit CURRENT AT THE REPORTING DATE</div>
+      </div>
+      <div class="text-supporting">Comparatives (and any earlier-period information) are ALSO restated to the current measuring unit — no supplementing unrestated statements, and separate presentation of pre-restatement figures is discouraged (para. 9). Budgetary information included for comparison is restated too (para. 10).</div>
+      <div class="dot-list" style="margin-top:8px;">
+        <span>MONETARY items → NOT restated (already expressed in current terms)</span>
+        <span>Index-linked items (e.g. index-linked bonds/loans) → adjusted per their own agreement</span>
+      </div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Non-monetary items — the general price index method</div>
+      <div class="formula-box">
+        <div class="f-eq">Restated cost = Historical cost × (Price index at reporting date ÷ Price index at acquisition date)</div>
+      </div>
+      <div class="dot-list">
+        <span>Applied to items carried at cost or cost-less-depreciation (PP&amp;E, inventories, goodwill, patents), from their ACQUISITION date</span>
+        <span>Items already carried at CURRENT amounts (e.g. NRV, fair value) are NOT restated</span>
+        <span>Previously REVALUED items are restated from the date of that revaluation, not the original acquisition date</span>
+      </div>
+      <div class="note">If acquisition-date records are unavailable, an independent professional valuation may substitute in the first year of application (para. 19). If no general price index exists for the required period, an estimate based on FX-rate movements against a stable currency may be used (para. 20).</div>
+    </div>
+  </div>
+
+  <div class="grid grid-spaced">
+    <div class="card cd span2">
+      <div class="ctitle cd">Impairment, borrowing costs &amp; opening net assets/equity (paras. 22–26)</div>
+      <div class="dot-list">
+        <span>After restatement, apply IPSAS 21 or IPSAS 26 impairment tests — restated PP&amp;E/goodwill/patents reduced to recoverable amount; restated inventories reduced to NRV</span>
+        <span>An equity-method investee reporting in a hyperinflationary currency is restated FIRST, then translated at closing rates if it's also a foreign operation</span>
+        <span>Borrowing costs that compensate for inflation are NOT also capitalized on top of the restated capital expenditure — that inflation component is expensed instead (para. 23)</span>
+        <span>FIRST-period application: all net assets/equity components except accumulated surpluses/deficits and any revaluation reserve are restated from their contribution/origin dates; any prior revaluation reserve is ELIMINATED; restated accumulated surpluses/deficits are the derived "plug" from the rest of the restated SOFP (para. 25)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 — RESTATING THE SOFPERFORMANCE ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Restating the Statement of Financial Performance &amp; Cash Flow Statement (paras. 27, 30)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Same principle, applied to flows instead of balances</div>
+      <div class="principle">Every item in the statement of financial performance is restated by applying the change in the general price index from the date each item of revenue/expense was ORIGINALLY RECORDED to the reporting date. Cash flow statement items are restated on the same basis (para. 30) — everything ends up expressed in the measuring unit current at the reporting date.</div>
+      <div class="note">In practice, revenue/expenses that accrue evenly through the year are often restated using the AVERAGE price index for the period, rather than transaction-by-transaction (see the worked example in §9).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 — GAIN/LOSS ON NET MONETARY POSITION ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Gain or Loss on Net Monetary Position (paras. 28–29)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw">
+      <div class="ctitle cw">Who gains, who loses</div>
+      <div class="dot-list">
+        <span>NET MONETARY ASSET position (monetary assets &gt; monetary liabilities) → the entity LOSES purchasing power as prices rise</span>
+        <span>NET MONETARY LIABILITY position (liabilities &gt; assets) → the entity GAINS purchasing power, to the extent those items aren't price-linked</span>
+      </div>
+      <div class="formula-box">
+        <div class="f-eq">Gain/loss ≈ General price index change × weighted-average net monetary position for the period</div>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Where it lands</div>
+      <div class="text-supporting">The gain/loss on net monetary position is included in the STATEMENT OF FINANCIAL PERFORMANCE. The index-linked-item adjustment (para. 16) is OFFSET against it. Related items — interest revenue/expense, FX differences on invested/borrowed funds — are separately disclosed but may usefully be presented ALONGSIDE the net monetary gain/loss, since they're all part of the same underlying exposure (para. 29).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 — CONSOLIDATED STATEMENTS & CORRESPONDING FIGURES ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Consolidated Financial Statements &amp; Corresponding Figures (paras. 31–34)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Consolidation mechanics</div>
+      <div class="dot-list">
+        <span>A controlled entity reporting in ITS OWN hyperinflationary currency is restated using ITS country's general price index BEFORE inclusion in the controlling entity's consolidated statements</span>
+        <span>If that controlled entity is also a FOREIGN operation, its restated statements are then translated at CLOSING rates (per IPSAS 4)</span>
+        <span>Controlled entities that do NOT report in hyperinflationary currencies are handled entirely under IPSAS 4 instead</span>
+        <span>Different reporting dates being consolidated → ALL items (monetary or not) are restated into the measuring unit current at the CONSOLIDATED statements' date (para. 33)</span>
+      </div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Corresponding figures &amp; the price index (paras. 31, 34)</div>
+      <div class="text-supporting">Prior-period comparatives — whether originally on a historical cost or current value basis — are restated using a general price index so the comparative statements are ALSO expressed in the current reporting date's measuring unit.</div>
+      <div class="callout info callout--flush">It's preferable that all entities reporting in the same economy's currency use the SAME general price index for consistency (para. 34).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 — ECONOMIES CEASING TO BE HYPERINFLATIONARY ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Economies Ceasing to Be Hyperinflationary (para. 35)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">The exit rule — freeze, don't unwind</div>
+      <div class="formula-box">
+        <div class="f-eq">Last restated amounts (measuring unit current at the END of the previous reporting period) become the new "historical cost" going forward</div>
+      </div>
+      <div class="text-supporting">When an entity discontinues IPSAS 10 restatement because the economy is no longer hyperinflationary, it does NOT reverse or unwind the restatement already applied — those final restated figures simply become the carrying-amount baseline for all subsequent financial statements.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 — APPENDIX A ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Appendix A — First-Year Restatement &amp; Deferred Tax (paras. A1–A4)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">What this Appendix clarifies</div>
+      <div class="principle">Added January 2025 (Amendments to IPSAS Standards: Specific IFRIC Interpretations), effective periods beginning on/after 1 January 2026. Addresses the FIRST reporting period an entity identifies hyperinflation, when the PRIOR period was not hyperinflationary.</div>
+      <div class="dot-list">
+        <span>(a) How to interpret "measuring unit current at the reporting date" (para. 11) on FIRST application</span>
+        <span>(b) How to account for OPENING deferred tax items in the restated statements</span>
+      </div>
+      <div class="note">This Appendix is an INTEGRAL part of IPSAS 10, drawing on guidance analogous to IFRIC 7 under IFRS.</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">The "as if always hyperinflationary" approach (paras. A2–A3)</div>
+      <div class="check-list">
+        <span>Apply the Standard's requirements AS IF the economy had always been hyperinflationary</span>
+        <span>Historical-cost non-monetary items: restate the OPENING SOFP (earliest period presented) to reflect inflation from the date assets were acquired / liabilities incurred, through to the reporting date</span>
+        <span>Non-monetary items already carried at a non-acquisition current amount: restate from the date THAT carrying amount was determined instead</span>
+        <span>Subsequent periods: restate corresponding figures by applying the CHANGE in the measuring unit for that period ONLY, to the previous period's already-restated financial statements</span>
+      </div>
+      <div class="note">Deferred tax items in the opening SOFP are determined per the relevant income tax accounting guidance (para. A4) — IPSAS 10 itself doesn't prescribe deferred tax mechanics.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 — WORKED EXAMPLE ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Worked Example — Full Restatement (Illustrative Example IE1–IE2)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Assumptions</div>
+      <div class="dot-list">
+        <span>General price index: 120 at the START of the period, 180 at the END, averaging 150 during the period</span>
+        <span>Inventory on hand at period-end assumed acquired later in the period, when the index was 170</span>
+        <span>Revenue and expenses (other than depreciation) accrue evenly through the year → average index (150) applied</span>
+        <span>Assets with historical cost of 7,500 were fully depreciated and scrapped at nil salvage value</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-spaced">
+    <div class="card cs">
+      <div class="ctitle cs">Statement of Financial Position — unadjusted vs restated</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.5fr 0.9fr 0.7fr 0.9fr;"><span>Item</span><span>Unadjusted</span><span>Factor</span><span>Restated</span></div>
+        <div class="tr" style="grid-template-columns:1.5fr 0.9fr 0.7fr 0.9fr;"><span>Cash &amp; investments</span><span>10,000</span><span>—</span><span>10,000</span></div>
+        <div class="tr alt" style="grid-template-columns:1.5fr 0.9fr 0.7fr 0.9fr;"><span>Inventories</span><span>2,000</span><span>180/170</span><span>2,118</span></div>
+        <div class="tr" style="grid-template-columns:1.5fr 0.9fr 0.7fr 0.9fr;"><span>Physical assets, cost</span><span>40,000</span><span>180/120</span><span>60,000</span></div>
+        <div class="tr alt" style="grid-template-columns:1.5fr 0.9fr 0.7fr 0.9fr;"><span>Accum. depreciation</span><span>(20,000)</span><span>180/120</span><span>(30,000)</span></div>
+        <div class="tr" style="grid-template-columns:1.5fr 0.9fr 0.7fr 0.9fr;"><span><strong>Total assets</strong></span><span><strong>32,000</strong></span><span></span><span><strong>42,118</strong></span></div>
+        <div class="tr alt" style="grid-template-columns:1.5fr 0.9fr 0.7fr 0.9fr;"><span>Borrowings</span><span>26,000</span><span>—</span><span>26,000</span></div>
+        <div class="tr" style="grid-template-columns:1.5fr 0.9fr 0.7fr 0.9fr;"><span>Net assets b/fwd</span><span>4,000</span><span>180/120</span><span>6,000</span></div>
+        <div class="tr alt" style="grid-template-columns:1.5fr 0.9fr 0.7fr 0.9fr;"><span>Net surplus for period</span><span>2,000</span><span>—</span><span>10,118</span></div>
+      </div>
+      <div class="note">Restated total net assets (6,000 + 10,118 = 16,118) reconcile to restated total assets less borrowings (42,118 − 26,000 = 16,118).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Statement of Financial Performance — unadjusted vs restated</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.5fr 0.9fr 0.7fr 0.9fr;"><span>Item</span><span>Unadjusted</span><span>Factor</span><span>Restated</span></div>
+        <div class="tr" style="grid-template-columns:1.5fr 0.9fr 0.7fr 0.9fr;"><span>Revenues</span><span>50,000</span><span>180/150</span><span>60,000</span></div>
+        <div class="tr alt" style="grid-template-columns:1.5fr 0.9fr 0.7fr 0.9fr;"><span>Depreciation</span><span>(5,000)</span><span>180/120</span><span>(7,500)</span></div>
+        <div class="tr" style="grid-template-columns:1.5fr 0.9fr 0.7fr 0.9fr;"><span>Other expenses</span><span>(43,000)</span><span>180/150</span><span>(51,600)</span></div>
+        <div class="tr alt" style="grid-template-columns:1.5fr 0.9fr 0.7fr 0.9fr;"><span>Gain on net monetary position</span><span>—</span><span>—</span><span>9,218</span></div>
+        <div class="tr" style="grid-template-columns:1.5fr 0.9fr 0.7fr 0.9fr;"><span><strong>Surplus for the year</strong></span><span><strong>2,000</strong></span><span></span><span><strong>10,118</strong></span></div>
+      </div>
+      <div class="note">The 9,218 gain on net monetary position is derived INDIRECTLY — as the balancing figure needed to reconcile restated non-monetary movements with the restated surplus (para. 28).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 — DISCLOSURE & EFFECTIVE DATE ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Disclosure Requirements &amp; Effective Date (paras. 36–39)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs">
+      <div class="ctitle cs">Required disclosures (para. 36)</div>
+      <div class="check-list">
+        <span>That the financial statements and comparatives have been restated for changes in the general purchasing power of the functional currency, and are stated in the measuring unit current at the reporting date</span>
+        <span>The identity and level of the price index at the reporting date, and its movement during the current AND previous reporting periods</span>
+      </div>
+    </div>
+
+    <div class="card cn">
+      <div class="ctitle cn">Amendment history at a glance</div>
+      <div class="principle">Base Standard: periods beginning on/after <strong>1 July 2002</strong>.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2.2fr;"><span>Effective</span><span>Change</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2011</span><span>Paras. 17, 18, 22 — Improvements to IPSAS (Jan 2010)</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2013</span><span>Para. 1 renumbered to 1A, new para. 1 — Improvements to IPSAS 2011</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2017</span><span>Para. 39 (IPSAS 33); paras. 2, 3 deleted (Applicability of IPSAS)</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2019</span><span>Para. 22 (IPSAS 40); paras. 1A, 9 (Improvements to IPSAS, 2018)</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2025</span><span>Para. 31 — IPSAS 46, Measurement</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2026</span><span>New Appendix A (§8) — Specific IFRIC Interpretations amendments (Jan 2025)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 — RELATIONSHIP TO IAS 29 ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Relationship to IAS/IFRS — Comparison with IAS 29</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — IPSAS 10 vs IAS 29</div>
+      <div class="principle">IPSAS 10 is drawn primarily from IAS 29, <em>Financial Reporting in Hyperinflationary Economies</em>, including the IASB's May 2008 Improvements to IFRS.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1.9fr;"><span>Topic</span><span>Difference</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Terminology</span><span>"Revenue," "statement of financial performance," "net assets/equity" (IPSAS 10) vs "income," "income statement," "equity" (IAS 29)</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Current cost restatement guidance</span><span>IAS 29 covers this; IPSAS 10 does NOT include it</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Illustrative example</span><span>IPSAS 10 includes a worked restatement example using the indirect method (see §9) — not present in IAS 29 itself</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Appendix A authority</span><span>IPSAS 10 embeds AUTHORITATIVE text based on IFRIC 7 guidance directly in Appendix A (§8) — under IFRS, IFRIC 7 is a separate document</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 — STATEMENT / PROCESS MAPPING ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Restatement decision map</div>
+      <ol class="ordered-list">
+        <li>Does the functional currency's economy show hyperinflation indicators (§2)? If no &rarr; IPSAS 10 doesn't apply</li>
+        <li>Is the item MONETARY? &rarr; leave as-is (already current). Is it NON-monetary at cost? &rarr; restate using the general price index from its acquisition (or revaluation) date</li>
+        <li>Is the non-monetary item already at a CURRENT value (NRV, fair value)? &rarr; no restatement needed, but still test for impairment against the OTHER restated figures</li>
+        <li>Restate every SOFPerformance item using the index movement from when it was recorded (average index acceptable for evenly-accruing items)</li>
+        <li>Derive the gain/loss on net monetary position as the balancing figure, and present it in surplus/deficit</li>
+        <li>Is this the FIRST year applying IPSAS 10? &rarr; follow Appendix A's "as if always hyperinflationary" approach (§8)</li>
+        <li>Has the economy since STOPPED being hyperinflationary? &rarr; freeze the last restated amounts as the new historical cost baseline; do not unwind (§7)</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="grid grid-spaced">
+    <div class="card cs span2">
+      <div class="ctitle cs">Concept-to-statement mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>IPSAS 10 concept</span><span>Statement(s)</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Restated non-monetary assets/liabilities</span><span><span class="badge bs">SOFP</span></span><span>General price index applied from acquisition/revaluation date</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Restated net assets/equity components</span><span><span class="badge be">NA/E</span></span><span>Revaluation reserves eliminated on first application</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Restated revenue &amp; expenses</span><span><span class="badge bp">SOFPerf</span></span><span>Index movement from the original recording date</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Gain/loss on net monetary position</span><span><span class="badge bp">SOFPerf</span></span><span>Derived indirectly as a balancing figure</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Restated cash flow statement items</span><span><span class="badge bs">Cash Flow</span></span><span>Same measuring-unit-current principle applies</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Price index identity, level &amp; movement</span><span><span class="badge be">Notes</span></span><span>Mandatory disclosure, para. 36</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 — RELATED STANDARDS ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How IPSAS 10 connects across the IPSAS body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.7fr 2.2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 1</span><span>Statement of Changes in Net Assets/Equity disclosure of period movements applies to the restated figures (§3)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 3</span><span>General policy-selection basis in the absence of explicit IPSAS 10 guidance</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 4</span><span>Governs comparative-amount translation into a different presentation currency (paras. 47(b), 48) and the translation of hyperinflationary foreign operations (§6)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 5</span><span>Interaction with borrowing-cost capitalization — the inflation component is expensed, not capitalized twice (§3)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 21 / 26</span><span>Impairment testing of restated non-monetary assets (§3)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 33</span><span>First-time adoption interaction — effective-date mechanics (§10)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 40</span><span>Public sector combinations — amended the impairment cross-reference at para. 22 (§10)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 46</span><span>Measurement — amended the comparative-restatement paragraph 31 (§10)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 — GLOSSARY ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">General price index</div><div class="glossary-def">An index reflecting changes in the general purchasing power of a currency, used to restate financial statement amounts.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Monetary items</div><div class="glossary-def">Money held and assets/liabilities to be received or paid in fixed or determinable amounts of money.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Non-monetary items</div><div class="glossary-def">Items that are not monetary items — generally restated for inflation using a general price index.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Net monetary position</div><div class="glossary-def">The difference between an entity's monetary assets and monetary liabilities, exposed to purchasing-power gains/losses.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Carrying amount</div><div class="glossary-def">The SOFP-recognized amount of an asset (net of accumulated depreciation/impairment) or a liability.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Measuring unit current at the reporting date</div><div class="glossary-def">The purchasing-power basis to which all restated financial statement amounts are expressed.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bs">SOFP</span> Statement of financial position
+      <span class="badge bp">SOFPerf</span> Statement of financial performance
+      <span class="badge be">NA/E</span> Net assets/equity (statement of changes)
+    </div>
+  </div>
+
+  
+</StandardPageLayout>

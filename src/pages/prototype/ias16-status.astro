@@ -1,0 +1,674 @@
+---
+import StandardLayout from "../../layouts/StandardLayout.astro";
+import ReferenceGuide from "../../components/ReferenceGuide.astro";
+import RelatedStandards from "../../components/RelatedStandards.astro";
+import PreviousNextNavigation from "../../components/PreviousNextNavigation.astro";
+import PageToc from "../../components/PageToc.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/ias/ias16.json";
+import { formatStandardDate } from "../../utils/date.ts";
+import { BadgeCheck } from "@lucide/astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+---
+
+<StandardLayout code={metadata.code} title={metadata.title} framework="IAS">
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope & Applicability" },
+        { id: "s3", label: "Recognition Criteria" },
+        { id: "s4", label: "Initial Measurement" },
+        { id: "s5", label: "Subsequent Measurement" },
+        { id: "s6", label: "Depreciation" },
+        { id: "s7", label: "Impairment Linkage" },
+        { id: "s8", label: "Derecognition" },
+        { id: "s9", label: "Disclosure Requirements" },
+        { id: "s10", label: "Critical Judgments & Estimates" },
+        { id: "s11", label: "IFRS vs US GAAP" },
+        { id: "s12", label: "Statement Mapping" },
+        { id: "s13", label: "Related Standards" },
+        { id: "s14", label: "Quick-Reference Glossary" },
+      ]}
+    />
+  </Fragment>
+
+  <!-- ============ REDESIGNED HERO (PROTOTYPE) ============ -->
+  <section class="proto-hero" data-framework="ias">
+    <div class="proto-hero__content">
+      <div class="proto-hero__header">
+        <p class="proto-hero__code">{metadata.code}</p>
+        <span class="hero-status-pill hero-status-pill--published">
+          <span class="hero-status-pill__circle"><BadgeCheck /></span>
+          Published
+        </span>
+      </div>
+      <h1 class="proto-hero__title">{metadata.title}</h1>
+      {
+        metadata.summary && (
+          <div class="proto-hero__summary">
+            <p class="proto-hero__summary-text">{metadata.summary}</p>
+            <div class="proto-hero__divider" />
+          </div>
+        )
+      }
+    </div>
+
+    <div class="proto-hero__metadata">
+      <div class="proto-hero__meta-grid">
+        {metadata.issued && (
+          <div class="proto-hero__meta-card">
+            <div class="proto-hero__meta-label">Issued</div>
+            <div class="proto-hero__meta-value">{formatStandardDate(metadata.issued)}</div>
+          </div>
+        )}
+        {metadata.latestAmendment && (
+          <div class="proto-hero__meta-card">
+            <div class="proto-hero__meta-label">Latest amendment</div>
+            <div class="proto-hero__meta-value">{formatStandardDate(metadata.latestAmendment)}</div>
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <ReferenceGuide>
+    <div class="wrap">
+    <!-- ============ SECTION 1 — CONCEPTUAL FRAMEWORK LINK ============ -->
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Why PPE is an asset under the Framework</div>
+        <div class="principle">An item qualifies as an asset under the Conceptual Framework if it is a present economic resource controlled by the entity as a result of past events, with the potential to produce economic benefits.</div>
+        <div class="elabel">HOW PPE MAPS TO THE FRAMEWORK'S ELEMENTS</div>
+        <div class="check-list">
+          <span><strong style="font-weight:600">Control</strong> — the entity can direct the use of the asset and obtain substantially all the remaining benefits (ownership is common but not required — e.g. a right-of-use asset under IFRS 16 is also "PPE-like" but is governed by IFRS 16)</span>
+          <span><strong style="font-weight:600">Past event</strong> — typically the purchase, construction, or exchange transaction</span>
+          <span><strong style="font-weight:600">Future economic benefit</strong> — the capacity to generate cash flows, directly or indirectly, through use in production, rental, or administration</span>
+        </div>
+        <div class="note">IAS 16 operationalises the Framework's general asset definition into specific, industry-tested recognition and measurement rules for tangible long-term operating assets.</div>
+      </div>
+
+      <div class="card cs">
+        <div class="ctitle cs">Measurement principles applied by IAS 16</div>
+        <div class="principle">The Conceptual Framework lists several possible measurement bases; IAS 16 selects specific ones for initial and subsequent measurement.</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.3fr 1fr;"><span>Framework basis</span><span>Used by IAS 16 for…</span></div>
+          <div class="tr" style="grid-template-columns:1.3fr 1fr;"><span>Historical cost</span><span>Initial recognition (always)</span></div>
+          <div class="tr alt" style="grid-template-columns:1.3fr 1fr;"><span>Current value (fair value)</span><span>Revaluation model (optional policy)</span></div>
+          <div class="tr" style="grid-template-columns:1.3fr 1fr;"><span>Value in use / FVLCD</span><span>Recoverable amount under IAS 36 (impairment)</span></div>
+        </div>
+        <div class="callout info callout--chip" style="margin-bottom:0;">ℹ️ <strong style="font-weight:600">Qualitative characteristics in action:</strong> the choice between cost and revaluation models is itself a trade-off between <strong style="font-weight:600">faithful representation</strong> (cost is verifiable and free from estimation bias) and <strong style="font-weight:600">relevance</strong> (revalued amounts better reflect current economic reality for users).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 2 — SCOPE & DEFINITIONS ============ -->
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope & Applicability</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What IAS 16 covers</div>
+        <div class="elabel">DEFINITION OF PPE</div>
+        <div class="formula-box formula-box--chip">
+          <div class="f-eq">Property, plant and equipment = tangible items that:</div>
+          <div style="font-size:13px;color:var(--color-text-secondary);margin-top:3px;">(a) are held for use in the production/supply of goods or services, for rental to others, or for administrative purposes; AND</div>
+          <div style="font-size:13px;color:var(--color-text-secondary);">(b) are expected to be used during more than one period</div>
+        </div>
+        <div class="elabel">SCOPE EXCLUSIONS — GOVERNED BY OTHER STANDARDS</div>
+        <div class="cross-list">
+          <span>PPE classified as held for sale → <strong style="font-weight:600">IFRS 5</strong></span>
+          <span>Biological assets related to agricultural activity → <strong style="font-weight:600">IAS 41</strong></span>
+          <span>Exploration and evaluation assets → <strong style="font-weight:600">IFRS 6</strong></span>
+          <span>Mineral rights, reserves (oil, gas, similar non-regenerative resources) → outside scope of IAS 16 entirely</span>
+          <span>Right-of-use assets (lessee) → <strong style="font-weight:600">IFRS 16</strong> (though IAS 16's depreciation/derecognition principles are applied by analogy)</span>
+        </div>
+      </div>
+
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions you must know</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Carrying amount</div>
+          <div class="glossary-def">The amount at which an asset is recognised after deducting accumulated depreciation and accumulated impairment losses.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Cost</div>
+          <div class="glossary-def">The amount of cash/cash equivalents paid, or the fair value of other consideration given, to acquire an asset at the time of acquisition or construction.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Depreciable amount</div>
+          <div class="glossary-def">Cost (or revalued amount) of an asset, less its residual value.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Recoverable amount</div>
+          <div class="glossary-def">The higher of an asset's fair value less costs of disposal and its value in use (IAS 36 concept, relevant to impairment).</div>
+        </div>
+        <div class="glossary-item" style="border-bottom:none;">
+          <div class="glossary-term">Residual value</div>
+          <div class="glossary-def">The estimated amount the entity would currently obtain from disposal, after deducting estimated disposal costs, if the asset were already of the age and condition expected at the end of its useful life.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 3 — RECOGNITION CRITERIA ============ -->
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Recognition Criteria</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">The two-part recognition test</div>
+        <div class="principle">The cost of an item of PPE is recognised as an asset ONLY if BOTH conditions are met. This mirrors the general Framework recognition criteria (probable benefit + reliable measurement).</div>
+        <div class="two-col">
+          <div class="spec-box" style="margin-bottom:0;">
+            <div class="spec-title" style="color:var(--color-text-success);">Condition 1 — Probable future economic benefit</div>
+            <div style="font-size:13px;color:var(--color-text-secondary);line-height:1.5;">It is probable that future economic benefits associated with the item will flow to the entity.</div>
+          </div>
+          <div class="spec-box" style="margin-bottom:0;">
+            <div class="spec-title" style="color:var(--color-text-success);">Condition 2 — Reliable measurement</div>
+            <div style="font-size:13px;color:var(--color-text-secondary);line-height:1.5;">The cost of the item can be measured reliably.</div>
+          </div>
+        </div>
+        <div class="callout warn callout--chip" style="margin-top:8px;margin-bottom:0;">⚠️ <strong style="font-weight:600">Spare parts and servicing equipment</strong> are usually expensed as used — UNLESS they meet the PPE definition (expected to be used for more than one period), in which case they are capitalised and depreciated, typically over the life of the related main asset or their own useful life if shorter.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 4 — INITIAL MEASUREMENT (with worked example) ============ -->
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Initial Measurement</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs">
+        <div class="ctitle cs">Components of cost</div>
+        <div class="formula-box formula-box--chip">
+          <div class="f-label">COST FORMULA</div>
+          <div class="f-eq">Cost = Purchase price (net of discounts/rebates) + Import duties & non-refundable taxes + Directly attributable costs + Initial estimate of dismantling/restoration obligation</div>
+        </div>
+        <div class="elabel">DIRECTLY ATTRIBUTABLE COSTS — INCLUDED</div>
+        <div class="check-list" style="margin-bottom:9px;">
+          <span>Costs of site preparation</span>
+          <span>Initial delivery and handling costs</span>
+          <span>Installation and assembly costs</span>
+          <span>Costs of testing whether the asset functions properly (net of proceeds from selling items produced during testing)</span>
+          <span>Professional fees (e.g. architects, engineers)</span>
+        </div>
+        <div class="elabel">EXCLUDED FROM COST — EXPENSE INSTEAD</div>
+        <div class="cross-list">
+          <span>Costs of opening a new facility</span>
+          <span>Costs of introducing a new product (advertising, promotion)</span>
+          <span>Administration and other general overheads</span>
+          <span>Initial operating losses incurred before the asset reaches planned performance</span>
+          <span>Costs of relocating or reorganising entity operations</span>
+        </div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Worked example — initial cost</div>
+        <div class="worked">
+          <div class="wk-title">Example 1: Building a production line</div>
+          <div class="wk-body">
+            An entity purchases machinery for $500,000 (list price), receives a 2% trade discount, pays import duty of $15,000, pays $20,000 for delivery and installation, and incurs $8,000 testing the machine (selling $2,000 of output produced during testing). It also estimates a legal obligation to dismantle the machine at the end of its life, with a present value of $25,000.
+          </div>
+          <div class="wk-answer">
+            <strong>Cost = </strong> (500,000 × 0.98) + 15,000 + 20,000 + (8,000 − 2,000) + 25,000<br>
+            = 490,000 + 15,000 + 20,000 + 6,000 + 25,000 = <strong style="color:var(--color-text-info);">$556,000</strong>
+          </div>
+        </div>
+        <div class="elabel">JOURNAL ENTRY</div>
+        <div class="entry"><span class="dr">Dr</span><div class="etxt">PPE — Machinery $556,000<div class="badges"><span class="badge bs">SOFP — non-current asset</span></div></div></div>
+        <div class="entry"><span class="cr">Cr</span><div class="etxt">Cash / payables $531,000<div class="badges"><span class="badge bs">SOFP</span></div></div></div>
+        <div class="entry"><span class="cr">Cr</span><div class="etxt">Dismantling provision $25,000<div class="badges"><span class="badge bs">SOFP — liability (IAS 37)</span></div></div></div>
+        <div class="note">Borrowing costs on a qualifying asset under construction are added per IAS 23 — see Section 13.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 5 — SUBSEQUENT MEASUREMENT ============ -->
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Subsequent Measurement — Cost vs Revaluation Model</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Cost model</div>
+        <div class="formula-box formula-box--chip">
+          <div class="f-eq">Carrying amount = Cost − Accumulated depreciation − Accumulated impairment losses</div>
+        </div>
+        <div style="font-size:13px;color:var(--color-text-secondary);line-height:1.6;">The default and simplest model. Applied consistently to an entire CLASS of PPE (e.g. all land and buildings, or all motor vehicles) — not asset-by-asset.</div>
+      </div>
+
+      <div class="card cs">
+        <div class="ctitle cs">Revaluation model</div>
+        <div style="font-size:13px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:8px;">Carrying amount is restated to fair value, with revaluations made REGULARLY ENOUGH that carrying amount does not differ materially from fair value at the reporting date.</div>
+        <div class="elabel">JOURNAL ENTRIES — UPWARD REVALUATION (no prior deficit)</div>
+        <div class="entry"><span class="dr">Dr</span><div class="etxt">PPE — increase to FV<div class="badges"><span class="badge bs">SOFP</span></div></div></div>
+        <div class="entry"><span class="cr">Cr</span><div class="etxt">Revaluation surplus<div class="badges"><span class="badge bo">OCI</span><span class="badge be">Equity</span></div></div></div>
+        <div class="div"></div>
+        <div class="elabel">JOURNAL ENTRIES — DOWNWARD REVALUATION (no prior surplus)</div>
+        <div class="entry"><span class="dr">Dr</span><div class="etxt">Revaluation loss<div class="badges"><span class="badge bp">SOPL</span></div></div></div>
+        <div class="entry"><span class="cr">Cr</span><div class="etxt">PPE — decrease to FV<div class="badges"><span class="badge bs">SOFP</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="grid" style="margin-top:10px;">
+      <div class="card cw span2">
+        <div class="ctitle cw">Worked example — revaluation with reversal</div>
+        <div class="worked">
+          <div class="wk-title">Example 2: Reversal of a prior revaluation deficit</div>
+          <div class="wk-body">
+            An asset originally cost $100,000. In Year 1 it was revalued down to $80,000, recognising a $20,000 loss in SOPL. In Year 2, it is revalued UP to $95,000.
+          </div>
+          <div class="wk-answer">
+            <strong>Year 2 entry:</strong> total increase = 95,000 − 80,000 = $15,000.<br>
+            • First $15,000 — reverses the PRIOR SOPL loss (since the deficit was $20,000 and the gain is $15,000, the entire gain is credited to SOPL, none reaches OCI in this case).<br>
+            <strong>Dr</strong> PPE $15,000 / <strong>Cr</strong> Gain on revaluation (SOPL) $15,000.
+          </div>
+        </div>
+        <div class="callout danger callout--chip" style="margin-bottom:0;">✕ <strong style="font-weight:600">Always check the SAME asset's revaluation history FIRST</strong> before posting a new movement — mixing up the direction (treating a reversal as a fresh gain straight to OCI) is the most common revaluation error in exams and practice alike.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 6 — DEPRECIATION ============ -->
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Depreciation</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Depreciation mechanics &amp; methods</div>
+        <div class="formula-box formula-box--chip">
+          <div class="f-label">STRAIGHT-LINE</div>
+          <div class="f-eq">Annual depreciation = (Cost − Residual value) ÷ Useful life</div>
+        </div>
+        <div class="elabel">PERMITTED METHODS</div>
+        <div class="dot-list" style="margin-bottom:9px;">
+          <span><strong style="font-weight:600">Straight-line</strong> — constant charge over useful life</span>
+          <span><strong style="font-weight:600">Reducing (diminishing) balance</strong> — decreasing charge, applies a fixed % to the NET book value each year</span>
+          <span><strong style="font-weight:600">Units of production</strong> — based on expected use/output (e.g. machine hours, units produced)</span>
+        </div>
+        <div class="callout warn callout--chip" style="margin-bottom:0;">⚠️ <strong style="font-weight:600">Land is NOT depreciated</strong> (unlimited useful life) — but BUILDINGS on that land ARE depreciated, even when acquired together. They must be accounted for and depreciated separately.</div>
+      </div>
+
+      <div class="card cn">
+        <div class="ctitle cn">Worked example — components &amp; depreciation</div>
+        <div class="worked">
+          <div class="wk-title">Example 3: Componentisation</div>
+          <div class="wk-body">
+            An aircraft costs $50m. The engines (a significant component) cost $15m and have a useful life of 8 years before requiring replacement; the airframe (remaining $35m) has a useful life of 20 years.
+          </div>
+          <div class="wk-answer">
+            <strong>Engines:</strong> $15m ÷ 8 years = $1.875m p.a.<br>
+            <strong>Airframe:</strong> $35m ÷ 20 years = $1.75m p.a.<br>
+            <strong>Total annual depreciation = $3.625m</strong> (NOT $50m ÷ a single blended life)
+          </div>
+        </div>
+        <div class="note">When the engines are replaced after 8 years, their remaining carrying amount (zero, if fully depreciated on schedule) is derecognised and the new engine cost is capitalised as a new component.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 7 — IMPAIRMENT LINK ============ -->
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Impairment Linkage (IAS 36)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">How IAS 16 and IAS 36 interact</div>
+        <div class="principle">IAS 16 itself does not contain impairment rules — whenever an indicator of impairment exists, IAS 36 is applied to determine whether the asset's carrying amount exceeds its recoverable amount.</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">COST MODEL ASSETS</div>
+            <div class="entry"><span class="dr">Dr</span><div class="etxt">Impairment loss<div class="badges"><span class="badge bp">SOPL</span></div></div></div>
+            <div class="entry"><span class="cr">Cr</span><div class="etxt">Accumulated impairment<div class="badges"><span class="badge bs">SOFP — asset ↓</span></div></div></div>
+          </div>
+          <div>
+            <div class="elabel">REVALUED ASSETS</div>
+            <div class="text-supporting">Impairment loss is first debited against any existing REVALUATION SURPLUS for that asset (OCI/equity); only the excess is charged to SOPL.</div>
+          </div>
+        </div>
+        <div class="note">See the dedicated IAS 36 poster for the full recoverable amount, CGU allocation, and reversal mechanics.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 8 — DERECOGNITION ============ -->
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Derecognition</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs">
+        <div class="ctitle cs">Derecognition rules &amp; journal entries</div>
+        <div class="formula-box formula-box--chip">
+          <div class="f-eq">Gain/loss on disposal = Net disposal proceeds − Carrying amount</div>
+        </div>
+        <div class="entry"><span class="dr">Dr</span><div class="etxt">Accumulated depreciation<div class="badges"><span class="badge bs">SOFP</span></div></div></div>
+        <div class="entry"><span class="dr">Dr</span><div class="etxt">Cash / receivable (proceeds)<div class="badges"><span class="badge bs">SOFP</span></div></div></div>
+        <div class="entry"><span class="cr">Cr</span><div class="etxt">PPE — at cost<div class="badges"><span class="badge bs">SOFP</span></div></div></div>
+        <div class="entry"><span class="cr">Cr</span><div class="etxt">Gain on disposal (or Dr if loss)<div class="badges"><span class="badge bp">SOPL — other income/expense</span></div></div></div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Worked example — disposal with revaluation surplus</div>
+        <div class="worked">
+          <div class="wk-title">Example 4: Disposing of a revalued asset</div>
+          <div class="wk-body">
+            A revalued asset has a carrying amount of $40,000, a revaluation surplus balance of $8,000, and is sold for $46,000.
+          </div>
+          <div class="wk-answer">
+            <strong>Gain on disposal</strong> = 46,000 − 40,000 = $6,000 → SOPL<br>
+            <strong>Separately:</strong> Dr Revaluation surplus $8,000 / Cr Retained earnings $8,000 (transfer within equity, bypasses SOPL)
+          </div>
+        </div>
+        <div class="note">The two entries are independent — the SOPL gain reflects the sale itself; the equity transfer simply "realises" the surplus that was always sitting in OCI.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 9 — DISCLOSURE ============ -->
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Required disclosures for each class of PPE</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">MEASUREMENT &amp; RECONCILIATION</div>
+            <div class="check-list">
+              <span>Measurement bases used for determining gross carrying amount</span>
+              <span>Depreciation methods used</span>
+              <span>Useful lives or depreciation rates used</span>
+              <span>Gross carrying amount and accumulated depreciation (and impairment) at the beginning and end of the period</span>
+              <span>A reconciliation of carrying amount at the beginning and end of the period (additions, disposals, depreciation, impairment, FX, revaluation movements)</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">ADDITIONAL DISCLOSURES</div>
+            <div class="check-list">
+              <span>Existence and amounts of restrictions on title, and PPE pledged as security</span>
+              <span>Amount of expenditures recognised in the carrying amount of PPE in the course of construction</span>
+              <span>Amount of contractual commitments for the acquisition of PPE</span>
+              <span>If revaluation model used: effective date of revaluation, whether an independent valuer was involved, and the revaluation surplus movement</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 10 — JUDGMENTS & ESTIMATES ============ -->
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where management judgement matters most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES (IAS 8 — reviewed annually)</div>
+            <div class="dot-list">
+              <span>Useful life of each asset/component</span>
+              <span>Residual value</span>
+              <span>Depreciation method (reflecting consumption pattern)</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Whether a cost is capital (capitalise) or revenue (expense) in nature — particularly for subsequent expenditure (repair vs improvement)</span>
+              <span>Identifying significant components requiring separate depreciation</span>
+              <span>Whether commercial substance exists in an asset exchange</span>
+            </div>
+          </div>
+        </div>
+        <div class="callout warn callout--chip" style="margin-top:8px;margin-bottom:0;">⚠️ Changes in useful life, residual value, or depreciation method are changes in accounting ESTIMATE under IAS 8 — applied PROSPECTIVELY, never restating prior periods.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 11 — IFRS vs US GAAP ============ -->
+    <div class="section-header" id="s11"><span class="num">11</span><h2>IFRS vs US GAAP — Key Differences</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — IAS 16 vs US GAAP (ASC 360)</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Feature</span><span style="color:var(--color-text-info);">IFRS (IAS 16)</span><span style="color:var(--color-text-warning);">US GAAP</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Revaluation model</span><span>Permitted</span><span>NOT permitted — historical cost only</span></div>
+          <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Componentisation</span><span>Required for significant parts</span><span>Permitted but less commonly required in practice</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Impairment reversal</span><span>Permitted (except goodwill)</span><span>Prohibited — never reversed</span></div>
+          <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Impairment test trigger</span><span>One-step: compare CA to recoverable amount</span><span>Two-step: recoverability test (undiscounted CF) then measurement</span></div>
+        </div>
+        <div class="note">Convergence efforts have narrowed some gaps (e.g. both frameworks now broadly agree on borrowing cost capitalisation principles), but the revaluation model and impairment reversal differences remain fundamental and frequently tested.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 12 — STATEMENT MAPPING TABLE ============ -->
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping — Where Every PPE Event Lands</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Comprehensive event-to-statement mapping table</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event / transaction</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Initial acquisition at cost</span><span><span class="badge bs">SOFP</span></span><span>Asset ↑, Cash/payables ↑ or ↓</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Capitalised borrowing costs (IAS 23)</span><span><span class="badge bs">SOFP</span></span><span>Increases asset cost; no SOPL charge</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Annual depreciation charge</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Expense in SOPL; accumulated depreciation reduces SOFP carrying amount</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Upward revaluation (first time)</span><span><span class="badge bo">OCI</span> <span class="badge be">Equity</span> <span class="badge bs">SOFP</span></span><span>No SOPL impact; appears in Statement of Changes in Equity via OCI</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Downward revaluation (first time)</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Direct expense, no OCI involvement</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Reversal of prior revaluation gain/loss</span><span><span class="badge bp">SOPL</span> <span class="badge bo">OCI</span> <span class="badge bs">SOFP</span></span><span>Mixed — depends on prior history on the SAME asset</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Impairment loss (cost model)</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Direct expense per IAS 36</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Impairment loss (revalued asset, surplus exists)</span><span><span class="badge bo">OCI</span> <span class="badge be">Equity</span> <span class="badge bp">SOPL</span> (excess only)</span><span>Surplus absorbed first</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Disposal — gain/loss</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Presented as other income/expense, not revenue</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Disposal — surplus transfer</span><span><span class="badge be">Equity</span></span><span>Dr Revaluation surplus / Cr Retained earnings — bypasses SOPL entirely</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Cash paid for PPE additions</span><span><span class="badge bs">Cash Flow Statement</span></span><span>Investing activities outflow (IAS 7)</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Proceeds from disposal</span><span><span class="badge bs">Cash Flow Statement</span></span><span>Investing activities inflow (IAS 7)</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Depreciation add-back</span><span><span class="badge bs">Cash Flow Statement</span></span><span>Added back in operating activities under indirect method (non-cash item)</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Class-level disclosures (useful life, methods, reconciliation)</span><span><span class="badge bp">Notes</span></span><span>Required regardless of which model is used</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 13 — RELATED STANDARDS ============ -->
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">How IAS 16 connects across the IFRS body of literature</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 23</span><span>Borrowing costs on qualifying PPE under construction are capitalised into cost, increasing the depreciable base</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 36</span><span>Provides the impairment testing mechanics (recoverable amount, CGUs, reversal rules) whenever an indicator of impairment exists</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 37</span><span>Decommissioning/restoration provisions are capitalised into the initial cost of the related PPE asset and depreciated alongside it</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 20</span><span>Government grants toward PPE either reduce cost (net method) or are recognised as deferred income released over useful life (gross method)</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 40</span><span>Defines the boundary between owner-occupied property (IAS 16) and investment property (IAS 40); transfers between the two trigger specific revaluation entries</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 5</span><span>Once classified as held for sale, PPE exits IAS 16's depreciation regime and switches to the lower-of-CA-and-FVLCTS rule</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 16</span><span>A lessee's right-of-use asset is depreciated using IAS 16-style mechanics, even though the underlying standard governing recognition is IFRS 16</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 12</span><span>Revaluation surpluses create taxable temporary differences, generating a deferred tax liability recognised through OCI (matching the surplus)</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 3</span><span>PPE acquired in a business combination is recognised at acquisition-date fair value, not historical cost</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 8</span><span>Governs how changes in useful life, residual value, and depreciation method are treated (prospective, as changes in estimate)</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 1</span><span>Determines where PPE sits on the SOFP (non-current assets) and the general presentation framework PPE disclosures sit within</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 14 — GLOSSARY ============ -->
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Componentisation", definition: "Splitting an asset into significant parts with different useful lives, depreciated separately." },
+      { term: "Useful life", definition: "The period over which an asset is expected to be available for use, or the number of production units expected from it." },
+      { term: "Revaluation surplus", definition: "The equity reserve (OCI) representing the cumulative excess of fair value over historical cost for a revalued asset." },
+      { term: "Fair value", definition: "The price that would be received to sell an asset in an orderly transaction between market participants (IFRS 13 definition)." },
+      { term: "Recoverable amount", definition: "Higher of fair value less costs of disposal and value in use (IAS 36)." },
+      { term: "Class of assets", definition: "A grouping of assets of similar nature/use (e.g. land, buildings, machinery, vehicles) used for disclosure and policy application." }
+    ]} />
+
+    <FinancialStatementKey />
+
+    </div>
+  </ReferenceGuide>
+
+  <section id="history">
+    <HistoryTimeline items={history.IAS16} />
+  </section>
+
+  <RelatedStandards related={[]} framework="IAS" />
+  <PreviousNextNavigation current={metadata.code} framework="IAS" />
+
+  <style>
+    .proto-hero {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+      margin-bottom: var(--space-xl);
+      position: relative;
+      overflow: hidden;
+    }
+    .proto-hero__content {
+      display: flex;
+      flex-direction: column;
+    }
+    .proto-hero__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-sm);
+    }
+    .proto-hero__code {
+      font-size: 15px;
+      font-weight: var(--weight-bold);
+      color: var(--ias);
+      line-height: 1.3;
+      letter-spacing: 0.01em;
+      margin: 0;
+    }
+    .proto-hero__title {
+      font-size: 32px;
+      font-weight: var(--weight-bold);
+      color: var(--text);
+      margin: 0;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+    .proto-hero__summary {
+      margin-top: var(--space-md);
+    }
+    .proto-hero__summary-text {
+      font-size: var(--text-body);
+      font-weight: var(--weight-normal);
+      color: var(--text);
+      line-height: 1.6;
+      margin: 0 0 var(--space-md) 0;
+    }
+    .proto-hero__divider {
+      height: 1px;
+      background: var(--divider);
+      width: 100%;
+    }
+    .proto-hero__metadata {
+      margin-top: var(--space-lg);
+      background: var(--surface-alt);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+    }
+    .proto-hero__meta-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      align-items: stretch;
+      justify-content: flex-start;
+    }
+    .proto-hero__meta-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: var(--space-sm) var(--space-md);
+      flex: 0 0 auto;
+      min-width: 150px;
+      max-width: 280px;
+    }
+    .proto-hero__meta-label {
+      font-size: var(--text-xs);
+      font-weight: var(--weight-medium);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .proto-hero__meta-value {
+      font-size: var(--text-small);
+      font-weight: var(--weight-semibold);
+      color: var(--text);
+      margin-top: 2px;
+    }
+
+    /* ===== Redesigned integrated status pill ===== */
+    .hero-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      height: 28px;
+      padding: 0 12px 0 4px;
+      border-radius: 999px;
+      border: 1px solid var(--status-accent);
+      background: var(--status-soft);
+      color: var(--status-ink);
+      font-size: 12px;
+      font-weight: var(--weight-semibold);
+      line-height: 1;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+    }
+    .hero-status-pill__circle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--status-accent);
+      color: #ffffff;
+    }
+    .hero-status-pill__circle :global(svg) {
+      width: 12px;
+      height: 12px;
+    }
+    .hero-status-pill--published {
+      --status-accent: #059669;
+      --status-soft: #ecfdf5;
+      --status-ink: #065f46;
+    }
+    .hero-status-pill--draft {
+      --status-accent: #475569;
+      --status-soft: #f8fafc;
+      --status-ink: #334155;
+    }
+    .hero-status-pill--archived {
+      --status-accent: #64748b;
+      --status-soft: #f1f5f9;
+      --status-ink: #475569;
+    }
+    .hero-status-pill--superseded,
+    .hero-status-pill--replaced {
+      --status-accent: #b45309;
+      --status-soft: #fffbeb;
+      --status-ink: #92400e;
+    }
+    .hero-status-pill--withdrawn {
+      --status-accent: #dc2626;
+      --status-soft: #fff1f2;
+      --status-ink: #b91c1c;
+    }
+    .hero-status-pill--historical-reference {
+      --status-accent: #475569;
+      --status-soft: #f1f5f9;
+      --status-ink: #334155;
+    }
+    .hero-status-pill--effective-soon {
+      --status-accent: #4f46e5;
+      --status-soft: #eef2ff;
+      --status-ink: #4338ca;
+    }
+    .hero-status-pill--amended {
+      --status-accent: #7c3aed;
+      --status-soft: #f5f3ff;
+      --status-ink: #6d28d9;
+    }
+    .hero-status-pill--suspended {
+      --status-accent: #c2410c;
+      --status-soft: #fff7ed;
+      --status-ink: #9a3412;
+    }
+
+    @media (max-width: 640px) {
+      .proto-hero__header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-sm);
+      }
+      .hero-status-pill {
+        align-self: flex-start;
+      }
+    }
+  </style>
+</StandardLayout>

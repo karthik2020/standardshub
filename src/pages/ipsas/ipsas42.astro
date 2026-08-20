@@ -1,0 +1,278 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import metadata from "../../data/standards/ipsas/ipsas42.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  covers={metadata.covers}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Objective, Scope & the Social Benefit Definition" },
+        { id: "s2", label: "The General Approach — Recognizing a Liability" },
+        { id: "s3", label: "The General Approach — Measurement" },
+        { id: "s4", label: "General Approach Disclosures" },
+        { id: "s5", label: "The Insurance Approach — an Optional Alternative" },
+        { id: "s6", label: "Insurance Approach Disclosures & Long-Term Sustainability Reporting" },
+        { id: "s7", label: "Transitional Provisions & Effective Date" },
+        { id: "s8", label: "Relationship to Statistical & Insurance Frameworks" },
+        { id: "s9", label: "Statement / Process Mapping" },
+        { id: "s10", label: "Related Standards" },
+        { id: "s11", label: "Glossary" }
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="active"
+    explanation="IPSAS 42 Social Benefits is the current, active standard issued by the IPSASB for recognizing, measuring, presenting, and disclosing social benefits. Effective for periods beginning on or after 1 January 2023."
+    historical="IPSAS 42 has no IFRS equivalent — social benefits at this scale are a distinctly public-sector phenomenon. It introduces the general approach (liability recognized when each beneficiary satisfies eligibility criteria, measured at best estimate of cost of fulfillment) and the optional insurance approach (applying an insurance-contracts standard by analogy)."
+    link=""
+    linkText=""
+  />
+
+  <!-- ============ SECTION 1 ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; the Social Benefit Definition (paras. 1–5, 4A)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Objective</div>
+      <div class="principle">Improves the relevance, faithful representation, and comparability of information about social benefits — helping users assess the NATURE of benefits provided, the KEY FEATURES of the schemes, and the IMPACT on financial performance, position, and cash flows.</div>
+      <div class="cross-list">
+        <span>Financial instruments (IPSAS 41/29)</span>
+        <span>Employee benefits (IPSAS 39)</span>
+        <span>Insurance contracts (the relevant international/national insurance Standard)</span>
+        <span>Collective and individual SERVICES (IPSAS 19 sense) — these are NOT social benefits at all (para. 4A)</span>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">The three-part definition (para. 5)</div>
+      <div class="formula-box">
+        <div class="f-eq">Social benefits = cash transfers to specific individuals/households meeting ELIGIBILITY CRITERIA, to mitigate SOCIAL RISKS, addressing the needs of society as a whole</div>
+      </div>
+      <div class="glossary-item glossary-item--last">
+        <div class="glossary-term">Social risks</div>
+        <div class="glossary-def">Events/circumstances relating to individual/household CHARACTERISTICS (age, health, poverty, employment status) that may adversely affect welfare — imposing additional resource demands, or reducing income.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>The General Approach — Recognizing a Liability &amp; Expense (paras. 6–11)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The two-part recognition test (para. 6)</div>
+      <div class="check-list">
+        <span>A PRESENT OBLIGATION for an outflow of resources, resulting from a PAST EVENT</span>
+        <span>The obligation can be MEASURED in a way achieving the Conceptual Framework's qualitative characteristics, given its constraints</span>
+      </div>
+      <div class="note">An obligation settleable WITHOUT any resource outflow is not a liability at all (para. 7). Measurement uncertainty does NOT itself block recognition — unless it's so severe that relevance and faithful representation genuinely can't be achieved; where recognition proceeds despite uncertainty, that uncertainty is factored INTO the measurement (para. 8).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">The past event — a genuinely distinctive trigger</div>
+      <div class="formula-box">
+        <div class="f-eq">The past event = satisfaction by EACH beneficiary of ALL eligibility criteria for a specific social benefit PAYMENT</div>
+      </div>
+      <div class="text-supporting">Each social benefit payment's eligibility satisfaction is its OWN separate past event (para. 9) — a liability isn't recognized for a whole future benefit stream merely because someone qualifies for the scheme generally; it accrues PAYMENT by PAYMENT as eligibility is (re-)established. The expense is recognized at the SAME point as the liability (para. 10). A payment made BEFORE the next payment's eligibility criteria are satisfied is recognized as a PREPAYMENT ASSET instead of an expense — unless it becomes irrecoverable (para. 11).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>The General Approach — Measurement (paras. 12–21)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Initial measurement — cost of fulfillment</div>
+      <div class="formula-box">
+        <div class="f-eq">Measure the liability at the BEST ESTIMATE of the social benefit payments the entity will make to fulfill the present obligation</div>
+      </div>
+      <div class="text-supporting">Directly applies IPSAS 46's cost-of-fulfillment basis — the same measurement concept underlying IPSAS 19 provisions (para. 12). The estimate accounts for the possible effect of SUBSEQUENT EVENTS on those payments (para. 13). If NOT expected to settle within 12 months of period-end, the liability is DISCOUNTED at a rate reflecting the time value of money, matched in currency and term (paras. 14, 19).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Subsequent measurement — settle, unwind, re-estimate</div>
+      <div class="dot-list">
+        <span>Liability REDUCED as payments are made; any difference between payment cost and carrying amount → surplus or deficit, in the period of settlement (para. 16)</span>
+        <span>DISCOUNTED liabilities: increased each period for INTEREST EXPENSE as the discount unwinds (para. 17)</span>
+        <span>REVIEWED at every reporting date, adjusted to the CURRENT best estimate (para. 18)</span>
+      </div>
+      <div class="note">The expense is initially measured at the SAME amount as the liability; a prepayment/expense from an early payment is measured at the CASH transferred (para. 21).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>General Approach Disclosures (paras. 22–25)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Per major social benefit scheme (para. 22–23)</div>
+      <div class="check-list">
+        <span>The NATURE of benefits provided (retirement, unemployment, child benefits, etc.)</span>
+        <span>KEY FEATURES — legislative framework, main eligibility criteria, and how to obtain further information</span>
+        <span>How the scheme is FUNDED — budget appropriation, transfer from another public entity, or otherwise; if funded by social CONTRIBUTIONS, a cross-reference (or availability statement) for that contribution/dedicated-asset information</span>
+        <span>Key DEMOGRAPHIC, ECONOMIC, and other external factors driving expenditure levels — may be aggregated across similarly-affected schemes</span>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Financial figures &amp; amendments</div>
+      <div class="dot-list">
+        <span>TOTAL expenditure on social benefits recognized in the SOFPerformance, analyzed BY SCHEME</span>
+        <span>A description of SIGNIFICANT AMENDMENTS during the period — changes to benefit levels, or to eligibility criteria/covered population — with the expected EFFECT described</span>
+      </div>
+      <div class="note">IPSAS 1's materiality and aggregation guidance (paras. 45–47) governs how these disclosures are organized (para. 24). If a scheme qualifies for the insurance approach, a STATEMENT to that effect is also required (para. 25) — even if the entity elects NOT to use it.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>The Insurance Approach — an Optional Alternative (paras. 26–28)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs">
+      <div class="ctitle cs">Two required criteria — BOTH, together (para. 28)</div>
+      <div class="check-list">
+        <span>The scheme is intended to be FULLY FUNDED from contributions</span>
+        <span>Evidence the entity MANAGES the scheme the way an insurance issuer would — including regularly assessing its financial performance and position</span>
+      </div>
+      <div class="note">Where BOTH criteria are met, an entity is PERMITTED, but not REQUIRED, to recognize/measure the scheme's assets/liabilities/revenue/expenses BY ANALOGY to the relevant international/national insurance-contracts standard (IFRS 17, or a national standard adopting substantially the same principles) (para. 26).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Why optional, not mandatory — a genuine cost-benefit tradeoff</div>
+      <div class="text-supporting">The IPSASB concluded the insurance approach likely gives users the MOST USEFUL information for qualifying schemes — surfacing whether contributions are sufficient to meet expected liabilities, and whether persistent surpluses might be cross-subsidizing other spending. But it's also more COSTLY and COMPLEX to implement (actuarial-style cash flow projections over the scheme's whole duration, vs. the general approach's simpler eligibility-triggered liability). The Board settled on OPTIONAL specifically for cost/benefit reasons, while flagging this could be revisited as practical experience accumulates.</div>
+      <div class="note">Electing NOT to use the insurance approach for a qualifying scheme simply means applying the general approach (§2–§4) instead (para. 27).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Insurance Approach Disclosures &amp; Long-Term Sustainability Reporting (paras. 29–32)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Insurance approach disclosures — layered on top</div>
+      <div class="check-list">
+        <span>The BASIS for determining the insurance approach is appropriate</span>
+        <span>Everything the underlying insurance-contracts standard itself requires</span>
+        <span>PLUS the same scheme-characteristics and significant-amendment disclosures as the general approach (§4) — nature, key features, and amendment descriptions (para. 30–31)</span>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Long-term fiscal sustainability — encouraged, not required</div>
+      <div class="text-supporting">Entities with social benefits are ENCOURAGED (not required) to prepare general purpose financial reports on the long-term sustainability of the entity's finances — with RPG 1, <em>Reporting on the Long-Term Sustainability of an Entity's Finances</em>, providing guidance for doing so (para. 32). This sits alongside, rather than replacing, the mandatory disclosures above — a genuinely useful complement given how social benefit obligations often extend far beyond any single reporting period.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Transitional Provisions &amp; Effective Date (paras. 33–35)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Two transition paths, matching the two accounting approaches</div>
+      <div class="dot-list">
+        <span><strong>General approach</strong> — full RETROSPECTIVE application under IPSAS 3 (para. 33)</span>
+        <span><strong>Insurance approach</strong> — the RELEVANT INSURANCE STANDARD's OWN transitional provisions apply instead (para. 34) — a deliberate choice to keep the two approaches' transition mechanics consistent with their respective measurement frameworks</span>
+      </div>
+      <div class="formula-box" style="margin-top:8px;">
+        <div class="f-eq">Effective date: periods beginning on/after 1 January 2023 — earlier application encouraged, with disclosure if elected (para. 35)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Relationship to Statistical &amp; Insurance Frameworks — No IAS/IFRS Equivalent</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — IPSAS 42 vs Government Finance Statistics (GFS)</div>
+      <div class="principle">IPSAS 42 has NO IFRS Standard equivalent — social benefits at this scale are a distinctly public-sector phenomenon. Instead, the Handbook's comparison section benchmarks it against GOVERNMENT FINANCE STATISTICS (GFS) reporting guidelines, the same statistical framework underlying IPSAS 22 and IPSAS 24.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1.9fr;"><span>Topic</span><span>Comparison</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Social risk concept</span><span>IPSAS 42 uses a SIMILAR concept to GFS — "social risk" is a defined term underpinning the social benefit definition</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Scope of "social benefits"</span><span>IPSAS 42 is NARROWER — limited to CASH transfers (and cash equivalents); GFS also covers IN-KIND benefits (e.g. health services)</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Liability recognition</span><span>IPSAS 42 recognizes a liability for payments up to the NEXT eligibility point; GFS GENERALLY does not recognize such a liability, except for FUNDED social insurance schemes</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Insurance approach</span><span>IPSAS 42 permits it as an OPTION; GFS has no equivalent</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Disclosure</span><span>IPSAS 42 includes disclosure requirements NOT present in GFS</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Decision map</div>
+      <ol class="ordered-list">
+        <li>Is this a CASH transfer to eligible individuals/households, mitigating social risk, addressing society's needs? If it's a SERVICE (collective or individual, IPSAS 19 sense) → not a social benefit at all (§1)</li>
+        <li>Does the scheme meet BOTH insurance-approach criteria — fully contribution-funded, AND managed like an insurance issuer? (§5)</li>
+        <li>NO, or elects not to use it → GENERAL APPROACH: recognize a liability/expense when EACH beneficiary satisfies ALL eligibility criteria for a specific payment (§2)</li>
+        <li>YES, and elects to use it → INSURANCE APPROACH: apply the relevant insurance-contracts standard by analogy (§5)</li>
+        <li>General approach: measure at best estimate of cost of fulfillment, discount if settlement is beyond 12 months, review every period (§3)</li>
+        <li>Apply the disclosure package matching whichever approach was used, plus the mandatory cross-disclosure of insurance-approach ELIGIBILITY even where not elected (§4, §6)</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="grid grid-spaced">
+    <div class="card cs span2">
+      <div class="ctitle cs">Concept-to-statement mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>IPSAS 42 concept</span><span>Statement(s)</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Social benefit liability (general approach)</span><span><span class="badge bs">SOFP</span></span><span>Best estimate of cost of fulfillment</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Social benefit expense</span><span><span class="badge bp">SOFPerf</span></span><span>Recognized at the same point as the liability</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Prepaid social benefit payment</span><span><span class="badge bs">SOFP</span></span><span>Asset, until it becomes irrecoverable</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Discount unwinding</span><span><span class="badge bp">SOFPerf</span></span><span>Interest expense, each period</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Insurance approach assets/liabilities/revenue/expense</span><span>All statements</span><span>Per the relevant insurance-contracts standard, by analogy</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Scheme nature, funding, amendments</span><span><span class="badge be">Notes</span></span><span>Mandatory under both approaches</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How IPSAS 42 connects across the IPSAS body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.7fr 2.2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 1</span><span>Materiality and aggregation guidance governing how scheme disclosures are organized (§4)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 3</span><span>Governs retrospective transition for the general approach (§7)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 19</span><span>Defines collective/individual services (excluded from scope); shares the cost-of-fulfillment measurement concept for provisions generally (§1, §3)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 22 / 24</span><span>Share the GFS statistical-framework lineage this Standard is benchmarked against (§8)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 39</span><span>Employee benefits explicitly excluded from social benefits scope (§1)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 41 / 29</span><span>Financial instruments explicitly excluded from scope (§1)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 46</span><span>Source of the cost-of-fulfillment measurement basis applied to social benefit liabilities (§3)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Social benefits</div><div class="glossary-def">Cash transfers to specific individuals/households meeting eligibility criteria, mitigating social risks and addressing society's needs.</div></div>
+      <div class="glossary-item glossary-item--last"><div class="glossary-term">Social risks</div><div class="glossary-def">Events or circumstances related to individual/household characteristics that may adversely affect welfare.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">General approach</div><div class="glossary-def">The default social benefit accounting model — a liability recognized at eligibility satisfaction, measured at cost of fulfillment.</div></div>
+      <div class="glossary-item glossary-item--last"><div class="glossary-term">Insurance approach</div><div class="glossary-def">An optional model applying insurance-contract accounting by analogy, for fully contribution-funded schemes managed like insurance.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bs">SOFP</span> Statement of financial position
+      <span class="badge bp">SOFPerf</span> Statement of financial performance
+      <span class="badge be">Notes</span> Notes to the financial statements
+    </div>
+  </div>
+</StandardPageLayout>

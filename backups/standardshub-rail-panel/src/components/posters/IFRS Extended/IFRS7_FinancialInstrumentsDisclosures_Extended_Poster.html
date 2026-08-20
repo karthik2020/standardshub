@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IFRS 7 — Financial Instruments: Disclosures | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .entry { display: flex; align-items: flex-start; gap: 4px; margin-bottom: 4px; }
+  .dr { font-size: 11px; font-weight: 500; color: var(--color-text-info);   min-width: 14px; padding-top: 1px; }
+  .cr { font-size: 11px; font-weight: 500; color: var(--color-text-danger); min-width: 14px; padding-top: 1px; padding-left: 6px; }
+  .etxt { font-size: 11px; color: var(--color-text-primary); flex: 1; line-height: 1.4; }
+  .badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">IFRS 7 — Financial Instruments: Disclosures</div>
+      <div class="hub-sub">Extended reference poster · Conceptual framework link · Risk disclosures · Fair value hierarchy · Worked examples · Statement mapping</div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <a href="#s1">1. Conceptual Framework</a>
+    <a href="#s2">2. Scope &amp; Definitions</a>
+    <a href="#s3">3. Significance of Financial Instruments</a>
+    <a href="#s4">4. Credit Risk Disclosures</a>
+    <a href="#s5">5. Liquidity Risk Disclosures</a>
+    <a href="#s6">6. Market Risk &amp; Sensitivity Analysis</a>
+    <a href="#s7">7. The Fair Value Hierarchy — Levels 1, 2, 3</a>
+    <a href="#s8">8. Offsetting Disclosures</a>
+    <a href="#s9">9. Transfers of Financial Assets</a>
+    <a href="#s10">10. Judgments &amp; Estimates</a>
+    <a href="#s11">11. IFRS vs US GAAP</a>
+    <a href="#s12">12. Statement Mapping</a>
+    <a href="#s13">13. Related Standards</a>
+    <a href="#s14">14. Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Why financial instrument RISK, not just recognition, needs disclosure</div>
+      <div class="principle">The Conceptual Framework's relevance objective requires users to understand not just WHAT an entity holds, but the NATURE and EXTENT of RISKS arising from those instruments, and how the entity MANAGES them. Recognised amounts alone (from IFRS 9) tell users little about future cash flow variability or exposure to market movements — IFRS 7 exists purely to fill this gap.</div>
+      <div class="elabel">HOW IFRS 7 MAPS TO THE FRAMEWORK</div>
+      <div class="check-list">
+        <span><strong style="font-weight:500">Relevance</strong> — risk disclosures (credit, liquidity, market) give users forward-looking insight that recognised balances alone cannot provide</span>
+        <span><strong style="font-weight:500">Faithful representation</strong> — the fair value hierarchy (Section 7) distinguishes OBSERVABLE market-based fair values from those relying on UNOBSERVABLE, management-derived inputs, helping users assess measurement reliability</span>
+        <span><strong style="font-weight:500">A pure disclosure standard</strong> — like IAS 24 and IAS 33, IFRS 7 introduces NO new recognition or measurement rules; it is entirely concerned with what information ACCOMPANIES the amounts already recognised under IFRS 9</span>
+      </div>
+      <div class="note">IFRS 7 was significantly strengthened in scope following the 2008 global financial crisis, particularly around liquidity risk and fair value hierarchy disclosures — regulators and users demanded far greater transparency about how "fair value" figures were actually derived, especially for complex or illiquid instruments.</div>
+    </div>
+
+    <div class="card cs">
+      <div class="ctitle cs">Two broad disclosure categories</div>
+      <div class="principle">IFRS 7's disclosures split into two fundamentally different purposes — understanding SIGNIFICANCE (what's on the balance sheet) versus understanding RISK EXPOSURE (what could happen to it).</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1fr;"><span>Category</span><span>Purpose</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1fr;"><span>Significance of financial instruments</span><span>Understanding the entity's financial position and performance in relation to financial instruments</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1fr;"><span>Nature and extent of risks</span><span>Understanding credit, liquidity, and market risk exposures, and how the entity manages them</span></div>
+      </div>
+      <div class="callout info" style="margin-bottom:0;">ℹ️ <strong style="font-weight:500">Qualitative characteristics in action:</strong> requiring sensitivity analysis under market risk disclosures directly reflects <strong style="font-weight:500">relevance</strong> — users can assess the potential FUTURE impact of reasonably possible market movements, not just historical recognised amounts.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw">
+      <div class="ctitle cw">What IFRS 7 covers</div>
+      <div class="principle">IFRS 7 shall be applied by ALL entities to ALL types of financial instruments, except those specifically excluded (interests in subsidiaries/associates/joint ventures accounted for under IFRS 10/IAS 27/IAS 28 unless those Standards permit/require IFRS 9 treatment; employers' rights/obligations under IAS 19 plans; and insurance contracts, though embedded derivatives and financial guarantee contracts within them remain in scope).</div>
+      <div class="note">IFRS 7's disclosure requirements apply REGARDLESS of whether the reporting entity is a financial institution — a manufacturing company with ordinary trade receivables/payables and bank loans is fully within IFRS 7's scope, though the volume and complexity of disclosure typically scales with the entity's own financial instrument risk profile.</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Key definitions you must know</div>
+      <div class="glossary-item">
+        <div class="glossary-term">Credit risk</div>
+        <div class="glossary-def">The risk that one party to a financial instrument will cause a financial loss for the other party by failing to discharge an obligation.</div>
+      </div>
+      <div class="glossary-item">
+        <div class="glossary-term">Liquidity risk</div>
+        <div class="glossary-def">The risk that an entity will encounter difficulty in meeting obligations associated with financial liabilities that are settled by delivering cash or another financial asset.</div>
+      </div>
+      <div class="glossary-item">
+        <div class="glossary-term">Market risk</div>
+        <div class="glossary-def">The risk that the fair value or future cash flows of a financial instrument will fluctuate because of changes in market prices — comprising currency risk, interest rate risk, and other price risk.</div>
+      </div>
+      <div class="glossary-item" style="border-bottom:none;">
+        <div class="glossary-term">Fair value hierarchy</div>
+        <div class="glossary-def">A three-level hierarchy (per IFRS 13) categorising the inputs used in fair value measurement techniques, ranging from quoted market prices (Level 1) to entirely unobservable inputs (Level 3).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Significance of Financial Instruments</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Understanding the entity's SOFP/SOPL exposure</div>
+      <div class="principle">To enable users to evaluate the significance of financial instruments for an entity's financial position and performance, disclosures include:</div>
+      <div class="check-list">
+        <span>Carrying amounts of each of the IFRS 9 categories of financial assets/liabilities (measured at amortised cost, FVTPL, FVOCI)</span>
+        <span>Items of income, expense, gains, or losses arising from financial instruments — including net gains/losses by category, total interest income/expense (using the effective interest method), fee income/expense, and impairment losses by class of financial asset</span>
+        <span>Details of any reclassifications between measurement categories, and the reasons for any such reclassification</span>
+        <span>Information about collateral held/pledged</span>
+        <span>A reconciliation of the allowance account for credit losses (expected credit losses under IFRS 9)</span>
+      </div>
+      <div class="note">These disclosures directly complement the measurement categories and impairment approach introduced by IFRS 9, giving users the detailed BREAKDOWN behind the summarised SOFP/SOPL figures.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Credit Risk Disclosures (with worked example)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs">
+      <div class="ctitle cs">Aligning disclosure with IFRS 9's expected credit loss model</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Disclosures include the entity's credit risk management practices, quantitative/qualitative information about amounts arising from expected credit losses, an analysis of financial assets by credit risk RATING GRADE, and information about the concentration of credit risk. Entities must disclose how financial assets have moved between the THREE STAGES of IFRS 9's ECL model (12-month ECL, lifetime ECL not credit-impaired, and lifetime ECL credit-impaired).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Worked example — credit risk concentration disclosure</div>
+      <div class="worked">
+        <div class="wk-title">Example 1: Concentration of credit risk</div>
+        <div class="wk-body">
+          A manufacturing entity has total trade receivables of $8,000,000, of which $3,200,000 (40%) is owed by just THREE major customers in the same industry sector.
+        </div>
+        <div class="wk-answer">
+          IFRS 7 requires disclosure of this CONCENTRATION — describing the shared characteristic identifying each concentration (in this case, sector and customer concentration), and the amount of credit risk exposure associated with that group — since a downturn affecting that sector could disproportionately impact the entity's overall credit risk exposure.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Liquidity Risk Disclosures (with worked example)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Maturity analysis — the core requirement</div>
+      <div class="principle">An entity discloses a MATURITY ANALYSIS for NON-DERIVATIVE financial liabilities (and derivative financial liabilities, if relevant), showing the REMAINING CONTRACTUAL maturities, based on UNDISCOUNTED cash flows — grouped into time bands (e.g. less than 1 year, 1-2 years, 2-5 years, more than 5 years) appropriate to the entity's circumstances.</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 2: Undiscounted contractual maturity analysis</div>
+        <div class="wk-body">
+          An entity has a bank loan requiring $500,000 principal repayment plus $40,000 interest in Year 1, and $500,000 principal plus $20,000 interest in Year 2 (total contractual undiscounted cash flows: $1,060,000). The loan is carried on the SOFP at its amortised cost of $980,000.
+        </div>
+        <div class="wk-answer">
+          The maturity analysis DISCLOSES the UNDISCOUNTED contractual cash flows: <strong style="color:var(--color-text-info);">$540,000</strong> due within 1 year, and <strong style="color:var(--color-text-info);">$520,000</strong> due in 1-2 years — NOT the $980,000 SOFP carrying amount, since the disclosure reflects genuine future cash outflow obligations, INCLUDING interest, on an undiscounted basis.
+        </div>
+      </div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ <strong style="font-weight:600">A frequently tested distinction:</strong> the liquidity risk maturity analysis uses UNDISCOUNTED contractual cash flows (including future interest), which will generally NOT reconcile directly to the discounted SOFP carrying amount — students often mistakenly try to tie these two figures together.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Market Risk &amp; Sensitivity Analysis (with worked example)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">The mandatory sensitivity analysis requirement</div>
+      <div class="principle">For EACH type of market risk to which the entity is exposed at the reporting date, IFRS 7 requires a SENSITIVITY ANALYSIS showing how profit or loss and equity would have been affected by REASONABLY POSSIBLE changes in the relevant risk variable at that date — the methods and assumptions used must also be disclosed.</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 3: Interest rate sensitivity analysis</div>
+        <div class="wk-body">
+          An entity holds $10,000,000 of variable-rate borrowings. Management considers a reasonably possible movement in interest rates to be plus or minus 1%.
+        </div>
+        <div class="wk-answer">
+          <strong>Disclosed sensitivity</strong>: a 1% INCREASE in interest rates would increase annual interest expense (and decrease pre-tax profit) by 10,000,000 × 1% = <strong style="color:var(--color-text-danger);">$100,000</strong>; a 1% DECREASE would have the equivalent favourable effect — both the increase AND decrease scenarios are typically disclosed, together with the methodology and assumptions used.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>The Fair Value Hierarchy — Levels 1, 2, 3 (with worked example)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs">
+      <div class="ctitle cs">The three levels, defined</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.6fr 2fr;"><span>Level</span><span>Input basis</span></div>
+        <div class="tr" style="grid-template-columns:0.6fr 2fr;"><span>Level 1</span><span>Quoted prices (unadjusted) in ACTIVE markets for IDENTICAL assets/liabilities</span></div>
+        <div class="tr alt" style="grid-template-columns:0.6fr 2fr;"><span>Level 2</span><span>Inputs OTHER than Level 1 quoted prices that are OBSERVABLE, either directly or indirectly (e.g. quoted prices for similar instruments)</span></div>
+        <div class="tr" style="grid-template-columns:0.6fr 2fr;"><span>Level 3</span><span>UNOBSERVABLE inputs (management's own assumptions), used when observable market data is not available</span></div>
+      </div>
+      <div class="note">The fair value HIERARCHY is technically defined in IFRS 13, but IFRS 7 mandates the actual DISCLOSURE of instruments' hierarchy levels, movements between levels, and reconciliation of Level 3 balances.</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Worked example — hierarchy classification</div>
+      <div class="worked">
+        <div class="wk-title">Example 4: Classifying instruments by hierarchy level</div>
+        <div class="wk-body">
+          An entity holds: (a) listed equity shares actively traded on a stock exchange; (b) a corporate bond valued using a discounted cash flow model with observable market interest rate curves; (c) an unlisted equity investment in a private company, valued using management's own projections and a discount rate with no directly observable market comparable.
+        </div>
+        <div class="wk-answer">
+          (a) Listed equity shares → <strong style="color:var(--color-text-info);">Level 1</strong> (quoted price in an active market)<br>
+          (b) Corporate bond via DCF with observable rates → <strong style="color:var(--color-text-info);">Level 2</strong> (observable inputs, not a direct quoted price)<br>
+          (c) Unlisted equity investment → <strong style="color:var(--color-text-info);">Level 3</strong> (significant unobservable inputs)
+        </div>
+      </div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ For Level 3 instruments specifically, additional disclosures are required: a reconciliation from opening to closing balances (purchases, sales, gains/losses, transfers into/out of Level 3), and a sensitivity analysis showing the effect of changing unobservable inputs to reasonably possible alternatives.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Offsetting Disclosures</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Disclosures beyond IAS 32's own offsetting criteria</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">IFRS 7 requires disclosure of information enabling users to EVALUATE the effect (or potential effect) of netting arrangements on an entity's financial position — including for RECOGNISED financial instruments that are OFFSET under IAS 32's criteria, and those subject to an ENFORCEABLE master netting arrangement or SIMILAR agreement even if NOT actually offset on the SOFP.</div>
+      <div class="note">This disclosure requirement exists PRECISELY because IAS 32's strict offsetting criteria (Section 8 of the IAS 32 poster) mean many economically netted positions are NOT actually presented net on the SOFP — IFRS 7 ensures users still see the potential netting effect even where gross presentation is required.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Transfers of Financial Assets</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Disclosures for transferred assets not fully derecognised</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Where a financial asset is TRANSFERRED but does NOT qualify for full derecognition (e.g. because the transferor retains SOME risks/rewards, per IFRS 9's derecognition test), specific disclosures are required — including the nature of the assets, the risks/rewards the entity remains exposed to, and a description of the relationship between the transferred assets and any associated liabilities recognised.</div>
+      <div class="note">This links directly to IFRS 9's derecognition rules — where the risks/rewards transfer test results in CONTINUED recognition (in whole or part), IFRS 7 ensures users understand the entity's remaining exposure, which is not always obvious from the SOFP alone.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Where management judgement matters most</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+          <div class="dot-list">
+            <span>Classifying fair value measurements into the correct hierarchy level (particularly the Level 2/Level 3 boundary)</span>
+            <span>Determining what constitutes a "reasonably possible" change in a market risk variable for sensitivity analysis purposes</span>
+            <span>Identifying credit risk concentrations requiring separate disclosure</span>
+          </div>
+        </div>
+        <div>
+          <div class="elabel">SIGNIFICANT ESTIMATES</div>
+          <div class="dot-list">
+            <span>Unobservable inputs used in Level 3 fair value measurements, and their reasonably possible alternative values</span>
+            <span>Undiscounted contractual cash flow projections for the liquidity risk maturity analysis</span>
+          </div>
+        </div>
+      </div>
+      <div class="callout warn" style="margin-top:8px;margin-bottom:0;">⚠️ The volume and granularity of IFRS 7 disclosures scale significantly with an entity's financial instrument RISK PROFILE — a bank or insurer will typically produce vastly more extensive disclosures than a manufacturing entity with straightforward trade receivables and bank borrowings, even though the SAME standard applies to both.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>IFRS vs US GAAP — Key Differences</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — IFRS 7 vs US GAAP (ASC 825 / ASC 820)</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Feature</span><span style="color:var(--color-text-info);">IFRS (IFRS 7)</span><span style="color:var(--color-text-warning);">US GAAP</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Fair value hierarchy</span><span>Three levels (per IFRS 13), broadly converged</span><span>Also three levels (per ASC 820), substantially converged following coordinated standard-setting</span></div>
+        <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Sensitivity analysis for market risk</span><span>MANDATORY for each type of market risk exposure</span><span>Also required under SEC market risk disclosure rules for public companies, though mechanics and specific formats differ</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Liquidity risk maturity analysis</span><span>MANDATORY undiscounted contractual maturity analysis for financial liabilities</span><span>Similar maturity disclosure concepts exist, though not always presented in an identical undiscounted format</span></div>
+        <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Offsetting disclosure</span><span>Required even for amounts subject to enforceable master netting arrangements, whether or not actually offset</span><span>Similar disclosure requirement exists, largely converged following a joint project on offsetting disclosures</span></div>
+      </div>
+      <div class="note">IFRS 7 and its US GAAP equivalents are reasonably well converged, particularly following the joint fair value hierarchy and offsetting disclosure projects — remaining differences are largely in the specific FORMAT and granularity of disclosure rather than fundamental philosophy.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping — Where Every IFRS 7 Disclosure Lands</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Comprehensive disclosure-to-location mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Disclosure item</span><span>Location</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Carrying amounts by IFRS 9 category</span><span><span class="badge bp">Notes</span></span><span>Reconciles to SOFP totals</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Net gains/losses by category, interest income/expense</span><span><span class="badge bp">Notes</span></span><span>Detailed breakdown supporting SOPL line items</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Credit risk exposure, ECL staging, concentration</span><span><span class="badge bp">Notes</span></span><span>Quantitative and qualitative disclosure</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Liquidity risk maturity analysis</span><span><span class="badge bp">Notes</span></span><span>Undiscounted contractual cash flows by time band</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Market risk sensitivity analysis</span><span><span class="badge bp">Notes</span></span><span>Reasonably possible movements and their effect on profit/equity</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Fair value hierarchy classification and Level 3 reconciliation</span><span><span class="badge bp">Notes</span></span><span>Mandatory for all instruments measured at fair value</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Offsetting disclosures (net and gross, including master netting arrangements)</span><span><span class="badge bp">Notes</span></span><span>Even for amounts not actually offset on the SOFP</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Transferred assets not qualifying for full derecognition</span><span><span class="badge bp">Notes</span></span><span>Nature, risks retained, and associated liabilities described</span></div>
+      </div>
+      <div class="note">IFRS 7 is entirely a DISCLOSURE standard — it does not itself generate any SOFP, SOPL, OCI, or Equity recognition entries; all its requirements sit exclusively within the notes to the financial statements.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How IFRS 7 connects across the IFRS body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 9</span><span>Supplies the recognition, measurement, classification, and impairment (ECL) rules that IFRS 7's disclosures explain and quantify in detail</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 32</span><span>Supplies the liability/equity classification and offsetting recognition criteria, which IFRS 7's disclosures supplement with additional netting-related information</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 13</span><span>Supplies the fair value measurement framework and the three-level hierarchy that IFRS 7 mandates disclosure of</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 8</span><span>May require certain financial instrument risk disclosures to be presented consistently with the entity's reportable operating segments</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 1</span><span>Governs the general presentation framework within which IFRS 7's notes are structured and cross-referenced</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 17</span><span>Insurance contracts are generally excluded from IFRS 7's scope, except for embedded derivatives and financial guarantee contracts</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Sensitivity analysis</div><div class="glossary-def">A disclosure showing how profit/loss and equity would be affected by reasonably possible changes in a relevant market risk variable at the reporting date.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Concentration of risk</div><div class="glossary-def">Financial instruments sharing a common characteristic (e.g. same industry, geographic region, or counterparty group) that could cause them to be similarly affected by changes in economic/other conditions.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Maturity analysis</div><div class="glossary-def">A disclosure grouping financial liabilities by remaining contractual maturity, based on undiscounted cash flows, into appropriate time bands.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Master netting arrangement</div><div class="glossary-def">A contractual arrangement providing for net settlement of covered instruments, typically in the event of default, requiring specific IFRS 7 disclosure whether or not IAS 32's offsetting criteria are met.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Observable inputs</div><div class="glossary-def">Inputs to a valuation technique developed using market data (e.g. quoted prices) reflecting assumptions market participants would use — the basis for Level 2 fair value classification.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Unobservable inputs</div><div class="glossary-def">Inputs for which market data is not available, developed using the best information available about assumptions market participants would use — the basis for Level 3 fair value classification.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bs">SOFP</span> Statement of financial position (balance sheet)
+      <span class="badge bp">SOPL</span> Statement of profit or loss (income statement)
+      <span class="badge bo">OCI</span> Other comprehensive income
+      <span class="badge be">Equity</span> Statement of changes in equity
+    </div>
+  </div>
+
+  <div class="footer-note">IFRS 7 — Financial Instruments: Disclosures · Extended Reference Poster · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

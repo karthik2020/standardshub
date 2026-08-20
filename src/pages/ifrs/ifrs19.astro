@@ -1,0 +1,224 @@
+﻿---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/ifrs/ifrs19.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  bannerNotice={metadata.bannerNotice}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework" },
+        { id: "s2", label: "Scope & Definitions" },
+        { id: "s3", label: "Eligibility Criteria" },
+        { id: "s4", label: "What 'Not Have Public Accountability' Means" },
+        { id: "s5", label: "What IFRS 19 Actually Does — Disclosure Only" },
+        { id: "s6", label: "The Reduced Disclosure Package" },
+        { id: "s7", label: "Standards Requiring Full Disclosure" },
+        { id: "s8", label: "Why This Standard Matters for Groups" },
+        { id: "s9", label: "Disclosure" },
+        { id: "s10", label: "Judgments & Estimates" },
+        { id: "s11", label: "IFRS 19 vs Full IFRS Disclosure" },
+        { id: "s12", label: "Statement Mapping" },
+        { id: "s13", label: "Related Standards" },
+        { id: "s14", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Solving the over-disclosure problem for group subsidiaries</div>
+        <div class="principle">IFRS 19 addresses a widely-felt COST-BENEFIT problem: subsidiaries within a group that ALREADY reports under full IFRS often had to maintain a SEPARATE set of disclosures purely to satisfy statutory filing requirements — even though users of a WHOLLY-OWNED, non-publicly-accountable subsidiary's financial statements have MUCH narrower information needs than users of a publicly listed parent.</div>
+        <div class="elabel">HOW IFRS 19 MAPS TO THE FRAMEWORK</div>
+        <div class="check-list">
+          <span><strong>Cost constraint on useful financial reporting</strong> — full IFRS disclosure volume is DISPROPORTIONATE to the information needs of a non-publicly-accountable subsidiary's limited user base</span>
+          <span><strong>Comparability preserved</strong> — IFRS 19 changes DISCLOSURE only, never RECOGNITION or MEASUREMENT — eligible entities apply the SAME accounting policies as full IFRS, ensuring group reporting consistency</span>
+        </div>
+        <div class="note">IFRS 19 is a DISCLOSURE-ONLY standard, working ALONGSIDE (not instead of) all other IFRS Accounting Standards — it never changes HOW an item is recognised or measured, only WHAT must be disclosed about it.</div>
+      </div>
+      <div class="card cs">
+        <div class="ctitle cs">The core mechanism</div>
+        <div class="formula-box">
+          <div class="f-eq">Eligible entity applies: FULL recognition/measurement/presentation (other IFRS Standards) + REDUCED disclosure (IFRS 19, replacing other standards' own disclosure sections)</div>
+        </div>
+        <div class="callout info callout--chip callout--flush">An eligible entity's disclosure requirements come EXCLUSIVELY from IFRS 19, not from the disclosure sections of the other standards it otherwise fully applies.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope & Definitions</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What IFRS 19 covers</div>
+        <div class="principle">IFRS 19 specifies the reduced disclosure requirements an ELIGIBLE entity may apply INSTEAD of the disclosure requirements in other IFRS Accounting Standards — a VOLUNTARY election, effective for periods beginning on/after 1 January 2027, with early application permitted.</div>
+      </div>
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions you must know</div>
+        <div class="glossary-item"><div class="glossary-term">Public accountability</div><div class="glossary-def">Having debt/equity instruments traded in a public market, OR holding assets in a FIDUCIARY capacity for a broad group of outsiders — an entity WITHOUT either characteristic may be eligible.</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Intermediate parent</div><div class="glossary-def">A subsidiary that is itself also a parent of further subsidiaries — assesses its OWN eligibility separately in its separate financial statements.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Eligibility Criteria</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Two conditions, assessed at the reporting date</div>
+        <div class="worked" style="margin-bottom:0;">
+          <div class="wk-title">Example 1: A subsidiary's eligibility assessment</div>
+          <div class="wk-body">A company is a wholly-owned subsidiary of a listed parent, which prepares CONSOLIDATED financial statements complying with IFRS Accounting Standards. The subsidiary itself has no listed debt/equity and is not a bank, insurer, or similar fiduciary institution.</div>
+          <div class="wk-answer">This subsidiary MEETS both IFRS 19 eligibility criteria: (1) it does NOT have public accountability, and (2) its PARENT produces IFRS-compliant consolidated financial statements — making it ELIGIBLE to elect IFRS 19's reduced disclosure package in its own financial statements.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>What "Not Have Public Accountability" Means</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">A deliberately narrow exclusion</div>
+        <div class="text-supporting">Entities applying IAS 26 (retirement benefit plans) do NOT meet the "not have public accountability" criterion and are therefore NOT eligible for IFRS 19. Similarly, entities with LISTED debt/equity, or those holding assets in a fiduciary capacity for a BROAD group of outsiders (banks, insurance companies, securities brokers), are EXCLUDED — the standard is deliberately targeted at subsidiaries whose financial statements serve a NARROW, largely group-internal user base.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>What IFRS 19 Actually Does — Disclosure Only</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Never touches recognition or measurement</div>
+        <div class="text-supporting">An entity electing IFRS 19 continues to apply the FULL recognition, measurement, and presentation requirements of every OTHER applicable IFRS Accounting Standard — the ONLY change is that its DISCLOSURE requirements come from IFRS 19 instead of from each individual standard's own (fuller) disclosure section.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>The Reduced Disclosure Package</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">A comprehensive but genuinely lighter disclosure set</div>
+        <div class="text-supporting">Of the 34 IFRS Accounting Standards that include disclosure requirements, IFRS 19 provides a REDUCED version for 30 of them — using the IFRS for SMEs Accounting Standard's own disclosure requirements as a STARTING POINT (with appropriate omissions/changes reflecting subsidiary-specific information needs), while retaining the FULL recognition/measurement basis of full IFRS rather than the IFRS for SMEs' own simplified recognition/measurement model.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Standards Requiring Full Disclosure — No Reduction Permitted</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">Three notable exceptions</div>
+        <div class="text-supporting">The disclosure requirements for THREE standards must STILL be applied IN FULL, even by an eligible entity electing IFRS 19: <strong>IFRS 8</strong> (Operating Segments), <strong>IFRS 17</strong> (Insurance Contracts), and <strong>IAS 33</strong> (Earnings per Share) — reflecting the IASB's judgement that these disclosures remain essential even for a non-publicly-accountable subsidiary's more limited user base.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Why This Standard Matters for Groups</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">A genuinely significant compliance-cost reduction opportunity</div>
+        <div class="text-supporting">MANY companies globally are subsidiaries of groups reporting under full IFRS, and currently must EITHER prepare a full second set of IFRS-compliant financial statements for group consolidation purposes, OR maintain two separate sets of accounting records. IFRS 19 removes the need to EITHER over-disclose beyond users' needs OR maintain two separate records, making it a genuinely material simplification for large multinational groups with numerous subsidiaries.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Key requirements for entities electing IFRS 19</div>
+        <div class="check-list">
+          <span>An EXPLICIT, UNRESERVED statement of compliance with IFRS Accounting Standards, specifically noting IFRS 19's adoption</span>
+          <span>Reduced disclosures per IFRS 19 paragraphs 21-276, replacing (not supplementing) the disclosure sections of other standards</span>
+          <span>Full disclosure for IFRS 8, IFRS 17, and IAS 33 (no reduction available)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments & Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where management judgement matters most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Whether the entity genuinely lacks public accountability</span>
+              <span>Whether the parent's consolidated financial statements meet the "complying with IFRS" and "publicly available" criteria</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>None new — IFRS 19 does not change measurement, only disclosure</span>
+            </div>
+          </div>
+        </div>
+        <div class="callout warn callout--chip callout--warn-flush">An intermediate parent must assess its OWN eligibility SEPARATELY in its separate financial statements, REGARDLESS of whether other group entities apply (or are eligible for) IFRS 19.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>IFRS 19 vs Full IFRS Disclosure — Full Comparison</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comprehensive comparison table</div>
+        <div class="td-table">
+          <div class="th cols-12-1-1"><span>Feature</span><span>Full IFRS disclosure</span><span>IFRS 19 (eligible entities)</span></div>
+          <div class="tr cols-12-1-1"><span>Recognition, measurement, presentation</span><span>Standard model</span><span>IDENTICAL — no change</span></div>
+          <div class="tr alt cols-12-1-1"><span>Disclosure volume</span><span>Full disclosure across all 34 relevant standards</span><span>REDUCED disclosure for 30 of the 34 standards</span></div>
+          <div class="tr cols-12-1-1"><span>Standards with mandatory full disclosure regardless</span><span>N/A</span><span>IFRS 8, IFRS 17, IAS 33</span></div>
+        </div>
+        <div class="note">IFRS 19 is a purely elective, disclosure-only standard — it never changes the underlying accounting a group applies, only how much a qualifying subsidiary must disclose about it.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Where IFRS 19's effects appear</div>
+        <div class="td-table">
+          <div class="th cols-16-1-14"><span>Item</span><span>Location</span><span>Notes</span></div>
+          <div class="tr cols-16-1-14"><span>Reduced disclosures</span><span><span class="badge bp">Notes</span></span><span>Replaces (not supplements) full IFRS disclosure notes</span></div>
+          <div class="tr alt cols-16-1-14"><span>Recognition/measurement of all items</span><span><span class="badge bs">SOFP</span> <span class="badge bp">SOPL</span></span><span>UNCHANGED — full IFRS basis retained</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Cross-reference map</div>
+        <div class="td-table">
+          <div class="th cols-08-2"><span>Standard</span><span>Connection</span></div>
+          <div class="tr cols-08-2"><span>IFRS 10</span><span>Supplies the "subsidiary" and "group" definitions IFRS 19 relies on</span></div>
+          <div class="tr alt cols-08-2"><span>IFRS for SMEs Accounting Standard</span><span>The starting point/inspiration for IFRS 19's reduced disclosure package</span></div>
+          <div class="tr cols-08-2"><span>IFRS 18</span><span>Made minor consequential amendments interacting with IFRS 19 upon its own issuance</span></div>
+        </div>
+      </div>
+      <div class="card cn">
+        <div class="ctitle cn">Quick-reference glossary</div>
+        <div class="glossary-item"><div class="glossary-term">IFRS for SMEs Accounting Standard</div><div class="glossary-def">A separate, simplified IFRS-based standard with its own reduced recognition/measurement AND disclosure — distinct from IFRS 19, which retains FULL recognition/measurement.</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Fiduciary capacity</div><div class="glossary-def">Holding assets for a broad group of outsiders as a primary business — disqualifying an entity from IFRS 19 eligibility.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Public accountability", definition: "Having debt/equity instruments traded in a public market, or holding assets in a fiduciary capacity for a broad group of outsiders." },
+      { term: "Fiduciary capacity", definition: "Holding assets for a broad group of outsiders as a primary business." },
+      { term: "Intermediate parent", definition: "A subsidiary that is itself also a parent of further subsidiaries." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.IFRS19} />
+  </section>
+</StandardPageLayout>

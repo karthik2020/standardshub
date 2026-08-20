@@ -1,0 +1,365 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import metadata from "../../data/standards/ipsas/ipsas12.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  covers={metadata.covers}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Objective, Scope & Definitions" },
+        { id: "s2", label: "Public Sector Inventory Types" },
+        { id: "s3", label: "Measurement — Lower of Cost and NRV/Replacement Cost" },
+        { id: "s4", label: "Cost of Inventories" },
+        { id: "s5", label: "Cost Formulas — FIFO & Weighted Average" },
+        { id: "s6", label: "Net Realizable Value & Write-Downs" },
+        { id: "s7", label: "Distribution at No or Nominal Charge" },
+        { id: "s8", label: "Recognition as an Expense" },
+        { id: "s9", label: "Disclosure Requirements" },
+        { id: "s10", label: "Effective Date & Amendment Timeline" },
+        { id: "s11", label: "Relationship to IAS 2" },
+        { id: "s12", label: "Statement / Process Mapping" },
+        { id: "s13", label: "Related Standards" },
+        { id: "s14", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="active"
+    explanation="IPSAS 12 Inventories is the current, active standard issued by the IPSASB for measuring and disclosing inventories. Effective for annual financial statements covering periods beginning on or after 1 January 2008 (earlier application encouraged); comprehensively amended by IPSAS 46 (fair value disclosures) and the November 2024 Stripping Costs amendment (effective 2027)."
+    historical="IPSAS 12 is based on IAS 2 Inventories, adapted for the public sector with a replacement-cost measurement for give-away inventory, fair-value-at-acquisition cost for non-exchange acquisitions, and an authoritatively embedded stripping-costs appendix for extractive industries."
+    link=""
+    linkText=""
+  />
+
+    <!-- ============ SECTION 1 — OBJECTIVE, SCOPE & DEFINITIONS ============ -->
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; Definitions (paras. 1–9)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Objective &amp; scope</div>
+        <div class="principle">Prescribes the accounting treatment for inventories — primarily how much cost to recognize as an asset and carry forward until the related revenue is recognized, including any write-down to net realizable value, and which cost formulas to use.</div>
+        <div class="cross-list">
+          <span>Financial instruments (IPSAS 28 / 41)</span>
+          <span>Biological assets and agricultural produce AT THE POINT OF HARVEST (IPSAS 27)</span>
+          <span>Work-in-progress of services provided for NO or NOMINAL consideration directly from recipients — a public-sector-specific exclusion not found in IAS 2</span>
+        </div>
+        <div class="note">Producers of agricultural/forest products or minerals measured at NRV under well-established industry practice, and commodity broker-traders measuring at fair value less costs to sell, are excluded only from the MEASUREMENT requirements (paras. 3, 7–8).</div>
+      </div>
+
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions (para. 9)</div>
+        <div class="glossary-item"><div class="glossary-term">Inventories</div><div class="glossary-def">Assets: materials/supplies to be consumed in production or service rendering; held for sale/distribution in the ordinary course of operations; or in the process of production for sale/distribution.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Net realizable value (NRV)</div><div class="glossary-def">Estimated selling price in the ordinary course of operations, less estimated costs of completion and costs necessary to make the sale/exchange/distribution.</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Current replacement cost</div><div class="glossary-def">The cost the entity would incur to acquire the asset on the reporting date.</div></div>
+        <div class="callout info callout--flush">NRV is entity-specific; fair value is not — NRV for inventories may NOT equal fair value less costs of disposal (para. 10).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 2 — PUBLIC SECTOR INVENTORY TYPES ============ -->
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Public Sector Inventory Types (paras. 11–14A)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs">
+        <div class="ctitle cs">Distinctive public sector examples (para. 12)</div>
+        <div class="dot-list">
+          <span>Military inventories (single-use — ammunition, missiles, rockets, bombs)</span>
+          <span>Consumable stores; maintenance materials; spare parts (other than those under IPSAS 45)</span>
+          <span>Strategic stockpiles (e.g. energy reserves)</span>
+          <span>Stocks of unissued currency; postal supplies held for sale (e.g. stamps)</span>
+          <span>Work-in-progress — training materials, arm's-length client services (e.g. audits)</span>
+          <span>Land/property held for sale</span>
+        </div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Special measurement notes</div>
+        <div class="dot-list">
+          <span>Currency and postage stamps: recognized as inventory NOT at face value, but at printing/minting cost (para. 13)</span>
+          <span>Strategic stockpiles held for emergencies: recognized as inventory and treated accordingly (para. 14)</span>
+          <span>Missiles that satisfy IPSAS 45 criteria may be classified there instead of as military inventory (para. 14A)</span>
+        </div>
+        <div class="note">Goods purchased/produced for distribution to other parties at no charge (a TRANSFER EXPENSE) or nominal charge also count as inventories — e.g. educational books donated to schools (para. 11).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 3 — MEASUREMENT ============ -->
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Measurement — Lower of Cost and NRV / Replacement Cost (paras. 15–17)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">The three measurement pathways</div>
+        <div class="formula-box">
+          <div class="f-eq">Default: Inventories = LOWER of Cost and Net Realizable Value</div>
+        </div>
+        <div class="dot-list">
+          <span>Acquired via a NON-EXCHANGE transaction → cost = fair value at the acquisition date (para. 16)</span>
+          <span>Held for distribution at no/nominal charge, or consumed to PRODUCE goods for no/nominal-charge distribution → LOWER of cost and CURRENT REPLACEMENT COST, not NRV (para. 17)</span>
+        </div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Why replacement cost, not NRV, for give-away inventory</div>
+        <div class="principle">When goods will be distributed for free or a token amount, "net realizable value" (a selling-price concept) makes no sense — there's no meaningful sale. Instead, IPSAS 12 measures the future economic benefit/service potential by what it would COST to replace that capacity, since that's the resource commitment the entity is really managing (para. 43).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 4 — COST OF INVENTORIES ============ -->
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Cost of Inventories (paras. 18–29)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs">
+        <div class="ctitle cs">Three cost components (para. 18)</div>
+        <div class="dot-list">
+          <span><strong>Costs of purchase</strong> — price, import duties/non-recoverable taxes, directly attributable transport/handling — LESS trade discounts, rebates</span>
+          <span><strong>Costs of conversion</strong> — direct labor, plus a systematic allocation of fixed/variable production overheads</span>
+          <span><strong>Other costs</strong> — only to the extent incurred bringing inventories to their present location/condition (e.g. non-production overheads, customer-specific design costs)</span>
+        </div>
+      </div>
+
+      <div class="card cd">
+        <div class="ctitle cd">Fixed overhead allocation — the "normal capacity" rule (para. 21)</div>
+        <div class="formula-box">
+          <div class="f-eq">Fixed overhead per unit = Total fixed production overhead ÷ NORMAL capacity (not actual, if abnormally low)</div>
+        </div>
+        <div class="dot-list">
+          <span>LOW/idle production → do NOT increase the overhead allocated per unit; unallocated overhead is expensed immediately</span>
+          <span>ABNORMALLY HIGH production → DECREASE the per-unit allocation, so inventory isn't carried above cost</span>
+          <span>Variable overheads → allocated based on ACTUAL use of production facilities</span>
+        </div>
+        <div class="note">Costs EXCLUDED and expensed as incurred: abnormal waste, storage costs (unless a necessary production stage), non-contributing admin overheads, and selling costs (para. 25).</div>
+      </div>
+    </div>
+
+    <div class="grid grid-spaced">
+      <div class="card cn span2">
+        <div class="ctitle cn">Joint products, deferred settlement &amp; non-exchange acquisition</div>
+        <div class="dot-list">
+          <span>Joint/by-products with non-separable conversion costs → allocated on a rational, consistent basis (e.g. relative sales value); immaterial by-products often measured at NRV, deducted from the main product's cost (para. 23)</span>
+          <span>Deferred settlement terms with a financing element → the financing component is recognized as INTEREST EXPENSE over the financing period, not as part of inventory cost (para. 27)</span>
+          <span>Inventory transferred via a non-exchange transaction (e.g. donated medical supplies after a disaster) → cost = fair value at the acquisition date (para. 31)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 5 — COST FORMULAS ============ -->
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Cost Formulas — FIFO &amp; Weighted Average (paras. 32–37)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Specific identification — non-interchangeable items</div>
+        <div class="text-supporting">Required for items NOT ordinarily interchangeable, and goods/services segregated for specific projects — regardless of whether bought or produced. INAPPROPRIATE for large numbers of interchangeable items, since it would let management cherry-pick which costs remain in inventory to manipulate surplus/deficit.</div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">FIFO or weighted average — for everything else</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1fr 2fr;"><span>Formula</span><span>Mechanics</span></div>
+          <div class="tr" style="grid-template-columns:1fr 2fr;"><span>FIFO</span><span>Items purchased/produced FIRST are assumed sold first; ending inventory = most RECENTLY acquired items</span></div>
+          <div class="tr alt" style="grid-template-columns:1fr 2fr;"><span>Weighted average</span><span>Cost per item = weighted average of opening inventory + purchases/production during the period; recalculated periodically or on each new shipment</span></div>
+        </div>
+        <div class="callout warn callout--flush">The SAME cost formula must be used for all inventories of similar nature/use. Different formulas can be justified for genuinely different-use inventories (e.g. different business segments) — but GEOGRAPHIC location alone is never sufficient justification (para. 34).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 6 — NET REALIZABLE VALUE & WRITE-DOWNS ============ -->
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Net Realizable Value &amp; Write-Downs (paras. 38–42)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Item-by-item, not by broad category</div>
+        <div class="text-supporting">Inventories are usually written down to NRV on an ITEM-BY-ITEM basis. Grouping is acceptable only for genuinely similar/related items with the same purpose that can't practicably be evaluated separately — NOT a broad classification like "all finished goods" or "everything in one geographic segment" (para. 39).</div>
+        <div class="note">NRV estimates reflect the PURPOSE the inventory is held for — e.g. inventory covered by a firm sales contract is valued at the CONTRACT price, not general selling prices, for that quantity (para. 40).</div>
+      </div>
+
+      <div class="card cs">
+        <div class="ctitle cs">Reversal of a prior write-down (para. 42)</div>
+        <div class="formula-box">
+          <div class="f-eq">Reversal is capped at the ORIGINAL write-down amount — new carrying amount = lower of cost and revised NRV</div>
+        </div>
+        <div class="text-supporting">A fresh NRV assessment is made EVERY period. If the circumstances that caused the write-down no longer exist, or NRV has clearly increased, the write-down is reversed — but never above the original cost.</div>
+        <div class="note">Raw materials/supplies aren't written down below cost if the finished products they'll go into are still expected to sell at or above cost — UNLESS a material price decline signals the finished product itself will sell below cost (para. 41).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 7 — DISTRIBUTION AT NO OR NOMINAL CHARGE ============ -->
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Distributing Goods at No Charge or a Nominal Charge (para. 43)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">Service potential, not cash-generating ability, drives the value</div>
+        <div class="principle">Where a government has decided to distribute goods free or at a nominal charge, their future economic benefit for financial reporting isn't about generating cash — it's the amount the entity would need to PAY to re-acquire that service potential, if that were necessary to meet its objectives.</div>
+        <div class="dot-list">
+          <span>Economic benefits/service potential can be acquired in the market → use that market replacement cost</span>
+          <span>Cannot be acquired in the market → an ESTIMATE of replacement cost must be made</span>
+          <span>If the PURPOSE for holding the inventory later changes (e.g. from give-away to sale) → re-measure using the ordinary para. 15 rule (lower of cost and NRV) going forward</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 8 — RECOGNITION AS AN EXPENSE ============ -->
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Recognition as an Expense (paras. 44–46)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">The matching principle</div>
+        <div class="check-list">
+          <span>Sold, exchanged, or distributed WITH related revenue → carrying amount expensed in the SAME period the revenue is recognized</span>
+          <span>Distributed with NO related revenue (a transfer expense) → expensed per IPSAS 48, Transfer Expenses</span>
+          <span>Write-downs and inventory LOSSES → expensed in the period the write-down/loss occurs</span>
+          <span>Reversal of a write-down → REDUCES the expense recognized in the period of reversal</span>
+        </div>
+      </div>
+
+      <div class="card cn">
+        <div class="ctitle cn">Timing for service providers &amp; capitalized inventory</div>
+        <div class="text-supporting">For a service provider, inventory typically becomes an expense when services are RENDERED, or upon billing for chargeable services (para. 45). Inventory allocated into ANOTHER asset (e.g. materials used in self-constructed PP&amp;E) is instead expensed over that OTHER asset's useful life, via depreciation (para. 46).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 9 — DISCLOSURE REQUIREMENTS ============ -->
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure Requirements (paras. 47–50C)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs">
+        <div class="ctitle cs">Core disclosures (para. 47)</div>
+        <div class="check-list">
+          <span>Accounting policies for measuring inventories, including the cost formula used</span>
+          <span>Total carrying amount, and amounts by classification (merchandise, supplies, materials, WIP, finished goods)</span>
+          <span>Carrying amount of inventories at fair value less costs of disposal</span>
+          <span>Amount recognized as an expense during the period</span>
+          <span>Write-down amount recognized as an expense, and any reversal amount, with the circumstances that led to the reversal</span>
+          <span>Carrying amount of inventories pledged as security for liabilities</span>
+        </div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Fair value disclosures (paras. 50A–50C, added via IPSAS 46)</div>
+        <div class="text-supporting">For inventories measured at FAIR VALUE after initial recognition, disclose enough to let users assess the measurement techniques/inputs used, and — for Level 3 (significant unobservable inputs) — the effect on surplus/deficit or net assets/equity.</div>
+        <div class="dot-list">
+          <span>The fair value measurement at period end, and (for non-recurring measurements) the reason</span>
+          <span>The fair value hierarchy LEVEL (1, 2, or 3)</span>
+          <span>Measurement technique(s) and inputs, with reasons for any technique change</span>
+          <span>Level 3 reconciliation from opening to closing balances, by type of change</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 10 — EFFECTIVE DATE & AMENDMENT TIMELINE ============ -->
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Effective Date &amp; Amendment Timeline</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Amendment history at a glance</div>
+        <div class="principle">Base Standard: periods beginning on/after <strong>1 January 2008</strong>. Comprehensively amended over time — notably by IPSAS 46 (Measurement, fair value disclosures) and, most recently, the November 2024 Stripping Costs amendment.</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1fr 2.2fr;"><span>Effective</span><span>Change</span></div>
+          <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2017</span><span>Various — Improvements to IPSAS 2015: military inventory terminology aligned to GFS "military inventories"</span></div>
+          <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2018</span><span>The Applicability of IPSAS — GBE terminology changes</span></div>
+          <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2025</span><span>IPSAS 46, Measurement — fair value disclosure package (§9)</span></div>
+          <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2027</span><span>New paras. 62H–62I — Stripping Costs in the Production Phase of a Surface Mine (Amendments to IPSAS 12), issued Nov 2024</span></div>
+        </div>
+        <div class="note">The Stripping Costs amendment (2027 effective date) brings IPSAS 12 into alignment with IFRIC 20-equivalent guidance for extractive-sector stripping activity, via an authoritative Appendix.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 11 — RELATIONSHIP TO IAS 2 ============ -->
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Relationship to IAS/IFRS — Comparison with IAS 2</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — IPSAS 12 vs IAS 2</div>
+        <div class="principle">IPSAS 12 is drawn primarily from IAS 2 (Revised 2003), <em>Inventories</em>.</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.3fr 1.9fr;"><span>Topic</span><span>Difference</span></div>
+          <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Definition</span><span>IPSAS 12's definition reflects that some public sector inventories are distributed at no/nominal charge — IAS 2's does not</span></div>
+          <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Scope</span><span>IPSAS 12 explicitly excludes no/nominal-charge service work-in-progress</span></div>
+          <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Current replacement cost</span><span>Additional defined term not present in IAS 2</span></div>
+          <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Non-exchange acquisition</span><span>IPSAS 12 requires fair-value-at-acquisition cost — no IAS 2 equivalent (non-exchange transactions don't arise in for-profit entities the same way)</span></div>
+          <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>No/nominal-charge inventory</span><span>Valued at lower of cost and CURRENT REPLACEMENT COST — a public-sector-specific rule</span></div>
+          <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Stripping costs guidance</span><span>IPSAS 12 embeds IFRIC 20-equivalent principles AUTHORITATIVELY in an appendix; under IFRS, IFRIC 20 is a separate pronouncement</span></div>
+          <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Terminology</span><span>"Statement of financial performance" (IPSAS 12) vs "income statement" (IAS 2); IPSAS 12 does not use "income"</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 12 — STATEMENT / PROCESS MAPPING ============ -->
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Measurement decision map</div>
+        <ol class="ordered-list">
+        <li>How was the inventory acquired? EXCHANGE &rarr; cost basis (§4). NON-EXCHANGE &rarr; fair value at acquisition (§3)</li>
+        <li>What is it held FOR? Ordinary sale &rarr; lower of cost and NRV. Distribution at no/nominal charge (or production toward that) &rarr; lower of cost and CURRENT REPLACEMENT COST (§3, §7)</li>
+        <li>Are the items ordinarily interchangeable? No (segregated/unique) &rarr; SPECIFIC IDENTIFICATION. Yes &rarr; FIFO or WEIGHTED AVERAGE, consistently applied (§5)</li>
+        <li>Has NRV/replacement cost fallen below carrying cost? &rarr; write down, expense the difference (§6). Has it since recovered? &rarr; reverse, capped at the original write-down (§6)</li>
+        <li>Is the inventory measured at FAIR VALUE (not cost)? &rarr; apply the IPSAS 46 fair value hierarchy disclosures (§9)</li>
+      </ol>
+      </div>
+    </div>
+
+    <div class="grid grid-spaced">
+      <div class="card cs span2">
+        <div class="ctitle cs">Concept-to-statement mapping table</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>IPSAS 12 concept</span><span>Statement(s)</span><span>Notes</span></div>
+          <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Inventory carrying amount</span><span><span class="badge bs">SOFP</span></span><span>Lower of cost and NRV/replacement cost</span></div>
+          <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Cost of inventories sold/exchanged/distributed</span><span><span class="badge bp">SOFPerf</span></span><span>Matched to the period revenue is recognized</span></div>
+          <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Write-downs &amp; reversals</span><span><span class="badge bp">SOFPerf</span></span><span>Expensed / reduces expense, in the period they occur</span></div>
+          <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Distribution with no related revenue</span><span><span class="badge bp">SOFPerf</span></span><span>Governed by IPSAS 48, Transfer Expenses</span></div>
+          <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Cost formula, classifications, pledged inventory</span><span><span class="badge be">Notes</span></span><span>Mandatory per para. 47</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 13 — RELATED STANDARDS ============ -->
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">How IPSAS 12 connects across the IPSAS body of literature</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:0.7fr 2.2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+          <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 5</span><span>Limited circumstances where borrowing costs are included in inventory cost (§4)</span></div>
+          <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 19</span><span>Provisions/contingent liabilities from firm sales or purchase contracts exceeding inventory quantities (§6)</span></div>
+          <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 27</span><span>Agricultural produce harvested from biological assets — initial cost is fair value less costs to sell at harvest (§4)</span></div>
+          <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 28 / 41</span><span>Financial instruments — excluded from IPSAS 12's scope entirely (§1)</span></div>
+          <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 45</span><span>Spare parts for plant/equipment dealt with there instead, unless they meet IPSAS 12's own inventory definition (§2)</span></div>
+          <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 46</span><span>Fair value measurement and disclosure framework underpinning §9</span></div>
+          <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 47</span><span>Costs to fulfill a binding arrangement that don't create inventory (or another asset) are accounted for under IPSAS 47 instead (§2)</span></div>
+          <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 48</span><span>Transfer Expenses — governs expense recognition when inventory is distributed with no related revenue (§8)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 14 — GLOSSARY ============ -->
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <div class="three-col">
+      <div class="card cn">
+        <div class="glossary-item"><div class="glossary-term">Net realizable value</div><div class="glossary-def">Estimated selling price in the ordinary course of operations, less estimated completion and selling costs.</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Current replacement cost</div><div class="glossary-def">What the entity would need to pay to acquire the asset on the reporting date.</div></div>
+      </div>
+      <div class="card cn">
+        <div class="glossary-item"><div class="glossary-term">FIFO</div><div class="glossary-def">First-in, first-out — assumes earliest-purchased items are sold first; ending inventory reflects the most recent purchases.</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Weighted average cost formula</div><div class="glossary-def">Cost per item derived from the weighted average of similar items held at the start of the period plus those purchased/produced during it.</div></div>
+      </div>
+      <div class="card cn">
+        <div class="glossary-item"><div class="glossary-term">Normal capacity</div><div class="glossary-def">Production expected to be achieved on average over a number of periods/seasons under normal circumstances, net of planned maintenance downtime.</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Exchange / non-exchange transactions</div><div class="glossary-def">Exchange: approximately equal value given both ways. Non-exchange: value flows one way without equal value returned.</div></div>
+      </div>
+    </div>
+
+    <div class="legend">
+      <div class="ltitle">Financial statement key</div>
+      <div class="lrow">
+        <span class="badge bs">SOFP</span> Statement of financial position
+        <span class="badge bp">SOFPerf</span> Statement of financial performance
+        <span class="badge be">Notes</span> Notes to the financial statements
+      </div>
+    </div>
+
+
+  </StandardPageLayout>

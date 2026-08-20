@@ -1,0 +1,184 @@
+﻿---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc440.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        {
+          id: "s1",
+          label: "Conceptual Framework Linkage",
+        },
+        {
+          id: "s2",
+          label: "Scope — Disclosure Only",
+        },
+        {
+          id: "s3",
+          label: "No Recognition",
+        },
+        {
+          id: "s4",
+          label: "What Counts as a \"Commitment\"",
+        },
+        {
+          id: "s5",
+          label: "Unrecognized Purchase Obligations",
+        },
+        {
+          id: "s6",
+          label: "Why These Stay Off-Balance-Sheet",
+        },
+        {
+          id: "s7",
+          label: "Worked Example — Disclosing an Unconditional Purchase Obligation",
+        },
+        {
+          id: "s8",
+          label: "Disclosure Requirements",
+        },
+        {
+          id: "s9",
+          label: "Critical Judgments & Estimates",
+        },
+        {
+          id: "s10",
+          label: "ASC 440 vs IFRS — Dispersed Across IAS 1/IAS 37",
+        },
+        {
+          id: "s11",
+          label: "Statement Mapping",
+        },
+        {
+          id: "s12",
+          label: "Related Topics",
+        },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">A declarative-disclosure Topic bridging the gap between contract and recognition</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">Commitments represent contractual obligations that, while GENUINELY BINDING, have NOT yet triggered the recognition criteria for a liability under ASC 405/ASC 450 — typically because the underlying performance (delivery, receipt of goods/services) has not yet occurred, or the triggering event has not yet taken place. ASC 440 applies the ASC 105 conceptual framework by treating commitments as a TRANSPARENCY-DRIVEN disclosure mechanism: they exist in fact (legally enforceable contracts) but do not yet satisfy the present-obligation / probable-inflow / reliable-measurement threshold that would force a liability onto the balance sheet.</div></div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope — Disclosure Only</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">A narrow, transactional Topic — disclosure throughout, no recognition mechanics</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 440 applies broadly to all nongovernmental entities issuing financial statements that contain BALANCE SHEETS. It is limited entirely to DISCLOSURE — it does NOT provide recognition, derecognition, or measurement guidance for any commitment. It does not address operating leases (now under ASC 842), purchase commitments for inventory (under ASC 330), or capital commitments for PP&amp;E — those remain governed by their respective Topics.</div></div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>No Recognition</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">A commitment is NOT a liability until the underlying event occurs</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">ASC 440 explicitly states that COMMITMENTS DO NOT GIVE RISE TO A PRESENTLY ENFORCEABLE OBLIGATION on the balance sheet. A firm commitment to purchase inventory at a fixed price in the future is NOT a recorded liability — even though it is legally binding — because no PERFORMANCE has been rendered yet by the counter-party. This is the fundamental reason commitments occupy this separate Topic: they represent REAL obligations, but ones that US GAAP allows to remain off-balance-sheet until the goods are delivered or the service rendered.</div></div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>What Counts as a "Commitment"</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Binding, irrevocable contractual undertakings for future transactions</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1fr 2fr;"><span>Type</span><span>Description</span></div>
+      <div class="tr" style="grid-template-columns:1fr 2fr;"><span>Purchase commitments</span><span>Binding agreements to acquire goods, services, or property in future periods at specified prices — the most common type disclosed</span></div>
+      <div class="tr alt" style="grid-template-columns:1fr 2fr;"><span>Unconditional purchase obligations</span><span>Agreements that require the entity to make future payments on a fixed or determinable schedule regardless of whether usage occurs — a particularly significant disclosure item for energy and commodities contracts</span></div>
+      <div class="tr" style="grid-template-columns:1fr 2fr;"><span>Capital acquisition commitments</span><span>Agreements to acquire fixed assets, property, or major equipment — discloseable once construction or purchase contracts are signed</span></div>
+      <div class="tr alt" style="grid-template-columns:1fr 2fr;"><span>Other contractual commitments</span><span>Any legally enforceable agreement requiring future performance, including lease commitments (now under ASC 842) that predated the leases standard</span></div>
+      </div>
+      <div class="note">ASC 440 COMMITMENTS HAVE A FIXED OR DETERMINABLE AMOUNT OR QUANTITY — this distinguishes them from contingent liabilities under ASC 450, which may or may not crystallise.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Unrecognized Purchase Obligations</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs"><div class="ctitle cs">The most frequently disclosed commitment type</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">Unrecognized purchase obligations arise when an entity has ENTERED INTO binding, often multi-year contracts requiring it to make payments for goods or services regardless of whether it actually uses them — common in energy (natural gas pipeline take-or-pay contracts), telecom (capacity agreements), and manufacturing (raw material forward contracts). Because these obligations are binding and the amounts are typically FIXED, they require disclosure under ASC 440 even though the performance obligation is not yet legally triggered on the balance sheet.</div></div>
+      <div class="card cn"><div class="ctitle cn">A practical gap: off-balance-sheet risk</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">Unrecognized purchase obligations represent a REAL but OFFSETTABLE economic exposure. Regulatory guidance under SEC Staff Accounting Bulletin Topic 1(M) historically required detailed tabular disclosure of contractual obligations, including unrecognized purchase obligations, providing users with the cash-flow timing information that the balance sheet alone cannot reveal. This practical disclosure regime has historically been one of the most impactful outputs of ASC 440.</div></div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Why These Stay Off-Balance-Sheet</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">The recognition threshold is about performance, not just contract existence</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">A commitment remains off-balance-sheet because US GAAP's liability recognition framework (Conceptual Framework CON 6, operationalised through ASC 405/450) requires THREE things: (1) a PRESENT OBLIGATION from a PAST event, (2) a PROBABLE outflow of economic benefits, and (3) the amount can be RELIABLY MEASURED. At the contract-signing date, the obligation is FUTURE, not present — the seller has not yet performed. A pure purchase contract has not yet created a transfer of economic benefit. It is therefore a CONTINGENT right AND obligation that formalises when the recognition threshold is finally crossed, not at signing.</div></div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Worked Example — Disclosing an Unconditional Purchase Obligation</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Tabular contractual-obligation disclosure</div>
+      <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: A manufacturer's natural gas pipeline contract</div><div class="wk-body">An industrial manufacturer enters into a 10-year take-or-pay contract obligating it to purchase a MINIMUM of 5 million MMBtu of natural gas annually at $4.50/MMBtu, regardless of actual usage, from a pipeline operator. The contract was signed on 1 January 2025. At the 31 December 2025 reporting date: total remaining commitment = 9 years × 5 million MMBtu × $4.50 = <strong>$202.5 million</strong>. No gas has yet been delivered for the current year.</div><div class="wk-answer">The $202.5 million commitment is NOT recognised as a liability at 31 December 2025 — no delivery has occurred, so no present obligation exists. Instead, it is DISCLOSED in the notes under contractual obligations as an unrecognised purchase obligation, with the timing: $22.5 million due within one year, $202.5 million in total remaining. If any payments become overdue or the contract is modified, recognition may change.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">What ASC 440 requires</div><div class="check-list"><span>The NATURE of each significant commitment (what was contracted for, with whom, and under what terms)</span><span>The EXPECTED TIMING of the related expenditures — sorted by time bands: less than 1 year, 1–3 years, 3–5 years, and more than 5 years</span><span>For purchase obligations, the AMOUNT and timing, distinguishing above-barrel from below-barrel elements if applicable</span><span>Any REMEDIES or CANCELLATION PROVISIONS that could affect the timing or amount</span><span>The impact, if any, of any known or probable RATE CHANGES or PRICE ESCALATION provisions</span></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Critical Judgments & Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+      <div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Whether a contract represents a binding, irrevocable commitment (vs a terminable agreement or letter of intent)</span><span>Whether a commitment is MATERIAL enough to warrant separate line-item disclosure vs an aggregated footnote</span></div></div>
+      <div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Future payment amounts under variable-price purchase commitments (e.g. commodity-indexed contracts)</span><span>Likelihood and timing of exercise for commitments that include optionality (e.g. extension or purchase rights)</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>ASC 440 vs IFRS — Dispersed Across IAS 1/IAS 37</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Comparison — ASC 440 vs IFRS equivalent</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">US GAAP (ASC 440)</span><span style="color:var(--color-text-info);">IFRS equivalent(s)</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Dedicated commitments Topic</span><span>Yes — ASC 440 is a discrete Topic entirely devoted to disclosure of commitments</span><span>No single equivalent standard — commitment-type disclosure is dispersed across IAS 1 paragraph 125 (general disclosure principles requiring material future transactions expected), IAS 37 (for executory contracts), and industry-specific IFRS</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Executory contract guidance</span><span>Treated implicitly as off-balance-sheet pending performance</span><span>IAS 37.8 explicitly defines and excludes executory contracts from the definition of a provision, making the off-balance-sheet treatment EXPLICIT</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Tabular contractual-obligation disclosure</span><span>Strongly encouraged via SEC Staff Accounting Bulletin Topic 1(M) for registrants</span><span>MCR or IFRS 7/IAS 1 requirements for financial instruments disclosures; no exact US-GAAP-style SAB 1(M) equivalent</span></div>
+      </div>
+      <div class="note">ASC 440's value as a separate Topic is primarily its clarity and auditor convenience: practitioners know exactly where to locate commitment-disclosure guidance, whereas under IFRS the same material must be assembled from IAS 1's general disclosure requirements and IAS 37's executory-contract exclusion language.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Where every ASC 440 event lands</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Signing a purchase commitment</span><span><span class="badge bs">BS</span> — none recorded</span><span>No balance sheet impact until delivery/performance occurs; disclosure in notes only</span></div>
+      <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr"><span>Delivery under the commitment</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Inventory acquired, liability recognised when invoice received or title transfers</span></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Related Topics</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd"><div class="ctitle cd">Cross-reference map</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 450</span><span>Contingencies — if the commitment becomes unfulfillable or generates a loss, ASC 450's loss contingency framework governs recognition</span></div>
+      <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 330</span><span>Inventory — purchase commitments for inventory are disclosed under ASC 440 but are also relevant to inventory costing under 330</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 842</span><span>Leases — operating lease commitments are now disclosed under ASC 842's lease-disclosure requirements, with the schedule replacing much of what was previously in ASC 440</span></div>
+      <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 606</span><span>Revenue — forward customer contracts creating performance obligations sit at the intersection of ASC 440 and ASC 606</span></div>
+      </div>
+      </div>
+      <div class="card cn"><div class="ctitle cn">Quick-reference glossary preview</div>
+      <div class="glossary-item"><div class="glossary-term">Executory contract</div><div class="glossary-def">A contract under which neither party has performed any obligation, or both have partially performed to an essentially equal extent — such contracts are generally not recognised as assets or liabilities.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Unrecognized purchase obligation</div><div class="glossary-def">A binding commitment to purchase goods or services in the future at fixed or determinable prices, not yet recognised as a liability because the seller has not yet delivered.</div></div>
+      </div>
+    </div>
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.ASC440 || []} />
+  </section>
+</StandardPageLayout>
+

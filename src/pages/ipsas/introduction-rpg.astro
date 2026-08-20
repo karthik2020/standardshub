@@ -1,0 +1,103 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import metadata from "../../data/standards/ipsas/introduction-rpg.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  status={metadata.status}
+  summary={metadata.summary}
+  covers={metadata.covers}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Purpose & the IPSASB's Broader Mandate" },
+        { id: "s2", label: "IPSAS vs. RPG — the Critical Distinction" },
+        { id: "s3", label: "What RPGs Do and Don't Cover" },
+        { id: "s4", label: "Related Guidance & What Comes Next" }
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="active"
+    explanation="The Introduction to Recommended Practice Guidelines provides the background, purpose, and non-authoritative good-practice status of the RPG series issued by the IPSASB. It sets out the critical distinction between authoritative IPSAS Standards and non-mandatory RPG Guidelines."
+    link=""
+    linkText=""
+  />
+
+  <!-- ============ SECTION 1 — PURPOSE & THE IPSASB'S BROADER MANDATE ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Purpose &amp; the IPSASB's Broader Mandate</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">A one-page preamble to a second, non-authoritative pronouncement family</div>
+      <div class="principle">Recommended Practice Guidelines (RPGs) are developed and approved by the IPSASB — the SAME body that develops IPSAS. This brief Introduction sits ahead of the RPG series (RPG 1–3) the way the Cash Basis IPSAS Introduction sits ahead of that Standard, but for an entirely different kind of pronouncement.</div>
+      <div class="dot-list">
+        <span>The IPSASB's objective: serve the PUBLIC INTEREST by setting high-quality public sector accounting standards, and facilitating their adoption/implementation</span>
+        <span>This enhances the QUALITY and CONSISTENCY of practice worldwide, and strengthens the TRANSPARENCY and ACCOUNTABILITY of public sector finances</span>
+        <span>In pursuit of this, the IPSASB issues BOTH IPSAS Standards AND RPG Guidelines, for use by national/regional/local governments and related governmental agencies</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 — IPSAS VS. RPG: THE CRITICAL DISTINCTION ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>IPSAS vs. RPG — the Critical Distinction</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">IPSAS Standards — authoritative, statement-focused</div>
+      <div class="formula-box">
+        <div class="f-eq">IPSAS relate to GENERAL PURPOSE FINANCIAL STATEMENTS, and ARE authoritative</div>
+      </div>
+      <div class="text-supporting">This is the entire body of literature covered throughout the rest of this library — IPSAS 1 through IPSAS 51, plus the Cash Basis IPSAS. These establish binding REQUIREMENTS an entity must meet to claim compliance.</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">RPG Guidelines — non-authoritative, GPFR-focused</div>
+      <div class="formula-box">
+        <div class="f-eq">RPGs provide guidance on GOOD PRACTICE in preparing General Purpose Financial Reports (GPFRs) that are NOT financial statements — and do NOT establish requirements</div>
+      </div>
+      <div class="text-supporting">A GPFR is a BROADER category than financial statements — it also covers narrative reporting on service performance, long-term fiscal sustainability, and management discussion/analysis. RPGs currently cover ALL pronouncements relating to this non-financial-statement GPFR territory.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 — WHAT RPGS DO AND DON'T COVER ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>What RPGs Do and Don't Cover</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs">
+      <div class="ctitle cs">What RPGs DO provide</div>
+      <div class="check-list">
+        <span>Guidance on GOOD PRACTICE for preparing non-financial-statement GPFRs</span>
+        <span>A recognized IPSASB pronouncement TYPE, carrying the Board's institutional endorsement even without binding force</span>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">What RPGs deliberately DON'T provide</div>
+      <div class="callout danger callout--flush">RPG Guidelines do NOT establish REQUIREMENTS — unlike IPSAS, there is no compliance statement to make, and no "shall" language creating binding obligations. RPGs ALSO do NOT provide guidance on the LEVEL OF ASSURANCE (if any) to which the resulting information should be subject — that's left entirely outside their scope.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 — RELATED GUIDANCE & WHAT COMES NEXT ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Related Guidance &amp; What Comes Next</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">The three RPGs this Introduction precedes</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2fr;"><span>Guideline</span><span>Subject</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2fr;"><span>RPG 1</span><span>Reporting on the Long-Term Sustainability of an Entity's Finances — cross-referenced earlier in this library from IPSAS 42's encouraged long-term sustainability reporting section</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2fr;"><span>RPG 2</span><span>Financial Statement Discussion and Analysis</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2fr;"><span>RPG 3</span><span>Reporting Service Performance Information</span></div>
+      </div>
+      <div class="note">All three RPGs, like this Introduction, are non-authoritative — they guide practice without imposing binding requirements, complementing the authoritative IPSAS body of literature covered throughout the rest of this library.</div>
+    </div>
+  </div>
+</StandardPageLayout>

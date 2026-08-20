@@ -1,18 +1,63 @@
 ---
+/*
+Sidebar
+
+Primary navigation sidebar for the standards library.
+
+Props:
+- none (uses Astro.url.pathname for active state)
+
+ Renders collapsible sections for IAS, IFRS, Ind AS, and US GAAP with live search, count badges, and footer shortcuts. Active section expands automatically based on the current route.
+*/
+
 import standards from "../data/standards.json";
+import type { StandardSummary } from "../data/standards";
 import NavLink from "./NavLink.astro";
 import {
   Search,
   BookOpen,
   LibraryBig,
   Files,
-  ArrowRight,
-  Bookmark,
-  Clock,
+  X,
   BookText,
+  Clock,
   ChevronRight,
+  Leaf,
+  Building2,
+  ScrollText,
+  Landmark,
 } from "@lucide/astro";
+import { FRAMEWORK_CONFIG, FRAMEWORK_ORDER } from "../data/frameworks";
+
+const lucideIconMap: Record<string, any> = {
+  BookText,
+  LibraryBig,
+  Files,
+  Leaf,
+  BookOpen,
+  Building2,
+  ScrollText,
+  Landmark,
+};
+
 const currentPath = Astro.url.pathname;
+
+const IFRS_SIDEBAR_CATEGORIES = [
+  { label: "IFRS Standards", items: standards.IFRS },
+  { label: "IFRS for SMEs", items: standards.IFRSForSMEs },
+  { label: "IFRS Publications", items: standards.IFRSPublications },
+  { label: "IFRS Sustainability", items: standards.IFRSSustainability },
+  { label: "IFRIC", items: standards.IFRIC },
+  { label: "SIC", items: standards.SIC },
+] as const;
+
+const drsStandards = standards.DRS ?? [];
+const drsPrimary = drsStandards.filter(
+  (item) => !item.status || item.status === "Upcoming" || item.status === "Amended" || item.status === "Active" || item.status === "Revised 2026"
+);
+const drsRetired = drsStandards.filter(
+  (item) => item.status && item.status !== "Upcoming" && item.status !== "Amended" && item.status !== "Active" && item.status !== "Revised 2026"
+);
 ---
 
 <aside class="sidebar">
@@ -28,160 +73,270 @@ const currentPath = Astro.url.pathname;
           id="standard-search"
           type="text"
           placeholder=""
+          aria-label="Filter standards"
           autocomplete="off"
         />
 
-        <button class="search-action" id="search-action" type="button">
-          <ArrowRight size={16} />
+        <button class="search-action" id="search-action" type="button" aria-label="Clear filter" title="Clear filter">
+          <X size={15} />
         </button>
       </div>
     </div>
   </div>
 
   <div class="sidebar-scroll">
+    <nav aria-label="Standards Library">
     <div class="sidebar-heading">STANDARDS LIBRARY</div>
 
-    <!-- IAS -->
+    {
+      FRAMEWORK_ORDER.map((id) => {
+        const framework = FRAMEWORK_CONFIG[id];
+        const codeToKey = (code: string) => {
+          if (code === "Ind AS") return "IndAS";
+          if (code === "IFRS Sustainability") return "IFRSSustainability";
+          if (code === "IFRS Publications") return "IFRSPublications";
+          if (code === "IFRS for SMEs") return "IFRSForSMEs";
+          if (code === "IFRIC") return "IFRIC";
+          if (code === "SIC") return "SIC";
+          if (code === "US GAAP") return "USGAAP";
+          if (code === "UK GAAP") return "UKGAAP";
+          if (code === "ASBE") return "ASBE";
+          if (code === "ASPE") return "ASPE";
+          if (code === "ASBJ") return "ASBJ";
+          return code;
+        };
+        const sectionStandards: StandardSummary[] = standards[codeToKey(framework.code)] ?? [];
+        const IconComponent = lucideIconMap[framework.lucideIcon] ?? BookText;
 
-    <details class="section section-ias" open={currentPath.startsWith("/ias")}>
-      <summary class="section-header">
-        <div class="section-title">
-          <BookText size={17} strokeWidth={2} />
-          <span>IAS</span>
-        </div>
+        return (
+          <details class={`section section-${framework.id}`} data-section={framework.id} open={currentPath.startsWith(framework.route)}>
+            <summary class="sidebar-section-header">
+              <div class="section-title">
+                {IconComponent && <IconComponent size={17} strokeWidth={2} />}
+                <a href={framework.route} class="sidebar-framework-link">
+                  <span>{framework.displayName}</span>
+                </a>
+              </div>
 
-        <div class="section-actions">
-          <span class="count-badge badge-ias">
-            {standards.IAS.length}
-          </span>
+              <div class="section-actions">
+                <span class={`count-badge badge-${framework.id}`}>
+                  {sectionStandards.length}
+                </span>
 
-          <ChevronRight class="section-chevron" size={16} strokeWidth={2.4} />
-        </div>
-      </summary>
+                <ChevronRight class="section-chevron" size={16} strokeWidth={2.4} />
+              </div>
+            </summary>
 
-      <div class="section-items">
-        <div class="sidebar-items">
-          {
-            standards.IAS.map((item) => (
-              <NavLink
-                href={item.url}
-                title={item.title}
-                section="ias"
-                code={item.code}
-                standardTitle={item.title}
-              >
-                {item.code}
-              </NavLink>
-            ))
-          }
-        </div>
+            <div class="section-items">
+              {
+                framework.id === "ifrs" ? (
+                  IFRS_SIDEBAR_CATEGORIES.map(({ label, items }) => (
+                    <div class="sidebar-category-group">
+                      <div class="sidebar-category-label">{label}</div>
+                      <ul class="sidebar-items">
+                        {
+                          items.filter((item) => (!item.status || item.status === "Upcoming")).map((item) => (
+                            <li>
+                              <NavLink
+                                href={item.url}
+                                title={item.title}
+                                section={framework.id}
+                                code={item.code}
+                                standardTitle={item.title}
+                              >
+                                {item.code}
+                              </NavLink>
+                            </li>
+                          ))
+                        }
+                      </ul>
+                      <ul class="sidebar-items">
+                        <li class="sidebar-group-label">Historical Standards</li>
+                        {
+                          items.filter((item) => (item.status && item.status !== "Upcoming")).map((item) => (
+                            <li>
+                              <NavLink
+                                href={item.url}
+                                title={item.title}
+                                section={framework.id}
+                                code={item.code}
+                                standardTitle={item.title}
+                              >
+                                {item.code}
+                              </NavLink>
+                            </li>
+                          ))
+                        }
+                      </ul>
+                    </div>
+                  ))
+                ) : framework.categories
+                  ? framework.categories.map((category) => {
+                      const activeItems = sectionStandards.filter(
+                        (item) => (!item.status || item.status === "Upcoming") && item.category === category
+                      );
+                      const historicalItems = sectionStandards.filter(
+                        (item) => (item.status && item.status !== "Upcoming") && item.category === category
+                      );
+                      if (activeItems.length === 0 && historicalItems.length === 0) {
+                        return null;
+                      }
+                      return (
+                        <Fragment>
+                          <li class="sidebar-category-label">
+                            {category}
+                          </li>
+                          <ul class="sidebar-items">
+                            {
+                              activeItems.map((item) => (
+                                <li>
+                                    <NavLink
+                                      href={item.url}
+                                      title={item.title}
+                                      section={framework.id}
+                                      code={item.code}
+                                      standardTitle={item.title}
+                                      badge={framework.id === "asbj" && item.status === "Revised 2026" ? "Revised 2026" : undefined}
+                                      badgeVariant={framework.id === "asbj" && item.status === "Revised 2026" ? "upcoming" : undefined}
+                                    >
+                                      {framework.id === "aspe" ? item.code.replace("Section ", "") : (framework.id === "asbj" ? item.code.replace(" (Revised 2026)", "") : item.code)}
+                                    </NavLink>
+                                </li>
+                              ))
+                            }
+                          </ul>
+                          {
+                            historicalItems.length > 0 && (
+                              <ul class="sidebar-items">
+                                <li class="sidebar-group-label">Historical Standards</li>
+                                {
+                                    historicalItems.map((item) => (
+                                      <li>
+                                          <NavLink
+                                            href={item.url}
+                                            title={item.title}
+                                            section={framework.id}
+                                            code={item.code}
+                                            standardTitle={item.title}
+                                            badge={framework.id === "asbj" && item.status === "Revised 2026" ? "Revised 2026" : undefined}
+                                            badgeVariant={framework.id === "asbj" && item.status === "Revised 2026" ? "upcoming" : undefined}
+                                          >
+                                            {framework.id === "aspe" ? item.code.replace("Section ", "") : (framework.id === "asbj" ? item.code.replace(" (Revised 2026)", "") : item.code)}
+                                          </NavLink>
+                                      </li>
+                                    ))
+                                }
+                              </ul>
+                            )
+                          }
+                        </Fragment>
+                      );
+                    })
+                  : (
+                    <>
+                      <ul class="sidebar-items">
+                        {
+                           sectionStandards.filter((item) => (!item.status || item.status === "Upcoming")).map((item) => (
+                            <li>
+                              <NavLink
+                                href={item.url}
+                                title={item.title}
+                                section={framework.id}
+                                code={item.code}
+                                standardTitle={item.title}
+                              >
+                                {item.code}
+                              </NavLink>
+                            </li>
+                          ))
+                        }
+                      </ul>
+                      <ul class="sidebar-items">
+                        <li class="sidebar-group-label">Historical Standards</li>
+                        {
+                          sectionStandards.filter((item) => (item.status && item.status !== "Upcoming")).map((item) => (
+                            <li>
+                              <NavLink
+                                href={item.url}
+                                title={item.title}
+                                section={framework.id}
+                                code={item.code}
+                                standardTitle={item.title}
+                              >
+                                {item.code}
+                              </NavLink>
+                            </li>
+                          ))
+                        }
+                      </ul>
+                      {
+                        framework.id === "hgb" && (
+                          <div class="sidebar-category-group">
+                            <div class="sidebar-category-label">DRS Standards</div>
+                            <ul class="sidebar-items">
+                              {
+                                drsPrimary.map((item) => (
+                                  <li>
+                                    <NavLink
+                                      href={item.url}
+                                      title={item.title}
+                                      section="drs"
+                                      code={item.code}
+                                      standardTitle={item.title}
+                                    >
+                                      {item.code}
+                                    </NavLink>
+                                  </li>
+                                ))
+                              }
+                            </ul>
+                            {drsRetired.length > 0 && (
+                              <ul class="sidebar-items">
+                                <li class="sidebar-group-label">Historical Standards</li>
+                                {
+                                  drsRetired.map((item) => (
+                                    <li>
+                                      <NavLink
+                                        href={item.url}
+                                        title={item.title}
+                                        section="drs"
+                                        code={item.code}
+                                        standardTitle={item.title}
+                                      >
+                                        {item.code}
+                                      </NavLink>
+                                    </li>
+                                  ))
+                                }
+                              </ul>
+                            )}
+                          </div>
+                        )
+                      }
+                    </>
+                  )
+              }
+            </div>
+          </details>
+        );
+      })
+    }
+
+    <div class="sidebar-empty" id="sidebar-empty" hidden>
+      <div class="sidebar-empty-title">No matching standards</div>
+      <div class="sidebar-empty-text">Try another standard number or keyword.</div>
+      <div class="sidebar-empty-examples">
+        <span>IAS 16</span>
+        <span>Revenue</span>
+        <span>Lease</span>
       </div>
-    </details>
-
-    <!-- IFRS -->
-
-    <details
-      class="section section-ifrs"
-      open={currentPath.startsWith("/ifrs")}
-    >
-      <summary class="section-header">
-        <div class="section-title">
-          <LibraryBig size={17} strokeWidth={2} />
-          <span>IFRS</span>
-        </div>
-
-        <div class="section-actions">
-          <span class="count-badge badge-ifrs">
-            {standards.IFRS.length}
-          </span>
-
-          <ChevronRight class="section-chevron" size={16} strokeWidth={2.4} />
-        </div>
-      </summary>
-
-      <div class="section-items">
-        <div class="sidebar-items">
-          {
-            standards.IFRS.map((item) => (
-              <NavLink
-                href={item.url}
-                title={item.title}
-                section="ifrs"
-                code={item.code}
-                standardTitle={item.title}
-              >
-                {item.code}
-              </NavLink>
-            ))
-          }
-        </div>
-      </div>
-    </details>
-
-    <!-- Ind AS -->
-
-    <details
-      class="section section-indas"
-      open={currentPath.startsWith("/indas")}
-    >
-      <summary class="section-header">
-        <div class="section-title">
-          <Files size={17} strokeWidth={2} />
-          <span>Ind AS</span>
-        </div>
-
-        <div class="section-actions">
-          <span class="count-badge badge-indas">
-            {standards.IndAS.length}
-          </span>
-
-          <ChevronRight class="section-chevron" size={16} strokeWidth={2.4} />
-        </div>
-      </summary>
-
-      <div class="section-items">
-        <div class="sidebar-items">
-          {
-            standards.IndAS.map((item) => (
-              <NavLink
-                href={item.url}
-                title={item.title}
-                section="indas"
-                code={item.code}
-                standardTitle={item.title}
-              >
-                {item.code}
-              </NavLink>
-            ))
-          }
-        </div>
-      </div>
-    </details>
+    </div>
+    </nav>
   </div>
   <footer class="sidebar-footer">
-    <a href="#" class="footer-link">
-      <Bookmark size={17} strokeWidth={2} />
-      <span>Bookmarks</span>
-    </a>
-
     <a href="#" class="footer-link">
       <Clock size={17} strokeWidth={2} />
       <span>Recent</span>
     </a>
-
-    <a href="#" class="footer-link">
-      <BookText size={17} strokeWidth={2} />
-      <span>Reading</span>
-    </a>
-
-    <div class="footer-user">
-      <div class="footer-avatar">G</div>
-
-      <div class="footer-user-info">
-        <div class="footer-user-name">Guest User</div>
-
-        <div class="footer-user-subtitle">Sign in to sync progress</div>
-      </div>
-    </div>
   </footer>
 </aside>

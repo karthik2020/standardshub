@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HGB §252–256a — Bewertungsvorschriften | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">HGB §§252–256a — Bewertungsvorschriften (Measurement Provisions)</div>
+      <div class="hub-sub">Extended reference poster · Book 3, Section 1, Subsection 2, Title 3 · General measurement principles, discounting, cost bases, LIFO, and FX translation · German commercial law · EUR examples</div>
+    </div>
+  </div>
+
+  <div class="callout danger" style="max-width:900px;margin:0 auto 20px;text-align:center;">SECOND ANCHOR POSTER: This Titel houses the DEEPEST concentration of genuine HGB/IFRS divergence anywhere in Book 3 — mandatory production-overhead capitalisation, an ELECTIVE (not mandatory) borrowing-cost capitalisation regime standing opposite IAS 23's mandate, LIFO remaining fully legal under §256 where IAS 2 abolished it entirely, and a strict, asymmetric lower-of-cost-or-market regime rooted directly in the Vorsichts- and Imparitätsprinzip.</div>
+
+  <div class="toc">
+    <a href="#s1">1. Conceptual Framework Linkage</a>
+    <a href="#s2">2. Scope</a>
+    <a href="#s3">3. §252(1) — the Six General Measurement Principles</a>
+    <a href="#s4">4. Realisationsprinzip and Imparitätsprinzip — Prudence Made Asymmetric</a>
+    <a href="#s5">5. Worked Example — Applying the Imparitätsprinzip</a>
+    <a href="#s6">6. Einzelbewertung — Individual Valuation</a>
+    <a href="#s7">7. §252(2) — Departure Only in Justified Exceptional Cases</a>
+    <a href="#s8">8. §253(1) — Initial Measurement at Cost or Settlement Amount</a>
+    <a href="#s9">9. §253(2) — Discounting Long-Term Provisions (with worked example)</a>
+    <a href="#s10">10. §253(3) — Fixed Assets: a Modified Lower-of-Cost Test</a>
+    <a href="#s11">11. §253(4) — Current Assets: the STRICT Niederstwertprinzip</a>
+    <a href="#s12">12. Worked Example — Fixed vs Current Asset Write-Down, Side by Side</a>
+    <a href="#s13">13. §253(5) — the Wertaufholungsgebot (Mandatory Write-Up), and Goodwill's Exception</a>
+    <a href="#s14">14. §254 — Bewertungseinheiten (Hedge Accounting)</a>
+    <a href="#s15">15. Worked Example — Forming a Bewertungseinheit</a>
+    <a href="#s16">16. §255(1) — Anschaffungskosten (Acquisition Cost)</a>
+    <a href="#s17">17. §255(2) — Herstellungskosten: the Mandatory Overhead Floor</a>
+    <a href="#s18">18. Worked Example — Building Up Herstellungskosten</a>
+    <a href="#s19">19. §255(3) — Borrowing Costs: an ELECTION, Not a Mandate</a>
+    <a href="#s20">20. §255(2a) — Development Costs of Self-Created Intangibles</a>
+    <a href="#s21">21. §256 — THE LIFO SURVIVAL — Simplified Measurement Methods</a>
+    <a href="#s22">22. Worked Example — Comparing FIFO and LIFO Outcomes</a>
+    <a href="#s23">23. §256a — Currency Translation, and the Short-Term Realisation Override</a>
+    <a href="#s24">24. Worked Example — Short-Term vs Long-Term FX Translation</a>
+    <a href="#s25">25. Critical Judgments &amp; Practical Difficulties</a>
+    <a href="#s26">26. Relationship to IFRS (IAS 2, IAS 16, IAS 21, IAS 23, IAS 37, IFRS 9)</a>
+    <a href="#s27">27. Statement Mapping</a>
+    <a href="#s28">28. Related Provisions — Cross-Reference Map</a>
+    <a href="#s29">29. Quick-Reference Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The single richest concentration of German accounting philosophy in positive law</div>
+      <div class="principle">If §§246–251 decided WHAT belongs on the balance sheet, §§252–256a decide the AMOUNT it is carried at — and in doing so, codifies the six foundational measurement principles that underpin every other HGB provision. §252(1) alone is arguably the single most important paragraph in all of German commercial accounting law: it is where the Vorsichtsprinzip, Realisationsprinzip, and Imparitätsprinzip are given DIRECT statutory force, rather than existing merely as judicially-developed GoB.</div>
+      <div class="elabel">HOW §§252–256A MAP TO GERMAN ACCOUNTING PRINCIPLES</div>
+      <div class="check-list">
+        <span><strong style="font-weight:500">Vorsichtsprinzip (prudence)</strong> — §252(1) no.4 names it directly as a general principle, then SPLITS it into two named sub-principles</span>
+        <span><strong style="font-weight:500">Realisationsprinzip</strong> — profits recognised ONLY when realised as of the balance sheet date</span>
+        <span><strong style="font-weight:500">Imparitätsprinzip</strong> — ALL foreseeable risks and losses must be recognised, even those only becoming known between the balance sheet date and the preparation date</span>
+        <span><strong style="font-weight:500">Bewertungsstetigkeit (consistency)</strong> — measurement methods should generally be retained period to period</span>
+      </div>
+    </div>
+
+    <div class="card cs">
+      <div class="ctitle cs">What §§252–256a require, at a glance</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.5fr 1.8fr;"><span>§</span><span>Core requirement</span></div>
+        <div class="tr" style="grid-template-columns:0.5fr 1.8fr;"><span>252</span><span>Six general measurement principles: identity, going concern, individual valuation, prudence, matching, consistency</span></div>
+        <div class="tr alt" style="grid-template-columns:0.5fr 1.8fr;"><span>253</span><span>Initial/subsequent measurement; discounting; the dual lower-of-cost tests; mandatory write-up</span></div>
+        <div class="tr" style="grid-template-columns:0.5fr 1.8fr;"><span>254</span><span>Hedge accounting (Bewertungseinheiten)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.5fr 1.8fr;"><span>255</span><span>Cost bases — Anschaffungskosten, Herstellungskosten, borrowing costs</span></div>
+        <div class="tr" style="grid-template-columns:0.5fr 1.8fr;"><span>256</span><span>Simplified measurement methods — including LIFO</span></div>
+        <div class="tr alt" style="grid-template-columns:0.5fr 1.8fr;"><span>256a</span><span>Foreign currency translation, with a short-term realisation override</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Scope</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Every recognised item, once §§246–251 has determined it belongs on the balance sheet</div>
+      <div class="principle">§§252–256a govern the MEASUREMENT of every asset, liability, and RAP item recognition has already been established for under the preceding Titel — they answer "how much," having already assumed the prior Titel's "whether" question is settled.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>§252(1) — the Six General Measurement Principles</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Six numbered principles, each doing distinct legal work</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.4fr 1.9fr;"><span>No.</span><span>Principle</span></div>
+        <div class="tr" style="grid-template-columns:0.4fr 1.9fr;"><span>1</span><span>Bilanzidentität — opening balances must match the prior year's closing balances exactly</span></div>
+        <div class="tr alt" style="grid-template-columns:0.4fr 1.9fr;"><span>2</span><span>Going concern (Fortführungsprinzip) — assumed unless facts or circumstances indicate otherwise</span></div>
+        <div class="tr" style="grid-template-columns:0.4fr 1.9fr;"><span>3</span><span>Einzelbewertung — assets and liabilities valued INDIVIDUALLY, not on an aggregated/portfolio basis (Section 6)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.4fr 1.9fr;"><span>4</span><span>Vorsicht (prudence) — split into Realisations- and Imparitätsprinzip (Section 4)</span></div>
+        <div class="tr" style="grid-template-columns:0.4fr 1.9fr;"><span>5</span><span>Periodenabgrenzung — expenses and income matched to their economic period, independent of cash timing</span></div>
+        <div class="tr alt" style="grid-template-columns:0.4fr 1.9fr;"><span>6</span><span>Bewertungsstetigkeit — measurement methods generally retained period to period</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Realisationsprinzip and Imparitätsprinzip — Prudence Made Asymmetric</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Realisationsprinzip: profits recognised only when realised</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Unrealised GAINS are never recognised — a rise in a held asset's market value above its cost, however well-evidenced, produces NO income until an actual realisation event (typically a sale) occurs. This is considerably stricter than IFRS's own treatment of many assets measured at fair value through profit or loss.</div>
+    </div>
+    <div class="card cw">
+      <div class="ctitle cw">Imparitätsprinzip: losses recognised the moment they are foreseeable</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Foreseeable LOSSES, by contrast, must be recognised immediately and in full — including those only becoming known between the balance sheet date and the date the accounts are actually prepared (a "Wertaufhellung" / value-illuminating subsequent event, similar in spirit to IAS 10's adjusting events, but embedded directly as a NAMED general principle rather than a separate standard).</div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ Together, these two principles create a genuinely ASYMMETRIC treatment: gains wait for realisation, losses do not wait at all — the deliberate, structural source of virtually every "prudent," conservative outcome this entire poster series has documented.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Worked Example — Applying the Imparitätsprinzip</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">A loss known only after the balance sheet date, but before the accounts are signed</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 1: A major customer's insolvency, discovered during account preparation</div>
+        <div class="wk-body">A company's balance sheet date is 31 December. On 20 January — while the annual accounts are still being prepared — the company learns that its largest customer, whose €300,000 receivable was outstanding and appeared fully collectible AT 31 December, filed for insolvency on 15 January, with recovery now expected to be negligible.</div>
+        <div class="wk-answer">Although the insolvency filing occurred AFTER the balance sheet date, the underlying financial distress was already DEVELOPING as of 31 December, and the information became known before the accounts were finalised — under the Imparitätsprinzip, the company writes the receivable DOWN to its now-expected negligible recoverable amount WITHIN the 31 December accounts themselves, rather than waiting to recognise the loss in the following year.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Einzelbewertung — Individual Valuation</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Each item stands alone — netting gains against losses across a portfolio is not permitted</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">§252(1) no.3 requires each asset and liability to be valued individually and separately as of the balance sheet date — an enterprise cannot offset an unrealised loss on one security against an unrealised gain on another within the SAME portfolio, even if both are economically related. Only specific, EXPRESSLY permitted exceptions (e.g. the §240(4) group valuation method, or the §254 Bewertungseinheit hedge mechanism discussed in Section 14) allow items to be considered together rather than strictly individually.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>§252(2) — Departure Only in Justified Exceptional Cases</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">A high bar for departing from any of the six principles</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">§252(2) permits departure from the principles in §252(1) ONLY in justified EXCEPTIONAL cases (begründeten Ausnahmefällen) — a deliberately narrow escape valve, requiring genuine justification rather than mere managerial preference, and any such departure must be disclosed and explained in the Anhang.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>§253(1) — Initial Measurement at Cost or Settlement Amount</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Assets at cost; liabilities at the settlement amount; provisions per prudent commercial judgement</div>
+      <div class="principle">§253(1) sentence 1 requires assets to be measured, at most, at their Anschaffungs- oder Herstellungskosten (acquisition or production cost — defined in full in §255, Sections 16–17). Liabilities are measured at their Erfüllungsbetrag (settlement amount) — the amount actually required to discharge them. Provisions are measured at the amount necessary according to prudent commercial judgement (vernünftiger kaufmännischer Beurteilung), taking future price and cost increases into account where relevant, and pension-type obligations specifically using recognised actuarial methods.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>§253(2) — Discounting Long-Term Provisions (with worked example)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">A market-based average rate, published monthly by the Bundesbank</div>
+      <div class="principle">§253(2) requires provisions with a REMAINING TERM of MORE than one year to be discounted, using the average market interest rate of the corresponding maturity over the preceding SEVEN years — as calculated and published monthly by the Deutsche Bundesbank. Pension and comparable long-term employee benefit provisions specifically use a longer, TEN-year average (a distinction introduced by a 2016 amendment, responding to distortions from a prolonged period of historically low interest rates).</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 2: Discounting a long-term restoration provision</div>
+        <div class="wk-body">A company recognises a €500,000 undiscounted restoration provision for a site it must return to its original condition in 12 years. The relevant Bundesbank-published 7-year average market rate for a 12-year maturity is 2.4%.</div>
+        <div class="wk-answer">The provision is DISCOUNTED to present value using the 2.4% Bundesbank rate over the 12-year term — producing a materially LOWER initial carrying amount than the undiscounted €500,000, with the discount then UNWOUND (recognised as an interest-like expense) over the remaining term as the provision approaches its full settlement amount.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>§253(3) — Fixed Assets: a Modified Lower-of-Cost Test</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Depreciable assets: systematic depreciation; non-depreciable: write-down only for PERMANENT declines</div>
+      <div class="principle">§253(3) sentence 1 requires fixed assets with a LIMITED useful life to be systematically depreciated (planmäßige Abschreibung) over that life. For fixed assets NOT subject to systematic depreciation (e.g. land, or long-lived assets without a determinable useful life), a write-down is required ONLY where a diminution in value is expected to be PERMANENT (dauernde Wertminderung) — a genuinely important qualifier: a merely TEMPORARY dip in value does NOT require any write-down at all for fixed assets.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>§253(4) — Current Assets: the STRICT Niederstwertprinzip</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">No "permanent" qualifier here — every decline, however temporary, forces a write-down</div>
+      <div class="principle">§253(4) applies the STRICT lower-of-cost-and-market principle (strenges Niederstwertprinzip) to current assets, WITHOUT the "permanent" qualifier §253(3) grants to fixed assets — ANY decline below cost, even one management genuinely expects to reverse shortly, MUST be written down immediately. This deliberate asymmetry between fixed and current assets is one of HGB's most distinctive measurement features.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Worked Example — Fixed vs Current Asset Write-Down, Side by Side</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Identical price decline, two completely different accounting outcomes</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 3: A commodity price dip affecting two different balance sheet categories</div>
+        <div class="wk-body">A company holds (a) a long-term strategic equity stake in a supplier, classified as Anlagevermögen, and (b) inventory of a raw material, classified as Umlaufvermögen. Both experience an identical, temporary 15% market price decline at year-end, which management — with good supporting evidence — genuinely expects to fully reverse within the next few months.</div>
+        <div class="wk-answer">The STRATEGIC EQUITY STAKE (fixed asset) requires <strong>NO write-down</strong> — the decline is judged temporary, and §253(3)'s "permanent" qualifier is not met. The RAW MATERIAL INVENTORY (current asset), however, <strong>MUST be written down</strong> to the lower market value IMMEDIATELY under §253(4)'s strict test — REGARDLESS of the identical temporary nature of the decline, since no "permanent" qualifier exists for current assets at all.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>§253(5) — the Wertaufholungsgebot (Mandatory Write-Up), and Goodwill's Exception</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">A REQUIRED reversal, once the reason for a prior write-down disappears — except for goodwill</div>
+      <div class="principle">§253(5) sentence 1 REQUIRES a write-up (Wertaufholung) where the reasons for a PRIOR write-down no longer exist — this is not a mere permission but a genuine MANDATE, structurally similar in spirit to IAS 36's own reversal requirement (for assets other than goodwill). §253(5) sentence 2, however, carves out a SPECIFIC exception: goodwill may NEVER be written back up, once amortised or impaired down — consistent with §246(1) sentence 4's own treatment of goodwill as a systematically amortising asset rather than one subject to ordinary impairment-reversal logic.</div>
+      <div class="callout suc" style="margin-bottom:0;">✅ The general write-up MANDATE (not merely a permission) is itself a point worth flagging carefully — many jurisdictions permit reversal without REQUIRING it; HGB requires it, reflecting the underlying view that once its cause disappears, an artificially depressed carrying value would itself violate the completeness and fair-measurement objectives running through this whole Titel.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>§254 — Bewertungseinheiten (Hedge Accounting)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Combining a hedged item and hedging instrument into a single valuation unit</div>
+      <div class="principle">§254 — introduced by the 2009 BilMoG reform — permits an asset, liability, pending transaction, or highly probable forecast transaction to be combined with a financial instrument hedging a COMPARABLE risk into a single Bewertungseinheit (valuation unit). To the EXTENT the offsetting risks genuinely compensate one another, the general Einzelbewertung and Imparitätsprinzip rules are SUSPENDED for that combined unit — meaning an unrealised loss on one side need not be recognised where it is genuinely offset by a compensating gain on the hedging instrument, avoiding the artificially volatile result strict individual valuation would otherwise produce.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 15 ============ -->
+  <div class="section-header" id="s15"><span class="num">15</span><h2>Worked Example — Forming a Bewertungseinheit</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Suspending Einzelbewertung where a genuine, offsetting hedge exists</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 4: Hedging a foreign currency payable with a forward contract</div>
+        <div class="wk-body">A company has a US-Dollar-denominated payable, and enters into a forward foreign exchange contract specifically to hedge the currency risk on that same payable. By year-end, the payable's EUR-equivalent value has increased (an unrealised loss on the payable), fully offset by a corresponding gain on the forward contract.</div>
+        <div class="wk-answer">Rather than applying Einzelbewertung separately (which would recognise the payable's LOSS immediately under the Imparitätsprinzip while potentially deferring the OFFSETTING gain on the forward contract under the Realisationsprinzip), the company forms a Bewertungseinheit under §254 — recognising NEITHER the loss NOR the gain separately, to the extent they genuinely offset, since the COMBINED position has not actually changed the company's net economic exposure.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 16 ============ -->
+  <div class="section-header" id="s16"><span class="num">16</span><h2>§255(1) — Anschaffungskosten (Acquisition Cost)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Purchase price, plus incidental costs, less reductions</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">§255(1) defines Anschaffungskosten as the purchase price PLUS incidental acquisition costs (Anschaffungsnebenkosten — e.g. delivery, installation, legal fees directly attributable) PLUS costs incurred to bring the asset into a usable condition, LESS any price reductions such as discounts and rebates — broadly similar in substance to how IAS 16 and IAS 2 define cost internationally.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 17 ============ -->
+  <div class="section-header" id="s17"><span class="num">17</span><h2>§255(2) — Herstellungskosten: the Mandatory Overhead Floor</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Material and production overheads: a MANDATORY minimum since BilMoG 2009</div>
+      <div class="principle">§255(2) requires Herstellungskosten (production cost) to include, as an absolute MINIMUM: materials consumed, direct labour, special direct production costs (Sondereinzelkosten der Fertigung), AND — critically, since the 2009 BilMoG reform — "angemessene Teile" (appropriate/reasonable portions) of NECESSARY material and production OVERHEADS, plus production-related depreciation. This overhead inclusion was OPTIONAL before BilMoG; it is now a MANDATORY floor. General administrative costs, voluntary social benefit expenses, company pension costs, and interest on capital used to finance production REMAIN elective (§255(3), Section 19) — they MAY be included, but need not be.</div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ Practitioners still working from pre-2009 intuitions sometimes assume production overheads remain optional under HGB — they do not. This is a genuinely important, commonly-tested point.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 18 ============ -->
+  <div class="section-header" id="s18"><span class="num">18</span><h2>Worked Example — Building Up Herstellungskosten</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Assembling the mandatory floor, then layering in the elective components</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 5: Costing a manufactured unit</div>
+        <div class="wk-body">A manufacturer produces a machine at the following cost: €40,000 direct materials, €25,000 direct labour, €8,000 special direct production costs, €12,000 reasonably attributable production overheads, and €3,000 of administrative overhead the company elects to include as well.</div>
+        <div class="wk-answer">MANDATORY floor = €40,000 + €25,000 + €8,000 + €12,000 = <strong>€85,000</strong> — this amount MUST be capitalised regardless of any election. Adding the ELECTED €3,000 of administrative overhead brings total Herstellungskosten to <strong>€88,000</strong> — the company COULD have stopped at €85,000, but having elected to include administrative overhead, must apply that election CONSISTENTLY going forward per §252(1) no.6's Bewertungsstetigkeit principle.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 19 ============ -->
+  <div class="section-header" id="s19"><span class="num">19</span><h2>§255(3) — Borrowing Costs: an ELECTION, Not a Mandate</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">A genuine, significant divergence from IAS 23's mandatory capitalisation regime</div>
+      <div class="principle">§255(3) permits interest on borrowed capital used to finance the PRODUCTION of an asset to be included in Herstellungskosten, to the extent it relates to the production period — but this remains an ELECTION, never a requirement. This stands in DIRECT, genuine contrast to IAS 23 (Borrowing Costs), which since 2009 MANDATES capitalisation of borrowing costs directly attributable to the acquisition, construction, or production of a qualifying asset, with NO election available internationally.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Feature</span><span style="color:var(--color-text-warning);">HGB §255(3)</span><span style="color:var(--color-text-info);">IAS 23</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Capitalising production-period borrowing costs</span><span>ELECTIVE</span><span>MANDATORY, for qualifying assets</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 20 ============ -->
+  <div class="section-header" id="s20"><span class="num">20</span><h2>§255(2a) — Development Costs of Self-Created Intangibles</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">A specific test for what counts as "development," feeding directly into §248(2)'s election</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">§255(2a) defines development costs (Entwicklungskosten) for purposes of the §248(2) capitalisation election introduced earlier in this poster series — distinguishing development from RESEARCH costs (Forschungskosten), which remain permanently excluded from capitalisation. The underlying research/development distinction shares a broadly similar conceptual shape with IAS 38's own research/development split, though the specific German statutory test and its accompanying commentary have their own distinct doctrinal history.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 21 ============ -->
+  <div class="section-header" id="s21"><span class="num">21</span><h2>§256 — THE LIFO SURVIVAL — Simplified Measurement Methods</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">LIFO remains fully legal under HGB, where IAS 2 and ASPE both abolished it</div>
+      <div class="principle">§256 permits FIFO, LIFO, or a similar consumption-sequence method (Verbrauchsfolgeverfahren) for measuring similar items of raw materials, supplies, and goods, PROVIDED the chosen method corresponds to GoB. Critically, and GENUINELY distinctively, LIFO (Lifo-Verfahren) remains a FULLY LEGAL option under HGB — standing in direct contrast to IAS 2, which abolished LIFO entirely, and to ASPE Section 3031 (see the earlier companion poster in this library's ASPE series), which likewise does not permit it.</div>
+      <div class="callout danger" style="margin-bottom:0;">🚫 In PRACTICE, German companies rarely elect LIFO today, largely because German TAX law's own treatment of inventory valuation methods creates disincentives that make LIFO less attractive despite its continued COMMERCIAL-law legality — but the legal availability itself remains a genuine, standing divergence from both IFRS and ASPE.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 22 ============ -->
+  <div class="section-header" id="s22"><span class="num">22</span><h2>Worked Example — Comparing FIFO and LIFO Outcomes</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">The same inventory, two legally available methods, two different results</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 6: Rising input costs under FIFO vs LIFO</div>
+        <div class="wk-body">A company purchases 1,000 units at €10 each early in the year, then 1,000 more units at €14 each later in the year, as raw material costs rose. By year-end, 1,200 units have been consumed, leaving 800 units in closing inventory.</div>
+        <div class="wk-answer">Under <strong>FIFO</strong>, closing inventory (the LAST units purchased) = 800 × €14 = <strong>€11,200</strong>. Under <strong>LIFO</strong> (still legally available under §256, though rarely elected in practice), closing inventory would instead consist of the EARLIEST units still assumed on hand = 800 × €10 = <strong>€8,000</strong> — a MATERIALLY lower closing inventory value, and correspondingly higher cost of goods sold, PURELY as a result of the accounting method chosen, with NO equivalent choice available under IAS 2 or ASPE.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 23 ============ -->
+  <div class="section-header" id="s23"><span class="num">23</span><h2>§256a — Currency Translation, and the Short-Term Realisation Override</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Short-term FX items translate at the closing rate, EVEN if this produces an unrealised gain</div>
+      <div class="principle">§256a requires foreign-currency assets and liabilities to be translated at the spot mid-rate (Devisenkassamittelkurs) on the balance sheet date. For receivables and payables with a REMAINING TERM of one year or less, this closing-rate translation applies WITHOUT being overridden by the general Realisations-/Imparitätsprinzip — meaning a SHORT-term foreign currency item is translated at the current rate even where doing so would recognise an UNREALISED GAIN, a deliberate, narrow carve-out from HGB's usual asymmetric prudence for genuinely short-dated positions. For LONGER-term items (over one year remaining), the general prudence principles continue to apply in FULL — unrealised gains on such items generally remain excluded, while unrealised losses are still recognised.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 24 ============ -->
+  <div class="section-header" id="s24"><span class="num">24</span><h2>Worked Example — Short-Term vs Long-Term FX Translation</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Identical currency movement, different outcomes depending on remaining term</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 7: Two USD receivables with different remaining terms</div>
+        <div class="wk-body">A company holds two USD receivables, both originated at the same historical EUR-equivalent value, and both benefiting from an identical, favourable USD appreciation by year-end. Receivable A has a 4-month remaining term; Receivable B has a 3-year remaining term.</div>
+        <div class="wk-answer">Receivable A (SHORT-term, ≤1 year) is translated at the year-end SPOT rate, recognising the FULL unrealised gain, per §256a's short-term override. Receivable B (LONG-term, &gt;1 year) remains subject to the GENERAL Realisationsprinzip — its unrealised gain is generally <strong>NOT</strong> recognised, DESPITE both receivables experiencing the identical favourable currency movement, purely because of their different remaining terms.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 25 ============ -->
+  <div class="section-header" id="s25"><span class="num">25</span><h2>Critical Judgments &amp; Practical Difficulties</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Where judgement matters most</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+          <div class="dot-list">
+            <span>Whether a decline in a fixed asset's value is genuinely PERMANENT, triggering §253(3)'s write-down requirement</span>
+            <span>Whether a proposed Bewertungseinheit's hedging relationship is sufficiently well-matched to justify suspending Einzelbewertung</span>
+            <span>Distinguishing "development" from "research" costs under §255(2a)</span>
+          </div>
+        </div>
+        <div>
+          <div class="elabel">PRACTICAL DIFFICULTIES</div>
+          <div class="dot-list">
+            <span>Determining "appropriate/reasonable portions" of production overhead for the mandatory §255(2) floor, particularly in complex, multi-product manufacturing</span>
+            <span>Sourcing and correctly applying the Bundesbank's published average market rates for §253(2) discounting</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 26 ============ -->
+  <div class="section-header" id="s26"><span class="num">26</span><h2>Relationship to IFRS (IAS 2, IAS 16, IAS 21, IAS 23, IAS 37, IFRS 9)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — HGB §§252–256a vs IFRS</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Feature</span><span style="color:var(--color-text-warning);">HGB</span><span style="color:var(--color-text-info);">IFRS</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>LIFO</span><span>Legally PERMITTED (§256)</span><span>PROHIBITED (IAS 2)</span></div>
+        <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Borrowing cost capitalisation</span><span>ELECTIVE (§255(3))</span><span>MANDATORY for qualifying assets (IAS 23)</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Fixed asset temporary decline</span><span>NO write-down required (§253(3))</span><span>Impairment assessed via recoverable amount, no "temporary" carve-out (IAS 36)</span></div>
+        <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Current asset temporary decline</span><span>Write-down MANDATORY regardless (§253(4))</span><span>Lower of cost and NRV, broadly similar in substance (IAS 2)</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Impairment reversal</span><span>MANDATORY write-up, except goodwill (§253(5))</span><span>Permitted (not mandated as strongly), except goodwill (IAS 36)</span></div>
+        <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Hedge accounting</span><span>Bewertungseinheiten (§254) — a simpler, national mechanism</span><span>IFRS 9's considerably more detailed, prescriptive hedge accounting model</span></div>
+      </div>
+      <div class="note">This Titel contains the single HIGHEST density of genuine, substantive HGB/IFRS divergence documented anywhere in this poster series so far — LIFO's survival and the elective (not mandatory) borrowing-cost regime are particularly striking given how thoroughly both IAS 2 and IAS 23 foreclosed the equivalent choices internationally.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 27 ============ -->
+  <div class="section-header" id="s27"><span class="num">27</span><h2>Statement Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Where every §§252–256a event lands</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event / obligation</span><span>Statement(s) affected</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Discounting a long-term provision (§253(2))</span><span><span class="badge bs">Bilanz</span> <span class="badge bp">GuV</span></span><span>Discount unwinds as an interest-like expense over time</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Current asset write-down (§253(4))</span><span><span class="badge bs">Bilanz</span> <span class="badge bp">GuV</span></span><span>Mandatory regardless of the decline's permanence</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Bewertungseinheit formed (§254)</span><span><span class="badge bs">Bilanz</span></span><span>Suspends individual gain/loss recognition to the extent of the offset</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Short-term FX gain (§256a)</span><span><span class="badge bp">GuV</span></span><span>Recognised immediately, overriding the general realisation principle</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 28 ============ -->
+  <div class="section-header" id="s28"><span class="num">28</span><h2>Related Provisions — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How §§252–256a connect across HGB Book 3</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Provision</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>§§246–251</span><span>Establishes WHETHER an item is recognised at all — this Titel then determines the AMOUNT it is measured at</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>§240(4)</span><span>Group valuation permission this Titel's Einzelbewertung principle otherwise generally forecloses</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>§248(2)</span><span>Relies directly on §255(2a)'s development-cost definition to operationalise its capitalisation election</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>§285</span><span>Requires Anhang disclosure of measurement methods elected under this Titel, including any §252(2) departures</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 29 ============ -->
+  <div class="section-header" id="s29"><span class="num">29</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Realisationsprinzip</div><div class="glossary-def">The principle that profits are recognised only when realised as of the balance sheet date, never on unrealised gains.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Imparitätsprinzip</div><div class="glossary-def">The asymmetric principle requiring all foreseeable losses to be recognised immediately, even before they are realised.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Niederstwertprinzip</div><div class="glossary-def">The lower-of-cost-and-market principle, applied strictly (regardless of permanence) to current assets under §253(4).</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Wertaufholungsgebot</div><div class="glossary-def">The mandatory requirement to reverse a prior write-down once its underlying cause no longer exists, except for goodwill.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Bewertungseinheit</div><div class="glossary-def">A valuation unit combining a hedged item and hedging instrument, suspending individual valuation to the extent risks offset.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Herstellungskosten</div><div class="glossary-def">Production cost, with materials, labour, and production overheads forming a mandatory capitalisation floor since BilMoG 2009.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Key</div>
+    <div class="lrow">
+      <span class="badge bs">Bilanz</span> Balance sheet
+      <span class="badge bp">GuV</span> Income statement (Gewinn- und Verlustrechnung)
+      <span class="badge be">Anhang</span> Notes to the financial statements
+    </div>
+  </div>
+
+  <div class="footer-note">HGB §§252–256a — Bewertungsvorschriften · Extended Reference Poster · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

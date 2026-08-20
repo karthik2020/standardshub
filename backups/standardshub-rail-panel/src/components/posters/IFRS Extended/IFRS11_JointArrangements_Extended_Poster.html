@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IFRS 11 — Joint Arrangements | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb; --color-background-tertiary: #f3f4f6; --color-background-info: #eff6ff; --color-background-success: #f0fdf4; --color-background-warning: #fffbeb; --color-background-danger: #fff1f2;
+    --color-border-secondary: #e5e7eb; --color-border-tertiary: #e5e7eb; --color-border-info: #3b82f6; --color-border-success: #22c55e; --color-border-warning: #f59e0b; --color-border-danger: #ef4444;
+    --color-text-primary: #111827; --color-text-secondary: #374151; --color-text-tertiary: #9ca3af; --color-text-info: #2563eb; --color-text-success: #16a34a; --color-text-warning: #b45309; --color-text-danger: #dc2626;
+    --border-radius-lg: 10px; --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; } * { box-sizing: border-box; } .wrap { padding: 1rem 0 0.5rem; }
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #fff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; } .span2 { grid-column: span 2; }
+  .card { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); } .card.cs { border-left: 3px solid var(--color-border-success); } .card.cw { border-left: 3px solid var(--color-border-warning); } .card.cd { border-left: 3px solid var(--color-border-danger); } .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; } .ctitle.ci { color: var(--color-text-info); } .ctitle.cs { color: var(--color-text-success); } .ctitle.cw { color: var(--color-text-warning); } .ctitle.cd { color: var(--color-text-danger); } .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info { background: var(--color-background-info); color: var(--color-text-info); border: 1px solid var(--color-border-info); }
+  .callout.warn { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger); color: var(--color-text-danger); border: 1px solid var(--color-border-danger); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; } .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span { display: block; padding-left: 14px; position: relative; font-size: 11px; color: var(--color-text-secondary); line-height: 1.75; }
+  .dot-list span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger); font-size: 10px; top: 2px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+  .badge { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info); color: var(--color-text-info); } .bp { background: var(--color-background-danger); color: var(--color-text-danger); } .bo { background: var(--color-background-success); color: var(--color-text-success); } .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+  @media (max-width: 640px) { .grid, .two-col, .three-col { grid-template-columns: 1fr; } .span2 { grid-column: span 1; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub"><div class="hub-box">
+    <div class="hub-title">IFRS 11 — Joint Arrangements</div>
+    <div class="hub-sub">Extended reference poster · Conceptual framework link · Joint operations vs joint ventures · Worked examples · Statement mapping</div>
+  </div></div>
+
+  <div class="toc">
+    <a href="#s1">1. Conceptual Framework</a><a href="#s2">2. Scope &amp; Definitions</a><a href="#s3">3. Joint Control — The Threshold</a>
+    <a href="#s4">4. Classifying the Arrangement</a><a href="#s5">5. Joint Operations Accounting</a><a href="#s6">6. Joint Ventures Accounting</a>
+    <a href="#s7">7. Separate Vehicle Assessment — The Key Judgement</a><a href="#s8">8. Accounting for Parties Without Joint Control</a>
+    <a href="#s9">9. Disclosure</a><a href="#s10">10. Judgments &amp; Estimates</a><a href="#s11">11. IFRS vs US GAAP</a>
+    <a href="#s12">12. Statement Mapping</a><a href="#s13">13. Related Standards</a><a href="#s14">14. Glossary</a>
+  </div>
+
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Why classification follows RIGHTS AND OBLIGATIONS, not legal form</div>
+      <div class="principle">The Conceptual Framework's asset/liability definitions ask what an entity genuinely CONTROLS or OWES. IFRS 11 applies this directly to joint arrangements: classification depends on the parties' RIGHTS to assets and OBLIGATIONS for liabilities of the arrangement, NOT on the legal structure alone — even a separate legal vehicle can be a "joint operation" if the parties' rights/obligations relate directly to the underlying assets/liabilities.</div>
+      <div class="elabel">HOW IFRS 11 MAPS TO THE FRAMEWORK</div>
+      <div class="check-list">
+        <span><strong style="font-weight:500">Substance over form</strong> — a separate legal vehicle does NOT automatically mean the parties only have a net equity interest; contractual terms can preserve direct rights/obligations</span>
+        <span><strong style="font-weight:500">Faithful representation</strong> — joint operators recognise THEIR OWN share of assets/liabilities directly, reflecting genuine direct exposure, rather than a single net investment figure</span>
+        <span><strong style="font-weight:500">Comparability</strong> — replacing IAS 31's proportionate consolidation CHOICE with a single mandatory equity method for joint ventures removed a major comparability weakness</span>
+      </div>
+      <div class="note">IFRS 11 was issued alongside IFRS 10 and IFRS 12 as part of a coordinated "consolidation package," directly replacing IAS 31 and its criticised policy-choice structure.</div>
+    </div>
+    <div class="card cs">
+      <div class="ctitle cs">The two-category structure</div>
+      <div class="principle">IFRS 11 replaced IAS 31's three structural forms with just TWO categories, each with a single mandatory accounting treatment.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1fr;"><span>Type</span><span>Accounting</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1fr;"><span>Joint operation</span><span>Each party recognises its OWN share of assets, liabilities, revenue, expenses directly</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1fr;"><span>Joint venture</span><span>MANDATORY equity method (IAS 28) — NO proportionate consolidation option</span></div>
+      </div>
+      <div class="callout info" style="margin-bottom:0;">ℹ️ Removing the IAS 31 CHOICE for joint ventures directly improved <strong style="font-weight:500">comparability</strong>, at some cost to the granularity IAS 31's proportionate consolidation once provided.</div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw">
+      <div class="ctitle cw">What IFRS 11 covers</div>
+      <div class="principle">IFRS 11 applies to ALL entities that are a PARTY to a joint arrangement — an arrangement of which two or more parties have JOINT CONTROL.</div>
+      <div class="note">A joint arrangement has two essential characteristics: parties are bound by a CONTRACTUAL ARRANGEMENT, and that contractual arrangement gives two or more parties JOINT CONTROL.</div>
+    </div>
+    <div class="card cd">
+      <div class="ctitle cd">Key definitions you must know</div>
+      <div class="glossary-item"><div class="glossary-term">Joint control</div><div class="glossary-def">The contractually agreed sharing of control, which exists ONLY when decisions about relevant activities require the UNANIMOUS consent of the parties sharing control.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Joint operation</div><div class="glossary-def">A joint arrangement whereby parties with joint control have RIGHTS to the ASSETS and OBLIGATIONS for the LIABILITIES relating to the arrangement.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Joint venture</div><div class="glossary-def">A joint arrangement whereby parties with joint control have RIGHTS to the NET ASSETS of the arrangement.</div></div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Joint Control — The Threshold (with worked example)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Unanimous consent — a genuinely high bar</div>
+      <div class="principle">An entity assesses whether ALL the parties, or a GROUP of the parties, control the arrangement COLLECTIVELY (per IFRS 10's control definition), and then whether decisions about RELEVANT ACTIVITIES require the UNANIMOUS consent of those parties sharing control.</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 1: Testing for unanimous consent</div>
+        <div class="wk-body">Three parties hold 40%, 35%, and 25% of the voting rights in an arrangement. The contractual agreement requires decisions about relevant activities to be approved by AT LEAST 75% of the voting rights.</div>
+        <div class="wk-answer">NO single party can unilaterally approve decisions (none holds 75% alone), but multiple DIFFERENT combinations of two parties CAN reach 75% (e.g. 40%+35%=75%, or 40%+25%... does not reach 75% alone with only two, need to check: 40+35=75, 35+25=60, 40+25=65). Since MORE THAN ONE combination of parties could together reach the required percentage, NO single combination has EXCLUSIVE joint control — this arrangement likely does NOT meet the joint control threshold, since unanimous consent of a SPECIFIC identifiable set of parties is not established.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Classifying the Arrangement</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Structure, legal form, contractual terms, and other facts</div>
+      <div class="principle">Classification as a joint operation or joint venture depends on the parties' RIGHTS AND OBLIGATIONS arising from the arrangement, assessed by considering: the STRUCTURE of the arrangement (separate vehicle or not); when structured through a separate vehicle, the LEGAL FORM of that vehicle; the terms of the CONTRACTUAL ARRANGEMENT; and, when relevant, OTHER FACTS AND CIRCUMSTANCES.</div>
+      <div class="note">An arrangement NOT structured through a separate vehicle is ALWAYS a joint operation — the separate vehicle analysis (Section 7) only becomes necessary once a distinct legal entity/vehicle exists.</div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Joint Operations Accounting (with worked example)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Recognising the joint operator's OWN direct share</div>
+      <div class="principle">A joint operator recognises, in relation to its interest: its ASSETS, including its share of any assets held jointly; its LIABILITIES, including its share of any liabilities incurred jointly; its REVENUE from the sale of its share of output; its share of REVENUE from the sale of output by the joint operation; and its EXPENSES, including its share of any expenses incurred jointly.</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 2: A joint operation in oil exploration</div>
+        <div class="wk-body">Two companies jointly operate an oil field through a contractual arrangement (no separate vehicle), each entitled to 50% of extracted oil and jointly liable for decommissioning costs. Company A's own extraction costs for the period: $2,000,000. Jointly incurred decommissioning provision: $6,000,000.</div>
+        <div class="wk-answer">Company A recognises its OWN $2,000,000 extraction costs directly, PLUS its 50% share of the joint decommissioning liability = 6,000,000 × 50% = <strong style="color:var(--color-text-info);">$3,000,000</strong>, recognised directly on ITS OWN SOFP — no separate joint venture entity accounting is needed.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Joint Ventures Accounting</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Mandatory equity method — no alternative</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">A joint venturer recognises its interest in a joint venture as an INVESTMENT, and accounts for that investment using the EQUITY METHOD in accordance with IAS 28 — UNLESS the entity is exempted from applying the equity method per IAS 28's own scope exceptions (e.g. certain investment entities, or entities meeting specific parent-level exemption conditions).</div>
+      <div class="note">This is a DIRECT departure from IAS 31 — there is NO proportionate consolidation option available for joint ventures under IFRS 11, regardless of preparer preference.</div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Separate Vehicle Assessment — The Key Judgement (with worked example)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">When a separate vehicle can STILL be a joint operation</div>
+      <div class="principle">Even where an arrangement IS structured through a separate vehicle, it can still be a JOINT OPERATION if the LEGAL FORM, contractual terms, or OTHER FACTS/CIRCUMSTANCES indicate the parties have rights to assets and obligations for liabilities (rather than merely rights to net assets).</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 3: A separate vehicle that is still a joint operation</div>
+        <div class="wk-body">Two companies establish a separate legal entity to construct and operate a pipeline. Although the pipeline is legally owned by the separate entity, the contractual arrangement specifies that the OUTPUT (transported gas capacity) is entirely allocated to the two parties in proportion to their interests, and each party is contractually obligated to fund the entity's operating costs and any cash shortfalls in that SAME proportion.</div>
+        <div class="wk-answer">Despite the SEPARATE legal vehicle, the CONTRACTUAL TERMS give each party DIRECT rights to substantially all the output and DIRECT obligations to fund costs — this indicates the arrangement is a <strong style="color:var(--color-text-info);">JOINT OPERATION</strong>, NOT a joint venture, despite the separate legal entity's existence. Each party accounts for its own share of assets/liabilities/revenue/expenses directly, per Section 5.</div>
+      </div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ This is one of the MOST heavily tested and counter-intuitive aspects of IFRS 11 — a separate legal vehicle does NOT automatically mean joint venture (equity method) treatment; the underlying CONTRACTUAL substance can still produce joint OPERATION accounting.</div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Accounting for Parties Without Joint Control</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Participants who lack joint control</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">A party participating in, but NOT having joint control of, a joint operation ALSO accounts for its interest in the assets, liabilities, revenue, and expenses relating to its involvement, IF it has rights to assets and obligations for liabilities. A party participating in, but not having joint control of, a joint VENTURE accounts for its interest per IFRS 9 (as a financial asset), UNLESS it has SIGNIFICANT INFLUENCE, in which case IAS 28's equity method applies instead.</div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Required disclosures (largely detailed further in IFRS 12)</div>
+      <div class="check-list">
+        <span>Nature, extent, and financial effects of interests in joint arrangements, including the name, principal place of business, and proportion of ownership interest</span>
+        <span>Nature of the relationship with the joint arrangement (e.g. description of activities, strategic nature)</span>
+        <span>Significant judgements made in determining joint control and classification as a joint operation or joint venture</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Where management judgement matters most</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+          <div class="dot-list">
+            <span>Whether unanimous consent genuinely exists among an identifiable group of parties</span>
+            <span>Classifying a separate-vehicle arrangement as a joint operation vs joint venture based on contractual substance</span>
+          </div>
+        </div>
+        <div>
+          <div class="elabel">SIGNIFICANT ESTIMATES</div>
+          <div class="dot-list">
+            <span>Allocating shared assets/liabilities/costs between joint operators where contractual terms require estimation</span>
+          </div>
+        </div>
+      </div>
+      <div class="callout warn" style="margin-top:8px;margin-bottom:0;">⚠️ The separate vehicle classification judgement (Section 7) is consistently one of the most challenging and frequently misapplied areas of the entire consolidation suite.</div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s11"><span class="num">11</span><h2>IFRS vs US GAAP</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — IFRS 11 vs US GAAP</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Feature</span><span style="color:var(--color-text-info);">IFRS (IFRS 11)</span><span style="color:var(--color-text-warning);">US GAAP</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Joint venture accounting</span><span>MANDATORY equity method only</span><span>Equity method is also the general approach, though proportionate consolidation is permitted in SOME specific industries (e.g. certain oil and gas/construction arrangements) under US GAAP</span></div>
+        <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Classification driver</span><span>Rights and obligations (structure, legal form, contractual terms, other facts)</span><span>Similar substance-based analysis, though with different specific guidance</span></div>
+      </div>
+      <div class="note">US GAAP retains a NARROW proportionate consolidation option in specific industries that IFRS 11 does not permit at all — a residual divergence despite otherwise broadly similar philosophy.</div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Comprehensive event-to-statement mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event / transaction</span><span>Statement(s) affected</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Joint operation — own/shared assets, liabilities</span><span><span class="badge bs">SOFP</span></span><span>Recognised directly, per the operator's contractual share</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Joint operation — own/shared revenue, expenses</span><span><span class="badge bp">SOPL</span></span><span>Recognised directly, per contractual entitlement</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Joint venture investment recognition</span><span><span class="badge bs">SOFP</span></span><span>Single equity-method investment line (IAS 28)</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Joint venture share of profit/loss</span><span><span class="badge bp">SOPL</span></span><span>Recognised via equity method, adjusting investment carrying amount</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Significant judgements, classification, ownership details</span><span><span class="badge bp">Notes</span></span><span>Mandatory disclosure</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd">
+      <div class="ctitle cd">Cross-reference map</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Standard</span><span>Connection</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 10</span><span>Supplies the underlying "control" concept used to assess joint control collectively</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 28</span><span>Supplies the mandatory equity method mechanics for joint ventures</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 12</span><span>Supplies detailed disclosure requirements for interests in joint arrangements</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 24</span><span>Joint ventures/operations and their operators are related parties requiring disclosure</span></div>
+      </div>
+    </div>
+    <div class="card cn">
+      <div class="ctitle cn">Quick-reference glossary</div>
+      <div class="glossary-item"><div class="glossary-term">Separate vehicle</div><div class="glossary-def">A separately identifiable financial structure, including separate legal entities or entities recognised by statute, regardless of whether those entities have separate legal personality.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Party to a joint arrangement</div><div class="glossary-def">An entity participating in a joint arrangement, regardless of whether it has joint control.</div></div>
+    </div>
+  </div>
+
+  <div class="legend"><div class="ltitle">Financial statement key</div><div class="lrow">
+    <span class="badge bs">SOFP</span> Statement of financial position
+    <span class="badge bp">SOPL</span> Statement of profit or loss
+    <span class="badge bo">OCI</span> Other comprehensive income
+    <span class="badge be">Equity</span> Statement of changes in equity
+  </div></div>
+
+  <div class="footer-note">IFRS 11 — Joint Arrangements · Extended Reference Poster · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

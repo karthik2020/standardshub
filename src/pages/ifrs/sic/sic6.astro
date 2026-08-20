@@ -1,0 +1,89 @@
+---
+import StandardPageLayout from "../../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../../components/FinancialStatementKey.astro";
+import Glossary from "../../../components/Glossary.astro";
+import PageToc from "../../../components/PageToc.astro";
+import LifecycleNotice from "../../../components/StandardLifecycleNotice.astro";
+import "../../../styles/standards-poster.css";
+import "../../../styles/extended.css";
+import HistoryTimeline from "../../../components/HistoryTimeline.astro";
+import history from "../../../data/history.json";
+import metadata from "../../../data/standards/sic/sic6.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType="IFRS"
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "What SIC-6 Addressed (Historical)" },
+        { id: "s2", label: "The Conclusion It Reached (Historical)" },
+        { id: "s3", label: "Where This Guidance Lives Today" },
+        { id: "s4", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="historical-reference"
+    explanation="SIC-6 was withdrawn in March 2004 when the IASB issued a revised IAS 38 Intangible Assets, which incorporated software modification guidance directly into the standard and eliminated the need for the interpretation."
+    historical="This page is retained for historical and comparative reference. Entities should refer to the current standard that superseded this interpretation for authoritative guidance."
+    link="/ias/ias38"
+    linkText="IAS 38 Intangible Assets"
+  />
+
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>What SIC-6 Addressed (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">What SIC-6 addressed</div>
+        <div class="principle">SIC-6 addressed whether costs incurred to modify existing computer software should be expensed as incurred or capitalised as an intangible asset. It clarified whether such modification costs should be treated the same way as costs of developing new software from scratch.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>The Conclusion It Reached (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">The conclusion it reached</div>
+        <div class="principle">SIC-6 concluded that costs of modifying existing software should be accounted for in the same way as costs of developing new software. If the modification meets the criteria for recognition as an intangible asset—such as enhancing future economic benefits or enabling the software to generate additional inflows—the costs should be capitalised. Otherwise, they should be expensed as incurred.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Where This Guidance Lives Today</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card">
+        <div class="ctitle">Where this guidance lives today</div>
+        <div class="td-table">
+          <div class="tr"><span>Superseded by</span><span>IAS 38 Intangible Assets</span></div>
+          <div class="tr alt"><span>Why withdrawn</span><span>The 2004 revision incorporated software modification guidance directly into IAS 38</span></div>
+          <div class="tr"><span>Current status</span><span>Withdrawn</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Intangible asset", definition: "An identifiable non-monetary asset without physical substance, controlled by the entity and expected to generate future economic benefits." },
+      { term: "Software modification", definition: "Alterations made to existing computer software to improve functionality, extend useful life, or adapt it for new uses, as distinct from routine maintenance." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.SIC6} />
+  </section>
+</StandardPageLayout>
+
+
+
+

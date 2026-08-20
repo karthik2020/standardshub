@@ -1,0 +1,283 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/ifrs/ifrs17.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope & Definitions" },
+        { id: "s3", label: "Level of Aggregation" },
+        { id: "s4", label: "The General Measurement Model — Building Blocks" },
+        { id: "s5", label: "The Contractual Service Margin (CSM)" },
+        { id: "s6", label: "Onerous Contracts — Loss Component" },
+        { id: "s7", label: "The Premium Allocation Approach (PAA)" },
+        { id: "s8", label: "The Variable Fee Approach (VFA)" },
+        { id: "s9", label: "Presentation — Insurance Revenue" },
+        { id: "s10", label: "Disclosure" },
+        { id: "s11", label: "Judgments & Estimates" },
+        { id: "s12", label: "IFRS vs US GAAP" },
+        { id: "s13", label: "Statement Mapping" },
+        { id: "s14", label: "Related Standards & Glossary" },
+        { id: "history", label: "History & Development" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <!-- ============ SECTION 1 ============ -->
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Why insurance needed a genuinely NEW measurement model</div>
+        <div class="principle">Insurance contracts bundle a service (bearing insurance risk) with FUTURE, uncertain cash flows spanning many years. The Conceptual Framework's faithful representation objective demands measurement reflecting the TIME VALUE of money and RISK, updated as new information emerges — something the previous "IFRS 4" interim standard (which largely preserved diverse national GAAPs) never achieved. IFRS 17 introduces a genuinely NEW, current-value, risk-adjusted measurement model.</div>
+        <div class="elabel">HOW IFRS 17 MAPS TO THE FRAMEWORK</div>
+        <div class="check-list">
+          <span><strong>Faithful representation</strong> — the liability is measured as the PRESENT VALUE of future cash flows, updated EVERY period for new information — not a static, day-one estimate</span>
+          <span><strong>Relevance</strong> — the Contractual Service Margin (CSM) defers PROFIT recognition until insurance SERVICES are actually provided, matching revenue to the period of coverage</span>
+          <span><strong>Comparability</strong> — a SINGLE global measurement model replaces the wide diversity IFRS 4 permitted, dramatically improving cross-jurisdiction, cross-insurer comparability</span>
+        </div>
+        <div class="note">IFRS 17 replaced IFRS 4 — an INTERIM standard that largely permitted CONTINUATION of existing national insurance accounting practices, deliberately analogous to IFRS 6's approach for mineral resources, pending a comprehensive project.</div>
+      </div>
+      <div class="card cs">
+        <div class="ctitle cs">The building blocks, at a glance</div>
+        <div class="formula-box">
+          <div class="f-eq">Insurance contract liability = Fulfilment cash flows (estimates of future cash flows + discounting + risk adjustment) + Contractual Service Margin (CSM)</div>
+        </div>
+        <div class="callout info callout--flush">ℹ️ The RISK ADJUSTMENT compensates the entity for bearing NON-FINANCIAL risk uncertainty — a DIRECT reflection of the Framework's faithful representation of genuine risk exposure.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 2 ============ -->
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Definitions</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What IFRS 17 covers</div>
+        <div class="principle">IFRS 17 applies to insurance contracts issued (including reinsurance contracts issued), reinsurance contracts HELD, and investment contracts with DISCRETIONARY PARTICIPATION FEATURES issued by an entity that ALSO issues insurance contracts.</div>
+        <div class="note">An "insurance contract" is one under which the issuer accepts SIGNIFICANT INSURANCE RISK from another party (the policyholder) by agreeing to compensate the policyholder if a specified UNCERTAIN future event adversely affects them.</div>
+      </div>
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions you must know</div>
+        <div class="glossary-item"><div class="glossary-term">Contractual Service Margin (CSM)</div><div class="glossary-def">A component of the insurance contract liability representing UNEARNED PROFIT the entity will recognise as it provides insurance coverage in the future.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Risk adjustment</div><div class="glossary-def">The compensation an entity requires for bearing uncertainty about the AMOUNT and TIMING of cash flows arising from non-financial risk.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Coverage unit</div><div class="glossary-def">A measure of the insurance contract services provided in a period, used to allocate the CSM to profit or loss.</div></div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 3 ============ -->
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Level of Aggregation</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Portfolios, cohorts, and profitability groups</div>
+        <div class="principle">Contracts are aggregated into PORTFOLIOS (contracts subject to similar risks, managed together), then divided into GROUPS by issue year (ANNUAL COHORTS) and by PROFITABILITY at initial recognition: (1) contracts that are ONEROUS at initial recognition; (2) contracts with NO significant possibility of becoming onerous; and (3) remaining contracts.</div>
+        <div class="note">This granular grouping PREVENTS profitable contracts from masking losses on onerous ones — a direct comparability/faithful representation safeguard, ensuring loss-making business is visible rather than netted away.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 4 ============ -->
+    <div class="section-header" id="s4"><span class="num">4</span><h2>The General Measurement Model — Building Blocks</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Three building blocks, updated every period</div>
+        <div class="check-list">
+          <span><strong>Estimates of future cash flows</strong> — probability-weighted, using all reasonable and supportable information available</span>
+          <span><strong>Discounting</strong> — adjusts for the time value of money, using rates consistent with observable market prices</span>
+          <span><strong>Risk adjustment</strong> — compensation for bearing non-financial risk uncertainty</span>
+        </div>
+        <div class="worked worked--flush">
+          <div class="wk-title">Example 1: Building the fulfilment cash flows</div>
+          <div class="wk-body">An insurer estimates future claim/expense cash outflows of $9,500,000 (probability-weighted), and future premium inflows of $10,800,000. Discounting reduces the net figure by $200,000. A risk adjustment of $150,000 is added for non-financial risk uncertainty.</div>
+          <div class="wk-answer">
+            <strong>Net cash flows</strong> = 10,800,000 − 9,500,000 = $1,300,000 (net inflow)<br>
+            <strong>After discounting</strong> = 1,300,000 − 200,000 = $1,100,000<br>
+            <strong>Fulfilment cash flows</strong> (net of risk adjustment) = 1,100,000 − 150,000 = <strong>$950,000</strong> (net asset/liability position before CSM)
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 5 ============ -->
+    <div class="section-header" id="s5"><span class="num">5</span><h2>The Contractual Service Margin (CSM)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Deferring profit until service is delivered</div>
+        <div class="principle">At INITIAL recognition, if the fulfilment cash flows show a NET INFLOW (expected profit), NO profit is recognised immediately — instead, a CSM liability equal to that net inflow is established, and released to profit or loss SYSTEMATICALLY over the coverage period, based on COVERAGE UNITS provided.</div>
+        <div class="worked worked--flush">
+          <div class="wk-title">Example 2: Establishing and releasing the CSM</div>
+          <div class="wk-body">Continuing Example 1: fulfilment cash flows show a net expected inflow of $950,000 at initial recognition. The contract provides coverage over 5 years, with EQUAL coverage units expected each year.</div>
+          <div class="wk-answer">
+            <strong>CSM established at initial recognition</strong> = <strong>$950,000</strong> (NO day-one profit recognised)<br>
+            <strong>CSM released to profit each year</strong> = 950,000 / 5 = <strong>$190,000 per year</strong>, recognised as insurance services are actually PROVIDED — matching profit recognition to the delivery of coverage, not to the contract's inception.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 6 ============ -->
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Onerous Contracts — Loss Component</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Losses recognised IMMEDIATELY — no CSM buffer</div>
+        <div class="principle">If fulfilment cash flows show a NET OUTFLOW (expected LOSS) at initial recognition, NO CSM is established — the ENTIRE expected loss is recognised IMMEDIATELY in profit or loss, since a CSM cannot be negative.</div>
+        <div class="worked worked--flush">
+          <div class="wk-title">Example 3: An onerous contract group</div>
+          <div class="wk-body">A different group of contracts shows fulfilment cash flows of a NET OUTFLOW of $400,000 at initial recognition (expected claims exceed premiums, after discounting and risk adjustment).</div>
+          <div class="wk-answer">This ENTIRE $400,000 loss is recognised IMMEDIATELY in profit or loss at initial recognition — NO CSM is created (since it cannot be negative), directly surfacing the loss-making nature of this contract group, rather than allowing it to be masked by profitable business elsewhere.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 7 ============ -->
+    <div class="section-header" id="s7"><span class="num">7</span><h2>The Premium Allocation Approach (PAA)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">A simplified alternative for short-duration contracts</div>
+        <div class="text-supporting">For contracts with a coverage period of ONE YEAR OR LESS, or where the PAA produces a measurement NOT materially different from the general model, an entity MAY elect the simplified PAA — broadly similar to a traditional unearned premium reserve approach, without the full building-block complexity of the general model.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 8 ============ -->
+    <div class="section-header" id="s8"><span class="num">8</span><h2>The Variable Fee Approach (VFA)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">For contracts with direct participation features</div>
+        <div class="text-supporting">For contracts where the entity's obligation is to pay the policyholder an amount equal to a SUBSTANTIAL SHARE of the fair value returns on underlying items (e.g. unit-linked or with-profits contracts), the VFA modifies the CSM to also absorb the entity's share of CHANGES in the fair value of underlying items — treating the entity's fee as more akin to an ASSET MANAGEMENT fee than a traditional insurance margin.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 9 ============ -->
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Presentation — Insurance Revenue</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">A genuinely new revenue concept, distinct from premiums received</div>
+        <div class="text-supporting">"Insurance revenue" under IFRS 17 does NOT equal premiums received — it reflects the CONSIDERATION for the PERIOD's coverage and services, EXCLUDING any investment/deposit components. This represents a fundamentally different, and often SMALLER, revenue figure than the premium cash actually collected, aligning insurance revenue recognition conceptually with IFRS 15's control-transfer philosophy.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 10 ============ -->
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Required disclosures</div>
+        <div class="check-list">
+          <span>Explanation of recognised amounts, including reconciliations of the CSM, risk adjustment, and liability for remaining coverage/incurred claims</span>
+          <span>Significant judgements in applying IFRS 17, including methods for estimating fulfilment cash flows, discount rates, and risk adjustment</span>
+          <span>Nature and extent of risks arising from insurance contracts (insurance risk, credit risk, liquidity risk, market risk)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 11 ============ -->
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where management judgement matters most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Contract boundary determination (which future cash flows to include)</span>
+              <span>Level of aggregation and grouping of onerous vs profitable contracts</span>
+              <span>Choice of coverage units used to release the CSM</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>Probability-weighted future cash flow estimates (claims, expenses, premiums)</span>
+              <span>Discount rates reflecting the characteristics of the insurance liability</span>
+              <span>Risk adjustment for non-financial risk</span>
+            </div>
+          </div>
+        </div>
+        <div class="callout warn callout--warn-flush">⚠️ IFRS 17 is widely regarded as one of the MOST complex standards ever issued by the IASB, requiring extensive actuarial input and systems investment — its implementation was one of the longest in IFRS history.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 12 ============ -->
+    <div class="section-header" id="s12"><span class="num">12</span><h2>IFRS vs US GAAP</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — IFRS 17 vs US GAAP</div>
+        <div class="td-table">
+          <div class="th cols-12-1-1"><span>Feature</span><span>IFRS (IFRS 17)</span><span>US GAAP</span></div>
+          <div class="tr cols-12-1-1"><span>Measurement model</span><span>Current, risk-adjusted, discounted fulfilment cash flows + CSM</span><span>US GAAP retains a MORE traditional model (ASC 944), with LESS emphasis on current discount rates for most long-duration contract types, though a 2018 update (LDTI) introduced some current-value elements</span></div>
+          <div class="tr alt cols-12-1-1"><span>Profit deferral (CSM equivalent)</span><span>Explicit CSM, released over the coverage period</span><span>No direct CSM equivalent for most contract types under traditional US GAAP models</span></div>
+          <div class="tr cols-12-1-1"><span>Revenue presentation</span><span>"Insurance revenue" excludes investment components</span><span>Premium revenue presentation differs, generally closer to premiums written/earned</span></div>
+        </div>
+        <div class="note">IFRS 17 represents a SIGNIFICANTLY more comprehensive overhaul than the parallel US GAAP long-duration contract reforms — IFRS and US GAAP insurance accounting remain SUBSTANTIALLY different, unlike the close convergence seen in IFRS 15/9/13.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 13 ============ -->
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Comprehensive event-to-statement mapping table</div>
+        <div class="td-table">
+          <div class="th cols-16-1-14"><span>Event / transaction</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr cols-16-1-14"><span>Initial recognition — profitable group (CSM established)</span><span><span class="badge bs">SOFP</span></span><span>No day-one profit; CSM liability recognised</span></div>
+          <div class="tr alt cols-16-1-14"><span>Initial recognition — onerous group (loss component)</span><span><span class="badge bp">SOPL</span></span><span>Full expected loss recognised immediately</span></div>
+          <div class="tr cols-16-1-14"><span>CSM release based on coverage units</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Systematic profit recognition as coverage is provided</span></div>
+          <div class="tr alt cols-16-1-14"><span>Insurance revenue recognised</span><span><span class="badge bp">SOPL</span></span><span>Excludes investment/deposit components</span></div>
+          <div class="tr cols-16-1-14"><span>Changes in discount rate assumptions</span><span><span class="badge bo">OCI</span> <span class="badge bp">SOPL</span></span><span>Policy choice: disaggregate finance income/expense between OCI and P&amp;L, or recognise fully in P&amp;L</span></div>
+          <div class="tr alt cols-16-1-14"><span>Claims paid</span><span><span class="badge bs">SOFP</span> <span class="badge bs">Cash Flow Statement</span></span><span>Reduces the liability for incurred claims</span></div>
+          <div class="tr cols-16-1-14"><span>CSM reconciliation, risk adjustment, judgements</span><span><span class="badge bp">Notes</span></span><span>Extensive mandatory disclosure</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 14 ============ -->
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Related Standards &amp; Glossary</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Cross-reference map</div>
+        <div class="td-table">
+          <div class="th cols-08-2"><span>Standard</span><span>Connection</span></div>
+          <div class="tr cols-08-2"><span>IFRS 4</span><span>The DIRECT interim predecessor standard, replaced entirely by IFRS 17</span></div>
+          <div class="tr alt cols-08-2"><span>IFRS 9</span><span>Governs financial assets backing insurance liabilities; interacts with IFRS 17's discount rate/OCI presentation choices</span></div>
+          <div class="tr cols-08-2"><span>IFRS 15</span><span>Excluded from IFRS 17's scope but shares similar "revenue as service is delivered" philosophy</span></div>
+          <div class="tr alt cols-08-2"><span>IFRS 13</span><span>Supplies fair value measurement concepts used for underlying items in VFA contracts</span></div>
+        </div>
+      </div>
+      <div class="card cn">
+        <div class="ctitle cn">Quick-reference glossary</div>
+        <div class="glossary-item"><div class="glossary-term">Fulfilment cash flows</div><div class="glossary-def">Probability-weighted estimates of future cash flows, discounted and adjusted for non-financial risk.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Onerous contract (insurance)</div><div class="glossary-def">A group of contracts where fulfilment cash flows show a net outflow at initial recognition, requiring immediate loss recognition.</div></div>
+      </div>
+    </div>
+
+<Glossary entries={[
+      { term: "Contractual Service Margin (CSM)", definition: "A component of the insurance contract liability representing UNEARNED PROFIT the entity will recognise as it provides insurance coverage in the future." },
+      { term: "Risk adjustment", definition: "The compensation an entity requires for bearing uncertainty about the AMOUNT and TIMING of cash flows arising from non-financial risk." },
+      { term: "Coverage unit", definition: "A measure of the insurance contract services provided in a period, used to allocate the CSM to profit or loss." },
+      { term: "Fulfilment cash flows", definition: "Probability-weighted estimates of future cash flows, discounted and adjusted for non-financial risk." },
+      { term: "Onerous contract (insurance)", definition: "A group of contracts where fulfilment cash flows show a net outflow at initial recognition, requiring immediate loss recognition." },
+      { term: "Insurance revenue", definition: "The consideration for the PERIOD's coverage and services, EXCLUDING any investment/deposit components — distinct from premiums received." }
+    ]} />
+
+<FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.IFRS17} />
+  </section>
+</StandardPageLayout>

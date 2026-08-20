@@ -1,0 +1,245 @@
+---
+import StandardPageLayout from "../../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../../components/FinancialStatementKey.astro";
+import Glossary from "../../../components/Glossary.astro";
+import PageToc from "../../../components/PageToc.astro";
+import LifecycleNotice from "../../../components/StandardLifecycleNotice.astro";
+import "../../../styles/standards-poster.css";
+import "../../../styles/extended.css";
+import HistoryTimeline from "../../../components/HistoryTimeline.astro";
+import history from "../../../data/history.json";
+import metadata from "../../../data/standards/ifric/ifric4.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType="IFRS"
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework (Historical)" },
+        { id: "s2", label: "Scope & Definitions (Historical)" },
+        { id: "s3", label: "The Two-Part Identification Test (Historical)" },
+        { id: "s4", label: "Right to Control the Use of the Asset (Historical)" },
+        { id: "s5", label: "Fulfilment Dependent on a Specific Asset (Historical)" },
+        { id: "s6", label: "Reassessment Triggers (Historical)" },
+        { id: "s7", label: "How This Guidance Became IFRS 16" },
+        { id: "s8", label: "Common Historical Application Areas" },
+        { id: "s9", label: "Disclosure (Historical)" },
+        { id: "s10", label: "Judgments & Estimates (Historical)" },
+        { id: "s11", label: "IFRIC 4 vs Current IFRS 16 Test" },
+        { id: "s12", label: "Statement Mapping (Historical)" },
+        { id: "s13", label: "Related Standards" },
+        { id: "s14", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="withdrawn"
+    explanation="IFRIC 4's guidance for identifying whether an arrangement contains a lease was withdrawn and absorbed directly into IFRS 16's own 'identifying a lease' requirements (paragraphs 9-11), rather than being replaced by a separate interpretation."
+    historical="This poster is retained for historical reference and to help practitioners understand the conceptual lineage of today's lease identification test. For current lease identification requirements, always apply IFRS 16."
+    link="/ifrs/ifrs16"
+    linkText="IFRS 16 Leases"
+  />
+
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">A substance-over-form pioneer, later absorbed into the standard itself</div>
+        <div class="principle">IFRIC 4 established that an arrangement could CONTAIN a lease even WITHOUT being structured in the legal form of one — for example, a long-term supply or take-or-pay contract dependent on a SPECIFIC asset that the customer effectively controls. This SUBSTANCE-OVER-FORM approach was so fundamental that when IFRS 16 was developed, the IASB chose to INCORPORATE this identification logic directly into the new leases standard.</div>
+        <div class="elabel">WHY THIS ABSORPTION HAPPENED</div>
+        <div class="check-list">
+          <span><strong>Simplification</strong> — folding lease IDENTIFICATION and lease ACCOUNTING into a single standard reduced the need to cross-reference a separate interpretation</span>
+          <span><strong>Conceptual continuity</strong> — IFRS 16's own "identifying a lease" test preserves IFRIC 4's core substance-based logic almost UNCHANGED</span>
+        </div>
+        <div class="note">This is a genuinely INSTRUCTIVE case of a withdrawn interpretation whose SUBSTANCE lives on almost entirely intact within its successor standard.</div>
+      </div>
+      <div class="card cs">
+        <div class="ctitle cs">The two-part test IFRIC 4 established</div>
+        <div class="formula-box">
+          <div class="f-eq">Arrangement contains a lease IF: (1) fulfilment depends on a specific asset, AND (2) the arrangement conveys a right to use that asset</div>
+        </div>
+        <div class="callout info callout--flush">ℹ️ This TWO-PART logic is the direct conceptual ancestor of IFRS 16's own "identified asset" + "right to control" test.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope & Definitions (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What IFRIC 4 covered</div>
+        <div class="principle">IFRIC 4 applied to arrangements that did NOT take the legal form of a lease but might nonetheless convey a right to use an asset in return for a payment or series of payments — historically significant for outsourcing, take-or-pay, and power purchase agreement structures.</div>
+      </div>
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions (historical)</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Specific asset</div>
+          <div class="glossary-def">An asset explicitly or implicitly identified in an arrangement, a concept CARRIED FORWARD into IFRS 16's "identified asset" language.</div>
+        </div>
+        <div class="glossary-item" style="border-bottom:none;">
+          <div class="glossary-term">Take-or-pay contract</div>
+          <div class="glossary-def">A contract requiring payment regardless of whether the buyer takes delivery, a common historical IFRIC 4 application context.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>The Two-Part Identification Test (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">The conceptual ancestor of IFRS 16's own test</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">BOTH conditions had to be met: fulfilment depended on the use of a SPECIFIC asset (explicitly or implicitly identified), AND the arrangement conveyed a RIGHT TO USE that asset — this exact two-part logic is PRESERVED in IFRS 16's own current lease identification test.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Right to Control the Use of the Asset (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Historical illustration</div>
+        <div class="worked">
+          <div class="wk-title">Example 1: A power purchase agreement historically assessed under IFRIC 4</div>
+          <div class="wk-body">A manufacturing company entered a long-term power purchase agreement with a specific power plant, taking substantially ALL of the plant's output, with pricing NOT based on market rates but on a formula tied to the plant's own fixed and variable costs.</div>
+          <div class="wk-answer">Under IFRIC 4's historical test, this arrangement was likely determined to CONTAIN A LEASE of the power plant, since it depended on a SPECIFIC identified asset and the pricing/output structure indicated the buyer effectively obtained the right to control or use substantially all of the plant's capacity — an analysis that would reach the SAME conclusion under IFRS 16's current identification test today.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Fulfilment Dependent on a Specific Asset (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">A concept preserved almost unchanged</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">If the supplier had the PRACTICAL ability to substitute alternative assets throughout the period of use, and it would be economically ADVANTAGEOUS to do so, the arrangement did NOT depend on a specific asset — this "substitution rights" concept is PRESERVED essentially unchanged as IFRS 16's own substantive substitution rights exclusion.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Reassessment Triggers (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Absorbed into IFRS 16's own reassessment framework</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">IFRIC 4 required reassessment upon a change in contractual terms, renewal, or a change in the determination of whether fulfilment depended on a specific asset — this reassessment LOGIC continues, in modified form, within IFRS 16's own lease modification framework.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>How This Guidance Became IFRS 16</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">A genuinely instructive absorption case</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">When developing IFRS 16 (issued 2016, effective 2019), the IASB determined that a SEPARATE interpretation for lease identification created unnecessary complexity alongside a comprehensive new leases standard. IFRIC 4's core substance-based test was therefore RE-DRAFTED and incorporated as paragraphs 9-11 of IFRS 16 itself, with IFRIC 4 FORMALLY WITHDRAWN upon IFRS 16 becoming effective.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Common Historical Application Areas</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where this analysis was most frequently applied</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Power purchase agreements, take-or-pay supply contracts, outsourcing or IT service arrangements involving dedicated hardware, and toll manufacturing or processing agreements — ALL contexts where IFRS 16's current lease identification test remains equally relevant TODAY.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Historical disclosure expectations</div>
+        <div class="check-list">
+          <span>Description of arrangements determined to contain a lease</span>
+          <span>Basis for the specific asset and right-to-use determination</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Judgments & Estimates (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where judgement historically mattered most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Whether substitution rights were genuinely substantive</span>
+              <span>Whether the arrangement conveyed a right to control use, versus merely purchasing output or services</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>None typically significant — primarily a qualitative identification test</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>IFRIC 4 vs Current IFRS 16 Test</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comprehensive historical-to-current comparison</div>
+        <div class="td-table">
+          <div class="th cols-12-1-1"><span>Feature</span><span>IFRIC 4 (historical)</span><span>IFRS 16 (current)</span></div>
+          <div class="tr cols-12-1-1"><span>Core identification logic</span><span>Specific asset + right to use</span><span>SUBSTANTIALLY PRESERVED as "identified asset" + "right to control"</span></div>
+          <div class="tr alt cols-12-1-1"><span>Location of guidance</span><span>Separate interpretation</span><span>Absorbed directly into paragraphs 9-11 of the leases standard itself</span></div>
+          <div class="tr cols-12-1-1"><span>Substitution rights concept</span><span>Practical ability + economic advantage test</span><span>IDENTICAL substantive substitution rights exclusion</span></div>
+        </div>
+        <div class="note">IFRIC 4 stands out as a withdrawn interpretation whose CORE LOGIC survives almost entirely intact within its successor standard.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Where IFRIC 4 determinations historically fed into</div>
+        <div class="td-table">
+          <div class="th cols-16-1-14"><span>Item</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr cols-16-1-14"><span>Arrangement identified as containing a lease</span><span><span class="badge bs">SOFP</span></span><span>Fed into former IAS 17 lease classification, now IFRS 16's own model</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Cross-reference map</div>
+        <div class="td-table">
+          <div class="th cols-08-2"><span>Standard</span><span>Connection</span></div>
+          <div class="tr cols-08-2"><span>IFRS 16</span><span>The CURRENT standard, absorbing IFRIC 4's lease identification test directly</span></div>
+          <div class="tr alt cols-08-2"><span>IAS 17</span><span>The predecessor leases standard IFRIC 4 historically supported</span></div>
+        </div>
+      </div>
+      <div class="card cn">
+        <div class="ctitle cn">Quick-reference glossary</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Substantive substitution right</div>
+          <div class="glossary-def">A supplier's practical ability AND economic incentive to substitute an alternative asset, negating an "identified asset" — identical concept carried into IFRS 16.</div>
+        </div>
+        <div class="glossary-item" style="border-bottom:none;">
+          <div class="glossary-term">Right to control use</div>
+          <div class="glossary-def">The current IFRS 16 terminology for what IFRIC 4 originally termed the "right to use" test.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Specific asset", definition: "An asset explicitly or implicitly identified in an arrangement, a concept carried forward into IFRS 16's 'identified asset' language." },
+      { term: "Substantive substitution right", definition: "A supplier's practical ability and economic incentive to substitute an alternative asset, negating an 'identified asset'." },
+      { term: "Take-or-pay contract", definition: "A contract requiring payment regardless of whether the buyer takes delivery, a common historical IFRIC 4 application context." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.IFRIC4} />
+  </section>
+</StandardPageLayout>
+
+
+
+

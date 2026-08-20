@@ -1,0 +1,143 @@
+﻿---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc950.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  bannerNotice={metadata.bannerNotice}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope" },
+        { id: "s3", label: "Title Plant Cost Capitalization — What Qualifies" },
+        { id: "s4", label: "No Amortization While Adequately Maintained — the Indefinite-Life Treatment" },
+        { id: "s5", label: "Maintenance Costs — Expensed Currently" },
+        { id: "s6", label: "Bulk Purchases and Startup Costs" },
+        { id: "s7", label: "Worked Example — Title Plant Capitalization and No-Amortization Treatment" },
+        { id: "s8", label: "Disclosure Requirements" },
+        { id: "s9", label: "Critical Judgments &amp; Estimates" },
+        { id: "s10", label: "No Dedicated IFRS Title Plant Standard — Discussion" },
+        { id: "s11", label: "Statement Mapping" },
+        { id: "s12", label: "Related Topics" },
+        { id: "s13", label: "Glossary" }
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card ci span2"><div class="ctitle ci">A historical property records database that doesn't wear out if maintained</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">A "TITLE PLANT" is a historical DATABASE of property records — deeds, liens, mortgages, judgments — that TITLE INSURANCE companies maintain and use to research and verify property ownership before issuing title insurance. ASC 950 recognises that a title plant, UNLIKE most capitalised assets, does NOT genuinely "wear out" or decline in value over time PROVIDED it is CONTINUOUSLY and adequately maintained (updated with new recordings) — leading to a distinctive NO-AMORTIZATION treatment (Section 4), reasoning similar in spirit to why LAND is not depreciated.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">Title insurance and title search companies</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 950 applies to entities maintaining title plants for use in title insurance underwriting and title search/examination services.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Title Plant Cost Capitalization — What Qualifies</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">Costs of building the historical record database</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">Costs of ACQUIRING or CONSTRUCTING a title plant — copying, indexing, and organising historical public property records to create a searchable database — are CAPITALISED as an asset, reflecting the substantial, lasting economic value of having a comprehensive, organised, easily-searchable historical property record.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>No Amortization While Adequately Maintained — the Indefinite-Life Treatment</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cs span2"><div class="ctitle cs">A genuinely unusual exception to normal capitalized-asset amortization</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">A title plant is <strong>NOT amortised</strong> — PROVIDED it is CONTINUOUSLY updated and adequately MAINTAINED (i.e. new property recordings are regularly added to keep the plant current). The reasoning: a well-maintained title plant does NOT genuinely decline in USEFULNESS over time — unlike most intangible or tangible assets, its VALUE lies in the COMPLETENESS and CURRENCY of its historical record, which if properly maintained, remains just as USEFUL indefinitely. This treats the title plant much like LAND (also not depreciated) rather than like a typical amortising intangible asset.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Maintenance Costs — Expensed Currently</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">The cost of keeping the plant current, recognised as incurred</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">Ongoing costs of MAINTAINING the title plant — regularly adding newly recorded deeds, liens, and other property records to keep the database CURRENT — are EXPENSED as INCURRED, rather than capitalised. This maintenance expensing is the CRITICAL counterpart to the no-amortization treatment: the plant retains its value INDEFINITELY only BECAUSE these maintenance costs are being currently and continuously incurred and expensed — if maintenance lapses, the plant's continued no-amortization treatment would need to be reconsidered.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Bulk Purchases and Startup Costs</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">Initial construction costs are capitalized as part of the base asset</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">Costs of a BULK PURCHASE of an existing title plant, or the STARTUP costs of constructing a NEW title plant from scratch (initial compilation of historical records), are CAPITALISED as part of the title plant asset's initial cost basis — distinguished from the ONGOING maintenance costs (Section 5) that are expensed as incurred once the plant is operational.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Worked Example — Title Plant Capitalization and No-Amortization Treatment</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">A capitalized, non-amortizing asset alongside ongoing expensed maintenance</div>
+    <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: A title insurance company's county title plant</div><div class="wk-body">A title insurance company constructs a title plant covering a specific county at an initial cost of $4,000,000, and incurs $250,000 annually thereafter to keep the plant updated with newly recorded property documents.</div><div class="wk-answer">The $4,000,000 initial construction cost is CAPITALISED as the title plant asset, and is <strong>NOT AMORTISED</strong> — remaining on the balance sheet at $4,000,000 indefinitely, PROVIDED the plant continues to be adequately maintained. The $250,000 ANNUAL maintenance cost is EXPENSED each year as incurred, rather than added to the capitalised asset balance.</div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">What ASC 950 requires</div><div class="check-list"><span>Accounting policy for title plant capitalisation and the no-amortization treatment</span><span>Basis for concluding the title plant continues to be adequately maintained</span></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+    <div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Whether the title plant continues to be "adequately maintained," supporting continued no-amortization treatment</span><span>Distinguishing capitalisable initial construction/bulk purchase costs from expensed ongoing maintenance costs</span></div></div>
+    <div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Fair value of a title plant for impairment assessment purposes, where indicators of impairment arise</span></div></div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>No Dedicated IFRS Title Plant Standard — Discussion</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card ci span2"><div class="ctitle ci">Broadly analogous to IAS 38's indefinite-life intangible asset treatment</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">IFRS has NO dedicated title plant industry standard — title insurance is far less prevalent internationally than in the US, where it is a distinctive feature of US real estate transactions. However, the UNDERLYING accounting concept — an asset with an INDEFINITE useful life, NOT amortised, but tested regularly for IMPAIRMENT — closely parallels IAS 38's treatment of INDEFINITE-LIFE intangible assets generally: IAS 38 similarly does NOT amortise indefinite-life intangibles, but DOES require ANNUAL impairment testing (rather than relying solely on a "adequately maintained" qualitative assessment as ASC 950 does). This makes the CONCEPTUAL treatment broadly CONVERGED, even without a dedicated title-plant-specific standard on the IFRS side.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cs span2"><div class="ctitle cs">Where every ASC 950 event lands</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+    <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Title plant construction/bulk purchase cost</span><span><span class="badge bs">BS</span></span><span>Capitalised, not amortised while adequately maintained</span></div>
+    <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Ongoing maintenance cost</span><span><span class="badge bp">IS</span></span><span>Expensed as incurred</span></div>
+    </div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Related Topics</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">Cross-reference map</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+    <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 350</span><span>Intangibles — supplies the general indefinite-life intangible asset impairment testing principles relevant by analogy</span></div>
+    <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 360</span><span>Property, Plant &amp; Equipment — supplies the analogy to land's non-depreciation treatment</span></div>
+    </div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cn span2">
+    <div class="glossary-item"><div class="glossary-term">Title plant</div><div class="glossary-def">A historical database of property records maintained by a title insurance company, capitalised and not amortised while adequately maintained.</div></div>
+    <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Adequately maintained</div><div class="glossary-def">The qualitative standard requiring continuous updating of a title plant with newly recorded property documents, supporting its continued no-amortization treatment.</div></div>
+    </div>
+    </div>
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.asc950 || []} />
+  </section>
+</StandardPageLayout>
+

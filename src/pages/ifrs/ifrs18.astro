@@ -1,0 +1,246 @@
+﻿---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/ifrs/ifrs18.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  bannerNotice={metadata.bannerNotice}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework" },
+        { id: "s2", label: "Scope & Definitions" },
+        { id: "s3", label: "The Five Categories of Income and Expenses" },
+        { id: "s4", label: "The Two New Mandatory Subtotals" },
+        { id: "s5", label: "Specified Main Business Activities" },
+        { id: "s6", label: "Management-Defined Performance Measures (MPMs)" },
+        { id: "s7", label: "Aggregation & Disaggregation Principles" },
+        { id: "s8", label: "Statement of Cash Flows Changes" },
+        { id: "s9", label: "Disclosure" },
+        { id: "s10", label: "Judgments & Estimates" },
+        { id: "s11", label: "IFRS 18 vs IAS 1 — Full Comparison" },
+        { id: "s12", label: "Statement Mapping" },
+        { id: "s13", label: "Related Standards" },
+        { id: "s14", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Structure and transparency, without changing measurement</div>
+        <div class="principle">IFRS 18 REPLACES IAS 1, but the IASB deliberately did NOT reconsider all of IAS 1 — it focused specifically on the STATEMENT OF PROFIT OR LOSS, responding to persistent investor concerns that income statements varied too much in content/structure between companies, that management's own "adjusted" performance measures lacked transparency, and that material information was often buried in catch-all line items.</div>
+        <div class="elabel">HOW IFRS 18 MAPS TO THE FRAMEWORK</div>
+        <div class="check-list">
+          <span><strong>Comparability</strong> — mandatory categories and defined subtotals create a CONSISTENT starting structure across all IFRS preparers, addressing the primary investor complaint</span>
+          <span><strong>Transparency</strong> — bringing management-defined performance measures INTO the audited financial statements (rather than leaving them in unaudited investor presentations) is the standard's signature innovation</span>
+        </div>
+        <div class="note">IFRS 18 does NOT change recognition or measurement of revenues/expenses — net profit is UNCHANGED. It restructures PRESENTATION only, alongside new disclosure requirements.</div>
+      </div>
+      <div class="card cs">
+        <div class="ctitle cs">What stayed, what changed from IAS 1</div>
+        <div class="td-table">
+          <div class="th cols-13-1"><span>Aspect</span><span>Status under IFRS 18</span></div>
+          <div class="tr cols-13-1"><span>Statement of financial position, statement of changes in equity</span><span>Largely UNCHANGED from IAS 1</span></div>
+          <div class="tr alt cols-13-1"><span>Statement of profit or loss structure</span><span>MAJOR new requirements (categories, subtotals)</span></div>
+          <div class="tr cols-13-1"><span>MPM disclosures</span><span>ENTIRELY NEW requirement</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope & Definitions</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What IFRS 18 covers</div>
+        <div class="principle">IFRS 18 sets overall requirements for presentation and disclosure in general purpose financial statements, effective for annual periods beginning on/after 1 January 2027, with EARLY ADOPTION permitted.</div>
+        <div class="note">Retained some IAS 1 paragraphs directly; moved certain other IAS 1 paragraphs into IAS 8 and IFRS 7.</div>
+      </div>
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions you must know</div>
+        <div class="glossary-item"><div class="glossary-term">Management-defined performance measure (MPM)</div><div class="glossary-def">A subtotal of income and expenses, NOT specified by IFRS Accounting Standards, used in PUBLIC COMMUNICATIONS outside the financial statements to convey management's view of financial performance.</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Specified main business activity</div><div class="glossary-def">Investing in particular types of assets, or providing financing to customers, as a CORE (not incidental) business activity — altering an entity's category classification.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>The Five Categories of Income and Expenses</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">A defined structure for the statement of profit or loss</div>
+        <div class="td-table">
+          <div class="th cols-12-18"><span>Category</span><span>Content</span></div>
+          <div class="tr cols-12-18"><span>Operating</span><span>The DEFAULT category — includes all income/expenses NOT classified elsewhere</span></div>
+          <div class="tr alt cols-12-18"><span>Investing</span><span>Returns from investments held largely independently of other resources</span></div>
+          <div class="tr cols-12-18"><span>Financing</span><span>Income/expenses on liabilities involving only the raising of finance, INCLUDING interest on ALL liabilities</span></div>
+          <div class="tr alt cols-12-18"><span>Income taxes</span><span>Per IAS 12</span></div>
+          <div class="tr cols-12-18"><span>Discontinued operations</span><span>Per IFRS 5</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>The Two New Mandatory Subtotals</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Standardising the income statement's structure</div>
+        <div class="formula-box">
+          <div class="f-eq">Operating profit = Sum of all items in the OPERATING category</div>
+          <div class="f-eq">Profit before financing and income taxes = Operating profit + INVESTING category</div>
+        </div>
+        <div class="worked" style="margin-bottom:0;">
+          <div class="wk-title">Example 1: Building the new subtotals</div>
+          <div class="wk-body">A company has operating income/expenses netting to $500 million, investing category income of $30 million, and financing category expense of $80 million, with income tax of $100 million.</div>
+          <div class="wk-answer">
+            Operating profit = $500 million<br>
+            Profit before financing and income taxes = $500 million + $30 million = $530 million<br>
+            Profit before tax = $530 million − $80 million = $450 million<br>
+            Profit for the period = $450 million − $100 million = $350 million<br>
+            These TWO NEW subtotals must appear on the FACE of the statement, with EQUAL prominence to any other primary line item.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Specified Main Business Activities</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">A significant classification nuance</div>
+        <div class="text-supporting">If investing in particular assets, or providing financing to customers, is a SPECIFIED main business activity (not merely incidental), the entity classifies RELATED income/expenses (which would otherwise fall in investing/financing) WITHIN the operating category instead — genuinely relevant for banks, non-bank financial institutions, and asset-heavy investment holding companies.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Management-Defined Performance Measures (MPMs)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">The standard's signature innovation</div>
+        <div class="text-supporting">MPMs (e.g. "adjusted EBITDA," "underlying profit") used in PUBLIC COMMUNICATIONS must now be DISCLOSED in a SINGLE NOTE within the audited financial statements, with a RECONCILIATION to the most comparable IFRS-specified subtotal, the tax/non-controlling interest effect of each reconciling item, and an explanation of why the measure provides useful information — bringing measures previously confined to unaudited investor presentations into AUDITED, reconciled disclosure.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Aggregation & Disaggregation Principles</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Tackling the "catch-all line item" problem</div>
+        <div class="text-supporting">IFRS 18 sharpens principles for grouping information (items sharing similar characteristics may be aggregated; items with DISSIMILAR characteristics must be presented/disclosed SEPARATELY), directly targeting the investor complaint that material information was often buried within generic "other expenses" line items.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Statement of Cash Flows Changes</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Removing prior presentation choices</div>
+        <div class="text-supporting">IFRS 18 ELIMINATES the presentation choices IAS 7 previously permitted for classifying dividends/interest received and paid, and defines "operating profit or loss" as the MANDATORY starting point when applying the indirect method — a consequential change to cash flow statement presentation.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Key disclosure requirements</div>
+        <div class="check-list">
+          <span>The five-category statement of profit or loss structure with the two mandatory subtotals</span>
+          <span>MPM disclosures in a single note, reconciled to the nearest IFRS-specified subtotal</span>
+          <span>Enhanced aggregation/disaggregation-driven line item and note disclosures</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments & Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where management judgement matters most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Whether investing/financing constitutes a "specified main business activity"</span>
+              <span>Which measures used in public communications meet the MPM definition</span>
+              <span>Aggregation/disaggregation grouping decisions</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>None new — IFRS 18 does not change measurement, only presentation</span>
+            </div>
+          </div>
+        </div>
+        <div class="callout warn callout--chip callout--warn-flush">Companies should begin RUNNING PARALLEL IFRS 18-style presentations well before the 2027 effective date, given the RESTATEMENT of comparative-period figures required in the year of initial adoption.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>IFRS 18 vs IAS 1 — Full Comparison</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comprehensive comparison table</div>
+        <div class="td-table">
+          <div class="th cols-12-1-1"><span>Feature</span><span>IAS 1 (current)</span><span>IFRS 18 (from 2027)</span></div>
+          <div class="tr cols-12-1-1"><span>Statement of profit or loss structure</span><span>Principles-based, minimum line items only</span><span>FIVE mandatory categories, TWO new mandatory subtotals</span></div>
+          <div class="tr alt cols-12-1-1"><span>Non-GAAP/adjusted measures</span><span>NOT addressed — left to unaudited investor presentations</span><span>MPMs brought INTO audited financial statements, with mandatory reconciliation</span></div>
+          <div class="tr cols-12-1-1"><span>Cash flow statement presentation choices</span><span>Choice permitted for dividend/interest classification</span><span>Choices ELIMINATED; operating profit mandated as the indirect method starting point</span></div>
+        </div>
+        <div class="note">IFRS 18 preserves IAS 1's core going-concern, materiality, and consistency principles unchanged — the transition is concentrated in the statement of profit or loss and its accompanying disclosures.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Where every IFRS 18 item lands</div>
+        <div class="td-table">
+          <div class="th cols-16-1-14"><span>Item</span><span>Location</span><span>Notes</span></div>
+          <div class="tr cols-16-1-14"><span>Operating profit, profit before financing and tax</span><span><span class="badge bp">SOPL</span></span><span>Mandatory face-of-statement subtotals</span></div>
+          <div class="tr alt cols-16-1-14"><span>MPM reconciliation</span><span><span class="badge bp">Notes</span></span><span>Single dedicated note</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Cross-reference map</div>
+        <div class="td-table">
+          <div class="th cols-08-2"><span>Standard</span><span>Connection</span></div>
+          <div class="tr cols-08-2"><span>IAS 1</span><span>The standard IFRS 18 replaces globally</span></div>
+          <div class="tr alt cols-08-2"><span>IAS 7</span><span>Cash flow statement presentation choices eliminated by IFRS 18</span></div>
+          <div class="tr cols-08-2"><span>IFRS 19</span><span>Made minor consequential amendments to IFRS 18 upon its own issuance</span></div>
+        </div>
+      </div>
+      <div class="card cn">
+        <div class="ctitle cn">Quick-reference glossary</div>
+        <div class="glossary-item"><div class="glossary-term">Operating profit</div><div class="glossary-def">The sum of all items in the operating category — one of IFRS 18's two new mandatory subtotals.</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Profit before financing and income taxes</div><div class="glossary-def">Operating profit plus the investing category — IFRS 18's second new mandatory subtotal.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Operating profit", definition: "The sum of all items in the operating category — one of IFRS 18's two new mandatory subtotals." },
+      { term: "Profit before financing and income taxes", definition: "Operating profit plus the investing category — IFRS 18's second new mandatory subtotal." },
+      { term: "Management-defined performance measure (MPM)", definition: "A subtotal of income and expenses not specified by IFRS, used in public communications to convey management's view of performance." },
+      { term: "Specified main business activity", definition: "Investing in particular assets, or providing financing to customers, as a core business activity." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.IFRS18} />
+  </section>
+</StandardPageLayout>

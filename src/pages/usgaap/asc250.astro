@@ -1,0 +1,206 @@
+﻿---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc250.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope & Applicability" },
+        { id: "s3", label: "Three Types of Accounting Change Plus Errors" },
+        { id: "s4", label: "Change in Accounting Principle — Retrospective Application" },
+        { id: "s5", label: "The Preferability Requirement" },
+        { id: "s6", label: "Impracticability Exception" },
+        { id: "s7", label: "Change in Accounting Estimate — Prospective Application" },
+        { id: "s8", label: "Change in Estimate Effected by a Change in Principle" },
+        { id: "s9", label: "Change in Reporting Entity" },
+        { id: "s10", label: "Error Corrections — Restatement" },
+        { id: "s11", label: "Big R vs little r Restatements" },
+        { id: "s12", label: "Worked Example — Retrospective Change in Principle" },
+        { id: "s13", label: "Worked Example — Change in Estimate" },
+        { id: "s14", label: "Worked Example — Error Correction Restatement" },
+        { id: "s15", label: "Disclosure Requirements" },
+        { id: "s16", label: "Critical Judgments & Estimates" },
+        { id: "s17", label: "ASC 250 vs IAS 8" },
+        { id: "s18", label: "Statement Mapping" },
+        { id: "s19", label: "Related Topics" },
+        { id: "s20", label: "Glossary" },
+        { id: "history", label: "History & Development" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci"><div class="ctitle ci">Comparability across time depends on consistent treatment</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">Users rely on financial statements being COMPARABLE from one period to the next. When an entity changes an accounting principle, revises an estimate, alters its reporting entity structure, or discovers a prior-period error, ASC 250 governs how that change is REFLECTED — ensuring users can still make sense of the trend line, and clearly distinguishing genuine changes in judgement (going forward) from corrections of past mistakes (which must be fixed retroactively).</div></div>
+      <div class="card cs"><div class="ctitle cs">The direct US GAAP counterpart to IAS 8</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 250 plays essentially the SAME functional role as IAS 8 (Accounting Policies, Changes in Accounting Estimates and Errors) — the two pronouncements address the identical underlying problem and, following a period of convergence-oriented rulemaking, are substantively very closely aligned, with a small number of notable US-GAAP-specific features (Sections 5, 9, 11).</div></div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">What ASC 250 covers</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 250 applies to accounting for and reporting (a) a change in accounting principle, (b) a change in accounting estimate, (c) a change in the reporting entity, and (d) the correction of an error in previously issued financial statements — applicable to all entities preparing US GAAP financial statements.</div></div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Three Types of Accounting Change, Plus Errors</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">The four-way classification driving everything else in this Topic</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1fr 1fr 2fr;"><span>Category</span><span>Application</span><span>Example</span></div>
+      <div class="tr" style="grid-template-columns:1fr 1fr 2fr;"><span>Change in accounting principle</span><span>RETROSPECTIVE</span><span>Switching from FIFO to weighted-average inventory costing</span></div>
+      <div class="tr alt" style="grid-template-columns:1fr 1fr 2fr;"><span>Change in accounting estimate</span><span>PROSPECTIVE</span><span>Revising the estimated useful life of equipment</span></div>
+      <div class="tr" style="grid-template-columns:1fr 1fr 2fr;"><span>Change in reporting entity</span><span>RETROSPECTIVE</span><span>Presenting combined financial statements of previously separate entities</span></div>
+      <div class="tr alt" style="grid-template-columns:1fr 1fr 2fr;"><span>Correction of an error</span><span>RESTATEMENT (not an "accounting change")</span><span>Discovering a mathematical mistake in a prior period's depreciation calculation</span></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Change in Accounting Principle — Retrospective Application</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Applying the new principle to all prior periods presented</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">A change in accounting principle is applied RETROSPECTIVELY to all prior periods presented, UNLESS it is impracticable to do so (Section 6). This means: adjusting the carrying amounts of assets/liabilities as of the beginning of the earliest period presented, offsetting the adjustment against the OPENING balance of retained earnings for that earliest period, and adjusting the FINANCIAL STATEMENTS for each individual prior period presented to reflect the period-specific effects of the change — the SAME general mechanic IAS 8 uses for voluntary policy changes.</div></div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>The Preferability Requirement</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">A distinctly US GAAP hurdle — no direct IFRS equivalent</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">A voluntary change in accounting principle is permissible ONLY IF (a) it is REQUIRED by newly issued GAAP, or (b) the entity can justify that the alternative principle is PREFERABLE. For SEC REGISTRANTS specifically, a voluntary change generally requires the entity's INDEPENDENT AUDITOR to issue a formal "PREFERABILITY LETTER" confirming the change is preferable, filed with the SEC. IAS 8 requires a similar SUBSTANTIVE justification (that the change results in reliable and more relevant information) but has NO equivalent formal auditor preferability letter mechanism — this procedural requirement is genuinely unique to US practice.</div></div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Impracticability Exception</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">Falling back to the earliest practicable date</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">If it is IMPRACTICABLE to determine the period-specific or cumulative effect of a retrospective change for one or more prior periods, the entity applies the new principle prospectively as of the EARLIEST date practicable. This mirrors IAS 8's own impracticability exception closely, including a similar (though separately worded) definition of when retrospective application is genuinely impracticable — for example, where the effects are not determinable, or would require assumptions about management's intent that cannot be independently substantiated.</div></div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Change in Accounting Estimate — Prospective Application</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">No restatement of prior periods</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">A change in accounting ESTIMATE (e.g. revising a useful life, bad debt allowance rate, or warranty cost estimate) is accounted for PROSPECTIVELY — in the period of change and future periods, if the change affects both. Prior periods are NOT restated, consistent with IAS 8's identical treatment of changes in estimate.</div></div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Change in Estimate Effected by a Change in Principle</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">A named hybrid category, treated as an estimate change</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">Some changes are INSEPARABLE combinations of a change in estimate and a change in principle — the classic example being a change in DEPRECIATION METHOD (e.g. from double-declining balance to straight-line), which reflects both a new accounting principle AND a revised estimate of the pattern in which economic benefits are consumed. ASC 250 explicitly treats such changes as a CHANGE IN ESTIMATE — applied PROSPECTIVELY, with no retrospective restatement — the SAME conclusion IAS 8 reaches for depreciation method changes, making this one of the more precisely converged specific applications between the two frameworks.</div></div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Change in Reporting Entity</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">A distinctly named US GAAP category</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">A change in reporting entity occurs when the reporting entity is, in effect, a DIFFERENT entity from the one previously reported on — for example, presenting COMBINED (rather than individual) financial statements for a group of previously separate entities, or changing the specific subsidiaries comprising a group presenting combined statements. Such changes are applied RETROSPECTIVELY. IAS 8 does not carry an identically NAMED "change in reporting entity" category, though the SUBSTANCE of similar restructuring events would be addressed under IFRS through IFRS 10's consolidation-scope guidance rather than a distinct IAS 8 category.</div></div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Error Corrections — Restatement</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Not an "accounting change" at all</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">The correction of an ERROR in previously issued financial statements is explicitly NOT considered an "accounting change" under ASC 250 — it is treated by RESTATING the prior-period financial statements to correct the error, in the same manner as a retrospective application of a new accounting principle, but reported as an error correction rather than a change. This mirrors IAS 8's own treatment of prior period errors, which similarly requires retrospective restatement, distinct from a genuine accounting policy change.</div></div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>"Big R" vs "little r" Restatements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">SEC-driven practice terminology, not formally codified in the ASC itself</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">In US practice — particularly for SEC registrants — a MATERIAL error correction requiring reissuance of prior financial statements (and typically an 8-K filing disclosing "non-reliance" on the prior statements) is informally called a <strong>"Big R" Restatement</strong>. A LESS severe, IMMATERIAL error that can be corrected simply by adjusting the current period's comparative figures — WITHOUT reissuing the prior statements — is informally called a <strong>"little r" revision</strong>. This specific naming convention is a distinctly US market/SEC practice, without an equivalent formal terminology under IFRS — though the underlying MATERIALITY-based distinction between a full restatement and a simple correction exists conceptually under IAS 8 as well.</div></div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Worked Example — Retrospective Change in Principle</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Switching inventory costing methods</div>
+      <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: FIFO to weighted-average</div><div class="wk-body">At the start of Year 3 (the earliest year presented in a three-year comparative set), an entity voluntarily switches from FIFO to weighted-average inventory costing, having determined the new method is PREFERABLE (and, being an SEC registrant, obtaining a preferability letter from its auditor). Under weighted-average, retained earnings at the start of Year 3 would have been $200,000 LOWER than under FIFO.</div><div class="wk-answer">The entity RESTATES the opening retained earnings balance for Year 3 (the earliest period presented) DOWN by $200,000, and restates the Year 1 and Year 2 comparative income statements to reflect what they WOULD have shown under weighted-average costing — presenting a fully retrospective, comparable three-year trend as if weighted-average had always been used.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Worked Example — Change in Estimate</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Revising a useful life prospectively</div>
+      <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Extending equipment useful life</div><div class="wk-body">Equipment with an original cost of $600,000 was being depreciated straight-line over 10 years (no salvage value). After 4 years of depreciation ($240,000 accumulated, $360,000 remaining carrying amount), management determines the equipment will actually remain useful for 9 MORE years (13 total), not the originally estimated 6 remaining years.</div><div class="wk-answer">No restatement of the prior 4 years' depreciation occurs. GOING FORWARD, the remaining $360,000 carrying amount is depreciated over the REVISED remaining useful life of 9 years: $360,000 &divide; 9 = <strong>$40,000 per year</strong> (down from the original $60,000/year), applied prospectively starting in the current period.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Worked Example — Error Correction Restatement</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2"><div class="ctitle cn">A material prior-period mathematical error</div>
+      <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: An overstated revenue recognition error discovered later</div><div class="wk-body">During the current year, an entity discovers that revenue was OVERSTATED by $3,000,000 in the immediately preceding year due to a processing error that resulted in double-counting certain shipments — a MATERIAL amount relative to that year's reported net income.</div><div class="wk-answer">This is a MATERIAL error, triggering a "Big R" restatement: the prior year's financial statements are RESTATED and REISSUED (with appropriate disclosure of the restatement's nature and effect), and opening retained earnings for the earliest period presented is adjusted to remove the $3,000,000 overstatement — the correction is presented as an ERROR CORRECTION, not as a change in accounting principle or estimate.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s15"><span class="num">15</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">What ASC 250 requires</div><div class="check-list"><span>Nature of and reason for a change in accounting principle, including why the new principle is preferable</span><span>Effect of the change on income from continuing operations, net income, and any other affected line item, for the current and prior periods presented</span><span>Effect of a material change in estimate on income from continuing operations and net income, if material</span><span>Nature and amount of an error correction, including its effect on each affected financial statement line item and any EPS amounts</span></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s16"><span class="num">16</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+      <div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Whether a new principle is genuinely "preferable" to the old one</span><span>Distinguishing a change in estimate from a change in principle, particularly for hybrid situations like depreciation method changes</span><span>Whether an error is material enough to require a "Big R" restatement versus a "little r" revision</span></div></div>
+      <div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Cumulative effect of a retrospective change on opening retained earnings</span><span>Revised estimates (useful lives, allowance rates, etc.) applied prospectively</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s17"><span class="num">17</span><h2>ASC 250 vs IAS 8</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Comparison — ASC 250 vs IAS 8</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span>US GAAP (ASC 250)</span><span>IFRS (IAS 8)</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Retrospective change in principle</span><span>Yes, unless impracticable</span><span>Yes, unless impracticable — fully converged mechanics</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Formal "preferability letter" requirement</span><span>Yes, for SEC registrants making voluntary changes</span><span>No equivalent formal mechanism — IAS 8 requires justification but not an auditor letter filed with a regulator</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>"Change in reporting entity" as a distinct named category</span><span>Yes, explicitly named and defined</span><span>No equivalent named category — addressed through IFRS 10 consolidation scope changes instead</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Change in estimate</span><span>Prospective, including depreciation method changes</span><span>Prospective — fully converged, including the same depreciation-method treatment</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>"Big R" / "little r" terminology</span><span>Informal US market/SEC practice terminology</span><span>No equivalent named terminology, though a similar materiality-based distinction exists in substance</span></div>
+      </div>
+      <div class="note">ASC 250 and IAS 8 are among the most closely converged pairs of pronouncements across the entire US GAAP/IFRS landscape — the core retrospective/prospective/error-restatement framework is essentially identical, with the preferability-letter and reporting-entity-category features standing out as the main US-specific additions.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s18"><span class="num">18</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Where every ASC 250 event lands</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Retrospective change in accounting principle</span><span><span class="badge bs">BS</span> <span class="badge be">SE</span></span><span>Opening retained earnings adjusted; prior period IS figures restated</span></div>
+      <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Change in accounting estimate</span><span><span class="badge bp">IS</span></span><span>Current and future period effect only; no restatement</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Change in reporting entity</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span> <span class="badge be">SE</span></span><span>All prior periods presented restated to reflect the new entity structure</span></div>
+      <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Material error correction</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span> <span class="badge be">SE</span></span><span>Prior period statements restated and reissued ("Big R")</span></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s19"><span class="num">19</span><h2>Related Topics</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd"><div class="ctitle cd">Cross-reference map</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 205</span><span>Supplies the overall complete-set-of-financial-statements framework within which restated comparatives are presented</span></div>
+      <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 235</span><span>Governs disclosure of the accounting policies whose changes this Topic addresses</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 810</span><span>Consolidation — closely interacts with "change in reporting entity" fact patterns</span></div>
+      </div>
+      </div>
+      <div class="card cn"><div class="ctitle cn">Quick-reference glossary preview</div>
+      <div class="glossary-item"><div class="glossary-term">Preferability letter</div><div class="glossary-def">A formal letter from an SEC registrant's independent auditor confirming that a newly adopted accounting principle is preferable to the one it replaces, filed with the SEC.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Cumulative effect adjustment</div><div class="glossary-def">The adjustment made to the opening balance of retained earnings for the earliest period presented, reflecting the retrospective effect of a change in accounting principle or an error correction.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s20"><span class="num">20</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+
+    <Glossary entries={[
+      { term: "Restatement", definition: "The process of revising previously issued financial statements to reflect the correction of an error, distinct from an accounting change." },
+      { term: "Impracticable", definition: "A defined threshold under which an entity cannot apply a requirement after making every reasonable effort to do so — the exception to full retrospective application." },
+      { term: "Big R restatement", definition: "Informal US practice terminology for a material error correction requiring reissuance of prior financial statements, typically accompanied by an SEC 8-K non-reliance disclosure." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.ASC250 || []} />
+  </section>
+</StandardPageLayout>
+

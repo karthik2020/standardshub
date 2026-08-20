@@ -1,0 +1,295 @@
+---
+/*
+StandardsPanel
+
+Wide right column of the two-part standards sidebar. Renders every core
+framework's list up front (server-side, so it works with JS disabled and
+is fully crawlable) inside a hidden [data-framework-panel]; rail-panel.js
+toggles visibility to match the rail selection, and lifts the "hidden"
+restriction entirely while a search term is active so results surface
+across all frameworks at once. DRS standards are listed inside the HGB
+panel as a secondary document collection.
+*/
+
+import standards from "../data/standards.json";
+import StandardGroup from "./StandardGroup.astro";
+import { FRAMEWORK_CONFIG } from "../data/frameworks";
+import { Search, X, Home, ArrowUpRight } from "@lucide/astro";
+
+const currentPath = Astro.url.pathname;
+
+// Calculate total standards in the library
+const totalStandards = Object.values(standards).reduce((acc, curr: any) => acc + (curr?.length ?? 0), 0);
+
+function resolveActiveFramework(pathname: string) {
+  if (pathname.startsWith("/ifrs") || pathname.startsWith("/ifric") || pathname.startsWith("/sic")) return "ifrs";
+  if (pathname.startsWith("/ipsas")) return "ipsas";
+  if (pathname.startsWith("/ias")) return "ias";
+  if (pathname.startsWith("/indas")) return "indas";
+  if (pathname.startsWith("/usgaap")) return "usgaap";
+  if (pathname.startsWith("/ukgaap")) return "ukgaap";
+  if (pathname.startsWith("/asbe")) return "asbe";
+  if (pathname.startsWith("/aspe")) return "aspe";
+  if (pathname.startsWith("/asbj")) return "asbj";
+  if (pathname.startsWith("/hgb") || pathname.startsWith("/germany/drs")) return "hgb";
+  return "home";
+}
+const active = resolveActiveFramework(currentPath);
+
+const codeToKey = (code: string) => {
+  if (code === "Ind AS") return "IndAS";
+  if (code === "IFRS Sustainability") return "IFRSSustainability";
+  if (code === "IFRS Publications") return "IFRSPublications";
+  if (code === "IFRS for SMEs") return "IFRSForSMEs";
+  if (code === "IFRIC") return "IFRIC";
+  if (code === "SIC") return "SIC";
+  if (code === "US GAAP") return "USGAAP";
+  if (code === "UK GAAP") return "UKGAAP";
+  if (code === "ASBE") return "ASBE";
+  if (code === "ASPE") return "ASPE";
+  if (code === "ASBJ") return "ASBJ";
+  if (code === "HGB") return "HGB";
+  if (code === "DRS") return "DRS";
+  return code;
+};
+
+const itemsFor = (id: string) => standards[codeToKey(FRAMEWORK_CONFIG[id].code)] ?? [];
+---
+
+<div class="standards-panel" data-panel data-active-framework={active}>
+  <div class="sidebar-search">
+    <div class="search-box">
+      <div class="search-input-wrapper">
+        <Search size={15} class="search-icon" />
+        <div class="search-placeholder" id="search-placeholder"></div>
+        <input
+          class="search-input"
+          id="standard-search"
+          type="text"
+          placeholder=""
+          aria-label="Filter standards"
+          autocomplete="off"
+        />
+        <button class="search-action" id="search-action" type="button" aria-label="Clear filter" title="Clear filter">
+          <X size={15} />
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar-scroll">
+    <div class="fw-panel" data-framework-panel="home">
+      <div class="panel-home-dashboard">
+        <div class="dashboard-header">
+          <Home size={16} />
+          <span>Library Dashboard</span>
+        </div>
+        
+        <div class="dashboard-section" id="recently-viewed-section" style="display: none;">
+          <div class="dashboard-section-title">Recently Viewed</div>
+          <div class="dashboard-recent-list" id="recently-viewed-list">
+            <!-- Rendered client-side -->
+          </div>
+        </div>
+
+        <div class="dashboard-section">
+          <div class="dashboard-section-title">Library Statistics</div>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <span class="stat-num">10</span>
+              <span class="stat-label">Frameworks</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-num">{totalStandards}</span>
+              <span class="stat-label">Standards</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="dashboard-tip">
+          <div class="tip-title">Quick Tip</div>
+          <p>Click any framework on the left rail to instantly explore its list of standards.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="fw-panel" data-framework-panel="ias">
+      <a href={FRAMEWORK_CONFIG.ias.route} class="panel-overview-link">
+        <span>Framework Overview</span>
+        <ArrowUpRight size={30} strokeWidth={4} class="panel-overview-arrow" />
+      </a>
+      <div class="section" data-section="ias">
+        <StandardGroup items={itemsFor("ias")} sectionId="ias" />
+      </div>
+    </div>
+
+    <div class="fw-panel" data-framework-panel="indas">
+      <a href={FRAMEWORK_CONFIG.indas.route} class="panel-overview-link">
+        <span>Framework Overview</span>
+        <ArrowUpRight size={30} strokeWidth={4} class="panel-overview-arrow" />
+      </a>
+      <div class="section" data-section="indas">
+        <StandardGroup items={itemsFor("indas")} sectionId="indas" />
+      </div>
+    </div>
+
+    <div class="fw-panel" data-framework-panel="usgaap">
+      <a href={FRAMEWORK_CONFIG.usgaap.route} class="panel-overview-link">
+        <span>Framework Overview</span>
+        <ArrowUpRight size={30} strokeWidth={4} class="panel-overview-arrow" />
+      </a>
+      <div class="section" data-section="usgaap">
+        <StandardGroup items={itemsFor("usgaap")} sectionId="usgaap" categories={FRAMEWORK_CONFIG.usgaap.categories} />
+      </div>
+    </div>
+
+    <div class="fw-panel" data-framework-panel="ukgaap">
+      <a href={FRAMEWORK_CONFIG.ukgaap.route} class="panel-overview-link">
+        <span>Framework Overview</span>
+        <ArrowUpRight size={30} strokeWidth={4} class="panel-overview-arrow" />
+      </a>
+      <div class="section" data-section="ukgaap">
+        <StandardGroup items={itemsFor("ukgaap")} sectionId="ukgaap" categories={FRAMEWORK_CONFIG.ukgaap.categories} />
+      </div>
+    </div>
+
+    <div class="fw-panel" data-framework-panel="asbe">
+      <a href={FRAMEWORK_CONFIG.asbe.route} class="panel-overview-link">
+        <span>Framework Overview</span>
+        <ArrowUpRight size={30} strokeWidth={4} class="panel-overview-arrow" />
+      </a>
+      <div class="section" data-section="asbe">
+        <StandardGroup items={itemsFor("asbe")} sectionId="asbe" categories={FRAMEWORK_CONFIG.asbe.categories} />
+      </div>
+    </div>
+
+    <div class="fw-panel" data-framework-panel="aspe">
+      <a href={FRAMEWORK_CONFIG.aspe.route} class="panel-overview-link">
+        <span>Framework Overview</span>
+        <ArrowUpRight size={30} strokeWidth={4} class="panel-overview-arrow" />
+      </a>
+      <div class="section" data-section="aspe">
+        <StandardGroup items={itemsFor("aspe")} sectionId="aspe" categories={FRAMEWORK_CONFIG.aspe.categories} />
+      </div>
+    </div>
+
+    <div class="fw-panel" data-framework-panel="asbj">
+      <a href={FRAMEWORK_CONFIG.asbj.route} class="panel-overview-link">
+        <span>Framework Overview</span>
+        <ArrowUpRight size={30} strokeWidth={4} class="panel-overview-arrow" />
+      </a>
+      <div class="section" data-section="asbj">
+        <StandardGroup items={itemsFor("asbj")} sectionId="asbj" categories={FRAMEWORK_CONFIG.asbj.categories} />
+      </div>
+    </div>
+
+    <div class="fw-panel" data-framework-panel="hgb">
+      <a href={FRAMEWORK_CONFIG.hgb.route} class="panel-overview-link">
+        <span>Framework Overview</span>
+        <ArrowUpRight size={30} strokeWidth={4} class="panel-overview-arrow" />
+      </a>
+      <div class="section" data-section="hgb">
+        <StandardGroup items={itemsFor("hgb")} sectionId="hgb" label="HGB Standards" />
+      </div>
+      <div class="section" data-section="drs">
+        <StandardGroup items={itemsFor("drs")} sectionId="drs" label="DRS Standards" />
+      </div>
+    </div>
+
+    <div class="fw-panel" data-framework-panel="ifrs">
+      <a href={FRAMEWORK_CONFIG.ifrs.route} class="panel-overview-link">
+        <span>Framework Overview</span>
+        <ArrowUpRight size={30} strokeWidth={4} class="panel-overview-arrow" />
+      </a>
+      <div class="section" data-section="ifrs">
+        <div class="sidebar-category-group">
+          <div class="sidebar-category-label">IFRS Standards</div>
+          <StandardGroup items={standards.IFRS} sectionId="ifrs" />
+        </div>
+        <div class="sidebar-category-group">
+          <div class="sidebar-category-label">IFRS for SMEs</div>
+          <StandardGroup items={standards.IFRSForSMEs} sectionId="ifrsforsmes" />
+        </div>
+        <div class="sidebar-category-group">
+          <div class="sidebar-category-label">IFRS Publications</div>
+          <StandardGroup items={standards.IFRSPublications} sectionId="ifrspublications" />
+        </div>
+        <div class="sidebar-category-group">
+          <div class="sidebar-category-label">IFRS Sustainability</div>
+          <StandardGroup items={standards.IFRSSustainability} sectionId="ifrssustainability" />
+        </div>
+        <div class="sidebar-category-group">
+          <div class="sidebar-category-label">IFRIC</div>
+          <StandardGroup items={standards.IFRIC} sectionId="ifric" />
+        </div>
+        <div class="sidebar-category-group">
+          <div class="sidebar-category-label">SIC</div>
+          <StandardGroup items={standards.SIC} sectionId="sic" />
+        </div>
+      </div>
+    </div>
+
+    <div class="fw-panel" data-framework-panel="ipsas">
+      <a href={FRAMEWORK_CONFIG.ipsas.route} class="panel-overview-link">
+        <span>Framework Overview</span>
+        <ArrowUpRight size={30} strokeWidth={4} class="panel-overview-arrow" />
+      </a>
+      <div class="section" data-section="ipsas">
+        {FRAMEWORK_CONFIG.ipsas.categories?.map((category: string) => (
+          <div class="sidebar-category-group" key={category}>
+            <div class="sidebar-category-label">{category}</div>
+            <StandardGroup items={itemsFor("ipsas").filter((item) => item.category === category)} sectionId="ipsas" />
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="sidebar-empty" id="sidebar-empty" hidden>
+      <div class="sidebar-empty-title">No matching standards</div>
+      <div class="sidebar-empty-text">Try another standard number or keyword.</div>
+      <div class="sidebar-empty-examples">
+        <span>IAS 16</span>
+        <span>Revenue</span>
+        <span>Lease</span>
+      </div>
+    </div>
+  </div>
+
+  <footer class="sidebar-footer">
+    <!-- Reserved for upgrade / promo content later -->
+  </footer>
+</div>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    try {
+      const recentList = document.getElementById("recently-viewed-list");
+      const recentSection = document.getElementById("recently-viewed-section");
+      if (!recentList || !recentSection) return;
+
+      const recent = JSON.parse(localStorage.getItem("recently-viewed") || "[]");
+      if (recent.length === 0) {
+        recentSection.style.display = "none";
+        return;
+      }
+
+      recentSection.style.display = "flex";
+      recentList.innerHTML = "";
+
+      recent.forEach(item => {
+        const itemEl = document.createElement("a");
+        itemEl.href = item.url;
+        itemEl.className = "recent-item";
+        
+        itemEl.innerHTML = `
+          <span class="recent-code">${item.code}</span>
+          <span class="recent-arrow">→</span>
+        `;
+        
+        recentList.appendChild(itemEl);
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  });
+</script>

@@ -1,0 +1,312 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import metadata from "../../data/standards/ipsas/ipsas39.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  covers={metadata.covers}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Objective, Scope & the Four Categories" },
+        { id: "s2", label: "Definitions" },
+        { id: "s3", label: "Short-Term Employee Benefits — Recognition" },
+        { id: "s4", label: "Short-Term Paid Absences & Profit-Sharing/Bonus Plans" },
+        { id: "s5", label: "Post-Employment Benefits — Defined Contribution vs Defined Benefit" },
+        { id: "s6", label: "Defined Benefit Plans — the Four-Step Accounting Process" },
+        { id: "s7", label: "Actuarial Valuation — the Projected Unit Credit Method" },
+        { id: "s8", label: "Actuarial Assumptions & the Discount Rate" },
+        { id: "s9", label: "Past Service Cost, Curtailments & Settlements" },
+        { id: "s10", label: "Plan Assets, Net Interest & the Asset Ceiling" },
+        { id: "s11", label: "Presentation — Offsetting & Component Placement" },
+        { id: "s12", label: "Disclosure Requirements — Defined Benefit Plans" },
+        { id: "s13", label: "Other Long-Term Employee Benefits" },
+        { id: "s14", label: "Termination Benefits" },
+        { id: "s15", label: "Effective Date & Amendment Timeline" },
+        { id: "s16", label: "Relationship to IAS 19" },
+        { id: "s17", label: "Statement / Process Mapping" },
+        { id: "s18", label: "Related Standards — Cross-Reference Map" },
+        { id: "s19", label: "Quick-Reference Glossary" }
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="active"
+    explanation="IPSAS 39 Employee Benefits is the current, active standard issued by the IPSASB for recognising and measuring employee benefits — short-term, post-employment, other long-term and termination benefits. Effective for periods beginning on or after 1 January 2018 (earlier application encouraged). Paras. 1–170. It supersedes IPSAS 25 (Employee Benefits)."
+    historical="IPSAS 39 is the IPSASB's adaptation of IAS 19 Employee Benefit Plans for the public sector — adding the service-potential concept, a single discount-rate approach, and public-sector commentary on unfunded pension obligations and severance."
+    link=""
+    linkText=""
+  />
+
+  <!-- ============ SECTION 1 ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; the Four Categories of Employee Benefits (paras. 1–7)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Objective</div>
+      <div class="principle">Requires an entity to recognize (a) a LIABILITY when an employee has provided service in exchange for future benefits, and (b) an EXPENSE when the entity consumes the economic benefits/service potential from that service.</div>
+    </div>
+  </div>
+
+  <div class="grid grid-spaced">
+    <div class="card cd span2">
+      <div class="ctitle cd">Scope</div>
+      <div class="dot-list">
+        <span>Applies to ALL employee benefits EXCEPT share-based transactions (governed by the relevant share-based payment standard)</span>
+        <span>Excludes reporting BY retirement benefit plans themselves (IPSAS 49) and non-employment-related social security programs</span>
+      </div>
+      <div class="note">"Employees" includes KEY MANAGEMENT PERSONNEL as defined in IPSAS 20, and covers full-time, part-time, permanent, casual, and temporary service (para. 7).</div>
+    </div>
+  </div>
+
+  <div class="grid grid-spaced">
+    <div class="card cd span2">
+      <div class="ctitle ci">The four categories (para. 5)</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.2fr 1.8fr;"><span>Category</span><span>Examples</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1.8fr;"><span>Short-term</span><span>Wages, paid annual/sick leave, bonuses, non-monetary benefits — settled within 12 months</span></div>
+        <div class="tr alt" style="grid-template-columns:1.2fr 1.8fr;"><span>Post-employment</span><span>Pensions, lump sums, post-employment medical/life insurance</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1.8fr;"><span>Other long-term</span><span>Long-service/sabbatical leave, jubilee benefits, long-term disability</span></div>
+        <div class="tr alt" style="grid-template-columns:1.2fr 1.8fr;"><span>Termination</span><span>Benefits from ending employment — entity-initiated or employee-accepted offer</span></div>
+      </div>
+      <div class="note">Employee benefits arise from FORMAL plans/agreements, LEGISLATIVE requirements (national/state/industry/multi-employer plans, social security), OR informal practices creating a CONSTRUCTIVE obligation — where the entity has no realistic alternative but to pay (para. 4).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Definitions (para. 9)</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card cd span2">
+      <div class="ctitle cd">Core terms (para. 9)</div>
+      <div class="glossary-item"><div class="glossary-term">Employee benefit</div><div class="glossary-def">Benefit provided to an employee in exchange for service rendered.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Liability</div><div class="glossary-def">Obligation to transfer resources (cash/compensation) to settle an employee benefit.</div></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Short-Term Employee Benefits — Recognition (paras. 11–12)</h2><span class="line"></span></div>
+  <div class="cols-1">
+    <div class="card cw">
+      <div class="ctitle cw">Recognise now (para. 11)</div>
+      <div class="principle">For short-term benefits (expected within 12 months of service), the entity recognises the undiscounted amount as an expense when the employee renders service — no actuarial valuation is required.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 1.3fr;"><span>Benefit</span><span>Measurement</span></div>
+        <div class="tr" style="grid-template-columns:1fr 1.3fr;"><span>Wages/salary</span><span>Undiscounted, service period</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 1.3fr;"><span>Paid leave</span><span>Undiscounted accrued</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Short-Term Paid Absences &amp; Profit-Sharing/Bonus Plans (paras. 13–24)</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card ci span2">
+      <div class="ctitle ci">Accruals (para. 13)</div>
+      <div class="principle">Paid absence and profit-sharing/bonus plans that are expected to be settled within 12 months ARE short-term benefits — recognised at the undiscounted expected cost at the period end. Where the plan has no substantive restrictions, the expected amount includes the best estimate of the obligation.</div>
+      <div class="callout warn">A formal, substantive profit-sharing plan may make the obligation unconditional even if not yet approved.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Post-Employment Benefits — Defined Contribution vs Defined Benefit (paras. 52–56)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">The big split (para. 52)</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1.7fr;"><span>Type</span><span>Accounting</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.7fr;"><span>Defined contribution</span><span>Pay contribution; no further obligation</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.7fr;"><span>Defined benefit</span><span>Actuarial valuation; recognise service cost + net interest</span></div>
+      </div>
+      <div class="callout info callout--flush">A plan is defined-benefit if the benefit depends on final salary, years of service, or similar — not a fixed contribution.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Defined Benefit Plans — the Four-Step Accounting Process (paras. 59–63)</h2><span class="line"></span></div>
+  <div class="cols-1 grid-spaced">
+    <div class="card cw">
+      <div class="ctitle cw">Step it out (para. 59)</div>
+      <div class="principle">Four steps: (1) measure the deficit/surplus and service cost at the reporting date (projected unit credit); (2) recognise service cost and net interest in profit or loss; (3) recognise actuarial gains/losses in other comprehensive income (except remeasurement of the effect of a change in the benefit guarantee); (4) deduct a fortiandi and consider the asset ceiling.</div>
+      <div class="check-list"><span>Projected unit credit valuation</span><span>Service cost + net interest → P&amp;L</span><span>Actuarial gains/losses → OCI</span><span>Asset-ceiling test</span></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Actuarial Valuation — the Projected Unit Credit Method (paras. 68–76)</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card ci span2">
+      <div class="ctitle ci">PUC mechanics (para. 68)</div>
+      <div class="principle">The projected unit credit method attributes the present value of the defined-benefit obligation to periods of service, using an age-weighting or benefit-ratio approach. It requires: a discount rate, salary projections (for salary-based plans), and an estimate of future benefits payable at normal retirement.</div>
+      <div class="callout warn">The valuation reflects current compensation levels and projected salary escalation up to normal retirement age.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Actuarial Assumptions &amp; the Discount Rate (paras. 77, 85–88)</h2><span class="line"></span></div>
+  <div class="cols-1">
+    <div class="card cd">
+      <div class="ctitle cd">Rate choice (para. 77)</div>
+      <div class="principle">Assumptions are the unbiased market-imputed rates (primarily high-quality corporate bonds or government bonds, whichever best reflects the benefit structure). Salary escalation, retirement rates, mortality and benefit changes must be the BEST estimates. The discount rate is reviewed each reporting date.</div>
+      <div class="glossary-item"><div class="glossary-term">Discount rate</div><div class="glossary-def">Rate used to present-value the defined-benefit obligation; reflects current market assessment.</div></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Past Service Cost, Curtailments &amp; Settlements (paras. 101–110)</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card cw span2">
+      <div class="ctitle cw">Events vs ongoing cost</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1.7fr;"><span>Event</span><span>Recognition</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.7fr;"><span>Past service cost</span><span>Straight-line over remaining service</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.7fr;"><span>Curtailment</span><span>Actuarial gain/loss (OCI)</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.7fr;"><span>Settlement</span><span>Recognise difference in P&amp;L</span></div>
+      </div>
+      <div class="callout warn">A settlement requires a substantive plan termination (or asset transfer) and a transfer of substantially all risks.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Plan Assets, Net Interest &amp; the Asset Ceiling (paras. 125–132)</h2><span class="line"></span></div>
+  <div class="cols-1 grid-spaced">
+    <div class="card ci">
+      <div class="ctitle ci">Net asset check (para. 125)</div>
+      <div class="principle">Net interest is the discount rate × (opening liability − present value of contributions/payments). Plan assets are measured at FV less costs to sell. The entity recognises an asset for an economic benefit ONLY if, and to the extent, it is MORE LIKELY THAN NOT that the benefit will be realised — capped by the asset ceiling (the excess of the liability over the cost of settling it).</div>
+      <div class="check-list"><span>PV liability vs FV plan assets</span><span>Net interest = rate × (L1 − PV(cash flows))</span><span>Asset ceiling caps any asset</span></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Presentation — Offsetting &amp; Component Placement (paras. 133–136)</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card cd span2">
+      <div class="ctitle cd">On the face (para. 133)</div>
+      <div class="principle">The defined-benefit obligation is presented NET of plan assets and the employee's contribution receivable. Service cost and net interest go to profit or loss; actuarial gains/losses and the remeasurement of the effect of a change in the benefit guarantee go to OCI (revaluation component). Offsets only per IPSAS 28.</div>
+      <div class="callout info callout--flush">Public sector: non-pension post-employment (e.g. health) may be presented separately or aggregated by class.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Disclosure Requirements — Defined Benefit Plans (paras. 137–149)</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card cw span2">
+      <div class="ctitle cw">Headline disclosures (para. 137)</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.2fr 1.8fr;"><span>Matter</span><span>Disclosed</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1.8fr;"><span>Nature of plan</span><span>Benefit formula, years of benefit, participants</span></div>
+        <div class="tr alt" style="grid-template-columns:1.2fr 1.8fr;"><span>Reconciliation</span><span>Opening &rarr; contributions &rarr; benefits paid &rarr; closing FV</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1.8fr;"><span>Rates/assumptions</span><span>Discount rate, salary escalation, mortality</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Other Long-Term Employee Benefits (paras. 155–161)</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card ci span2">
+      <div class="ctitle ci">Beyond pensions (para. 155)</div>
+      <div class="principle">Other long-term benefits (e.g. long-service leave, non-retiree health, sick pay beyond 12 months) are measured at the PRESENT VALUE of the expected cost — actuarial valuation required where the benefit depends on salary or service. Recognise net interest and actuarial remeasurements as for defined benefits.</div>
+      <div class="callout warn">If the obligation cannot be reliably measured, recognise a liability only when a payment is probable and the amount can be estimated.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Termination Benefits (paras. 162–170)</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card cd span2">
+      <div class="ctitle cd">Redundancy (para. 162)</div>
+      <div class="principle">A termination benefit is recognised as an expense when the entity has a detailed formal plan or a detailed informal management plan and the plan has been announced, communicated or otherwise committed. Measured at the present value of expected cost; disclosed if material.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 1.4fr;"><span>Trigger</span><span>Treatment</span></div>
+ <div class="tr" style="grid-template-columns:1fr 1.4fr;"><span>Detailed plan / plan announced</span><span>Liability recognised</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 1.4fr;"><span>No plan</span><span>Only on probability of payment</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 15 ============ -->
+  <div class="section-header" id="s15"><span class="num">15</span><h2>Effective Date &amp; Amendment Timeline (paras. 176–176D)</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card cw span2">
+      <div class="ctitle cw">Timeline</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 1.2fr;"><span>Date</span><span>Event</span></div>
+        <div class="tr" style="grid-template-columns:1fr 1.2fr;"><span>Jul 2016</span><span>Issued</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 1.2fr;"><span>1 Jan 2018</span><span>Effective date</span></div>
+        <div class="tr" style="grid-template-columns:1fr 1.2fr;"><span>2025</span><span>Amended (latest)</span></div>
+      </div>
+      <div class="callout info callout--flush">IPSAS 39 superseded IPSAS 25 (Employee Benefits); transition applies IPSAS 33 first-time-adoption guidance where relevant.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 16 ============ -->
+  <div class="section-header" id="s16"><span class="num">16</span><h2>Relationship to IAS 19</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card ci span2">
+      <div class="ctitle ci">Mapping (para. 177)</div>
+      <div class="principle">IPSAS 39 tracks IAS 19 — four-step measurement, projected unit credit, the asset ceiling, net interest, and OCI treatment of actuarial gains/losses — but with public-sector commentary on unfunded pension obligations, the service-potential concept, and government-specific discount-rate guidance.</div>
+      <div class="cross-list"><span>IAS 19 defined benefit</span><span>IPSAS 39 same + service potential</span><span>IAS 19 asset ceiling</span><span>IPSAS 39 same</span><span>IAS 19 termination</span><span>IPSAS 39 same</span></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 17 ============ -->
+  <div class="section-header" id="s17"><span class="num">17</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card cd span2">
+      <div class="ctitle cd">Where it flows</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.4fr 1.3fr;"><span>Process</span><span>Ledger</span></div>
+        <div class="tr" style="grid-template-columns:1.4fr 1.3fr;"><span>Actuarial valuation</span><span>Pension Actuary → Defined-Benefit Module</span></div>
+        <div class="tr alt" style="grid-template-columns:1.4fr 1.3fr;"><span>Interest accrual</span><span>Net interest → P&amp;L</span></div>
+        <div class="tr" style="grid-template-columns:1.4fr 1.3fr;"><span>Actuarial gains/losses</span><span>OCI → Revaluation component</span></div>
+        <div class="tr alt" style="grid-template-columns:1.4fr 1.3fr;"><span>Disclosure</span><span>Disclosure Engine → IPSAS 7200</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 18 ============ -->
+  <div class="section-header" id="s18"><span class="num">18</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">See also</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2fr;"><span>Standard</span><span>Relation</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2fr;"><span>IPSAS 26</span><span>Impairment of benefit assets</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2fr;"><span>IPSAS 33</span><span>First-time adoption transition</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2fr;"><span>IPSAS 25 (withdrawn)</span><span>Superseded by 39</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2fr;"><span>IAS 19</span><span>Direct equivalent</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 19 ============ -->
+  <div class="section-header" id="s19"><span class="num">19</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Defined benefit</div><div class="glossary-def">Benefit based on salary/service; actuarial valuation.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Projected unit credit</div><div class="glossary-def">Actuarial method attributing PV to service.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Net interest</div><div class="glossary-def">Discount rate × (opening liability − PV cash flows).</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Asset ceiling</div><div class="glossary-def">Max recognition of economic benefit asset.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Service cost</div><div class="glossary-def">Actuarial present value of accrued benefit.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Past service cost</div><div class="glossary-def">Benefit from plan changes; straight-line recognised.</div></div>
+    </div>
+  </div>
+</StandardPageLayout>
+

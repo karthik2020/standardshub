@@ -1,0 +1,142 @@
+﻿---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc275.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope & Applicability" },
+        { id: "s3", label: "Nature of Operations" },
+        { id: "s4", label: "Vulnerability Due to Concentrations" },
+        { id: "s5", label: "Worked Example — Concentration Disclosure" },
+        { id: "s6", label: "Disclosure Requirements" },
+        { id: "s7", label: "Critical Judgments & Estimates" },
+        { id: "s8", label: "ASC 275 vs IFRS — Spread Across Multiple Standards" },
+        { id: "s9", label: "Statement Mapping" },
+        { id: "s10", label: "Related Topics" },
+        { id: "s11", label: "Glossary" },
+        { id: "history", label: "History & Development" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci"><div class="ctitle ci">Warning users about vulnerability the numbers alone don't show</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">Financial statements measured under GAAP can look robust while concealing significant near-term VULNERABILITY — heavy reliance on a single customer, a specialised estimate that could swing materially, or an unusual concentration of risk. ASC 275 requires entities to surface this kind of vulnerability EXPLICITLY, supporting the faithful representation and relevance of the overall financial report beyond what the recognised numbers alone convey.</div></div>
+      <div class="card cs"><div class="ctitle cs">A general, entity-wide Topic — not tied to financial instruments</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">Unlike much of IFRS's comparable risk disclosure content (concentrated within IFRS 7 for financial instruments specifically), ASC 275 is a GENERAL, entity-wide disclosure requirement applicable to ANY significant risk or uncertainty an entity faces — financial instrument-related or not — making it broader in scope than any single comparable IFRS disclosure standard.</div></div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Applies to all entities</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 275 applies to the financial statements of ALL entities preparing US GAAP financial statements — the four disclosure areas are broadly universal requirements, not limited to public companies or any particular industry.</div></div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Nature of Operations</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">A brief, descriptive baseline disclosure</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">Financial statements should include a brief description of the entity's PRINCIPAL business activities and the industry(ies) in which it primarily operates, along with the relative importance of each activity if operating in more than one line of business — providing users the basic context needed to interpret every other disclosure that follows.</div></div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Vulnerability Due to Concentrations</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">A three-part test</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:0.4fr 2.6fr;"><span>Criterion</span><span>Requirement</span></div>
+      <div class="tr" style="grid-template-columns:0.4fr 2.6fr;"><span>(a)</span><span>The concentration EXISTS at the date of the financial statements</span></div>
+      <div class="tr alt" style="grid-template-columns:0.4fr 2.6fr;"><span>(b)</span><span>The concentration makes the entity VULNERABLE to the risk of a NEAR-TERM SEVERE IMPACT</span></div>
+      <div class="tr" style="grid-template-columns:0.4fr 2.6fr;"><span>(c)</span><span>It is AT LEAST REASONABLY POSSIBLE that the events causing the severe impact will occur in the near term</span></div>
+      </div>
+      <div class="note">Common concentration categories include: a single customer or small group of customers, a single supplier, a specific product/service line, a particular market or geographic area, and a specific labour source (e.g. a workforce heavily unionised or dependent on a specific expiring agreement).</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Worked Example — Concentration Disclosure</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">A single-customer concentration</div>
+      <div class="worked"><div class="wk-title">Example: Revenue concentrated in one customer</div><div class="wk-body">An entity derives 45% of its annual revenue from a single customer under a contract renewable annually, with no long-term commitment from the customer to continue purchasing.</div><div class="wk-answer">This concentration EXISTS at the reporting date, plausibly makes the entity VULNERABLE to a severe impact (loss of nearly half its revenue), and it is at least REASONABLY POSSIBLE the customer relationship could end within the next year given the annual renewal structure — ALL THREE criteria are met, triggering disclosure of the concentration, its nature, and the percentage of revenue involved.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">Summary of what ASC 275 requires</div><div class="check-list"><span>Brief description of the entity's principal business activities and operating industry(ies)</span><span>General statement on the use of estimates in preparing GAAP financial statements</span><span>Nature of specific estimates reasonably possible to change materially in the near term</span><span>Nature and, where practicable, the amount of concentrations creating near-term severe-impact vulnerability</span></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+      <div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Whether a specific estimate meets the "reasonably possible... near term... material" three-part disclosure trigger</span><span>Whether a concentration genuinely creates vulnerability to a "severe" (not merely adverse) near-term impact</span></div></div>
+      <div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Assessing the probability and materiality of potential near-term changes to significant estimates across the financial statements</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>ASC 275 vs IFRS — Spread Across Multiple Standards</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Comparison — ASC 275 vs the IFRS equivalents</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">US GAAP (ASC 275)</span><span style="color:var(--color-text-info);">IFRS equivalent(s)</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Dedicated general-purpose Topic</span><span>Yes — one unified Topic covering all four disclosure areas</span><span>NO single equivalent standard — content is SPREAD across IAS 1 (judgements and estimation uncertainty disclosures) and IFRS 7 (concentrations of risk, but limited to financial instruments)</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Significant estimate disclosure trigger</span><span>"Reasonably possible" change within the "near term" (~1 year)</span><span>IAS 1 requires disclosure of sources of estimation uncertainty with a SIGNIFICANT RISK of a material adjustment within the "next financial year" — a very similarly worded, closely converged threshold</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Concentration disclosure scope</span><span>General — ANY type of concentration (customer, supplier, product, geography, labour)</span><span>IFRS 7's concentration disclosure is limited to CREDIT RISK concentrations related to financial instruments — narrower in scope than ASC 275's general concentration requirement</span></div>
+      </div>
+      <div class="note">The "significant estimates" disclosure trigger is one of the more closely converged specific thresholds between the frameworks, even though the OVERALL Topic structure differs — US GAAP consolidates it into one Topic, IFRS spreads the same substantive content across two separate standards.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Where ASC 275's requirements land</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>All four ASC 275 disclosure areas</span><span>Notes only</span><span>Purely disclosure-based; no recognition or measurement impact on any primary statement</span></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Related Topics</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd"><div class="ctitle cd">Cross-reference map</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 450</span><span>Contingencies — supplies the "remote / reasonably possible / probable" probability language ASC 275 reuses</span></div>
+      <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 235</span><span>Notes to Financial Statements — the accounting policies note is where the "use of estimates" disclosure typically resides</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 205-40</span><span>Going concern — shares a conceptual family resemblance in warning users about near-term vulnerability</span></div>
+      </div>
+      </div>
+      <div class="card cn"><div class="ctitle cn">Quick-reference glossary preview</div>
+      <div class="glossary-item"><div class="glossary-term">Reasonably possible</div><div class="glossary-def">A defined probability threshold — more than remote but less than probable — used throughout ASC 275 and ASC 450.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Near term</div><div class="glossary-def">Generally understood as a period of approximately one year from the financial statement date, the time horizon used in ASC 275's disclosure triggers.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+
+    <Glossary entries={[
+      { term: "Concentration", definition: "A lack of diversification in an aspect of an entity's operations, such as reliance on a single customer, supplier, product, geographic market, or labour source." },
+      { term: "Severe impact", definition: "A significant, financially disruptive negative effect on the entity — a higher bar than a merely material or adverse effect, the threshold ASC 275 uses for concentration vulnerability." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.ASC275 || []} />
+  </section>
+</StandardPageLayout>
+

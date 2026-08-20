@@ -1,13 +1,30 @@
 ---
+/*
+Navigation link
+
+Active-state aware link for the sidebar standards list.
+
+Props:
+- href
+- title (optional)
+- section (optional)
+- code (optional)
+- standardTitle (optional)
+
+Adds framework-specific CSS class and active highlighting based on the current URL.
+*/
+
 interface Props {
-  href: string;
   title?: string;
   section?: string;
   code?: string;
   standardTitle?: string;
+  badge?: string;
+  badgeVariant?: "upcoming" | "retired";
+  aliases?: string[];
 }
 
-const { href, title, section, code, standardTitle } = Astro.props;
+const { href, title, section, code, standardTitle, badge, badgeVariant, aliases } = Astro.props;
 
 const currentPath = Astro.url.pathname;
 const isActive = currentPath === href;
@@ -19,6 +36,7 @@ const isActive = currentPath === href;
   data-section={section}
   data-code={code}
   data-title={standardTitle}
+  data-aliases={aliases?.join(",")}
   class:list={["nav-link", isActive && "active", section && `nav-${section}`]}
 >
   
@@ -26,4 +44,5 @@ const isActive = currentPath === href;
   <span class="nav-label">
     <slot />
   </span>
+  {badge && <span class:list={["status-badge", `status-badge-${badgeVariant}`]}>{badge}</span>}
 </a>

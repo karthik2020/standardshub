@@ -1,0 +1,58 @@
+---
+import StandardPageLayout from "../../../layouts/StandardPageLayout.astro";
+import PageToc from "../../../components/PageToc.astro";
+import "../../../styles/standards-poster.css";
+import "../../../styles/extended.css";
+import metadata from "../../../data/standards/hgb/drs13.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  subtitle={metadata.nativeTitle}
+  framework="hgb"
+  status={metadata.status}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Scope" },        { id: "s2", label: "Consistency" },        { id: "s3", label: "Error correction" },        { id: "s4", label: "Worked example" },        { id: "s5", label: "IFRS" }
+      ]}
+    />
+  </Fragment>
+
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Scope</h2><span class="line"></span></div><div class="grid">
+<div class="card info span2">
+<div class="ctitle">A quiet but genuinely important standard</div>
+<div class="principle">DRS 13 elaborates two related, easily conflated concepts for group accounts: the Grundsatz der Stetigkeit (consistency principle — using the SAME presentation and measurement methods period over period) and the correct treatment of Fehlerkorrektur (error correction) once a prior-period mistake is discovered. Last amended via DRÄS 6 (2016) to align with BilRUG-era terminology changes.</div>
+</div>
+</div><div class="section-header" id="s2"><span class="num">2</span><h2>Consistency, Building on §252(1) Nr.6</h2><span class="line"></span></div><div class="cols-1">
+<div class="card">
+<div class="ctitle">Beyond the general HGB baseline</div>
+<div class="principle">§252(1) Nr.6 HGB (established in the very early Measurement poster) already requires Bewertungsstetigkeit — consistent application of measurement methods. DRS 13 extends this specifically to CONSOLIDATED accounts, addressing group-specific consistency questions: consistent application of consolidation methods themselves (not just individual-entity measurement), and how to handle a genuine, justified departure from a prior period's approach.</div>
+</div>
+<div class="card">
+<div class="ctitle">Justified departures still require disclosure</div>
+<div class="principle">A genuine change in circumstances (e.g., a new, better-substantiated estimation method becoming available) can justify departing from strict consistency — but DRS 13 requires this to be clearly disclosed and its financial effect quantified in the Konzernanhang, echoing the same transparency-over-flexibility theme this series has documented throughout HGB Book 3.</div>
+</div>
+</div><div class="section-header" id="s3"><span class="num">3</span><h2>Error Correction — Retrospective, Not Merely Prospective</h2><span class="line"></span></div><div class="grid">
+<div class="card warn span2">
+<div class="ctitle">Correcting the record, not just moving forward from here</div>
+<div class="principle">DRS 13 requires a genuine, material error discovered in a LATER period to be corrected RETROSPECTIVELY — restating prior-period comparatives as if the error had never occurred — rather than simply absorbing the correction into the current period's own results going forward. This distinction matters: a large prior-year error quietly folded into the current year's GuV would distort THAT year's own results, while retrospective restatement keeps each period's own figures genuinely comparable.</div>
+</div>
+</div><div class="section-header" id="s4"><span class="num">4</span><h2>Worked Example — Correcting a Discovered Consolidation Error</h2><span class="line"></span></div><div class="grid">
+<div class="card span2">
+<div class="worked">
+<div class="wk-title">A group discovers an intragroup profit was never eliminated</div>
+<div class="wk-body">During the current year's audit, a group discovers that €400,000 of intragroup profit embedded in inventory (the kind of Zwischenergebnis elimination established under §304 HGB in the earlier HGB poster series) was never eliminated in the PRIOR year's Konzernabschluss — a genuine, material error, not a mere estimation change.</div>
+<div class="wk-answer">Under DRS 13, the group restates the PRIOR year's comparative figures as if the €400,000 elimination had genuinely been made at the time — rather than simply reducing the CURRENT year's reported profit by €400,000, which would distort the current year's own results and obscure exactly which period the error actually occurred in.</div>
+</div>
+</div>
+</div><div class="section-header" id="s5"><span class="num">5</span><h2>Relationship to IFRS (IAS 8)</h2><span class="line"></span></div><div class="grid">
+<div class="card span2">
+<div class="ctitle">A genuinely strong convergence point</div>
+<div class="principle">DRS 13's retrospective-restatement approach to material prior-period errors closely mirrors IAS 8's own treatment — one of the cleaner convergence points between HGB-based group accounting and IFRS, reflecting a widely-shared international consensus that genuine errors (as distinct from changes in accounting estimate, which ARE treated prospectively under both frameworks) warrant restating the historical record rather than burying the correction in current-period results.</div>
+</div>
+</div>
+</StandardPageLayout>

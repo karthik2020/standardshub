@@ -1,0 +1,405 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import metadata from "../../data/standards/ipsas/ipsas4.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  covers={metadata.covers}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Objective, Scope & Definitions" },
+        { id: "s2", label: "Determining Functional Currency" },
+        { id: "s3", label: "Monetary Items & Net Investment" },
+        { id: "s4", label: "Reporting Transactions in the Functional Currency" },
+        { id: "s5", label: "Recognition of Exchange Differences" },
+        { id: "s6", label: "Change in Functional Currency" },
+        { id: "s7", label: "Translation to a Presentation Currency" },
+        { id: "s8", label: "Translation & Disposal of a Foreign Operation" },
+        { id: "s9", label: "Tax Effects & Disclosure" },
+        { id: "s10", label: "Appendix A — Advance Consideration" },
+        { id: "s11", label: "Worked Examples" },
+        { id: "s12", label: "Effective Date & Amendment Timeline" },
+        { id: "s13", label: "Relationship to IAS 21" },
+        { id: "s14", label: "Statement / Process Mapping" },
+        { id: "s15", label: "Related Standards" },
+        { id: "s16", label: "Glossary" }
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="active"
+    explanation="IPSAS 4 The Effects of Changes in Foreign Exchange Rates is the current, active standard issued by the IPSASB. It is effective for annual financial statements covering periods beginning on/after 1 January 2010 (earlier application encouraged). It superseded IPSAS 4 (2006). The current Standard comprises paras. 1–73, including Appendix A."
+    link=""
+    linkText=""
+  />
+
+  <!-- ============ SECTION 1 — OBJECTIVE, SCOPE & DEFINITIONS ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; Definitions (paras. 1–10)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Objective &amp; scope</div>
+        <div class="principle">Prescribes how to include foreign currency transactions and foreign operations in an entity's financial statements, and how to translate financial statements into a presentation currency. Principal issues: (a) which exchange rate(s) to use, and (b) how to report the effects of rate changes.</div>
+        <div class="check-list">
+          <span>Accounting for transactions/balances in foreign currencies (excl. IPSAS 41-scope derivatives)</span>
+          <span>Translating foreign operations included by consolidation or the equity method</span>
+          <span>Translating an entity's own performance/position into a presentation currency</span>
+        </div>
+        <div class="cross-list">
+          <span>Hedge accounting for foreign currency items (incl. net investment hedges) — governed by IPSAS 41</span>
+          <span>Cash flow statement presentation of foreign currency cash flows — governed by IPSAS 2</span>
+        </div>
+      </div>
+
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions (para. 10)</div>
+        <div class="glossary-item"><div class="glossary-term">Functional currency</div><div class="glossary-def">The currency of the primary economic environment in which the entity operates.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Presentation currency</div><div class="glossary-def">The currency in which the financial statements are presented.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Foreign currency</div><div class="glossary-def">A currency other than the entity's functional currency.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Closing rate</div><div class="glossary-def">The spot exchange rate at the reporting date.</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Foreign operation</div><div class="glossary-def">A controlled entity, associate, joint arrangement, or branch based/conducted in a country or currency other than the reporting entity's.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Determining Functional Currency (paras. 11–16)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Primary indicators (para. 11) — considered FIRST</div>
+        <div class="dot-list">
+          <span>Currency that mainly influences revenue — taxes, grants, transfers, fines, and sale prices of goods/services</span>
+          <span>Currency of the country whose competitive forces/regulations mainly determine sale prices</span>
+          <span>Currency that mainly influences labor, material, and other costs</span>
+        </div>
+        <div class="elabel">SECONDARY INDICATORS (PARA. 12) — SUPPORTING EVIDENCE ONLY</div>
+        <div class="dot-list">
+          <span>Currency in which financing funds are generated</span>
+          <span>Currency in which operating receipts are usually retained</span>
+        </div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Additional factors for a foreign operation (para. 13) &amp; judgment</div>
+        <div class="dot-list">
+          <span>Extension of the reporting entity vs significant AUTONOMY (e.g. an overseas defense base paid in the parent's currency vs an independently operating trade board)</span>
+          <span>Proportion of transactions WITH the reporting entity</span>
+          <span>Whether cash flows directly affect, and are readily remittable to, the reporting entity</span>
+          <span>Whether cash flows suffice to service debt without funding from the reporting entity</span>
+        </div>
+        <div class="callout warn callout--flush">Once determined, functional currency is changed ONLY if the underlying transactions/events/conditions change (para. 15) — and an entity cannot dodge IPSAS 10 hyperinflation restatement by simply adopting a different functional currency (para. 16).</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Monetary Items &amp; Net Investment in a Foreign Operation (paras. 17–19)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs">
+        <div class="ctitle cs">Monetary vs non-monetary</div>
+        <div class="elabel">MONETARY — a right to receive / obligation to deliver a fixed or determinable number of currency units</div>
+        <div class="dot-list">
+          <span>Social policy obligations &amp; employee benefits payable in cash; provisions settled in cash; lease liabilities; cash dividends recognized as a liability</span>
+        </div>
+        <div class="elabel">NON-MONETARY — no such fixed right/obligigation</div>
+        <div class="dot-list">
+          <span>Prepayments for goods/services; transfer right assets; goodwill; intangible assets; inventories; PP&amp;E; right-of-use assets; provisions settled by delivering a non-monetary asset</span>
+        </div>
+      </div>
+
+      <div class="card cn">
+        <div class="ctitle cn">Net investment in a foreign operation</div>
+        <div class="principle">A monetary item receivable from/payable to a foreign operation, for which settlement is NEITHER PLANNED NOR LIKELY in the foreseeable future, is in substance part of the entity's net investment — e.g. long-term receivables/loans (NOT trade receivables/payables).</div>
+        <div class="note">Any controlled entity within the economic entity can hold such an item — e.g. Controlled Entity A's loan to foreign Controlled Entity B is part of A's net investment in B if settlement isn't planned/likely, even if A is itself a foreign operation.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Reporting Foreign Currency Transactions in the Functional Currency (paras. 20–30)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Initial recognition (paras. 23–26)</div>
+        <div class="formula-box">
+          <div class="f-eq">Foreign currency amount × spot rate at the DATE OF THE TRANSACTION</div>
+        </div>
+        <div class="text-supporting">The transaction date is when it first qualifies for recognition under IPSAS. A rate approximating the actual rate (e.g. a weekly/monthly average) is acceptable for practical reasons — UNLESS exchange rates fluctuate significantly.</div>
+        <div class="note">A foreign currency transaction includes buying/selling goods or services, borrowing/lending, and acquiring/disposing of assets or incurring/settling liabilities denominated in a foreign currency (para. 23).</div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Subsequent reporting dates (para. 27)</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.3fr 1.7fr;"><span>Item type</span><span>Rate used</span></div>
+          <div class="tr" style="grid-template-columns:1.3fr 1.7fr;"><span>Monetary items</span><span>CLOSING rate</span></div>
+          <div class="tr alt" style="grid-template-columns:1.3fr 1.7fr;"><span>Non-monetary, historical cost</span><span>Rate at the DATE OF THE TRANSACTION</span></div>
+          <div class="tr" style="grid-template-columns:1.3fr 1.7fr;"><span>Non-monetary, fair value / current operational value</span><span>Rate when that value was MEASURED</span></div>
+        </div>
+        <div class="note">Lower-of-two-amounts comparisons (e.g. inventory at lower of cost and NRV; impaired non-cash-generating assets) translate EACH side at its own applicable rate — this can flip whether an impairment is recognized in the functional vs. foreign currency (para. 29).</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Recognition of Exchange Differences (paras. 31–39)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">General rule — surplus or deficit</div>
+        <div class="principle">Exchange differences arising (a) on SETTLEMENT of monetary items, or (b) on TRANSLATING monetary items at rates different from initial/previous recognition, are recognized in surplus or deficit in the period they arise — except the net-investment carve-out (para. 37, right).</div>
+        <div class="dot-list">
+          <span>Where a gain/loss on a NON-monetary item goes directly to net assets/equity, its exchange component follows it there too (para. 35)</span>
+          <span>Where a gain/loss on a non-monetary item goes to surplus/deficit, its exchange component follows it there too</span>
+        </div>
+      </div>
+
+      <div class="card cs">
+        <div class="ctitle cs">Net investment carve-out (para. 37)</div>
+        <div class="text-supporting">Exchange differences on a monetary item forming part of the net investment in a foreign operation:</div>
+        <div class="dot-list">
+          <span>SEPARATE financial statements of the reporting entity, or the foreign operation's own statements → surplus or deficit</span>
+          <span>CONSOLIDATED statements including both → initially a SEPARATE component of net assets/equity, reclassified to surplus/deficit only on DISPOSAL (see §8)</span>
+        </div>
+        <div class="callout info callout--flush">IPSAS 45 revaluation gains/losses on an asset measured in a foreign currency are translated at the rate when the value was determined (para. 27(c)) — producing an exchange difference that is ALSO recognized directly in net assets/equity (para. 36).</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Change in Functional Currency (paras. 40–42)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">Prospective treatment only</div>
+        <div class="principle">When the functional currency changes, the entity applies the NEW functional currency's translation procedures PROSPECTIVELY from the date of the change — never retrospectively.</div>
+        <div class="dot-list">
+          <span>All items are translated into the new functional currency at the exchange rate AT THE DATE OF THE CHANGE</span>
+          <span>Resulting translated amounts for non-monetary items become their new "historical cost"</span>
+          <span>Exchange differences on a foreign operation, previously classified in net assets/equity, are NOT recognized in surplus/deficit until the operation is disposed of</span>
+        </div>
+        <div class="note">A functional currency change might follow, e.g., a shift in the currency mainly influencing sale prices or the provision of goods/services (para. 41).</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Use of a Presentation Currency Other than the Functional Currency (paras. 43–49)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Non-hyperinflationary functional currency (para. 44)</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.3fr 1.7fr;"><span>Item</span><span>Rate</span></div>
+          <div class="tr" style="grid-template-columns:1.3fr 1.7fr;"><span>Assets &amp; liabilities (each SOFP, incl. comparatives)</span><span>CLOSING rate at that SOFP's date</span></div>
+          <div class="tr alt" style="grid-template-columns:1.3fr 1.7fr;"><span>Revenue &amp; expenses (each SOFPerformance, incl. comparatives)</span><span>Rates AT THE DATES OF THE TRANSACTIONS (average rate acceptable, unless rates fluctuate significantly)</span></div>
+        </div>
+        <div class="note">All resulting exchange differences → a SEPARATE component of net assets/equity (para. 44(c)). They arise from (a) translating revenue/expenses vs assets/liabilities at different rate bases, and (b) translating opening net assets/equity at a closing rate that differs from the prior closing rate (para. 47). They are NOT recognized in surplus/deficit because rate changes have little direct effect on present/future operating cash flows.</div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Hyperinflationary functional currency (paras. 48–49)</div>
+        <div class="check-list">
+          <span>ALL amounts (assets, liabilities, net assets/equity, revenue, expenses, incl. comparatives) translated at the CLOSING rate of the most recent SOFP</span>
+          <span>EXCEPTION: when translating into a NON-hyperinflationary presentation currency, comparatives are the amounts originally presented as CURRENT-year figures in the prior year's statements — not re-adjusted for later price-level or rate changes</span>
+        </div>
+        <div class="note">The entity first restates its own statements under IPSAS 10 before applying this translation method. If the economy stops being hyperinflationary, the price-level-restated amounts at the date restatement ceased become the "historical costs" for translation going forward.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Translation &amp; Disposal of a Foreign Operation (paras. 50–58)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Consolidation mechanics (paras. 51–56)</div>
+        <div class="dot-list">
+          <span>Normal consolidation procedures apply (IPSAS 35) — but an intra-economic-entity monetary asset/liability CANNOT simply be eliminated without showing currency-fluctuation results (para. 52)</span>
+          <span>Goodwill and fair value adjustments on acquiring a foreign operation are treated as ITS assets/liabilities — expressed in ITS functional currency, translated at the closing rate (para. 56)</span>
+          <span>Different reporting dates: assets/liabilities translated at the foreign operation's OWN reporting-date rate, with adjustments for significant rate changes up to the group's reporting date (IPSAS 35)</span>
+        </div>
+      </div>
+
+      <div class="card cd">
+        <div class="ctitle cd">Disposal or partial disposal (paras. 57–58)</div>
+        <div class="principle">On DISPOSAL, the cumulative exchange differences accumulated in the separate net assets/equity component for that foreign operation are RECLASSIFIED to surplus or deficit when the gain/loss on disposal is recognized.</div>
+        <div class="dot-list">
+          <span>Partial disposal WITH loss of control → treated as a full disposal for this purpose, even if a non-controlling interest is retained</span>
+          <span>Partial disposal WITHOUT loss of control → only the PROPORTIONATE share of cumulative exchange differences is reattributed to non-controlling interests (or transferred to accumulated surplus/deficit)</span>
+        </div>
+        <div class="callout warn callout--flush">A write-down from the foreign operation's own losses or an impairment does NOT count as a partial disposal — no deferred FX gain/loss is recognized at that point (para. 58).</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Tax Effects &amp; Disclosure (paras. 59–66)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs">
+        <div class="ctitle cs">Required disclosures (paras. 61–63)</div>
+        <div class="check-list">
+          <span>Amount of exchange differences recognized in surplus/deficit (excl. those on FV-through-surplus/deficit financial instruments under IPSAS 41)</span>
+          <span>Net exchange differences in a separate net assets/equity component, with a reconciliation of the opening/closing amount</span>
+          <span>When presentation currency ≠ functional currency: that fact, the functional currency, and WHY a different presentation currency is used</span>
+          <span>Any change in functional currency (reporting entity or a significant foreign operation), and why</span>
+        </div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Non-compliant currency displays (paras. 64–66)</div>
+        <div class="text-supporting">An entity may only describe statements as IPSAS-compliant, when presented in a non-functional currency, if ALL requirements (incl. the translation methods in paras. 44 and 48) are met. Otherwise (e.g. converting only selected items, or translating everything at the most recent closing rate) it must:</div>
+        <div class="dot-list">
+          <span>Clearly identify the information as SUPPLEMENTARY, distinct from IPSAS-compliant information</span>
+          <span>Disclose the currency the supplementary information is displayed in</span>
+          <span>Disclose the functional currency and the translation method used</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Appendix A — Foreign Currency Transactions &amp; Advance Consideration (paras. A1–A9)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">The problem this Appendix solves</div>
+        <div class="principle">When an entity pays/receives foreign-currency consideration IN ADVANCE, it recognizes a non-monetary asset or liability BEFORE the related asset, expense, or revenue. This Appendix clarifies which date's exchange rate governs the later recognition of that related item.</div>
+        <div class="formula-box">
+          <div class="f-eq">Date of the transaction (for rate purposes) = date the entity initially recognizes the non-monetary asset/liability from the advance consideration</div>
+        </div>
+        <div class="note">This Appendix is an INTEGRAL part of IPSAS 4. Applies (in scope, para. A4) only where a non-monetary asset/liability from advance consideration is recognized before the related item.</div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Scope exclusions (paras. A5–A6)</div>
+        <div class="cross-list">
+          <span>Where the related item is measured at fair value or current operational value on initial recognition</span>
+          <span>Where it's measured at the FV of consideration paid/received at a date OTHER than the non-monetary item's initial recognition date (e.g. goodwill under IPSAS 40)</span>
+          <span>Income taxes</span>
+          <span>Insurance/reinsurance contracts issued or held</span>
+        </div>
+        <div class="note">If there are MULTIPLE advance payments/receipts, the entity determines a separate transaction date for EACH one (para. A9).</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Worked Examples — Advance Consideration (Illustrative Examples IE1–IE19)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Example 1 — single advance payment for PP&amp;E</div>
+        <div class="worked">
+          <div class="wk-title">FC1,000 paid 1 Apr 20X1; machine delivered 15 Apr 20X1</div>
+          <div class="wk-body">Entity A recognizes a non-monetary asset (prepayment) translating FC1,000 at the spot rate on 1 Apr 20X1.</div>
+          <div class="wk-answer">On delivery (15 Apr), Entity A derecognizes the prepayment and recognizes the machine's cost using the exchange rate from <strong style="color:var(--color-text-info);">1 Apr 20X1</strong> — the date of the non-monetary asset's initial recognition, NOT the delivery date.</div>
+        </div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Example 4 — multiple receipts, multiple points in time (journal entries)</div>
+        <div class="worked">
+          <div class="wk-title">FC200 received 31 Jan 20X4 (rate 1:1.5); goods 1 (FC450) delivered 1 Mar (rate 1:1.7); goods 2 (FC550) delivered + FC800 received 1 Jun (rate 1:1.9)</div>
+          <div class="wk-body">Step 1 — receive advance: Dr Cash (FC200) LC300 / Cr Contract liability (FC200) LC300. Step 2 — deliver good 1: Dr Contract liability LC300, Dr Receivable (FC250) LC425 / Cr Revenue (FC450) LC725.</div>
+          <div class="wk-answer">
+            The FC250 receivable is MONETARY, so it's remeasured at each date. By 1 Jun it's worth LC475 → Dr Receivable LC50 / Cr FX gain LC50. On 1 Jun: deliver good 2, recognize FC550 revenue at that day's rate, and settle the FC250 receivable against the FC800 received: Dr Cash (FC800) LC1,520 / Cr Receivable (FC250) LC475 / Cr Revenue (FC550) LC1,045.
+          </div>
+        </div>
+        <div class="note">Illustrates the core rule: the ADVANCE portion locks in its rate at the advance-recognition date; revenue recognized LATER (without an advance) uses the rate on ITS OWN recognition date; and any resulting RECEIVABLE remains monetary and keeps remeasuring until settled.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Effective Date &amp; Amendment Timeline (paras. 71–73)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Amendment history at a glance</div>
+        <div class="principle">Base Standard: periods beginning on/after <strong>1 January 2010</strong> (earlier application encouraged). Supersedes IPSAS 4 (2006) (para. 73, "Withdrawal").</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1fr 2.2fr;"><span>Effective</span><span>Change</span></div>
+          <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>2015 (with IPSAS 35/37)</span><span>Paras. 3(b), 10, 13, 21, 22, 38, 47, 50, 51, 53, 55, 57, 58; new 57A–57D</span></div>
+          <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2017</span><span>Paras. 67–70, 72 — IPSAS 33, First-time Adoption</span></div>
+          <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2018</span><span>Paras. 6, 7 deleted; para. 13 amended — The Applicability of IPSAS (Apr 2016)</span></div>
+          <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2019</span><span>New paras. 70A, 70B, Appendix A (A1–A9) — Improvements to IPSAS, 2018</span></div>
+          <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2023</span><span>Paras. 3, 4, 5, 31, 61 — IPSAS 41, Financial Instruments</span></div>
+          <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2025</span><span>Para. 17 (IPSAS 43, Leases); paras. 28, 36 (IPSAS 45); paras. 27, A5 (IPSAS 46)</span></div>
+          <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2026</span><span>Para. 11 (IPSAS 47, Revenue); para. 17 (IPSAS 48, Transfer Expenses)</span></div>
+        </div>
+        <div class="note">Para. 72: when an entity adopts accrual-basis IPSAS after the effective date (per IPSAS 33), this Standard applies from the date of adoption.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Relationship to IAS/IFRS — Comparison with IAS 21</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — IPSAS 4 vs IAS 21</div>
+        <div class="principle">IPSAS 4 is drawn primarily from IAS 21 (revised 2003, amended 2005), <em>The Effects of Changes in Foreign Exchange Rates</em>.</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.2fr 1.4fr 1.4fr;"><span>Topic</span><span style="color:var(--color-text-info);">IPSAS 4</span><span style="color:var(--color-text-warning);">IAS 21</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1.4fr 1.4fr;"><span>Terminology</span><span>"Revenue," "economic entity," "statement of financial performance," "net assets/equity"</span><span>"Income," "group," "statement of comprehensive income," "equity"</span></div>
+        </div>
+        <div class="note">This is the sole documented terminology difference — IPSAS 4 otherwise closely tracks IAS 21's substantive requirements, reflecting the IPSASB's convergence policy where no public-sector-specific reason for departure exists.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Which rate applies? — decision map</div>
+        <ol class="ordered-list">
+          <li>Initial recognition of a foreign currency transaction &rarr; spot rate at the TRANSACTION date (&sect;4)</li>
+          <li>Monetary item at a later reporting date &rarr; CLOSING rate (&sect;4)</li>
+          <li>Non-monetary item, historical cost basis &rarr; rate at the ORIGINAL transaction date, unchanged (&sect;4)</li>
+          <li>Non-monetary item, fair value / current operational value basis &rarr; rate when that value was MEASURED (&sect;4)</li>
+          <li>Advance consideration recognized as a non-monetary asset/liability &rarr; rate at the date THAT item was first recognized, carried into the later related asset/expense/revenue (&sect;10–11)</li>
+          <li>Translating a whole foreign operation into a presentation currency &rarr; assets/liabilities at CLOSING rate; revenue/expenses at TRANSACTION-DATE (or average) rates (&sect;7)</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="grid grid-spaced">
+      <div class="card cs span2">
+        <div class="ctitle cs">Concept-to-statement mapping table</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>IPSAS 4 concept</span><span>Statement(s)</span><span>Notes</span></div>
+          <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Exchange differences on monetary items (general)</span><span><span class="badge bp">SOFPerf</span></span><span>Recognized in surplus/deficit as they arise</span></div>
+          <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Exchange differences on net investment in a foreign operation</span><span><span class="badge be">NA/E</span></span><span>Deferred until disposal, then reclassified to SOFPerf</span></div>
+          <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Translating a foreign operation to presentation currency</span><span><span class="badge bs">SOFP</span> <span class="badge be">NA/E</span></span><span>Assets/liabilities at closing rate; resulting differences to NA/E</span></div>
+          <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Disposal of a foreign operation</span><span><span class="badge be">NA/E</span> <span class="badge bp">SOFPerf</span></span><span>Cumulative differences reclassified on disposal</span></div>
+          <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Revaluation of a foreign-currency-measured asset</span><span><span class="badge be">NA/E</span></span><span>FX component follows the revaluation gain/loss (IPSAS 45)</span></div>
+          <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Functional/presentation currency disclosures</span><span><span class="badge be">Notes</span></span><span>Required whenever presentation &ne; functional currency</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s15"><span class="num">15</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">How IPSAS 4 connects across the IPSAS body of literature</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:0.7fr 2.2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+          <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 1</span><span>Presentation currency identification requirement on the face of the financial statements (&sect;1)</span></div>
+          <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 2</span><span>Cash flow statement translation of foreign currency cash flows — out of IPSAS 4's own scope, cross-referenced (&sect;1, &sect;7)</span></div>
+          <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 10</span><span>Hyperinflationary economy restatement, applied BEFORE IPSAS 4 translation (&sect;7)</span></div>
+          <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 35 / 36</span><span>Consolidation and equity-method mechanics for foreign operations (&sect;8)</span></div>
+          <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 40</span><span>Goodwill measurement exception to the advance-consideration Appendix (&sect;10)</span></div>
+          <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 41</span><span>Hedge accounting for foreign currency items and most foreign-currency derivatives — out of IPSAS 4's scope (&sect;1, &sect;5)</span></div>
+          <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 45</span><span>Revaluation gains/losses on foreign-currency-measured PP&amp;E, translated at the valuation-date rate (&sect;5)</span></div>
+          <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 47</span><span>Revenue recognition timing interacts with the advance-consideration transaction-date rule (&sect;10–11)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s16"><span class="num">16</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <div class="three-col">
+      <div class="card cn">
+        <div class="glossary-item"><div class="glossary-term">Exchange difference</div><div class="glossary-def">The difference from translating a given number of units of one currency into another at different exchange rates.</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Spot exchange rate</div><div class="glossary-def">The exchange rate for immediate delivery.</div></div>
+      </div>
+      <div class="card cn">
+        <div class="glossary-item"><div class="glossary-term">Monetary items</div><div class="glossary-def">Units of currency held, and assets/liabilities to be received or paid, in a fixed or determinable number of currency units.</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Net investment in a foreign operation</div><div class="glossary-def">The reporting entity's interest in the net assets/equity of that operation.</div></div>
+      </div>
+      <div class="card cn">
+        <div class="glossary-item"><div class="glossary-term">Foreign operation</div><div class="glossary-def">A controlled entity, associate, joint arrangement, or branch based/conducted in a different country or currency from the reporting entity.</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Economic entity</div><div class="glossary-def">A controlling entity and its controlled entities, for financial reporting purposes.</div></div>
+      </div>
+    </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bs">SOFP</span> Statement of financial position
+      <span class="badge bp">SOFPerf</span> Statement of financial performance
+      <span class="badge be">NA/E</span> Net assets/equity (statement of changes)
+    </div>
+  </div>
+
+</StandardPageLayout>

@@ -1,0 +1,49 @@
+---
+import StandardPageLayout from "../../../layouts/StandardPageLayout.astro";
+import PageToc from "../../../components/PageToc.astro";
+import "../../../styles/standards-poster.css";
+import "../../../styles/extended.css";
+import metadata from "../../../data/standards/hgb/drs23.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  subtitle={metadata.nativeTitle}
+  framework="hgb"
+  status={metadata.status}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Scope" },        { id: "s2", label: "Multi-tier structures" },        { id: "s3", label: "Worked example" },        { id: "s4", label: "IFRS" }
+      ]}
+    />
+  </Fragment>
+
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Scope — the Standard That Justified an Entirely New Number</h2><span class="line"></span></div><div class="grid">
+<div class="card info span2">
+<div class="ctitle">Not a renumbering — a genuine rewrite</div>
+<div class="principle">DRS 23 elaborates the §301 HGB capital consolidation mechanics documented in detail in the earlier HGB Vollkonsolidierung poster — the Neubewertungsmethode, goodwill/negative-difference recognition, and their §309 subsequent treatment. As flagged in the DRS 4 withdrawal entry, DRS 23 was a genuinely GROUND-UP rewrite rather than an incremental update, specifically to resolve practical questions DRS 4 had never adequately addressed.</div>
+</div>
+</div><div class="section-header" id="s2"><span class="num">2</span><h2>Multi-Tier Group Structures — the Genuinely New Contribution</h2><span class="line"></span></div><div class="grid">
+<div class="card warn span2">
+<div class="ctitle">Filling a real gap in HGB's own conceptual model</div>
+<div class="principle">HGB's own statutory text implicitly assumes a relatively simple, single-tier group structure (parent directly owning subsidiaries). DRS 23 provides detailed guidance for genuinely MULTI-TIER structures (parent owning an intermediate holding company, which itself owns further subsidiaries) — addressing questions like how goodwill computed at each TIER should be treated when consolidating up to the ultimate parent's own group accounts, and how step acquisitions across multiple ownership tiers interact with the §301 capital consolidation mechanic.</div>
+</div>
+</div><div class="section-header" id="s3"><span class="num">3</span><h2>Worked Example — Goodwill Through an Intermediate Holding Tier</h2><span class="line"></span></div><div class="grid">
+<div class="card span2">
+<div class="worked">
+<div class="wk-title">Consolidating goodwill computed at an intermediate level</div>
+<div class="wk-body">An ultimate parent owns 100% of Intermediate Holdco, which itself owns 100% of Operating Sub. Intermediate Holdco's OWN acquisition of Operating Sub generated €800,000 of goodwill, already recognised in Intermediate Holdco's own sub-group Konzernabschluss.</div>
+<div class="wk-answer">DRS 23 confirms this SAME €800,000 goodwill carries through to the ULTIMATE parent's own group-wide Konzernabschluss, subject to the ultimate parent's own consistent measurement/amortisation policy under §308 — the multi-tier structure genuinely doesn't require recomputing goodwill from scratch at the top level, provided the underlying acquisition accounting at the intermediate tier was itself properly performed.</div>
+</div>
+</div>
+</div><div class="section-header" id="s4"><span class="num">4</span><h2>Relationship to IFRS (IFRS 3)</h2><span class="line"></span></div><div class="grid">
+<div class="card span2">
+<div class="ctitle">The same persistent goodwill divergence, elaborated with more procedural detail</div>
+<div class="principle">DRS 23's multi-tier goodwill mechanics broadly parallel how IFRS 3 handles similar structures, though the underlying goodwill TREATMENT itself remains divergent — mandatory amortisation (DRS 23/HGB §301, §309) versus impairment-only (IFRS 3/IAS 36) — the same fundamental split this entire poster series has traced since the very first individual-accounts HGB poster.</div>
+</div>
+</div>
+</StandardPageLayout>

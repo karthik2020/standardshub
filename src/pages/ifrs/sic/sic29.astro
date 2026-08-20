@@ -1,0 +1,240 @@
+---
+import StandardPageLayout from "../../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../../components/FinancialStatementKey.astro";
+import Glossary from "../../../components/Glossary.astro";
+import PageToc from "../../../components/PageToc.astro";
+import "../../../styles/standards-poster.css";
+import "../../../styles/extended.css";
+import HistoryTimeline from "../../../components/HistoryTimeline.astro";
+import history from "../../../data/history.json";
+import metadata from "../../../data/standards/sic/sic29.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType="IFRS"
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework" },
+        { id: "s2", label: "Scope & Definitions" },
+        { id: "s3", label: "The Service Concession Arrangement" },
+        { id: "s4", label: "Operator Side — Required Disclosures" },
+        { id: "s5", label: "Grantor Side — Required Disclosures" },
+        { id: "s6", label: "Revenue Recognition Link" },
+        { id: "s7", label: "Disclosure" },
+        { id: "s8", label: "Judgments & Estimates" },
+        { id: "s9", label: "SIC-29 vs Subsequent Guidance" },
+         { id: "s10", label: "Statement Mapping" },
+         { id: "s11", label: "Related Standards" },
+       ]}
+    />
+  </Fragment>
+
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Why SIC-29 exists as a bridge interpretation</div>
+        <div class="principle">IAS 1 requires disclosure of information that is material to users' understanding of the entity's financial position and performance. Service concession arrangements — where a government or other grantor contractually delegates control over the operation of a public service asset to an operator — create complex, multi-period financial relationships. SIC-29 provides a structured disclosure framework to ensure that the nature, scale, and financial impact of such arrangements are transparent.</div>
+        <div class="note">Without SIC-29, service concession arrangements would be disclosed inconsistently, with no minimum required content. Users would struggle to compare arrangements across entities or assess the risks and benefits each arrangement creates.</div>
+      </div>
+      <div class="card cs">
+        <div class="ctitle cs">Materiality and the substance of disclosure</div>
+        <div class="principle">SIC-29's disclosure requirements are grounded in IAS 1's general disclosure principles, but it goes further: it identifies the SPECIFIC disclosures that must be present — not merely that disclosures must be made. The requirements apply to BOTH the operator (who builds and operates the asset) and the grantor (who retains ownership or control).</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope & Definitions</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What SIC-29 covers</div>
+        <div class="principle">SIC-29 applies to ALL service concession arrangements where a grantor delegates control over a service concession asset to an operator. It applies irrespective of the relationship between the parties, the mechanism used to reimburse the operator (e.g. tolls, availability payments, or hybrid), or the regulatory environment.</div>
+        <div class="elabel">TYPICAL FACT PATTERNS</div>
+        <div class="dot-list">
+          <span>Toll roads and bridges built by a private operator under concession from a government</span>
+          <span>Water treatment plants operated by a private sector operator under government concession</span>
+          <span>Airport terminals built and operated under concession from an airport authority</span>
+          <span>Public housing maintained by a private operator under management contract with a housing authority</span>
+        </div>
+      </div>
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Service concession arrangement</div>
+          <div class="glossary-def">An arrangement where a contract between an operator and a grantor, the operator designs, builds, operates and maintains an infrastructure asset to provide services on behalf of the grantor.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Grantor</div>
+          <div class="glossary-def">The government entity or other party that delegates the operation of the public service asset to the operator, retaining ownership or residual control.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>The Service Concession Arrangement</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">The three essential features</div>
+        <div class="td-table">
+          <div class="th cols-1-2"><span>Feature</span><span>Description</span></div>
+          <div class="tr cols-1-2"><span>Grantor control</span><span>The grantor controls or regulates what services the operator must provide with the concession asset, to whom, and at what price; OR the grantor controls, through ownership, beneficial residual interest in the asset at the end of the concession term</span></div>
+          <div class="tr alt cols-1-2"><span>Operator asset</span><span>The operator obtains (and retains for the concession period) access to the fixed asset to provide the public service</span></div>
+          <div class="tr cols-1-2"><span>Revenue mechanism</span><span>The operator is reimbursed through user fees (tolls), government availability payments, or a combination — not by holding the underlying infrastructure asset for sale</span></div>
+        </div>
+        <div class="callout warn callout--flush">The "control" test is the distinguishing feature of a service concession arrangement. If the grantor does not control the services or retain a residual interest, the arrangement may simply be a service contract — outside SIC-29's scope.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Operator Side — Required Disclosures</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What operators must disclose</div>
+        <div class="elabel">REQUIRED DISCLOSURES</div>
+        <div class="check-list">
+          <span>A description of each significant service concession arrangement</span>
+          <span>The significant terms and conditions that could affect the amount, timing and certainty of future cash flows</span>
+          <span>The carrying amount of assets (and liabilities) recognised in connection with the service concession arrangement, broken down by asset class</span>
+          <span>Deferred revenue (unwinding) and revenue recognised under IFRIC 12's intangible asset model</span>
+          <span>Reconciliation of changes in the carrying amount of service concession assets</span>
+        </div>
+      </div>
+      <div class="card ci">
+        <div class="ctitle ci">Materiality and classification</div>
+        <div class="principle">Operators must present service concession assets as a separate line item within property, plant and equipment (financial asset model) or intangible assets (intangible asset model). Where the arrangement straddles both models, disclosure must explain why and how the division was made.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Grantor Side — Required Disclosures</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">What grantors must disclose</div>
+        <div class="elabel">REQUIRED DISCLOSURES</div>
+        <div class="check-list">
+          <span>A description of each significant service concession arrangement</span>
+          <span>The significant terms and conditions that could affect the amount, timing and certainty of the grantor's cash flows</span>
+          <span>The nature and extent of the grantor's contractual rights and obligations, including renewal options and termination clauses</span>
+          <span>Any unguaranteed residual interests in the service concession asset retained by the grantor</span>
+          <span>Any significant commitments made under the arrangement</span>
+        </div>
+      </div>
+      <div class="card cs">
+        <div class="ctitle cs">Accounting policy disclosure</div>
+        <div class="principle">Grantors must disclose the accounting policy adopted for service concession assets retained — whether they are accounted for as infrastructure assets, derecognised, or treated under any new arrangements. The policy must be applied consistently and disclosed in the notes.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Revenue Recognition Link</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">SIC-29 disclosures and IFRIC 12 recognition</div>
+        <div class="principle">SIC-29 does NOT prescribe recognition and measurement — that is IFRIC 12's domain. SIC-29's disclosures assume IFRIC 12 has been applied correctly, and require the operator to report on what IFRIC 12 produced. The two standards are designed to work together: IFRIC 12 constructs the numbers; SIC-29 ensures those numbers are transparent to users.</div>
+        <div class="formula-box">
+          <div class="f-label">DISCLOSURE RELATIONSHIP</div>
+          <div class="f-eq">IFRIC 12 recognition and measurement + SIC-29 disclosure requirements = Complete financial reporting for service concession arrangements</div>
+        </div>
+        <div class="callout info callout--flush">Operators should also consider IFRS 15's disclosure requirements where revenue arises from construction or service activities within the concession — SIC-29's disclosures complement, rather than replace, IFRS 15 requirements.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Judgments & Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where judgement matters most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Whether a particular arrangement is within the scope of SIC-29 / IFRIC 12 — the "control" test is subjective</span>
+              <span>Whether the grantor's contractual rights create a "residual interest" in the asset</span>
+              <span>The classification of revenue and costs into the financial asset vs. intangible asset models under IFRIC 12</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>The fair value of the service concession asset at initial recognition</span>
+              <span>The useful economic life of the concession asset — this dictates the unwinding of revenue under the intangible asset model</span>
+              <span>The effective interest rate used to discount cash flows under the financial asset model</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>SIC-29 vs Subsequent Guidance</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — SIC-29 within the broader IFRS framework</div>
+        <div class="td-table">
+          <div class="th cols-1-1-1"><span>Provider</span><span>SIC-29</span><span>IFRS 15</span></div>
+          <div class="tr cols-1-1-1"><span>What it addresses</span><span>Disclosure requirements specifically for service concession arrangements</span><span>Revenue recognition — may apply to construction services and ongoing service revenue within the concession</span></div>
+          <div class="tr alt cols-1-1-1"><span>Recognition and measurement</span><span>Does NOT address recognition; delegates to IFRIC 12</span><span>Addresses timing of revenue recognition for construction and service elements, which can interact with IFRIC 12's models</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Where every SIC-29 event lands</div>
+        <div class="td-table">
+          <div class="th cols-16-1-14"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr cols-16-1-14"><span>Operator — financial asset model revenue</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Revenue recognised using the effective interest rate method; receivable disclosed separately</span></div>
+          <div class="tr alt cols-16-1-14"><span>Operator — intangible asset model revenue</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Revenue recognised over the construction/service period; intangible asset amortised over concession life</span></div>
+          <div class="tr cols-16-1-14"><span>Grantor — derecognition of infrastructure asset</span><span><span class="badge bs">SOFP</span></span><span>De-recognised when control transfers; residual interest retained recognised separately</span></div>
+          <div class="tr alt cols-16-1-14"><span>Grantor — modification to concession terms</span><span><span class="badge bs">SOFP</span> <span class="badge bp">SOPL</span></span><span>Changes in terms may require re-measurement and reclassification of assets and liabilities</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Related Standards</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Cross-reference map</div>
+        <div class="td-table">
+          <div class="th cols-08-2"><span>Standard</span><span>Connection</span></div>
+          <div class="tr cols-08-2"><span>IFRIC 12</span><span>Supplies the recognition and measurement framework SIC-29's disclosures relate to, primarily from the operator's perspective</span></div>
+          <div class="tr alt cols-08-2"><span>IAS 1</span><span>Supplies the general principles of financial statement presentation and materiality that inform how SIC-29 disclosures are structured</span></div>
+          <div class="tr cols-08-2"><span>IAS 37</span><span>Governs any restoration/handback obligations disclosed as part of a service concession arrangement's terms</span></div>
+        </div>
+      </div>
+      <div class="card cn">
+        <div class="ctitle cn">Quick-reference glossary</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Service concession arrangement</div>
+          <div class="glossary-def">A contract between an operator and a grantor to provide a public service using a designated asset, with the grantor retaining control over the service or the asset.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Grantor</div>
+          <div class="glossary-def">The government or public entity that contracts for the public service to be delivered and retains control or ownership of the underlying asset.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Service concession arrangement", definition: "An arrangement between an operator and a grantor to provide a public service using a designated asset, where the grantor retains control over the service or the asset's residual value." },
+      { term: "Grantor", definition: "The government or public entity that delegates the operation of a public service asset to an operator, retaining ownership or residual control." },
+      { term: "Operator", definition: "The private sector entity that designs, builds, operates and maintains the service concession asset to deliver public services." },
+      { term: "Financial asset model", definition: "The IFRIC 12 model under which the operator recognises its right to receive a financial asset from the grantor — revenue recognised using the effective interest rate method." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.SIC29} />
+  </section>
+</StandardPageLayout>
+
+
+
+

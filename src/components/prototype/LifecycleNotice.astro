@@ -1,0 +1,307 @@
+---
+/*
+  LifecycleNotice (PROTOTYPE REDESIGN)
+
+  Prototype-only component — does NOT modify the production
+  StandardLifecycleNotice. Two-part documentation notice:
+    - a full-width coloured header strip (icon + uppercase title)
+    - a soft-tinted body with explanation, historical note, and a
+      "Current Standard" link whose arrow animates on hover.
+
+  Colours reuse existing tokens where available (warning/danger/
+  info tints) and standard documentation hues (slate/indigo/purple/
+  orange) otherwise.
+*/
+
+import {
+  ArrowRightLeft,
+  Ban,
+  BookMarked,
+  CalendarClock,
+  FileDiff,
+  RefreshCw,
+  CirclePause,
+  ArrowRight,
+  ArrowDown,
+} from "@lucide/astro";
+import { getLifecycleCountdown } from "../../utils/lifecycle";
+
+interface Props {
+  type:
+    | "superseded"
+    | "withdrawn"
+    | "historical-reference"
+    | "effective-soon"
+    | "amended"
+    | "replaced"
+    | "suspended";
+  title?: string;
+  explanation: string;
+  historical: string;
+  link: string;
+  linkText: string;
+  currentLabel?: string;
+  eventDate?: string;
+  transitionTo?: string;
+  targetStatus?: string;
+}
+
+const {
+  type,
+  title,
+  explanation,
+  historical,
+  link,
+  linkText,
+  currentLabel = "Current Standard",
+  eventDate,
+  transitionTo,
+  targetStatus,
+} = Astro.props;
+
+const iconMap = {
+  superseded: ArrowRightLeft,
+  withdrawn: Ban,
+  "historical-reference": BookMarked,
+  "effective-soon": CalendarClock,
+  amended: FileDiff,
+  replaced: RefreshCw,
+  suspended: CirclePause,
+};
+
+const titleMap = {
+  superseded: "Superseded Standard",
+  withdrawn: "Withdrawn Standard",
+  "historical-reference": "Historical Reference",
+  "effective-soon": "Effective Soon",
+  amended: "Amended Standard",
+  replaced: "Replaced Standard",
+  suspended: "Suspended Standard",
+};
+
+const Icon = iconMap[type];
+const resolvedTitle = title ?? titleMap[type];
+const countdown = getLifecycleCountdown(eventDate);
+---
+
+<section class={`ln ln--${type}`}>
+<div class="ln__header">
+  <span class="ln__icon"><Icon size={18} strokeWidth={2} /></span>
+  <span class="ln__title">{resolvedTitle}</span>
+  {countdown.showCountdown && (
+    <span class="ln__badge">
+      {countdown.isToday
+        ? "Today"
+        : countdown.isTomorrow
+          ? "Tomorrow"
+          : `${countdown.daysRemaining} days`}
+    </span>
+  )}
+</div>
+  {transitionTo && targetStatus && (
+    <div class="ln__transition">
+      <span class="ln__transition-arrow"><ArrowDown size={14} strokeWidth={2} /></span>
+      <span class="ln__transition-target">{targetStatus}</span>
+    </div>
+  )}
+  <div class="ln__body">
+    <p class="ln__text">{explanation}</p>
+    <p class="ln__text">{historical}</p>
+    <div class="ln__current">
+      <div class="ln__current-label">{currentLabel}</div>
+      <a class="ln__link" href={link}>
+        <span class="ln__link-text">{linkText}</span>
+        <span class="ln__arrow"><ArrowRight size={16} strokeWidth={2} /></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ln {
+    border-radius: var(--radius-md, 8px);
+    overflow: hidden;
+    border: 1px solid var(--ln-accent);
+    margin-bottom: var(--space-xl);
+  }
+
+  .ln__header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 16px;
+    background: var(--ln-accent);
+    color: #ffffff;
+  }
+
+  .ln__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .ln__icon :global(svg) {
+    width: 18px;
+    height: 18px;
+  }
+
+  .ln__title {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    line-height: 1;
+  }
+
+  .ln__badge {
+    margin-left: auto;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1;
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    white-space: nowrap;
+  }
+
+  .ln__transition {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 6px 16px;
+    background: var(--ln-soft);
+    border-top: 1px solid var(--ln-divider);
+    color: var(--ln-ink);
+  }
+
+  .ln__transition-arrow {
+    display: inline-flex;
+    flex-shrink: 0;
+  }
+
+  .ln__transition-arrow :global(svg) {
+    width: 14px;
+    height: 14px;
+  }
+
+  .ln__transition-target {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .ln__body {
+    background: var(--ln-soft);
+    padding: 16px 18px;
+  }
+
+  .ln__text {
+    font-size: var(--text-small);
+    color: var(--text-secondary);
+    line-height: 1.65;
+    margin: 0 0 12px;
+  }
+
+  .ln__text:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .ln__current {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--ln-divider);
+  }
+
+  .ln__current-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ln-accent);
+    margin-bottom: 6px;
+  }
+
+  .ln__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--text-small);
+    font-weight: 600;
+    color: var(--ln-ink);
+    text-decoration: none;
+    max-width: 100%;
+  }
+
+  .ln__link:hover,
+  .ln__link:focus-visible {
+    text-decoration: underline;
+  }
+
+  .ln__link-text {
+    min-width: 0;
+  }
+
+  .ln__arrow {
+    display: inline-flex;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+
+  .ln__link:hover .ln__arrow,
+  .ln__link:focus-visible .ln__arrow {
+    transform: translateX(4px);
+  }
+
+  .ln__arrow :global(svg) {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* ===== Colour variants (documentation palette) ===== */
+  .ln--superseded,
+  .ln--replaced {
+    --ln-accent: var(--color-text-warning); /* #b45309 — dark amber */
+    --ln-soft: var(--color-background-warning); /* #fffbeb */
+    --ln-ink: #92400e; /* deeper amber for readable link text */
+    --ln-divider: #fde68a;
+  }
+
+  .ln--withdrawn {
+    --ln-accent: var(--color-text-danger); /* #dc2626 — muted red */
+    --ln-soft: var(--color-background-danger); /* #fff1f2 */
+    --ln-ink: #b91c1c;
+    --ln-divider: #fecaca;
+  }
+
+  .ln--historical-reference {
+    --ln-accent: #475569; /* slate-600 */
+    --ln-soft: #f1f5f9; /* slate-100 */
+    --ln-ink: #334155; /* slate-700 */
+    --ln-divider: #e2e8f0;
+  }
+
+  .ln--effective-soon {
+    --ln-accent: #4f46e5; /* indigo-600 */
+    --ln-soft: #eef2ff; /* indigo-50 */
+    --ln-ink: #4338ca;
+    --ln-divider: #c7d2fe;
+  }
+
+  .ln--amended {
+    --ln-accent: #7c3aed; /* purple-600 */
+    --ln-soft: #f5f3ff; /* purple-50 */
+    --ln-ink: #6d28d9;
+    --ln-divider: #ddd6fe;
+  }
+
+  .ln--suspended {
+    --ln-accent: #c2410c; /* orange-700 — darker for white-text contrast */
+    --ln-soft: #fff7ed; /* orange-50 */
+    --ln-ink: #9a3412;
+    --ln-divider: #fed7aa;
+  }
+</style>

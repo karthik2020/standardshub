@@ -1,0 +1,262 @@
+﻿---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import metadata from "../../data/standards/ias/ias22.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope & Applicability" },
+        { id: "s3", label: "The Purchase Method" },
+        { id: "s4", label: "Pooling of Interests (Uniting of Interests)" },
+        { id: "s5", label: "Goodwill — Recognition and Amortisation" },
+        { id: "s6", label: "Negative Goodwill (Historical Treatment)" },
+        { id: "s7", label: "Minority Interest (Original Terminology)" },
+        { id: "s8", label: "Why IAS 22 Was Replaced" },
+        { id: "s9", label: "Disclosure Requirements" },
+        { id: "s10", label: "Critical Judgments & Estimates" },
+        { id: "s11", label: "IAS 22 vs Modern IFRS 3" },
+        { id: "s12", label: "Statement Mapping" },
+        { id: "s13", label: "Related Standards" },
+        { id: "s14", label: "Quick-Reference Glossary" },
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="withdrawn"
+    explanation="IAS 22 (issued 1983, revised 1998) permitted both the purchase method and, in narrow circumstances, the pooling of interests (uniting of interests) method for business combinations, and permitted goodwill amortisation. It was superseded by IFRS 3 Business Combinations (2004), which mandated the acquisition method exclusively, abolished pooling of interests, and replaced goodwill amortisation with annual impairment testing."
+    historical="It is retained here for historical reference. For current business combination accounting, always apply IFRS 3."
+    link="/ifrs/ifrs3"
+    linkText="IFRS 3 Business Combinations"
+  />
+
+  <div class="wrap">
+    <!-- ============ SECTION 1 ============ -->
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">A choice that undermined comparability</div>
+        <div class="principle">The Conceptual Framework's comparability objective is best served when economically similar transactions are accounted for consistently. IAS 22's genuine choice between the purchase method and pooling of interests — two methods producing materially different SOFP and SOPL outcomes for what could be economically similar acquisitions — was a significant comparability weakness that IFRS 3 later resolved by abolishing pooling of interests entirely.</div>
+        <div class="elabel">HOW IAS 22 MAPPED TO THE FRAMEWORK</div>
+        <div class="check-list">
+          <span><strong style="font-weight:500">Comparability tension</strong> — allowing two fundamentally different accounting methods for business combinations meant economically similar deals could look very different in the financial statements, purely based on which method was elected/qualified</span>
+          <span><strong style="font-weight:500">Faithful representation of goodwill</strong> — IAS 22's mandatory amortisation of goodwill over its useful life (generally capped at a maximum period) reflected an assumption that goodwill's value systematically declines over time — a view IFRS 3 later rejected in favour of annual impairment testing without amortisation</span>
+          <span><strong style="font-weight:500">The pooling loophole</strong> — pooling of interests was widely criticised for enabling entities to avoid recognising fair value step-ups and goodwill entirely, since no new measurement basis was applied — a genuine departure from faithful representation of the transaction's economic substance</span>
+        </div>
+        <div class="note">The elimination of pooling of interests, and the shift from goodwill amortisation to impairment-only testing, were the two most consequential reforms IFRS 3 introduced relative to IAS 22 — both directly improving faithful representation and comparability.</div>
+      </div>
+
+      <div class="card cs">
+        <div class="ctitle cs">The two competing methods, compared</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.3fr 1fr;"><span>Method</span><span>Core mechanic</span></div>
+          <div class="tr" style="grid-template-columns:1.3fr 1fr;"><span>Purchase method</span><span>Acquirer identified; assets/liabilities fair valued; goodwill recognised as a residual</span></div>
+          <div class="tr alt" style="grid-template-columns:1.3fr 1fr;"><span>Pooling of interests</span><span>No acquirer identified; assets/liabilities combined at existing book values; no goodwill recognised</span></div>
+        </div>
+        <div class="callout info callout--chip" style="margin-bottom:0;">Pooling was restricted to genuine "mergers of equals" meeting strict criteria — but was widely seen as too easily manipulated to qualify.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 2 ============ -->
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What IAS 22 covered</div>
+        <div class="principle">IAS 22 applied to accounting for business combinations, including the recognition of goodwill arising, and the subsequent accounting for that goodwill (mandatory amortisation).</div>
+        <div class="note">This general scope, and the underlying "business combination" concept, carried forward directly into IFRS 3 — only the accounting method changed, not the fundamental subject matter.</div>
+      </div>
+
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions you must know (historical)</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Uniting of interests (pooling)</div>
+          <div class="glossary-def">A business combination in which shareholders of the combining entities combine control over their total net assets/operations, to achieve a continuing mutual sharing of risks/benefits — no party identified as an acquirer.</div>
+        </div>
+        <div class="glossary-item" style="border-bottom:none;">
+          <div class="glossary-term">Goodwill (original)</div>
+          <div class="glossary-def">Any excess of the cost of acquisition over the acquirer's interest in the fair value of identifiable assets/liabilities acquired — amortised over its useful life.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 3 ============ -->
+    <div class="section-header" id="s3"><span class="num">3</span><h2>The Purchase Method (with worked example)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">The direct ancestor of IFRS 3's acquisition method</div>
+        <div class="principle">Under the purchase method, one entity (the acquirer) was clearly identified, and the cost of acquisition was allocated to the identifiable assets/liabilities acquired at fair value, with any excess recognised as goodwill.</div>
+        <div class="worked" style="margin-bottom:0;">
+          <div class="wk-title">Example 1: Basic purchase method goodwill calculation</div>
+          <div class="wk-body">An acquirer pays $10,000,000 for 100% of a target. Fair value of identifiable net assets acquired: $8,500,000.</div>
+          <div class="wk-answer">
+            <strong>Goodwill</strong> = 10,000,000 − 8,500,000 = <strong style="color:var(--color-text-info);">$1,500,000</strong> — this calculation is essentially identical to IFRS 3's own goodwill formula (absent the NCI/previously-held-interest complexities IFRS 3 later added for partial acquisitions).
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 4 ============ -->
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Pooling of Interests (Uniting of Interests)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">No acquirer, no fair value step-up, no goodwill</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Where a combination genuinely met the "uniting of interests" criteria (broadly, a merger of equals with no identifiable acquirer, typically involving predominantly equity consideration and continuing shared ownership/management), the combining entities' assets and liabilities were combined at their existing book values — no fair value revaluation occurred, and no goodwill was recognised, since no "purchase" in substance had taken place.</div>
+        <div class="callout danger callout--chip" style="margin-bottom:0;">Pooling was widely criticised as a loophole — entities could structure transactions specifically to qualify for pooling, avoiding both fair value step-ups and goodwill recognition entirely, even where the transaction's genuine economic substance more closely resembled an acquisition.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 5 ============ -->
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Goodwill — Recognition and Amortisation (with worked example)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Mandatory amortisation, generally capped at 20 years</div>
+        <div class="principle">Goodwill arising under the purchase method was capitalised and amortised on a systematic basis over its useful life — generally presumed not to exceed 20 years, though a longer period was permitted if justified. This is a direct contrast with IFRS 3/IAS 36's current approach (no amortisation, mandatory annual impairment testing instead).</div>
+        <div class="worked" style="margin-bottom:0;">
+          <div class="wk-title">Example 2: Goodwill amortisation under IAS 22</div>
+          <div class="wk-body">Continuing Example 1: $1,500,000 of goodwill is assigned a useful life of 15 years.</div>
+          <div class="wk-answer">
+            <strong>Annual amortisation charge</strong> = 1,500,000 / 15 = <strong style="color:var(--color-text-info);">$100,000 per year</strong>, recognised in profit or loss every year for 15 years — regardless of whether the acquired business was performing well or poorly, a mechanical charge IFRS 3's impairment-only approach entirely eliminated.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 6 ============ -->
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Negative Goodwill (Historical Treatment)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Deferred and amortised, not recognised immediately</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Where the fair value of net identifiable assets exceeded the cost of acquisition ("negative goodwill"), IAS 22 required this excess to be treated cautiously — first reduced by reassessing the identification/measurement of identifiable assets/liabilities, and any remaining excess recognised as income systematically over the period expected to benefit, rather than immediately — a significantly more conservative, deferred approach than IFRS 3's current requirement to recognise a bargain purchase gain immediately (after reassessment).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 7 ============ -->
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Minority Interest (Original Terminology)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">Measured at proportionate share only — no fair value option</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Under IAS 22, "minority interest" (the historical predecessor term for NCI) was measured only at its proportionate share of the acquiree's identifiable net assets — there was no option to measure it at fair value, unlike IFRS 3's later genuine choice between the two methods.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 8 ============ -->
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Why IAS 22 Was Replaced</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">A comprehensive overhaul as part of global convergence efforts</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">IAS 22's pooling of interests option, and its mandatory goodwill amortisation, were widely criticised — pooling for enabling economically similar acquisitions to be accounted for inconsistently, and amortisation for imposing a mechanical, often arbitrary annual charge unrelated to genuine goodwill impairment. As part of a broader convergence effort with US GAAP (which had already abolished pooling and moved to impairment-only goodwill testing under SFAS 141/142), the IASB replaced IAS 22 with IFRS 3 in 2004.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 9 ============ -->
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure Requirements (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Required disclosures under IAS 22</div>
+        <div class="check-list">
+          <span>The names and description of combining entities, and the method used (purchase or pooling)</span>
+          <span>The amount of goodwill (or negative goodwill), its useful life, and the amortisation method</span>
+          <span>Details of adjustments to previously reported figures, if pooling of interests was applied</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 10 ============ -->
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments &amp; Estimates (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where management judgement mattered most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Whether a combination genuinely qualified for pooling of interests treatment</span>
+              <span>Fair value of identifiable assets/liabilities acquired under the purchase method</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>Goodwill's useful life, for amortisation purposes (generally capped at 20 years)</span>
+            </div>
+          </div>
+        </div>
+        <div class="callout warn callout--chip" style="margin-top:8px;margin-bottom:0;">The pooling qualification criteria were, in practice, sufficiently flexible that entities could sometimes structure transactions specifically to achieve pooling treatment — a widely recognised weakness that directly contributed to its eventual abolition.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 11 ============ -->
+    <div class="section-header" id="s11"><span class="num">11</span><h2>IAS 22 vs Modern IFRS 3</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — IAS 22 (1998 revision) vs current IFRS 3</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Feature</span><span style="color:var(--color-text-info);">IAS 22 (withdrawn)</span><span style="color:var(--color-text-warning);">Current (IFRS 3)</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Method choice</span><span>Purchase method OR pooling of interests</span><span>Only the acquisition method — pooling abolished entirely</span></div>
+          <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Goodwill subsequent treatment</span><span>Mandatory amortisation (typically ≤20 years)</span><span>No amortisation — mandatory annual impairment testing instead</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>NCI (minority interest) measurement</span><span>Proportionate share ONLY, no choice</span><span>Choice between fair value and proportionate share, per combination</span></div>
+          <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Negative goodwill / bargain purchase</span><span>Deferred and recognised as income systematically over time</span><span>Recognised immediately in profit or loss, after mandatory reassessment</span></div>
+        </div>
+        <div class="note">The abolition of pooling and the shift to impairment-only goodwill testing represent the two most fundamental reforms — both directly improving comparability and faithful representation relative to IAS 22's more permissive, amortisation-based regime.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 12 ============ -->
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping (Historical, Under IAS 22)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Comprehensive event-to-statement mapping table</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event / transaction</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Purchase method — assets/liabilities at fair value</span><span><span class="badge bs">SOFP</span></span><span>Similar to today's acquisition method</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Goodwill amortisation charge</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Mandatory, mechanical annual charge — no current equivalent</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Pooling of interests — combination at book values</span><span><span class="badge bs">SOFP</span></span><span>No goodwill, no fair value step-up — treatment abolished under IFRS 3</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Negative goodwill deferred income recognition</span><span><span class="badge bp">SOPL</span></span><span>Recognised systematically over time, not immediately</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 13 ============ -->
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Cross-reference map</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Standard</span><span>Connection</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 3</span><span>The direct successor, abolishing pooling and replacing amortisation with impairment testing</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 36</span><span>Now governs goodwill's only subsequent measurement mechanism — annual impairment testing</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 10</span><span>Supplies the control concept determining the acquirer in a business combination</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 14 ============ -->
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Pooling of interests (uniting of interests)", definition: "A now-abolished method combining entities at existing book values, with no acquirer identified and no goodwill recognised." },
+      { term: "Negative goodwill", definition: "The historical term for what IFRS 3 now calls a 'bargain purchase' gain — treated very differently (deferred vs immediate recognition) under the two standards." },
+      { term: "Purchase method", definition: "The method under IAS 22 where one entity (the acquirer) is identified, assets/liabilities are fair-valued, and goodwill is recognised as the residual excess of cost over net assets acquired." },
+      { term: "Minority interest", definition: "The historical predecessor term for non-controlling interest (NCI), measured only at proportionate share of identifiable net assets under IAS 22, with no fair value option." },
+      { term: "Goodwill (original)", definition: "Any excess of the cost of acquisition over the acquirer's interest in the fair value of identifiable assets/liabilities acquired — amortised over its useful life under IAS 22." }
+    ]} />
+
+    <FinancialStatementKey />
+  </div>
+</StandardPageLayout>

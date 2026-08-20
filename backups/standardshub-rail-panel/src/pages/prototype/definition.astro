@@ -1,0 +1,130 @@
+---
+import StandardLayout from "../../layouts/StandardLayout.astro";
+import Definition from "../../components/Definition.astro";
+import "../../styles/prototype-definition.css";
+
+// Realistic accounting definitions (IAS / IFRS / Ind AS framing).
+// Mix of short and long entries to test text wrapping.
+const definitions = [
+  {
+    term: "Asset",
+    body: "A resource controlled by the entity as a result of past events from which future economic benefits are expected to flow to the entity.",
+  },
+  {
+    term: "Liability",
+    body: "A present obligation of the entity arising from past events, the settlement of which is expected to result in an outflow of resources embodying economic benefits.",
+  },
+  {
+    term: "Fair Value",
+    body: "The price that would be received to sell an asset or paid to transfer a liability in an orderly transaction between market participants at the measurement date. It is measured using a market-participant perspective and, where available, a quoted price in an active market — without deducting the transaction costs of disposal.",
+  },
+  {
+    term: "Recoverable Amount",
+    body: "The higher of an asset's fair value less costs of disposal and its value in use. An asset is impaired when its carrying amount exceeds its recoverable amount.",
+  },
+  {
+    term: "Property, Plant and Equipment",
+    body: "Tangible items that are held for use in the production or supply of goods or services, for rental to others, or for administrative purposes; that are expected to be used during more than one period; and that have a cost that can be measured reliably. Examples include land, buildings, plant, machinery, vehicles and office equipment.",
+  },
+  {
+    term: "Borrowing Costs",
+    body: "Interest and other costs that an entity incurs in connection with the borrowing of funds. Borrowing costs that are directly attributable to the acquisition, construction or production of a qualifying asset are capitalised as part of the cost of that asset, while all other borrowing costs are recognised as an expense in the period in which they are incurred.",
+  },
+];
+---
+
+<StandardLayout code="PROT3" title="Definition Component — Variant Prototype" framework="Design">
+  <p class="pd-intro">
+    <strong>Design prototype only.</strong> This page does not modify the production
+    <code>Definition</code> component, any accounting page, or any existing stylesheet.
+    It compares three visual treatments of the reference-definition block using
+    realistic IAS / IFRS / Ind AS examples, so the three variants can be evaluated
+    side by side.
+  </p>
+
+  <p class="pd-note">
+    <strong>Note on the current implementation.</strong> The production
+    <code>Definition</code> component already renders a subtle 3px neutral left border
+    and a 16px defined term, and it contains no BookOpen icon. Variant A therefore
+    reproduces the current implementation unchanged. The meaningful comparison is
+    between the left-border treatment (current / Variant A) and the top-border
+    treatment (Variant B).
+  </p>
+
+  <div class="pd-col-grid">
+    <div>
+      <div class="pd-col-head">
+        1 &middot; Current Implementation
+        <span>3px left border &middot; 16px term &middot; no icon</span>
+      </div>
+      {
+        definitions.map((d) => (
+          <Definition term={d.term}>{d.body}</Definition>
+        ))
+      }
+    </div>
+
+    <div>
+      <div class="pd-col-head">
+        2 &middot; Variant A
+        <span>No icon &middot; 16px term &middot; 3px left border</span>
+      </div>
+      {
+        definitions.map((d) => (
+          <section class="pd-def pd-def--a" aria-label="Definition">
+            <div class="pd-def__head">
+              <span class="pd-def__label">Definition</span>
+            </div>
+            <dl class="pd-def__dl">
+              <dt class="pd-def__term">{d.term}</dt>
+              <dd class="pd-def__body">{d.body}</dd>
+            </dl>
+          </section>
+        ))
+      }
+    </div>
+
+    <div>
+      <div class="pd-col-head">
+        3 &middot; Variant B
+        <span>Variant A &middot; 3px top border replaces left border</span>
+      </div>
+      {
+        definitions.map((d) => (
+          <section class="pd-def pd-def--b" aria-label="Definition">
+            <div class="pd-def__head">
+              <span class="pd-def__label">Definition</span>
+            </div>
+            <dl class="pd-def__dl">
+              <dt class="pd-def__term">{d.term}</dt>
+              <dd class="pd-def__body">{d.body}</dd>
+            </dl>
+          </section>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="pd-reco">
+    <h2>Recommendation for StandardsHub</h2>
+    <p>
+      <strong>Adopt Variant A (the current implementation).</strong> In a stacked,
+      textbook-style reference list the left-rail accent gives each definition a clear
+      scannable edge without adding colour or weight, and it keeps the established
+      reading rhythm the site already uses. Because the production component already
+      ships this treatment, no change is required.
+    </p>
+    <p>
+      <strong>Variant B</strong> reads more like a section divider than an inline
+      definition. When several definitions sit consecutively, a stronger top border
+      competes with the section headings above and makes the blocks feel like stacked
+      cards rather than entries in a manual. It is the weaker choice here.
+    </p>
+    <p>
+      If a future refresh is desired, a modest refinement of Variant A — darkening the
+      left border one step for slightly more presence — would improve definition
+      separation while preserving the neutral, professional tone. That is optional and
+      outside this prototype.
+    </p>
+  </div>
+</StandardLayout>

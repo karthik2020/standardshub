@@ -1,13 +1,32 @@
 ---
-import { House } from "@lucide/astro";
+/*
+Site header
+
+Top navigation bar for standard pages.
+
+Props:
+- code (optional, defaults to "")
+- framework (optional, defaults to IAS)
+- title (optional)
+
+Renders the StandardsHub logo, framework breadcrumbs, current standard identity, and an optional print button. Slot available for toolbar actions.
+*/
+
+import { House, PanelLeft, Search, Sun, Moon, User, ChevronRight } from "@lucide/astro";
+import { getFramework } from "../data/frameworks";
+
+const defaultFramework = getFramework("ias")!;
 
 const {
     code,
-
     framework,
-
     title,
 } = Astro.props;
+
+const safeCode = code || "";
+const safeFramework = framework || defaultFramework.code;
+const frameworkConfig = getFramework(safeFramework) ?? defaultFramework;
+const isHome = safeCode.toLowerCase() === "home";
 ---
 
 <header class="site-header">
@@ -18,47 +37,112 @@ const {
             <span class="logo-text"> StandardsHub </span>
         </a>
 
-        <nav class="header-breadcrumbs">
+        <nav class="header-breadcrumbs" aria-label="Breadcrumb">
             <a href="/" class="crumb breadcrumb-home">
                 <House size={14} strokeWidth={2} />
 
                 <span>Home</span>
             </a>
 
-            <span class="breadcrumb-separator">❯</span>
+            {!isHome && safeCode.toLowerCase() !== (frameworkConfig.code || "").toLowerCase() && (
+                <>
+                    <ChevronRight size={14} strokeWidth={1.5} class="breadcrumb-separator" aria-hidden="true" />
 
-            <a
-                href={`/${framework.toLowerCase()}`}
-                class={`breadcrumb-framework ${framework.toLowerCase()}`}
-            >
-                {framework}
-            </a>
+                    <a
+                        href={frameworkConfig.route}
+                        class={`crumb breadcrumb-framework ${frameworkConfig.id}`}
+                    >
+                        {frameworkConfig.displayName}
+                    </a>
+                </>
+            )}
 
-            <span class="breadcrumb-separator">❯</span>
+            {!isHome && (
+                <>
+                    <ChevronRight size={14} strokeWidth={1.5} class="breadcrumb-separator" aria-hidden="true" />
 
-            <span class="breadcrumb-current">
-                <span class={`breadcrumb-code ${framework.toLowerCase()}`}>
-                    {code}
-                </span>
+                    <span class="breadcrumb-current" aria-current="page">
+                        <span class={`breadcrumb-code ${frameworkConfig.id}`}>
+                            {safeCode}
+                        </span>
 
-                <span class="breadcrumb-dot"> • </span>
+                        {!isHome && safeCode.toLowerCase() !== (frameworkConfig.code || "").toLowerCase() && (
+                            <>
+                                <span class="breadcrumb-dot"> • </span>
 
-                <span class="breadcrumb-title">
-                    {title}
-                </span>
-            </span>
+                                <span class="breadcrumb-title">
+                                    {title}
+                                </span>
+                            </>
+                        )}
+                    </span>
+                </>
+            )}
         </nav>
+
+        <div class="header-mobile-left">
+            <div class="header-main-row">
+                <div class="header-context">
+                    <button class="toolbar-btn mobile-menu-btn" id="mobileMenuBtn" title="Menu" aria-label="Open menu" aria-expanded="false">
+                        <PanelLeft size={20} strokeWidth={2} />
+                    </button>
+
+                    <div class="header-mobile-title-container">
+                        <span class="header-mobile-code" data-framework={frameworkConfig.id}>{safeCode}</span>
+                        {!isHome && safeCode.toLowerCase() !== (frameworkConfig.code || "").toLowerCase() && (
+                            <span class="header-mobile-title">{title}</span>
+                        )}
+                    </div>
+                </div>
+
+                <div class="header-actions">
+                    {/* Hide search icon as requested
+                    <button class="toolbar-btn" aria-label="Search" title="Search">
+                        <Search size={18} strokeWidth={2} />
+                        <span class="toolbar-label">Search</span>
+                    </button>
+                    */}
+
+                    <button class="toolbar-btn mobile-theme-btn" data-theme-toggle aria-label="Toggle theme" title="Theme">
+                        <Sun size={16} strokeWidth={2} class="theme-icon theme-icon-sun" />
+                        <Moon size={16} strokeWidth={2} class="theme-icon theme-icon-moon" />
+                        <span class="toolbar-label">Theme</span>
+                    </button>
+
+                    {/* Hide account icon as requested
+                    <button class="toolbar-btn" aria-label="Account" title="Account">
+                        <User size={18} strokeWidth={2} />
+                        <span class="toolbar-label">Account</span>
+                    </button>
+                    */}
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="header-right">
         <slot />
 
-        <button class="toolbar-btn" id="printBtn" title="Print"> 🖨 </button>
+        <div class="header-mobile-right">
+            {/* Hide search icon as requested
+            <button class="toolbar-btn" aria-label="Search" title="Search">
+                <Search size={18} strokeWidth={2} />
+                <span class="toolbar-label">Search</span>
+            </button>
+            */}
+
+            <button class="toolbar-btn mobile-theme-btn" data-theme-toggle aria-label="Toggle theme" title="Theme">
+                <Sun size={16} strokeWidth={2} class="theme-icon theme-icon-sun" />
+                <Moon size={16} strokeWidth={2} class="theme-icon theme-icon-moon" />
+                <span class="toolbar-label">Theme</span>
+            </button>
+
+            {/* Hide account icon as requested
+            <button class="toolbar-btn" aria-label="Account" title="Account">
+                <User size={18} strokeWidth={2} />
+                <span class="toolbar-label">Account</span>
+            </button>
+            */}
+        </div>
     </div>
 </header>
-
-<script>
-    document.getElementById("printBtn")?.addEventListener("click", () => {
-        window.print();
-    });
-</script>

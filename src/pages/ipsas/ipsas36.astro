@@ -1,0 +1,278 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import metadata from "../../data/standards/ipsas/ipsas36.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  covers={metadata.covers}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Objective, Scope & Quantifiable Ownership Interests" },
+        { id: "s2", label: "Definitions" },
+        { id: "s3", label: "Significant Influence — the 20% Presumption" },
+        { id: "s4", label: "The Equity Method — Core Mechanics" },
+        { id: "s5", label: "Application & Exemptions" },
+        { id: "s6", label: "Held for Sale, Discontinuing the Equity Method & Category Changes" },
+        { id: "s7", label: "Changes in Ownership Interest" },
+        { id: "s8", label: "Equity Method Procedures — Upstream/Downstream & Uniform Policies" },
+        { id: "s9", label: "Acquisition Accounting & Reporting Date Alignment" },
+        { id: "s10", label: "The Deficit Floor" },
+        { id: "s11", label: "Impairment of the Net Investment" },
+        { id: "s12", label: "Separate Financial Statements & Transitional Provisions" },
+        { id: "s13", label: "Effective Date & Amendment Timeline" },
+        { id: "s14", label: "Relationship to IAS 28" },
+        { id: "s15", label: "Statement / Process Mapping" },
+        { id: "s16", label: "Related Standards — Cross-Reference Map" },
+        { id: "s17", label: "Quick-Reference Glossary" }
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="active"
+    explanation="IPSAS 36 Investments in Associates and Joint Ventures is the current, active standard issued by the IPSASB for accounting for associates and joint ventures over which an entity has significant influence — using the equity method. Effective for periods beginning on or after 1 January 2017 (earlier application encouraged). Paras. 1–50. It supersedes IPSAS 7."
+    historical="IPSAS 36 is the IPSASB's adaptation of IAS 28 (Amended 2011) for the public sector — keeping the equity-method mechanics, the 20% significant-influence presumption and the deficit-floor rule, but with public-sector commentary on service potential and non-distributed profits."
+    link=""
+    linkText=""
+  />
+
+  <!-- ============ SECTION 1 ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; Quantifiable Ownership Interests (paras. 1–5)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Objective &amp; scope (para. 1)</div>
+      <div class="principle">Prescribes the accounting for investments in associates and joint ventures over which the investor has SIGNIFICANT INFLUENCE, using the equity method. Recognises the investment at cost and adjusts it for the investor's share of profit/loss and other comprehensive income.</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Key definitions</div>
+      <div class="glossary-item"><div class="glossary-term">Associate</div><div class="glossary-def">An entity over which the investor has significant influence.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Joint venture</div><div class="glossary-def">A contractual arrangement giving rise to two or more parties' joint control.</div></div>
+    </div>
+  </div>
+
+  <div class="grid grid-spaced">
+    <div class="card cd span2">
+      <div class="ctitle cd">Scope (para. 5)</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.5fr 1.5fr;"><span>In scope</span><span>Out of scope</span></div>
+        <div class="tr" style="grid-template-columns:1.5fr 1.5fr;"><span>Equity-method associates/JVs</span><span>Investments in subsidiaries (IPSAS 35)</span></div>
+        <div class="tr alt" style="grid-template-columns:1.5fr 1.5fr;"><span>JV interest (joint control)</span><span>Joint operations (IPSAS 37)</span></div>
+      </div>
+      <div class="callout info callout--flush">Held-for-trading associates are measured at FVOCI; the equity method applies to the rest.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Definitions (para. 8)</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card cw span2">
+      <div class="ctitle cw">Significant influence (para. 8)</div>
+      <div class="principle">Significant influence = the power to participate in the FINANCIAL and OPERATING policy decisions of the investee, but NOT control. Presumption arises at ≥20% ownership (voting or economic), rebuttable by facts.</div>
+      <div class="check-list"><span>≥20% ownership</span><span>Participation in policy</span><span>Not control</span><span>Rebuttable presumption</span></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Significant Influence — the 20% Presumption (paras. 10–15)</h2><span class="line"></span></div>
+  <div class="cols-1">
+    <div class="card ci">
+      <div class="ctitle ci">20% rule (para. 10)</div>
+      <div class="principle">A 20% or greater stake (voting OR economic interest) creates a PRESUMPTION of significant influence. Rebut it where the entity can demonstrate it does NOT participate in policy decisions — e.g. a purely passive market-holder.</div>
+      <div class="cross-list"><span>Voting rights ≥20%</span><span>Economic interest ≥20%</span><span>Passive holder can rebut</span><span>Participation in policy = influence</span></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>The Equity Method — Core Mechanics (paras. 16–21)</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card cd span2">
+      <div class="ctitle cd">Share of profits (para. 16)</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1.7fr;"><span>Entry</span><span>Treatment</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.7fr;"><span>Associate profit</span><span>Recognise investor's share in P&amp;L</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.7fr;"><span>Associate OCI</span><span>Recognise share — no reclassification</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.7fr;"><span>Dividends received</span><span>Reduce carrying amount (not P&amp;L)</span></div>
+      </div>
+      <div class="callout warn">Negative goodwill is NOT recognised separately — it is part of the associate's carrying amount.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Application &amp; Exemptions (paras. 22–25)</h2><span class="line"></span></div>
+  <div class="cols-1">
+    <div class="card cw">
+      <div class="ctitle cw">When equity method applies (para. 22)</div>
+      <div class="principle">The equity method is used for all associates and joint ventures unless the entity is an investment entity applying IPSAS 34's FVOCI, or the interest is held for trading. Separate financial statements can use the cost model instead.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 1.5fr;"><span>Scenario</span><span>Model</span></div>
+        <div class="tr" style="grid-template-columns:1fr 1.5fr;"><span>All associates/JVs</span><span>Equity method</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 1.5fr;"><span>Investment entity</span><span>FVOCI (IPSAS 34)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Held for Sale, Discontinuing the Equity Method &amp; Category Changes (paras. 25A–27)</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card ci span2">
+      <div class="ctitle ci">Classification changes (para. 25A)</div>
+      <div class="principle">If an associate/JV interest is classified as held for sale, the equity method is DISCONTINUED from the classification date — the investment is measured at the lower of cost and FV less costs to sell, and the associate's profit/loss is no longer recognised going forward.</div>
+      <div class="callout info callout--flush">Reassessment of significant influence (e.g. stake falls below 20%) triggers a switch to the cost/FVOCI model, with a catch-up in profit or loss.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Changes in Ownership Interest</h2><span class="line"></span></div>
+  <div class="cols-1">
+    <div class="card cd">
+      <div class="ctitle cd">Buy-in/sell-down (para. 28)</div>
+      <div class="principle">A change in the ownership percentage that does NOT affect the entity's scope of consolidation (still an associate/JV) is accounted for as a TRANSACTION between equity holders: the associate's share of profit/loss is adjusted, and the difference is attributed to NCI-equivalent — no gain/loss in profit or loss.</div>
+      <div class="glossary-item"><div class="glossary-term">Profits with self</div><div class="glossary-def">Eliminated within the investor's share; not P&amp;L.</div></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Equity Method Procedures — Upstream/Downstream &amp; Uniform Policies (paras. 29–34B, 37–40)</h2><span class="line"></span></div>
+  <div class="cols-1 grid-spaced">
+    <div class="card cw">
+      <div class="ctitle cw">Upstream/downstream (para. 29)</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1.7fr;"><span>Transaction</span><span>Treatment</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.7fr;"><span>Sale from investor to associate</span><span>Defer unrecognised profit; eliminate on resale</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.7fr;"><span>Sale from associate to investor</span><span>Defer; eliminate against associate's profit</span></div>
+      </div>
+      <div class="callout warn">Uniform accounting POLICIES must be applied to the same transactions/events — else reconcile.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Acquisition Accounting &amp; Reporting Date Alignment (paras. 35–36)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Reporting dates (para. 35)</div>
+      <div class="principle">A change in the accounting period of the associate/JV that does NOT result in a change in the investor's fiscal year-end is permitted. If it DOES change the investor's year-end, the investor adjusts its own reporting period to remain aligned.</div>
+      <div class="check-list"><span>Associate period change OK</span><span>Investor-year change → adopt associate's</span></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>The Deficit Floor — When Losses Exceed the Investment (paras. 41–42)</h2><span class="line"></span></div>
+  <div class="cols-1 grid-spaced">
+    <div class="card cd">
+      <div class="ctitle cd">Floor check (para. 41)</div>
+      <div class="principle">If the associate's losses exceed the investor's share of net assets (the 'deficit floor'), the investor does NOT recognise further losses in profit or loss UNLESS it has an obligation or expectation to fund the deficit (e.g. a guarantee). The carrying amount is not reduced below zero.</div>
+      <div class="glossary-item"><div class="glossary-term">Deficit floor</div><div class="glossary-def">Carrying amount of an associate not reduced below zero; excess losses not recognised.</div></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Impairment of the Net Investment</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card cw span2">
+      <div class="ctitle cw">CV check (para. 43)</div>
+      <div class="principle">If the carrying amount of an associate/JV (the net investment) is reduced below its fair value less costs to sell, it is impaired. The investor recognises an impairment loss to bring the carrying amount down to recoverable amount, with reversal subsequently.</div>
+      <div class="callout warn">Separate from the equity-method share of associate losses — this is an investment-level impairment.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Separate Financial Statements &amp; Transitional Provisions (paras. 49–50)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Separate FS (para. 49)</div>
+      <div class="principle">When an entity presents separate financial statements, it may measure investments in associates/JVs at cost (subject to IPSAS 31/39 impairment) OR continue the equity method. Transition uses the same deemed-cost approach as other first-time adoptions.</div>
+      <div class="td-table">
+        <div class="th cols-1-2-fit"><span>Model available</span><span>Ledger</span></div>
+        <div class="tr cols-1-2-fit"><span>Cost model</span><span>Asset Register → cost/less impairment</span></div>
+        <div class="tr alt cols-1-2-fit"><span>Equity method</span><span>Associate Module → share of P&amp;L</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Effective Date &amp; Amendment Timeline (paras. 51–51D)</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card cd span2">
+      <div class="ctitle cd">Timeline</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 1.2fr;"><span>Date</span><span>Event</span></div>
+        <div class="tr" style="grid-template-columns:1fr 1.2fr;"><span>Jan 2015</span><span>Issued</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 1.2fr;"><span>1 Jan 2017</span><span>Effective date</span></div>
+        <div class="tr" style="grid-template-columns:1fr 1.2fr;"><span>2017</span><span>Amended (latest)</span></div>
+      </div>
+      <div class="callout info callout--flush">IPSAS 36 superseded IPSAS 7 (Investments in Associates); transition is prospective.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Relationship to IAS 28</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Twin (para. 51E)</div>
+      <div class="principle">IPSAS 36 mirrors IAS 28 (2011) — equity-method mechanics, the 20% presumption, held-for-trading FVOCI, deficit floor and upstream/downstream rules — but with IPSAS public-sector commentary (non-distributed profits, service potential) and explicit alignment with IPSAS 35/37/38.</div>
+      <div class="cross-list"><span>IAS 28 equity method</span><span>IPSAS 36 same</span><span>IAS 28 20% presumption</span><span>IPSAS 36 same</span><span>IAS 28 deficit floor</span><span>IPSAS 36 same</span></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 15 ============ -->
+  <div class="section-header" id="s15"><span class="num">15</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card ci span2">
+      <div class="ctitle ci">Where it flows</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.4fr 1.3fr;"><span>Process</span><span>Ledger</span></div>
+        <div class="tr" style="grid-template-columns:1.4fr 1.3fr;"><span>Associate accounting</span><span>Equity-method module → share of P&amp;L/OCI</span></div>
+        <div class="tr alt" style="grid-template-columns:1.4fr 1.3fr;"><span>Upstream/downstream</span><span>Trade reconciliation → defer/unrealise</span></div>
+        <div class="tr" style="grid-template-columns:1.4fr 1.3fr;"><span>Impairment testing</span><span>Investment register → CV less cost to sell</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 16 ============ -->
+  <div class="section-header" id="s16"><span class="num">16</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">See also</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2fr;"><span>Standard</span><span>Relation</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2fr;"><span>IPSAS 34</span><span>Separate-statements FVOCI option</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2fr;"><span>IPSAS 37</span><span>Joint arrangements</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2fr;"><span>IPSAS 35</span><span>Subsidiaries (not 36)</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2fr;"><span>IAS 28</span><span>Direct equivalent</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 17 ============ -->
+  <div class="section-header" id="s17"><span class="num">17</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Associate</div><div class="glossary-def">Entity over which investor has significant influence.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Significant influence</div><div class="glossary-def">Power to participate in policy, but not control.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Equity method</div><div class="glossary-def">Associate share of profit/loss & OCI recognised.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Deficit floor</div><div class="glossary-def">Investment carrying amount not reduced below zero.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Upstream/downstream</div><div class="glossary-def">Sale between investor & associate; profit deferred.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Held for sale</div><div class="glossary-def">Equity method discontinued; measured at lower of cost/FV.</div></div>
+    </div>
+  </div>
+</StandardPageLayout>
+

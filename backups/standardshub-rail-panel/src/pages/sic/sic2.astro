@@ -1,0 +1,85 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/sic/sic2.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "What SIC-2 Addressed (Historical)" },
+        { id: "s2", label: "The Conclusion It Reached (Historical)" },
+        { id: "s3", label: "Where This Guidance Lives Today" },
+        { id: "s4", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="historical-reference"
+    explanation="SIC-2 was withdrawn in March 2007 when the IASB issued a revised IAS 23 Borrowing Costs, which made the capitalisation of borrowing costs mandatory and removed the option to expense them."
+    historical="This page is retained for historical and comparative reference. Entities should refer to the current standard that superseded this interpretation for authoritative guidance."
+    link="/ias/ias23"
+    linkText="IAS 23 Borrowing Costs"
+  />
+
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>What SIC-2 Addressed (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">What SIC-2 addressed</div>
+        <div class="principle">SIC-2 addressed how consistently an entity could choose between expensing or capitalising borrowing costs directly attributable to the acquisition, construction or production of a qualifying asset. It clarified whether an entity could apply different policies to different categories of assets or whether a single consistent policy was required.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>The Conclusion It Reached (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">The conclusion it reached</div>
+        <div class="principle">SIC-2 concluded that an entity must apply its chosen accounting policy for borrowing costs consistently to all qualifying assets. An entity could either expense all borrowing costs or capitalise them as part of the cost of a qualifying asset, but the policy had to be applied on a consistent basis. Any change in policy was to be accounted for as a change in accounting estimate.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Where This Guidance Lives Today</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card">
+        <div class="ctitle">Where this guidance lives today</div>
+        <div class="td-table">
+          <div class="tr"><span>Superseded by</span><span>IAS 23 Borrowing Costs</span></div>
+          <div class="tr alt"><span>Why withdrawn</span><span>The 2007 revision made capitalisation mandatory, removing the option to expense</span></div>
+          <div class="tr"><span>Current status</span><span>Withdrawn</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Borrowing costs", definition: "Interest and other costs that an entity incurs in connection with borrowing funds, including interest expense calculated using the effective interest method." },
+      { term: "Qualifying asset", definition: "An asset that necessarily takes a substantial period of time to get ready for its intended use or sale." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.SIC2} />
+  </section>
+</StandardPageLayout>

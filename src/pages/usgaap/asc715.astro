@@ -1,0 +1,156 @@
+﻿---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc715.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope & Applicability" },
+        { id: "s3", label: "Defined Contribution vs Defined Benefit Plans" },
+        { id: "s4", label: "Plan Assets — Fair Value Measurement" },
+        { id: "s5", label: "The Projected Benefit Obligation (PBO)" },
+        { id: "s6", label: "Pension Expense — the Five-Component Model" },
+        { id: "s7", label: "Corridor Amortisation — eliminated by ASU 2017-07" },
+        { id: "s8", label: "Settlement or Curtailment" },
+        { id: "s9", label: "Worked Example — Calculating Pension Expense" },
+        { id: "s10", label: "Worked Example — Funding vs Expense Divergence" },
+        { id: "s11", label: "Disclosure Requirements" },
+        { id: "s12", label: "Critical Judgments & Estimates" },
+        { id: "s13", label: "ASC 715 vs IAS 19 — Comprehensive Comparison" },
+         { id: "s14", label: "Statement Mapping" },
+         { id: "s15", label: "Related Topics" },
+       ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci"><div class="ctitle ci">Compensation deferred to retirement</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 715 addresses the accounting for retirement benefits — compensation that employees earn through current service but will not receive until retirement. This creates a classic present obligation: employees have provided service today in exchange for benefits tomorrow, generating a liability that must be recognised even though cash payment is deferred for many years.</div></div>
+      <div class="card cs"><div class="ctitle cs">Broadly converged with IAS 19, with meaningful classification differences</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 715 and IAS 19 both govern defined benefit and defined contribution pension plans and other postretirement benefits, using similar economic logic. However, the US GAAP classification model for plan assets and the expense presentation differ materially from IAS 19's approach, particularly around the corridor method and net interest approach.</div></div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope & Applicability</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Pension and other postretirement benefits</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 715 applies to all retirement benefit arrangements, including defined BENEFIT pension plans, defined CONTRIBUTION pension plans, and OTHER POSTRETIREMENT benefits (primarily postretirement health care). It addresses both the balance sheet recognition of the net pension asset or liability and the periodic pension expense recognised in the income statement.</div></div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Defined Contribution vs Defined Benefit Plans</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">The fundamental distinction</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">DEFINED CONTRIBUTION plans require the employer to contribute a SPECIFIED amount to the plan each period (e.g., 5% of salary) — the employer's obligation is limited to the contribution and any remaining obligation is satisfied when the contribution is made. DEFINED BENEFIT plans promise a SPECIFIED future benefit amount (e.g., $3,000/month at retirement) — the employer bears the investment and longevity risk and must fund the plan to meet that promise.</div></div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Plan Assets — Fair Value Measurement</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Measured at fair value, reducing the net obligation</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">Plan assets are measured at FAIR VALUE, which reduces the NET pension obligation or increases the net pension asset recognised on the balance sheet. The fair value of plan assets is the market price if quoted, or fair value determined using valuation techniques if not quoted. Actual returns on plan assets are recognised in other comprehensive income under ASC 715, not in pension expense — a key distinction from the pre-2017 model.</div></div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>The Projected Benefit Obligation (PBO)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Present value of expected future benefit payments</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">The PROJECTED BENEFIT OBLIGATION (PBO) is the actuarial present value, as of the balance sheet date, of BENEFITS expected to be paid to employees based on their service to date — using FUTURE salary increases in the projection (as opposed to the accumulated benefit obligation, which uses current salaries). The PBO represents the employer's best estimate of the total obligation to employees based on their service rendered to date.</div></div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Pension Expense — the Five-Component Model</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">Service cost plus net interest minus expected return</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">Pension expense under ASC 715 consists of five components: (1) SERVICE COST — the present value of benefits earned by employee service during the period; (2) INTEREST COST — the accretion of the PBO due to the passage of time; (3) EXPECTED RETURN ON PLAN ASSETS — reducing expense; (4) PRIOR SERVICE COST — amortisation of retroactive plan amendments; and (5) ACTUARIAL GAINS/LOSSES — now recognised through the NET INTEREST approach rather than the corridor method.</div></div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Corridor Amortisation — eliminated by ASU 2017-07</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">A significant 2017 simplification</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">Before ASU 2017-07, actuarial gains and losses were only recognised in net periodic pension cost when they exceeded the "corridor" (10% of the greater of the PBO or plan assets), with excess amounts amortised over time. ASU 2017-07 ELIMINATED this corridor approach for EMPLOYERS that are NOT PUBLIC BUSINESS ENTITIES, simplifying the model significantly — though public companies continue to use the net interest approach, which effectively recognises all actuarial gains/losses through OCI immediately.</div></div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Settlement or Curtailment</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">When plan obligations are settled early</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">A SETTLEMENT occurs when the employer eliminates its obligation by paying plan participants or purchasing annuities. A CURTAILMENT occurs when the employer significantly reduces the benefits expected to be paid under a plan, such as by closing a facility or terminating a plan for new hires. Both events require immediate recognition of any resulting gain or loss.</div></div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Worked Example — Calculating Pension Expense</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Pension expense components</div>
+      <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Five-component pension expense calculation</div><div class="wk-body">Service cost = $450,000. Interest cost on PBO = $380,000. Expected return on plan assets = $(320,000). Prior service cost amortisation = $45,000. Net actuarial loss amortisation = $25,000.</div><div class="wk-answer">Pension expense = $450,000 + $380,000 − $320,000 + $45,000 + $25,000 = <strong>$580,000</strong>. The net interest on the net defined benefit liability ($380,000 amortisation − $320,000 expected return = $60,000) is the largest component after service cost.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Worked Example — Funding vs Expense Divergence</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Cash contributions diverge from accounting expense</div>
+      <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Actual contributions differ from expense</div><div class="wk-body">Pension expense is $580,000. Actual employer contributions to the plan during the year are $750,000 — higher than expense due to catching up on underfunding.</div><div class="wk-answer">Accounting: Pension expense of <strong>$580,000</strong> recognised in income. Cash: <strong>$750,000</strong> contributed to the plan. The $170,000 excess contribution reduces the unfunded pension liability on the Balance Sheet. Cash funding and accounting expense are independently determined and routinely diverge.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">What ASC 715 requires</div><div class="check-list"><span>Components of net periodic benefit cost</span><span>Amounts in other comprehensive income and reclassification adjustments</span><span>Funded status of the plan and amounts recognised in the balance sheet</span><span>Key assumptions: discount rate, expected return on plan assets, rate of compensation increase</span><span>Expected employer contributions in the next fiscal year</span></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Critical Judgments & Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+      <div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Selection of the high-quality corporate bond discount rate</span><span>Determination of expected return on plan assets</span><span>Classification as defined benefit vs defined contribution</span></div></div>
+      <div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Rate of compensation increase for PBO projection</span><span>Expected long-term rate of return on plan assets</span><span>Mortality and turnover assumptions</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>ASC 715 vs IAS 19 — Comprehensive Comparison</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Comparison — ASC 715 vs IAS 19</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">US GAAP (ASC 715)</span><span style="color:var(--color-text-info);">IFRS (IAS 19)</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Plan asset classification</span><span>Usual classification, but must exclude own-issued instruments</span><span>Same restriction on own-issued instruments</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Actuarial gains/losses</span><span>Recognised through OCI immediately under net interest approach</span><span>Recognised immediately in OCI with no reclassification to P&L</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Expected return on plan assets</span><span>Reduces pension expense in P&L</span><span>Calculated using same principle but not shown separately</span></div>
+      </div>
+      <div class="note">The MOST PRACTICALLY SIGNIFICANT difference relates to presentation: IAS 19 uses a NET INTEREST approach that presents service cost and net interest separately, while ASC 715 traditionally presented the full expense in one line — though ASU 2017-07 moved US GAAP closer to the IAS 19 model for service cost classification.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Where every ASC 715 event lands</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Service cost</span><span><span class="badge bp">IS</span></span><span>Recognised as compensation expense</span></div>
+      <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Net interest on net defined benefit liability</span><span><span class="badge bp">IS</span></span><span>Interest cost minus expected return on plan assets</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Actuarial gains/losses</span><span><span class="badge bo">OCI</span></span><span>Recognised immediately in OCI, no reclassification</span></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s15"><span class="num">15</span><h2>Related Topics</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd"><div class="ctitle cd">Cross-reference map</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 712</span><span>Nonretirement Postemployment Benefits — governs benefits before retirement</span></div>
+      <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 710</span><span>Compensation—General — governs compensated absences</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 19</span><span>Employee Benefits — IFRS counterpart</span></div>
+      </div>
+      </div>
+    </div>
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.ASC715 || []} />
+  </section>
+</StandardPageLayout>
+

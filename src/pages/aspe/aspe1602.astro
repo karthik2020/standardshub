@@ -1,0 +1,175 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/aspe/aspe1602.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  bannerNotice={metadata.bannerNotice}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope — Applies Only Where Consolidation Is Elected" },
+        { id: "s3", label: "Presentation Within Equity" },
+        { id: "s4", label: "Two Components of Non-Controlling Interests in Net Assets" },
+        { id: "s5", label: "Attributing Net Income to Both Parent and NCI" },
+        { id: "s6", label: "Net Income Attributed to NCI Even in a Deficit Position" },
+        { id: "s7", label: "Changes in Ownership Interest Not Resulting in Loss of Control" },
+        { id: "s8", label: "Reciprocal Shareholdings Within the Group" },
+        { id: "s9", label: "Worked Example — Measuring NCI at the Combination Date" },
+        { id: "s10", label: "Worked Example — Attributing a Loss to NCI, Creating a Deficit" },
+        { id: "s11", label: "Disclosure Requirements" },
+        { id: "s12", label: "Critical Judgments &amp; Estimates" },
+        { id: "s13", label: "Relationship to IFRS 10's NCI Treatment" },
+        { id: "s14", label: "Statement Mapping" },
+        { id: "s15", label: "Related Standards" },
+        { id: "s16", label: "Glossary" }
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+
+
+<div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card ci span2"><div class="ctitle ci">The minority shareholders' stake within a consolidated group</div><div class="principle">ASPE Section 1602 governs the RECOGNITION, MEASUREMENT, and PRESENTATION of NON-CONTROLLING interests (NCI) — the PORTION of a SUBSIDIARY'S net ASSETS and net INCOME NOT attributable, DIRECTLY or INDIRECTLY, to the PARENT — WITHIN consolidated financial STATEMENTS prepared UNDER Section 1601. NCI is PRESENTED within EQUITY, CONSISTENT with the "ENTITY theory" approach IFRS 10 ALSO applies internationally (Section 3).</div>
+</div>
+</div>
+
+<div class="section-header" id="s2"><span class="num">2</span><h2>Scope — Applies Only Where Consolidation Is Elected</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cw span2"><div class="ctitle cw">A companion to Section 1601's consolidation mechanics</div><div class="principle">This Section applies ONLY where an ENTERPRISE has ELECTED, UNDER Section 1591, TO consolidate ITS subsidiaries — an ENTERPRISE electing THE cost or EQUITY method has NO non-CONTROLLING interest to PRESENT, SINCE it does NOT combine THE subsidiary'S own assets AND liabilities line-BY-line at ALL.</div>
+</div>
+</div>
+
+<div class="section-header" id="s3"><span class="num">3</span><h2>Presentation Within Equity</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">Separate from the parent's own equity, but still within equity</div><div class="text-supporting">NON-CONTROLLING interests are PRESENTED WITHIN the CONSOLIDATED Balance SHEET'S owners' EQUITY section, SEPARATELY from the PARENT'S own EQUITY — GENUINELY consistent WITH the MODERN, entity-THEORY approach IFRS 10 ALSO applies internationally (AND which we SAW earlier under ASBE No. 33 — see the COMPANION Chinese GAAP poster), RATHER than an OLDER "PARENT company" approach that WOULD present NCI as a SEPARATE, non-equity item.</div>
+</div>
+</div>
+
+<div class="section-header" id="s4"><span class="num">4</span><h2>Two Components of Non-Controlling Interests in Net Assets</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cs span2"><div class="ctitle cs">Initial measurement plus subsequent share of changes</div>
+<div class="td-table"><div class="th" style="grid-template-columns:1fr 2fr;"><span>Component</span><span>Description</span></div>
+<div class="tr" style="grid-template-columns:1fr 2fr;"><span>Initial NCI measurement</span><span>THE amount OF non-CONTROLLING interests AT the DATE of the ORIGINAL combination, CALCULATED in ACCORDANCE with SECTION 1582</span></div>
+<div class="tr alt" style="grid-template-columns:1fr 2fr;"><span>Subsequent share of changes</span><span>THE non-CONTROLLING interests' SHARE of CHANGES in EQUITY since THE date of THE combination</span></div>
+</div>
+</div>
+</div>
+
+<div class="section-header" id="s5"><span class="num">5</span><h2>Attributing Net Income to Both Parent and NCI</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">A proportionate split each period</div><div class="text-supporting">CONSOLIDATED net INCOME for the PERIOD is ATTRIBUTED between the PARENT'S own OWNERS and NON-CONTROLLING interests — REFLECTING EACH party'S RESPECTIVE ownership STAKE in the SUBSIDIARY'S own PROFIT or LOSS for the PERIOD.</div>
+</div>
+</div>
+
+<div class="section-header" id="s6"><span class="num">6</span><h2>Net Income Attributed to NCI Even in a Deficit Position</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cw span2"><div class="ctitle cw">Losses allocated in full, regardless of resulting deficit</div><div class="text-supporting">NET income (or LOSS) is ATTRIBUTED to the PARENT and NON-CONTROLLING interests EVEN if it RESULTS in the NON-CONTROLLING interests HAVING a DEFICIT balance — a GENUINELY notable POINT (and ONE that historically DIFFERED under OLDER, "PARENT company" approaches to NCI, WHICH sometimes CAPPED losses ATTRIBUTED to a MINORITY interest at ZERO). ASPE'S current APPROACH follows the MODERN, entity-THEORY treatment, CONSISTENT with IFRS 10 internationally.</div>
+</div>
+</div>
+
+<div class="section-header" id="s7"><span class="num">7</span><h2>Changes in Ownership Interest Not Resulting in Loss of Control</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">Treated as equity transactions</div><div class="text-supporting">WHERE a PARENT'S ownership INTEREST in a SUBSIDIARY changes WITHOUT a LOSS of control (e.g. PURCHASING an ADDITIONAL 10% stake FROM a NON-controlling shareholder), the TRANSACTION is ACCOUNTED for as an EQUITY transaction — ADJUSTING the CARRYING amounts OF the PARENT'S and NON-CONTROLLING interests' RESPECTIVE equity, WITHOUT recognizing a GAIN or LOSS in NET income.</div>
+</div>
+</div>
+
+<div class="section-header" id="s8"><span class="num">8</span><h2>Reciprocal Shareholdings Within the Group</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cw span2"><div class="ctitle cw">A narrow, technical allocation rule</div><div class="text-supporting">WHERE a DIFFERENCE arises FROM the ELIMINATION of RECIPROCAL shareholdings AMONG companies WITHIN the CONSOLIDATED group, it IS allocated TO the PARENT and NON-CONTROLLING interests ON the BASIS of THEIR proportionate SHAREHOLDINGS — a NARROW, technical RULE addressing a RELATIVELY uncommon but GENUINELY complex group-STRUCTURE scenario.</div>
+</div>
+</div>
+
+<div class="section-header" id="s9"><span class="num">9</span><h2>Worked Example — Measuring NCI at the Combination Date</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cw span2"><div class="ctitle cw">The starting point for tracking NCI going forward</div>
+<div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: An 75%-owned subsidiary acquisition</div><div class="wk-body">A parent acquires 75% of a subsidiary. At the acquisition date, the subsidiary's identifiable net assets have a fair value of $4,000,000, and the parent elects to measure NCI at its proportionate share of net identifiable assets.</div><div class="wk-answer">NCI at the COMBINATION date = $4,000,000 × 25% = <strong>$1,000,000</strong>, presented WITHIN consolidated EQUITY, separately FROM the PARENT'S own OWNERSHIP interest.</div></div>
+</div>
+</div>
+
+<div class="section-header" id="s10"><span class="num">10</span><h2>Worked Example — Attributing a Loss to NCI, Creating a Deficit</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card ci span2"><div class="ctitle ci">A negative NCI balance, fully consistent with ASPE's approach</div>
+<div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: A loss-making subsidiary</div><div class="wk-body">Continuing the prior example, the subsidiary incurs a $4,800,000 net loss during its first year under the parent's ownership, with the NCI's opening balance at $1,000,000.</div><div class="wk-answer">The NCI'S SHARE of the LOSS = $4,800,000 × 25% = $1,200,000, REDUCING the NCI BALANCE from $1,000,000 to <strong>NEGATIVE $200,000</strong> — a DEFICIT that IS fully RECOGNIZED and PRESENTED, CONSISTENT with ASPE'S entity-THEORY approach, RATHER than CAPPING the LOSS attribution AT zero.</div></div>
+</div>
+</div>
+
+<div class="section-header" id="s11"><span class="num">11</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">What Section 1602 requires</div><div class="check-list"><span>Non-controlling interests in net assets, presented within equity, separately from the parent's own equity</span><span>Non-controlling interests in net income for the period</span><span>Nature and effect of any equity transactions changing the parent's ownership interest without a loss of control</span></div>
+</div>
+</div>
+
+<div class="section-header" id="s12"><span class="num">12</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cn span2"><div class="ctitle cn">Where judgment matters most</div>
+<div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGMENTS</div><div class="dot-list"><span>Allocating differences arising from reciprocal shareholding eliminations between the parent and NCI</span></div></div>
+<div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Fair value of NCI at the acquisition date, where measured at fair value rather than proportionate net assets</span></div></div></div>
+</div>
+</div>
+
+<div class="section-header" id="s13"><span class="num">13</span><h2>Relationship to IFRS 10's NCI Treatment</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card ci span2"><div class="ctitle ci">Comparison — ASPE Section 1602 vs IFRS 10</div>
+<div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">ASPE Section 1602</span><span style="color:var(--color-text-info);">IFRS 10</span></div>
+<div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>NCI presented within equity</span><span>YES</span><span>YES — converged</span></div>
+<div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Losses attributed to NCI even creating a deficit</span><span>YES</span><span>YES — converged</span></div>
+</div>
+<div class="note">A GENUINELY thoroughly CONVERGED standard — ASPE'S own NCI TREATMENT closely MIRRORS the MODERN, entity-THEORY approach IFRS 10 applies INTERNATIONALLY, DESPITE ASPE'S broader OPTIONALITY around CONSOLIDATION itself.</div>
+</div>
+</div>
+
+<div class="section-header" id="s14"><span class="num">14</span><h2>Statement Mapping</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cs span2"><div class="ctitle cs">Where every NCI event lands</div>
+<div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+<div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>NCI in net assets</span><span><span class="badge bs">BS</span></span><span>Presented within equity, separate from the parent's own equity</span></div>
+<div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>NCI in net income</span><span><span class="badge is">IS</span></span><span>Attributed separately from income attributable to the parent</span></div>
+</div>
+</div>
+</div>
+
+<div class="section-header" id="s15"><span class="num">15</span><h2>Related Standards</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">Cross-reference map</div>
+<div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Section</span><span>Connection</span></div>
+<div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>Section 1601</span><span>Consolidated Financial Statements — supplies the overall consolidation mechanics this Section's NCI presentation sits within</span></div>
+<div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>Section 1582</span><span>Business Combinations — supplies the initial NCI measurement at the acquisition date</span></div>
+</div>
+</div>
+</div>
+
+<div class="section-header" id="s16"><span class="num">16</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cn span2">
+<div class="glossary-item"><div class="glossary-term">Non-controlling interest (NCI)</div><div class="glossary-def">The portion of a subsidiary's net assets and net income not attributable, directly or indirectly, to the parent, presented within consolidated equity.</div></div>
+<div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Equity transaction</div><div class="glossary-def">A change in a parent's ownership interest in a subsidiary that does not result in a loss of control, accounted for as an adjustment within equity rather than through net income.</div></div>
+</div>
+</div>
+
+<div class="legend"><div class="ltitle">Financial statement key (ASPE terminology)</div><div class="lrow"><div class="litem"><span class="badge bs">BS</span> Balance Sheet </div><div class="litem"><span class="badge is">IS</span> Income Statement </div><div class="litem"><span class="badge sre">SRE</span> Statement of Retained Earnings / Statement of Changes in Equity </div><div class="litem"><span class="badge scf">SCF</span> Cash Flow Statement</div></div></div>
+
+
+</div>
+  <section id="history">
+    <HistoryTimeline items={history.aspe1602 || []} />
+  </section>
+</StandardPageLayout>

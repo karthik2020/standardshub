@@ -1,0 +1,228 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import metadata from "../../data/standards/hgb/hgb310.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  summary={metadata.summary}
+  subtitle={metadata.nativeTitle}
+  covers={metadata.covers}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope — Defining the Gemeinschaftsunternehmen" },
+        { id: "s3", label: "§310(1) — the Election Itself" },
+        { id: "s4", label: "Proportionate vs Full Consolidation — the Line-by-Line Mechanic" },
+        { id: "s5", label: "Worked Example — Proportionate Consolidation of a 50/50 Joint Venture" },
+        { id: "s6", label: "§310(2) — Borrowing the Vollkonsolidierung Toolkit, With Necessary Modifications" },
+        { id: "s7", label: "Worked Example — Capital Consolidation Applied Proportionately" },
+        { id: "s8", label: "The Election Structure — §310 vs §311 as Genuine Alternatives" },
+        { id: "s9", label: "Critical Judgments &amp; Practical Difficulties" },
+        { id: "s10", label: "Relationship to IFRS (IFRS 11) — and the ASPE Parallel" },
+        { id: "s11", label: "Statement Mapping" },
+        { id: "s12", label: "Related Provisions — Cross-Reference Map" },
+        { id: "s13", label: "Quick-Reference Glossary" }
+      ]}
+    />
+  </Fragment>
+  
+
+  <div class="wrap">
+<!-- ============ SECTION 1 ============ -->
+  
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="callout warn">A CROSS-LIBRARY CALLBACK: this poster series noted, many sessions ago, that ASPE Section 3056 retains proportionate consolidation for joint arrangements — an option IFRS 11 eliminated in 2011 for genuine joint ventures. HGB §310 is a THIRD data point in this same pattern: a major framework still offering, as a genuine election, a consolidation method IFRS itself has largely moved away from.</div>
+
+  
+      <div class="ctitle ci">A genuinely narrow provision, with outsized comparative significance</div>
+      <div class="principle">§310 is a single paragraph — one of the narrowest Titel in this entire poster series. But its SUBSTANCE connects directly to one of the most durable divergence patterns this whole poster library (spanning ASPE, IFRS, and now HGB) has documented: whether jointly-managed enterprises should be brought into the group accounts LINE BY LINE at the parent's own percentage share, or accounted for as a single net investment figure instead.</div>
+      <div class="elabel">HOW §310 MAPS TO GERMAN ACCOUNTING PRINCIPLES</div>
+      <div class="check-list">
+        <span><strong>Wahlrecht (genuine election)</strong> — §310 is NEVER mandatory; the enterprise chooses between this method and the equity method covered in the next Titel</span>
+        <span><strong>Wirtschaftliche Betrachtungsweise</strong> — proportionate consolidation reflects the view that a joint venturer's OWN economic share of each underlying asset and liability is meaningfully different information than a single net investment figure would convey</span>
+      </div>
+    </div>
+
+    <div class="card cs">
+      <div class="ctitle cs">What §310 requires, at a glance</div>
+      <div class="td-table">
+        <div class="th cols-06-17"><span>§</span><span>Core requirement</span></div>
+        <div class="tr cols-06-17"><span>310(1)</span><span>A jointly-managed enterprise MAY be included proportionately, per the parent's own capital share</span></div>
+        <div class="tr alt cols-06-17"><span>310(2)</span><span>The full-consolidation toolkit applies correspondingly, with necessary modifications</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Scope — Defining the Gemeinschaftsunternehmen</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Jointly managed with genuinely outside parties</div>
+      <div class="principle">§310 applies where a parent (or an included subsidiary) manages an enterprise TOGETHER WITH one or more OTHER enterprises that do NOT belong to the group — a Gemeinschaftsunternehmen (jointly-managed enterprise), the ordinary economic equivalent of a joint venture. The defining feature is genuine JOINT management with a party genuinely outside the reporting group — a wholly-owned subsidiary, by contrast, would never qualify for this Titel at all, since it belongs entirely within the group.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>§310(1) — the Election Itself</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">"Kann" — may, never must</div>
+      <div class="principle">§310(1) uses the permissive "kann" (may) — proportionate consolidation is a genuine ELECTION, never a mandate. Where an enterprise qualifies as a Gemeinschaftsunternehmen, its parent may choose to include it in the Konzernabschluss PROPORTIONATELY, in accordance with the parent's own share in its capital — meaning ONLY the parent's own percentage share of each individual asset, liability, expense, and income item is brought into the group accounts, line by line, RATHER than the full 100%-then-carve-out-NCI approach §300(1) mandates for genuine subsidiaries.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Proportionate vs Full Consolidation — the Line-by-Line Mechanic</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">A structurally different starting point than Vollkonsolidierung</div>
+      <div class="td-table">
+        <div class="th cols-12-1-1"><span>Feature</span><span>Vollkonsolidierung (§300)</span><span>Anteilmäßige Konsolidierung (§310)</span></div>
+        <div class="tr cols-12-1-1"><span>Percentage of each line item included</span><span>100%, regardless of ownership stake</span><span>ONLY the parent's own percentage share</span></div>
+        <div class="tr alt cols-12-1-1"><span>Non-controlling interests</span><span>Carved out separately under §307</span><span>NEVER arises — the "other side" of the joint venture is simply never brought in at all</span></div>
+        <div class="tr cols-12-1-1"><span>Applicable to</span><span>Subsidiaries under §290's control tests</span><span>ONLY genuinely jointly-managed enterprises</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Worked Example — Proportionate Consolidation of a 50/50 Joint Venture</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Exactly half of every line item, nothing more</div>
+      <div class="worked">
+        <div class="wk-title">Example 1: A jointly-managed manufacturing venture</div>
+        <div class="wk-body">A parent jointly manages a manufacturing enterprise with an unrelated foreign partner, each holding exactly 50% of its capital and jointly directing its operations. The joint venture has €6,000,000 total assets, €2,500,000 total liabilities, and generates €900,000 net income for the year.</div>
+        <div class="wk-answer">Electing proportionate consolidation, the parent brings into ITS OWN Konzernabschluss exactly 50% of EVERY line item: €3,000,000 of assets, €1,250,000 of liabilities, and €450,000 of net income — line by line, asset category by asset category — RATHER than either the full €6,000,000/€2,500,000/€900,000 (which Vollkonsolidierung would require for a genuine subsidiary) or a single net investment figure (which the equity method, covered in the next poster, would instead show).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>§310(2) — Borrowing the Vollkonsolidierung Toolkit, With Necessary Modifications</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">The same mechanics as full consolidation, just applied to a fraction</div>
+      <div class="text-supporting">§310(2) requires the full-consolidation provisions established in the previous two posters (§§297–301, 303–309 — capital consolidation, debt elimination, profit elimination, deferred tax, the subsequent treatment of goodwill/negative differences) to apply CORRESPONDINGLY to proportionate consolidation, WITH the necessary modifications (mit den erforderlichen Abweichungen) — meaning the SAME toolkit is reused, just scaled down to the parent's own percentage share throughout, rather than reinventing an entirely separate set of mechanics for this narrower case.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Worked Example — Capital Consolidation Applied Proportionately</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Goodwill still arises — just on the proportionate share only</div>
+      <div class="worked">
+        <div class="wk-title">Example 2: Goodwill on a proportionately-consolidated joint venture</div>
+        <div class="wk-body">Continuing Example 1: the parent's 50% investment in the joint venture cost €3,400,000. The joint venture's identifiable net assets, revalued to fair value at the point the joint arrangement began, amounted to €6,000,000 — of which the parent's own 50% share is €3,000,000.</div>
+        <div class="wk-answer">Applying §301's capital consolidation mechanic PROPORTIONATELY per §310(2): Goodwill = €3,400,000 − €3,000,000 = <strong>€400,000</strong> — recognised on the SAME mandatory-amortisation basis as any other HGB goodwill (§246(1) sentence 4, §309(1)), but calculated ENTIRELY on the parent's own 50% share, since the OTHER 50% of the joint venture was never brought into the group accounts to begin with.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>The Election Structure — §310 vs §311 as Genuine Alternatives</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">The same underlying joint venture, two genuinely different accounting outcomes</div>
+      <div class="text-supporting">A qualifying Gemeinschaftsunternehmen presents a genuine FORK in the road: the parent may elect §310's proportionate consolidation (line-by-line partial inclusion, as illustrated above), OR — if it does not — the SAME interest will generally instead be accounted for as an "assoziiertes Unternehmen" (associated company) under §311, the NEXT Titel in this series, using the equity method — a single net investment line, adjusted for the parent's share of the venture's own profits or losses, rather than any line-by-line inclusion at all. The choice between these two genuinely different presentations belongs to the reporting enterprise.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Critical Judgments &amp; Practical Difficulties</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Where judgement matters most</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+          <div class="dot-list">
+            <span>Whether an arrangement genuinely constitutes JOINT management (required for §310) versus sole control (which would instead trigger full §300 consolidation) or mere significant influence (which would point toward §311's equity method instead)</span>
+          </div>
+        </div>
+        <div>
+          <div class="elabel">PRACTICAL DIFFICULTIES</div>
+          <div class="dot-list">
+            <span>Obtaining the same level of detailed, line-by-line financial information from a jointly-managed enterprise as would be available for a wholly-controlled subsidiary, given the joint venture partner's own competing information needs and confidentiality interests</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Relationship to IFRS (IFRS 11) — and the ASPE Parallel</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — HGB §310 vs IFRS 11 vs ASPE Section 3056</div>
+      <div class="td-table">
+        <div class="th"><span>HGB (§310)</span><span>IFRS 11</span><span>ASPE (Section 3056)</span></div>
+        <div class="tr"><span>Proportionate consolidation AVAILABLE as a genuine election for jointly-managed enterprises</span><span>ELIMINATED for genuine joint ventures (2011) — equity method now MANDATORY; proportionate-style treatment survives only for the narrower "joint operations" category</span><span>RETAINED as a genuine election, exactly as HGB does</span></div>
+      </div>
+      <div class="callout warn">This is a genuinely notable three-way comparison spanning this ENTIRE poster library, not just the HGB series: BOTH HGB and ASPE still offer proportionate consolidation as a real choice for joint ventures, while IFRS 11 abolished the equivalent option for the broader "joint venture" category over a decade ago, requiring the equity method instead — reserving proportionate-style treatment only for the narrower, differently-defined "joint operations" concept. A group reporting under HGB or ASPE genuinely has an accounting choice here that an IFRS-only reporter, for a genuine joint venture, simply no longer has.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Statement Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Where every §310 event lands</div>
+      <div class="td-table">
+        <div class="th cols-16-1-14"><span>Event / obligation</span><span>Document(s) affected</span><span>Notes</span></div>
+        <div class="tr cols-16-1-14"><span>Proportionate share included</span><span><span class="badge bo">Konzernbilanz</span> <span class="badge bp">Konzern-GuV</span></span><span>Only the parent's own percentage of each line item</span></div>
+        <div class="tr alt cols-16-1-14"><span>Goodwill from proportionate capital consolidation</span><span><span class="badge bo">Konzernbilanz</span></span><span>Mandatorily amortised, exactly as any other HGB goodwill</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Related Provisions — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How §310 connects across HGB Book 3</div>
+      <div class="td-table">
+        <div class="th cols-08-2"><span>Provision</span><span>Nature of the connection</span></div>
+        <div class="tr cols-08-2"><span>§§300–301, 303–309</span><span>The full-consolidation toolkit §310(2) borrows, applied proportionately</span></div>
+        <div class="tr alt cols-08-2"><span>§311</span><span>The equity-method alternative available for the SAME jointly-managed enterprise, if proportionate consolidation is not elected</span></div>
+        <div class="tr cols-08-2"><span>§290(2)</span><span>Distinguishes genuine SOLE control (triggering full consolidation) from the JOINT management §310 specifically requires</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Gemeinschaftsunternehmen</div><div class="glossary-def">A jointly-managed enterprise — managed together with at least one enterprise genuinely outside the reporting group.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Anteilmäßige Konsolidierung</div><div class="glossary-def">Proportionate consolidation — including only the parent's own percentage share of each line item, rather than the full 100%.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Wahlrecht</div><div class="glossary-def">An accounting election — §310 is never mandatory, always a genuine choice against the equity-method alternative.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Mit den erforderlichen Abweichungen</div><div class="glossary-def">"With the necessary modifications" — the phrase authorising the full-consolidation toolkit to be reused, scaled to the proportionate share.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Key</div>
+    <div class="lrow">
+      <span class="badge bo">Konzernbilanz</span> Consolidated balance sheet
+      <span class="badge bp">Konzern-GuV</span> Consolidated income statement
+    </div>
+  </div>
+  </div>
+</StandardPageLayout>

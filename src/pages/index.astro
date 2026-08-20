@@ -1,42 +1,302 @@
 ---
 import StandardLayout from "../layouts/StandardLayout.astro";
 import standards from "../data/standards.json";
+import { FRAMEWORK_CONFIG, FRAMEWORK_ORDER } from "../data/frameworks";
+import { BookText, LibraryBig, Files, Landmark, Globe, Search, ArrowRight, X, ArrowUpRight, BookOpen, Compass } from "@lucide/astro";
+
+const IconMap: Record<string, any> = {
+  BookText,
+  LibraryBig,
+  Files,
+  Landmark,
+  Globe,
+  BookOpen,
+  Compass
+};
+
+const getStandardCount = (frameworkId: string) => {
+  const code = FRAMEWORK_CONFIG[frameworkId]?.code;
+  if (!code) return 0;
+  
+  let key = code;
+  if (code === "Ind AS") key = "IndAS";
+  if (code === "US GAAP") key = "USGAAP";
+  if (code === "UK GAAP") key = "UKGAAP";
+  if (code === "ASBE") key = "ASBE";
+  if (code === "ASPE") key = "ASPE";
+  if (code === "ASBJ") key = "ASBJ";
+  if (code === "HGB") key = "HGB";
+  if (code === "IPSAS") key = "IPSAS";
+  
+  return standards[key as keyof typeof standards]?.length ?? 0;
+};
+
+const getDescription = (text: string) => {
+  if (!text) return "";
+  const normalized = text.replaceAll("U.S.", "US_PLACEHOLDER");
+  const firstSentence = normalized.split(/\.\s/)[0];
+  const finalSentence = firstSentence.replaceAll("US_PLACEHOLDER", "U.S.");
+  return finalSentence.endsWith(".") ? finalSentence : finalSentence + ".";
+};
+
+// Map search data
+const searchData = Object.keys(standards).flatMap(key => {
+  const items = standards[key as keyof typeof standards] || [];
+  return items.map((item: any) => ({
+    code: item.code,
+    title: item.title,
+    url: item.url,
+    framework: key
+  }));
+});
 ---
 
-<StandardLayout title="StandardsHub">
+<StandardLayout code="Home" framework="home" hasToc={false}>
 
-  <section class="hero">
+  <div class="home-hero-container">
+    <div class="hero-bg-mesh-wrapper">
+      <div class="hero-bg-mesh"></div>
+    </div>
+    <section class="hero">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        <span class="badge-text">Interactive Reference Library</span>
+      </div>
 
-    <h1>StandardsHub</h1>
+      <h1>StandardsHub</h1>
 
-    <p>
-      Accounting Standards Reference Library
-    </p>
+      <p class="hero-subtitle">
+        An elegant, distraction-free reference library for global accounting standards. 
+        Browse IAS, IFRS, Ind AS, US GAAP, UK GAAP, and more with simplified explanations and worked examples.
+      </p>
 
-    <p class="hero-subtitle">
-      Browse IAS, IFRS and Ind AS standards, accounting guidance,
-      financial reporting requirements and reference materials.
-    </p>
-
-  </section>
-
-  <div class="home-grid">
-
-    <a href="/ias" class="home-card card-ias">
-      <h2>IAS</h2>
-      <p>{standards.IAS.length} Standards</p>
-    </a>
-
-    <a href="/ifrs" class="home-card card-ifrs">
-      <h2>IFRS</h2>
-      <p>{standards.IFRS.length} Standards</p>
-    </a>
-
-    <a href="/indas" class="home-card card-indas">
-      <h2>Ind AS</h2>
-      <p>{standards.IndAS.length} Standards</p>
-    </a>
-
+      <div class="hero-search-container">
+        <div class="hero-search-card">
+          <div class="search-input-wrapper">
+            <Search size={18} class="search-icon" />
+            <input
+              id="home-search-input"
+              class="search-input"
+              type="text"
+              placeholder="Search by code or keyword... (e.g. IAS 16, leases)"
+              aria-label="Search accounting standards"
+              autocomplete="off"
+            />
+            <button class="search-action" id="home-search-clear" type="button" aria-label="Clear search" title="Clear search" style="display: none;">
+              <X size={16} />
+            </button>
+          </div>
+          <div class="search-dropdown" id="home-search-dropdown" style="display: none;">
+            <div class="dropdown-header">Matching Standards</div>
+            <div class="dropdown-results" id="home-search-results"></div>
+            <div class="dropdown-footer">Press Enter to select, Esc to close</div>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 
+  <div class="home-grid">
+    {FRAMEWORK_ORDER.map(id => {
+      const config = FRAMEWORK_CONFIG[id];
+      if (!config) return null;
+      
+      const count = getStandardCount(id);
+      const Icon = IconMap[config.lucideIcon] || BookText;
+      return (
+        <a href={config.route} class={`home-card-premium card-${config.id}`} data-framework={config.id}>
+          <div class="card-glow-layer"></div>
+          <div class="card-content">
+            <div class="card-header">
+              <div class="card-icon-wrapper">
+                <Icon size={20} strokeWidth={2} />
+              </div>
+              <span class="standard-count">{count} Standards</span>
+            </div>
+            <h2>{config.displayName}</h2>
+            <p class="card-fullname">{config.fullName}</p>
+            <p class="card-desc">{getDescription(config.description)}</p>
+            <div class="card-action-link">
+              <span>Browse {config.displayName}</span>
+              <ArrowRight size={14} />
+            </div>
+          </div>
+        </a>
+      );
+    })}
+  </div>
+
+  <section class="home-section">
+    <h2 class="home-section-title">Popular Standards</h2>
+    <div class="popular-grid">
+      <a href="/ias/ias1" class="popular-card" data-framework="ias"><span class="popular-indicator"></span>IAS 1</a>
+      <a href="/ias/ias2" class="popular-card" data-framework="ias"><span class="popular-indicator"></span>IAS 2</a>
+      <a href="/ias/ias7" class="popular-card" data-framework="ias"><span class="popular-indicator"></span>IAS 7</a>
+      <a href="/ias/ias16" class="popular-card" data-framework="ias"><span class="popular-indicator"></span>IAS 16</a>
+      <a href="/ias/ias36" class="popular-card" data-framework="ias"><span class="popular-indicator"></span>IAS 36</a>
+      <a href="/ifrs/ifrs15" class="popular-card" data-framework="ifrs"><span class="popular-indicator"></span>IFRS 15</a>
+      <a href="/ifrs/ifrs16" class="popular-card" data-framework="ifrs"><span class="popular-indicator"></span>IFRS 16</a>
+      <a href="/indas/indas1" class="popular-card" data-framework="indas"><span class="popular-indicator"></span>Ind AS 1</a>
+      <a href="/indas/indas16" class="popular-card" data-framework="indas"><span class="popular-indicator"></span>Ind AS 16</a>
+      <a href="/usgaap/asc105" class="popular-card" data-framework="usgaap"><span class="popular-indicator"></span>ASC 105</a>
+      <a href="/usgaap/asc842" class="popular-card" data-framework="usgaap"><span class="popular-indicator"></span>ASC 842</a>
+      <a href="/ukgaap/frs102" class="popular-card" data-framework="ukgaap"><span class="popular-indicator"></span>FRS 102</a>
+      <a href="/asbe/asbe01" class="popular-card" data-framework="asbe"><span class="popular-indicator"></span>ASBE 1</a>
+    </div>
+  </section>
+
+  <section class="home-section">
+    <h2 class="home-section-title">About StandardsHub</h2>
+    <div class="about-card">
+      <div class="about-icon">
+        <BookOpen size={24} />
+      </div>
+      <div class="about-content">
+        <p>
+          StandardsHub is an educational reference library for accounting standards.
+          It covers IAS, IFRS, Ind AS, US GAAP, UK GAAP and ASBE with simplified explanations, worked examples
+          and cross-standard links to support learning and quick reference.
+        </p>
+      </div>
+    </div>
+  </section>
+
 </StandardLayout>
+
+<script define:vars={{ searchData }}>
+  document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.getElementById("home-search-input");
+    const searchDropdown = document.getElementById("home-search-dropdown");
+    const searchResults = document.getElementById("home-search-results");
+    const clearBtn = document.getElementById("home-search-clear");
+    
+    if (!searchInput || !searchDropdown || !searchResults) return;
+    
+    let activeIndex = -1;
+    let filteredResults = [];
+    
+    const normalize = (val) => val.toLowerCase().replace(/\s+/g, "");
+    
+    function renderResults(matches) {
+      searchResults.innerHTML = "";
+      if (matches.length === 0) {
+        searchResults.innerHTML = '<div class="dropdown-no-results">No matching standards found</div>';
+        return;
+      }
+      
+      matches.forEach((item, index) => {
+        const itemEl = document.createElement("a");
+        itemEl.href = item.url;
+        itemEl.className = "dropdown-item";
+        if (index === activeIndex) {
+          itemEl.classList.add("active");
+        }
+        
+        const fwClass = item.framework.toLowerCase();
+        
+        itemEl.innerHTML = `
+          <span class="item-code badge-${fwClass}">${item.code}</span>
+          <span class="item-title">${item.title}</span>
+        `;
+        
+        itemEl.addEventListener("mouseenter", () => {
+          setActiveIndex(index);
+        });
+        
+        searchResults.appendChild(itemEl);
+      });
+    }
+    
+    function setActiveIndex(index) {
+      activeIndex = index;
+      const items = searchResults.querySelectorAll(".dropdown-item");
+      items.forEach((item, i) => {
+        item.classList.toggle("active", i === activeIndex);
+      });
+    }
+    
+    function performSearch() {
+      const rawVal = searchInput.value;
+      const query = normalize(rawVal);
+      if (query.length < 2) {
+        searchDropdown.style.display = "none";
+        clearBtn.style.display = "none";
+        filteredResults = [];
+        activeIndex = -1;
+        return;
+      }
+      
+      clearBtn.style.display = "flex";
+      
+      filteredResults = searchData.filter(item => {
+        return normalize(item.code).includes(query) || normalize(item.title).includes(query);
+      }).slice(0, 8);
+      
+      activeIndex = -1;
+      searchDropdown.style.display = "block";
+      renderResults(filteredResults);
+    }
+    
+    searchInput.addEventListener("input", performSearch);
+    
+    searchInput.addEventListener("focus", () => {
+      if (searchInput.value.trim().length >= 2) {
+        searchDropdown.style.display = "block";
+      }
+    });
+    
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest(".hero-search-card")) {
+        searchDropdown.style.display = "none";
+      }
+    });
+    
+    clearBtn.addEventListener("click", () => {
+      searchInput.value = "";
+      searchDropdown.style.display = "none";
+      clearBtn.style.display = "none";
+      searchInput.focus();
+    });
+    
+    searchInput.addEventListener("keydown", (e) => {
+      const items = searchResults.querySelectorAll(".dropdown-item");
+      
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        if (filteredResults.length === 0) return;
+        const nextIndex = (activeIndex + 1) % filteredResults.length;
+        setActiveIndex(nextIndex);
+        
+        const activeItem = items[nextIndex];
+        if (activeItem) {
+          activeItem.scrollIntoView({ block: "nearest" });
+        }
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        if (filteredResults.length === 0) return;
+        const prevIndex = activeIndex <= 0 ? filteredResults.length - 1 : activeIndex - 1;
+        setActiveIndex(prevIndex);
+        
+        const activeItem = items[prevIndex];
+        if (activeItem) {
+          activeItem.scrollIntoView({ block: "nearest" });
+        }
+      } else if (e.key === "Enter") {
+        if (activeIndex >= 0 && filteredResults[activeIndex]) {
+          e.preventDefault();
+          window.location.href = filteredResults[activeIndex].url;
+        } else if (filteredResults.length > 0) {
+          e.preventDefault();
+          window.location.href = filteredResults[0].url;
+        }
+      } else if (e.key === "Escape") {
+        searchInput.value = "";
+        searchDropdown.style.display = "none";
+        clearBtn.style.display = "none";
+        filteredResults = [];
+        activeIndex = -1;
+        searchInput.blur();
+      }
+    });
+  });
+</script>

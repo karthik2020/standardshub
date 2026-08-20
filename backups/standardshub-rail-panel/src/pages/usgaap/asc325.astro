@@ -1,0 +1,149 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc325.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope — a Residual Topic Narrowed by ASU 2016-01" },
+        { id: "s3", label: "Why This Topic Shrank" },
+        { id: "s4", label: "Investments in Insurance Contracts (325-30)" },
+        { id: "s5", label: "Beneficial Interests in Securitized Financial Assets (325-40)" },
+        { id: "s6", label: "Worked Example — Company-Owned Life Insurance" },
+        { id: "s7", label: "Worked Example — a Retained Beneficial Interest" },
+        { id: "s8", label: "Disclosure Requirements" },
+        { id: "s9", label: "Critical Judgments & Estimates" },
+        { id: "s10", label: "ASC 325 vs IFRS — No Single Equivalent Topic" },
+        { id: "s11", label: "Statement Mapping" },
+        { id: "s12", label: "Related Topics" },
+        { id: "s13", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="hub"><div class="hub-box"><div class="hub-title">ASC 325 — Investments—Other</div><div class="hub-sub">Extended reference poster · US GAAP · Subtopics: 325-10 Overall, 325-30 Investments in Insurance Contracts, 325-40 Beneficial Interests in Securitized Financial Assets · A narrowed, residual Topic since ASU 2016-01 · USD examples</div></div></div>
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">A catch-all for investment types that don't fit the main investment Topics</div><div class="principle">Most investments fall neatly into debt securities (ASC 320), equity securities (ASC 321), or equity-method investments (ASC 323). ASC 325 exists to house the remaining investment types that DON'T fit those categories cleanly — most notably investments in life insurance contracts and retained beneficial interests in securitised financial assets — ensuring these genuinely different economic arrangements aren't forced into a measurement model designed for ordinary securities.</div></div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope — a Residual Topic Narrowed by ASU 2016-01</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">What remains here today</div><div class="principle">ASC 325 today primarily addresses two specific subtopics: INVESTMENTS IN INSURANCE CONTRACTS (325-30) — most commonly company-owned or bank-owned life insurance policies — and BENEFICIAL INTERESTS IN SECURITIZED FINANCIAL ASSETS (325-40), which governs retained interests an entity holds after transferring financial assets into a securitisation structure.</div></div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Why This Topic Shrank</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">The old "cost method investments" subtopic is gone</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Before ASU 2016-01, ASC 325 included a significant subtopic (325-20) governing COST METHOD investments — equity securities without a readily determinable fair value, held at cost. ASU 2016-01 ELIMINATED the cost method entirely and replaced it with the MEASUREMENT ALTERNATIVE now housed in ASC 321 — moving that entire body of guidance out of ASC 325 and substantially narrowing this Topic's remaining scope.</div></div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Investments in Insurance Contracts (325-30)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Cash surrender value as the measurement basis</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">An entity holding a life insurance policy on an employee or other insured individual generally recognises the CASH SURRENDER VALUE of the policy as an asset — the amount that would be realised if the policy were surrendered at the reporting date, adjusted for other amounts due under the contract (e.g. loans against the policy). Changes in cash surrender value are recognised in NET INCOME.</div></div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Beneficial Interests in Securitized Financial Assets (325-40)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Interests retained after a securitisation transfer</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">When an entity TRANSFERS financial assets into a securitisation vehicle but RETAINS a beneficial interest in the resulting structure (such as a subordinated tranche or servicing asset), ASC 325-40 governs the SUBSEQUENT measurement of that retained interest — generally applying a model similar to the AFS debt security approach (fair value, with credit losses assessed under ASC 326).</div></div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Worked Example — Company-Owned Life Insurance</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Recognising cash surrender value growth</div>
+      <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: An executive benefit funding policy</div><div class="wk-body">An entity holds a life insurance policy funding a deferred compensation arrangement. The policy's cash surrender value was $1,200,000 at the start of the year and $1,340,000 at year end, with no policy loans outstanding.</div><div class="wk-answer">The entity recognises the $140,000 increase in cash surrender value in NET INCOME: Debit Cash surrender value of life insurance $140,000 / Credit Income (or gain) from life insurance $140,000 — reported as an ASSET on the Balance Sheet at its current cash surrender value.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Worked Example — a Retained Beneficial Interest</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">A subordinated tranche retained after securitisation</div>
+      <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Retained interest in a receivables securitisation</div><div class="wk-body">An entity securitises a pool of trade receivables, transferring the senior interests to third-party investors while retaining a subordinated residual interest valued at $2,000,000 at inception, exposed to first-loss credit risk on the underlying pool.</div><div class="wk-answer">The retained $2,000,000 beneficial interest is recognised as an asset and subsequently measured at FAIR VALUE, with credit loss exposure assessed under ASC 326 — reflecting both interest-rate-driven fair value movements and the entity's genuine exposure to underlying pool credit deterioration.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">What ASC 325 requires</div><div class="check-list"><span>Cash surrender value of life insurance investments, and the basis for any changes recognised</span><span>Nature, key assumptions, and sensitivity of retained beneficial interests in securitised financial assets</span><span>Credit risk exposure associated with retained interests, cross-referenced with ASC 326</span></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+      <div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Whether an insurance contract genuinely functions as an investment within ASC 325's scope</span></div></div>
+      <div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Fair value of retained beneficial interests, often requiring cash flow modelling of the underlying securitised pool</span><span>Expected credit losses on retained interests, under ASC 326's methodology</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>ASC 325 vs IFRS — No Single Equivalent Topic</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Comparison — ASC 325 vs IFRS</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">US GAAP (ASC 325)</span><span style="color:var(--color-text-info);">IFRS equivalent(s)</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Dedicated Topic for miscellaneous investments</span><span>Yes — a specific residual Topic</span><span>No single equivalent — cash surrender value life insurance investments and retained securitisation interests are analysed under IFRS 9's general financial instrument classification framework instead</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Life insurance cash surrender value as a named measurement basis</span><span>Explicitly codified</span><span>No specifically named equivalent measurement concept — treated under IFRS 9's general fair value/amortised cost principles as applicable</span></div>
+      </div>
+      <div class="note">ASC 325 is a good example of the Codification's tendency toward highly SPECIFIC, narrowly scoped Topics for particular fact patterns, where IFRS more often relies on applying GENERAL principles from a broader standard.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Where every ASC 325 event lands</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Change in cash surrender value</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Recognised in net income each period</span></div>
+      <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Fair value change on a retained beneficial interest</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Generally through net income, given the credit-exposed nature of most retained interests</span></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Related Topics</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd"><div class="ctitle cd">Cross-reference map</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 321</span><span>Now houses the measurement alternative that replaced this Topic's former cost-method subtopic</span></div>
+      <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 326</span><span>Supplies credit loss measurement for retained beneficial interests</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 860</span><span>Transfers and Servicing — governs the initial securitisation transfer that gives rise to a retained beneficial interest</span></div>
+      </div>
+      </div>
+      <div class="card cn"><div class="ctitle cn">Quick-reference glossary preview</div>
+      <div class="glossary-item"><div class="glossary-term">Cash surrender value</div><div class="glossary-def">The amount an entity would realise if a life insurance policy were surrendered at the reporting date, the measurement basis for company/bank-owned life insurance investments.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Retained beneficial interest</div><div class="glossary-def">An interest an entity keeps in a securitisation structure after transferring the underlying financial assets, exposed to the pool's credit performance.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+      <div class="glossary-item"><div class="glossary-term">Securitisation</div><div class="glossary-def">A structuring transaction pooling financial assets (e.g. receivables or mortgages) and issuing interests in that pool to investors.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Subordinated interest</div><div class="glossary-def">An interest in a securitisation structure that absorbs losses before more senior interests, typically retained by the originating entity.</div></div>
+      </div>
+    </div>
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.ASC325 || []} />
+  </section>
+</StandardPageLayout>

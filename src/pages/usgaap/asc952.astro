@@ -1,0 +1,158 @@
+﻿---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc952.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  bannerNotice={metadata.bannerNotice}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope" },
+        { id: "s3", label: "Initial Franchise Fees — ASC 606 Treatment" },
+        { id: "s4", label: "The Private Company Practical Expedient (ASU 2021-02)" },
+        { id: "s5", label: "Continuing (Royalty) Franchise Fees — the Sales-Based Royalty Exception" },
+        { id: "s6", label: "Area/Master Franchise Arrangements" },
+        { id: "s7", label: "Worked Example — Initial Franchise Fee Allocation and Recognition" },
+        { id: "s8", label: "Worked Example — Continuing Royalty Recognition" },
+        { id: "s9", label: "Disclosure Requirements" },
+        { id: "s10", label: "Critical Judgments &amp; Estimates" },
+        { id: "s11", label: "ASC 952 vs IFRS — Comparison" },
+        { id: "s12", label: "Statement Mapping" },
+        { id: "s13", label: "Related Topics" },
+        { id: "s14", label: "Glossary" }
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card ci span2"><div class="ctitle ci">Franchise fees as licensed access to an ongoing brand system</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">A franchise arrangement grants the FRANCHISEE the right to use the franchisor's brand, systems, and ongoing support — an arrangement genuinely different from a simple one-time sale. ASC 952 provides industry-specific guidance ELABORATING on how ASC 606's general revenue framework applies to INITIAL franchise fees and ONGOING royalty streams, rather than establishing a separate franchise-specific revenue model.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">Franchisors granting franchise rights to franchisees</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 952 applies to entities that FRANCHISE their business format/brand to independent franchisees in exchange for initial fees and ongoing royalties.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Initial Franchise Fees — ASC 606 Treatment</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">Generally recognised over time, as symbolic intellectual property</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">The FRANCHISE LICENSE itself is generally analysed as SYMBOLIC intellectual property under ASC 606's IP licensing framework (see the ASC 928 poster for the functional/symbolic distinction) — since the franchise brand's VALUE is tied to the FRANCHISOR's CONTINUED activities (ongoing marketing, system development, brand maintenance) — meaning the INITIAL franchise fee ALLOCATED to the license is generally recognised <strong>OVER TIME</strong>, over the FRANCHISE TERM, rather than upfront when the franchise agreement is signed or the franchisee opens for business.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>The Private Company Practical Expedient (ASU 2021-02)</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cs span2"><div class="ctitle cs">A structural simplification for private company franchisors</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASU 2021-02 provided PRIVATE COMPANY franchisors with a PRACTICAL EXPEDIENT: certain PRE-OPENING services (e.g. site selection assistance, training, initial inspections) that would otherwise require a SEPARATE performance obligation analysis MAY instead be treated as PART OF the overall franchise license performance obligation — SIMPLIFYING the allocation exercise for smaller, private franchisors who might otherwise face significant cost and complexity in separately identifying and valuing each individual pre-opening service.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Continuing (Royalty) Franchise Fees — the Sales-Based Royalty Exception</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">Recognised as the franchisee's underlying sales occur</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">CONTINUING franchise fees (ROYALTIES, typically a percentage of the franchisee's ongoing SALES) are recognised consistent with ASC 606's specific SALES-BASED (or usage-based) ROYALTY EXCEPTION for IP licenses — revenue is recognised as (and to the extent) the FRANCHISEE's underlying sales OCCUR, rather than estimated and recognised upfront as variable consideration would otherwise require, avoiding the need to forecast future franchisee sales.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Area/Master Franchise Arrangements</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">A layer of sub-franchising, with its own performance obligation analysis</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">AREA or MASTER franchise arrangements — where a franchisor grants a master franchisee the right to develop and SUB-FRANCHISE within a specific territory — require their OWN performance obligation analysis, since the master franchisee's rights (development rights, sub-franchising rights, brand license) may represent DISTINCT performance obligations recognised on DIFFERENT patterns/timings from a standard single-unit franchise agreement.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Worked Example — Initial Franchise Fee Allocation and Recognition</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">Deferred recognition over the franchise term</div>
+    <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: A 10-year single-unit franchise agreement</div><div class="wk-body">A franchisor signs a 10-year franchise agreement, collecting a $50,000 upfront initial franchise fee, allocated entirely to the franchise license (symbolic IP) performance obligation.</div><div class="wk-answer">The $50,000 is DEFERRED as a contract liability at signing, and recognised as revenue RATABLY over the 10-year franchise TERM — approximately <strong>$5,000 per year</strong> — rather than recognised entirely upfront when the agreement is signed or the store opens.</div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Worked Example — Continuing Royalty Recognition</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card ci span2"><div class="ctitle ci">Recognised as franchisee sales occur</div>
+    <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: A 5% royalty on franchisee sales</div><div class="wk-body">A franchisee generates $800,000 of sales during the month, subject to a 5% continuing royalty fee payable to the franchisor.</div><div class="wk-answer">The franchisor recognises royalty revenue of $800,000 × 5% = <strong>$40,000</strong> for the month — recognised AS the underlying franchisee sales OCCUR, consistent with the sales-based royalty exception, WITHOUT needing to estimate or forecast the franchisee's future sales in advance.</div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">What ASC 952 requires (in addition to general ASC 606 disclosures)</div><div class="check-list"><span>Nature of initial and continuing franchise fee arrangements</span><span>Deferred revenue related to unsatisfied franchise license performance obligations</span></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+    <div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Whether pre-opening services represent distinct performance obligations or are combined with the license (private company expedient)</span><span>Identifying distinct performance obligations within master/area franchise arrangements</span></div></div>
+    <div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Expected franchise term used to recognise deferred initial franchise fee revenue</span></div></div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>ASC 952 vs IFRS — Comparison</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card ci span2"><div class="ctitle ci">Comparison — ASC 952 vs general IFRS 15 principles</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">US GAAP (ASC 952)</span><span style="color:var(--color-text-info);">IFRS (IFRS 15)</span></div>
+    <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Franchise license classification</span><span>Symbolic IP, recognised over time</span><span>Same functional/symbolic IP framework — converged</span></div>
+    <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Sales-based royalty exception</span><span>Available</span><span>Available — converged</span></div>
+    <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Private company pre-opening services expedient</span><span>Available (ASU 2021-02), private companies only</span><span>No equivalent named practical expedient, though general judgement about combining closely related promises may achieve similar outcomes</span></div>
+    </div>
+    <div class="note">Since IFRS 15 and ASC 606 share the SAME joint revenue recognition project origin, franchise revenue recognition is one of the more GENUINELY converged industry Topics — the main US GAAP-specific wrinkle is the narrow private-company practical expedient.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cs span2"><div class="ctitle cs">Where every ASC 952 event lands</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+    <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Initial franchise fee</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Deferred, recognised ratably over the franchise term</span></div>
+    <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Continuing royalty fee</span><span><span class="badge bp">IS</span></span><span>Recognised as franchisee sales occur</span></div>
+    </div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Topics</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">Cross-reference map</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+    <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 606</span><span>Supplies the general IP licensing and sales-based royalty exception framework applied throughout</span></div>
+    <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 928</span><span>Entertainment—Music — shares the same functional/symbolic IP analytical framework</span></div>
+    </div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cn span2">
+    <div class="glossary-item"><div class="glossary-term">Initial franchise fee</div><div class="glossary-def">An upfront fee paid by a franchisee, generally deferred and recognised over the franchise term as the license is symbolic IP.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Sales-based royalty exception</div><div class="glossary-def">An ASC 606 exception allowing royalty revenue tied to a licensee's sales to be recognised as those sales occur, rather than estimated in advance.</div></div>
+    <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Master/area franchise</div><div class="glossary-def">An arrangement granting a master franchisee the right to develop and sub-franchise within a specific territory.</div></div>
+    </div>
+    </div>
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.asc952 || []} />
+  </section>
+</StandardPageLayout>
+

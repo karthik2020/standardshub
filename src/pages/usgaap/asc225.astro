@@ -1,0 +1,187 @@
+﻿---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc225.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope & Applicability" },
+        { id: "s3", label: "Single-Step vs Multi-Step Format" },
+        { id: "s4", label: "Nature vs Function Expense Classification" },
+        { id: "s5", label: "The Elimination of 'Extraordinary Items' (2015)" },
+        { id: "s6", label: "Unusual or Infrequent Items — the Residual Disclosure" },
+        { id: "s7", label: "Discontinued Operations — Cross-Reference to ASC 205-20" },
+        { id: "s8", label: "Earnings Per Share — Cross-Reference to ASC 260" },
+        { id: "s9", label: "Business Interruption Insurance (225-30)" },
+        { id: "s10", label: "Worked Example — Unusual/Infrequent Item Disclosure" },
+        { id: "s11", label: "Worked Example — the Historical Extraordinary Item Test" },
+        { id: "s12", label: "Disclosure Requirements" },
+        { id: "s13", label: "Critical Judgments & Estimates" },
+        { id: "s14", label: "ASC 225 vs IAS 1 — Extraordinary Items & Format Flexibility" },
+        { id: "s15", label: "Statement Mapping" },
+        { id: "s16", label: "Related Topics" },
+        { id: "s17", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card ci"><div class="ctitle ci">Performance over a period, not a point in time</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">The Income Statement — US GAAP's name for what IFRS calls the Statement of Profit or Loss — reports an entity's revenues, expenses, gains, and losses for a period, arriving at NET INCOME. ASC 225 governs its format and the treatment of items that are unusual, infrequent, or otherwise warrant separate presentation, so that recurring, core operating performance is distinguishable from items less likely to recur.</div></div>
+    <div class="card cs"><div class="ctitle cs">A 2015 move toward greater IFRS alignment</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 225's most significant recent history is the 2015 ELIMINATION of the "extraordinary items" concept (Section 5) — a deliberate simplification that also happened to bring US GAAP into closer alignment with IFRS, which has never permitted extraordinary item presentation.</div></div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">What ASC 225 covers</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 225 applies to all entities preparing an Income Statement under US GAAP, addressing the statement's FORMAT, the treatment of unusual or infrequent items, and (via 225-30) the specific recognition of business interruption insurance recoveries.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Single-Step vs Multi-Step Format</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">No single mandated format — but a dominant convention</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">US GAAP does NOT mandate a single Income Statement format, mirroring IAS 1's own flexibility. In a SINGLE-STEP format, all revenues and gains are grouped together, followed by all expenses and losses, with one subtraction arriving at net income. In a MULTI-STEP format — the dominant convention in US practice, especially among public companies — intermediate subtotals such as GROSS PROFIT and OPERATING INCOME are presented before arriving at net income, giving users a more granular view of performance layers.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Nature vs Function Expense Classification</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">A choice mirroring IAS 1's own</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">As with IAS 1, entities may classify expenses either by NATURE (e.g. depreciation, employee benefits, raw materials consumed) or by FUNCTION (e.g. cost of goods sold, selling expenses, administrative expenses) — US practice, again, gravitates heavily toward a FUNCTIONAL classification (especially the multi-step format's cost-of-goods-sold-based gross profit calculation), broadly consistent with the market convention IFRS preparers most commonly adopt as well.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>The Elimination of "Extraordinary Items" (2015)</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">A concept US GAAP once had that IFRS never did</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">Before ASU 2015-01 (effective 2016), US GAAP required an item meeting BOTH criteria — UNUSUAL in nature AND INFREQUENT in occurrence — to be presented SEPARATELY as an "extraordinary item," NET OF TAX, below income from continuing operations, with a corresponding earnings-per-share disclosure. ASU 2015-01 ELIMINATED this concept entirely — the FASB concluded the "extraordinary item" test had become vanishingly rare in practice and costly to apply, and dropping it moved US GAAP CLOSER to IFRS, which has never had a comparable concept — IAS 1 explicitly PROHIBITS presenting any items as "extraordinary."</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Unusual or Infrequent Items — the Residual Disclosure</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cs span2"><div class="ctitle cs">A lighter-touch replacement requirement</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">Although "extraordinary items" no longer exist, an item that is unusual in nature OR occurs infrequently (NOT both, as the old test required) is still separately DISCLOSED — but presented as a COMPONENT of income from continuing operations, NOT net of tax, and NOT below a separate "extraordinary" caption. This residual requirement is closer in spirit to IAS 1's general requirement to separately disclose the nature and amount of material items, without a dedicated "unusual items" caption of its own.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Discontinued Operations — Cross-Reference to ASC 205-20</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">Presented separately, governed elsewhere</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">Results of DISCONTINUED OPERATIONS are presented SEPARATELY, net of tax, below income from continuing operations — but the CLASSIFICATION criteria for what qualifies as a discontinued operation are governed by ASC 205-20 (see the ASC 205 poster), not ASC 225 itself. ASC 225 simply dictates WHERE, on the Income Statement, discontinued operations results must be presented once so classified.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Earnings Per Share — Cross-Reference to ASC 260</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">A required Income Statement disclosure, detailed elsewhere</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">Public entities (and entities that have filed or are in the process of filing with the SEC) must present BASIC and DILUTED earnings per share on the face of the Income Statement, for income from continuing operations and net income (and separately for discontinued operations, if applicable) — the detailed computation methodology sits in ASC 260, broadly paralleling IAS 33's relationship to IAS 1.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Business Interruption Insurance (225-30)</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cn span2"><div class="ctitle cn">Narrow, US-GAAP-specific guidance</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">ASC 225-30 provides guidance on the RECOGNITION and CLASSIFICATION of insurance recoveries for business interruption losses — such proceeds are recognised when REALISED or REALISABLE, and are NOT considered extraordinary items (consistent with the elimination in Section 5). There is NO dedicated IFRS standard addressing business interruption insurance recoveries specifically — IFRS preparers would instead apply general principles (IAS 37 for the underlying loss/contingency, IFRS 15/general recognition principles for the insurance recovery itself), making ASC 225-30 a genuinely narrow US-GAAP-specific piece of guidance.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Worked Example — Unusual/Infrequent Item Disclosure</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cw span2"><div class="ctitle cw">Post-2015 presentation of a large, unusual loss</div>
+    <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: A one-time regulatory fine</div><div class="wk-body">An entity incurs a $6,000,000 regulatory fine following an isolated compliance failure — an event unlikely to recur and unusual relative to the entity's normal operations, but not clearly meeting BOTH the old "unusual AND infrequent" extraordinary-item test given how the specific facts play out.</div><div class="wk-answer">Under current US GAAP, the $6,000,000 fine is presented as a SEPARATE LINE ITEM WITHIN income from continuing operations (e.g. "Regulatory fine" as its own caption within operating expenses or below operating income), disclosed as unusual in nature — but NOT net of tax, and NOT below a separate "extraordinary items" caption, since that presentation option no longer exists.</div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Worked Example — the Historical Extraordinary Item Test</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card ci span2"><div class="ctitle ci">Illustrating the old (pre-2015) two-part test — for historical/exam reference</div>
+    <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: A hypothetical earthquake loss under the old rules</div><div class="wk-body">Under the PRE-2015 rules, an entity in a region with no history of seismic activity suffers a major, uninsured earthquake loss.</div><div class="wk-answer">Applying the old two-part test: the loss is UNUSUAL in nature (clearly abnormal and unrelated to ordinary activities) AND INFREQUENT in occurrence (no reasonable expectation of recurrence in the foreseeable future, given no seismic history) — BOTH conditions met, so under the old rules this WOULD have qualified as an "extraordinary item," presented net of tax, below income from continuing operations, with separate EPS disclosure. Under CURRENT US GAAP (post-2015), this same loss is simply presented as an unusual item within continuing operations, per Section 6 — illustrating exactly how the 2015 change altered presentation for what remains, functionally, the same underlying economic event.</div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd span2"><div class="ctitle cd">What ASC 225 requires</div><div class="check-list"><span>Separate presentation, and disclosure of the nature and financial effect, of unusual or infrequent items</span><span>Separate presentation of discontinued operations results, net of tax</span><span>Basic and diluted EPS on the face of the statement, for applicable entities</span><span>Nature and classification of business interruption insurance recoveries recognised during the period</span></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+    <div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Whether an item is genuinely unusual in nature OR infrequent in occurrence, warranting separate disclosure</span><span>Single-step vs multi-step, and nature vs function, presentation choices</span></div></div>
+    <div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Amount and timing of business interruption insurance recoveries considered realisable</span></div></div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>ASC 225 vs IAS 1 — Extraordinary Items &amp; Format Flexibility</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card ci span2"><div class="ctitle ci">Comparison — ASC 225 vs IAS 1's Income Statement guidance</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">US GAAP (ASC 225)</span><span style="color:var(--color-text-info);">IFRS (IAS 1)</span></div>
+    <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Extraordinary items</span><span>Eliminated in 2015 (ASU 2015-01) — now CONVERGED with IFRS's long-standing prohibition</span><span>Never permitted — IAS 1 explicitly prohibits presenting any item as "extraordinary"</span></div>
+    <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Unusual/infrequent item disclosure</span><span>Specific residual disclosure requirement in continuing operations</span><span>General requirement to separately disclose material items' nature and amount, without a dedicated named category</span></div>
+    <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Format choice</span><span>Single-step / multi-step, free choice</span><span>Free choice, similarly unrestricted</span></div>
+    <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Nature vs function expense classification</span><span>Free choice, functional dominant in practice</span><span>Free choice, also functional-dominant in practice</span></div>
+    </div>
+    <div class="note">The 2015 extraordinary-items elimination stands out as one of the clearest examples in the whole Codification of a UNILATERAL US GAAP change made specifically to converge toward existing IFRS practice, rather than a joint FASB-IASB project.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s15"><span class="num">15</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cs span2"><div class="ctitle cs">Where every ASC 225 event lands</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+    <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Unusual or infrequent item</span><span><span class="badge bp">IS</span></span><span>Separate line within continuing operations, disclosed but not net of tax</span></div>
+    <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Discontinued operations results</span><span><span class="badge bp">IS</span></span><span>Separate presentation, net of tax, below continuing operations (per ASC 205-20 classification)</span></div>
+    <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Business interruption insurance recovery</span><span><span class="badge bp">IS</span></span><span>Recognised when realised or realisable, per ASC 225-30</span></div>
+    <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Basic/diluted EPS</span><span><span class="badge bp">IS</span></span><span>Face-of-statement disclosure, computed per ASC 260</span></div>
+    </div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s16"><span class="num">16</span><h2>Related Topics</h2><span class="line"></span></div>
+    <div class="grid">
+    <div class="card cd"><div class="ctitle cd">Cross-reference map</div>
+    <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+    <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 205-20</span><span>Supplies the discontinued operations classification criteria this Topic dictates the presentation location for</span></div>
+    <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 220</span><span>Governs the further extension of the Income Statement into comprehensive income</span></div>
+    <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 260</span><span>Governs the detailed EPS computation methodology this Topic requires be disclosed on the statement face</span></div>
+    </div>
+    </div>
+    <div class="card cn"><div class="ctitle cn">Quick-reference glossary preview</div>
+    <div class="glossary-item"><div class="glossary-term">Multi-step income statement</div><div class="glossary-def">A format presenting intermediate subtotals such as gross profit and operating income before arriving at net income — the dominant US practice convention.</div></div>
+    <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Extraordinary item (historical)</div><div class="glossary-def">A pre-2015 US GAAP concept for items both unusual in nature and infrequent in occurrence, presented net of tax below continuing operations — eliminated by ASU 2015-01.</div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s17"><span class="num">17</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  
+
+    <Glossary entries={[
+      { term: "Gross profit", definition: "Revenue less cost of goods sold — an intermediate subtotal presented in a multi-step Income Statement." },
+      { term: "Income from continuing operations", definition: "Income before results of discontinued operations, the primary performance subtotal separated from discontinued operations results on the face of the statement." },
+      { term: "Multi-step income statement", definition: "A format presenting intermediate subtotals such as gross profit and operating income before arriving at net income — the dominant US practice convention." },
+      { term: "Extraordinary item (historical)", definition: "A pre-2015 US GAAP concept for items both unusual in nature and infrequent in occurrence, presented net of tax below continuing operations — eliminated by ASU 2015-01." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.ASC225} />
+  </section>
+</StandardPageLayout>
+

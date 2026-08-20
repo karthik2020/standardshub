@@ -1,0 +1,161 @@
+---
+import StandardLayout from "../../layouts/StandardLayout.astro";
+import "../../styles/prototype-definition-explore.css";
+
+// Realistic accounting definitions. Short and long entries
+// are mixed to evaluate wrapping behaviour.
+const definitions = [
+  {
+    term: "Asset",
+    body: "A resource controlled by the entity as a result of past events from which future economic benefits are expected to flow to the entity.",
+  },
+  {
+    term: "Liability",
+    body: "A present obligation of the entity arising from past events, the settlement of which is expected to result in an outflow of resources embodying economic benefits.",
+  },
+  {
+    term: "Fair Value",
+    body: "The price that would be received to sell an asset or paid to transfer a liability in an orderly transaction between market participants at the measurement date. It is measured using a market-participant perspective and, where available, a quoted price in an active market — without deducting the costs of disposal.",
+  },
+  {
+    term: "Recoverable Amount",
+    body: "The higher of an asset's fair value less costs of disposal and its value in use. An asset is impaired when its carrying amount exceeds its recoverable amount.",
+  },
+  {
+    term: "Borrowing Costs",
+    body: "Interest and other costs that an entity incurs in connection with the borrowing of funds. Borrowing costs that are directly attributable to the acquisition, construction or production of a qualifying asset are capitalised as part of the cost of that asset; all other borrowing costs are recognised as an expense in the period in which they are incurred.",
+  },
+  {
+    term: "Cash Equivalents",
+    body: "Short-term, highly liquid investments that are readily convertible to known amounts of cash and so near their maturity that they present negligible risk of changes in value. Examples include treasury bills and money-market funds.",
+  },
+];
+---
+
+<StandardLayout code="PROT4" title="Definition — Visual Identity Exploration" framework="Design">
+  <p class="dex-intro">
+    <strong>Design exploration only.</strong> This page does not modify the production
+    <code>Definition</code> component, any accounting page, or any existing stylesheet.
+    It compares three distinct visual concepts for the Definition block so a direction
+    can be chosen before any implementation. Each concept is shown with the same
+    realistic IAS / IFRS examples.
+  </p>
+
+  <!-- ============ CONCEPT A ============ -->
+  <section class="dex-concept">
+    <h2 class="dex-concept__title">Concept A — Reference Card</h2>
+    <p class="dex-concept__desc">
+      A calm, neutral card with a small "Definition" label, a clear term, and the body
+      below. Minimal and textbook-like; distinguished from panels by staying fully
+      neutral (no accent colour).
+    </p>
+    <div class="dex-list">
+      {
+        definitions.map((d) => (
+          <div class="dex-a">
+            <div class="dex-a__head">
+              <span class="dex-a__label">Definition</span>
+            </div>
+            <div class="dex-a__term">{d.term}</div>
+            <p class="dex-a__body">{d.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- ============ CONCEPT B ============ -->
+  <section class="dex-concept">
+    <h2 class="dex-concept__title">Concept B — Dictionary Style</h2>
+    <p class="dex-concept__desc">
+      Inspired by professional dictionaries. No surrounding card and only a very subtle
+      separator between entries; the emphasis is on typographic hierarchy and elegant
+      whitespace rather than borders.
+    </p>
+    <div class="dex-list">
+      <div class="dex-b__label">Definition</div>
+      {
+        definitions.map((d) => (
+          <div class="dex-b__entry">
+            <div class="dex-b__term">{d.term}</div>
+            <p class="dex-b__body">{d.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- ============ CONCEPT C ============ -->
+  <section class="dex-concept">
+    <h2 class="dex-concept__title">Concept C — StandardsHub Definition</h2>
+    <p class="dex-concept__desc">
+      A native concept: a quiet neutral "Definition" tab anchored to the top-left corner,
+      overlapping the card border like a section marker in a manual. Its asymmetric
+      corners echo the StandardsHub chip language, but it stays text-only and neutral so
+      it is clearly distinct from the coloured callout chips.
+    </p>
+    <div class="dex-list">
+      {
+        definitions.map((d) => (
+          <div class="dex-c">
+            <span class="dex-c__tab">Definition</span>
+            <div class="dex-c__term">{d.term}</div>
+            <p class="dex-c__body">{d.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- ============ EVALUATION ============ -->
+  <section class="dex-eval">
+    <h2>Evaluation</h2>
+
+    <h3>Concept A — Reference Card</h3>
+    <p>
+      <strong>Strengths:</strong> Familiar and safe; reads clearly as a contained
+      reference block, sits comfortably beside callouts and formula boxes, and needs no
+      new mental model. The neutral fill keeps it calm and professional.
+    </p>
+    <p>
+      <strong>Weaknesses:</strong> It is structurally similar to the existing callout and
+      spec boxes, so it does not yet give the Definition its own distinct identity — it
+      risks blending in rather than standing out.
+    </p>
+
+    <h3>Concept B — Dictionary Style</h3>
+    <p>
+      <strong>Strengths:</strong> The most "documentation / accounting textbook" feeling
+      of the three. By removing the card it puts the emphasis on the term and definition
+      themselves, and it scales beautifully for long glossaries with elegant whitespace.
+    </p>
+    <p>
+      <strong>Weaknesses:</strong> Without a container it can feel disconnected from the
+      surrounding UI and is harder to scan as a "unit" when mixed with bordered panels.
+      Very subtle separators may read as ordinary body text at a glance.
+    </p>
+
+    <h3>Concept C — StandardsHub Definition</h3>
+    <p>
+      <strong>Strengths:</strong> Gives Definition a signature, ownable marker — the
+      neutral tab — that is unmistakably different from information, warning, and formula
+      treatments, yet speaks the same StandardsHub visual language (asymmetric chip
+      corners). It signals "this is a defined term" before you read a word.
+    </p>
+    <p>
+      <strong>Weaknesses:</strong> Slightly more novel, so it carries a small learning
+      cost; the overlapping tab needs careful spacing so it never collides with stacked
+      entries, and it is the most dependent on precise styling to look intentional.
+    </p>
+
+    <h3>Recommendation (not yet implemented)</h3>
+    <p>
+      <strong>Concept C — StandardsHub Definition</strong> is the strongest direction.
+      It is the only concept that gives the Definition block a distinct, recognisable
+      identity while remaining neutral, professional, and clearly part of the StandardsHub
+      design language. Concept A is the safe fallback if a contained card is preferred,
+      and Concept B is excellent for long, standalone glossaries but weaker inline. The
+      final production component should be refined from Concept C after this review.
+    </p>
+  </section>
+</StandardLayout>

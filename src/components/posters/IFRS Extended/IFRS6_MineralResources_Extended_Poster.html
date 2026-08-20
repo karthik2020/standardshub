@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IFRS 6 — Exploration for and Evaluation of Mineral Resources | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .entry { display: flex; align-items: flex-start; gap: 4px; margin-bottom: 4px; }
+  .dr { font-size: 11px; font-weight: 500; color: var(--color-text-info);   min-width: 14px; padding-top: 1px; }
+  .cr { font-size: 11px; font-weight: 500; color: var(--color-text-danger); min-width: 14px; padding-top: 1px; padding-left: 6px; }
+  .etxt { font-size: 11px; color: var(--color-text-primary); flex: 1; line-height: 1.4; }
+  .badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">IFRS 6 — Exploration for and Evaluation of Mineral Resources</div>
+      <div class="hub-sub">Extended reference poster · Conceptual framework link · The transitional accounting policy freedom · Impairment · Worked examples · Statement mapping</div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <a href="#s1">1. Conceptual Framework</a>
+    <a href="#s2">2. Scope &amp; Definitions</a>
+    <a href="#s3">3. Recognition — A Deliberately Permissive Standard</a>
+    <a href="#s4">4. Measurement — Initial Cost &amp; Accounting Policy Choice</a>
+    <a href="#s5">5. Reclassification of E&amp;E Assets</a>
+    <a href="#s6">6. Impairment — A Modified Trigger</a>
+    <a href="#s7">7. Presentation</a>
+    <a href="#s8">8. Interaction with Other Standards</a>
+    <a href="#s9">9. Disclosure</a>
+    <a href="#s10">10. Judgments &amp; Estimates</a>
+    <a href="#s11">11. IFRS vs US GAAP</a>
+    <a href="#s12">12. Statement Mapping</a>
+    <a href="#s13">13. Related Standards</a>
+    <a href="#s14">14. Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Why IFRS 6 is deliberately an "interim" standard</div>
+      <div class="principle">Exploration and evaluation (E&amp;E) expenditure sits in a uniquely uncertain position under the Conceptual Framework — at the point of spending, it is often genuinely UNCLEAR whether a future economic benefit (a commercially viable mineral deposit) will ever materialise. Rather than resolving this uncertainty with a single, fully worked-out set of rules, the IASB deliberately issued IFRS 6 as a NARROW, transitional standard permitting entities to LARGELY CONTINUE their existing accounting policies.</div>
+      <div class="elabel">HOW IFRS 6 MAPS TO THE FRAMEWORK</div>
+      <div class="check-list">
+        <span><strong style="font-weight:500">Recognition uncertainty</strong> — E&amp;E expenditure often cannot be reliably assessed against the Framework's normal asset recognition criteria (probable future benefit) until FAR more work/data is available — IFRS 6 acknowledges this by NOT imposing a single, prescriptive policy</span>
+        <span><strong style="font-weight:500">Cost constraint on standard-setting</strong> — the IASB explicitly chose NOT to develop a comprehensive extractive industries standard immediately, instead allowing existing diverse national practices to continue while research continued</span>
+        <span><strong style="font-weight:500">A modified impairment trigger</strong> — recognising that E&amp;E assets' value is unusually hard to assess, IFRS 6 provides SPECIFIC impairment indicators tailored to the extractive industry, rather than relying solely on IAS 36's general indicators</span>
+      </div>
+      <div class="note">IFRS 6 is UNIQUE among IFRS Standards in explicitly PRESERVING existing accounting policy diversity rather than harmonising it — a deliberate, narrow, "first step" standard the IASB always intended to revisit with more comprehensive extractive industry guidance in the future.</div>
+    </div>
+
+    <div class="card cs">
+      <div class="ctitle cs">Measurement principles applied by IFRS 6</div>
+      <div class="principle">IFRS 6 sets a MINIMUM initial measurement requirement (cost), then largely defers to the entity's own existing accounting policy for everything else.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1fr;"><span>Stage</span><span>IFRS 6's treatment</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1fr;"><span>Initial recognition</span><span>At COST — a firm requirement</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1fr;"><span>Subsequent measurement</span><span>Entity develops its OWN accounting policy — cost model or revaluation model, applied consistently</span></div>
+      </div>
+      <div class="callout info" style="margin-bottom:0;">ℹ️ <strong style="font-weight:500">Qualitative characteristics in action:</strong> allowing continued POLICY DIVERSITY for subsequent measurement trades <strong style="font-weight:500">comparability</strong> for PRACTICAL cost/reliability constraints — an explicit, deliberate compromise unique to this standard.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw">
+      <div class="ctitle cw">What IFRS 6 covers</div>
+      <div class="principle">IFRS 6 applies to EXPLORATION AND EVALUATION EXPENDITURES an entity incurs — specifying the financial reporting for the exploration for, and evaluation of, mineral resources.</div>
+      <div class="elabel">WHAT IS NOT COVERED</div>
+      <div class="cross-list">
+        <span>Expenditures incurred BEFORE the exploration for and evaluation of mineral resources (e.g. expenditures before the entity has obtained the LEGAL RIGHTS to explore a specific area) — these are accounted for under the Conceptual Framework and other applicable Standards, NOT IFRS 6</span>
+        <span>Expenditures incurred AFTER the technical feasibility and commercial viability of extracting a mineral resource are DEMONSTRABLE — these fall outside IFRS 6's scope and are accounted for under normal Standards (e.g. IAS 16, IAS 38)</span>
+      </div>
+      <div class="note">IFRS 6's scope is DELIBERATELY narrow — a specific "window" of activity between obtaining exploration rights and demonstrating technical feasibility/commercial viability, EXCLUDING both the earlier pre-rights stage and the later development stage.</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Key definitions you must know</div>
+      <div class="glossary-item">
+        <div class="glossary-term">Exploration and evaluation expenditures</div>
+        <div class="glossary-def">Expenditures incurred in connection with the exploration for and evaluation of mineral resources, BEFORE the technical feasibility and commercial viability of extracting the mineral resource are demonstrable.</div>
+      </div>
+      <div class="glossary-item">
+        <div class="glossary-term">Exploration and evaluation assets</div>
+        <div class="glossary-def">Exploration and evaluation expenditures recognised as assets in accordance with an entity's own accounting policy.</div>
+      </div>
+      <div class="glossary-item" style="border-bottom:none;">
+        <div class="glossary-term">Mineral resources</div>
+        <div class="glossary-def">Minerals, oil, natural gas, and similar non-regenerative resources, AFTER the entity has obtained legal rights to explore a specific area.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Recognition — A Deliberately Permissive Standard</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">The unique freedom IFRS 6 grants — with worked example</div>
+      <div class="principle">IFRS 6 permits an entity to DEVELOP an accounting policy for E&amp;E assets WITHOUT specifically considering the requirements of paragraphs 11 and 12 of IAS 8 (which would otherwise require reference to the Conceptual Framework and similar IFRS requirements) — a deliberate, EXPLICIT carve-out from IAS 8's normal policy-selection hierarchy.</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 1: Continuing a "successful efforts" policy under IFRS 6</div>
+        <div class="wk-body">
+          An oil and gas entity previously used a "successful efforts" method under its local GAAP, capitalising only exploration costs for wells that turn out to be commercially successful, expensing costs for "dry holes" immediately. On IFRS adoption, the entity wishes to CONTINUE this same policy.
+        </div>
+        <div class="wk-answer">
+          IFRS 6 EXPLICITLY permits this — the entity can continue applying its EXISTING accounting policy for E&amp;E assets, without needing to justify it against the Conceptual Framework or other IFRS Standards in the way IAS 8 would normally require for a policy with no directly applicable Standard.
+        </div>
+      </div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ This IAS 8 carve-out is UNIQUE to IFRS 6 — no other IFRS Standard grants this degree of continued flexibility, reflecting the IASB's deliberate decision to defer full harmonisation of extractive industry accounting to a later, more comprehensive project.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Measurement — Initial Cost &amp; Accounting Policy Choice</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs">
+      <div class="ctitle cs">Initial measurement at cost</div>
+      <div class="formula-box">
+        <div class="f-eq">E&amp;E assets are measured at COST at initial recognition — typically comprising costs of acquiring exploration rights, topographical/geological/geochemical/geophysical studies, exploratory drilling, trenching, sampling, and activities related to evaluating technical feasibility/commercial viability</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">An entity's accounting policy determines which of these expenditures are RECOGNISED as E&amp;E assets, and which are expensed — provided the resulting allocation is REASONABLE, given the circumstances.</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Subsequent measurement — cost or revaluation model</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">After recognition, an entity applies EITHER the COST MODEL or the REVALUATION MODEL to E&amp;E assets — consistent with IAS 16's or IAS 38's own measurement models, depending on whether the E&amp;E asset is classified as tangible or intangible (see Section 7).</div>
+      <div class="note">The choice of cost vs revaluation model, once made, is a genuine accounting policy applied consistently — the standard's flexibility applies most significantly to WHAT gets capitalised in the first place, not merely how it's subsequently measured.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Reclassification of E&amp;E Assets</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Exiting IFRS 6's scope once feasibility is demonstrated</div>
+      <div class="principle">An E&amp;E asset shall NO LONGER be classified as such once the TECHNICAL FEASIBILITY and COMMERCIAL VIABILITY of extracting the mineral resource are DEMONSTRABLE. E&amp;E assets shall be ASSESSED FOR IMPAIRMENT (Section 6) BEFORE reclassification, and any impairment loss recognised BEFORE the reclassified asset moves into its new category, governed by the normal applicable Standard (typically IAS 16 for tangible development assets, or IAS 38 for intangible ones).</div>
+      <div class="note">This is a CRITICAL sequencing rule — the mandatory pre-reclassification impairment test ensures E&amp;E assets are not carried forward at an inflated amount into the development-stage accounting regime, which follows entirely different (and typically stricter) rules.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Impairment — A Modified Trigger (with worked example)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">IFRS 6's own indicators, replacing some of IAS 36's general ones</div>
+      <div class="principle">IFRS 6 MODIFIES the application of IAS 36 for E&amp;E assets by specifying facts and circumstances that indicate E&amp;E assets should be TESTED for impairment — an entity assesses E&amp;E assets for impairment when facts/circumstances suggest the carrying amount may EXCEED recoverable amount. IFRS 6 also permits the level at which E&amp;E assets are assessed for impairment (i.e. the CGU or group of CGUs) to be LARGER than the CGU normally required under IAS 36.</div>
+      <div class="elabel">EXAMPLE IMPAIRMENT INDICATORS SPECIFIC TO IFRS 6</div>
+      <div class="check-list">
+        <span>The period for which the entity has the right to explore in the specific area has EXPIRED, or will expire in the NEAR FUTURE, and is NOT expected to be renewed</span>
+        <span>Substantive expenditure on further exploration/evaluation in the specific area is NEITHER budgeted nor planned</span>
+        <span>Exploration/evaluation activities have NOT led to the discovery of commercially viable quantities, and the entity has decided to DISCONTINUE such activities in the specific area</span>
+        <span>Sufficient data exists to indicate that, although a development in the specific area is likely to proceed, the carrying amount is UNLIKELY to be recovered in full from successful development or by sale</span>
+      </div>
+      <div class="worked" style="margin-top:8px;margin-bottom:0;">
+        <div class="wk-title">Example 2: An expiring exploration licence</div>
+        <div class="wk-body">
+          An entity holds an E&amp;E asset of $3,500,000 relating to a specific licence area. The exploration licence is due to expire in 4 months, and management has confirmed it will NOT be renewed, since geological surveys have not indicated a commercially viable deposit.
+        </div>
+        <div class="wk-answer">
+          This is a CLEAR IFRS 6-specific impairment indicator (licence expiring imminently, not to be renewed) — the entity must ASSESS the E&amp;E asset for impairment under IAS 36's recoverable amount test. Given no commercially viable deposit and no ongoing rights, recoverable amount is likely close to NIL, and a full write-off would typically be recognised.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Presentation — Tangible vs Intangible Classification</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Classifying E&amp;E assets by their NATURE</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">An entity classifies E&amp;E assets as TANGIBLE or INTANGIBLE according to the NATURE of the assets acquired, applying this classification CONSISTENTLY. Some E&amp;E assets are treated as intangible (e.g. drilling rights, licences), while others are treated as tangible (e.g. vehicles, drilling rigs used in exploration). Where a tangible asset is CONSUMED in developing an intangible asset, the amount reflecting that consumption is part of the cost of the INTANGIBLE asset — but this does NOT change the tangible asset's own classification.</div>
+      <div class="note">Consistent classification is required across an entity's WHOLE E&amp;E asset base, but the underlying assets themselves retain their natural tangible/intangible character; the classification exercise simply DETERMINES which subsequent measurement standard (IAS 16 or IAS 38) applies once the asset leaves IFRS 6's scope.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Interaction with Other Standards</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">A deliberately narrow, standalone standard</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Because IFRS 6 grants such significant policy flexibility for RECOGNITION, but is silent on many other detailed matters, an entity's E&amp;E accounting policy typically DRAWS ON established principles from IAS 16/IAS 38 for classification and subsequent measurement mechanics, while relying on IFRS 6's own specific rules for the initial recognition scope and the modified impairment trigger described above.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Required disclosures</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">GENERAL DISCLOSURES</div>
+          <div class="check-list">
+            <span>Its accounting policies for exploration and evaluation expenditures, including the recognition of E&amp;E assets</span>
+            <span>Amounts recognised in its financial statements arising from the exploration for and evaluation of mineral resources (assets, liabilities, income and expense, operating and investing cash flows)</span>
+          </div>
+        </div>
+        <div>
+          <div class="elabel">TREATED AS A SEPARATE CLASS</div>
+          <div class="check-list">
+            <span>E&amp;E assets are treated as a separate class of assets, and the ordinary disclosures required by IAS 16 or IAS 38 (as applicable) are provided for this separate class, consistent with the entity's tangible/intangible classification choice</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Where management judgement matters most</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+          <div class="dot-list">
+            <span>Which expenditures qualify for capitalisation as E&amp;E assets, per the entity's own developed accounting policy</span>
+            <span>Whether technical feasibility and commercial viability have become "demonstrable," triggering reclassification out of IFRS 6's scope</span>
+            <span>Whether tangible or intangible classification is appropriate for each type of E&amp;E asset</span>
+          </div>
+        </div>
+        <div>
+          <div class="elabel">SIGNIFICANT ESTIMATES</div>
+          <div class="dot-list">
+            <span>Recoverable amount of E&amp;E assets when an IFRS 6-specific impairment indicator arises</span>
+            <span>The appropriate level (CGU or larger grouping) at which E&amp;E assets are tested for impairment</span>
+          </div>
+        </div>
+      </div>
+      <div class="callout warn" style="margin-top:8px;margin-bottom:0;">⚠️ Because IFRS 6 permits genuine policy diversity, COMPARABILITY between different extractive entities can be significantly LIMITED — two companies with economically similar exploration activities may report materially different E&amp;E asset balances, purely due to differing (both entirely IFRS 6-compliant) capitalisation policies.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>IFRS vs US GAAP — Key Differences</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — IFRS 6 vs US GAAP</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Feature</span><span style="color:var(--color-text-info);">IFRS (IFRS 6)</span><span style="color:var(--color-text-warning);">US GAAP</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Accounting policy flexibility</span><span>Deliberately BROAD — permits continuation of virtually any pre-existing E&amp;E accounting policy</span><span>More PRESCRIPTIVE — US GAAP specifies detailed methods (e.g. "successful efforts" or "full cost" method) for oil and gas specifically, under ASC 932</span></div>
+        <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>IAS 8 policy hierarchy override</span><span>Explicitly EXEMPTED from the normal IAS 8 policy-selection hierarchy</span><span>No comparable concept, since US GAAP is itself the single source of authoritative guidance with its own specific extractive industry rules</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Impairment testing level</span><span>May use a LARGER grouping than the normal CGU</span><span>Specific full-cost ceiling test or successful-efforts impairment rules apply, differing in mechanics from IAS 36</span></div>
+        <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Comprehensiveness</span><span>Narrow, transitional, deliberately incomplete standard</span><span>More comprehensive, detailed industry-specific US GAAP guidance (ASC 932) covering oil and gas activities specifically</span></div>
+      </div>
+      <div class="note">IFRS 6 remains, by DESIGN, a narrower and less prescriptive standard than the equivalent detailed US GAAP extractive industries guidance — reflecting the IASB's original intention to revisit this area with more comprehensive standard-setting at a later stage, which (as of this poster's preparation) has not yet been completed.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping — Where Every E&amp;E Event Lands</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Comprehensive event-to-statement mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event / transaction</span><span>Statement(s) affected</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>E&amp;E expenditure meeting the entity's capitalisation policy</span><span><span class="badge bs">SOFP</span></span><span>Recognised at cost as a tangible or intangible E&amp;E asset</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>E&amp;E expenditure NOT meeting the capitalisation policy</span><span><span class="badge bp">SOPL</span></span><span>Expensed as incurred</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Impairment indicator identified (IFRS 6-specific triggers)</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>IAS 36 recoverable amount test applied; loss recognised if triggered</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Reclassification out of E&amp;E scope (feasibility demonstrated)</span><span><span class="badge bs">SOFP</span></span><span>Impairment tested FIRST, then reclassified to IAS 16/IAS 38</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Revaluation (if the revaluation model is elected)</span><span><span class="badge bo">OCI</span> <span class="badge bs">SOFP</span></span><span>Per IAS 16/IAS 38 revaluation mechanics, depending on classification</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Cash paid for E&amp;E activities</span><span><span class="badge bs">Cash Flow Statement</span></span><span>Investing activities outflow, per IAS 7</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Accounting policy, amounts recognised, separate class disclosures</span><span><span class="badge bp">Notes</span></span><span>Mandatory disclosure as a distinct asset class</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How IFRS 6 connects across the IFRS body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 8</span><span>IFRS 6 EXPLICITLY exempts E&amp;E accounting policy development from IAS 8's normal hierarchy — a unique, deliberate carve-out</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 16</span><span>Governs tangible E&amp;E assets once classified, and applies once an asset is reclassified out of IFRS 6's scope into the development phase</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 38</span><span>Governs intangible E&amp;E assets once classified, and applies once an asset is reclassified out of IFRS 6's scope</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 36</span><span>Supplies the recoverable amount and CGU testing mechanics, MODIFIED by IFRS 6's own specific impairment indicators and the option to test at a larger grouping level</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 37</span><span>Governs decommissioning and site restoration provisions often associated with mineral exploration activities</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 41</span><span>Distinguishes mineral resource exploration from agricultural activity, ensuring no scope overlap between the two specialised standards</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Successful efforts method</div><div class="glossary-def">An accounting policy capitalising exploration costs only for wells/projects that prove commercially successful, expensing costs for unsuccessful ("dry hole") efforts immediately.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Full cost method</div><div class="glossary-def">An accounting policy capitalising ALL exploration costs within a defined cost centre (e.g. a country or region), regardless of individual well/project success, subject to a ceiling test.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Technical feasibility</div><div class="glossary-def">Confirmation that a mineral resource can genuinely be extracted using currently available technology and methods.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Commercial viability</div><div class="glossary-def">Confirmation that extracting a mineral resource is expected to be economically profitable, given estimated reserves, costs, and market prices.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Specific area</div><div class="glossary-def">A geographical area over which an entity has legal rights to explore, the basis on which many IFRS 6 impairment indicators are assessed.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Development phase</div><div class="glossary-def">The stage following demonstrated technical feasibility and commercial viability, at which point expenditures fall OUTSIDE IFRS 6's scope and are accounted for under IAS 16/IAS 38.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bs">SOFP</span> Statement of financial position (balance sheet)
+      <span class="badge bp">SOPL</span> Statement of profit or loss (income statement)
+      <span class="badge bo">OCI</span> Other comprehensive income
+      <span class="badge be">Equity</span> Statement of changes in equity
+    </div>
+  </div>
+
+  <div class="footer-note">IFRS 6 — Exploration for and Evaluation of Mineral Resources · Extended Reference Poster · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

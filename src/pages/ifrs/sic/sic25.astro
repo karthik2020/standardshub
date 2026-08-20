@@ -1,0 +1,246 @@
+---
+import StandardPageLayout from "../../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../../components/FinancialStatementKey.astro";
+import Glossary from "../../../components/Glossary.astro";
+import PageToc from "../../../components/PageToc.astro";
+import "../../../styles/standards-poster.css";
+import "../../../styles/extended.css";
+import HistoryTimeline from "../../../components/HistoryTimeline.astro";
+import history from "../../../data/history.json";
+import metadata from "../../../data/standards/sic/sic25.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType="IFRS"
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework" },
+        { id: "s2", label: "Scope & Definitions" },
+        { id: "s3", label: "The Tax Status Change" },
+        { id: "s4", label: "Backward Tracing of Tax Effects" },
+        { id: "s5", label: "Recognition in Equity Transactions" },
+        { id: "s6", label: "Transaction Costs" },
+        { id: "s7", label: "Disclosure" },
+        { id: "s8", label: "Judgments & Estimates" },
+        { id: "s9", label: "SIC-25 vs IFRS" },
+        { id: "s10", label: "Statement Mapping" },
+        { id: "s11", label: "Related Standards" },
+        { id: "s12", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Why SIC-25 exists as a bridge interpretation</div>
+        <div class="principle">IAS 12 requires the tax consequences of transactions that are recognised directly in equity (such as revaluations, or recognition and measurement differences on business combinations) to be recognised directly in equity — the "backward-tracing" principle. SIC-25 clarifies that this backward-tracing applies specifically to changes in the tax status of an entity or its shareholders, ensuring tax effects follow the same financial statement path as the underlying transaction.</div>
+        <div class="note">Without SIC-25, entities could have placed the tax effect of a tax status change in profit or loss even when the underlying transaction itself was recognised directly in equity — violating the matching principle and IAS 12's backward-tracing rule.</div>
+      </div>
+      <div class="card cs">
+        <div class="ctitle cs">Preserving faithful representation across equity boundaries</div>
+        <div class="principle">A change in tax status creates a re-measurement of deferred tax assets or liabilities that is not a stand-alone event — it belongs with the transaction that caused it. SIC-25's backward-tracing rule ensures that the income statement impact of tax mirrors the income statement impact of the underlying transaction, whether that transaction lands in OCI, equity, or profit or loss.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope & Definitions</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What SIC-25 covers</div>
+        <div class="principle">SIC-25 applies to changes in the tax status of an entity or its shareholders that give rise to tax consequences that must be recognised. The change in tax status is typically a change from being subject to tax as a flow-through entity to being subject to tax as a company (or vice versa), or a change in the tax rates applicable.</div>
+        <div class="elabel">TYPICAL FACT PATTERNS</div>
+        <div class="dot-list">
+          <span>An S-corporation (flow-through) converting to a C-corporation (subject to entity-level tax)</span>
+          <span>A partnership incorporating and becoming subject to entity-level tax</span>
+          <span>A change in tax status of an entity's shareholders affecting the applicable tax rate</span>
+        </div>
+      </div>
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Tax status change</div>
+          <div class="glossary-def">A change in the tax treatment of an entity or its shareholders that affects the entity's current or deferred tax assets or liabilities, including changes from flow-through to entity-level taxation or vice versa.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Backward tracing</div>
+          <div class="glossary-def">The IAS 12 principle requiring the tax effect of a transaction recognised directly in equity to be recognised directly in equity rather than in profit or loss.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>The Tax Status Change</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What triggers the SIC-25 mechanics</div>
+        <div class="principle">A tax status change typically arises from the entity crossing a threshold — for example, an S-corporation that was historically taxed only at the shareholder level becomes subject to entity-level tax. This creates a re-measurement of the tax base of the entity's assets and liabilities from the perspective of the new taxing entity rather than the old flow-through entity.</div>
+        <div class="elabel">TWO TYPES OF TAX STATUS CHANGE</div>
+        <div class="dot-list">
+          <span>Entity-level change: the entity itself changes from being taxed on a flow-through basis to being taxed as a separate entity</span>
+          <span>Shareholder-level change: the entity's shareholders' tax status changes, affecting the tax rate applicable to the entity's interests</span>
+        </div>
+        <div class="callout info callout--flush">A change in the statutory tax rate itself (e.g. from 25% to 30%) is handled under IAS 12's general deferred tax rate change provisions, not under SIC-25. SIC-25 governs the change in who is taxed, not how much.</div>
+      </div>
+      <div class="card ci">
+        <div class="ctitle ci">Measuring the re-measurement</div>
+        <div class="principle">The re-measurement of deferred tax assets and liabilities arises from comparing the "old" tax bases (under the old tax status) with the "new" tax bases (under the new tax status). The difference is the SIC-25 adjustment — and the question becomes where that adjustment lands in the financial statements.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Backward Tracing of Tax Effects</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">The core SIC-25 principle</div>
+        <div class="principle">The tax consequences of a change in the tax status of an entity or its shareholders are recognised in the SAME component of equity (or profit or loss) as the transaction or event that gave rise to those tax consequences. This is the "backward-tracing" requirement.</div>
+        <div class="elabel">DECISION TREE</div>
+        <div class="td-table">
+          <div class="th cols-1-2"><span>Underlying transaction land in...</span><span>Tax effect lands in...</span></div>
+          <div class="tr cols-1-2"><span>Other comprehensive income (OCI)</span><span>OCI (same component — e.g. revaluation surplus, OCI on remeasurement of defined benefit plans)</span></div>
+          <div class="tr alt cols-1-2"><span>Equity directly (e.g. share issue costs)</span><span>Equity directly — same line item</span></div>
+          <div class="tr cols-1-2"><span>Profit or loss</span><span>Profit or loss</span></div>
+        </div>
+        <div class="callout warn callout--flush">If the underlying transaction is recognised in profit or loss, the tax effect ALSO goes to profit or loss. This is the standard IAS 12 treatment. SIC-25 is relevant only where the underlying transaction bypasses profit or loss and lands directly in equity or OCI.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Recognition in Equity Transactions</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">When the underlying transaction is in equity</div>
+        <div class="principle">If the tax status change is linked to a transaction that is recognised as a credit to equity directly — such as a share issue at a premium or discount that affects tax — the tax effect is recognised in the SAME equity component as the underlying transaction, without going through profit or loss.</div>
+        <div class="elabel">KEY RULE</div>
+        <div class="dot-list">
+          <span>The tax effect does NOT go to profit or loss even though it arises from a transaction that changes the entity's tax status</span>
+          <span>The tax effect is presented with the same equity component as the transaction itself</span>
+          <span>If the tax effect cannot be traced to a specific equity transaction, it is recognised in profit or loss</span>
+        </div>
+      </div>
+      <div class="card cw">
+        <div class="ctitle cw">Revaluation surplus scenarios</div>
+        <div class="principle">Where the tax status change affects the re-measurement of a revaluation surplus (e.g. on property, plant and equipment or intangible assets), the tax effect is recognised in the same revaluation surplus component of OCI — increasing the surplus if the tax effect reduces tax expense, or decreasing it if the tax effect increases tax expense.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Transaction Costs</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn">
+        <div class="ctitle cn">Cost of changing tax status</div>
+        <div class="principle">Direct costs incurred in connection with the change in tax status (such as legal fees, advisory fees, and filing costs) are NOT part of the SIC-25 adjustment to deferred tax. They are treated as ordinary expenses — recognised in profit or loss when incurred, unless they qualify as directly attributable costs of acquiring an asset under another standard.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Disclosure</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">What SIC-25 requires</div>
+        <div class="check-list">
+          <span>That a change in the tax status of the entity or its shareholders has occurred during the period</span>
+          <span>The nature of the change and the component of equity or profit or loss in which the tax effect was recognised</span>
+          <span>The amount of the tax effect recognised directly in equity, and where possible the nature of the transactions that gave rise to it</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Judgments & Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where judgement matters most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Whether a change in tax status of an entity or its shareholders has occurred within the meaning of SIC-25</span>
+              <span>Which specific equity component is affected by the backward-traced tax effect</span>
+              <span>Whether the tax effect can be reliably traced to a specific equity transaction</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>The amount of deferred tax assets and liabilities under the old and new tax status</span>
+              <span>The interaction between SIC-25 and IAS 12's rate change provision — whether the change in tax status is purely a rate change or a true tax-basis change</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>SIC-25 vs IFRS</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — SIC-25 within the broader IFRS framework</div>
+        <div class="td-table">
+          <div class="th cols-1-1-1"><span>Aspect</span><span>SIC-25 (IFRS)</span><span>US GAAP (ASC 740)</span></div>
+          <div class="tr cols-1-1-1"><span>Tax effect of equity transactions</span><span>Backward-traced to the same equity or OCI component as the underlying transaction</span><span>Generally similar — deferred tax on equity transactions affects equity, but guidance is less prescriptive about tracing</span></div>
+          <div class="tr alt cols-1-1-1"><span>Tax status change</span><span>Backward-traced to the same component as the underlying transaction</span><span>Addressed under general ASC 740 guidance without specific separate standard equivalent</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Where every SIC-25 event lands</div>
+        <div class="td-table">
+          <div class="th cols-16-1-14"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr cols-16-1-14"><span>Tax effect of change in tax status — underlying transaction in OCI</span><span><span class="badge bo">OCI</span></span><span>Recognised in the same OCI component as the underlying transaction (e.g. revaluation surplus)</span></div>
+          <div class="tr alt cols-16-1-14"><span>Tax effect of change in tax status — underlying transaction in equity directly</span><span><span class="badge bs">SOFP (equity)</span></span><span>Recognised in the same equity component; not routed through profit or loss</span></div>
+          <div class="tr cols-16-1-14"><span>Tax effect of change in tax status — underlying transaction in SOPL</span><span><span class="badge bp">SOPL</span></span><span>Recognised in profit or loss — standard IAS 12 treatment</span></div>
+          <div class="tr alt cols-16-1-14"><span>Direct costs of changing tax status</span><span><span class="badge bp">SOPL</span></span><span>Ordinary expense, not part of the SIC-25 deferred tax adjustment</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Related Standards</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Cross-reference map</div>
+        <div class="td-table">
+          <div class="th cols-08-2"><span>Standard</span><span>Connection</span></div>
+          <div class="tr cols-08-2"><span>IAS 12</span><span>The parent standard supplying the general backward-tracing principle SIC-25 applies specifically to tax status changes</span></div>
+          <div class="tr alt cols-08-2"><span>IAS 1</span><span>Governs presentation of OCI and equity components affected by SIC-25's backward-traced tax effects</span></div>
+          <div class="tr cols-08-2"><span>IAS 16</span><span>Supplies the revaluation surplus mechanics commonly implicated in SIC-25's OCI-tracing exception</span></div>
+          <div class="tr alt cols-08-2"><span>IAS 38</span><span>Supplies the revaluation surplus mechanics commonly implicated in SIC-25's OCI-tracing exception</span></div>
+        </div>
+      </div>
+      <div class="card cn">
+        <div class="ctitle cn">Quick-reference glossary</div>
+        <div class="glossary-item">
+          <div class="glossary-term">SIC-25 Interpretation</div>
+          <div class="glossary-def">Requires the tax effect of a change in the tax status of an entity or its shareholders to be recognised in the same component of equity as the underlying transaction or event.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Deferred tax re-measurement</div>
+          <div class="glossary-def">The adjustment to deferred tax assets or liabilities resulting from a change in the tax basis of the entity's assets and liabilities under a new tax status.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Tax status change", definition: "A change in the tax treatment of an entity or its shareholders from one classification to another (e.g. flow-through to corporate entity), triggering deferred tax re-measurement." },
+      { term: "Backward tracing", definition: "The IAS 12 principle that the tax effect of a transaction recognised directly in equity must be recognised directly in equity, not profit or loss — applied specifically to tax status changes by SIC-25." },
+      { term: "Deferred tax re-measurement", definition: "The adjustment to the carrying amount of deferred tax assets and liabilities resulting from a change in an entity's tax status." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.SIC25} />
+  </section>
+</StandardPageLayout>
+
+
+
+

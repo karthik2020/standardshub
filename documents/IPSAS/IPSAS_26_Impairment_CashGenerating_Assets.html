@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPSAS 26 — Impairment of Cash-Generating Assets | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .eg  { margin-bottom: 7px; }
+  .egl { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; margin-bottom: 3px; }
+  .entry { display: flex; align-items: flex-start; gap: 4px; margin-bottom: 4px; }
+  .dr { font-size: 11px; font-weight: 500; color: var(--color-text-info);   min-width: 14px; padding-top: 1px; }
+  .cr { font-size: 11px; font-weight: 500; color: var(--color-text-danger); min-width: 14px; padding-top: 1px; padding-left: 6px; }
+  .etxt { font-size: 11px; color: var(--color-text-primary); flex: 1; line-height: 1.4; }
+  .badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .bc { background: #f3e8ff; color: #7e22ce; }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">IPSAS 26 — Impairment of Cash-Generating Assets</div>
+      <div class="hub-sub">Extended reference poster · Full Handbook structure · Statement mapping · Related standards</div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <a href="#s1">1. Objective, Scope &amp; Definitions</a>
+    <a href="#s2">2. Cash-Generating vs Non-Cash-Generating Assets</a>
+    <a href="#s3">3. Identifying an Asset That May Be Impaired</a>
+    <a href="#s4">4. Measuring Recoverable Amount</a>
+    <a href="#s5">5. Value in Use — Cash Flow Projections</a>
+    <a href="#s6">6. Recognizing an Impairment Loss</a>
+    <a href="#s7">7. Cash-Generating Units — Identification &amp; Carrying Amount</a>
+    <a href="#s8">8. Goodwill Allocation &amp; Impairment Testing</a>
+    <a href="#s9">9. Allocating an Impairment Loss Within a CGU</a>
+    <a href="#s10">10. Reversing an Impairment Loss</a>
+    <a href="#s11">11. Redesignation &amp; Disclosure</a>
+    <a href="#s12">12. Effective Date &amp; Amendment Timeline</a>
+    <a href="#s13">13. Relationship to IAS 36</a>
+    <a href="#s14">14. Statement / Process Mapping</a>
+    <a href="#s15">15. Related Standards</a>
+    <a href="#s16">16. Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 — OBJECTIVE, SCOPE & DEFINITIONS ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; Definitions (paras. 1–13)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Objective &amp; scope</div>
+      <div class="principle">Prescribes the procedures an entity applies to determine whether a CASH-GENERATING asset is impaired, ensures impairment losses are recognized, specifies when to reverse them, and prescribes disclosures. The sister standard to IPSAS 21, which covers non-cash-generating assets.</div>
+      <div class="cross-list">
+        <span>Inventories (IPSAS 12); binding arrangement/contract-cost assets (IPSAS 47)</span>
+        <span>Financial assets within IPSAS 41's scope</span>
+        <span>Investment property measured at fair value (IPSAS 16)</span>
+        <span>Deferred tax assets; assets from employee benefits (IPSAS 39)</span>
+        <span>Biological assets at fair value less costs to sell (IPSAS 27)</span>
+        <span>Held-for-sale assets/disposal groups (IPSAS 44)</span>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Key definitions (para. 13)</div>
+      <div class="glossary-item"><div class="glossary-term">Cash-generating unit</div><div class="glossary-def">The SMALLEST identifiable group of assets held with the primary objective of generating a commercial return, generating cash inflows from continuing use that are largely independent of other assets/groups.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Recoverable amount</div><div class="glossary-def">The HIGHER of an asset's (or CGU's) fair value less costs of disposal, and its value in use.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Value in use (cash-generating asset)</div><div class="glossary-def">The present value of the ESTIMATED FUTURE CASH FLOWS expected from continuing use, plus disposal at the end of useful life.</div></div>
+      <div class="callout info" style="margin-bottom:0;margin-top:8px;">ℹ️ Note the terminology shift from IPSAS 21: "recoverable AMOUNT" and "cash flows" here, vs. "recoverable SERVICE amount" and "service potential" in IPSAS 21 — reflecting the commercial vs. service-delivery orientation of each Standard.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 — CASH-GENERATING VS NON-CASH-GENERATING ASSETS ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Cash-Generating vs Non-Cash-Generating Assets (paras. 14–18A)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Same test as IPSAS 21, mirrored</div>
+      <div class="principle">Cash-generating assets are held with the PRIMARY OBJECTIVE of generating a commercial return, deployed the way a profit-oriented entity would deploy them. The default PRESUMPTION (given most public sector entities' overall objectives) is that assets are NON-cash-generating — this Standard is the exception case, not the default.</div>
+      <div class="note">Goodwill is ALWAYS treated as cash-generating for impairment purposes — assessed exclusively under this Standard, never IPSAS 21 (para. 18A).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Worked example — a municipal parking garage</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">A commercially-run parking garage, currently at 25% capacity utilization</div>
+        <div class="wk-body">Management has determined the garage generates a commercial rate of return when usage reaches 75% capacity and above. Usage has declined without a corresponding increase in parking charges.</div>
+        <div class="wk-answer">The garage is IMPAIRED — its carrying amount exceeds its recoverable amount, reflecting a decline in the future economic benefits embodied in the asset (para. 20).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 — IDENTIFYING AN ASSET THAT MAY BE IMPAIRED ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Identifying an Asset That May Be Impaired (paras. 20A–30)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">The same minimum indications framework as IPSAS 21 (para. 25)</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">EXTERNAL SOURCES</div>
+          <div class="dot-list">
+            <span>Observable market value declines beyond normal expectations</span>
+            <span>Significant adverse changes in technological, market, economic, or legal environment</span>
+            <span>Increases in market interest rates affecting the discount rate and likely reducing recoverable amount materially</span>
+          </div>
+        </div>
+        <div>
+          <div class="elabel">INTERNAL SOURCES</div>
+          <div class="dot-list">
+            <span>Evidence of obsolescence or physical damage</span>
+            <span>Significant adverse changes in extent/manner of use — idle assets, restructuring/disposal plans, useful life reassessed</span>
+            <span>A halt in construction before completion</span>
+            <span>Internal reporting evidence the asset's ECONOMIC PERFORMANCE is worse than expected</span>
+          </div>
+        </div>
+      </div>
+      <div class="note">Same intangible-asset annual test rule as IPSAS 21: indefinite-life and not-yet-available-for-use intangibles are tested at least annually regardless of indication (cross-ref).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 — MEASURING RECOVERABLE AMOUNT ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Measuring Recoverable Amount (paras. 31–42)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Fair value less costs of disposal</div>
+      <div class="formula-box">
+        <div class="f-eq">Recoverable amount = HIGHER of (fair value less costs of disposal) and (value in use)</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Same shortcut logic as IPSAS 21: if either amount already exceeds carrying amount, no impairment, and the other need not be determined. Fair value follows a similar evidence hierarchy: binding sale agreement → active market bid price → best available information.</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Fair value ≠ value in use — a critical distinction (para. 66A)</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Fair value reflects what MARKET PARTICIPANTS would pay; value in use reflects entity-SPECIFIC factors. Fair value does NOT reflect: additional value from grouping assets into a portfolio, synergies with other entity assets, legal rights/restrictions specific to the current owner, or owner-specific tax benefits/burdens.</div>
+      <div class="callout warn" style="margin-bottom:0;margin-top:8px;">⚠️ Unlike IPSAS 21, a genuinely FORCED SALE is treated as a valid fair value less costs of disposal reflection under IAS 36 — but IPSAS 26 explicitly does NOT treat a forced sale as reflecting fair value less costs of disposal (a key departure noted in §13).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 — VALUE IN USE: CASH FLOW PROJECTIONS ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Value in Use — Cash Flow Projections (paras. 43–70)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Five elements to reflect (para. 43)</div>
+      <div class="dot-list">
+        <span>Estimated future cash flows expected from the asset</span>
+        <span>Expected variations in the amount/timing of those cash flows</span>
+        <span>Time value of money (current market risk-free rate)</span>
+        <span>The price for bearing the asset's inherent uncertainty</span>
+        <span>Other factors (e.g. illiquidity) market participants would price in</span>
+      </div>
+      <div class="formula-box">
+        <div class="f-eq">Value in use = PV(future cash flows), using a pre-tax discount rate reflecting current market assessments of time value of money and asset-specific risk</div>
+      </div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Budget-based projection rules (para. 46)</div>
+      <div class="check-list">
+        <span>Base projections on REASONABLE, SUPPORTABLE assumptions — greater weight to EXTERNAL evidence</span>
+        <span>Use the most recent management-approved budgets/forecasts, covering a MAXIMUM of 5 years (unless a longer period is justified) — EXCLUDING cash flows from future restructurings or performance-enhancing improvements</span>
+        <span>Extrapolate beyond that period using a STEADY OR DECLINING growth rate, capped at the long-term average for the relevant products/industry/market unless a higher rate is justified</span>
+      </div>
+      <div class="note">Cash outflow estimates EXCLUDE financing activities and income tax (para. 63) — consistent with the pre-tax discount rate. Once an entity is COMMITTED to a restructuring (IPSAS 19), its cost savings/benefits ARE reflected in value in use going forward (para. 60).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 — RECOGNIZING AN IMPAIRMENT LOSS ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Recognizing &amp; Measuring an Impairment Loss (paras. 71–75)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Same recognition mechanics as IPSAS 21 (§7 of that Standard)</div>
+      <div class="formula-box">
+        <div class="f-eq">If recoverable amount &lt; carrying amount → reduce to recoverable amount = IMPAIRMENT LOSS, recognized in surplus/deficit (or revaluation surplus first, if the asset is revalued)</div>
+      </div>
+      <div class="dot-list">
+        <span>Non-revalued asset → surplus or deficit immediately</span>
+        <span>Revalued asset (IPSAS 31/45 current value model) → revaluation decrease first, to the extent of the revaluation surplus for that asset/class; excess to surplus or deficit</span>
+        <span>Beyond zero → a liability is recognized only if ANOTHER standard requires it (e.g. IPSAS 19 dismantling obligations)</span>
+        <span>Depreciation/amortization is adjusted PROSPECTIVELY over the remaining useful life after the loss</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 — CASH-GENERATING UNITS ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Cash-Generating Units — Identification &amp; Carrying Amount (paras. 77–90)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">When to step up from asset to unit</div>
+      <div class="principle">If an individual asset's recoverable amount CANNOT be determined — because its value in use can't be estimated close to fair value less costs of disposal, AND it doesn't generate largely independent cash inflows on its own — recoverable amount is determined for its CASH-GENERATING UNIT instead: the SMALLEST group of assets generating largely independent cash inflows (paras. 78–79).</div>
+      <div class="callout success" style="margin-bottom:0;">✓ <strong style="font-weight:600">Active market test (para. 81):</strong> if an active market exists for an asset's OUTPUT, that asset (or group) is identified as its own CGU — even if some/all output is used INTERNALLY. Internal transfer prices are adjusted to management's best estimate of arm's-length prices when estimating cash flows.</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Carrying amount of a CGU (paras. 86–90)</div>
+      <div class="dot-list">
+        <span>INCLUDES only assets directly attributable or reasonably allocable to the unit, that generate the cash inflows used in its value-in-use calculation</span>
+        <span>EXCLUDES recognized liabilities — UNLESS the unit's recoverable amount can't be determined without considering that liability (e.g. a buyer would assume it on disposal)</span>
+        <span>CGUs are identified CONSISTENTLY period to period unless a change is justified — disclosure required if the composition changes and an impairment loss is recognized/reversed (para. 83–84)</span>
+      </div>
+      <div class="note">A non-cash-generating asset CONTRIBUTING to a cash-generating unit (e.g. a shared reception area) has a PROPORTION of its own carrying amount allocated into the CGU's carrying amount, after its own separate IPSAS 21 impairment test (para. 93, see §9).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 — GOODWILL ALLOCATION & IMPAIRMENT TESTING ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Goodwill Allocation &amp; Impairment Testing (paras. 90A–97H)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd">
+      <div class="ctitle cd">Allocating goodwill to CGUs</div>
+      <div class="principle">Goodwill acquired in a public sector combination is allocated, from the acquisition date, to EACH of the acquirer's CGUs (or groups of CGUs) expected to BENEFIT FROM THE SYNERGIES of the combination — irrespective of whether other assets/liabilities are also assigned to those units.</div>
+      <div class="note">This links directly to IPSAS 40's acquisition accounting — goodwill is recognized only where it gives rise to cash inflows or reductions in the acquirer's net cash outflows.</div>
+    </div>
+
+    <div class="card cs">
+      <div class="ctitle cs">Never reversed, once impaired</div>
+      <div class="callout danger" style="margin-bottom:0;">✕ <strong style="font-weight:600">One-way street:</strong> an impairment loss recognized for GOODWILL is NEVER reversed in a subsequent period. IPSAS 31 prohibits recognizing internally generated goodwill — so any apparent later increase in goodwill's recoverable amount is presumed to be internally generated goodwill, not a genuine recovery of the acquired goodwill (paras. 111A–111B).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 — ALLOCATING AN IMPAIRMENT LOSS WITHIN A CGU ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Allocating an Impairment Loss Within a CGU (paras. 91–97)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The waterfall order (para. 91)</div>
+      <div class="formula-box">
+        <div class="f-eq">1. Reduce GOODWILL allocated to the unit first → 2. THEN spread the remainder pro rata across the unit's other assets, by carrying amount</div>
+      </div>
+      <div class="dot-list">
+        <span>No individual asset's carrying amount is reduced below the HIGHEST of: its own fair value less costs of disposal (if measurable), its own value in use (if determinable), and ZERO (para. 92)</span>
+        <span>Any amount that would otherwise breach that floor is reallocated pro rata to the OTHER cash-generating assets in the unit</span>
+      </div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Non-cash-generating assets contributing to a CGU (paras. 93–95)</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">A contributing non-cash-generating asset is first tested SEPARATELY under IPSAS 21. A PROPORTION of its (already impairment-tested) carrying amount — reflecting how much its service potential contributes to the CGU — is then folded into the CGU's carrying amount BEFORE the CGU's own recoverable amount is estimated. That non-cash-generating asset receives NO further impairment loss beyond what IPSAS 21 already determined, and the CGU-level allocation in para. 91 excludes it entirely (spread only across cash-generating assets).</div>
+      <div class="note">If an individual asset's recoverable amount truly cannot be determined, and its carrying amount exceeds the higher of its own fair value less costs of disposal AND the allocation-procedure result, an impairment loss is still recognized for that asset — but ONLY if the related CGU is ALSO impaired overall (para. 94).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 — REVERSING AN IMPAIRMENT LOSS ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Reversing an Impairment Loss (paras. 98–111B)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Individual asset reversal</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Mirror-image indications to §3 (favorable market/technological/legal changes, favorable use changes, resumed construction, better-than-expected internal performance). A reversal is recognized ONLY if there's been a genuine CHANGE IN ESTIMATES — never merely from the passage of time / unwinding of the discount (para. 105). Capped at the never-impaired carrying amount, net of depreciation (para. 106); routed through surplus/deficit or revaluation surplus, mirroring the original loss (para. 108).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">CGU-level reversal — the reverse waterfall</div>
+      <div class="formula-box">
+        <div class="f-eq">Reversal allocated pro rata to the unit's cash-generating assets EXCEPT goodwill — never above the lower of (a) recoverable amount, and (b) the never-impaired carrying amount</div>
+      </div>
+      <div class="dot-list">
+        <span>No part of a CGU-level reversal is ever allocated to a NON-cash-generating asset contributing service potential (para. 110)</span>
+        <span>Goodwill impairment is NEVER reversed — see §8 (para. 111A)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 — REDESIGNATION & DISCLOSURE ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Redesignation of Assets &amp; Disclosure (paras. 112–125)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs">
+      <div class="ctitle cs">Redesignation — same rule as IPSAS 21, mirrored</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Effluent treatment plant — from cash-generating to non-cash-generating</div>
+        <div class="wk-body">Built to treat industrial effluent at commercial rates for a nearby industrial estate, with excess capacity used to treat social-housing effluent at no charge. The industrial estate closes; the site becomes social housing.</div>
+        <div class="wk-answer">The entity redesignates the plant as NON-CASH-GENERATING — future impairment testing moves to IPSAS 21. Redesignation itself does NOT trigger an automatic test; the ordinary indication framework applies at the next reporting date (para. 112–113).</div>
+      </div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Disclosure requirements (paras. 114–125)</div>
+      <div class="check-list">
+        <span>Criteria used to distinguish cash-generating from non-cash-generating assets</span>
+        <span>Per class of assets: impairment losses/reversals recognized in surplus/deficit (with the SOFPerformance line item), and those recognized directly in revaluation surplus</span>
+        <span>Per SEGMENT (IPSAS 18 reporters): impairment losses/reversals recognized in surplus/deficit</span>
+        <span>Per MATERIAL impairment loss/reversal: events/circumstances, amount, nature of the asset (or CGU description, composition, and any composition CHANGE), and whether recoverable amount is fair value less costs of disposal or value in use</span>
+      </div>
+      <div class="note">A separate disclosure package applies for GOODWILL-CONTAINING CGUs where an estimate is particularly sensitive to key assumptions — requiring disclosure of those key assumptions, the period over which management projected cash flows, and the growth/discount rates used (§ paras 126A onward, cross-referenced from the Handbook's disclosure section on estimates for CGUs containing goodwill or indefinite-life intangibles).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 — EFFECTIVE DATE & AMENDMENT TIMELINE ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Effective Date &amp; Amendment Timeline (paras. 126–127)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Amendment history at a glance</div>
+      <div class="principle">Base Standard: periods beginning on/after <strong>1 April 2009</strong>.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2.2fr;"><span>Effective</span><span>Change</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2011</span><span>Paras. 25, 100, 123 — Improvements to IPSAS (Jan 2010)</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Apr 2011</span><span>Para. 2(h) — IPSAS 31, Intangible Assets</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2017</span><span>Para. 127 (IPSAS 33); para. 12 (IPSAS 35 &amp; IPSAS 37, applied together)</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2018</span><span>Paras. 2, 8 amended — Improvements to IPSAS 2015; further amendments via Applicability of IPSAS and the <em>Impairment of Revalued Assets</em> package (Jul 2016, matching IPSAS 21's §7/§10 revaluation-surplus routing)</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2019</span><span>Amendments consequential on IPSAS 40, Public Sector Combinations (goodwill allocation mechanics, §8)</span></div>
+      </div>
+      <div class="note">The IPSAS 21/26 pair share almost identical amendment timelines, since most amendments to one Standard's impairment framework are mirrored in the other.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 — RELATIONSHIP TO IAS 36 ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Relationship to IAS/IFRS — Comparison with IAS 36</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — IPSAS 26 vs IAS 36</div>
+      <div class="principle">IPSAS 26 is drawn primarily from IAS 36 (2004), <em>Impairment of Assets</em>, including a May 2008 Improvements to IFRS amendment.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1.9fr;"><span>Topic</span><span>Difference</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Cash-generating vs non-cash-generating split</span><span>IPSAS 26 defines this explicitly, with commentary distinguishing the two — no IAS 36 equivalent (IAS 36 assumes all assets are commercial)</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Cash-generating unit definition</span><span>Modified from IAS 36 to reference "primary objective of generating a commercial return"</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Corporate assets</span><span>IPSAS 26 does NOT define corporate assets or include specific requirements for them; IAS 36 does</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Market capitalization indicator</span><span>IAS 36 treats net assets exceeding market capitalization as a minimum impairment indicator; IPSAS 26 has NO equivalent (public sector entities have no market capitalization)</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Forced sale</span><span>IPSAS 26: a forced sale is NOT a reflection of fair value less costs of disposal. IAS 36: it CAN be, if management is compelled to sell immediately</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Non-cash-generating assets within a CGU</span><span>IPSAS 26 has specific requirements/guidance (§9); IAS 36 has none</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Redesignation</span><span>IPSAS 26 has explicit redesignation guidance and a disclosure requirement for the classification criteria; IAS 36 has neither</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 — STATEMENT / PROCESS MAPPING ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">End-to-end impairment decision map</div>
+      <div class="dot-list">
+        <span>1. Is the asset CASH-GENERATING? → this Standard applies. Non-cash-generating (the default) → IPSAS 21 instead (§2)</span>
+        <span>2. Is there an impairment INDICATION at the reporting date? → estimate recoverable amount for the INDIVIDUAL asset (§3, §4)</span>
+        <span>3. Can the individual asset's recoverable amount be determined? If NOT → step up to its CASH-GENERATING UNIT (§7)</span>
+        <span>4. Does the unit contain GOODWILL? → test the goodwill-containing unit(s) at least annually regardless of indication (§8)</span>
+        <span>5. Is the unit impaired? → allocate the loss: goodwill FIRST, then pro rata to other assets, respecting individual asset floors (§9)</span>
+        <span>6. At later reporting dates, is there a reversal indication? → reverse for individual assets/CGU assets (never goodwill), capped appropriately (§10)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card cs span2">
+      <div class="ctitle cs">Concept-to-statement mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>IPSAS 26 concept</span><span>Statement(s)</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Impairment loss, non-revalued asset</span><span><span class="badge bp">SOFPerf</span></span><span>Recognized immediately in surplus/deficit</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Impairment loss, revalued asset</span><span><span class="badge be">NA/E</span> <span class="badge bp">SOFPerf</span></span><span>Revaluation surplus first, excess to surplus/deficit</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Goodwill impairment</span><span><span class="badge bp">SOFPerf</span></span><span>Never reversed once recognized</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Reversal of impairment</span><span><span class="badge bp">SOFPerf</span> <span class="badge be">NA/E</span></span><span>Mirrors the original loss's routing; goodwill excluded</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Impairment by class, segment &amp; CGU</span><span><span class="badge bc">Notes</span></span><span>Mandatory disclosures, paras. 114–125</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 15 — RELATED STANDARDS ============ -->
+  <div class="section-header" id="s15"><span class="num">15</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How IPSAS 26 connects across the IPSAS body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.7fr 2.2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 12</span><span>Inventories excluded from scope (§1)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 18</span><span>Segment-level impairment loss/reversal disclosure (§11)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 19</span><span>Restructuring commitment test governs when cost savings enter value-in-use projections; liability recognition beyond zero carrying amount (§5, §6)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 21</span><span>The sister standard for NON-cash-generating assets; non-cash-generating assets contributing to a CGU are first tested there (§2, §9)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 27</span><span>Biological assets measured at fair value less costs to sell are excluded from scope (§1)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 31 / 45</span><span>Revaluation models under which impairment losses/reversals route through revaluation surplus (§6, §10)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 35 / 36 / 37</span><span>Cash-generating investments in controlled entities, associates, and joint arrangements fall under this Standard (§1)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 40</span><span>Goodwill recognition/allocation mechanics from public sector combinations (§8)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 41</span><span>Financial assets excluded from scope (§1)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 44</span><span>Held-for-sale assets/disposal groups excluded from scope (§1)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 16 — GLOSSARY ============ -->
+  <div class="section-header" id="s16"><span class="num">16</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Cash-generating unit</div><div class="glossary-def">The smallest identifiable group of assets held for a commercial return, generating largely independent cash inflows.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Recoverable amount</div><div class="glossary-def">The higher of an asset's (or CGU's) fair value less costs of disposal and its value in use.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Value in use (cash-generating asset)</div><div class="glossary-def">Present value of estimated future cash flows from continuing use and eventual disposal.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Costs of disposal</div><div class="glossary-def">Incremental costs directly attributable to an asset's disposal, excluding finance costs and income tax.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Goodwill</div><div class="glossary-def">Treated as cash-generating for impairment purposes; only recognized where it gives rise to cash inflows; impairment never reversed.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Corporate assets (concept, not defined in IPSAS 26)</div><div class="glossary-def">Group/divisional assets contributing to multiple CGUs' cash flows — IAS 36 defines these; IPSAS 26 does not.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bs">SOFP</span> Statement of financial position
+      <span class="badge bp">SOFPerf</span> Statement of financial performance
+      <span class="badge be">NA/E</span> Net assets/equity (statement of changes)
+      <span class="badge bc">Notes</span> Notes to the financial statements
+    </div>
+  </div>
+
+  <div class="footer-note">IPSAS 26 — Impairment of Cash-Generating Assets · Extended Reference Poster · Built from the 2025 IPSASB Handbook, Volume I · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

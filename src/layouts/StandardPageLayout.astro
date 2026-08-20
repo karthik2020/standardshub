@@ -1,125 +1,126 @@
 ---
 import StandardLayout from "./StandardLayout.astro";
+import InformationHeader from "../components/InformationHeader.astro";
+import ReferenceGuide from "../components/ReferenceGuide.astro";
+import PreviousNextNavigation from "../components/PreviousNextNavigation.astro";
+import RelatedStandards from "../components/RelatedStandards.astro";
+import BannerNotice from "../components/BannerNotice.astro";
+import { getFramework } from "../data/frameworks";
 import "../styles/posters/poster-classic.css";
 
 interface Props {
   code: string;
   title: string;
-  category?: string;
-  objective?: string;
-  principle?: string;
-  scope?: string[];
   standardType?: string;
-
+  issued?: string;
+  latestAmendment?: string;
+  status?: string;
+  summary?: string;
+  subtitle?: string;
+  description?: string;
+  canonical?: string;
+  robots?: string;
+  ogType?: string;
+  ogImage?: string;
+  twitterCard?: string;
+  bannerNotice?: {
+    variant: "success" | "warning" | "danger" | "info";
+    title: string;
+    body: string;
+    action?: {
+      label: string;
+      code: string;
+      title: string;
+      href: string;
+    };
+  };
   related?: {
     code: string;
     title: string;
     url: string;
+    relationship: string;
   }[];
+  covers?: string[];
 }
 
 const {
   code,
   title,
-  category,
-  objective,
-  principle,
-  scope = [],
-  related = [],
   standardType = "IAS",
+  issued = "",
+  latestAmendment = "",
+  status = "",
+  summary = "",
+  subtitle = "",
+  description,
+  canonical,
+  robots,
+  ogType,
+  ogImage,
+  twitterCard,
+  bannerNotice,
+  related = [],
+  covers = [],
 } = Astro.props;
-const standardTypeLabel =
-  standardType === "IFRS"
-    ? "International Financial Reporting Standard"
-    : standardType === "Ind AS"
-      ? "Indian Accounting Standard"
-      : "International Accounting Standard";
-const breadcrumbClass =
-  standardType === "IFRS"
-    ? "breadcrumbs-ifrs"
-    : standardType === "Ind AS"
-      ? "breadcrumbs-indas"
-      : "breadcrumbs-ias";
+
+const frameworkConfig = getFramework(standardType) ?? getFramework("ias")!;
+
+const seoTitle = `${code} ${title}`;
+const standard = { code, title, dateModified: latestAmendment || undefined };
 ---
 
-<StandardLayout code={code} title={title} framework={standardType}>
+<StandardLayout
+  code={code}
+  title={title}
+  seoTitle={seoTitle}
+  framework={frameworkConfig.code}
+  description={description}
+  canonical={canonical}
+  robots={robots}
+  ogType={ogType}
+  ogImage={ogImage}
+  twitterCard={twitterCard}
+  standard={standard}
+>
   <Fragment slot="toc">
     <slot name="toc" />
   </Fragment>
-  <section class="hero hero-card">
-    <div
-      class={`standard-header hero-${standardType.toLowerCase().replace(" ", "")}`}
-    >
-      <h1>{code}</h1>
-
-      <p class="standard-subtitle">
-        {title}
-      </p>
-
-      <div class="standard-badges">
-        {category && <span class="standard-badge category">{category}</span>}
-
-        <span class="standard-badge type">
-          {standardTypeLabel}
-        </span>
-      </div>
+  <InformationHeader
+    code={code}
+    title={title}
+    summary={summary}
+    subtitle={subtitle}
+    issued={issued}
+    latestAmendment={latestAmendment}
+    status={status}
+    framework={frameworkConfig.code}
+    covers={covers}
+  />
+  {bannerNotice && (
+    <div class="standard-banner-notice">
+      <BannerNotice
+        variant={bannerNotice.variant}
+        title={bannerNotice.title}
+        body={bannerNotice.body}
+        action={bannerNotice.action}
+      />
     </div>
-  </section>
-  <div id="overview" class="overview-card">
-    <div class="overview-header">
-      <div class="overview-title">Overview</div>
-    </div>
-    {
-      objective && (
-        <section>
-          <h2>Objective</h2>
-
-          <p>{objective}</p>
-        </section>
-      )
-    }
-
-    {
-      principle && (
-        <section>
-          <h2>Core Principle</h2>
-
-          <p>{principle}</p>
-        </section>
-      )
-    }
-
-    {
-      scope.length > 0 && (
-        <section>
-          <h2>Scope</h2>
-
-          <ul>
-            {scope.map((item) => (
-              <li>{item}</li>
-            ))}
-          </ul>
-        </section>
-      )
-    }
-  </div>
-  <slot />
-
-  {
-    related.length > 0 && (
-      <div id="related" class="related-standards">
-        <div class="related-heading">Related Standards</div>
-
-        <div class="related-grid">
-          {related.map((item) => (
-            <a href={item.url} class="related-card">
-              <div class="related-code">{item.code}</div>
-
-              <div class="related-name">{item.title}</div>
-            </a>
-          ))}
-        </div>
-      </div>
-    )
-  }
+  )}
+  <ReferenceGuide>
+    <slot />
+  </ReferenceGuide>
+  <RelatedStandards related={related} framework={frameworkConfig.code as "IAS" | "IFRS" | "Ind AS" | "IFRS Sustainability" | "IFRS Publications" | "IFRS for SMEs" | "US GAAP" | "UK GAAP" | "ASBE" | "ASPE" | "ASBJ" | "HGB" | "IFRIC" | "SIC"} />
+  <PreviousNextNavigation current={code} framework={frameworkConfig.code as "IAS" | "IFRS" | "Ind AS" | "IFRS Sustainability" | "IFRS Publications" | "IFRS for SMEs" | "US GAAP" | "UK GAAP" | "ASBE" | "ASPE" | "ASBJ" | "HGB" | "IFRIC" | "SIC"} />
 </StandardLayout>
+
+<style>
+  /*
+    Spacing wrapper for the optional BannerNotice.
+    Rendered only when banner metadata exists, so pages without a banner
+    receive no extra element and no extra spacing. The bottom margin matches
+    the Hero's own rhythm so the banner sits cleanly between Hero and content.
+  */
+  .standard-banner-notice {
+    margin-bottom: var(--space-xl);
+  }
+</style>

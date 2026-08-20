@@ -1,0 +1,254 @@
+﻿---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc360.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        {
+          id: "s1",
+          label: "Conceptual Framework Linkage",
+        },
+        {
+          id: "s2",
+          label: "Scope & Applicability",
+        },
+        {
+          id: "s3",
+          label: "Initial Recognition & Measurement",
+        },
+        {
+          id: "s4",
+          label: "Componentization — Permitted, Not Required",
+        },
+        {
+          id: "s5",
+          label: "Depreciation Methods",
+        },
+        {
+          id: "s6",
+          label: "No Revaluation Model — Historical Cost Only",
+        },
+        {
+          id: "s7",
+          label: "Subsequent Costs",
+        },
+        {
+          id: "s8",
+          label: "Impairment — the Two-Step Recoverability Model",
+        },
+        {
+          id: "s9",
+          label: "Assets Held for Sale",
+        },
+        {
+          id: "s10",
+          label: "Real Estate Sales (360-20)",
+        },
+        {
+          id: "s11",
+          label: "Worked Example — Component vs Whole-Asset Depreciation",
+        },
+        {
+          id: "s12",
+          label: "Worked Example — the Revaluation Model's Absence",
+        },
+        {
+          id: "s13",
+          label: "Worked Example — the Two-Step Impairment Test",
+        },
+        {
+          id: "s14",
+          label: "Disclosure Requirements",
+        },
+        {
+          id: "s15",
+          label: "Critical Judgments & Estimates",
+        },
+        {
+          id: "s16",
+          label: "ASC 360 vs IAS 16 — Comprehensive Comparison",
+        },
+        {
+          id: "s17",
+          label: "Statement Mapping",
+        },
+        {
+          id: "s18",
+          label: "Related Topics",
+        },
+        {
+          id: "s19",
+          label: "Glossary",
+        },
+        {
+          id: "history",
+          label: "History & Development",
+        },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci"><div class="ctitle ci">Long-lived, tangible, held for use</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">PP&amp;E represents an entity's long-lived, tangible resources held for use in production, supply, rental, or administration — expected to generate economic benefit across MULTIPLE periods, which is precisely why systematic DEPRECIATION (rather than immediate expensing) is the appropriate matching mechanism. ASC 360 governs recognition, subsequent measurement, and impairment of these assets.</div></div>
+      <div class="card cs"><div class="ctitle cs">Broadly converged core, with two headline divergences</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 360 and IAS 16 share the same basic recognition and depreciation philosophy, but diverge on two well-known, heavily tested points: the ABSENCE of a revaluation model under US GAAP (Section 6), and the different STRUCTURE of the impairment test (Section 8) — both genuinely consequential differences worth knowing well.</div></div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Tangible long-lived assets used in operations</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 360 applies to tangible long-lived assets held for USE, including land, buildings, machinery, equipment, and similar items — as well as governing the broader model for testing ALL long-lived assets (including finite-lived intangibles, per the ASC 350 cross-reference) for impairment.</div></div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Initial Recognition &amp; Measurement</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">Cost basis, converged with IAS 16</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">PP&amp;E is initially recognised at COST — the purchase price plus directly attributable costs of bringing the asset to the location and condition necessary for its intended use (delivery, installation, professional fees, and, where applicable, the estimated cost of dismantling and removing the asset per ASC 410) — the SAME initial measurement principle IAS 16 applies.</div></div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Componentization — Permitted, Not Required</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">A meaningful practical divergence from IAS 16</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">US GAAP PERMITS depreciating significant components of an asset separately, where those components have materially different useful lives — but does NOT REQUIRE it. <strong>IAS 16, by contrast, REQUIRES component depreciation</strong> for any significant component with a useful life differing materially from the asset as a whole. In practice, this means many US preparers depreciate an entire asset (e.g. a building) as a single unit, while an IFRS preparer with the SAME building would be required to separately depreciate, say, the roof, HVAC system, and structural shell at their own distinct useful lives — a genuine practical difference in how depreciation expense unfolds over time for economically identical assets.</div></div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Depreciation Methods</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">A broad menu, converged with IFRS</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">Straight-line, declining-balance, sum-of-the-years'-digits, and units-of-production methods are all available, chosen to reflect the pattern in which the asset's economic benefits are consumed — the same general menu and selection principle IAS 16 applies.</div></div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>No Revaluation Model — Historical Cost Only</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">One of the most famous US GAAP/IFRS divergences</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">US GAAP permits ONLY the historical COST model for PP&amp;E — there is NO election available to revalue an asset upward to fair value. <strong>IAS 16 permits an OPTIONAL REVALUATION MODEL</strong>, under which an entire class of PP&amp;E may be carried at fair value at the date of revaluation, with increases generally recognised in OCI (a "revaluation surplus"), and decreases recognised in profit or loss (unless reversing a previous increase). This absence of any revaluation option is a foundational, heavily tested difference — alongside LIFO for inventory, it's one of the classic "textbook" US GAAP/IFRS divergences.</div></div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Subsequent Costs</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Capitalise if the asset's future benefit is enhanced</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">Costs incurred after initial recognition are capitalised only if they EXTEND the asset's useful life, INCREASE its capacity, or IMPROVE the efficiency/quality of output — otherwise, they are expensed as ordinary repairs and maintenance, the same general principle IAS 16 applies.</div></div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Impairment — the Two-Step Recoverability Model</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">The same two-step model already introduced for finite-lived intangibles (ASC 350)</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">PP&amp;E held and used is tested for impairment only when INDICATORS exist, using the SAME two-step model applied to finite-lived intangibles: <strong>Step 1 (recoverability)</strong> compares carrying amount to expected future UNDISCOUNTED cash flows — if carrying amount is LESS, no impairment is recognised, regardless of fair value. Only if the asset FAILS this screen does <strong>Step 2</strong> apply, measuring impairment as the excess of carrying amount over FAIR VALUE. IAS 36 instead uses a SINGLE-STEP test comparing carrying amount directly to recoverable amount, with no undiscounted-cash-flow screen — meaning identical facts can produce delayed impairment recognition under US GAAP relative to IFRS (see the ASC 350 poster for a full worked illustration). Unlike goodwill, impairment losses on PP&amp;E MAY be reversed under IFRS if circumstances improve — but NEVER under US GAAP, once recognised.</div></div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Assets Held for Sale</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Criteria closely paralleling IFRS 5</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">An asset is classified as HELD FOR SALE when management commits to a plan to sell, the asset is available for immediate sale in its current condition, an active programme to locate a buyer is underway, sale is probable within one year, and the asset is being actively marketed at a reasonable price — closely mirroring IFRS 5's own criteria. Once classified, the asset is measured at the LOWER of carrying amount and fair value less costs to sell, and DEPRECIATION CEASES.</div></div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Real Estate Sales (360-20)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Largely superseded by ASC 606/842</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">Subtopic 360-20 historically provided detailed guidance on recognising gains on real estate sales, particularly sale-leaseback transactions — MOST of this guidance has since been SUPERSEDED by ASC 606 (revenue recognition) and ASC 842 (leases), which now govern the analogous fact patterns using their general models, leaving 360-20's remaining scope quite narrow.</div></div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Worked Example — Component vs Whole-Asset Depreciation</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">The same building, two different depreciation patterns</div>
+      <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: A building with a roof requiring earlier replacement</div><div class="wk-body">A building costs $10,000,000, with a $1,500,000 roof component expected to need replacement in 15 years, while the remaining structure has a 40-year useful life.</div><div class="wk-answer"><strong>Under US GAAP</strong> (component depreciation not required): the entity MAY simply depreciate the full $10,000,000 over 40 years — $250,000/year — without separately tracking the roof.<br><strong>Under IAS 16</strong> (component depreciation REQUIRED): the entity MUST separately depreciate the $1,500,000 roof over 15 years ($100,000/year) and the remaining $8,500,000 over 40 years ($212,500/year) — a combined $312,500/year, MATERIALLY higher than the simple US GAAP approach, and requiring a full roof replacement/derecognition entry at year 15 that the non-componentized US approach would not separately track.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Worked Example — the Revaluation Model's Absence</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Land that has appreciated significantly</div>
+      <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Land purchased decades ago</div><div class="wk-body">An entity purchased land 30 years ago for $2,000,000. Its current fair value is $9,000,000.</div><div class="wk-answer"><strong>Under US GAAP</strong>: the land REMAINS on the Balance Sheet at $2,000,000 (land is not depreciated but also never revalued upward) — the $7,000,000 of appreciation is simply NEVER reflected in the financial statements until the land is eventually sold.<br><strong>Under IAS 16</strong>, if the entity ELECTS the revaluation model for its land asset class: the land could be revalued to $9,000,000, with the $7,000,000 increase recognised in OCI as a revaluation surplus — a fundamentally different balance sheet presentation for the identical underlying asset.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Worked Example — the Two-Step Impairment Test</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2"><div class="ctitle cn">A manufacturing plant passing the recoverability screen</div>
+      <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Equipment with declining fair value but sufficient undiscounted cash flows</div><div class="wk-body">Manufacturing equipment has a carrying amount of $4,000,000. Expected future undiscounted cash flows total $4,300,000. Fair value, however, is estimated at only $3,200,000.</div><div class="wk-answer"><strong>Step 1:</strong> Undiscounted cash flows ($4,300,000) EXCEED carrying amount ($4,000,000) — the asset PASSES, and NO impairment is recognised under US GAAP.<br><strong>Under IAS 36</strong>, comparing carrying amount ($4,000,000) directly to recoverable amount (potentially the $3,200,000 fair value figure, if higher than value in use) would likely produce an $800,000 impairment loss that the US GAAP screen entirely avoids.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">What ASC 360 requires</div><div class="check-list"><span>Depreciation expense for the period, and balances of major classes of depreciable assets</span><span>Depreciation methods used, by major class</span><span>Impairment losses recognised, and the facts and circumstances leading to the impairment</span><span>Carrying amount of assets classified as held for sale</span></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s15"><span class="num">15</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+      <div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Whether to componentize an asset, even though not required</span><span>Whether the held-for-sale classification criteria are genuinely met</span><span>Identifying impairment indicators triggering the two-step test</span></div></div>
+      <div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Useful lives and residual values</span><span>Undiscounted and discounted future cash flow projections for the recoverability/impairment tests</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s16"><span class="num">16</span><h2>ASC 360 vs IAS 16 — Comprehensive Comparison</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Comparison — ASC 360 vs IAS 16</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">US GAAP (ASC 360)</span><span style="color:var(--color-text-info);">IFRS (IAS 16)</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Revaluation model</span><span>NOT available — historical cost only</span><span>OPTIONAL, by asset class</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Component depreciation</span><span>Permitted, not required</span><span>REQUIRED for significant components with differing useful lives</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Impairment test structure</span><span>Two-step — undiscounted recoverability screen, then fair value</span><span>Single-step — carrying amount vs recoverable amount directly</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Reversal of impairment</span><span>NOT permitted</span><span>PERMITTED if circumstances improve</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Held-for-sale criteria and measurement</span><span>Lower of carrying amount and fair value less costs to sell</span><span>Same measurement basis under IFRS 5 — closely converged</span></div>
+      </div>
+      <div class="note">Alongside LIFO for inventory, the absence of a revaluation model is probably the single most iconic, widely-taught US GAAP/IFRS accounting difference — a genuinely foundational point for comparative study.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s17"><span class="num">17</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Where every ASC 360 event lands</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Depreciation expense</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Systematic allocation over useful life</span></div>
+      <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Impairment loss (Step 2 triggered)</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Never reversed once recognised</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Classification as held for sale</span><span><span class="badge bs">BS</span></span><span>Depreciation ceases; measured at lower of carrying amount and FV less costs to sell</span></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s18"><span class="num">18</span><h2>Related Topics</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd"><div class="ctitle cd">Cross-reference map</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 410</span><span>Supplies asset retirement obligation guidance that adds to a PP&amp;E asset's initial cost</span></div>
+      <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 350</span><span>Uses the same two-step impairment model for finite-lived intangibles</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 842</span><span>Leases — supersedes much of the former real estate sale-leaseback guidance in 360-20</span></div>
+      </div>
+      </div>
+      <div class="card cn"><div class="ctitle cn">Quick-reference glossary preview</div>
+      <div class="glossary-item"><div class="glossary-term">Recoverability test</div><div class="glossary-def">Step 1 of the two-step US GAAP impairment model, comparing carrying amount to undiscounted future cash flows.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Componentization</div><div class="glossary-def">Separately depreciating significant parts of an asset with materially different useful lives — required under IAS 16, merely permitted under ASC 360.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s19"><span class="num">19</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    
+
+    <Glossary entries={[
+      { term: "Revaluation model", definition: "An IAS 16 measurement option carrying PP&E at fair value, unavailable under US GAAP." },
+      { term: "Held for sale", definition: "A classification for assets meeting specific sale-readiness criteria, measured at the lower of carrying amount and fair value less costs to sell, with depreciation ceasing." },
+      { term: "Two-step impairment model", definition: "The US GAAP recoverability screen (undiscounted future cash flows vs carrying amount) followed, only if failed, by a fair value measurement of impairment." },
+      { term: "Componentization", definition: "The practice of separately depreciating significant components of an asset with differing useful lives — permitted but not required under ASC 360." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.ASC360 || []} />
+  </section>
+</StandardPageLayout>
+

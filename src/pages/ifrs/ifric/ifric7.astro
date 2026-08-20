@@ -1,0 +1,250 @@
+---
+import StandardPageLayout from "../../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../../components/FinancialStatementKey.astro";
+import Glossary from "../../../components/Glossary.astro";
+import PageToc from "../../../components/PageToc.astro";
+import "../../../styles/standards-poster.css";
+import "../../../styles/extended.css";
+import HistoryTimeline from "../../../components/HistoryTimeline.astro";
+import history from "../../../data/history.json";
+import metadata from "../../../data/standards/ifric/ifric7.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType="IFRS"
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework" },
+        { id: "s2", label: "Scope & Definitions" },
+        { id: "s3", label: "The First-Year Problem" },
+        { id: "s4", label: "Restating Comparatives" },
+        { id: "s5", label: "Deferred Tax on First Application" },
+        { id: "s6", label: "Corresponding Figures" },
+        { id: "s7", label: "Practical Restatement Mechanics" },
+        { id: "s8", label: "Ceasing to be Hyperinflationary" },
+        { id: "s9", label: "Disclosure" },
+        { id: "s10", label: "Judgments & Estimates" },
+        { id: "s11", label: "IFRIC 7 vs US GAAP" },
+        { id: "s12", label: "Statement Mapping" },
+        { id: "s13", label: "Related Standards" },
+        { id: "s14", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Why a "first year" mechanical question needs an interpretation</div>
+        <div class="principle">IAS 29 requires financial statements of an entity whose functional currency is hyperinflationary to be stated in terms of the measuring unit current at the end of the reporting period. What IAS 29 does not spell out in detail is exactly HOW to apply that requirement in the specific period an economy is FIRST identified as hyperinflationary — including whether prior-period comparatives must also be restated. IFRIC 7 answers that mechanical question.</div>
+      </div>
+      <div class="card cs">
+        <div class="ctitle cs">Comparability under extreme measurement-unit change</div>
+        <div class="principle">Presenting a newly-restated current period alongside UN-restated comparatives would combine two genuinely different measuring units in the same set of financial statements, destroying comparability. IFRIC 7's requirement to restate comparatives too ensures the whole set of financial statements is expressed in a single, consistent measuring unit.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope & Definitions</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What IFRIC 7 covers</div>
+        <div class="principle">IFRIC 7 applies to an entity that PREPARES financial statements in the functional currency of a hyperinflationary economy, specifically addressing the reporting period in which the entity IDENTIFIES the existence of hyperinflation in that economy.</div>
+        <div class="elabel">TYPICAL FACT PATTERN</div>
+        <div class="dot-list">
+          <span>An economy's cumulative inflation rate crosses the approximate three-year 100% threshold</span>
+          <span>The entity applies IAS 29 for the first time in the current reporting period</span>
+          <span>Comparative financial statements from the prior, non-hyperinflationary period were previously reported in nominal terms</span>
+        </div>
+      </div>
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Measuring unit current at the end of the reporting period</div>
+          <div class="glossary-def">The general price index level at the reporting date, used as the common denominator to which all amounts are restated.</div>
+        </div>
+        <div class="glossary-item" style="border-bottom:none;">
+          <div class="glossary-term">General price index</div>
+          <div class="glossary-def">A broad-based index of price levels used to restate historical or current cost amounts into the measuring unit current at the reporting date.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>The First-Year Problem</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">What makes the first hyperinflationary period different</div>
+        <div class="principle">In every year AFTER the first, restatement is comparatively mechanical. In the FIRST year hyperinflation is identified, however, the prior year's figures have NEVER been restated at all. IFRIC 7 confirms this first-year restatement must still be carried out in full, for both current and comparative figures.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Restating Comparatives</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs">
+        <div class="ctitle cs">The core requirement</div>
+        <div class="principle">Corresponding figures for the prior period(s), whether based on a historical cost approach or a current cost approach, are RESTATED by applying a general price index so that the comparative financial statements are presented in terms of the measuring unit current at the END of the reporting period.</div>
+      </div>
+      <div class="card cw">
+        <div class="ctitle cw">Worked example — restating a comparative revenue figure</div>
+        <div class="worked">
+          <div class="wk-title">Example: First-year restatement of a comparative</div>
+          <div class="wk-body">An entity identifies hyperinflation for the first time in the current year. Prior-year revenue was reported as $8,000,000 in nominal terms. The general price index has risen from 140 at the end of the prior year to 210 at the end of the current year.</div>
+          <div class="wk-answer"><strong>Restated comparative revenue</strong> = $8,000,000 × (210 / 140) = <strong>$12,000,000</strong>, expressed in the measuring unit current at the end of the CURRENT reporting period.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Deferred Tax on First Application</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Restate first, then reassess deferred tax</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Deferred tax items in the opening statement of financial position are first RESTATED by applying IAS 29, and deferred tax is then REASSESSED in accordance with IAS 12 after that restatement, by comparing the restated carrying amounts of assets and liabilities with their tax bases.</div>
+        <div class="callout warn callout--flush">⚠️ A common error is reassessing deferred tax BEFORE restating the underlying carrying amounts — IFRIC 7 makes clear the restatement step comes first.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Corresponding Figures</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">The restatement requirement applies either way</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">IAS 29 allows an entity's primary financial statements to be prepared on EITHER a historical cost basis or a current cost basis before restatement. IFRIC 7 confirms the requirement to restate comparatives into the current measuring unit applies regardless of which basis the entity's primary financial statements were originally prepared under.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Practical Restatement Mechanics</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">A structured sequence entities generally follow</div>
+        <div class="td-table">
+          <div class="th cols-05-25"><span>Step</span><span>Action</span></div>
+          <div class="tr cols-05-25"><span>1</span><span>Restate the opening statement of financial position (comparative period opening balances) using the general price index change from acquisition or transaction dates to the current reporting date</span></div>
+          <div class="tr alt cols-05-25"><span>2</span><span>Restate the closing comparative statement of financial position and the comparative profit or loss figures into the measuring unit current at the end of the CURRENT reporting period</span></div>
+          <div class="tr cols-05-25"><span>3</span><span>Reassess deferred tax on the restated balances per IAS 12</span></div>
+          <div class="tr alt cols-05-25"><span>4</span><span>Restate current period transactions and balances into the same current measuring unit, including recognising the net monetary gain or loss for the period</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Ceasing to be Hyperinflationary</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">The mirror-image question, addressed elsewhere</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">IFRIC 7 addresses the START of hyperinflationary reporting. IAS 29 itself separately addresses the position when an economy CEASES to be hyperinflationary — the amounts expressed in the measuring unit current at the end of the immediately preceding period are treated as the basis for the carrying amounts in subsequent financial statements.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">What IFRIC 7 layers onto IAS 29</div>
+        <div class="check-list">
+          <span>The fact that comparative amounts have been restated for changes in the general purchasing power of the functional currency</span>
+          <span>Whether the financial statements are based on a historical cost or a current cost approach</span>
+          <span>The identity and level of the general price index used, and the movement in that index during the period</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments & Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where judgement matters most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Selecting an appropriate general price index in economies where multiple indices are published or reliability is contested</span>
+              <span>Determining the precise date hyperinflation is first identified</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>Estimating price index levels for interim dates where only period-end index data is reliably available</span>
+              <span>Net monetary gain or loss arising from holding monetary items during the period</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>IFRIC 7 vs US GAAP</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — IFRIC 7 / IAS 29 vs US GAAP (ASC 830)</div>
+        <div class="td-table">
+          <div class="th cols-12-1-1"><span>Feature</span><span>IFRS (IAS 29 / IFRIC 7)</span><span>US GAAP (ASC 830)</span></div>
+          <div class="tr cols-12-1-1"><span>Fundamental approach</span><span>RESTATEMENT approach — all amounts restated into a current, inflation-adjusted measuring unit</span><span>REMEASUREMENT approach — the functional currency is deemed to be the REPORTING currency</span></div>
+          <div class="tr alt cols-12-1-1"><span>Comparatives</span><span>Explicitly restated on first application, per IFRIC 7</span><span>Not restated in the same sense</span></div>
+          <div class="tr cols-12-1-1"><span>Net monetary gain or loss concept</span><span>Explicitly recognised in profit or loss under IAS 29</span><span>No direct equivalent concept</span></div>
+        </div>
+        <div class="note">This is one of the more FUNDAMENTAL methodology differences between the two frameworks — restatement (IFRS) and remeasurement or functional-currency-change (US GAAP) are conceptually distinct responses to the same underlying problem.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Where every IFRIC 7 event lands</div>
+        <div class="td-table">
+          <div class="th cols-16-1-14"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr cols-16-1-14"><span>First-year restatement of comparative figures</span><span><span class="badge bs">SOFP</span> <span class="badge bp">SOPL</span> <span class="badge be">Equity</span></span><span>All comparative amounts restated into the current measuring unit</span></div>
+          <div class="tr alt cols-16-1-14"><span>Reassessment of deferred tax post-restatement</span><span><span class="badge bs">SOFP</span> <span class="badge bp">SOPL</span></span><span>Per IAS 12, applied to restated carrying amounts</span></div>
+          <div class="tr cols-16-1-14"><span>Net monetary gain or loss for the period</span><span><span class="badge bp">SOPL</span></span><span>Recognised separately</span></div>
+          <div class="tr alt cols-16-1-14"><span>Restatement of non-monetary assets and equity</span><span><span class="badge bs">SOFP</span> <span class="badge be">Equity</span></span><span>Restated by applying the general price index</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Cross-reference map</div>
+        <div class="td-table">
+          <div class="th cols-08-2"><span>Standard</span><span>Connection</span></div>
+          <div class="tr cols-08-2"><span>IAS 29</span><span>The parent standard IFRIC 7 interprets, supplying the overall restatement framework</span></div>
+          <div class="tr alt cols-08-2"><span>IAS 12</span><span>Deferred tax is reassessed AFTER restated carrying amounts are established</span></div>
+          <div class="tr cols-08-2"><span>IAS 21</span><span>Governs functional currency determination and translation</span></div>
+          <div class="tr alt cols-08-2"><span>IAS 8</span><span>The change from non-hyperinflationary to hyperinflationary reporting is treated as required by IAS 29/IFRIC 7 directly</span></div>
+        </div>
+      </div>
+      <div class="card cn">
+        <div class="ctitle cn">Quick-reference glossary</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Monetary items</div>
+          <div class="glossary-def">Cash and items to be received or paid in fixed or determinable amounts of money — NOT restated under IAS 29, since they are already expressed in the current measuring unit.</div>
+        </div>
+        <div class="glossary-item" style="border-bottom:none;">
+          <div class="glossary-term">Net monetary gain or loss</div>
+          <div class="glossary-def">The gain or loss arising from holding a net monetary asset or liability position during a period of inflation, recognised in profit or loss under IAS 29.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Measuring unit current at the end of the reporting period", definition: "The general price index level at the reporting date, used as the common denominator to which all amounts are restated." },
+      { term: "Net monetary gain or loss", definition: "The gain or loss arising from holding a net monetary asset or liability position during a period of inflation, recognised in profit or loss under IAS 29." },
+      { term: "Restatement approach", definition: "The IAS 29 methodology of re-expressing all amounts in the financial statements in terms of the measuring unit current at the end of the reporting period." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.IFRIC7} />
+  </section>
+</StandardPageLayout>
+
+
+
+

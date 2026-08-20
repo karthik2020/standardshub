@@ -1,0 +1,207 @@
+﻿---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc460.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        {
+          id: "s1",
+          label: "Conceptual Framework Linkage",
+        },
+        {
+          id: "s2",
+          label: "Scope & Applicability",
+        },
+        {
+          id: "s3",
+          label: "Initial Recognition — the \"Stand-Ready\" Obligation at Fair Value",
+        },
+        {
+          id: "s4",
+          label: "Subsequent Measurement — Layering a Probable-Loss Liability",
+        },
+        {
+          id: "s5",
+          label: "Scope Exceptions",
+        },
+        {
+          id: "s6",
+          label: "Comparison to IFRS 9 Financial Guarantee Contracts",
+        },
+        {
+          id: "s7",
+          label: "Product Warranties",
+        },
+        {
+          id: "s8",
+          label: "Worked Example — Initial Guarantee Liability Plus a Subsequent Probable-Loss Layer",
+        },
+        {
+          id: "s9",
+          label: "Worked Example — a Product Warranty Accrual",
+        },
+        {
+          id: "s10",
+          label: "Disclosure Requirements",
+        },
+        {
+          id: "s11",
+          label: "Critical Judgments & Estimates",
+        },
+        {
+          id: "s12",
+          label: "ASC 460 vs IFRS — Comprehensive Comparison",
+        },
+        {
+          id: "s13",
+          label: "Statement Mapping",
+        },
+        {
+          id: "s14",
+          label: "Related Topics",
+        },
+        {
+          id: "s15",
+          label: "Glossary",
+        },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci"><div class="ctitle ci">Standing ready is itself an obligation, worth something at inception</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">The moment a guarantor issues a guarantee, it takes on a genuine, present obligation to STAND READY to perform if a specified triggering event occurs — a real economic burden, distinct from and BROADER than the separate question of whether a PAYOUT under that guarantee is currently probable. ASC 460 recognises this "stand-ready" obligation itself as a liability at inception, at fair value — a genuinely different, broader recognition trigger than ASC 450's ordinary "probable and estimable" loss contingency threshold.</div></div>
+      <div class="card cs"><div class="ctitle cs">One of the more closely converged financial instrument areas</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 460's "day-one fair value, then track expected losses" philosophy is broadly ECHOED by IFRS 9's own treatment of financial guarantee contracts — making this a genuinely more converged corner of financial instruments accounting than many others covered in this library, even though the specific subsequent measurement mechanics differ (Section 6).</div></div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">A broad range of guarantee-type arrangements</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 460 applies to guarantees of the INDEBTEDNESS of others, guarantees of the PERFORMANCE of others under a contract, certain INDEMNIFICATION agreements, and STANDBY LETTERS OF CREDIT — a genuinely broad category of arrangements sharing the common feature that the guarantor is obligated to make payments contingent on another party's failure to perform.</div></div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Initial Recognition — the "Stand-Ready" Obligation at Fair Value</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">Recognised regardless of current payout probability</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">At INCEPTION, the guarantor recognises a liability for the FAIR VALUE of the obligation it has undertaken — <strong>even if a payout under the guarantee is NOT currently probable</strong>. This is a genuinely different, BROADER trigger than the ordinary ASC 450 loss contingency threshold: the liability exists simply because the guarantor has agreed to stand ready, regardless of the CURRENT likelihood that it will actually have to pay anything.</div></div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Subsequent Measurement — Layering a Probable-Loss Liability</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Two liabilities can coexist</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">If it SUBSEQUENTLY becomes PROBABLE that a loss will be incurred under the guarantee (assessed per ASC 450's ordinary contingency criteria), an ADDITIONAL liability is recognised for that expected loss — LAYERED on top of (not replacing) the original fair-value "stand-ready" liability recognised at inception, until the original liability is extinguished through the guarantee's expiration or the underlying performance being fulfilled.</div></div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Scope Exceptions</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Several categories excluded from the initial fair-value recognition requirement</div><div class="check-list"><span>Guarantees between entities under COMMON CONTROL (e.g. a parent guaranteeing a subsidiary's debt)</span><span>Contingent consideration arrangements in a business combination, addressed under ASC 805 instead</span><span>Product warranties, addressed via a combination of ASC 450/606 principles instead (though still subject to certain ASC 460 disclosure requirements — Section 7)</span></div></div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Comparison to IFRS 9 Financial Guarantee Contracts</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">A broadly parallel "day-one fair value, then track losses" philosophy</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">IFRS 9 similarly requires INITIAL recognition of a financial guarantee contract at FAIR VALUE, then SUBSEQUENT measurement at the HIGHER of: (a) the loss allowance determined under IFRS 9's own EXPECTED CREDIT LOSS model, or (b) the amount initially recognised, LESS cumulative amortisation recognised as revenue. This is broadly SIMILAR in overall philosophy to ASC 460 (fair value at inception, track expected losses thereafter), though the specific MECHANICS diverge: ASC 460 layers a SEPARATE, ADDITIONAL probable-loss liability on top of the original fair value liability per ASC 450's own recognition threshold, while IFRS 9 instead applies a "higher of" TEST using its own unified ECL framework — genuinely different bookkeeping mechanics arriving at conceptually similar destinations.</div></div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Product Warranties</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Scoped out of fair-value recognition, but still disclosed here</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">Although PRODUCT WARRANTIES are excluded from ASC 460's initial FAIR VALUE recognition requirement, warranty obligations are still ACCRUED at the time of sale, based on HISTORICAL claims experience — applying general ASC 450/606 principles — and ASC 460 itself still requires certain DISCLOSURES about warranty obligations (a reconciliation of the warranty liability balance). This broadly parallels IAS 37's own treatment of warranty provisions, which are similarly accrued based on the expected cost of fulfilling warranty obligations at the time of sale.</div></div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Worked Example — Initial Guarantee Liability Plus a Subsequent Probable-Loss Layer</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Two liabilities existing side by side</div>
+      <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Guaranteeing a subsidiary's third-party debt</div><div class="wk-body">A parent entity guarantees $10,000,000 of a joint venture's third-party bank debt. At inception, the fair value of the stand-ready obligation is estimated at $150,000 (a market-based guarantee fee equivalent). Two years later, the joint venture experiences severe financial distress, and it becomes PROBABLE the parent will need to pay $2,000,000 under the guarantee.</div><div class="wk-answer"><strong>At inception:</strong> Debit asset/expense (as appropriate) $150,000 / Credit Guarantee liability $150,000.<br><strong>Two years later:</strong> Debit Loss on guarantee (net income) $2,000,000 / Credit Guarantee loss liability $2,000,000 — recognised as an ADDITIONAL liability, LAYERED alongside (not replacing) the original $150,000 fair-value liability, which continues to be amortised/released separately as the guarantee period runs its course.</div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Worked Example — a Product Warranty Accrual</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Accruing warranty cost at the time of sale</div>
+      <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Historical warranty claim rate applied to current sales</div><div class="wk-body">An entity sells $8,000,000 of product during the year, each carrying a one-year warranty. Historical experience indicates warranty costs typically run 1.5% of sales.</div><div class="wk-answer">Warranty accrual = $8,000,000 × 1.5% = <strong>$120,000</strong>, recognised as an expense at the TIME OF SALE (not scoped into ASC 460's fair-value model, since product warranties are excluded from that specific requirement) — consistent with general loss contingency/revenue-matching principles.</div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">What ASC 460 requires</div><div class="check-list"><span>Nature and term of the guarantee, and how it arose</span><span>Maximum potential future payments the guarantor could be required to make, undiscounted</span><span>Current carrying amount of the guarantee liability, and the nature of any recourse or collateral available</span><span>Reconciliation of the product warranty liability's beginning and ending balance</span></div></div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+      <div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Whether an arrangement genuinely meets the definition of a guarantee within ASC 460's scope</span><span>Whether a subsequent probable-loss threshold under ASC 450 has been triggered</span></div></div>
+      <div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Fair value of the stand-ready obligation at inception</span><span>Expected warranty claim rates based on historical experience</span></div></div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>ASC 460 vs IFRS — Comprehensive Comparison</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Comparison — ASC 460 vs IFRS 9/IAS 37</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">US GAAP (ASC 460)</span><span style="color:var(--color-text-info);">IFRS (IFRS 9 / IAS 37)</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Initial recognition</span><span>Fair value at inception, regardless of current payout probability</span><span>Also fair value at inception, under IFRS 9 — closely converged</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Subsequent measurement mechanic</span><span>Layered — a SEPARATE additional liability if a loss becomes probable under ASC 450</span><span>"Higher of" test — ECL allowance vs amortised initial amount, a single unified figure</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Product warranties</span><span>Excluded from fair-value recognition; accrued under general loss contingency principles</span><span>Addressed under IAS 37's warranty provision guidance, a broadly similar accrual-at-sale approach</span></div>
+    </div>
+    <div class="note">This is one of the more genuinely converged corners of financial instruments accounting — both frameworks reach for fair value at inception and track subsequent expected losses, even though the specific bookkeeping mechanics for doing so differ.</div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Where every ASC 460 event lands</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Initial guarantee liability recognition</span><span><span class="badge bs">BS</span></span><span>Fair value at inception</span></div>
+      <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Subsequent probable-loss layer</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Additional liability recognised, separate from the original layer</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Product warranty accrual</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Recognised at the time of sale, based on historical experience</span></div>
+    </div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Related Topics</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd"><div class="ctitle cd">Cross-reference map</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 450</span><span>Supplies the probable/estimable threshold used to determine whether a subsequent probable-loss layer must be recognised</span></div>
+      <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 606</span><span>Interacts with product warranty accounting, particularly for warranties that constitute a separate performance obligation</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 805</span><span>Governs contingent consideration in business combinations, a specific scope exception from this Topic</span></div>
+    </div>
+    </div>
+    <div class="card cn"><div class="ctitle cn">Quick-reference glossary preview</div>
+    <div class="glossary-item"><div class="glossary-term">Stand-ready obligation</div><div class="glossary-def">The obligation a guarantor undertakes simply by issuing a guarantee, recognised at fair value at inception regardless of current payout probability.</div></div>
+    <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Standby letter of credit</div><div class="glossary-def">A bank-issued instrument guaranteeing payment to a beneficiary if the bank's customer fails to fulfil a contractual obligation.</div></div>
+    </div>
+    </div>
+
+    <div class="section-header" id="s15"><span class="num">15</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+      <div class="glossary-item"><div class="glossary-term">Indemnification agreement</div><div class="glossary-def">An agreement obligating one party to compensate another for specified losses or damages, potentially within ASC 460's scope.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Maximum potential future payments</div><div class="glossary-def">The undiscounted maximum amount a guarantor could be required to pay under a guarantee, a required disclosure item regardless of the guarantee's probability of being called upon.</div></div>
+    </div>
+    </div>
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.asc460} />
+  </section>
+</StandardPageLayout>
+

@@ -1,0 +1,184 @@
+﻿---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc330.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope & Applicability" },
+        { id: "s3", label: "Cost Basis — the Move to LCNRV (ASU 2015-11)" },
+        { id: "s4", label: "A Partial Convergence — LIFO/Retail Method Still Use LCM" },
+        { id: "s5", label: "LIFO — the Headline US GAAP/IFRS Divergence" },
+        { id: "s6", label: "The LIFO Reserve Disclosure" },
+        { id: "s7", label: "LIFO Liquidation" },
+        { id: "s8", label: "Cost Formulas Available" },
+        { id: "s9", label: "Full Absorption Costing" },
+        { id: "s10", label: "Worked Example — LCNRV Application" },
+        { id: "s11", label: "Worked Example — LIFO Reserve Disclosure" },
+        { id: "s12", label: "Disclosure Requirements" },
+        { id: "s13", label: "Critical Judgments & Estimates" },
+        { id: "s14", label: "ASC 330 vs IAS 2 — Comprehensive Comparison" },
+        { id: "s15", label: "Statement Mapping" },
+        { id: "s16", label: "Related Topics" },
+        { id: "s17", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci"><div class="ctitle ci">Cost capped by recoverability</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">Inventory is generally carried at COST — the price actually paid to acquire or produce it — but a Conceptual-Framework-level concern arises if that cost genuinely exceeds what the inventory can realistically be sold for. ASC 330 exists to ensure inventory is never carried above its recoverable amount, while still anchoring measurement in historical cost as the primary basis.</div></div>
+      <div class="card cs"><div class="ctitle cs">The single most famous US GAAP/IFRS accounting difference</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 330's permission of the LIFO cost formula, against IAS 2's explicit prohibition of it, is arguably THE most widely known specific accounting difference between the two frameworks — taught in virtually every introductory comparative accounting course, and still fully live and unresolved today.</div></div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope & Applicability</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">All entities holding inventory</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 330 applies to inventory held by all entities for sale in the ordinary course of business, in the process of production for such sale, or to be currently consumed in producing goods/services for sale — the same general scope IAS 2 covers.</div></div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Cost Basis — the Move to LCNRV (ASU 2015-11)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">A deliberate convergence step toward IAS 2</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">ASU 2015-11 (effective 2017) simplified inventory measurement for MOST entities, moving from the old "LOWER OF COST OR MARKET" (LCM) test — a complex three-way comparison involving replacement cost, net realisable value, and net realisable value less a normal profit margin — to "LOWER OF COST AND NET REALISABLE VALUE" (LCNRV) — a SIMPLER, single comparison. This was a DELIBERATE step toward aligning with IAS 2's own long-standing NRV-based approach.</div></div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>A Partial Convergence — LIFO/Retail Method Still Use LCM</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">The convergence has a carve-out</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">ASU 2015-11's simplification to LCNRV applies ONLY to inventory measured using FIFO or the WEIGHTED-AVERAGE cost method. Inventory measured using LIFO or the RETAIL INVENTORY METHOD <strong>CONTINUES to use the OLDER, more complex "lower of cost or market" (LCM) test</strong> — meaning US GAAP inventory measurement today is genuinely SPLIT: LCNRV for FIFO/average-cost inventory, but LCM for LIFO/retail-method inventory.</div></div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>LIFO — the Headline US GAAP/IFRS Divergence</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">Permitted here, explicitly prohibited under IFRS</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">US GAAP explicitly PERMITS the LAST-IN-FIRST-OUT (LIFO) cost formula — assuming the most recently acquired inventory items are sold FIRST, leaving older costs in ending inventory. <strong>IAS 2 explicitly PROHIBITS LIFO entirely</strong> — no IFRS preparer may use it.</div></div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>The LIFO Reserve Disclosure</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">A distinctly US disclosure concept</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">Entities using LIFO must disclose the "LIFO RESERVE" — the DIFFERENCE between the inventory's LIFO-based carrying amount and what it would have been under FIFO — enabling users to adjust LIFO-based figures for comparability with FIFO-reporting entities (including virtually all IFRS preparers).</div></div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>LIFO Liquidation</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">A distortive event unique to LIFO reporting</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">If inventory quantities DECLINE during a period, older, LOWER-cost LIFO "layers" from prior years are liquidated and matched against CURRENT revenue — producing an artificially INFLATED gross margin relative to current replacement costs. This is a well-known LIFO-specific distortion that cannot arise under IFRS, since LIFO itself is prohibited there.</div></div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Cost Formulas Available</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">A broader menu than IFRS's</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1fr 1fr 1fr;"><span>Cost formula</span><span style="color:var(--color-text-warning);">US GAAP</span><span style="color:var(--color-text-info);">IFRS (IAS 2)</span></div>
+      <div class="tr" style="grid-template-columns:1fr 1fr 1fr;"><span>FIFO</span><span>✓ Permitted</span><span>✓ Permitted</span></div>
+      <div class="tr alt" style="grid-template-columns:1fr 1fr 1fr;"><span>Weighted-average</span><span>✓ Permitted</span><span>✓ Permitted</span></div>
+      <div class="tr" style="grid-template-columns:1fr 1fr 1fr;"><span>Specific identification</span><span>✓ Permitted</span><span>✓ Permitted</span></div>
+      <div class="tr alt" style="grid-template-columns:1fr 1fr 1fr;"><span>Retail inventory method</span><span>✓ Permitted</span><span>✓ Permitted</span></div>
+      <div class="tr" style="grid-template-columns:1fr 1fr 1fr;"><span>LIFO</span><span>✓ Permitted</span><span>✕ PROHIBITED</span></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Full Absorption Costing</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Converged with IAS 2</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">Manufacturing inventory cost includes direct materials, direct labour, and an ALLOCATED portion of both variable and fixed PRODUCTION OVERHEADS (full absorption costing) — the SAME approach IAS 2 requires, allocating fixed overheads based on NORMAL production capacity, with abnormal amounts of waste/idle facility expense expensed as incurred.</div></div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Worked Example — LCNRV Application</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Writing inventory down to net realisable value</div>
+      <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: FIFO inventory below cost</div><div class="wk-body">A FIFO-costed inventory item has a cost of $80 per unit. Its estimated selling price is $95, with estimated costs to complete and sell of $20.</div><div class="wk-answer">Net realisable value = $95 − $20 = $75. Since $75 (NRV) is LOWER than $80 (cost), the inventory is written down to <strong>$75 per unit</strong> — a $5 per-unit write-down recognised as an expense.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Worked Example — LIFO Reserve Disclosure</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Reconciling LIFO to FIFO for comparability</div>
+      <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Disclosing the gap between reported and FIFO-equivalent inventory</div><div class="wk-body">An entity's inventory is reported at $12,000,000 under LIFO. Management determines the same inventory would have been valued at $15,500,000 under FIFO.</div><div class="wk-answer">The entity discloses a <strong>LIFO reserve of $3,500,000</strong> ($15,500,000 − $12,000,000) — allowing a user to add back $3,500,000 to inventory for a more comparable analysis with FIFO (or IFRS) reporters.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">What ASC 330 requires</div><div class="check-list"><span>Basis for stating inventories and the cost method used</span><span>LIFO reserve, for LIFO users</span><span>Significant unusual write-downs and the circumstances giving rise to them</span></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Critical Judgments & Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+      <div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Selecting a cost formula (including whether to elect LIFO), and applying it consistently</span><span>Whether write-downs are unusual enough to warrant separate disclosure</span></div></div>
+      <div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Estimated net realisable value, including selling price and costs to complete and sell</span><span>Normal production capacity, for fixed overhead allocation purposes</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>ASC 330 vs IAS 2 — Comprehensive Comparison</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Comparison — ASC 330 vs IAS 2</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">US GAAP (ASC 330)</span><span style="color:var(--color-text-info);">IFRS (IAS 2)</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>LIFO permitted?</span><span>YES</span><span>NO — explicitly prohibited</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Write-down test</span><span>LCNRV (FIFO/average cost) OR LCM (LIFO/retail method)</span><span>LCNRV uniformly, for all cost formulas</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Reversal of a prior write-down</span><span>NOT permitted — once written down, the new lower value becomes the new cost basis</span><span>PERMITTED if circumstances change, reversed up to the original cost</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Full absorption costing</span><span>Yes, based on normal capacity</span><span>Yes — fully converged</span></div>
+      </div>
+      <div class="note">The WRITE-DOWN REVERSAL prohibition under US GAAP (versus IAS 2's permitted reversal) is a second, less famous but still significant divergence.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s15"><span class="num">15</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Where every ASC 330 event lands</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Inventory write-down to LCNRV/LCM</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Recognised as an expense (typically COGS)</span></div>
+      <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>LIFO liquidation event</span><span><span class="badge bp">IS</span></span><span>Older, lower-cost layers matched against current revenue</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>LIFO reserve disclosure</span><span>Notes only</span><span>Reconciles reported LIFO figures to a FIFO-equivalent basis</span></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s16"><span class="num">16</span><h2>Related Topics</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd"><div class="ctitle cd">Cross-reference map</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 606</span><span>Revenue — determines when performance obligations are satisfied, triggering cost recognition</span></div>
+      <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 705</span><span>Cost of Sales and Services — supplies the corresponding cost of goods sold presentation</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 250</span><span>Governs accounting for a voluntary change in cost formula, such as switching from LIFO to FIFO</span></div>
+      </div>
+      </div>
+      <div class="card cn"><div class="ctitle cn">Quick-reference glossary preview</div>
+      <div class="glossary-item"><div class="glossary-term">LIFO reserve</div><div class="glossary-def">The difference between an entity's LIFO-based inventory carrying amount and what it would have been under FIFO, disclosed for comparability purposes.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">LIFO liquidation</div><div class="glossary-def">A distortive event where declining inventory quantities cause older, lower-cost LIFO layers to be matched against current revenue, inflating reported gross margin.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s17"><span class="num">17</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+      <div class="glossary-item"><div class="glossary-term">Lower of cost and net realisable value (LCNRV)</div><div class="glossary-def">The simplified inventory write-down test applicable to FIFO and weighted-average costed inventory since ASU 2015-11.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Lower of cost or market (LCM)</div><div class="glossary-def">The older, three-way comparison test still required for LIFO and retail-method inventory.</div></div>
+      </div>
+    </div>
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.ASC330 || []} />
+  </section>
+</StandardPageLayout>
+

@@ -1,0 +1,256 @@
+﻿---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/ifrs/ifrs14.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope & Applicability" },
+        { id: "s3", label: "Who May Apply IFRS 14" },
+        { id: "s4", label: "Recognition & Measurement" },
+        { id: "s5", label: "Presentation" },
+        { id: "s6", label: "Impairment" },
+        { id: "s7", label: "Interaction with Other Standards" },
+        { id: "s8", label: "Why Narrow & Temporary" },
+        { id: "s9", label: "Disclosure" },
+        { id: "s10", label: "Critical Judgments & Estimates" },
+        { id: "s11", label: "IFRS vs US GAAP" },
+        { id: "s12", label: "Statement Mapping" },
+        { id: "s13", label: "Related Standards" },
+        { id: "s14", label: "Glossary" },
+        { id: "history", label: "History & Development" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <!-- ============ SECTION 1 ============ -->
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Why rate-regulated balances are conceptually contentious</div>
+        <div class="principle">Rate-regulated entities (e.g. utilities) often recover costs, or return excess revenue, over FUTURE periods based on a regulator's pricing formula. Many national GAAPs allow "REGULATORY DEFERRAL ACCOUNTS" — recognising these future recovery/repayment rights and obligations as assets/liabilities. Under STRICT application of the Conceptual Framework's own asset/liability definitions, such balances are CONTROVERSIAL, since they don't always represent a present right/obligation arising from a PAST event in the conventional sense.</div>
+        <div class="elabel">HOW IFRS 14 MAPS TO THE FRAMEWORK</div>
+        <div class="check-list">
+          <span><strong>An INTERIM compromise</strong> — rather than resolving the conceptual debate immediately, the IASB permitted CONTINUATION of existing national GAAP practice for a NARROW group of entities (first-time adopters), pending a comprehensive rate-regulated activities project</span>
+          <span><strong>Comparability trade-off</strong> — since only FIRST-TIME ADOPTERS may apply IFRS 14, and only if their previous GAAP recognised such balances, the standard deliberately PRESERVES existing diversity rather than harmonising practice</span>
+          <span><strong>Transparency through separate presentation</strong> — regulatory deferral account balances must be presented SEPARATELY from other SOFP/SOPL items, so users can clearly distinguish them from ordinary IFRS-compliant recognition</span>
+        </div>
+        <div class="note">IFRS 14 is, LIKE IFRS 6, a deliberately NARROW, TRANSITIONAL standard — the IASB's rate-regulated activities project has continued separately, aiming at a more comprehensive future standard.</div>
+      </div>
+      <div class="card cs">
+        <div class="ctitle cs">Measurement principles applied by IFRS 14</div>
+        <div class="principle">IFRS 14 does NOT introduce its own new measurement basis — it permits CONTINUATION of the entity's PREVIOUS GAAP accounting policies for regulatory deferral account balances.</div>
+        <div class="td-table">
+          <div class="th cols-13-1"><span>Framework concept</span><span>IFRS 14's treatment</span></div>
+          <div class="tr cols-13-1"><span>Recognition/measurement</span><span>CONTINUES previous GAAP policies — no new IFRS-specific measurement rule</span></div>
+          <div class="tr alt cols-13-1"><span>Presentation</span><span>MANDATORY separate line items on SOFP/SOPL, isolating these balances</span></div>
+        </div>
+        <div class="callout info callout--chip callout--flush">Separate presentation trades RECOGNITION comparability for TRANSPARENCY — users can still identify and, if desired, exclude these balances from their own analysis.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 2 ============ -->
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What IFRS 14 covers</div>
+        <div class="principle">IFRS 14 applies ONLY to entities that (a) conduct RATE-REGULATED ACTIVITIES, and (b) recognised amounts qualifying as regulatory deferral account balances under THEIR PREVIOUS GAAP, and (c) ADOPT IFRS Standards for the FIRST TIME (per IFRS 1).</div>
+        <div class="note">This is an EXTREMELY narrow scope — an entity ALREADY reporting under full IFRS (not a first-time adopter) CANNOT apply IFRS 14, even if it conducts rate-regulated activities and its national GAAP peers recognise such balances.</div>
+      </div>
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions you must know</div>
+        <div class="glossary-item"><div class="glossary-term">Rate-regulated activities</div><div class="glossary-def">Activities subject to rate regulation, whereby a rate regulator establishes prices an entity can charge customers for goods/services, designed to recover specific/allowable costs.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Regulatory deferral account balance</div><div class="glossary-def">The balance of any expense (or income) account that would NOT be recognised as an asset/liability under other IFRS Standards, but qualifies for deferral because it is included (or expected to be included) by the rate regulator in establishing prices.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Rate regulator</div><div class="glossary-def">An authorised body empowered to establish the rate(s) or range of rates that bind an entity's customers.</div></div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 3 ============ -->
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Who May Apply IFRS 14</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">A first-time-adopter-only, optional election</div>
+        <div class="principle">IFRS 14 is entirely OPTIONAL — an eligible first-time adopter MAY elect to apply it, and if it does, must apply it to ALL regulatory deferral account balances arising from ALL its rate-regulated activities. Once an entity STOPS being a first-time adopter (i.e. once fully transitioned to ongoing IFRS reporting), it can no longer elect to START applying IFRS 14 if it did not do so at transition.</div>
+        <div class="worked worked--flush">
+          <div class="wk-title">Example 1: Eligibility test</div>
+          <div class="wk-body">A national electricity utility is adopting IFRS for the first time. Under its previous national GAAP, it recognised a "regulatory asset" representing costs incurred that the regulator has approved for future recovery through customer tariffs.</div>
+          <div class="wk-answer">Since the entity (a) conducts rate-regulated activities, (b) recognised a qualifying regulatory deferral account balance under previous GAAP, and (c) is a FIRST-TIME ADOPTER, it MAY elect to apply IFRS 14 and CONTINUE its previous GAAP accounting for this regulatory asset — rather than derecognising it entirely, which strict application of other IFRS Standards might otherwise require.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 4 ============ -->
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Recognition &amp; Measurement</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Continuing previous GAAP policies, with limited adjustment</div>
+        <div class="text-supporting">A first-time adopter electing IFRS 14 continues to apply its PREVIOUS GAAP accounting policies for the recognition, measurement, and impairment of regulatory deferral account balances — subject to limited exceptions the standard specifies (e.g. certain adjustments if the previous policy conflicts with basic IFRS accounting policy principles under IAS 8, applied to the extent IFRS 14 does not itself provide an exemption).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 5 ============ -->
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Presentation — Separate Line Items</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Isolating regulatory balances from "ordinary" IFRS figures</div>
+        <div class="principle">An entity presents regulatory deferral account DEBIT balances as a SEPARATE line item (immediately following the most similar SOFP asset category, e.g. following total assets), and CREDIT balances similarly (immediately following total liabilities/equity). MOVEMENTS in these balances are presented as a separate line item in the SOPL.</div>
+        <div class="worked worked--flush">
+          <div class="wk-title">Example 2: Presentation of regulatory deferral debit balance</div>
+          <div class="wk-body">A utility has total IFRS-compliant assets of $500,000,000 and a regulatory deferral account DEBIT balance of $18,000,000 (deferred costs expected to be recovered through future tariffs).</div>
+          <div class="wk-answer">The SOFP presents "Total assets" of $500,000,000, FOLLOWED by a SEPARATE line "Regulatory deferral account debit balances: $18,000,000," and then a combined total of $518,000,000 — NOT combined WITHIN the $500,000,000 total assets figure itself.</div>
+        </div>
+        <div class="note">This mandatory SEPARATE presentation ensures users can immediately identify, and if they wish exclude, these non-standard balances from their own analysis of the entity's "ordinary" IFRS-compliant position.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 6 ============ -->
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Impairment of Regulatory Deferral Accounts</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Assessing recoverability under the entity's own previous policy</div>
+        <div class="text-supporting">An entity assesses the RECOVERABILITY of regulatory deferral account DEBIT balances at each reporting date, in accordance with its OWN previous GAAP accounting policies — reflecting whether the regulator will genuinely allow future recovery of the deferred costs through rates charged to customers.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 7 ============ -->
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Interaction with Other Standards</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">A deliberately isolated, narrow carve-out</div>
+        <div class="text-supporting">Regulatory deferral account balances recognised under IFRS 14 are EXCLUDED from the scope of certain other Standards' presentation requirements (e.g. they are NOT included within the "assets" or "liabilities" totals that other Standards' ratios/tests might otherwise reference) — reinforcing IFRS 14's role as a narrow, isolated exception rather than an integrated part of ordinary IFRS recognition.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 8 ============ -->
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Why IFRS 14 is Narrow and Temporary</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">A deliberate stop-gap, pending a comprehensive rate-regulation standard</div>
+        <div class="text-supporting">IFRS 14 was issued as an INTERIM measure specifically to avoid disrupting first-time adopters from jurisdictions with significant rate-regulated industries (e.g. utilities), while the IASB continued developing more comprehensive guidance on regulatory rate regulation generally. It is NOT intended as a permanent solution, and does NOT apply to entities already reporting under full IFRS.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 9 ============ -->
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Required disclosures</div>
+        <div class="check-list">
+          <span>An explanation of the nature of, and risks associated with, the rate regulation establishing the price(s) the entity can charge customers</span>
+          <span>Basis on which regulatory deferral account balances are recognised, measured, and how their recoverability/reversal is assessed</span>
+          <span>Effect of the recognition of these balances on the entity's financial position, performance, and cash flows</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 10 ============ -->
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where management judgement matters most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Whether previous GAAP balances genuinely qualify as regulatory deferral account balances under IFRS 14's definition</span>
+              <span>Whether to elect IFRS 14 at all, given it must then be applied to ALL rate-regulated activities</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>Recoverability of regulatory deferral account debit balances, based on continued regulator support</span>
+            </div>
+          </div>
+        </div>
+        <div class="callout warn callout--chip callout--warn-flush">IFRS 14 is one of the LEAST commonly applied standards in the entire IFRS suite, given its extremely narrow eligibility (first-time adopters only) — most jurisdictions' major utilities transitioned to IFRS long ago, making this poster's content largely of historical/exam-technical interest.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 11 ============ -->
+    <div class="section-header" id="s11"><span class="num">11</span><h2>IFRS vs US GAAP</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — IFRS 14 vs US GAAP</div>
+        <div class="td-table">
+          <div class="th cols-12-1-1"><span>Feature</span><span>IFRS (IFRS 14)</span><span>US GAAP</span></div>
+          <div class="tr cols-12-1-1"><span>Rate-regulated accounting</span><span>Narrow, first-time-adopter-only interim exception</span><span>ASC 980 provides COMPREHENSIVE, PERMANENT guidance for rate-regulated entities, available to ALL US GAAP reporters, not just first-time adopters</span></div>
+          <div class="tr alt cols-12-1-1"><span>Regulatory asset/liability recognition</span><span>Continuation of previous GAAP only, for eligible entities</span><span>Full, ongoing recognition framework under ASC 980, a genuinely permanent feature of US GAAP</span></div>
+        </div>
+        <div class="note">This is one of the STARKEST divergences between IFRS and US GAAP — US GAAP has a MATURE, permanent rate-regulated accounting standard (ASC 980), while IFRS still lacks a comprehensive equivalent, relying instead on this narrow interim measure.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 12 ============ -->
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Comprehensive event-to-statement mapping table</div>
+        <div class="td-table">
+          <div class="th cols-16-1-14"><span>Event / transaction</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr cols-16-1-14"><span>Regulatory deferral debit balance recognition</span><span><span class="badge bs">SOFP</span></span><span>Separate line item, following total assets</span></div>
+          <div class="tr alt cols-16-1-14"><span>Regulatory deferral credit balance recognition</span><span><span class="badge bs">SOFP</span></span><span>Separate line item, following total liabilities/equity</span></div>
+          <div class="tr cols-16-1-14"><span>Net movement in regulatory deferral accounts</span><span><span class="badge bp">SOPL</span></span><span>Separate line item, isolated from ordinary IFRS profit/loss</span></div>
+          <div class="tr alt cols-16-1-14"><span>Impairment of a regulatory deferral debit balance</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Assessed per previous GAAP policy</span></div>
+          <div class="tr cols-16-1-14"><span>Nature of rate regulation, recognition basis, financial effects</span><span><span class="badge bp">Notes</span></span><span>Mandatory disclosure</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 13 ============ -->
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Cross-reference map</div>
+        <div class="td-table">
+          <div class="th cols-08-2"><span>Standard</span><span>Connection</span></div>
+          <div class="tr cols-08-2"><span>IFRS 1</span><span>IFRS 14 is available ONLY to first-time adopters, directly tied to IFRS 1's scope</span></div>
+          <div class="tr alt cols-08-2"><span>IAS 1</span><span>IFRS 14 modifies IAS 1's normal presentation requirements to mandate separate line items</span></div>
+          <div class="tr cols-08-2"><span>IAS 8</span><span>Governs limited adjustments to previous GAAP policies where they conflict with basic IFRS principles</span></div>
+        </div>
+      </div>
+      <div class="card cn">
+        <div class="ctitle cn">Quick-reference glossary</div>
+        <div class="glossary-item"><div class="glossary-term">Rate regulator</div><div class="glossary-def">The authorised body establishing binding prices for an entity's rate-regulated customers.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Regulatory deferral account debit/credit balance</div><div class="glossary-def">Balances qualifying for recognition under previous GAAP due to expected future recovery/repayment through regulator-set prices.</div></div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 14 ============ -->
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+<Glossary entries={[
+      { term: "Rate-regulated activities", definition: "Activities subject to rate regulation, whereby a rate regulator establishes prices an entity can charge customers for goods/services, designed to recover specific/allowable costs." },
+      { term: "Regulatory deferral account balance", definition: "The balance of any expense (or income) account that would NOT be recognised as an asset/liability under other IFRS Standards, but qualifies for deferral because it is included (or expected to be included) by the rate regulator in establishing prices." },
+      { term: "Rate regulator", definition: "An authorised body empowered to establish the rate(s) or range of rates that bind an entity's customers." },
+      { term: "First-time adopter", definition: "An entity adopting IFRS Standards for the FIRST time — the only entities eligible to elect IFRS 14." },
+      { term: "Regulatory asset", definition: "A regulatory deferral account debit balance representing costs incurred that the regulator has approved for future recovery through customer tariffs." },
+      { term: "Interim standard", definition: "A narrow, transitional standard issued as a stop-gap pending a comprehensive future standard on the same subject." }
+    ]} />
+
+<FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.IFRS14} />
+  </section>
+</StandardPageLayout>

@@ -1,0 +1,195 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import metadata from "../../data/standards/ipsas/ipsas29.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  covers={metadata.covers}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "An Unusual Status — What's Deleted, What Remains" },
+        { id: "s2", label: "Scope — Applying the Legacy Hedge Accounting Option" },
+        { id: "s3", label: "Hedge Accounting — Qualifying Conditions" },
+        { id: "s4", label: "Fair Value Hedges" },
+        { id: "s5", label: "Cash Flow Hedges" },
+        { id: "s6", label: "Hedges of a Net Investment in a Foreign Operation" },
+        { id: "s7", label: "Effective Date & Amendment Timeline" },
+        { id: "s8", label: "Relationship to IAS 39" },
+        { id: "s9", label: "Statement / Process Mapping" },
+        { id: "s10", label: "Related Standards" },
+        { id: "s11", label: "Glossary" }
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="active"
+    explanation="IPSAS 29 Financial Instruments: Recognition and Measurement is a transitional Standard. Following IPSAS 41's issuance (Aug 2018), paragraphs 1–79 were deleted and that content now lives in IPSAS 41. What survives — paragraphs 80–126 — is an OPTIONAL legacy hedge-accounting model that IPSAS 41 (para. 177) still permits an entity to elect. Effective 1 January 2013."
+    historical="IPSAS 29 was the IPSASB's adaptation of IAS 39 Financial Instruments: Recognition and Measurement. Its broad recognition/measurement scope was retired wholesale when IPSAS 41 replaced it; the residual hedge-accounting paragraphs are retained only as a legacy option. The current Standard therefore covers ONLY the surviving hedge-accounting slice (paras. 80–126)."
+    link=""
+    linkText=""
+  />
+
+  <!-- ============ SECTION 1 ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>An Unusual Status — What's Deleted, What Remains</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card ci span2">
+      <div class="ctitle ci">Neither fully live nor fully withdrawn</div>
+      <div class="principle">IPSAS 29 is unlike any other Standard in this library. When IPSAS 41, Financial Instruments, was issued in August 2018, it absorbed almost ALL of IPSAS 29's substantive recognition and measurement content — paragraphs 1 through 79 (initial recognition, classification, subsequent measurement, reclassification, derecognition, impairment) are now marked [Deleted] in the current Handbook. Even the OBJECTIVE paragraph itself (para. 1) is [Deleted].</div>
+      <div class="callout warn">What SURVIVES: paragraphs 80–126 — a narrow, OPTIONAL set of legacy HEDGE ACCOUNTING requirements. IPSAS 41 (para. 177) permits an entity to ELECT to continue applying IPSAS 29's hedge accounting model instead of adopting IPSAS 41's own hedge accounting requirements. This poster covers only that surviving, optional slice.</div>
+    </div>
+  </div>
+
+  <div class="grid grid-spaced">
+    <div class="card cd span2">
+      <div class="ctitle cd">What moved where (para. 7)</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.5fr 1.5fr;"><span>Former IPSAS 29 topic</span><span>Now in…</span></div>
+        <div class="tr" style="grid-template-columns:1.5fr 1.5fr;"><span>Initial recognition/classification</span><span>IPSAS 41 paras. 1–79</span></div>
+        <div class="tr alt" style="grid-template-columns:1.5fr 1.5fr;"><span>Subsequent measurement</span><span>IPSAS 41 paras. 80–176</span></div>
+        <div class="tr" style="grid-template-columns:1.5fr 1.5fr;"><span>Derecognition/impairment</span><span>IPSAS 41 paras. 120–140</span></div>
+        <div class="tr alt" style="grid-template-columns:1.5fr 1.5fr;"><span>Legacy hedge accounting (opt.)</span><span>IPSAS 29 paras. 80–126 (retained)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Scope — Applying the Legacy Hedge Accounting Option</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card cw span2">
+      <div class="ctitle cw">Opt-in regime (para. 80)</div>
+      <div class="principle">An entity MAY elect — once, at the date it adopts IPSAS 41 — to apply IPSAS 29's hedge accounting model to some or all of its hedging relationships. The election is irrevocable without IPSASB consent; if elected, ALL the legacy conditions of IPSAS 29 (80–126) apply to the chosen hedges.</div>
+      <div class="check-list"><span>Irrevocable election point</span><span>All legacy conditions must then be met</span><span>IPSAS 41 para. 177 governs the option</span></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Hedge Accounting — Qualifying Conditions</h2><span class="line"></span></div>
+  <div class="cols-1">
+    <div class="card ci">
+      <div class="ctitle ci">Must-clear test (para. 88)</div>
+      <div class="principle">A hedge is eligible for legacy accounting only if it is a fully designated relationship in which: (1) the hedge is of a recognized asset/liability or a firm commitment; (2) an economic relationship exists between the hedged risk and the hedging instrument; and (3) the hedge's effectiveness is formally documented and expected to be, and is, highly effective.</div>
+      <div class="cross-list"><span>Formal designation</span><span>Economic relationship</span><span>Highly effective</span><span>80–125% range</span></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Fair Value Hedges</h2><span class="line"></span></div>
+  <div class="cols-1 grid-spaced">
+    <div class="card cd">
+      <div class="ctitle cd">Fair value changes mirror (para. 96)</div>
+      <div class="principle">For a fair value hedge, the change in fair value of both the hedging instrument and the hedged item (attributable to the hedged risk) are recognised in profit or loss. The legacy model permits the straightforward offset approach.</div>
+      <div class="callout info callout--flush">The hedged item must be specifically identified and its risk hedged (no 'macro' hedging unless within an allowed portfolio fair value option).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Cash Flow Hedges</h2><span class="line"></span></div>
+  <div class="cols-1">
+    <div class="card cw">
+      <div class="ctitle cw">Effective portion to OCI (para. 100)</div>
+      <div class="principle">The effective portion of gains/losses on the cash flow hedging instrument is recognised in other comprehensive income (OCI) and accumulated in equity as a revaluation component, and reclassified to profit or loss when the hedged transaction affects profit or loss.</div>
+        <div class="glossary-item"><div class="glossary-term">Cash flow hedge</div><div class="glossary-def">A hedge of the exposure to variability in the cash flows of a recognised item or a firm commitment.</div></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Hedges of a Net Investment in a Foreign Operation</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card ci span2">
+      <div class="ctitle ci">Treat as equity-method (para. 108)</div>
+      <div class="td-table">
+        <div class="th cols-1-2-fit"><span>Treatment</span><span>Placement</span></div>
+        <div class="tr cols-1-2-fit"><span>Effective portion</span><span>OCI (foreign-currency translation reserve)</span></div>
+        <div class="tr alt cols-1-2-fit"><span>Ineffective portion</span><span>Profit or loss — immediate</span></div>
+      </div>
+      <div class="callout warn">The legacy model retains the translation-of-foreign-operation approach (not IPSAS 41's more principles-based re-measurement).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Effective Date &amp; Amendment Timeline</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card cd span2">
+      <div class="ctitle cd">Timeline</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 1.2fr;"><span>Date</span><span>Event</span></div>
+        <div class="tr" style="grid-template-columns:1fr 1.2fr;"><span>Dec 2011</span><span>Issued (full IAS 39 model)</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 1.2fr;"><span>1 Jan 2013</span><span>Effective date</span></div>
+        <div class="tr" style="grid-template-columns:1fr 1.2fr;"><span>Aug 2018</span><span>IPSAS 41 cuts paras. 1–79 ([Deleted])</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 1.2fr;"><span>2019</span><span>Amended (latest, para. 177 option text)</span></div>
+      </div>
+      <div class="callout info callout--flush">The effective date (2013) predates the 2018 deletion — the surviving hedge content's effective date is unchanged.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Relationship to IAS 39</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">IAS 39 heritage (para. 120)</div>
+      <div class="principle">The retained paragraphs (80–126) are essentially unchanged from IAS 39's hedge-accounting model that IPSAS 29 originally adopted. IPSAS 41 introduces a newer, principles-based hedge model (paras. 177+) — entities electing the legacy route keep the IAS 39-based mechanics intact.</div>
+      <div class="cross-list"><span>IAS 39 hedge effectiveness</span><span>IPSAS 29 same (legacy)</span><span>IAS 39 OCI recycling</span><span>IPSAS 29 same</span><span>IPSAS 41 hedge model</span><span>Alternative (non-legacy) path</span></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card ci span2">
+      <div class="ctitle ci">Where the option lives</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.4fr 1.3fr;"><span>Process</span><span>Ledger</span></div>
+        <div class="tr" style="grid-template-columns:1.4fr 1.3fr;"><span>Legacy election decision</span><span>Finance Policy → IPSAS 41 adoption memo</span></div>
+        <div class="tr alt" style="grid-template-columns:1.4fr 1.3fr;"><span>Hedge documentation</span><span>Treasury Mgmt → Hedge Tracking DB</span></div>
+        <div class="tr" style="grid-template-columns:1.4fr 1.3fr;"><span>OCI recycling</span><span>Equity Roll → P&amp;L on de-recognition</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Related Standards</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">See also</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2fr;"><span>Standard</span><span>Relation</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2fr;"><span>IPSAS 41</span><span>Successor — recognition/measurement; para. 177 = the legacy election</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2fr;"><span>IPSAS 28</span><span>Presentation of FI</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2fr;"><span>IAS 39</span><span>Legacy hedge model origin</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">[Deleted]</div><div class="glossary-def">Formerly authoritative paragraphs 1–79; now relocated to IPSAS 41.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Legacy election</div><div class="glossary-def">Irrevocable opt to apply IPSAS 29's hedge model.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Highly effective</div><div class="glossary-def">Hedge ratio 80–125%; formally documented.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Cash flow hedge</div><div class="glossary-def">Hedge of cash-flow variability; effective part → OCI.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Fair value hedge</div><div class="glossary-def">Hedge of fair-value risk; changes both sides → P&amp;L.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Foreign operation</div><div class="glossary-def">Operation with a currency other than its parent's.</div></div>
+    </div>
+  </div>
+</StandardPageLayout>
+

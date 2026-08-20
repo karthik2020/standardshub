@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPSAS 12 — Inventories | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .eg  { margin-bottom: 7px; }
+  .egl { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; margin-bottom: 3px; }
+  .entry { display: flex; align-items: flex-start; gap: 4px; margin-bottom: 4px; }
+  .dr { font-size: 11px; font-weight: 500; color: var(--color-text-info);   min-width: 14px; padding-top: 1px; }
+  .cr { font-size: 11px; font-weight: 500; color: var(--color-text-danger); min-width: 14px; padding-top: 1px; padding-left: 6px; }
+  .etxt { font-size: 11px; color: var(--color-text-primary); flex: 1; line-height: 1.4; }
+  .badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .bc { background: #f3e8ff; color: #7e22ce; }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">IPSAS 12 — Inventories</div>
+      <div class="hub-sub">Extended reference poster · Full Handbook structure · Worked examples · Statement mapping · Related standards</div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <a href="#s1">1. Objective, Scope &amp; Definitions</a>
+    <a href="#s2">2. Public Sector Inventory Types</a>
+    <a href="#s3">3. Measurement — Lower of Cost and NRV/Replacement Cost</a>
+    <a href="#s4">4. Cost of Inventories</a>
+    <a href="#s5">5. Cost Formulas — FIFO &amp; Weighted Average</a>
+    <a href="#s6">6. Net Realizable Value &amp; Write-Downs</a>
+    <a href="#s7">7. Distribution at No or Nominal Charge</a>
+    <a href="#s8">8. Recognition as an Expense</a>
+    <a href="#s9">9. Disclosure Requirements</a>
+    <a href="#s10">10. Effective Date &amp; Amendment Timeline</a>
+    <a href="#s11">11. Relationship to IAS 2</a>
+    <a href="#s12">12. Statement / Process Mapping</a>
+    <a href="#s13">13. Related Standards</a>
+    <a href="#s14">14. Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 — OBJECTIVE, SCOPE & DEFINITIONS ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; Definitions (paras. 1–9)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Objective &amp; scope</div>
+      <div class="principle">Prescribes the accounting treatment for inventories — primarily how much cost to recognize as an asset and carry forward until the related revenue is recognized, including any write-down to net realizable value, and which cost formulas to use.</div>
+      <div class="cross-list">
+        <span>Financial instruments (IPSAS 28 / 41)</span>
+        <span>Biological assets and agricultural produce AT THE POINT OF HARVEST (IPSAS 27)</span>
+        <span>Work-in-progress of services provided for NO or NOMINAL consideration directly from recipients — a public-sector-specific exclusion not found in IAS 2</span>
+      </div>
+      <div class="note">Producers of agricultural/forest products or minerals measured at NRV under well-established industry practice, and commodity broker-traders measuring at fair value less costs to sell, are excluded only from the MEASUREMENT requirements (paras. 3, 7–8).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Key definitions (para. 9)</div>
+      <div class="glossary-item"><div class="glossary-term">Inventories</div><div class="glossary-def">Assets: materials/supplies to be consumed in production or service rendering; held for sale/distribution in the ordinary course of operations; or in the process of production for sale/distribution.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Net realizable value (NRV)</div><div class="glossary-def">Estimated selling price in the ordinary course of operations, less estimated costs of completion and costs necessary to make the sale/exchange/distribution.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Current replacement cost</div><div class="glossary-def">The cost the entity would incur to acquire the asset on the reporting date.</div></div>
+      <div class="callout info" style="margin-bottom:0;margin-top:8px;">ℹ️ NRV is entity-specific; fair value is not — NRV for inventories may NOT equal fair value less costs of disposal (para. 10).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 — PUBLIC SECTOR INVENTORY TYPES ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Public Sector Inventory Types (paras. 11–14A)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs">
+      <div class="ctitle cs">Distinctive public sector examples (para. 12)</div>
+      <div class="dot-list">
+        <span>Military inventories (single-use — ammunition, missiles, rockets, bombs)</span>
+        <span>Consumable stores; maintenance materials; spare parts (other than those under IPSAS 45)</span>
+        <span>Strategic stockpiles (e.g. energy reserves)</span>
+        <span>Stocks of unissued currency; postal supplies held for sale (e.g. stamps)</span>
+        <span>Work-in-progress — training materials, arm's-length client services (e.g. audits)</span>
+        <span>Land/property held for sale</span>
+      </div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Special measurement notes</div>
+      <div class="dot-list">
+        <span>Currency and postage stamps: recognized as inventory NOT at face value, but at printing/minting cost (para. 13)</span>
+        <span>Strategic stockpiles held for emergencies: recognized as inventory and treated accordingly (para. 14)</span>
+        <span>Missiles that satisfy IPSAS 45 criteria may be classified there instead of as military inventory (para. 14A)</span>
+      </div>
+      <div class="note">Goods purchased/produced for distribution to other parties at no charge (a TRANSFER EXPENSE) or nominal charge also count as inventories — e.g. educational books donated to schools (para. 11).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 — MEASUREMENT ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Measurement — Lower of Cost and NRV / Replacement Cost (paras. 15–17)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The three measurement pathways</div>
+      <div class="formula-box">
+        <div class="f-eq">Default: Inventories = LOWER of Cost and Net Realizable Value</div>
+      </div>
+      <div class="dot-list">
+        <span>Acquired via a NON-EXCHANGE transaction → cost = fair value at the acquisition date (para. 16)</span>
+        <span>Held for distribution at no/nominal charge, or consumed to PRODUCE goods for no/nominal-charge distribution → LOWER of cost and CURRENT REPLACEMENT COST, not NRV (para. 17)</span>
+      </div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Why replacement cost, not NRV, for give-away inventory</div>
+      <div class="principle">When goods will be distributed for free or a token amount, "net realizable value" (a selling-price concept) makes no sense — there's no meaningful sale. Instead, IPSAS 12 measures the future economic benefit/service potential by what it would COST to replace that capacity, since that's the resource commitment the entity is really managing (para. 43).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 — COST OF INVENTORIES ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Cost of Inventories (paras. 18–29)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs">
+      <div class="ctitle cs">Three cost components (para. 18)</div>
+      <div class="dot-list">
+        <span><strong style="font-weight:500">Costs of purchase</strong> — price, import duties/non-recoverable taxes, directly attributable transport/handling — LESS trade discounts, rebates</span>
+        <span><strong style="font-weight:500">Costs of conversion</strong> — direct labor, plus a systematic allocation of fixed/variable production overheads</span>
+        <span><strong style="font-weight:500">Other costs</strong> — only to the extent incurred bringing inventories to their present location/condition (e.g. non-production overheads, customer-specific design costs)</span>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Fixed overhead allocation — the "normal capacity" rule (para. 21)</div>
+      <div class="formula-box">
+        <div class="f-eq">Fixed overhead per unit = Total fixed production overhead ÷ NORMAL capacity (not actual, if abnormally low)</div>
+      </div>
+      <div class="dot-list">
+        <span>LOW/idle production → do NOT increase the overhead allocated per unit; unallocated overhead is expensed immediately</span>
+        <span>ABNORMALLY HIGH production → DECREASE the per-unit allocation, so inventory isn't carried above cost</span>
+        <span>Variable overheads → allocated based on ACTUAL use of production facilities</span>
+      </div>
+      <div class="note">Costs EXCLUDED and expensed as incurred: abnormal waste, storage costs (unless a necessary production stage), non-contributing admin overheads, and selling costs (para. 25).</div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card cn span2">
+      <div class="ctitle cn">Joint products, deferred settlement &amp; non-exchange acquisition</div>
+      <div class="dot-list">
+        <span>Joint/by-products with non-separable conversion costs → allocated on a rational, consistent basis (e.g. relative sales value); immaterial by-products often measured at NRV, deducted from the main product's cost (para. 23)</span>
+        <span>Deferred settlement terms with a financing element → the financing component is recognized as INTEREST EXPENSE over the financing period, not as part of inventory cost (para. 27)</span>
+        <span>Inventory transferred via a non-exchange transaction (e.g. donated medical supplies after a disaster) → cost = fair value at the acquisition date (para. 31)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 — COST FORMULAS ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Cost Formulas — FIFO &amp; Weighted Average (paras. 32–37)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Specific identification — non-interchangeable items</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Required for items NOT ordinarily interchangeable, and goods/services segregated for specific projects — regardless of whether bought or produced. INAPPROPRIATE for large numbers of interchangeable items, since it would let management cherry-pick which costs remain in inventory to manipulate surplus/deficit.</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">FIFO or weighted average — for everything else</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2fr;"><span>Formula</span><span>Mechanics</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2fr;"><span>FIFO</span><span>Items purchased/produced FIRST are assumed sold first; ending inventory = most RECENTLY acquired items</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2fr;"><span>Weighted average</span><span>Cost per item = weighted average of opening inventory + purchases/production during the period; recalculated periodically or on each new shipment</span></div>
+      </div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ The SAME cost formula must be used for all inventories of similar nature/use. Different formulas can be justified for genuinely different-use inventories (e.g. different business segments) — but GEOGRAPHIC location alone is never sufficient justification (para. 34).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 — NET REALIZABLE VALUE & WRITE-DOWNS ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Net Realizable Value &amp; Write-Downs (paras. 38–42)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd">
+      <div class="ctitle cd">Item-by-item, not by broad category</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Inventories are usually written down to NRV on an ITEM-BY-ITEM basis. Grouping is acceptable only for genuinely similar/related items with the same purpose that can't practicably be evaluated separately — NOT a broad classification like "all finished goods" or "everything in one geographic segment" (para. 39).</div>
+      <div class="note">NRV estimates reflect the PURPOSE the inventory is held for — e.g. inventory covered by a firm sales contract is valued at the CONTRACT price, not general selling prices, for that quantity (para. 40).</div>
+    </div>
+
+    <div class="card cs">
+      <div class="ctitle cs">Reversal of a prior write-down (para. 42)</div>
+      <div class="formula-box">
+        <div class="f-eq">Reversal is capped at the ORIGINAL write-down amount — new carrying amount = lower of cost and revised NRV</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">A fresh NRV assessment is made EVERY period. If the circumstances that caused the write-down no longer exist, or NRV has clearly increased, the write-down is reversed — but never above the original cost.</div>
+      <div class="note">Raw materials/supplies aren't written down below cost if the finished products they'll go into are still expected to sell at or above cost — UNLESS a material price decline signals the finished product itself will sell below cost (para. 41).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 — DISTRIBUTION AT NO OR NOMINAL CHARGE ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Distributing Goods at No Charge or a Nominal Charge (para. 43)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Service potential, not cash-generating ability, drives the value</div>
+      <div class="principle">Where a government has decided to distribute goods free or at a nominal charge, their future economic benefit for financial reporting isn't about generating cash — it's the amount the entity would need to PAY to re-acquire that service potential, if that were necessary to meet its objectives.</div>
+      <div class="dot-list">
+        <span>Economic benefits/service potential can be acquired in the market → use that market replacement cost</span>
+        <span>Cannot be acquired in the market → an ESTIMATE of replacement cost must be made</span>
+        <span>If the PURPOSE for holding the inventory later changes (e.g. from give-away to sale) → re-measure using the ordinary para. 15 rule (lower of cost and NRV) going forward</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 — RECOGNITION AS AN EXPENSE ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Recognition as an Expense (paras. 44–46)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The matching principle</div>
+      <div class="check-list">
+        <span>Sold, exchanged, or distributed WITH related revenue → carrying amount expensed in the SAME period the revenue is recognized</span>
+        <span>Distributed with NO related revenue (a transfer expense) → expensed per IPSAS 48, Transfer Expenses</span>
+        <span>Write-downs and inventory LOSSES → expensed in the period the write-down/loss occurs</span>
+        <span>Reversal of a write-down → REDUCES the expense recognized in the period of reversal</span>
+      </div>
+    </div>
+
+    <div class="card cn">
+      <div class="ctitle cn">Timing for service providers &amp; capitalized inventory</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">For a service provider, inventory typically becomes an expense when services are RENDERED, or upon billing for chargeable services (para. 45). Inventory allocated into ANOTHER asset (e.g. materials used in self-constructed PP&amp;E) is instead expensed over that OTHER asset's useful life, via depreciation (para. 46).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 — DISCLOSURE REQUIREMENTS ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure Requirements (paras. 47–50C)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs">
+      <div class="ctitle cs">Core disclosures (para. 47)</div>
+      <div class="check-list">
+        <span>Accounting policies for measuring inventories, including the cost formula used</span>
+        <span>Total carrying amount, and amounts by classification (merchandise, supplies, materials, WIP, finished goods)</span>
+        <span>Carrying amount of inventories at fair value less costs of disposal</span>
+        <span>Amount recognized as an expense during the period</span>
+        <span>Write-down amount recognized as an expense, and any reversal amount, with the circumstances that led to the reversal</span>
+        <span>Carrying amount of inventories pledged as security for liabilities</span>
+      </div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Fair value disclosures (paras. 50A–50C, added via IPSAS 46)</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:8px;">For inventories measured at FAIR VALUE after initial recognition, disclose enough to let users assess the measurement techniques/inputs used, and — for Level 3 (significant unobservable inputs) — the effect on surplus/deficit or net assets/equity.</div>
+      <div class="dot-list">
+        <span>The fair value measurement at period end, and (for non-recurring measurements) the reason</span>
+        <span>The fair value hierarchy LEVEL (1, 2, or 3)</span>
+        <span>Measurement technique(s) and inputs, with reasons for any technique change</span>
+        <span>Level 3 reconciliation from opening to closing balances, by type of change</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 — EFFECTIVE DATE & AMENDMENT TIMELINE ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Effective Date &amp; Amendment Timeline</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Amendment history at a glance</div>
+      <div class="principle">Base Standard: periods beginning on/after <strong>1 January 2008</strong>. Comprehensively amended over time — notably by IPSAS 46 (Measurement, fair value disclosures) and, most recently, the November 2024 Stripping Costs amendment.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2.2fr;"><span>Effective</span><span>Change</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2017</span><span>Various — Improvements to IPSAS 2015: military inventory terminology aligned to GFS "military inventories"</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2018</span><span>The Applicability of IPSAS — GBE terminology changes</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2025</span><span>IPSAS 46, Measurement — fair value disclosure package (§9)</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2027</span><span>New paras. 62H–62I — Stripping Costs in the Production Phase of a Surface Mine (Amendments to IPSAS 12), issued Nov 2024</span></div>
+      </div>
+      <div class="note">The Stripping Costs amendment (2027 effective date) brings IPSAS 12 into alignment with IFRIC 20-equivalent guidance for extractive-sector stripping activity, via an authoritative Appendix.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 — RELATIONSHIP TO IAS 2 ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Relationship to IAS/IFRS — Comparison with IAS 2</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — IPSAS 12 vs IAS 2</div>
+      <div class="principle">IPSAS 12 is drawn primarily from IAS 2 (Revised 2003), <em>Inventories</em>.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1.9fr;"><span>Topic</span><span>Difference</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Definition</span><span>IPSAS 12's definition reflects that some public sector inventories are distributed at no/nominal charge — IAS 2's does not</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Scope</span><span>IPSAS 12 explicitly excludes no/nominal-charge service work-in-progress</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Current replacement cost</span><span>Additional defined term not present in IAS 2</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Non-exchange acquisition</span><span>IPSAS 12 requires fair-value-at-acquisition cost — no IAS 2 equivalent (non-exchange transactions don't arise in for-profit entities the same way)</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>No/nominal-charge inventory</span><span>Valued at lower of cost and CURRENT REPLACEMENT COST — a public-sector-specific rule</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Stripping costs guidance</span><span>IPSAS 12 embeds IFRIC 20-equivalent principles AUTHORITATIVELY in an appendix; under IFRS, IFRIC 20 is a separate pronouncement</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Terminology</span><span>"Statement of financial performance" (IPSAS 12) vs "income statement" (IAS 2); IPSAS 12 does not use "income"</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 — STATEMENT / PROCESS MAPPING ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Measurement decision map</div>
+      <div class="dot-list">
+        <span>1. How was the inventory acquired? EXCHANGE → cost basis (§4). NON-EXCHANGE → fair value at acquisition (§3)</span>
+        <span>2. What is it held FOR? Ordinary sale → lower of cost and NRV. Distribution at no/nominal charge (or production toward that) → lower of cost and CURRENT REPLACEMENT COST (§3, §7)</span>
+        <span>3. Are the items ordinarily interchangeable? No (segregated/unique) → SPECIFIC IDENTIFICATION. Yes → FIFO or WEIGHTED AVERAGE, consistently applied (§5)</span>
+        <span>4. Has NRV/replacement cost fallen below carrying cost? → write down, expense the difference (§6). Has it since recovered? → reverse, capped at the original write-down (§6)</span>
+        <span>5. Is the inventory measured at FAIR VALUE (not cost)? → apply the IPSAS 46 fair value hierarchy disclosures (§9)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card cs span2">
+      <div class="ctitle cs">Concept-to-statement mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>IPSAS 12 concept</span><span>Statement(s)</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Inventory carrying amount</span><span><span class="badge bs">SOFP</span></span><span>Lower of cost and NRV/replacement cost</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Cost of inventories sold/exchanged/distributed</span><span><span class="badge bp">SOFPerf</span></span><span>Matched to the period revenue is recognized</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Write-downs &amp; reversals</span><span><span class="badge bp">SOFPerf</span></span><span>Expensed / reduces expense, in the period they occur</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Distribution with no related revenue</span><span><span class="badge bp">SOFPerf</span></span><span>Governed by IPSAS 48, Transfer Expenses</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Cost formula, classifications, pledged inventory</span><span><span class="badge be">Notes</span></span><span>Mandatory per para. 47</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 — RELATED STANDARDS ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How IPSAS 12 connects across the IPSAS body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.7fr 2.2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 5</span><span>Limited circumstances where borrowing costs are included in inventory cost (§4)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 19</span><span>Provisions/contingent liabilities from firm sales or purchase contracts exceeding inventory quantities (§6)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 27</span><span>Agricultural produce harvested from biological assets — initial cost is fair value less costs to sell at harvest (§4)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 28 / 41</span><span>Financial instruments — excluded from IPSAS 12's scope entirely (§1)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 45</span><span>Spare parts for plant/equipment dealt with there instead, unless they meet IPSAS 12's own inventory definition (§2)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 46</span><span>Fair value measurement and disclosure framework underpinning §9</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 47</span><span>Costs to fulfill a binding arrangement that don't create inventory (or another asset) are accounted for under IPSAS 47 instead (§2)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 48</span><span>Transfer Expenses — governs expense recognition when inventory is distributed with no related revenue (§8)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 — GLOSSARY ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Net realizable value</div><div class="glossary-def">Estimated selling price in the ordinary course of operations, less estimated completion and selling costs.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Current replacement cost</div><div class="glossary-def">What the entity would need to pay to acquire the asset on the reporting date.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">FIFO</div><div class="glossary-def">First-in, first-out — assumes earliest-purchased items are sold first; ending inventory reflects the most recent purchases.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Weighted average cost formula</div><div class="glossary-def">Cost per item derived from the weighted average of similar items held at the start of the period plus those purchased/produced during it.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Normal capacity</div><div class="glossary-def">Production expected to be achieved on average over a number of periods/seasons under normal circumstances, net of planned maintenance downtime.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Exchange / non-exchange transactions</div><div class="glossary-def">Exchange: approximately equal value given both ways. Non-exchange: value flows one way without equal value returned.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bs">SOFP</span> Statement of financial position
+      <span class="badge bp">SOFPerf</span> Statement of financial performance
+      <span class="badge be">Notes</span> Notes to the financial statements
+    </div>
+  </div>
+
+  <div class="footer-note">IPSAS 12 — Inventories · Extended Reference Poster · Built from the 2025 IPSASB Handbook, Volume I · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

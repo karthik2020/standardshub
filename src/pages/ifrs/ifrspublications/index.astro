@@ -1,0 +1,55 @@
+---
+import StandardLayout from "../../../layouts/StandardLayout.astro";
+import standards from "../../../data/standards.json";
+import StandardCard from "../../../components/StandardCard.astro";
+import { palette } from "../../../data/standardVisuals";
+import { FRAMEWORK_CONFIG, getFramework } from "../../../data/frameworks";
+import FrameworkSwitcher from "../../../components/FrameworkSwitcher.astro";
+import FrameworkToolbar from "../../../components/FrameworkToolbar.astro";
+import FrameworkHero from "../../../components/FrameworkHero.astro";
+
+const framework = getFramework("ifrspublications")!;
+
+const grouped = /** @type {Record<string, any[]>} */ ({});
+
+for (const item of standards.IFRSPublications) {
+  const category = item.category;
+  if (!grouped[category]) {
+    grouped[category] = [];
+  }
+  grouped[category].push(item);
+}
+---
+
+<StandardLayout code={framework.code} title={`${framework.fullName} (${framework.code})`} framework="IFRS" hasToc={false}>
+
+  <FrameworkHero frameworkId={framework.id} />
+  <FrameworkSwitcher activeId={framework.id} />
+  <FrameworkToolbar frameworkId={framework.id} />
+
+  <div class="standards-group">
+    <h2 class="standards-group-title">Publications</h2>
+    <div class="standards-grid">
+
+      {
+        standards.IFRSPublications.filter((item) => !item.status).map((item, index) => (
+
+          <StandardCard
+            href={item.url}
+            code={item.code}
+            title={item.title}
+            framework={framework.id}
+            theme={palette[index % palette.length]}
+          />
+
+        ))
+      }
+
+    </div>
+  </div>
+
+</StandardLayout>
+
+
+
+

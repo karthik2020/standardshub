@@ -1,0 +1,131 @@
+﻿---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc272.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope — LLCs & LLPs" },
+        { id: "s3", label: "Why Ordinary Corporate Equity Presentation Doesn't Fit" },
+        { id: "s4", label: "Members' Equity Presentation" },
+        { id: "s5", label: "Multiple Classes of Membership Interest" },
+        { id: "s6", label: "Worked Example — Members' Equity Statement" },
+        { id: "s7", label: "Disclosure Requirements" },
+        { id: "s8", label: "Critical Judgments & Estimates" },
+        { id: "s9", label: "ASC 272 vs IFRS — No Direct Counterpart" },
+        { id: "s10", label: "Statement Mapping" },
+        { id: "s11", label: "Related Topics" },
+        { id: "s12", label: "Glossary" },
+        { id: "history", label: "History & Development" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Presentation must reflect the entity's actual legal form</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">A Limited Liability Company (LLC) or Limited Liability Partnership (LLP) has no "shares," "common stock," or "shareholders" in the traditional corporate sense — its owners are MEMBERS (LLC) or PARTNERS (LLP), holding MEMBERSHIP or PARTNERSHIP INTERESTS rather than shares. ASC 272 exists so the equity section of such an entity's balance sheet faithfully reflects its actual legal and economic structure, rather than being forced into a corporate-style presentation that wouldn't accurately describe the entity's ownership.</div></div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope — LLCs &amp; LLPs</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">A US-state-law-specific entity form</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 272 applies specifically to entities organised as LIMITED LIABILITY COMPANIES or LIMITED LIABILITY PARTNERSHIPS under US STATE LAW — a hybrid legal structure combining the limited liability protection of a corporation with the pass-through tax treatment (and often more flexible governance) of a partnership. This is a genuinely distinct US legal entity category, not merely a naming convention.</div></div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Why Ordinary Corporate Equity Presentation Doesn't Fit</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">No par value, no traditional share classes</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">LLCs and LLPs generally have NO par value, NO traditional "common stock" or "additional paid-in capital" captions, and often allocate profits/losses and distributions according to an OPERATING AGREEMENT rather than a fixed dividend/share structure. Presenting such an entity's equity using ordinary corporate captions (common stock, APIC, retained earnings) would misrepresent its actual ownership structure — ASC 272 provides the presentation framework suited to this different legal form instead.</div></div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Members' Equity Presentation</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Capital accounts, not share captions</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">Equity is presented as MEMBERS' EQUITY (LLC) or PARTNERS' CAPITAL (LLP), typically as a single aggregate caption OR broken down by individual member/partner CAPITAL ACCOUNTS, tracking each member's/partner's capital contributions, allocated share of income/loss, and distributions received — a structure conceptually closer to a traditional partnership capital account than to corporate shareholders' equity.</div></div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Multiple Classes of Membership Interest</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Disclosed by class where relevant</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">Where an LLC has MULTIPLE CLASSES of membership interests with different rights (e.g. different profit-sharing ratios, liquidation preferences, or voting rights) — economically analogous to a corporation having both common and preferred stock — ASC 272 requires disclosure of the characteristics and priority of each class, ensuring users understand how the entity's total equity is genuinely distributed among its different classes of owners.</div></div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Worked Example — Members' Equity Statement</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">A simplified LLC equity presentation</div>
+      <div class="worked"><div class="wk-title">Example: Two-member LLC capital account roll-forward</div><div class="wk-body">An LLC has two members. Member A's capital account begins the year at $500,000; Member B's begins at $300,000. Net income of $400,000 is allocated 60% to Member A and 40% to Member B, per the operating agreement. Member A withdraws $150,000; Member B withdraws $80,000.</div><div class="wk-answer"><strong>Member A:</strong> $500,000 + $240,000 (60% × $400,000) − $150,000 = <strong>$590,000</strong>.<br><strong>Member B:</strong> $300,000 + $160,000 (40% × $400,000) − $80,000 = <strong>$380,000</strong>.<br>Total members' equity presented on the Balance Sheet = $590,000 + $380,000 = <strong>$970,000</strong>, with each member's capital account separately tracked and disclosed.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">What ASC 272 requires</div><div class="check-list"><span>Description of each class of membership/partnership interest, including its priority and rights in liquidation</span><span>Number of units/interests authorised, issued, and outstanding, where applicable</span><span>Basis for allocating profits and losses among members/partners, if not proportionate to ownership interests</span></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">The main judgement under ASC 272 is determining the appropriate level of DISAGGREGATION for the equity presentation — whether a single aggregate "members' equity" line suffices, or whether the entity's specific class structure and ownership complexity warrants presenting individual capital accounts or classes separately for genuinely informative disclosure.</div></div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>ASC 272 vs IFRS — No Direct Counterpart</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">A genuinely US-specific Topic</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">IFRS has NO dedicated standard addressing a specific national legal entity form the way ASC 272 addresses the US LLC/LLP. An entity organised under an analogous legal structure in another jurisdiction (e.g. certain limited liability partnership forms in the UK or elsewhere) would apply GENERAL IFRS principles — primarily IAS 32's substance-based liability/equity classification, and IAS 1's general equity presentation requirements — without a topic tailored to that specific legal form. This makes ASC 272 one of the clearest examples in the Codification's Presentation area of a Topic driven by US LEGAL STRUCTURE rather than a universally applicable accounting concept.</div></div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Where every ASC 272 event lands</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Member capital contributions</span><span><span class="badge bs">BS</span> <span class="badge be">SE</span></span><span>Increases the relevant member's capital account</span></div>
+      <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Allocation of net income/loss</span><span><span class="badge be">SE</span></span><span>Allocated among members per the operating agreement, not necessarily pro rata</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Member distributions</span><span><span class="badge bs">BS</span> <span class="badge be">SE</span></span><span>Reduces the relevant member's capital account</span></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Related Topics</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd"><div class="ctitle cd">Cross-reference map</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 215</span><span>Supplies the general equity-movement statement framework this Topic adapts for LLC/LLP-specific presentation</span></div>
+      <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 505</span><span>Governs general equity recognition/measurement principles this Topic's presentation guidance draws on</span></div>
+      </div>
+      </div>
+      <div class="card cn"><div class="ctitle cn">Quick-reference glossary preview</div>
+      <div class="glossary-item"><div class="glossary-term">Operating agreement</div><div class="glossary-def">The governing document for an LLC (analogous to a partnership agreement or corporate bylaws), setting out members' rights, profit/loss allocation, and governance terms.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Capital account</div><div class="glossary-def">A running record of a member's or partner's equity interest, tracking contributions, allocated income/loss, and distributions.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+
+    <Glossary entries={[
+      { term: "Membership interest", definition: "An LLC member's ownership stake, analogous to a share of stock in a corporation but without the corporate share/par-value structure." },
+      { term: "Limited liability partnership (LLP)", definition: "A partnership structure providing partners limited liability protection, most commonly used by professional services firms in the US." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.ASC272 || []} />
+  </section>
+</StandardPageLayout>
+

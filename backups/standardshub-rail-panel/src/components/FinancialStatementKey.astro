@@ -1,0 +1,41 @@
+---
+/*
+Financial statement key legend.
+
+Props:
+- entries (optional)
+
+Renders abbreviated statement labels (SOFP, SOPL, OCI, Equity) in responsive badge rows. Defaults to the core four statements if no entries are provided.
+*/
+
+interface Entry {
+  abbreviation: string;
+  fullName: string;
+  variant?: 'bs' | 'bp' | 'bo' | 'be';
+}
+
+interface Props {
+  entries?: Entry[];
+}
+
+const {
+  entries = [
+    { abbreviation: 'SOFP', fullName: 'Statement of financial position (balance sheet)', variant: 'bs' },
+    { abbreviation: 'SOPL', fullName: 'Statement of profit or loss (income statement)', variant: 'bp' },
+    { abbreviation: 'OCI', fullName: 'Other comprehensive income', variant: 'bo' },
+    { abbreviation: 'Equity', fullName: 'Statement of changes in equity', variant: 'be' },
+  ],
+} = Astro.props;
+---
+
+<div class="legend">
+  <div class="ltitle">Financial statement key</div>
+  <div class="lrow">
+    {entries.map((entry) => (
+      <div class="litem">
+        <span class={`badge ${entry.variant || 'bs'}`}>{entry.abbreviation}</span>
+        <span class="ldesc">{entry.fullName}</span>
+      </div>
+    ))}
+  </div>
+</div>

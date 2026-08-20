@@ -1,0 +1,44 @@
+---
+/*
+Financial statement key legend.
+
+Props:
+- entries (optional)
+
+Renders abbreviated statement labels (BS, IS, SE, OCI, SCF) in responsive badge rows. Defaults to the core US GAAP statements if no entries are provided.
+*/
+
+interface Entry {
+  abbreviation: string;
+  fullName: string;
+  variant?: 'bs' | 'bp' | 'bo' | 'be';
+}
+
+interface Props {
+  entries?: Entry[];
+  title?: string;
+}
+
+const {
+  entries = [
+    { abbreviation: 'BS', fullName: 'Balance sheet', variant: 'bs' },
+    { abbreviation: 'IS', fullName: 'Income statement', variant: 'bp' },
+    { abbreviation: 'SE', fullName: 'Statement of changes in equity', variant: 'be' },
+    { abbreviation: 'OCI', fullName: 'Other comprehensive income', variant: 'bo' },
+    { abbreviation: 'SCF', fullName: 'Statement of cash flows', variant: 'bc' },
+  ],
+  title = 'Financial statement key',
+} = Astro.props;
+---
+
+<div class="legend">
+  <div class="ltitle">{title}</div>
+  <div class="lrow">
+    {entries.map((entry) => (
+      <div class="litem">
+        <span class={`badge ${entry.variant || 'bs'}`}>{entry.abbreviation}</span>
+        <span class="ldesc">{entry.fullName}</span>
+      </div>
+    ))}
+  </div>
+</div>

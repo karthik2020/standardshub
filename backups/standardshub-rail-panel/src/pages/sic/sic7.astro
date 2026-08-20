@@ -1,0 +1,247 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/sic/sic7.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework" },
+        { id: "s2", label: "Scope & Definitions" },
+        { id: "s3", label: "The Euro Changeover Event" },
+        { id: "s4", label: "Functional Currency After Transition" },
+        { id: "s5", label: "Translation Foreign Operations" },
+        { id: "s6", label: "Hedge Accounting Continuity" },
+        { id: "s7", label: "Disclosure" },
+        { id: "s8", label: "Judgments & Estimates" },
+        { id: "s9", label: "SIC-7 vs Other Guidance" },
+        { id: "s10", label: "Statement Mapping" },
+        { id: "s11", label: "Related Standards" },
+        { id: "s12", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Why SIC-7 exists as a bridge interpretation</div>
+        <div class="principle">IAS 21 requires an entity to measure its results and financial position in its functional currency — the currency of the primary economic environment in which it operates. When an entire country transitions to a new common currency at a fixed conversion rate, the SIC confirms that IAS 21 continues to apply without requiring restatement of prior periods or recognition of any gain or loss on the changeover itself.</div>
+        <div class="note">Without SIC-7, entities adopting the euro could have interpreted IAS 21 as requiring retrospective re-measurement, restatement of comparatives, or recognition of foreign exchange gains or losses arising purely from the monetary changeover — all of which SIC-7 forecloses.</div>
+      </div>
+      <div class="card cs">
+        <div class="ctitle cs">A faithful representation of a non-event</div>
+        <div class="principle">The euro changeover at a fixed conversion rate is an economic event, but it is NOT an exchange rate movement in the IAS 21 sense. SIC-7's core conclusion preserves faithful representation by ensuring the transition does not generate artificial volatility in the income statement or require restatement of previously issued financial statements.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope & Definitions</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What SIC-7 covers</div>
+        <div class="principle">SIC-7 applies ONLY to the replacement of a national currency by a new common currency at a FIXED conversion rate — not to general foreign currency translation. It applies to the specific period when the fixed-rate conversion is imposed and becomes the functional currency.</div>
+        <div class="elabel">TYPICAL FACT PATTERNS</div>
+        <div class="dot-list">
+          <span>An entity whose functional currency was, say, French francs (FRF) prior to 1 January 1999 transitioning to the euro (EUR) at a fixed conversion rate of 1 EUR = 6.55957 FRF</span>
+          <span>An entity whose foreign subsidiary's functional currency was, say, Deutsche Mark (DEM) and is now euro (EUR)</span>
+          <span>Conversion of prior-period comparatives from the old currency to the new currency purely for presentation purposes</span>
+        </div>
+      </div>
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Functional currency</div>
+          <div class="glossary-def">The currency of the primary economic environment in which the entity operates, as defined in IAS 21.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Fixed conversion rate</div>
+          <div class="glossary-def">The irrevocable, pre-determined conversion rate at which the old national currency is replaced by the new common currency (e.g. 1 EUR = 6.55957 FRF).</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>The Euro Changeover Event</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">What the changeover is — and is not</div>
+        <div class="td-table">
+          <div class="th cols-1-2"><span>Aspect</span><span>SIC-7 Conclusion</span></div>
+          <div class="tr cols-1-2"><span>Is it an exchange rate fluctuation?</span><span>NO — a fixed conversion rate does not constitute an exchange rate change in the IAS 21 sense</span></div>
+          <div class="tr alt cols-1-2"><span>Does it trigger restatement of comparatives?</span><span>NO — prior periods are NOT restated solely because of the currency changeover</span></div>
+          <div class="tr cols-1-2"><span>Does any gain or loss arise on the changeover?</span><span>NO — no gain or loss is recognised in profit or loss from the fixing event itself</span></div>
+          <div class="tr alt cols-1-2"><span>What if comparatives are translated for presentation?</span><span>They must be translated using the FIXED conversion rate, not the closing rate that would otherwise apply under IAS 21</span></div>
+        </div>
+        <div class="callout warn callout--flush">A fixed-rate changeover is fundamentally different from subsequent fluctuations in the exchange rate between the new currency and other foreign currencies. SIC-7 only addresses the locking event itself; subsequent movements remain ordinary IAS 21 foreign exchange items.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Functional Currency After Transition</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs">
+        <div class="ctitle cs">The new currency becomes the functional currency</div>
+        <div class="principle">Once the euro becomes the functional currency of the entity's economic environment, ALL assets and liabilities are measured in euros from that point forward. There is no transitional period during which both currencies are used — the euro simply replaces the old currency as the unit of account.</div>
+        <div class="formula-box">
+          <div class="f-label">TRANSLATION APPROACH</div>
+          <div class="f-eq">All balances are converted to the euro using the FIXED conversion rate. This rate is used for both the reporting date and any prior-period comparatives presented for the first time in euros.</div>
+        </div>
+      </div>
+      <div class="card cw">
+        <div class="ctitle cw">Practical mechanics</div>
+        <div class="elabel">KEY RULES</div>
+        <div class="dot-list">
+          <span>Non-monetary items measured at historical cost are translated using the conversion rate that applied at the date of acquisition (the fixed rate at that date)</span>
+          <span>Equity accounts are translated using the fixed conversion rate from the most recent prior period presented in the old currency</span>
+          <span>There is NO separate capital reserve recognised on conversion — the fixed rate applies uniformly</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Translation of Foreign Operations</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Effect on foreign subsidiary translation</div>
+        <div class="principle">If a foreign subsidiary had a functional currency that was the old national currency and the parent adopts the euro, the subsidiary's functional currency may also be re-assessed. If the subsidiary's economic environment now uses the euro, its functional currency becomes the euro — and the subsidiary's financial statements are then translated into the parent's functional currency (also euros) as domestic rather than foreign currency.</div>
+        <div class="elabel">SIC-7 CONFIRMS</div>
+        <div class="cross-list">
+          <span>Exchange differences that arose BEFORE the changeover remain recognised in equity under IAS 21's foreign currency translation reserve</span>
+          <span>No additional exchange differences arise from the changeover itself</span>
+          <span>The ordinary IAS 21 translation mechanics resume from the first post-changeover reporting date</span>
+        </div>
+      </div>
+      <div class="card ci">
+        <div class="ctitle ci">What happens to the cumulative translation reserve</div>
+        <div class="principle">The cumulative translation reserve (CTR) in the parent's equity represents the net exchange differences accumulated on translating foreign operations. SIC-7 clarifies that these exchange differences were generated before the changeover and are NOT restated upon conversion to euros. They remain in equity barring disposal of the foreign operation.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Hedge Accounting Continuity</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">IAS 39 hedge relationships survive the changeover</div>
+        <div class="principle">If a hedging relationship was established before the currency changeover, SIC-7 confirms that the hedge accounting relationship DOES NOT need to be discontinued upon conversion to the euro. The hedged item and hedging instrument continue to be accounted for under IAS 39 as if the underlying economic relationship had not been interrupted by the currency changeover.</div>
+        <div class="formula-box">
+          <div class="f-label">HEDGE CONTINUITY RULE</div>
+          <div class="f-eq">A hedged item denominated in the old currency, and a hedging instrument denominated in the new currency (or vice versa), remain eligible for hedge accounting through the transition period</span></div>
+        </div>
+        <div class="callout info callout--flush">This continuity rule is critical because without it, entities would face the prospect of discontinuing effective hedges at the transition date purely due to the changeover — generating artificial P&L volatility.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Disclosure</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">What SIC-7 requires</div>
+        <div class="check-list">
+          <span>That the euro has become the functional currency of the entity</span>
+          <span>The fixed conversion rate(s) adopted in converting comparative information from the old national currency to the euro</span>
+          <span>That the changeover has NOT given rise to any gain or loss in the financial statements — and, if comparative information for prior periods is disclosed in euros, that it has been converted using the fixed rate rather than the closing rate</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Judgments & Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where judgement matters most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Whether a particular arrangement qualifies as a "service concession arrangement" within the scope of SIC-29 (in practice, this is determined by the contract's substance — control over use of the asset rests with the grantor)</span>
+              <span>Whether an entity's foreign operation's functional currency changes as a result of the country's adoption of the euro</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>Least — SIC-7 involves very few estimates; the conversion rate is fixed and the income statement impact is zero.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>SIC-7 vs Other Guidance</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — SIC-7 within the IAS 21 framework</div>
+        <div class="td-table">
+          <div class="th cols-1-1-1"><span>Scenario</span><span>SIC-7 applies?</span><span>Treatment</span></div>
+          <div class="tr cols-1-1-1"><span>Country joins EMU; national currency locked to euro at fixed rate</span><span>YES</span><span>No gain/loss; all balances translated at fixed rate; IAS 21 continues unchanged</span></div>
+          <div class="tr alt cols-1-1-1"><span>Subsequent euro fluctuation against USD or GBP</span><span>NO</span><span>Ordinary IAS 21 foreign exchange accounting; gains and losses recognised in SOPL or OCI as appropriate</span></div>
+          <div class="tr cols-1-1-1"><span>Foreign operation in a euro-zone country; parent functional currency is USD</span><span>NO (directly)</span><span>Ordinary IAS 21 translation; CTR may accumulate. SIC-7 would apply if the parent's functional currency also became the euro.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Where every SIC-7 event lands</div>
+        <div class="td-table">
+          <div class="th cols-16-1-14"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr cols-16-1-14"><span>Changeover to fixed-rate currency</span><span><span class="badge bo">OCI (equity)</span> <span class="badge bs">SOFP</span></span><span>No gain or loss; balances retranslated at fixed rate; CTR existing balances unchanged</span></div>
+          <div class="tr alt cols-16-1-14"><span>Restatement of comparatives in new currency</span><span><span class="badge bs">SOFP</span> <span class="badge bp">SOPL</span></span><span>Prior-period figures presented in euros using fixed conversion rate</span></div>
+          <div class="tr cols-16-1-14"><span>Hedge accounting through transition</span><span><span class="badge bo">OCI</span> <span class="badge bs">SOFP</span></span><span>Hedge relationships continue; no discontinuation required under SIC-7</span></div>
+          <div class="tr alt cols-16-1-14"><span>Subsequent euro exchange rate movements</span><span><span class="badge bp">SOPL</span> <span class="badge bo">OCI</span></span><span>Ordinary IAS 21 treatment resumes — SIC-7 does not apply</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Related Standards</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Cross-reference map</div>
+        <div class="td-table">
+          <div class="th cols-08-2"><span>Standard</span><span>Connection</span></div>
+          <div class="tr cols-08-2"><span>IAS 21</span><span>The parent standard whose application SIC-7 confirms continues unchanged through a fixed-rate currency changeover</span></div>
+          <div class="tr alt cols-08-2"><span>IAS 39</span><span>Governs hedge accounting continuity that SIC-7 explicitly preserves through the transition</span></div>
+          <div class="tr cols-08-2"><span>IFRIC 16</span><span>Addresses net investment hedge continuation more broadly, complementary to SIC-7's specific changeover confirmation</span></div>
+        </div>
+      </div>
+      <div class="card cn">
+        <div class="ctitle cn">Quick-reference glossary</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Functional currency</div>
+          <div class="glossary-def">The currency of the primary economic environment in which the entity operates, as determined under IAS 21.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Cumulative translation reserve</div>
+          <div class="glossary-def">The equity component that accumulates exchange differences arising on the translation of foreign operations under IAS 21.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Fixed conversion rate", definition: "The irrevocable, pre-determined conversion rate at which the old national currency is replaced by the new common currency (e.g. 1 EUR = 6.55957 FRF)." },
+      { term: "Changeover event", definition: "The specific occasion when a national currency is locked to a fixed conversion ratio and replaced by the new common currency as legal tender." },
+      { term: "Hedge continuity", definition: "The SIC-7 principle that existing hedge accounting relationships do not need to be discontinued because of a currency changeover, since the economic hedge is not interrupted." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.SIC7} />
+  </section>
+</StandardPageLayout>

@@ -1,0 +1,100 @@
+﻿---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc430.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        {
+          id: "s1",
+          label: "Overview",
+        },
+        {
+          id: "s2",
+          label: "ASC 606 Superseding Effect",
+        },
+        {
+          id: "s3",
+          label: "Disclosure Requirements",
+        },
+        {
+          id: "s4",
+          label: "Related Topics",
+        },
+        {
+          id: "s5",
+          label: "Glossary",
+        },
+        {
+          id: "history",
+          label: "History & Development",
+        },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Overview</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">The legacy Topic for unearned revenue — now largely obsolete</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 430 governs the recognition, measurement, and disclosure of DEFERRED REVENUE (also called unearned revenue) — cash received from customers BEFORE the entity has satisfied its performance obligations. Originally issued in 1975, the Topic established that deferred revenue is a LIABILITY representing the entity's remaining performance obligation, recognised when the related earnings process is complete. For decades, this was the primary GAAP governing advance payments, service contracts, and similar arrangements.</div></div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>ASC 606 Superseding Effect</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">ASC 606 replaced virtually all of ASC 430's substantive guidance</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">ASC 606, <em>Revenue from Contracts with Customers</em> (effective for public entities for annual periods beginning after December 15, 2017), SUPERSEDED virtually all of ASC 430's substantive recognition and measurement guidance. Under ASC 606, advance payments from customers are treated as <strong>CONTRACT LIABILITIES</strong> within the five-step revenue recognition model (Step 2: Identify performance obligations → Step 5: Recognise revenue as obligations are satisfied → the remaining unsatisfied obligation at a reporting date is recognised as a contract liability, equivalent in substance to what ASC 430 called deferred revenue). ASC 430 is retained in the Codification primarily for historical reference, periods before ASC 606 adoption, and narrow circumstances not within ASC 606's scope — it is no longer the primary revenue deferral standard.</div></div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">What survives from ASC 430</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">For periods where ASC 430 still applies (pre-ASC 606 comparative periods, or transactions outside ASC 606 scope), ASC 430 requires: (a) the AMOUNT of deferred revenue at the balance sheet date, (b) an explanation of the NATURE of the transactions giving rise to deferred revenue (e.g. service contracts, membership dues, licensing arrangements), and (c) the EXPECTED TIMING of revenue recognition (when the deferred revenue is expected to be earned). In practice, entities that have fully adopted ASC 606 now disclose contract liabilities (and the opening/closing balance of performance obligations) under ASC 606's far more detailed disclosure requirements (Topic 606-50), which effectively subsume what ASC 430 once required.</div></div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Related Topics</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd"><div class="ctitle cd">Cross-reference map</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 606</span><span>The current, authoritative revenue standard that has superseded ASC 430 for all transactions within its scope — the primary reference for any deferred-revenue or contract-liability question today</span></div>
+      <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 450</span><span>Contingencies — if a refund or return obligation related to a deferred revenue arrangement is probable and estimable, ASC 450 may impose additional liability recognition</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 220</span><span>Reporting Comprehensive Income — contract liabilities flow through revenue in the income statement; OCI relevance is limited for typical deferred revenue</span></div>
+      </div>
+      </div>
+      <div class="card cn"><div class="ctitle cn">Quick-reference glossary preview</div>
+      <div class="glossary-item"><div class="glossary-term">Contract liability</div><div class="glossary-def">An entity's obligation to transfer goods or services to a customer for which the customer has already paid (or is required to pay). ASC 606's replacement for the concept of deferred revenue.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Deferred revenue</div><div class="glossary-def">The ASC 430-era term for cash received before revenue is earned — now recast as a contract liability under ASC 606 for transactions within that standard's scope.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+
+    <Glossary entries={[
+      { term: "Contract liability (ASC 606 equivalent)", definition: "The obligation that arises when a customer pays before the entity has satisfied a performance obligation — the ASC 606 term effectively replacing deferred revenue/ASC 430 for transactions within scope." },
+      { term: "Deferred revenue", definition: "A liability representing unearned revenue — cash or other consideration received from customers before the entity satisfies its performance obligations. Largely superseded as a recognised GAAP concept by ASC 606's contract-liability model." },
+      { term: "Earnings process", definition: "The process of delivering goods or services to a customer, the completion of which triggers revenue recognition, reducing the deferred revenue balance." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.ASC430 || []} />
+  </section>
+</StandardPageLayout>
+

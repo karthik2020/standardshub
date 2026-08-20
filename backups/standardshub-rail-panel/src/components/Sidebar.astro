@@ -1,0 +1,229 @@
+---
+/*
+Sidebar
+
+Primary navigation sidebar for the standards library.
+
+Props:
+- none (uses Astro.url.pathname for active state)
+
+ Renders collapsible sections for IAS, IFRS, Ind AS, and US GAAP with live search, count badges, and footer shortcuts. Active section expands automatically based on the current route.
+*/
+
+import standards from "../data/standards.json";
+import NavLink from "./NavLink.astro";
+import {
+  Search,
+  BookOpen,
+  LibraryBig,
+  Files,
+  X,
+  BookText,
+  Clock,
+  ChevronRight,
+  Leaf,
+  Building2,
+  ScrollText,
+} from "@lucide/astro";
+import { FRAMEWORK_CONFIG, FRAMEWORK_ORDER } from "../data/frameworks";
+
+const lucideIconMap: Record<string, any> = {
+  BookText,
+  LibraryBig,
+  Files,
+  Leaf,
+  BookOpen,
+  Building2,
+  ScrollText,
+};
+
+const currentPath = Astro.url.pathname;
+---
+
+<aside class="sidebar">
+  <div class="sidebar-search">
+    <div class="search-box">
+      <div class="search-input-wrapper">
+        <Search size={15} class="search-icon" />
+
+        <div class="search-placeholder" id="search-placeholder"></div>
+
+        <input
+          class="search-input"
+          id="standard-search"
+          type="text"
+          placeholder=""
+          aria-label="Filter standards"
+          autocomplete="off"
+        />
+
+        <button class="search-action" id="search-action" type="button" aria-label="Clear filter" title="Clear filter">
+          <X size={15} />
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar-scroll">
+    <nav aria-label="Standards Library">
+    <div class="sidebar-heading">STANDARDS LIBRARY</div>
+
+    {
+      FRAMEWORK_ORDER.map((id) => {
+        const framework = FRAMEWORK_CONFIG[id];
+        const codeToKey = (code: string) => {
+          if (code === "Ind AS") return "IndAS";
+          if (code === "IFRS Sustainability") return "IFRSSustainability";
+          if (code === "IFRS Publications") return "IFRSPublications";
+          if (code === "IFRS for SMEs") return "IFRSForSMEs";
+          if (code === "IFRIC") return "IFRIC";
+          if (code === "SIC") return "SIC";
+          if (code === "US GAAP") return "USGAAP";
+          return code;
+        };
+        const sectionStandards = standards[codeToKey(framework.code)] ?? [];
+        const IconComponent = lucideIconMap[framework.lucideIcon];
+
+        return (
+          <details class={`section section-${framework.id}`} data-section={framework.id} open={currentPath.startsWith(framework.route)}>
+            <summary class="sidebar-section-header">
+              <div class="section-title">
+                {IconComponent && <IconComponent size={17} strokeWidth={2} />}
+                <a href={framework.route} class="sidebar-framework-link">
+                  <span>{framework.displayName}</span>
+                </a>
+              </div>
+
+              <div class="section-actions">
+                <span class={`count-badge badge-${framework.id}`}>
+                  {sectionStandards.length}
+                </span>
+
+                <ChevronRight class="section-chevron" size={16} strokeWidth={2.4} />
+              </div>
+            </summary>
+
+            <div class="section-items">
+              {
+                framework.categories
+                  ? framework.categories.map((category) => {
+                      const activeItems = sectionStandards.filter(
+                        (item: any) => !item.status && item.category === category
+                      );
+                      const historicalItems = sectionStandards.filter(
+                        (item: any) => item.status && item.category === category
+                      );
+                      if (activeItems.length === 0 && historicalItems.length === 0) {
+                        return null;
+                      }
+                      return (
+                        <Fragment>
+                          <li class="sidebar-category-label">
+                            {category}
+                          </li>
+                          <ul class="sidebar-items">
+                            {
+                              activeItems.map((item: any) => (
+                                <li>
+                                  <NavLink
+                                    href={item.url}
+                                    title={item.title}
+                                    section={framework.id}
+                                    code={item.code}
+                                    standardTitle={item.title}
+                                  >
+                                    {item.code}
+                                  </NavLink>
+                                </li>
+                              ))
+                            }
+                          </ul>
+                          {
+                            historicalItems.length > 0 && (
+                              <ul class="sidebar-items">
+                                <li class="sidebar-group-label">Historical Standards</li>
+                                {
+                                  historicalItems.map((item: any) => (
+                                    <li>
+                                      <NavLink
+                                        href={item.url}
+                                        title={item.title}
+                                        section={framework.id}
+                                        code={item.code}
+                                        standardTitle={item.title}
+                                      >
+                                        {item.code}
+                                      </NavLink>
+                                    </li>
+                                  ))
+                                }
+                              </ul>
+                            )
+                          }
+                        </Fragment>
+                      );
+                    })
+                  : (
+                    <>
+                      <ul class="sidebar-items">
+                        {
+                          sectionStandards.filter((item: any) => !item.status).map((item: any) => (
+                            <li>
+                              <NavLink
+                                href={item.url}
+                                title={item.title}
+                                section={framework.id}
+                                code={item.code}
+                                standardTitle={item.title}
+                              >
+                                {item.code}
+                              </NavLink>
+                            </li>
+                          ))
+                        }
+                      </ul>
+                      <ul class="sidebar-items">
+                        <li class="sidebar-group-label">Historical Standards</li>
+                        {
+                          sectionStandards.filter((item: any) => item.status).map((item: any) => (
+                            <li>
+                              <NavLink
+                                href={item.url}
+                                title={item.title}
+                                section={framework.id}
+                                code={item.code}
+                                standardTitle={item.title}
+                              >
+                                {item.code}
+                              </NavLink>
+                            </li>
+                          ))
+                        }
+                      </ul>
+                    </>
+                  )
+              }
+            </div>
+          </details>
+        );
+      })
+    }
+
+    <div class="sidebar-empty" id="sidebar-empty" hidden>
+      <div class="sidebar-empty-title">No matching standards</div>
+      <div class="sidebar-empty-text">Try another standard number or keyword.</div>
+      <div class="sidebar-empty-examples">
+        <span>IAS 16</span>
+        <span>Revenue</span>
+        <span>Lease</span>
+      </div>
+    </div>
+    </nav>
+  </div>
+  <footer class="sidebar-footer">
+    <a href="#" class="footer-link">
+      <Clock size={17} strokeWidth={2} />
+      <span>Recent</span>
+    </a>
+  </footer>
+</aside>

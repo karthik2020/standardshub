@@ -1,0 +1,43 @@
+---
+/*
+Navigation link
+
+Active-state aware link for the sidebar standards list.
+
+Props:
+- href
+- title (optional)
+- section (optional)
+- code (optional)
+- standardTitle (optional)
+
+Adds framework-specific CSS class and active highlighting based on the current URL.
+*/
+
+interface Props {
+  title?: string;
+  section?: string;
+  code?: string;
+  standardTitle?: string;
+}
+
+const { href, title, section, code, standardTitle } = Astro.props;
+
+const currentPath = Astro.url.pathname;
+const isActive = currentPath === href;
+---
+
+<a
+  href={href}
+  title={title}
+  data-section={section}
+  data-code={code}
+  data-title={standardTitle}
+  class:list={["nav-link", isActive && "active", section && `nav-${section}`]}
+>
+  
+
+  <span class="nav-label">
+    <slot />
+  </span>
+</a>

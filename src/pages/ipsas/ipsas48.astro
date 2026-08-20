@@ -1,0 +1,380 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import metadata from "../../data/standards/ipsas/ipsas48.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  covers={metadata.covers}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Objective, Scope & Partial-Scope Arrangements" },
+        { id: "s2", label: "Definitions" },
+        { id: "s3", label: "Identifying the Transfer Expense Transaction" },
+        { id: "s4", label: "Without Binding Arrangements — Recognition & Measurement" },
+        { id: "s5", label: "With Binding Arrangements — Identifying Transfer Rights" },
+        { id: "s6", label: "Recognition — Transfer Right Assets & Transfer Obligation Liabilities" },
+        { id: "s7", label: "Non-Performance by the Transfer Recipient" },
+        { id: "s8", label: "Modifications to a Binding Arrangement" },
+        { id: "s9", label: "Measurement — the Transfer Consideration" },
+        { id: "s10", label: "Variable Consideration & Allocation" },
+        { id: "s11", label: "Changes in Consideration & Impairment" },
+        { id: "s12", label: "Presentation & Disclosure" },
+        { id: "s13", label: "Effective Date & Transition" },
+        { id: "s14", label: "Relationship to GFS — No IAS/IFRS Equivalent" },
+        { id: "s15", label: "Statement / Process Mapping" },
+        { id: "s16", label: "Related Standards" },
+        { id: "s17", label: "Glossary" }
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="active"
+    explanation="IPSAS 48 Transfer Expenses is the current, active standard issued by the IPSASB establishing financial reporting requirements for transfer providers providing goods, services, or other assets without receiving direct reciprocal consideration. Effective for periods beginning on or after 1 January 2026."
+    historical="IPSAS 48 is the mirror-image companion standard to IPSAS 47 Revenue. Because IFRS does not contain an equivalent standard for the giving entity's perspective in non-exchange transfers and grants, the IPSASB developed IPSAS 48 independently, drawing concepts from Government Finance Statistics (GFS) and aligning its binding arrangement mechanisms symmetrically with IPSAS 47."
+    link=""
+    linkText=""
+  />
+
+  <!-- ============ SECTION 1 — OBJECTIVE, SCOPE & PARTIAL-SCOPE ARRANGEMENTS ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; Partial-Scope Arrangements (paras. 1–5)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Objective — the mirror image of IPSAS 47</div>
+      <div class="principle">Establishes principles a TRANSFER PROVIDER applies to report useful information about the nature, amount, timing, and uncertainty of expenses and cash flows from transfer expense transactions — requiring the entity to determine the transaction TYPE, then apply the corresponding accounting.</div>
+      <div class="cross-list">
+        <span>Leases (IPSAS 43); contributions from/distributions to owners</span>
+        <span>Service concession arrangements (IPSAS 32); employee benefits (IPSAS 39)</span>
+        <span>Financial instruments, INCLUDING concessionary loans (IPSAS 41)</span>
+        <span>Social benefits (IPSAS 42); insurance contracts; share-based payments; income taxes</span>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Partial-scope binding arrangements (para. 5)</div>
+      <div class="text-supporting">Where a binding arrangement is PARTLY within this Standard's scope and partly within another's: if the OTHER Standard specifies how to separate/measure its portion, apply THAT first, then apply IPSAS 48 to whatever remains. If the other Standard does NOT specify separation, apply IPSAS 48 to the ENTIRE arrangement instead.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 — DEFINITIONS ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Definitions (paras. 6–7)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The core vocabulary — inverted from IPSAS 47</div>
+      <div class="glossary-item"><div class="glossary-term">Transfer expense</div><div class="glossary-def">An expense from a transaction, other than taxes, where an entity provides a good, service, or other asset to another entity WITHOUT directly receiving anything in return.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Transfer provider / transfer recipient</div><div class="glossary-def">The entity providing the good/service/asset / the entity receiving it, without a direct exchange either way.</div></div>
+      <div class="glossary-item glossary-item--last"><div class="glossary-term">Transfer consideration</div><div class="glossary-def">The total amount of resources an entity expects to transfer.</div></div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">The binding-arrangement pair — rights and obligations</div>
+      <div class="glossary-item"><div class="glossary-term">Transfer right</div><div class="glossary-def">An entity's enforceable right to have the transfer RECIPIENT satisfy its obligation as specified, or face the binding arrangement's consequences.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Transfer obligation</div><div class="glossary-def">An entity's OWN obligation in a binding arrangement to transfer resources in a specified manner.</div></div>
+      <div class="glossary-item glossary-item--last"><div class="glossary-term">Stand-alone consideration</div><div class="glossary-def">The amount an entity intends to compensate the transfer recipient for satisfying each of its obligations.</div></div>
+      <div class="note">Binding arrangement, compliance obligation, taxes, and third-party beneficiary are IMPORTED directly from IPSAS 47 (para. 7) — this Standard doesn't redefine them.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 — IDENTIFYING THE TRANSFER EXPENSE TRANSACTION ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Identifying the Transfer Expense Transaction (paras. 8–17)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The gateway: asset recognition drives the accounting</div>
+      <div class="text-supporting">Accounting turns on whether the transfer RESULTS IN an asset. Where it does, that asset is derecognized as the entity's rights are extinguished. Where it doesn't, a transfer expense is recognized either when the entity LOSES CONTROL of the resources, or when it incurs an obligation and recognizes a liability for it (para. 8). Whether a BINDING ARRANGEMENT exists is itself an input into both tests.</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">The same enforceability test as IPSAS 47</div>
+      <div class="dot-list">
+        <span>WITHOUT a binding arrangement &rarr; apply paras. 18–20 (&sect;4)</span>
+        <span>WITH a binding arrangement &rarr; apply paras. 21–43 (&sect;5–&sect;11)</span>
+      </div>
+      <div class="note">Enforceability requires legal or equivalent means to hold parties accountable — substance over form, written/oral/implied practice, all mirroring IPSAS 47's own binding-arrangement framework exactly (paras. 10–17).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 — WITHOUT BINDING ARRANGEMENTS: RECOGNITION & MEASUREMENT ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Transfer Expenses Without Binding Arrangements (paras. 18–20)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Two paths — a provision, or simple derecognition</div>
+      <div class="formula-box">
+        <div class="f-eq">Constructive/legal obligation exists &rarr; recognize an IPSAS 19 PROVISION (which itself recognizes the expense); resources later transferred SETTLE it</div>
+      </div>
+      <div class="formula-box">
+        <div class="f-eq">No such obligation &rarr; recognize the expense when the entity CEASES TO CONTROL the resources — usually the transfer date</div>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Measurement</div>
+      <div class="dot-list">
+        <span>Provision route &rarr; IPSAS 19 paras. 44–72 govern initial AND subsequent measurement</span>
+        <span>Cease-to-control route &rarr; measure the expense at the transferred resources' CARRYING AMOUNT</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 — WITH BINDING ARRANGEMENTS: IDENTIFYING TRANSFER RIGHTS ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>With Binding Arrangements — Identifying Transfer Rights (para. 21)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">The mirror image of IPSAS 47's compliance obligation</div>
+      <div class="formula-box">
+        <div class="f-eq">At inception, identify each DISTINCT transfer right = the entity's right to have the recipient satisfy a SEPARATE obligation — OR a series of rights with substantially the same characteristics/risks and the SAME satisfaction pattern</div>
+      </div>
+      <div class="text-supporting">Where IPSAS 47 asks "what has the ENTITY promised to deliver?", IPSAS 48 asks "what has the RECIPIENT promised to satisfy, that the entity can enforce?" — the SAME binding arrangement, viewed from the opposite side.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 — RECOGNITION: TRANSFER RIGHT ASSETS & TRANSFER OBLIGATION LIABILITIES ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Recognition — Transfer Right Assets &amp; Transfer Obligation Liabilities (paras. 22–25)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Who performs FIRST determines the accounting</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1.9fr;"><span>Sequence</span><span>Result</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>ENTITY transfers resources FIRST, before the recipient performs</span><span>Derecognize the transferred resources; recognize a TRANSFER RIGHT ASSET for the enforceable right to have the recipient later perform</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>RECIPIENT satisfies its obligations FIRST, before the entity transfers</span><span>Recognize a TRANSFER OBLIGATION LIABILITY for the entity's own now-crystallized obligation to transfer resources</span></div>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Expense recognition — two triggers (para. 24)</div>
+      <div class="check-list">
+        <span>When (or as) a TRANSFER RIGHT ASSET is DERECOGNIZED — extinguished as the recipient satisfies the binding arrangement's terms</span>
+        <span>When a TRANSFER OBLIGATION LIABILITY is RECOGNIZED</span>
+      </div>
+      <div class="note">A transfer right is extinguished once the entity no longer has enforceable rights under the binding arrangement (para. 25) — mirroring precisely how IPSAS 47's compliance obligations are satisfied over time or at a point in time, but from the payer's perspective.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 — NON-PERFORMANCE BY THE TRANSFER RECIPIENT ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Derecognition Due to Non-Performance by the Transfer Recipient (paras. 26, 43)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd">
+      <div class="ctitle cd">Converting to a financial asset — where cash recovery is enforceable</div>
+      <div class="formula-box">
+        <div class="f-eq">If the recipient becomes UNABLE or UNWILLING to perform, AND the entity has an enforceable, UNCONDITIONAL right to cash/another financial asset instead &rarr; derecognize the transfer right asset, recognize a FINANCIAL ASSET, subsequently measured under IPSAS 41</div>
+      </div>
+    </div>
+
+    <div class="card cs">
+      <div class="ctitle cs">Otherwise — an impairment question, not a derecognition one</div>
+      <div class="text-supporting">Where the terms, legal system, or circumstances DON'T support that financial-asset conversion, the transfer right asset instead gets tested for IMPAIRMENT under IPSAS 21 (non-cash-generating) (para. 43) — since a transfer right asset, by its nature, doesn't generate cash returns the way IPSAS 26 assumes.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 — MODIFICATIONS TO A BINDING ARRANGEMENT ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Modifications to a Binding Arrangement (paras. 27–29)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Separate arrangement — the two-condition test (para. 28)</div>
+      <div class="check-list">
+        <span>Scope INCREASES — one or more ADDITIONAL transfer rights arise, from the recipient accepting new/increased obligations</span>
+        <span>Transfer consideration INCREASES by an amount reflecting the VALUE of those additional rights, compensating the recipient for the added obligations</span>
+      </div>
+      <div class="note">Mirrors IPSAS 47's own modification test (&sect;7 of that Standard's poster) almost exactly, adapted for the payer's side.</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Blended treatment — a cumulative catch-up</div>
+      <div class="text-supporting">If NOT a separate arrangement, the entity RE-ESTIMATES total transfer consideration and its allocation between extinguished and unextinguished transfer rights as at the modification date. The DIFFERENCE between the newly-determined accumulated transfer expense and what was PREVIOUSLY recognized is recognized in surplus or deficit immediately, as at the modification date (para. 29).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 — MEASUREMENT: THE TRANSFER CONSIDERATION ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Measurement — the Transfer Consideration (paras. 30–34)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Carrying amount, not fair value</div>
+      <div class="formula-box">
+        <div class="f-eq">Transfer consideration = total CARRYING AMOUNT of resources transferred (or obligated to transfer), including the effects of variable consideration</div>
+      </div>
+      <div class="text-supporting">A deliberate contrast with IPSAS 47's fair-value-oriented transaction consideration — since the transfer provider is giving something it ALREADY holds at a known carrying amount, rather than receiving something new to be valued.</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Initial measurement of each item</div>
+      <div class="dot-list">
+        <span>Transfer RIGHT ASSET (entity transfers first) &rarr; measured at the TOTAL carrying amount of resources ALREADY transferred (para. 31)</span>
+        <span>Transfer EXPENSE on extinguishment &rarr; the transfer consideration amount ALLOCATED to that specific extinguished right (para. 32)</span>
+        <span>Transfer OBLIGATION LIABILITY (recipient performs first) &rarr; the total carrying amount the entity is OBLIGATED to transfer (para. 33)</span>
+      </div>
+      <div class="note">Assumes the recipient will perform under the EXISTING arrangement, with no cancellation/renewal/modification (para. 34) — the same "as-is" assumption IPSAS 47 makes for the transaction consideration.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 — VARIABLE CONSIDERATION & ALLOCATION ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Variable Consideration &amp; Allocation to Transfer Rights (paras. 35–39)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Variable amounts — routed through IPSAS 19, not estimated directly here</div>
+      <div class="text-supporting">Discounts, rebates, refunds, credits, price concessions, incentives, bonuses, penalties, or contingency on a future event — SAME variability sources as IPSAS 47 (para. 35). A genuinely different mechanic though: variable consideration in a transfer expense context typically creates a liability of UNCERTAIN TIMING/AMOUNT, meeting IPSAS 19's PROVISION definition (para. 36). Recognized/measured only when it's MORE LIKELY THAN NOT a present obligation exists, per IPSAS 19 paras. 44–72 (para. 37) — a HIGHER bar than IPSAS 47's own "highly probable no reversal" constraint.</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Allocation — identified, or proportionate</div>
+      <div class="formula-box">
+        <div class="f-eq">Allocate to each distinct transfer right by its STAND-ALONE CONSIDERATION, adjusted for variable amounts</div>
+      </div>
+      <div class="dot-list">
+        <span>Variable consideration identifiable with SPECIFIC rights &rarr; allocate directly to those</span>
+        <span>NOT identifiable with specific rights &rarr; allocate PROPORTIONATELY across all rights, by their share of the (non-variable) transfer consideration (para. 39)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 — CHANGES IN CONSIDERATION & IMPAIRMENT ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Changes in the Transfer Consideration (paras. 40–42)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Two different causes, two different treatments</div>
+      <div class="dot-list">
+        <span><strong>NOT from a modification</strong> (e.g. an uncertain event resolves) &rarr; allocate the change to transfer right assets/obligation liabilities on the SAME basis used at inception; amounts allocated to an ALREADY-EXTINGUISHED right go to surplus or deficit immediately, as an expense or a reduction of one (para. 41)</span>
+        <span><strong>FROM a modification</strong> &rarr; apply the &sect;8 modification mechanics instead (para. 42)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 — PRESENTATION & DISCLOSURE ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Presentation &amp; Disclosure Requirements (paras. 44–61)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Presentation, and the disclosure objective</div>
+      <div class="text-supporting">Provisions from non-binding-arrangement obligations follow IPSAS 19's OWN presentation requirements (para. 44). Disclosure objective: enable users to understand nature, amount, timing, and uncertainty — covering (a) transfer expenses and related balances, (b) transfer arrangements, and (c) significant judgments on transfer right asset recognition (para. 50). IPSAS 1's materiality/aggregation guidance governs throughout (para. 51).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Key required items</div>
+      <div class="check-list">
+        <span>Transfer expenses incorporated into the IPSAS 1 expense analysis, face or notes (para. 53)</span>
+        <span>Qualitative/quantitative info on SIGNIFICANT transfers, with and without binding arrangements (para. 54)</span>
+        <span>Where a transfer right asset converted to a FINANCIAL ASSET (&sect;7) &rarr; IPSAS 30 financial asset disclosures apply (para. 55)</span>
+        <span>Transfer OBLIGATION liabilities for cash &rarr; IPSAS 30 payables disclosures (amortized cost) (para. 56)</span>
+        <span>Variable-consideration or non-binding-arrangement liabilities &rarr; IPSAS 19 provisions disclosures (paras. 57–58)</span>
+        <span>PURPOSE, payment terms, resource nature, and risks/uncertainties for binding AND non-binding transfer arrangements — aggregable by similar nature (paras. 59–60)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 — EFFECTIVE DATE & TRANSITION ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Effective Date &amp; Transition (paras. 62–64)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Twinned with IPSAS 47</div>
+      <div class="principle">Periods beginning on/after <strong>1 January 2026</strong> — earlier application requires SIMULTANEOUS adoption of IPSAS 47 (para. 62). One of the newest Standards in the entire Handbook, issued as IPSAS 47's direct companion.</div>
+      <div class="dot-list">
+        <span>Applied PROSPECTIVELY to transfers occurring on/after the date of initial application, OR</span>
+        <span>Applied RETROSPECTIVELY under IPSAS 3 to each prior period presented</span>
+      </div>
+      <div class="note">An entity CHOOSES between these two transition methods (para. 64) — a genuine option, unlike most Standards' single mandated transition path.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 — RELATIONSHIP TO GFS: NO IAS/IFRS EQUIVALENT ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Relationship to GFS — No IAS/IFRS Equivalent</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">A genuinely public-sector-only Standard</div>
+      <div class="principle">IPSAS 48 has NO IFRS Standard equivalent — IAS 20 (government grants) addresses only the RECIPIENT's accounting, and IFRS has never developed a standard for the GIVING entity's side. This is a genuine gap the IPSASB filled independently, benchmarked instead against Government Finance Statistics (GFS) reporting guidelines.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1.9fr;"><span>Topic</span><span>Comparison</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Definitional lineage</span><span>IPSAS 48's "transfer expenses" definition is DRAWN from GFS's "transfers" concept, but reframed from the transfer PROVIDER's perspective</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Classification driver</span><span>IPSAS 48 is driven by BINDING ARRANGEMENT existence; GFS is driven primarily by whether the transfer is COMPULSORY or VOLUNTARY — the two frameworks CAN converge on the same outcome, but not always</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Grant categorization</span><span>IPSAS 48 splits by binding-arrangement status (with/without, including capital transfers); GFS splits grants into CURRENT vs. CAPITAL, regardless of binding-arrangement status — different outcomes are possible</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Timing of expense recognition</span><span>IPSAS 48: when the enforceable transfer RIGHT is extinguished. GFS: based on the TYPE of grant</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 15 — STATEMENT / PROCESS MAPPING ============ -->
+  <div class="section-header" id="s15"><span class="num">15</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">The master decision map</div>
+      <ol class="ordered-list">
+        <li>Is there a BINDING ARRANGEMENT? No &rarr; &sect;4 (provision, or cease-to-control expense). Yes &rarr; continue (&sect;3)</li>
+        <li>Identify each distinct TRANSFER RIGHT — the entity's enforceable right to have the recipient perform (&sect;5)</li>
+        <li>WHO performs first? Entity transfers first &rarr; TRANSFER RIGHT ASSET. Recipient performs first &rarr; TRANSFER OBLIGATION LIABILITY (&sect;6)</li>
+        <li>Recipient unable/unwilling to perform? &rarr; convert to a FINANCIAL ASSET if an enforceable unconditional cash right exists; otherwise test for IMPAIRMENT (&sect;7)</li>
+        <li>Measure the TRANSFER CONSIDERATION at carrying amount, including variable-consideration effects routed through IPSAS 19 (&sect;9, &sect;10)</li>
+        <li>ALLOCATE consideration across transfer rights by stand-alone consideration, adjusted for variable amounts (&sect;10)</li>
+        <li>Recognize the expense as the transfer right asset is DERECOGNIZED or the transfer obligation liability is RECOGNIZED (&sect;6)</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="grid grid-spaced">
+    <div class="card cs span2">
+      <div class="ctitle cs">Concept-to-statement mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>IPSAS 48 concept</span><span>Statement(s)</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Transfer right asset</span><span><span class="badge bs">SOFP</span></span><span>At the carrying amount of resources already transferred</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Transfer obligation liability</span><span><span class="badge bs">SOFP</span></span><span>At the carrying amount the entity is obligated to transfer</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Transfer expense</span><span><span class="badge bp">SOFPerf</span></span><span>On extinguishment of a transfer right, or liability recognition</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Variable-consideration provision</span><span><span class="badge bs">SOFP</span></span><span>Per IPSAS 19, only when more-likely-than-not</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Converted financial asset (non-performance)</span><span><span class="badge bs">SOFP</span></span><span>Subsequently measured under IPSAS 41</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Transfer arrangements, judgments</span><span><span class="badge be">Notes</span></span><span>Mandatory disclosures, paras. 53–61</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 16 — RELATED STANDARDS ============ -->
+  <div class="section-header" id="s16"><span class="num">16</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How IPSAS 48 connects across the IPSAS body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.7fr 2.2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 1</span><span>Expense analysis, materiality, and aggregation disclosure principles (&sect;12)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 3</span><span>Governs the retrospective transition option (&sect;13)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 19</span><span>Governs non-binding-arrangement obligation provisions AND variable-consideration provisions — the central measurement engine throughout this Standard (&sect;4, &sect;10, &sect;12)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 21</span><span>Impairment testing for a transfer right asset that isn't converted to a financial asset (&sect;7)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 30</span><span>Disclosure requirements for converted financial assets and amortized-cost payables (&sect;12)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 41</span><span>Subsequent measurement of a financial asset converted from a non-performing transfer right (&sect;7)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 47</span><span>The direct mirror-image Standard — the recipient's own accounting for the SAME binding arrangements, with simultaneous adoption required (&sect;1, &sect;13)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 17 — GLOSSARY ============ -->
+  <div class="section-header" id="s17"><span class="num">17</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Transfer expense</div><div class="glossary-def">An expense from a transaction, other than taxes, where an entity provides a good, service, or other asset without directly receiving anything in return.</div></div>
+      <div class="glossary-item glossary-item--last"><div class="glossary-term">Transfer provider / recipient</div><div class="glossary-def">The entity giving, and the entity receiving, in a transfer transaction.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Transfer right</div><div class="glossary-def">An entity's enforceable right to have the transfer recipient satisfy its obligation, or face the binding arrangement's consequences.</div></div>
+      <div class="glossary-item glossary-item--last"><div class="glossary-term">Transfer obligation</div><div class="glossary-def">An entity's own obligation in a binding arrangement to transfer resources in a specified manner.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Transfer consideration</div><div class="glossary-def">The total amount of resources an entity expects to transfer.</div></div>
+      <div class="glossary-item glossary-item--last"><div class="glossary-term">Capital transfer (provider perspective)</div><div class="glossary-def">An outflow from a binding arrangement specifying the recipient will acquire or construct a controlled non-financial asset.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bs">SOFP</span> Statement of financial position
+      <span class="badge bp">SOFPerf</span> Statement of financial performance
+      <span class="badge be">Notes</span> Notes to the financial statements
+    </div>
+  </div>
+</StandardPageLayout>

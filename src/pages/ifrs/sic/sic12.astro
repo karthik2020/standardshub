@@ -1,0 +1,89 @@
+---
+import StandardPageLayout from "../../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../../components/FinancialStatementKey.astro";
+import Glossary from "../../../components/Glossary.astro";
+import PageToc from "../../../components/PageToc.astro";
+import LifecycleNotice from "../../../components/StandardLifecycleNotice.astro";
+import "../../../styles/standards-poster.css";
+import "../../../styles/extended.css";
+import HistoryTimeline from "../../../components/HistoryTimeline.astro";
+import history from "../../../data/history.json";
+import metadata from "../../../data/standards/sic/sic12.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType="IFRS"
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "What SIC-12 Addressed (Historical)" },
+        { id: "s2", label: "The Conclusion It Reached (Historical)" },
+        { id: "s3", label: "Where This Guidance Lives Today" },
+        { id: "s4", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="historical-reference"
+    explanation="SIC-12 was superseded in May 2011 when the IASB issued IFRS 10 Consolidated Financial Statements, which introduced a single unified control model for all investees and replaced the substance-based indicators approach of SIC-12."
+    historical="This page is retained for historical and comparative reference. Entities should refer to the current standard that superseded this interpretation for authoritative guidance."
+    link="/ifrs/ifrs10"
+    linkText="IFRS 10 Consolidated Financial Statements"
+  />
+
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>What SIC-12 Addressed (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">What SIC-12 addressed</div>
+        <div class="principle">SIC-12 addressed when a sponsor should consolidate a special purpose entity (SPE) even though it did not hold a majority of the voting rights. It provided substance-based control indicators to determine whether the sponsor had the power to govern the financial and operating policies of the SPE.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>The Conclusion It Reached (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">The conclusion it reached</div>
+        <div class="principle">SIC-12 concluded that an SPE should be consolidated when the substance of the relationship indicated that the sponsor controlled the SPE. This was assessed using facts and circumstances including power over the majority of the SPE's activities, rights to obtain the majority of the SPE's benefits, and rights to retain the majority of the residual interests in the SPE.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Where This Guidance Lives Today</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card">
+        <div class="ctitle">Where this guidance lives today</div>
+        <div class="td-table">
+          <div class="tr"><span>Superseded by</span><span>IFRS 10 Consolidated Financial Statements</span></div>
+          <div class="tr alt"><span>Why withdrawn</span><span>IFRS 10 introduced a single unified control model for all investees</span></div>
+          <div class="tr"><span>Current status</span><span>Superseded</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Special purpose entity", definition: "An entity created for a specific and narrow purpose, often with limited operating flexibility, whose business activities are predetermined by the sponsor." },
+      { term: "Control indicators", definition: "Facts and circumstances assessed under SIC-12 to determine whether an entity controls an SPE, including power over activities, rights to benefits, and rights to residual interests." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.SIC12} />
+  </section>
+</StandardPageLayout>
+
+
+
+

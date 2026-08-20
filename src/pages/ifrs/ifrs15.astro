@@ -1,17 +1,289 @@
+﻿---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/ifrs/ifrs15.json";
 ---
-import StandardLayout from "../../layouts/StandardLayout.astro";
----
 
-<StandardLayout title="IAS 2">
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope & Applicability" },
+        { id: "s3", label: "Steps 1 & 2" },
+        { id: "s4", label: "Step 3 — Transaction Price" },
+        { id: "s5", label: "Step 4 — Allocation" },
+        { id: "s6", label: "Step 5 — Recognition" },
+        { id: "s7", label: "Contract Costs" },
+        { id: "s8", label: "Principal vs Agent" },
+        { id: "s9", label: "Disclosure" },
+        { id: "s10", label: "Critical Judgments & Estimates" },
+        { id: "s11", label: "IFRS vs US GAAP" },
+        { id: "s12", label: "Statement Mapping" },
+        { id: "s13", label: "Related Standards" },
+        { id: "s14", label: "Glossary" },
+        { id: "history", label: "History & Development" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
 
-<h1>IAS 2</h1>
+    <!-- ============ SECTION 1 ============ -->
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Why revenue is recognised as CONTROL transfers</div>
+        <div class="principle">The Conceptual Framework recognises income when an entity's assets increase or liabilities decrease, resulting in an increase in equity (other than from owner contributions). IFRS 15 operationalises this for revenue specifically: revenue is recognised as the entity SATISFIES a performance obligation by TRANSFERRING CONTROL of a good or service to the customer — replacing the old "risks and rewards" test with a single, principles-based CONTROL-based model.</div>
+        <div class="elabel">HOW IFRS 15 MAPS TO THE FRAMEWORK</div>
+        <div class="check-list">
+          <span><strong>Faithful representation</strong> — revenue reflects the CONSIDERATION the entity expects to be ENTITLED TO in exchange for goods/services, not merely cash received</span>
+          <span><strong>Comparability</strong> — a SINGLE five-step model replaced numerous industry- and transaction-specific revenue standards (IAS 18, IAS 11, and various interpretations), improving consistency across industries</span>
+          <span><strong>Relevance</strong> — recognising variable consideration only to the extent HIGHLY PROBABLE of no significant reversal (the "constraint," Section 4) balances relevance against reliability</span>
+        </div>
+        <div class="note">IFRS 15 was developed JOINTLY with the US FASB, replacing DOZENS of previously disparate revenue recognition standards and interpretations with one converged, principles-based model.</div>
+      </div>
+      <div class="card cs">
+        <div class="ctitle cs">The five-step model, at a glance</div>
+        <div class="formula-box">
+          <div class="f-eq">1. Identify the contract → 2. Identify performance obligations → 3. Determine the transaction price → 4. Allocate the transaction price → 5. Recognise revenue as obligations are satisfied</div>
+        </div>
+        <div class="callout info callout--chip callout--flush">Every revenue transaction, in every industry, is analysed through this SAME five-step sequence — a direct embodiment of the Framework's comparability objective.</div>
+      </div>
+    </div>
 
-  <p>
-Inventories
-  </p>
+    <!-- ============ SECTION 2 ============ -->
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What IFRS 15 covers</div>
+        <div class="principle">IFRS 15 applies to ALL contracts with customers, EXCEPT: lease contracts (IFRS 16); insurance contracts (IFRS 17); financial instruments (IFRS 9); and certain non-monetary exchanges between entities in the SAME line of business to facilitate sales to customers/potential customers.</div>
+        <div class="note">A "customer" is a party that has CONTRACTED with an entity to obtain goods/services that are an OUTPUT of the entity's ordinary activities, in exchange for consideration — collaborative arrangements with a partner sharing risks/rewards (rather than purchasing an output) generally fall OUTSIDE IFRS 15's scope.</div>
+      </div>
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions you must know</div>
+        <div class="glossary-item"><div class="glossary-term">Performance obligation</div><div class="glossary-def">A promise in a contract to transfer to the customer a good/service (or bundle) that is DISTINCT.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Transaction price</div><div class="glossary-def">The amount of consideration an entity expects to be ENTITLED TO in exchange for transferring promised goods/services, excluding amounts collected on behalf of third parties.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Stand-alone selling price</div><div class="glossary-def">The price at which an entity would sell a promised good/service SEPARATELY to a customer — the basis for allocating the transaction price.</div></div>
+      </div>
+    </div>
 
-  <p>
-    Content coming soon...
-  </p>
+    <!-- ============ SECTION 3 ============ -->
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Step 1 &amp; 2 — Identify the Contract and Performance Obligations</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">The contract criteria, and the "distinct" test</div>
+        <div class="principle">A contract exists only if: the parties have APPROVED the contract; each party's rights regarding goods/services are IDENTIFIABLE; PAYMENT terms are identifiable; the contract has COMMERCIAL SUBSTANCE; and COLLECTION of consideration is PROBABLE. A good/service is DISTINCT if the customer can benefit from it either on its own or with other readily available resources, AND it is separately identifiable from other promises in the contract.</div>
+        <div class="worked worked--flush">
+          <div class="wk-title">Example 1: Identifying distinct performance obligations</div>
+          <div class="wk-body">A software company sells a perpetual software licence bundled with 2 years of technical support and unspecified future updates. The licence is fully functional on its own; the support and updates are routinely sold separately by the vendor and other providers.</div>
+          <div class="wk-answer">This contract likely contains THREE distinct performance obligations: (1) the software licence, (2) technical support, and (3) unspecified future updates — each is capable of being distinct AND separately identifiable, since the customer can benefit from each on its own or with readily available resources, and they are not highly interdependent or integrated.</div>
+        </div>
+      </div>
+    </div>
 
-</StandardLayout>
+    <!-- ============ SECTION 4 ============ -->
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Step 3 — Determine the Transaction Price</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Variable consideration and the constraint</div>
+        <div class="principle">Variable consideration (discounts, rebates, refunds, credits, performance bonuses/penalties) is estimated using EITHER the EXPECTED VALUE method (probability-weighted) or the MOST LIKELY AMOUNT method (whichever better predicts the entitled consideration) — but INCLUDED in the transaction price ONLY to the extent HIGHLY PROBABLE that a SIGNIFICANT REVERSAL will NOT occur when the uncertainty resolves (the "constraint").</div>
+        <div class="worked worked--flush">
+          <div class="wk-title">Example 2: Applying the variable consideration constraint</div>
+          <div class="wk-body">A construction company enters a contract with a $10,000,000 base price plus a $2,000,000 bonus if completed 30 days early. Based on historical performance on similar projects, management estimates an 80% probability of achieving the bonus, but the project has genuine, significant uncertainty (weather-dependent activities not yet begun).</div>
+          <div class="wk-answer">Even though the EXPECTED VALUE would suggest including 2,000,000 × 80% = $1,600,000, the constraint requires the entity to assess whether it is HIGHLY PROBABLE no SIGNIFICANT reversal will occur — given the genuine remaining uncertainty, the entity may conclude ONLY the $10,000,000 base price should be included at this early stage, with the bonus recognised LATER as uncertainty resolves.</div>
+        </div>
+        <div class="callout warn callout--chip callout--flush">The constraint is a DELIBERATE reliability safeguard — without it, entities could recognise highly speculative variable consideration prematurely, overstating revenue before genuine certainty exists.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 5 ============ -->
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Step 4 — Allocate the Transaction Price</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Relative stand-alone selling price basis</div>
+        <div class="principle">The transaction price is allocated to EACH performance obligation in proportion to its RELATIVE STAND-ALONE SELLING PRICE — estimated (if not directly observable) using an adjusted market assessment, expected cost plus margin, or residual approach.</div>
+        <div class="worked worked--flush">
+          <div class="wk-title">Example 3: Allocating a bundled transaction price</div>
+          <div class="wk-body">Continuing Example 1: total contract price is $12,000. Stand-alone selling prices: licence $9,000, support $2,000, updates $1,500 (total stand-alone: $12,500).</div>
+          <div class="wk-answer">
+            <strong>Licence</strong> = 12,000 × (9,000/12,500) = <strong>$8,640</strong><br>
+            <strong>Support</strong> = 12,000 × (2,000/12,500) = <strong>$1,920</strong><br>
+            <strong>Updates</strong> = 12,000 × (1,500/12,500) = <strong>$1,440</strong><br>
+            Total allocated = $12,000 (the overall $500 bundle discount is spread PROPORTIONATELY across all three obligations).
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 6 ============ -->
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Step 5 — Recognise Revenue</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Point in time vs over time</div>
+        <div class="principle">Revenue is recognised OVER TIME if ONE of: the customer simultaneously receives/consumes benefits as the entity performs; the entity's performance creates/enhances an asset the customer CONTROLS as it is created; or the asset has NO ALTERNATIVE USE to the entity AND the entity has an ENFORCEABLE RIGHT to payment for performance completed to date. Otherwise, revenue is recognised at a POINT IN TIME — when control transfers.</div>
+        <div class="worked worked--flush">
+          <div class="wk-title">Example 4: Over-time recognition using percentage of completion</div>
+          <div class="wk-body">A construction company builds a custom factory (no alternative use, enforceable right to payment for work done) with a total contract price of $12,000,000 and estimated total costs of $9,000,000. At year end, costs incurred to date are $3,600,000.</div>
+          <div class="wk-answer">
+            <strong>Percentage complete</strong> = 3,600,000 / 9,000,000 = 40%<br>
+            <strong>Revenue recognised</strong> = 12,000,000 × 40% = <strong>$4,800,000</strong>, recognised OVER TIME, based on progress toward completion (an input method, using costs incurred).
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 7 ============ -->
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Contract Costs</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">Capitalising incremental costs to obtain and fulfil contracts</div>
+        <div class="text-supporting">INCREMENTAL costs of OBTAINING a contract (e.g. sales commissions) are capitalised as an asset IF the entity expects to RECOVER them — with a practical expedient to expense them immediately if the amortisation period would be ONE YEAR or less. Costs to FULFIL a contract not covered by another Standard are capitalised if they relate DIRECTLY to a contract, generate/enhance resources used to satisfy future performance obligations, and are expected to be RECOVERED.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 8 ============ -->
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Principal vs Agent</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Gross vs net revenue presentation</div>
+        <div class="text-supporting">An entity determines whether it is a PRINCIPAL (controls the good/service BEFORE transfer to the customer — recognises revenue GROSS) or an AGENT (arranges for another party to provide the good/service — recognises revenue NET, being its commission/fee only) — this assessment focuses on whether the entity CONTROLS the specified good/service before it is transferred.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 9 ============ -->
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Required disclosures</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">DISAGGREGATION &amp; CONTRACT BALANCES</div>
+            <div class="check-list">
+              <span>Revenue recognised, disaggregated into categories depicting how economic factors affect the nature/amount/timing/uncertainty of revenue and cash flows</span>
+              <span>Opening/closing balances of contract assets, contract liabilities, and receivables from contracts with customers</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">PERFORMANCE OBLIGATIONS &amp; JUDGEMENTS</div>
+            <div class="check-list">
+              <span>Information about remaining performance obligations, including the aggregate transaction price allocated to them and when revenue is expected to be recognised</span>
+              <span>Significant judgements affecting the amount/timing of revenue recognition (e.g. determining timing of satisfaction, transaction price, allocation)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 10 ============ -->
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where management judgement matters most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Identifying distinct performance obligations within a bundled contract</span>
+              <span>Determining whether revenue is recognised over time or at a point in time</span>
+              <span>Principal vs agent classification</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>Variable consideration estimates, and application of the constraint</span>
+              <span>Stand-alone selling prices where not directly observable</span>
+              <span>Percentage of completion measures for over-time recognition</span>
+            </div>
+          </div>
+        </div>
+        <div class="callout warn callout--chip callout--warn-flush">IFRS 15 is one of the MOST judgement-intensive standards for many industries (software, construction, telecoms) given the sheer variety of contract structures it must accommodate through a single principles-based model.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 11 ============ -->
+    <div class="section-header" id="s11"><span class="num">11</span><h2>IFRS vs US GAAP</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — IFRS 15 vs US GAAP (ASC 606)</div>
+        <div class="td-table">
+          <div class="th cols-12-1-1"><span>Feature</span><span>IFRS (IFRS 15)</span><span>US GAAP</span></div>
+          <div class="tr cols-12-1-1"><span>Five-step model</span><span>Identical structure</span><span>SAME five-step model — IFRS 15 and ASC 606 were developed JOINTLY and are nearly IDENTICAL</span></div>
+          <div class="tr alt cols-12-1-1"><span>Collectability threshold</span><span>"Probable" (per IFRS's own definition, generally &gt;50%)</span><span>Also "probable," but US GAAP's definition of "probable" is a HIGHER threshold (~75-80%) than IFRS's — a subtle but real difference</span></div>
+          <div class="tr cols-12-1-1"><span>Licence revenue guidance</span><span>Broadly principles-based</span><span>Slightly MORE detailed/prescriptive application guidance for licences of intellectual property</span></div>
+        </div>
+        <div class="note">IFRS 15 and ASC 606 are the RESULT of a genuinely joint IASB/FASB project — among the most converged standards, with only a handful of narrow application differences remaining.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 12 ============ -->
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Comprehensive event-to-statement mapping table</div>
+        <div class="td-table">
+          <div class="th cols-16-1-14"><span>Event / transaction</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr cols-16-1-14"><span>Revenue recognised as performance obligations satisfied</span><span><span class="badge bp">SOPL</span></span><span>Point in time or over time, per Step 5</span></div>
+          <div class="tr alt cols-16-1-14"><span>Contract asset recognised (performance ahead of billing)</span><span><span class="badge bs">SOFP</span></span><span>Rights to consideration conditional on something other than time</span></div>
+          <div class="tr cols-16-1-14"><span>Contract liability recognised (billing ahead of performance)</span><span><span class="badge bs">SOFP</span></span><span>Deferred revenue</span></div>
+          <div class="tr alt cols-16-1-14"><span>Incremental costs to obtain a contract capitalised</span><span><span class="badge bs">SOFP</span></span><span>Amortised consistent with the transfer of goods/services</span></div>
+          <div class="tr cols-16-1-14"><span>Refund liability for variable consideration</span><span><span class="badge bs">SOFP</span></span><span>Estimated amount NOT expected to be retained</span></div>
+          <div class="tr alt cols-16-1-14"><span>Cash received from customers</span><span><span class="badge bs">Cash Flow Statement</span></span><span>Operating activities inflow</span></div>
+          <div class="tr cols-16-1-14"><span>Disaggregation, remaining obligations, judgements</span><span><span class="badge bp">Notes</span></span><span>Mandatory disclosure</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 13 ============ -->
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Cross-reference map</div>
+        <div class="td-table">
+          <div class="th cols-08-2"><span>Standard</span><span>Connection</span></div>
+          <div class="tr cols-08-2"><span>IFRS 9</span><span>Governs financing components within contracts and receivable impairment</span></div>
+          <div class="tr alt cols-08-2"><span>IFRS 16</span><span>Leases are explicitly EXCLUDED from IFRS 15's scope</span></div>
+          <div class="tr cols-08-2"><span>IAS 2</span><span>Governs inventory costs where goods are held pending transfer of control to a customer</span></div>
+          <div class="tr alt cols-08-2"><span>IAS 37</span><span>Governs onerous contract provisions where a contract's costs exceed expected benefits</span></div>
+        </div>
+      </div>
+      <div class="card cn">
+        <div class="ctitle cn">Quick-reference glossary</div>
+        <div class="glossary-item"><div class="glossary-term">Contract asset</div><div class="glossary-def">An entity's right to consideration in exchange for goods/services transferred, conditional on something other than the passage of time.</div></div>
+        <div class="glossary-item"><div class="glossary-term">The constraint</div><div class="glossary-def">The requirement to include variable consideration only to the extent highly probable a significant reversal will not occur.</div></div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 14 ============ -->
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+<Glossary entries={[
+      { term: "Performance obligation", definition: "A promise in a contract to transfer to the customer a good/service (or bundle) that is DISTINCT." },
+      { term: "Transaction price", definition: "The amount of consideration an entity expects to be ENTITLED TO in exchange for transferring promised goods/services, excluding amounts collected on behalf of third parties." },
+      { term: "Stand-alone selling price", definition: "The price at which an entity would sell a promised good/service SEPARATELY to a customer — the basis for allocating the transaction price." },
+      { term: "Contract asset", definition: "An entity's right to consideration in exchange for goods/services transferred, conditional on something other than the passage of time." },
+      { term: "Contract liability", definition: "An entity's obligation to transfer goods/services to a customer for which it has received consideration (or an amount of consideration is due) — deferred revenue." },
+      { term: "The constraint", definition: "The requirement to include variable consideration only to the extent highly probable a significant reversal will not occur." }
+    ]} />
+
+<FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.IFRS15} />
+  </section>
+</StandardPageLayout>

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HGB §§289–289f — Lagebericht | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">HGB §§289–289f — Lagebericht (Management Report)</div>
+      <div class="hub-sub">Extended reference poster · Book 3, Section 2, Subsection 1, Title 6 · The forward-looking narrative report that sits deliberately outside the Jahresabschluss · German commercial law · EUR examples</div>
+    </div>
+  </div>
+
+  <div class="callout warn" style="max-width:900px;margin:0 auto 20px;text-align:center;">REGULATORY STATUS CHECK (as of the most recent information available): Germany has NOT YET transposed the EU's Corporate Sustainability Reporting Directive (CSRD) into national law, despite repeated planned deadlines. The §§289b–289e non-financial statement framework described below is the ORIGINAL 2017 regime (implementing the 2014 NFRD), and REMAINS the operative law for the time being. A CSRD transposition — significantly expanding scope — is anticipated but has already slipped multiple times; verify current status before relying on this for a live filing.</div>
+
+  <div class="toc">
+    <a href="#s1">1. Conceptual Framework Linkage</a>
+    <a href="#s2">2. Scope</a>
+    <a href="#s3">3. §289(1) — the Core Content Test</a>
+    <a href="#s4">4. The Prognosebericht — a Genuinely Distinctive Forward-Looking Mandate</a>
+    <a href="#s5">5. Worked Example — Drafting a Compliant Forecast Statement</a>
+    <a href="#s6">6. §289(2) — Further Required Content</a>
+    <a href="#s7">7. Worked Example — a Post-Year-End Significant Event</a>
+    <a href="#s8">8. §289(3)–(4) — Non-Financial Performance Indicators and Internal Controls</a>
+    <a href="#s9">9. §289a — Takeover-Related Disclosures for Listed AGs</a>
+    <a href="#s10">10. Worked Example — Disclosing a Change-of-Control Clause</a>
+    <a href="#s11">11. §289b — the (Still-Current) Non-Financial Statement Obligation</a>
+    <a href="#s12">12. §289c — Content of the Non-Financial Statement</a>
+    <a href="#s13">13. Worked Example — Covering the Five Mandatory Topics</a>
+    <a href="#s14">14. §289d — Use of Recognised Frameworks</a>
+    <a href="#s15">15. §289e — Omission of Prejudicial Information</a>
+    <a href="#s16">16. Worked Example — Applying the §289e Relief to an Impending Negotiation</a>
+    <a href="#s17">17. §289f — the Corporate Governance Statement</a>
+    <a href="#s18">18. Critical Judgments &amp; Practical Difficulties</a>
+    <a href="#s19">19. Relationship to IFRS — a Genuinely Distinctive HGB Feature</a>
+    <a href="#s20">20. Statement Mapping</a>
+    <a href="#s21">21. Related Provisions — Cross-Reference Map</a>
+    <a href="#s22">22. Quick-Reference Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The last piece of the individual-accounts puzzle, deliberately kept separate</div>
+      <div class="principle">As established at the very start of this poster's Subsection, the Lagebericht is DELIBERATELY kept OUTSIDE the Jahresabschluss definition (§242(3)) — yet §264(1) requires it to be prepared and filed alongside the Bilanz, GuV, and Anhang regardless. §§289–289f now supply its actual content, closing out Book 3, Section 2, Subsection 1 before the poster series turns to consolidated accounts.</div>
+      <div class="elabel">HOW §§289–289F MAP TO GERMAN ACCOUNTING PRINCIPLES</div>
+      <div class="check-list">
+        <span><strong style="font-weight:500">Ein den tatsächlichen Verhältnissen entsprechendes Bild</strong> — the SAME "true and fair" formulation from §264(2) reappears here, applied to a forward-looking NARRATIVE rather than to historical figures</span>
+        <span><strong style="font-weight:500">Klarer Einblick, extended into the future</strong> — the Lagebericht is where HGB's transparency objective reaches beyond the balance sheet date entirely, into risk and opportunity</span>
+      </div>
+    </div>
+
+    <div class="card cs">
+      <div class="ctitle cs">What §§289–289f require, at a glance</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.6fr 1.7fr;"><span>§</span><span>Core requirement</span></div>
+        <div class="tr" style="grid-template-columns:0.6fr 1.7fr;"><span>289</span><span>Course of business, position, forecast, risks and opportunities</span></div>
+        <div class="tr alt" style="grid-template-columns:0.6fr 1.7fr;"><span>289a</span><span>Takeover-related disclosures for certain listed AGs/KGaAs</span></div>
+        <div class="tr" style="grid-template-columns:0.6fr 1.7fr;"><span>289b–e</span><span>Non-financial statement obligation, content, frameworks, and omission relief</span></div>
+        <div class="tr alt" style="grid-template-columns:0.6fr 1.7fr;"><span>289f</span><span>Corporate governance statement for listed AGs</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Scope</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Every Kapitalgesellschaft required to prepare a Lagebericht, with additional layers for listed companies</div>
+      <div class="principle">§289's CORE content requirements apply to every Kapitalgesellschaft bound by §264(1)'s Lagebericht obligation. §289a, §289b (per its own specific size/listing criteria — see Section 11), and §289f each add FURTHER, progressively narrower layers — reaching only listed AGs/KGaAs, or large capital-market-oriented companies with more than 500 employees, respectively.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>§289(1) — the Core Content Test</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Course of business, business result, and position — presented true to actual circumstances</div>
+      <div class="principle">§289(1) requires the Lagebericht to present the COURSE OF BUSINESS — including the business result — and the company's POSITION, such that a picture corresponding to actual circumstances (den tatsächlichen Verhältnissen entsprechendes Bild) is conveyed. It must ALSO include an accurate presentation of the PRINCIPAL OPPORTUNITIES AND RISKS associated with expected future development, together with an assessment and explanation of that future development, with the MATERIAL ASSUMPTIONS underlying any forward-looking statements disclosed.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>The Prognosebericht — a Genuinely Distinctive Forward-Looking Mandate</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">A mandatory forecast, embedded directly in the statutory filing itself</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">The forecast/outlook component of §289(1) — commonly referred to in German practice as the Prognosebericht — is a genuinely DISTINCTIVE feature relative to IFRS. IFRS itself imposes NO requirement for a forward-looking narrative report as part of the mandatory financial statements — "management commentary" exists only as a NON-MANDATORY IFRS Practice Statement, which jurisdictions and companies may adopt or ignore entirely. HGB, by contrast, makes a reasoned, assumption-disclosed FORECAST a mandatory, statutory component of every Kapitalgesellschaft's annual filing.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Worked Example — Drafting a Compliant Forecast Statement</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Assumptions must be disclosed, not merely a bare conclusion</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 1: A manufacturer's outlook statement</div>
+        <div class="wk-body">A manufacturing company expects revenue growth of approximately 6% in the coming year, based on an assumed continuation of current order backlog trends and an assumed stable raw material cost environment.</div>
+        <div class="wk-answer">A COMPLIANT Prognosebericht states not merely "we expect 6% revenue growth" but explicitly discloses the underlying MATERIAL ASSUMPTIONS — the order backlog trend and the raw material cost stability assumption — per §289(1)'s specific requirement that assumptions underlying forward-looking statements be disclosed, allowing readers to assess the forecast's sensitivity to those assumptions proving wrong.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>§289(2) — Further Required Content</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Four named further topics, where relevant to a complete picture</div>
+      <div class="check-list">
+        <span>Events of PARTICULAR SIGNIFICANCE occurring AFTER the fiscal year-end (subsequent events) — conceptually adjacent to IAS 10, though delivered through the Lagebericht's narrative rather than through adjusted or disclosed financial statement figures</span>
+        <span>The EXPECTED development of the enterprise, with its opportunities and risks — reinforcing the Prognosebericht content from §289(1)</span>
+        <span>The enterprise's RESEARCH AND DEVELOPMENT activities (Forschungs- und Entwicklungsbericht) — a specifically named content requirement</span>
+        <span>Existing BRANCHES (Zweigniederlassungen) of the enterprise</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Worked Example — a Post-Year-End Significant Event</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Narrative disclosure, not a Bilanz adjustment</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 2: A major acquisition agreed shortly after year-end</div>
+        <div class="wk-body">A company signs a definitive agreement to acquire a competitor for €12,000,000, three weeks after its fiscal year-end but before the Jahresabschluss and Lagebericht are finalised.</div>
+        <div class="wk-answer">The acquisition, being an event of clear significance occurring AFTER the balance sheet date, is described in the Lagebericht under §289(2) — this is a NARRATIVE disclosure, distinct from the Imparitätsprinzip-driven Bilanz ADJUSTMENT mechanism covered in the earlier §§252–256a poster (which applies to information ILLUMINATING conditions that already existed AT the balance sheet date, not to genuinely new post-year-end transactions like this one).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>§289(3)–(4) — Non-Financial Performance Indicators and Internal Controls</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">A narrower forerunner to §289b's fuller non-financial statement</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">§289(3) requires NON-FINANCIAL performance indicators relevant to understanding the business — including environmental and employee matters — to be included in the analysis TO THE EXTENT necessary for understanding the course of business, its result, and its position. §289(4) requires, specifically for CAPITAL-MARKET-ORIENTED corporations, a description of the main characteristics of the enterprise's INTERNAL CONTROL and RISK MANAGEMENT SYSTEM as it relates to the (financial) accounting process.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>§289a — Takeover-Related Disclosures for Listed AGs</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">A set of disclosures unrelated to ordinary financial reporting, bundled into the Lagebericht anyway</div>
+      <div class="principle">§289a — Germany's transposition of the EU Takeover Directive's disclosure requirements — requires certain listed AGs/KGaAs to disclose, WITHIN the Lagebericht: the composition of share capital; restrictions on voting rights or share transfers; direct/indirect shareholdings exceeding 10% of voting rights; holders of shares carrying special control rights; voting control mechanisms for employee shareholdings; rules on appointing/removing management board members and amending the articles of association; the management board's powers (e.g. to issue or buy back shares); material agreements that take effect or CHANGE upon a change of control following a takeover bid; and compensation agreements with management board members or employees in the event of a takeover bid.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Worked Example — Disclosing a Change-of-Control Clause</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Making takeover-defence-relevant financing terms visible to the market</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 3: A financing agreement with an acceleration clause</div>
+        <div class="wk-body">A listed AG has a major syndicated loan agreement containing a clause allowing lenders to demand immediate repayment if a single shareholder acquires more than 30% of the company's voting shares (a classic change-of-control acceleration clause).</div>
+        <div class="wk-answer">The AG discloses this SPECIFIC clause — its trigger threshold and its effect — under §289a, since it is exactly the kind of "material agreement that takes effect or changes upon a change of control following a takeover bid" the provision targets, giving the market visibility into a financing consequence that could materially affect the outcome of any actual takeover attempt.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>§289b — the (Still-Current) Non-Financial Statement Obligation</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Capital-market-oriented companies with more than 500 employees, per the ORIGINAL 2017 regime</div>
+      <div class="principle">§289b(1) requires a Kapitalgesellschaft meeting specific criteria — in practice, capital-market-oriented companies (and certain credit institutions/insurers) exceeding 500 employees — to EXPAND its Lagebericht with a non-financial statement (nichtfinanzielle Erklärung), covering environmental, employee, social, human rights, and anti-corruption/anti-bribery matters. §289b(2) permits this content to instead be delivered via a SEPARATE, standalone non-financial report published alongside the Lagebericht, rather than embedded within it.</div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ As flagged at the top of this poster: this remains the OPERATIVE regime because Germany has not yet transposed the EU's CSRD, which would substantially EXPAND this scope (to large companies generally, and eventually smaller capital-market-oriented ones) once national implementing legislation finally passes.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>§289c — Content of the Non-Financial Statement</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Business model, five topics, concepts, outcomes, risks, and KPIs</div>
+      <div class="principle">§289c requires a description of the enterprise's BUSINESS MODEL, and then, for EACH of the five named topics (environmental, employee, social, human rights, anti-corruption/bribery matters), a description of: the CONCEPTS pursued; the DUE DILIGENCE processes applied; the OUTCOMES of those concepts; the PRINCIPAL RISKS connected with the company's own operations AND with its business relationships, products, or services likely to have a materially adverse impact; how those risks are MANAGED; and relevant NON-FINANCIAL key performance indicators.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Worked Example — Covering the Five Mandatory Topics</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">A genuinely broad substantive scope, beyond ordinary financial matters</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 4: A manufacturer's non-financial statement structure</div>
+        <div class="wk-body">A capital-market-oriented manufacturer with 1,200 employees prepares its non-financial statement, addressing each of the five §289c topics.</div>
+        <div class="wk-answer">ENVIRONMENTAL: energy consumption reduction targets and outcomes. EMPLOYEE: workforce safety incident rates and training hours. SOCIAL: community engagement and local supply chain practices. HUMAN RIGHTS: supplier due diligence processes addressing labour conditions in the supply chain. ANTI-CORRUPTION: whistleblowing mechanisms and anti-bribery training completion rates — each topic addressed with its OWN concept, due diligence process, outcome, principal risks, risk management approach, and relevant KPI, exactly as §289c's structure requires.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>§289d — Use of Recognised Frameworks</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">A named-framework option, increasingly exercised toward ESRS in practice</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">§289d permits an enterprise to base its non-financial statement on national, EU, or international frameworks (e.g. the UN Global Compact, OECD Guidelines, ISO 26000, or the Global Reporting Initiative) — and where it does so, must specify WHICH framework was used, or explain why none was used. In practice, given the anticipated CSRD transposition, an increasing number of companies now voluntarily orient their §289b statement toward the European Sustainability Reporting Standards (ESRS) even ahead of any formal legal requirement to do so.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 15 ============ -->
+  <div class="section-header" id="s15"><span class="num">15</span><h2>§289e — Omission of Prejudicial Information</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">A narrower cousin of §286(1), specific to non-financial content</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">§289e permits omission of information about IMPENDING developments or matters under negotiation where disclosure would, in management's reasoned assessment, be seriously prejudicial to the company's commercial position — PROVIDED such omission does not prevent a fair and balanced understanding of the business's development, performance, position, and the impact of its activity.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 16 ============ -->
+  <div class="section-header" id="s16"><span class="num">16</span><h2>Worked Example — Applying the §289e Relief to an Impending Negotiation</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">A narrow, reasoned exception, not a general escape hatch</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 5: Withholding detail on an in-progress supplier renegotiation</div>
+        <div class="wk-body">A company is mid-negotiation with a key supplier over improved labour standards in its supply chain, and disclosing the specific negotiating position it has taken in its non-financial statement would materially undermine its leverage in the ongoing talks.</div>
+        <div class="wk-answer">The company MAY omit the specific negotiating detail under §289e, PROVIDED its overall non-financial statement still gives a fair, balanced picture of its human-rights due diligence approach generally — it cannot use §289e to omit its ENTIRE human-rights topic coverage, only the narrow, genuinely sensitive negotiating detail itself.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 17 ============ -->
+  <div class="section-header" id="s17"><span class="num">17</span><h2>§289f — the Corporate Governance Statement</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Compliance declaration, governance practices, board working methods, and diversity information</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">§289f requires listed AGs specifically to include (either within the Lagebericht or as a separately referenced section/webpage) a corporate governance statement covering: the German Corporate Governance Code declaration of conformity (Entsprechenserklärung, per §161 AktG); relevant governance practices applied beyond strict legal requirements; a description of the management board and supervisory board's working methods and the composition/working methods of their committees; and target/diversity-related information concerning board composition, an area that has been subject to further specific German legislative developments in recent years worth verifying for current precise mechanics.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 18 ============ -->
+  <div class="section-header" id="s18"><span class="num">18</span><h2>Critical Judgments &amp; Practical Difficulties</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Where judgement matters most</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+          <div class="dot-list">
+            <span>Whether a forward-looking assumption is genuinely "material" enough to require explicit disclosure under §289(1)</span>
+            <span>Whether an impending matter is genuinely sensitive enough to justify §289e omission, versus merely uncomfortable to disclose</span>
+          </div>
+        </div>
+        <div>
+          <div class="elabel">PRACTICAL DIFFICULTIES</div>
+          <div class="dot-list">
+            <span>Navigating the CURRENT regulatory uncertainty around CSRD transposition timing, and whether to prepare voluntarily toward ESRS ahead of any formal requirement</span>
+            <span>Coordinating the overlapping (but not identical) content requirements of §289(2)-(4) and §289c for companies caught by both</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 19 ============ -->
+  <div class="section-header" id="s19"><span class="num">19</span><h2>Relationship to IFRS — a Genuinely Distinctive HGB Feature</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — HGB §§289–289f vs IFRS</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Feature</span><span style="color:var(--color-text-warning);">HGB</span><span style="color:var(--color-text-info);">IFRS</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Mandatory forward-looking narrative report</span><span>YES — the Prognosebericht (§289(1))</span><span>NO mandatory equivalent — Management Commentary is a non-mandatory Practice Statement</span></div>
+        <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Non-financial/sustainability reporting</span><span>Statutory, HGB-embedded (§289b–e), soon to expand via CSRD transposition</span><span>NOT an IFRS requirement — governed separately by IFRS Sustainability Disclosure Standards (ISSB) where adopted</span></div>
+        <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Takeover-related disclosures</span><span>Statutory, embedded in the Lagebericht (§289a)</span><span>Governed by securities/takeover law separately, not IFRS itself</span></div>
+      </div>
+      <div class="note">The Lagebericht as a WHOLE is arguably the single most distinctively "non-IFRS" component of everything this poster series has covered — IFRS financial statements simply do not embed a mandatory, statutorily-defined FORECAST narrative the way HGB's Prognosebericht requires.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 20 ============ -->
+  <div class="section-header" id="s20"><span class="num">20</span><h2>Statement Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Where every §§289–289f event lands</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event / obligation</span><span>Document affected</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Prognosebericht content</span><span><span class="badge bo">Lagebericht</span></span><span>Outside the Jahresabschluss definition entirely</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Non-financial statement (§289b)</span><span><span class="badge bo">Lagebericht</span> (or standalone report)</span><span>Company may choose embedded or separate delivery</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Corporate governance statement (§289f)</span><span><span class="badge bo">Lagebericht</span> (or referenced section/webpage)</span><span>Listed AGs only</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 21 ============ -->
+  <div class="section-header" id="s21"><span class="num">21</span><h2>Related Provisions — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How §§289–289f connect across HGB Book 3</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Provision</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>§264(1)</span><span>Establishes the Lagebericht obligation this Titel now fills with substantive content</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>§264d</span><span>Supplies the capital-market-oriented definition triggering §289(4) and §289b's heightened requirements</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>§286(1)</span><span>The general Anhang commercial-sensitivity relief §289e closely parallels for Lagebericht content specifically</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>§315 et seq.</span><span>The parallel Konzernlagebericht (group management report) requirements, covered in a later poster on consolidated accounts</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 22 ============ -->
+  <div class="section-header" id="s22"><span class="num">22</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Prognosebericht</div><div class="glossary-def">The forecast/outlook component of the Lagebericht, mandatory under §289(1), with underlying assumptions to be disclosed.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Nichtfinanzielle Erklärung</div><div class="glossary-def">Non-financial statement — the environmental, employee, social, human rights, and anti-corruption content required under §289b.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">CSRD</div><div class="glossary-def">The EU Corporate Sustainability Reporting Directive — not yet transposed into German law as of the most recent information available.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">ESRS</div><div class="glossary-def">European Sustainability Reporting Standards — a framework companies may already voluntarily use under §289d.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Entsprechenserklärung</div><div class="glossary-def">The German Corporate Governance Code declaration of conformity, required within the §289f corporate governance statement.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Zweigniederlassung</div><div class="glossary-def">Branch — existing branches of the enterprise, a specific disclosure item under §289(2).</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Key</div>
+    <div class="lrow">
+      <span class="badge bo">Lagebericht</span> Management report — deliberately outside the Jahresabschluss
+    </div>
+  </div>
+
+  <div class="footer-note">HGB §§289–289f — Lagebericht · Extended Reference Poster · Self-contained, no internet connection required · Verify current CSRD transposition status before relying on the §289b–e content for a live filing</div>
+
+</div>
+</body>
+</html>

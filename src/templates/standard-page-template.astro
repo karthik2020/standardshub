@@ -1,0 +1,32 @@
+---
+/*
+  StandardsHub Standard Page Template
+
+  Steps:
+  1. Copy this file and rename (e.g. ias38.astro)
+  2. Import metadata
+  3. Import Reference Guide
+  4. Import History
+  5. Define TOC
+*/
+
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import ReferenceGuide from "../../components/ReferenceGuide.astro";
+import PageToc from "../../components/PageToc.astro";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+
+// import metadata
+// import history
+---
+
+<StandardPageLayout {...metadata}>
+  <Fragment slot="toc">
+    <PageToc items={tocItems} />
+  </Fragment>
+
+  <ReferenceGuide>
+    <!-- Paste Reference Guide here -->
+  </ReferenceGuide>
+
+  <HistoryTimeline history={history} standard={metadata.history} />
+</StandardPageLayout>

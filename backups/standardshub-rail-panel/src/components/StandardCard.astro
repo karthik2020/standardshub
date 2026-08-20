@@ -1,0 +1,59 @@
+---
+/**
+ * StandardCard
+ *
+ * Reusable card component for framework landing pages.
+ *
+ * Props:
+ * - href: string
+ * - code: string (e.g. "IAS 16")
+ * - title: string
+ * - framework: "ias" | "ifrs" | "indas"
+ * - theme: { bg: string; color: string }
+ * - status?: string (optional, e.g. "Superseded")
+ */
+
+import standards from "../data/standards.json";
+import { getStandardIconHtml } from "../data/standardVisuals";
+import { getFramework } from "../data/frameworks";
+
+interface Props {
+  href: string;
+  code: string;
+  title: string;
+  framework: "ias" | "ifrs" | "indas";
+  theme: { bg: string; color: string };
+  status?: string;
+}
+
+const { href, code, title, framework, theme, status: statusProp } = Astro.props;
+
+const frameworkConfig = getFramework(framework)!;
+const frameworkKey = frameworkConfig.code === "Ind AS" ? "IndAS" : frameworkConfig.code;
+const standardData = standards[frameworkKey]?.find((s) => s.code === code);
+const resolvedStatus = statusProp ?? standardData?.status;
+
+const iconHtml = getStandardIconHtml(code);
+---
+
+<a href={href} class="standard-card" style={`--icon-bg: ${theme.bg}; --icon-color: ${theme.color};`}>
+  <div class="standard-top">
+    <div class="standard-icon" set:html={iconHtml} />
+
+    <div class="standard-code">{code}</div>
+
+    {resolvedStatus && resolvedStatus !== "Active" && (
+      <div class={`standard-status standard-status--${resolvedStatus.toLowerCase()}`}>
+        {resolvedStatus}
+      </div>
+    )}
+  </div>
+
+  <div class="standard-title">{title}</div>
+
+  <div class="standard-arrow" aria-hidden="true">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12h14M12 5l7 7-7 7" />
+    </svg>
+  </div>
+</a>

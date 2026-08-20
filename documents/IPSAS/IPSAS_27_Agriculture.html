@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPSAS 27 — Agriculture | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .eg  { margin-bottom: 7px; }
+  .egl { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; margin-bottom: 3px; }
+  .entry { display: flex; align-items: flex-start; gap: 4px; margin-bottom: 4px; }
+  .dr { font-size: 11px; font-weight: 500; color: var(--color-text-info);   min-width: 14px; padding-top: 1px; }
+  .cr { font-size: 11px; font-weight: 500; color: var(--color-text-danger); min-width: 14px; padding-top: 1px; padding-left: 6px; }
+  .etxt { font-size: 11px; color: var(--color-text-primary); flex: 1; line-height: 1.4; }
+  .badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .bc { background: #f3e8ff; color: #7e22ce; }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">IPSAS 27 — Agriculture</div>
+      <div class="hub-sub">Extended reference poster · Full Handbook structure · Statement mapping · Related standards</div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <a href="#s1">1. Objective, Scope &amp; Definitions</a>
+    <a href="#s2">2. Biological Assets, Produce &amp; Bearer Plants</a>
+    <a href="#s3">3. Recognition &amp; Measurement</a>
+    <a href="#s4">4. Gains &amp; Losses</a>
+    <a href="#s5">5. Inability to Measure Fair Value Reliably</a>
+    <a href="#s6">6. Disclosure — General &amp; Descriptive</a>
+    <a href="#s7">7. Reconciliation of Biological Asset Carrying Amounts</a>
+    <a href="#s8">8. Current Value Measurement Disclosures</a>
+    <a href="#s9">9. Effective Date &amp; Amendment Timeline</a>
+    <a href="#s10">10. Relationship to IAS 41</a>
+    <a href="#s11">11. Statement / Process Mapping</a>
+    <a href="#s12">12. Related Standards</a>
+    <a href="#s13">13. Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 — OBJECTIVE, SCOPE & DEFINITIONS ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; Definitions (paras. 1–9)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Objective &amp; scope</div>
+      <div class="principle">Prescribes the accounting treatment and disclosures for agricultural activity — biological assets (except bearer plants) and agricultural produce AT THE POINT OF HARVEST.</div>
+      <div class="cross-list">
+        <span>Land related to agricultural activity (IPSAS 16 / IPSAS 45)</span>
+        <span>Bearer plants (IPSAS 45) — though produce ON those plants is within scope</span>
+        <span>Intangible assets related to agricultural activity (IPSAS 31)</span>
+        <span>Biological assets held for SERVICE provision/supply</span>
+        <span>Right-of-use assets from a lease of agricultural land (IPSAS 43)</span>
+      </div>
+      <div class="note">Processing AFTER harvest is out of scope — e.g. turning grapes into wine. IPSAS 12 (or another applicable Standard) governs from that point (para. 5).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Key definitions (para. 9)</div>
+      <div class="glossary-item"><div class="glossary-term">Agricultural activity</div><div class="glossary-def">Managing biological transformation and harvest of biological assets for sale, distribution at no/nominal charge, or conversion into produce/additional biological assets.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Biological asset</div><div class="glossary-def">A living animal or plant.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Agricultural produce</div><div class="glossary-def">The HARVESTED produce of the entity's biological assets.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Bearer plant</div><div class="glossary-def">A living plant used in producing/supplying agricultural produce, expected to bear produce for MORE THAN ONE PERIOD, with a REMOTE likelihood of being sold as produce itself.</div></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 — BIOLOGICAL ASSETS, PRODUCE & BEARER PLANTS ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Biological Assets, Agricultural Produce &amp; Bearer Plants (paras. 6, 9A–11)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The biological-asset-to-product chain</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 1fr 1.2fr;"><span>Biological asset</span><span>Agricultural produce</span><span>Post-harvest product</span></div>
+        <div class="tr" style="grid-template-columns:1fr 1fr 1.2fr;"><span>Sheep</span><span>Wool</span><span>Yarn, carpet</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 1fr 1.2fr;"><span>Dairy cattle</span><span>Milk</span><span>Cheese</span></div>
+        <div class="tr" style="grid-template-columns:1fr 1fr 1.2fr;"><span>Trees in a timber plantation</span><span>Felled trees</span><span>Logs, lumber</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 1fr 1.2fr;"><span>Grape vines (bearer plant)</span><span>Picked grapes</span><span>Wine</span></div>
+        <div class="tr" style="grid-template-columns:1fr 1fr 1.2fr;"><span>Tea bushes (bearer plant)</span><span>Picked leaves</span><span>Tea</span></div>
+      </div>
+      <div class="note">Grape vines, tea bushes, oil palms, and rubber trees usually meet the bearer plant definition (governed by IPSAS 45) — but the PRODUCE growing ON them (grapes, tea leaves, latex) stays within IPSAS 27's scope.</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">What is NOT a bearer plant (para. 9A)</div>
+      <div class="cross-list">
+        <span>Plants cultivated to be HARVESTED as produce themselves (e.g. lumber trees)</span>
+        <span>Plants with more than a remote likelihood the entity will ALSO harvest and sell the plant itself as produce (e.g. fruit-and-lumber trees)</span>
+        <span>Annual crops (e.g. maize, wheat)</span>
+      </div>
+      <div class="note">Incidental SCRAP sales (e.g. firewood from a cut-down bearer plant) don't disqualify a plant from bearer-plant status (para. 9B). Three common features of agricultural activity: CAPABILITY to change, MANAGEMENT of that change, and MEASUREMENT of the change (para. 10) — this is what distinguishes it from unmanaged harvesting like ocean fishing.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 — RECOGNITION & MEASUREMENT ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Recognition &amp; Measurement (paras. 13–29)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Recognition — three conditions (para. 13)</div>
+      <div class="check-list">
+        <span>The entity CONTROLS the asset as a result of past events</span>
+        <span>PROBABLE that future economic benefits/service potential will flow to the entity</span>
+        <span>Fair value or COST can be measured reliably</span>
+      </div>
+      <div class="note">Control may be evidenced by legal ownership plus branding/marking on acquisition, birth, or weaning (para. 15).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">The core measurement rule</div>
+      <div class="formula-box">
+        <div class="f-eq">Biological asset → FAIR VALUE LESS COSTS TO SELL, on initial recognition AND at every reporting date</div>
+      </div>
+      <div class="formula-box">
+        <div class="f-eq">Agricultural produce → FAIR VALUE LESS COSTS TO SELL, AT THE POINT OF HARVEST (this becomes its "cost" under IPSAS 12 going forward)</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Applies EVEN to non-exchange acquisitions (para. 17). Sale contracts do NOT adjust fair value — fair value reflects current market conditions, not contracted prices (para. 20); an unfavorable contract may instead be an ONEROUS contract under IPSAS 19.</div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card cw span2">
+      <div class="ctitle cw">When cost approximates fair value (para. 28) &amp; combined-asset valuation</div>
+      <div class="dot-list">
+        <span>Little biological transformation since initial cost (e.g. seedlings just planted, newly acquired livestock)</span>
+        <span>The impact of transformation on price isn't expected to be material (e.g. early growth in a 30-year pine plantation cycle)</span>
+      </div>
+      <div class="note">Biological assets attached to land (e.g. plantation trees) may lack a separate market — but if an active market exists for the COMBINED package (biological assets + raw land + improvements), the fair value of raw land/improvements can be DEDUCTED from the combined fair value to isolate the biological assets' fair value (para. 29). Financing cash flows and re-establishment costs (e.g. replanting after harvest) are excluded from measurement (para. 26).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 — GAINS & LOSSES ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Gains &amp; Losses (paras. 30–33)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Always through surplus or deficit — never net assets/equity</div>
+      <div class="formula-box">
+        <div class="f-eq">Gain/loss on INITIAL RECOGNITION of a biological asset, AND on every subsequent fair-value CHANGE → surplus or deficit, in the period it arises</div>
+      </div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">WHY A LOSS CAN ARISE ON INITIAL RECOGNITION</div>
+          <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Because COSTS TO SELL are deducted in arriving at fair value less costs to sell — day-one costs create a day-one loss.</div>
+        </div>
+        <div>
+          <div class="elabel">WHY A GAIN CAN ARISE ON INITIAL RECOGNITION</div>
+          <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">E.g. when a calf is born — a new asset appears at fair value less costs to sell, with no offsetting cost basis.</div>
+        </div>
+      </div>
+      <div class="note">The same treatment applies to agricultural produce at the point of harvest — a gain or loss on ITS initial recognition also goes through surplus or deficit (paras. 32–33).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 — INABILITY TO MEASURE FAIR VALUE RELIABLY ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Inability to Measure Fair Value Reliably (paras. 34–36)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">A rebuttable presumption — narrow, and only on initial recognition</div>
+      <div class="principle">There is a PRESUMPTION that fair value can be reliably measured for a biological asset. This presumption can be rebutted ONLY on initial recognition, and only where NO quoted market prices are available AND alternative fair value measurements are CLEARLY UNRELIABLE.</div>
+      <div class="dot-list">
+        <span>In that narrow case → measure at COST less accumulated depreciation and accumulated impairment losses instead</span>
+        <span>Once fair value becomes reliably measurable → switch to fair value less costs to sell</span>
+        <span>Once a non-current biological asset meets IPSAS 44 held-for-sale criteria → fair value is PRESUMED measurable (para. 34)</span>
+      </div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ The presumption can be rebutted ONLY at initial recognition — an entity that has ALREADY measured a biological asset at fair value less costs to sell continues doing so until disposal, even if measurement later becomes harder (para. 35). Agricultural PRODUCE at the point of harvest has NO such exception — its fair value less costs to sell is ALWAYS considered reliably measurable (para. 36).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 — DISCLOSURE: GENERAL & DESCRIPTIVE ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Disclosure — General &amp; Descriptive (paras. 38–44)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Mandatory quantitative &amp; descriptive disclosures</div>
+      <div class="check-list">
+        <span>Aggregate gain/loss on initial recognition of biological assets AND agricultural produce, and from fair-value changes in biological assets</span>
+        <span>A description of biological assets distinguishing CONSUMABLE vs BEARER, and assets held for SALE vs DISTRIBUTION at no/nominal charge</span>
+        <span>The nature of activities involving each group of biological assets (if not disclosed elsewhere)</span>
+        <span>Non-financial physical-quantity measures/estimates: each biological asset group at period-end, and produce output during the period</span>
+      </div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Consumable vs bearer — and encouraged extras</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2fr;"><span>Category</span><span>Examples</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2fr;"><span>Consumable</span><span>Livestock for meat, crops (maize/wheat), produce on a bearer plant, trees grown for lumber</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2fr;"><span>Bearer</span><span>Breeding stock, dairy/wool-producing livestock, fruit trees, vines/shrubs harvested for nuts/sap/resin</span></div>
+      </div>
+      <div class="note">Distinguishing MATURE vs IMMATURE biological assets is ENCOURAGED (not required) — helpful for assessing timing of future cash flows/service potential; the basis for that distinction is disclosed if used (paras. 41–43).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 — RECONCILIATION OF BIOLOGICAL ASSET CARRYING AMOUNTS ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Reconciliation of Biological Asset Carrying Amounts (paras. 47–51)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd">
+      <div class="ctitle cd">Restrictions, commitments &amp; risk (para. 47)</div>
+      <div class="check-list">
+        <span>Existence/carrying amounts of biological assets with RESTRICTED title, and those PLEDGED as security</span>
+        <span>Nature and extent of restrictions on use or ability to sell</span>
+        <span>Commitments for developing/acquiring biological assets</span>
+        <span>Financial risk management strategies related to agricultural activity</span>
+      </div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">The mandatory opening-to-closing reconciliation (para. 48)</div>
+      <div class="dot-list">
+        <span>Gain/loss from fair-value-less-costs-to-sell changes — SEPARATED for bearer vs consumable biological assets</span>
+        <span>Increases: purchases; non-exchange acquisitions; public sector combinations</span>
+        <span>Decreases: sales / held-for-sale classification (IPSAS 44); distributions at no/nominal charge; harvest</span>
+        <span>Net exchange differences from translation; other changes</span>
+      </div>
+      <div class="note">Separately disclosing PHYSICAL vs PRICE changes within the fair-value movement is ENCOURAGED — most useful where the production cycle exceeds one year (para. 49). Material revenue/expense items from climatic, disease, or other natural risk events (disease outbreak, flood, drought, insect plague) are disclosed per IPSAS 1 (para. 51).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 — CURRENT VALUE MEASUREMENT DISCLOSURES ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Current Value Measurement Disclosures &amp; Fair Value Unmeasurable (paras. 46A–54)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Fair value hierarchy disclosures (paras. 46A–46C)</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:8px;">Mirrors the IPSAS 12/16 fair value disclosure package: for agricultural assets measured at fair value (including via IPSAS 46), disclose measurement techniques/inputs, and — for Level 3 recurring measurements — the effect on surplus/deficit or net assets/equity.</div>
+      <div class="dot-list">
+        <span>Fair value measurement at period end (recurring/non-recurring), with reasons for non-recurring measurements</span>
+        <span>The fair value HIERARCHY LEVEL (1, 2, or 3)</span>
+        <span>For Level 3 or unobservable-input measurements: technique(s) used, and any technique CHANGE with reasons</span>
+      </div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Additional disclosures where fair value cannot be measured reliably (paras. 52–54)</div>
+      <div class="check-list">
+        <span>A description of the biological assets concerned</span>
+        <span>An explanation of why fair value cannot be reliably measured</span>
+        <span>If possible, the range of estimates within which fair value is highly likely to lie</span>
+      </div>
+      <div class="note">If fair value SUBSEQUENTLY becomes reliably measurable for such assets, disclose: a description, why it became measurable, and the effect of the change (para. 54).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 — EFFECTIVE DATE & AMENDMENT TIMELINE ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Effective Date &amp; Amendment Timeline (paras. 56–57)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Amendment history at a glance</div>
+      <div class="principle">Base Standard: periods beginning on/after <strong>1 April 2011</strong>.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2.2fr;"><span>Effective</span><span>Change</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2017</span><span>Paras. 55, 57 (IPSAS 33); paras. 34, 48 (Improvements to IPSAS 2015)</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2017</span><span>Paras. 2, 3, 5, 6, 9, 28, 40 amended; new paras. 9A–9C — the bearer plant amendments (Improvements to IPSAS 2015, Apr 2016)</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2025</span><span>Fair value hierarchy disclosure package — IPSAS 46, Measurement (§8)</span></div>
+      </div>
+      <div class="note">The bearer plant amendments were the single most significant substantive change — carving bearer plants (but not their produce) out of IPSAS 27 and into IPSAS 45, mirroring the equivalent IAS 16/IAS 41 amendment.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 — RELATIONSHIP TO IAS 41 ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Relationship to IAS/IFRS — Comparison with IAS 41</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — IPSAS 27 vs IAS 41</div>
+      <div class="principle">IPSAS 27 is drawn primarily from IAS 41 (2001), <em>Agriculture</em>, as amended up to 31 December 2008.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1.9fr;"><span>Topic</span><span>Difference</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>"Agricultural activity" scope</span><span>IPSAS 27 includes no/nominal-charge DISTRIBUTION transactions; IAS 41 does not address these</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Service-provision biological assets</span><span>IPSAS 27 explicitly clarifies exclusion; IAS 41 has no equivalent clarification</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Government grants</span><span>IAS 41 includes grant requirements; IPSAS 27 does NOT — governed instead by IPSAS 47</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Non-exchange acquisition</span><span>IPSAS 27 has specific initial/subsequent measurement requirements; no IAS 41 equivalent (non-exchange transactions are rare in the private sector)</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Restriction disclosure</span><span>IPSAS 27 adds a specific disclosure requirement for use/sale restrictions</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Consumable/bearer disclosure</span><span>IPSAS 27 REQUIRES the quantified distinction; IAS 41 only ENCOURAGES it</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Terminology</span><span>"Surplus or deficit," "statement of financial performance" (IPSAS 27) vs "profit or loss," "statement of comprehensive income" (IAS 41)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 — STATEMENT / PROCESS MAPPING ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Recognition &amp; measurement decision map</div>
+      <div class="dot-list">
+        <span>1. Is this a LIVING ANIMAL OR PLANT used/managed for agricultural activity? If it's land, an intangible, or a bearer plant itself → out of scope (§1)</span>
+        <span>2. Does it meet the recognition criteria — control, probable benefit flow, reliable measurement? (§3)</span>
+        <span>3. Is it a BIOLOGICAL ASSET (pre-harvest) or AGRICULTURAL PRODUCE (at point of harvest)? Both → fair value less costs to sell (§3)</span>
+        <span>4. Can fair value be reliably measured? Presumed YES, rebuttable only on initial recognition for biological assets (never for produce) → if rebutted, use cost less depreciation/impairment instead (§5)</span>
+        <span>5. Recognize every gain/loss — initial recognition AND every subsequent fair value change — in SURPLUS OR DEFICIT (§4)</span>
+        <span>6. Present the mandatory reconciliation of opening to closing carrying amounts, separated for bearer vs consumable assets (§7)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card cs span2">
+      <div class="ctitle cs">Concept-to-statement mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>IPSAS 27 concept</span><span>Statement(s)</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Biological asset carrying amount</span><span><span class="badge bs">SOFP</span></span><span>Fair value less costs to sell (or cost, in rare rebutted cases)</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Gains/losses on recognition &amp; fair value changes</span><span><span class="badge bp">SOFPerf</span></span><span>Always surplus/deficit — never net assets/equity</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Agricultural produce at harvest</span><span><span class="badge bs">SOFP</span></span><span>Becomes "cost" under IPSAS 12 thereafter</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Reconciliation of biological asset carrying amounts</span><span><span class="badge be">Notes</span></span><span>Mandatory, opening to closing</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Restrictions, commitments, risk management</span><span><span class="badge be">Notes</span></span><span>Mandatory disclosures, para. 47</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 — RELATED STANDARDS ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How IPSAS 27 connects across the IPSAS body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.7fr 2.2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 12</span><span>Governs agricultural produce from the point of harvest ONWARD — its fair value less costs to sell becomes its "cost" (§1, §3)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 16 / 45</span><span>Land related to agricultural activity, and bearer plants themselves, are excluded from IPSAS 27's scope (§1, §2)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 19</span><span>An unfavorable sale contract for biological assets/produce may be an onerous contract (§3)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 26</span><span>Biological assets at fair value less costs to sell are excluded from IPSAS 26's impairment scope entirely (§1)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 31</span><span>Intangible assets related to agricultural activity excluded from IPSAS 27's scope (§1)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 43</span><span>Right-of-use assets from agricultural land leases excluded from scope (§1)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 44</span><span>Held-for-sale classification triggers the presumption that fair value is reliably measurable (§5)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 46</span><span>Fair value hierarchy disclosure package (§8)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 47</span><span>Governs government grants relating to biological assets — NOT addressed within IPSAS 27 itself (§10)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 — GLOSSARY ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Biological transformation</div><div class="glossary-def">Growth, degeneration, production, and procreation processes causing qualitative or quantitative changes in a biological asset.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Harvest</div><div class="glossary-def">The detachment of produce from a biological asset, or the cessation of a biological asset's life processes.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Costs to sell</div><div class="glossary-def">Incremental costs directly attributable to an asset's disposal, excluding finance costs and income taxes.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Group of biological assets</div><div class="glossary-def">An aggregation of similar living animals or plants.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Consumable biological assets</div><div class="glossary-def">Held for harvest as produce, or for sale/distribution as biological assets themselves.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Bearer biological assets</div><div class="glossary-def">Used repeatedly/continuously for more than one year to bear produce, rather than being produce themselves.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bs">SOFP</span> Statement of financial position
+      <span class="badge bp">SOFPerf</span> Statement of financial performance
+      <span class="badge be">Notes</span> Notes to the financial statements
+    </div>
+  </div>
+
+  <div class="footer-note">IPSAS 27 — Agriculture · Extended Reference Poster · Built from the 2025 IPSASB Handbook, Volume I · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

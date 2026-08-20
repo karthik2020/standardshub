@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPSAS 50 — Exploration for and Evaluation of Mineral Resources | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .eg  { margin-bottom: 7px; }
+  .egl { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; margin-bottom: 3px; }
+  .entry { display: flex; align-items: flex-start; gap: 4px; margin-bottom: 4px; }
+  .dr { font-size: 11px; font-weight: 500; color: var(--color-text-info);   min-width: 14px; padding-top: 1px; }
+  .cr { font-size: 11px; font-weight: 500; color: var(--color-text-danger); min-width: 14px; padding-top: 1px; padding-left: 6px; }
+  .etxt { font-size: 11px; color: var(--color-text-primary); flex: 1; line-height: 1.4; }
+  .badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .bc { background: #f3e8ff; color: #7e22ce; }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">IPSAS 50 — Exploration for and Evaluation of Mineral Resources</div>
+      <div class="hub-sub">Extended reference poster · Full Handbook structure · Statement mapping · Related standards</div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <a href="#s1">1. Objective, Scope &amp; the "Free Choice" Policy Framework</a>
+    <a href="#s2">2. Definitions</a>
+    <a href="#s3">3. Recognition — the IPSAS 3 Exemption</a>
+    <a href="#s4">4. Initial Measurement — Elements of Cost</a>
+    <a href="#s5">5. Subsequent Measurement &amp; Accounting Policy Changes</a>
+    <a href="#s6">6. Presentation — Classification &amp; Reclassification</a>
+    <a href="#s7">7. Impairment — Trigger Indicators &amp; the Testing Level</a>
+    <a href="#s8">8. Disclosure Requirements</a>
+    <a href="#s9">9. Effective Date &amp; Transition</a>
+    <a href="#s10">10. Relationship to IFRS 6 &amp; GFS</a>
+    <a href="#s11">11. Statement / Process Mapping</a>
+    <a href="#s12">12. Related Standards</a>
+    <a href="#s13">13. Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 — OBJECTIVE, SCOPE & THE "FREE CHOICE" POLICY FRAMEWORK ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; the "Free Choice" Policy Framework (paras. 1–5)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Objective — limited improvements, not a full model</div>
+      <div class="principle">Specifies financial reporting for exploration/evaluation of mineral resources. Deliberately makes only LIMITED improvements to existing practice — requiring impairment assessment (per IPSAS 26) and disclosures that help users understand amounts, timing, and cash-flow certainty, WITHOUT prescribing a comprehensive recognition/measurement model.</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Scope boundaries — a narrow window</div>
+      <div class="cross-list">
+        <span>Expenditure BEFORE obtaining legal exploration rights in a specific area</span>
+        <span>Expenditure AFTER technical feasibility and commercial viability are DEMONSTRABLE</span>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">This Standard applies ONLY to the narrow window BETWEEN those two points — the genuine exploration/evaluation phase (paras. 4–5). Note IPSAS 45 explicitly cross-references this Standard's scope carve-out for exploration/evaluation asset RECOGNITION/MEASUREMENT (that Standard's §1).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 — DEFINITIONS ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Definitions (para. 6)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The three core terms</div>
+      <div class="glossary-item"><div class="glossary-term">Exploration and evaluation expenditures</div><div class="glossary-def">Expenditures incurred exploring for/evaluating mineral resources BEFORE technical feasibility and commercial viability of extraction are demonstrable.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Exploration and evaluation assets</div><div class="glossary-def">Exploration and evaluation expenditures recognized as assets, per the entity's OWN accounting policy.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Exploration for and evaluation of mineral resources</div><div class="glossary-def">The search for minerals, oil, gas, and similar non-regenerative resources — AFTER obtaining legal exploration rights — plus determining technical feasibility and commercial viability of extraction.</div></div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">A deliberately entity-defined scope</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Notice the circularity by design: an "exploration and evaluation asset" is whatever the entity's OWN policy says it is. This isn't a gap — it's the Standard's central mechanic (§3), reflecting how genuinely varied exploration accounting practice was across jurisdictions when this Standard (and its IFRS 6 predecessor) was developed.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 — RECOGNITION: THE IPSAS 3 EXEMPTION ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Recognition — the IPSAS 3 Exemption (paras. 7–8)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">A genuinely unusual carve-out from the normal accounting policy hierarchy</div>
+      <div class="formula-box">
+        <div class="f-eq">Entities recognizing exploration/evaluation assets apply IPSAS 3 para. 12 (general policy-setting principles) — but are EXEMPTED from IPSAS 3 paras. 14–15 (the usual hierarchy of authoritative sources for topics with no specific Standard)</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Ordinarily, when no IPSAS directly addresses an item, IPSAS 3 requires management to consult a defined hierarchy (other IPSAS on similar issues, the Conceptual Framework, then other standard-setters' pronouncements). IPSAS 50 deliberately SUSPENDS that hierarchy for exploration/evaluation assets — reflecting the IPSASB's decision to preserve DIVERSITY in existing practice rather than force premature convergence, mirroring IFRS 6's own well-known departure from IAS 8's usual policy-development requirements.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 — INITIAL MEASUREMENT: ELEMENTS OF COST ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Initial Measurement — Elements of Cost (paras. 9–12)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Cost-based, with an entity-defined boundary</div>
+      <div class="formula-box">
+        <div class="f-eq">Exploration and evaluation assets measured at COST — the entity determines its OWN policy on which expenditures qualify, applied CONSISTENTLY</div>
+      </div>
+      <div class="dot-list">
+        <span>Acquisition of exploration rights</span>
+        <span>Topographical, geological, geochemical, geophysical studies</span>
+        <span>Exploratory drilling, trenching, sampling</span>
+        <span>Technical feasibility/commercial viability evaluation activities</span>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">(A non-exhaustive list — para. 10.) The key judgment: the DEGREE to which expenditure can be associated with finding SPECIFIC mineral resources.</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">What's explicitly EXCLUDED</div>
+      <div class="callout danger" style="margin-bottom:9px;">✕ DEVELOPMENT expenditure is NEVER recognized as an exploration/evaluation asset — once feasibility/viability are demonstrable, that's a DIFFERENT asset category entirely, governed by the Conceptual Framework and IPSAS 31 instead (para. 11).</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Removal/restoration obligations incurred DURING exploration/evaluation are recognized under IPSAS 19's ordinary provisions framework (para. 12).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 — SUBSEQUENT MEASUREMENT & ACCOUNTING POLICY CHANGES ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Subsequent Measurement &amp; Accounting Policy Changes (paras. 13–15)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Historical cost or fair value — tied to classification</div>
+      <div class="formula-box">
+        <div class="f-eq">HISTORICAL COST or FAIR VALUE — if fair value, it must be CONSISTENT with the asset's classification (tangible → IPSAS 45's model; intangible → IPSAS 31's model) (§6)</div>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Changing policy — a lower bar than usual</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">A policy change is permitted if it makes statements MORE RELEVANT and no less RELIABLE, or MORE RELIABLE and no less relevant — judged using IPSAS 3's criteria (para. 14). Crucially, the change need NOT achieve FULL compliance with those criteria — only demonstrate it moves CLOSER to meeting them (para. 15). This is a genuinely relaxed standard compared to IPSAS 3's usual bar for voluntary policy changes elsewhere in the Handbook.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 — PRESENTATION: CLASSIFICATION & RECLASSIFICATION ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Presentation — Classification &amp; Reclassification (paras. 16–18)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Tangible or intangible — by nature, applied consistently</div>
+      <div class="dot-list">
+        <span>TANGIBLE examples: vehicles, drilling rigs</span>
+        <span>INTANGIBLE examples: drilling rights</span>
+      </div>
+      <div class="note">Where a tangible asset is CONSUMED developing an intangible one, that consumption becomes part of the INTANGIBLE asset's cost — but the tangible asset itself never converts INTO an intangible asset (para. 17).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Reclassification — impairment FIRST, always</div>
+      <div class="formula-box">
+        <div class="f-eq">Once technical feasibility and commercial viability are DEMONSTRABLE → the asset is no longer classified as exploration/evaluation — but MUST be assessed for impairment (and any loss recognized) BEFORE reclassification</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">This ordering matters: it prevents an entity from carrying forward an already-impaired carrying amount into its new asset category unadjusted (para. 18).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 — IMPAIRMENT: TRIGGER INDICATORS & THE TESTING LEVEL ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Impairment — Trigger Indicators &amp; the Testing Level (paras. 19–23)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">A REPLACEMENT trigger test, not IPSAS 26's usual indicators</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:8px;">For exploration/evaluation assets SPECIFICALLY, para. 21's four indicators REPLACE IPSAS 26's ordinary impairment indicator list (paras. 25–29 of that Standard) — everything else about measuring/presenting/disclosing the resulting loss still follows IPSAS 26 (paras. 19–20).</div>
+      <div class="dot-list">
+        <span>The right to explore has EXPIRED, or will expire soon, and won't be renewed</span>
+        <span>Substantive further exploration expenditure is NEITHER budgeted NOR planned</span>
+        <span>Exploration has NOT found commercially viable quantities, and the entity has decided to DISCONTINUE activities in that area</span>
+        <span>Sufficient data exists that even though development is LIKELY to proceed, the carrying amount is UNLIKELY to be recovered in full from development or sale</span>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Testing level — entity-defined, capped at a segment</div>
+      <div class="formula-box">
+        <div class="f-eq">The entity DETERMINES its own policy for allocating exploration/evaluation assets to cash-generating units (or groups) for impairment testing — but the chosen level can NEVER be LARGER than an IPSAS 18 segment</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">The testing level MAY comprise one or more cash-generating units (paras. 22–23) — another instance of this Standard granting entity-level flexibility within an outer boundary, consistent with its overall "limited improvements" philosophy.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 — DISCLOSURE REQUIREMENTS ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Disclosure Requirements (paras. 24–26)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Core disclosure package</div>
+      <div class="check-list">
+        <span>ACCOUNTING POLICIES for exploration/evaluation expenditures, including exploration/evaluation asset recognition</span>
+        <span>AMOUNTS of assets, liabilities, revenue, and expense arising from exploration/evaluation</span>
+        <span>OPERATING and INVESTING cash flows arising from exploration/evaluation</span>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Separate class treatment</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Exploration/evaluation assets are treated as a SEPARATE CLASS of assets, with the disclosures required by EITHER IPSAS 45 or IPSAS 31 applying — whichever matches the entity's own §6 classification (tangible or intangible) (para. 26).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 — EFFECTIVE DATE & TRANSITION ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Effective Date &amp; Transition (paras. 27–29)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">The very newest Standard in the entire Handbook</div>
+      <div class="principle">Periods beginning on/after <strong>1 January 2027</strong> — the LATEST effective date of any Standard covered in this library so far. Earlier application permitted, with disclosure of that fact (para. 27).</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">A narrow IMPRACTICABILITY exception exists: if applying the §7 impairment-indicator requirements to COMPARATIVE information for periods before 1 January 2027 is impracticable, the entity discloses that fact instead — "impracticable" carries its IPSAS 3 meaning (para. 29). This Standard also makes CONSEQUENTIAL amendments to IPSAS 31 (adding the exploration/evaluation asset scope exclusion referenced throughout this library).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 — RELATIONSHIP TO IFRS 6 & GFS ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Relationship to IAS/IFRS &amp; GFS — Comparison with IFRS 6</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Comparison — IPSAS 50 vs IFRS 6</div>
+      <div class="principle">IPSAS 50 is drawn from IFRS 6 (amendments to March 2018), <em>Exploration for and Evaluation of Mineral Resources</em>.</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">A notably SHORT comparison — largely just TERMINOLOGY: IPSAS 50 uses "historical cost" and "impairment of cash-generating assets"; IFRS 6 uses "cost model," "revaluation model," and "impairment of assets."</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Comparison — IPSAS 50 vs GFS</div>
+      <div class="dot-list">
+        <span>Both require capitalized exploration/evaluation expenditure to be accounted for as exploration/evaluation assets, when the entity elects to capitalize</span>
+        <span>IPSAS 50 classifies as tangible/intangible; GFS classifies as a type of INTELLECTUAL PROPERTY PRODUCT</span>
+        <span>IPSAS 50's cost elements EXCLUDE a return to fixed capital; GFS INCLUDES one</span>
+        <span>Subsequent measurement CAN converge if GFS's market-value approach matches IPSAS 50's market-technique current value choice</span>
+        <span>Impairment: IPSAS 50 tests carrying amount vs. recoverable amount; GFS instead treats CONSUMPTION as the decline in current value</span>
+        <span>IPSAS 50 includes disclosure requirements GFS lacks</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 — STATEMENT / PROCESS MAPPING ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Decision map</div>
+      <div class="dot-list">
+        <span>1. Has the entity obtained LEGAL RIGHTS to explore a specific area, AND is technical feasibility/commercial viability NOT YET demonstrable? If outside this window → outside this Standard's scope entirely (§1)</span>
+        <span>2. Set an entity-specific accounting POLICY for which expenditures qualify as exploration/evaluation assets — exempted from the usual IPSAS 3 hierarchy (§3)</span>
+        <span>3. Measure at COST initially — excluding development expenditure; recognize removal/restoration obligations under IPSAS 19 (§4)</span>
+        <span>4. Choose HISTORICAL COST or FAIR VALUE for subsequent measurement, consistent with the asset's classification (§5)</span>
+        <span>5. Classify TANGIBLE or INTANGIBLE, by nature, applied consistently (§6)</span>
+        <span>6. Do ANY of the four §7 indicators apply? → test for impairment under IPSAS 26, at an entity-defined level no larger than a segment (§7)</span>
+        <span>7. Feasibility/viability BECOME demonstrable? → impair FIRST, then reclassify OUT of this Standard's scope (§6)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card cs span2">
+      <div class="ctitle cs">Concept-to-statement mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>IPSAS 50 concept</span><span>Statement(s)</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Exploration/evaluation asset carrying amount</span><span><span class="badge bs">SOFP</span></span><span>Historical cost or fair value, per entity policy</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Removal/restoration provision</span><span><span class="badge bs">SOFP</span></span><span>Per IPSAS 19</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Impairment loss</span><span><span class="badge bp">SOFPerf</span></span><span>Per IPSAS 26, using this Standard's own trigger indicators</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Operating/investing cash flows</span><span>Cash Flow</span><span>Disclosed separately by activity</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Accounting policies, amounts by class</span><span><span class="badge be">Notes</span></span><span>Mandatory disclosures, paras. 24–26</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 — RELATED STANDARDS ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How IPSAS 50 connects across the IPSAS body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.7fr 2.2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 3</span><span>Sets the GENERAL policy-development principle applied (para. 12), while paras. 14–15's usual hierarchy is EXEMPTED for this topic (§3); governs the "impracticable" definition for transition (§9)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 18</span><span>Caps the maximum impairment-testing level at a segment (§7)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 19</span><span>Governs removal/restoration obligation recognition during exploration/evaluation (§4)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 26</span><span>Governs the actual impairment measurement/presentation/disclosure mechanics, once this Standard's own trigger indicators are met (§7)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 31</span><span>Governs intangible-classified exploration/evaluation assets' subsequent measurement and disclosure; receives a consequential scope-exclusion amendment FROM this Standard (§5, §8, §9)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 33</span><span>Governs when this Standard applies for entities adopting accrual IPSAS after the base effective date (§9)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 45</span><span>Governs tangible-classified exploration/evaluation assets' subsequent measurement and disclosure; explicitly excludes exploration/evaluation asset recognition/measurement from its own scope (§5, §8)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 — GLOSSARY ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Exploration and evaluation expenditures</div><div class="glossary-def">Expenditures before technical feasibility and commercial viability of extraction are demonstrable.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Exploration and evaluation assets</div><div class="glossary-def">Exploration and evaluation expenditures recognized as assets under the entity's own accounting policy.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Exploration for and evaluation of mineral resources</div><div class="glossary-def">The search for minerals, oil, gas, and similar non-regenerative resources, plus feasibility/viability determination.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Cash-generating unit</div><div class="glossary-def">The smallest identifiable group of assets, held for a commercial return, generating largely independent cash inflows.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bs">SOFP</span> Statement of financial position
+      <span class="badge bp">SOFPerf</span> Statement of financial performance
+      <span class="badge be">Notes</span> Notes to the financial statements
+    </div>
+  </div>
+
+  <div class="footer-note">IPSAS 50 — Exploration for and Evaluation of Mineral Resources · Extended Reference Poster · Built from the 2025 IPSASB Handbook, Volume III · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

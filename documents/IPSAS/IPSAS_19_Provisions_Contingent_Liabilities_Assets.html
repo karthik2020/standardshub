@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPSAS 19 — Provisions, Contingent Liabilities and Contingent Assets | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .eg  { margin-bottom: 7px; }
+  .egl { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; margin-bottom: 3px; }
+  .entry { display: flex; align-items: flex-start; gap: 4px; margin-bottom: 4px; }
+  .dr { font-size: 11px; font-weight: 500; color: var(--color-text-info);   min-width: 14px; padding-top: 1px; }
+  .cr { font-size: 11px; font-weight: 500; color: var(--color-text-danger); min-width: 14px; padding-top: 1px; padding-left: 6px; }
+  .etxt { font-size: 11px; color: var(--color-text-primary); flex: 1; line-height: 1.4; }
+  .badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .bc { background: #f3e8ff; color: #7e22ce; }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">IPSAS 19 — Provisions, Contingent Liabilities and Contingent Assets</div>
+      <div class="hub-sub">Extended reference poster · Full Handbook structure · Worked examples · Statement mapping · Related standards</div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <a href="#s1">1. Objective, Scope &amp; Exclusions</a>
+    <a href="#s2">2. Definitions</a>
+    <a href="#s3">3. Provisions vs Other Liabilities</a>
+    <a href="#s4">4. Recognition — Present Obligation &amp; Past Event</a>
+    <a href="#s5">5. Contingent Liabilities &amp; Contingent Assets</a>
+    <a href="#s6">6. Measurement — Best Estimate</a>
+    <a href="#s7">7. Risks, Present Value &amp; Future Events</a>
+    <a href="#s8">8. Reimbursements &amp; Changes in Provisions</a>
+    <a href="#s9">9. Future Operating Deficits &amp; Onerous Contracts</a>
+    <a href="#s10">10. Restructuring Provisions</a>
+    <a href="#s11">11. Disclosure Requirements</a>
+    <a href="#s12">12. Worked Example — Present Value &amp; Decommissioning</a>
+    <a href="#s13">13. Effective Date &amp; Amendment Timeline</a>
+    <a href="#s14">14. Relationship to IAS 37</a>
+    <a href="#s15">15. Statement / Process Mapping</a>
+    <a href="#s16">16. Related Standards</a>
+    <a href="#s17">17. Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 — OBJECTIVE, SCOPE & EXCLUSIONS ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; Exclusions (paras. 1–17)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Objective</div>
+      <div class="principle">To (a) define provisions, contingent liabilities, and contingent assets, and (b) identify when provisions should be recognized, how measured, and what disclosed — plus required disclosures for contingent liabilities and contingent assets.</div>
+      <div class="check-list">
+        <span>Applies to an entity preparing accrual-basis financial statements, in accounting for provisions, contingent liabilities, and contingent assets</span>
+      </div>
+      <div class="note">"Provision" is sometimes used elsewhere for depreciation, impairment, or doubtful debts — those are asset carrying-amount ADJUSTMENTS, not addressed by this Standard (para. 16).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Scope exclusions (para. 1)</div>
+      <div class="cross-list">
+        <span>Social benefits within IPSAS 42's scope</span>
+        <span>Executory contracts, UNLESS onerous</span>
+        <span>Insurance contracts (relevant international/national standard)</span>
+        <span>Items covered by another IPSAS</span>
+        <span>Income taxes or income tax equivalents</span>
+        <span>Employee benefits, EXCEPT termination benefits from a restructuring</span>
+        <span>Financial instruments/guarantees within IPSAS 41's scope</span>
+        <span>Contingent consideration of an acquirer in a public sector combination (IPSAS 40)</span>
+      </div>
+      <div class="note">Restructuring provisions (including discontinued operations) ARE within scope — IPSAS 44 may require additional disclosures (para. 6).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 — DEFINITIONS ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Definitions (para. 18)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs">
+      <div class="ctitle cs">Core terms</div>
+      <div class="glossary-item"><div class="glossary-term">Provision</div><div class="glossary-def">A liability of uncertain timing or amount.</div></div>
+      <div class="glossary-item"><div class="glossary-term">A legal obligation</div><div class="glossary-def">Derives from a contract (explicit/implicit terms), legislation, or other operation of law.</div></div>
+      <div class="glossary-item"><div class="glossary-term">A constructive obligation</div><div class="glossary-def">Derives from an entity's own actions: an established pattern of past practice, published policies, or a sufficiently specific current statement, that creates a valid expectation in others that it will discharge certain responsibilities.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">An obligating event</div><div class="glossary-def">An event creating a legal or constructive obligation that leaves the entity no realistic alternative to settling it.</div></div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Contingencies, executory/onerous contracts &amp; restructuring</div>
+      <div class="glossary-item"><div class="glossary-term">Contingent liability</div><div class="glossary-def">(a) A possible obligation from past events, confirmed only by uncertain future events not wholly in the entity's control; OR (b) a present obligation not recognized because outflow isn't probable, or amount can't be measured reliably.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Contingent asset</div><div class="glossary-def">A possible asset from past events, confirmed only by uncertain future events not wholly in the entity's control.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Onerous contract</div><div class="glossary-def">A contract where unavoidable costs of meeting the obligations exceed the economic benefits/service potential expected under it.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Restructuring</div><div class="glossary-def">A management-planned and controlled program that materially changes the scope of an entity's activities, or the manner in which they're carried out.</div></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 — PROVISIONS VS OTHER LIABILITIES ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Provisions vs Other Liabilities &amp; the Provision/Contingency Relationship (paras. 19–21)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Provisions vs payables/accruals</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2fr;"><span>Liability type</span><span>Distinguishing feature</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2fr;"><span>Payables</span><span>For goods/services received/supplied, INVOICED or formally agreed</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2fr;"><span>Accruals</span><span>For goods/services received/supplied, NOT yet paid/invoiced/formally agreed — less uncertainty than provisions</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2fr;"><span>Provisions</span><span>Uncertain TIMING OR AMOUNT of the future expenditure required</span></div>
+      </div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Provisions vs contingent liabilities — the key line</div>
+      <div class="principle">In a general sense, all provisions ARE contingent (uncertain in timing or amount). But this Standard reserves the term "contingent" for items NOT recognized — where existence is confirmed only by uncertain future events outside the entity's control.</div>
+      <div class="formula-box">
+        <div class="f-eq">More likely than not that a present obligation EXISTS → recognize a PROVISION (if criteria met). More likely that no present obligation exists → disclose a CONTINGENT LIABILITY (unless remote)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 — RECOGNITION: PRESENT OBLIGATION & PAST EVENT ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Recognition — Present Obligation &amp; Past Event (paras. 22–34)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The three-part recognition test (para. 22)</div>
+      <div class="check-list">
+        <span>Present obligation (legal or constructive) as a result of a PAST EVENT</span>
+        <span>PROBABLE that an outflow of resources embodying economic benefits/service potential will be required</span>
+        <span>A RELIABLE ESTIMATE can be made of the amount</span>
+      </div>
+      <div class="note">If ANY condition fails → no provision recognized. Where unclear whether a present obligation exists, it is DEEMED to exist if, on all available evidence, it's MORE LIKELY THAN NOT true at the reporting date (para. 23).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">No realistic alternative — the "obligating event" test</div>
+      <div class="dot-list">
+        <span>Enforceable by LAW (legal obligation), OR</span>
+        <span>Creates VALID EXPECTATIONS in other parties (constructive obligation)</span>
+      </div>
+      <div class="callout danger" style="margin-bottom:0;">✕ <strong style="font-weight:600">No provision for future operating costs:</strong> financial statements reflect position at the reporting date, not the future — costs to continue ongoing activities are never provisioned (para. 26). A management/governing body DECISION alone does NOT create a constructive obligation unless communicated to affected parties before the reporting date, in a sufficiently specific manner (para. 28).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 — CONTINGENT LIABILITIES & CONTINGENT ASSETS ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Contingent Liabilities &amp; Contingent Assets (paras. 35–43)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd">
+      <div class="ctitle cd">Contingent liabilities — never recognized</div>
+      <div class="callout danger" style="margin-bottom:9px;">✕ An entity shall NOT recognize a contingent liability — it's DISCLOSED instead (unless outflow probability is remote).</div>
+      <div class="dot-list">
+        <span>Joint and several liability → the portion expected to be met by OTHERS is a contingent liability; the entity's own probable portion IS a provision (para. 37)</span>
+        <span>Reassessed CONTINUALLY — if outflow becomes probable, a provision is recognized in the period the probability changes (para. 38)</span>
+      </div>
+    </div>
+
+    <div class="card cs">
+      <div class="ctitle cs">Contingent assets — never recognized either</div>
+      <div class="callout danger" style="margin-bottom:9px;">✕ An entity shall NOT recognize a contingent asset — recognizing one risks recognizing revenue that may never be realized (para. 41).</div>
+      <div class="dot-list">
+        <span>DISCLOSED where an inflow is PROBABLE (para. 42)</span>
+        <span>Reassessed continually; if it becomes VIRTUALLY CERTAIN and reliably measurable → recognize the asset AND related revenue, in the period the change occurs (para. 43)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 — MEASUREMENT: BEST ESTIMATE ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Measurement — Best Estimate (paras. 44–49)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The core measurement rule</div>
+      <div class="formula-box">
+        <div class="f-eq">Provision = Best estimate of the expenditure required to settle the present obligation at the reporting date</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">= what the entity would rationally pay to settle, or transfer to a third party, at the reporting date — even where actual settlement/transfer would be impossible or prohibitively expensive (para. 45).</div>
+      <div class="dot-list" style="margin-top:8px;">
+        <span>Large POPULATION of items → "expected value" — weight all possible outcomes by their probabilities (para. 47)</span>
+        <span>SINGLE obligation → the most likely individual outcome, adjusted toward other possible outcomes if they skew mostly higher or lower (para. 48)</span>
+      </div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Worked example — expected value method (warranty)</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Ultrasound scanner warranty: minor defect repair CU1m if universal, major defect CU4m if universal</div>
+        <div class="wk-body">Past experience: 75% no defects, 20% minor defects, 5% major defects across the equipment population.</div>
+        <div class="wk-answer">Expected value = (75% × nil) + (20% × CU1m) + (5% × CU4m) = <strong style="color:var(--color-text-warning);">CU400,000</strong>. The provision is measured BEFORE tax or tax-equivalents (para. 49).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 — RISKS, PRESENT VALUE & FUTURE EVENTS ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Risks &amp; Uncertainties, Present Value, Future Events, Expected Disposal of Assets (paras. 50–62)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Risks, uncertainties &amp; present value</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:8px;">Risk = variability of outcome; may increase the measured liability. Caution is needed under uncertainty, but uncertainty does NOT justify excessive provisions or deliberate overstatement (para. 51).</div>
+      <div class="formula-box">
+        <div class="f-eq">Material time value of money → provision = PRESENT VALUE of expected settlement expenditures</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Discount rate: a PRE-TAX rate reflecting current market assessments of the time value of money and liability-specific risks — must NOT double-count risks already reflected in the cash flow estimates (para. 56).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Future events &amp; expected asset disposal</div>
+      <div class="dot-list">
+        <span>Reflected in the provision amount ONLY where there's SUFFICIENT OBJECTIVE EVIDENCE they will occur (e.g. expected technology improvements reducing clean-up costs, or new legislation VIRTUALLY CERTAIN to be enacted) (paras. 58–60)</span>
+      </div>
+      <div class="callout danger" style="margin-bottom:0;">✕ Gains from the EXPECTED DISPOSAL of assets are NEVER taken into account in measuring a provision — even if closely linked to the event giving rise to it. Recognized separately, at the time specified by the relevant asset Standard (para. 61).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 — REIMBURSEMENTS & CHANGES IN PROVISIONS ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Reimbursements &amp; Changes in Provisions (paras. 63–72)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs">
+      <div class="ctitle cs">Reimbursements — a separate asset, virtually certain</div>
+      <div class="formula-box">
+        <div class="f-eq">Reimbursement recognized only when VIRTUALLY CERTAIN, as a SEPARATE asset, capped at the provision amount</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">E.g. insurance, indemnity clauses, supplier warranties. The provision is for the FULL liability; the reimbursement asset is recognized separately. May be presented NET in the statement of financial performance (para. 64). If the entity has NO liability should the third party fail to pay, those costs aren't included in the provision at all (para. 67).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Reviewing &amp; using provisions</div>
+      <div class="check-list">
+        <span>Reviewed at EACH reporting date, adjusted to the current best estimate</span>
+        <span>Reversed if outflow is no longer probable (para. 69)</span>
+      </div>
+      <div class="note">Where discounting is used, the carrying amount increases each period from the passage of time — recognized as INTEREST EXPENSE (para. 70). A provision is used ONLY for expenditures for which it was originally recognized — applying it to unrelated expenditures conceals the impact of two different events (para. 71–72).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 — FUTURE OPERATING DEFICITS & ONEROUS CONTRACTS ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Future Operating Net Deficits &amp; Onerous Contracts (paras. 73–80)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd">
+      <div class="ctitle cd">Future operating net deficits — never provisioned</div>
+      <div class="callout danger" style="margin-bottom:0;">✕ Provisions shall NOT be recognized for net deficits from future operating activities — they fail the liability definition entirely. Instead, an EXPECTATION of future deficits is a signal to test the related ASSETS for IMPAIRMENT (IPSAS 21/26) (paras. 73–75).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Onerous contracts</div>
+      <div class="formula-box">
+        <div class="f-eq">Present obligation (net of recoveries) under an ONEROUS contract → recognized and measured as a provision</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Unavoidable costs = the LOWER of the cost of fulfilling the contract and any compensation/penalties from failing to fulfill it. Cost of fulfilling = incremental costs (labor, materials) PLUS an allocation of other directly-related costs (e.g. relevant depreciation) (paras. 79–79A). Any asset impairment from fulfilling the contract is recognized FIRST, before a separate onerous-contract provision (para. 80).</div>
+      <div class="note">Executory contracts that are NOT onerous fall entirely outside this Standard's scope (para. 78).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 — RESTRUCTURING PROVISIONS ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Restructuring Provisions (paras. 81–96)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Constructive obligation to restructure — BOTH conditions (para. 83)</div>
+      <div class="check-list">
+        <span>A DETAILED FORMAL PLAN identifying: the activity/unit concerned; principal locations affected; location/function/approximate number of employees to be compensated; expenditures to be undertaken; and the implementation timeline</span>
+        <span>Has RAISED A VALID EXPECTATION in those affected — by starting implementation or announcing main features to them</span>
+      </div>
+      <div class="note">No obligation from a SALE OR TRANSFER of operations arises until there's a BINDING agreement (para. 90) — even a public announcement of intent to sell isn't enough on its own. Public sector transfers between controlled entities at no/nominal consideration follow a government directive and typically lack a "binding agreement" in the ordinary sense — an obligation exists only once there IS a binding transfer agreement (para. 92).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">What a restructuring provision includes — and excludes (paras. 93–96)</div>
+      <div class="check-list" style="margin-bottom:9px;">
+        <span>DIRECT expenditures that are (a) necessarily entailed by the restructuring, AND (b) NOT associated with ongoing activities</span>
+      </div>
+      <div class="cross-list">
+        <span>Retraining or relocating CONTINUING staff</span>
+        <span>Marketing</span>
+        <span>Investment in new systems and distribution networks</span>
+        <span>Future operating net deficits up to the restructuring date (unless from an onerous contract)</span>
+        <span>Gains on expected asset disposal (per §7, even if the sale is part of the restructuring)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 — DISCLOSURE REQUIREMENTS ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Disclosure Requirements (paras. 97–108)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs">
+      <div class="ctitle cs">Provisions — per class (paras. 97–98)</div>
+      <div class="check-list">
+        <span>Carrying amount at the beginning AND end of the period</span>
+        <span>Additional provisions made in the period, including increases to existing ones</span>
+        <span>Amounts USED (incurred and charged against the provision) during the period</span>
+        <span>Unused amounts REVERSED during the period</span>
+        <span>The increase from the passage of time (discount unwinding), and the effect of any discount-rate change</span>
+        <span>A brief description of the obligation's nature and expected timing of outflows</span>
+        <span>An indication of the uncertainties about amount/timing (major assumptions concerning future events, where relevant)</span>
+        <span>The amount of any expected reimbursement, and any related asset recognized</span>
+      </div>
+      <div class="note">Comparative information is NOT required for the provisions reconciliation.</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Contingent liabilities &amp; contingent assets (paras. 100, 105)</div>
+      <div class="dot-list" style="margin-bottom:9px;">
+        <span>Contingent LIABILITY: unless remote, disclose a brief description, plus (where practicable) an estimate of financial effect, uncertainty indication, and reimbursement possibility</span>
+        <span>Contingent ASSET: where an inflow is probable, disclose a brief description and (where practicable) an estimate of financial effect</span>
+      </div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ Classes for aggregation must be sufficiently SIMILAR — e.g. it's inappropriate to combine environmental restoration costs with amounts subject to litigation into one class (para. 101). Where a provision and a contingent liability share the SAME circumstances, disclosures must show the LINK between them (para. 102).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 — WORKED EXAMPLE ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Worked Example — Present Value of a Provision (Illustrative Example IE1–IE2)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Discounting a 5-year provision at 12%</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Expected value at end of Year 5 = CU2,000 (not risk-adjusted); discount rate 12%</div>
+        <div class="wk-body">Present value increases each year as the obligation approaches settlement — the increase is recognized as INTEREST EXPENSE (para. 70).</div>
+        <div class="wk-answer">
+          <div class="td-table" style="margin-top:8px;margin-bottom:0;">
+            <div class="th" style="grid-template-columns:1.4fr 1fr 1fr;"><span>Point in time</span><span>Present value</span><span>Interest expense</span></div>
+            <div class="tr" style="grid-template-columns:1.4fr 1fr 1fr;"><span>Current reporting period (initial)</span><span>CU1,134.85</span><span>—</span></div>
+            <div class="tr alt" style="grid-template-columns:1.4fr 1fr 1fr;"><span>End of Year 1</span><span>CU1,271.04</span><span>CU136.18</span></div>
+            <div class="tr" style="grid-template-columns:1.4fr 1fr 1fr;"><span>End of Year 2</span><span>CU1,423.56</span><span>CU152.52</span></div>
+            <div class="tr alt" style="grid-template-columns:1.4fr 1fr 1fr;"><span>End of Year 3</span><span>CU1,594.39</span><span>CU170.83</span></div>
+            <div class="tr" style="grid-template-columns:1.4fr 1fr 1fr;"><span>End of Year 4</span><span>CU1,785.71</span><span>CU191.33</span></div>
+            <div class="tr alt" style="grid-template-columns:1.4fr 1fr 1fr;"><span>End of Year 5</span><span>CU2,000.00</span><span>CU214.29</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card cw span2">
+      <div class="ctitle cw">Decommissioning liability under the current value model — Appendix B example</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Nuclear power plant: original cost CU120,000 (incl. CU10,000 decommissioning component, PV of CU70,400 payable in 40 years at 5%); revalued at Dec 31, 20X2</div>
+        <div class="wk-body">A market-based discounted cash flow valuation of CU115,000 is obtained, including an allowance of CU11,600 for decommissioning (unchanged estimate, after 3 years' discount unwinding).</div>
+        <div class="wk-answer">
+          Asset (current value model), before deducting the decommissioning allowance = <strong style="color:var(--color-text-warning);">CU126,600</strong> (CU115,000 + CU11,600). Accumulated depreciation is eliminated against gross carrying amount per the entity's revaluation policy. Accumulated surplus reduced by CU10,600 (3 years' depreciation of CU9,000 plus CU1,600 cumulative discount unwinding); revaluation surplus = <strong style="color:var(--color-text-warning);">CU15,600</strong> (revalued CU126,600 less previous net book value CU111,000). Net assets = CU115,000, reconciling exactly to the valuation obtained.
+        </div>
+      </div>
+      <div class="note">If the decommissioning liability later DECREASES due to technological advances (e.g. by CU5,000), the adjustment is taken to REVALUATION SURPLUS — capped at the amount that would have been recognized under the historical cost model; any excess goes to surplus or deficit (Appendix B, para. B6(b)).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 — EFFECTIVE DATE & AMENDMENT TIMELINE ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Effective Date &amp; Amendment Timeline (paras. 109–112)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Amendment history at a glance</div>
+      <div class="principle">Base Standard: periods beginning on/after <strong>1 January 2004</strong>.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2.2fr;"><span>Effective</span><span>Change</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2013</span><span>Para. 5 deleted; paras. 1, 4 amended — Improvements to IPSAS 2011</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2017</span><span>Paras. 110, 112 (IPSAS 33); para. 6 (Improvements to IPSAS 2015); para. 37 (IPSAS 37, applied alongside)</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2018</span><span>Paras. 2, 3 deleted; para. 14 amended — Applicability of IPSAS &amp; IPSAS 39</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2019</span><span>New para. 4A (IPSAS 40); paras. 1, 12, 19, 77 amended, paras. 7–11, 99, 104 deleted (IPSAS 42, Social Benefits)</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2023</span><span>Para. 4 — IPSAS 41, Financial Instruments</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>—</span><span>New paras. 6A, AG1–AG20; para. 18 amended — <em>Collective and Individual Services</em> (Amendments to IPSAS 19), Jan 2020</span></div>
+      </div>
+      <div class="note">The Collective and Individual Services amendment is significant for governments: it clarifies that public sector entities do NOT recognize a provision for collective services (e.g. national defense) provided simultaneously to the whole community.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 — RELATIONSHIP TO IAS 37 ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Relationship to IAS/IFRS — Comparison with IAS 37</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — IPSAS 19 vs IAS 37</div>
+      <div class="principle">IPSAS 19 is drawn primarily from IAS 37 (1998), <em>Provisions, Contingent Liabilities and Contingent Assets</em>.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1.9fr;"><span>Topic</span><span>Difference</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Applicability clarifications</span><span>Additional commentary throughout to clarify public sector applicability; clarifies exclusion of IPSAS 42 social benefits</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Onerous contracts</span><span>Black-letter modified/supplemented to clarify the provision is the present obligation NET OF RECOVERIES</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Termination benefits scope</span><span>Clarifies restructuring-related termination benefits ARE within scope, though employee benefits generally are excluded</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Terminology</span><span>"Revenue," "statement of financial performance" (IPSAS 19) vs "income," "income statement" (IAS 37)</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Definitions</span><span>Includes an additional definition for "executory contracts," not present in IAS 37</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Collective/individual services</span><span>Additional guidance clarifying no provision is recognized for collective services — a public-sector-specific concept</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Embedded IFRIC guidance</span><span>Appendix B (based on IFRIC 1) and Appendix C (based on IFRIC 5) are AUTHORITATIVE parts of IPSAS 19 — under IFRS, these are separate documents</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 15 — STATEMENT / PROCESS MAPPING ============ -->
+  <div class="section-header" id="s15"><span class="num">15</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Provision vs contingency — decision map</div>
+      <div class="dot-list">
+        <span>1. Is there a present obligation from a past event, with no realistic alternative to settling it? If NO → no liability at all</span>
+        <span>2. Is settlement PROBABLE (more likely than not) AND reliably estimable? → recognize a PROVISION (§4, §6)</span>
+        <span>3. Is a present obligation POSSIBLE but not probable, or probable but NOT reliably measurable? → disclose a CONTINGENT LIABILITY, unless remote (§5)</span>
+        <span>4. Is there a POSSIBLE asset dependent on uncertain future events outside the entity's control? → disclose a CONTINGENT ASSET if inflow is probable; never recognize (§5)</span>
+        <span>5. Is the contract ONEROUS (unavoidable costs exceed expected benefits)? → recognize a provision net of recoveries (§9)</span>
+        <span>6. Is there a detailed, communicated RESTRUCTURING plan? → constructive obligation; provision limited to direct, restructuring-specific costs (§10)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card cs span2">
+      <div class="ctitle cs">Concept-to-statement mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>IPSAS 19 concept</span><span>Statement(s)</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Provisions</span><span><span class="badge bs">SOFP</span></span><span>Recognized as a liability, best-estimate basis</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Discount unwinding on a provision</span><span><span class="badge bp">SOFPerf</span></span><span>Interest expense</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Reimbursement asset</span><span><span class="badge bs">SOFP</span></span><span>Recognized separately, capped at the provision amount</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Contingent liabilities &amp; assets</span><span><span class="badge be">Notes</span></span><span>Never on the face of the SOFP</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Provisions reconciliation, by class</span><span><span class="badge be">Notes</span></span><span>Opening/closing, additions, used, reversed, discount unwinding</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 16 — RELATED STANDARDS ============ -->
+  <div class="section-header" id="s16"><span class="num">16</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How IPSAS 19 connects across the IPSAS body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.7fr 2.2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 1</span><span>Contingent liability/commitment note ordering; restructuring disclosure per IPSAS 14 cross-reference (§11)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 12</span><span>Offsetting example — provision expenses reimbursed under a supplier warranty (§8)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 13 / 43</span><span>Onerous lease treatment before/at commencement, and low-value/short-term lease exceptions (§1)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 14</span><span>Adjusting-event settled litigation confirming a present obligation; restructuring announcement disclosure (§4, §10)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 20</span><span>Related party disclosure interaction for planned intra-economic-entity transfers (§10)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 21 / 26</span><span>Impairment testing triggered by expected future operating deficits, and before onerous-contract provisions (§9)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 39</span><span>Employee benefits generally excluded, except restructuring-related termination benefits (§1)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 41</span><span>Financial instruments/guarantees excluded from IPSAS 19's scope (§1)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 42</span><span>Social benefits excluded from scope; several 2019 consequential amendments (§1, §13)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 44</span><span>Additional disclosures where a restructuring meets the discontinued-operations definition (§1)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 45</span><span>Decommissioning/restoration cost provisions capitalized into asset cost; current value model interaction (§12, Appendix B)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 47</span><span>Onerous binding-arrangement guidance defaults to IPSAS 19 in the absence of specific IPSAS 47 provisions (§1)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 17 — GLOSSARY ============ -->
+  <div class="section-header" id="s17"><span class="num">17</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Provision</div><div class="glossary-def">A liability of uncertain timing or amount.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Contingent liability</div><div class="glossary-def">A possible or unrecognized present obligation dependent on uncertain future events, or one lacking a reliable estimate.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Contingent asset</div><div class="glossary-def">A possible asset arising from past events, confirmed only by uncertain future events outside the entity's control.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Onerous contract</div><div class="glossary-def">A contract where unavoidable costs of meeting obligations exceed the expected economic benefits or service potential.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Restructuring</div><div class="glossary-def">A planned, management-controlled program materially changing the scope or manner of an entity's activities.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Collective services</div><div class="glossary-def">Services provided simultaneously to the whole community, addressing society's needs as a whole — no provision is recognized for these.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bs">SOFP</span> Statement of financial position
+      <span class="badge bp">SOFPerf</span> Statement of financial performance
+      <span class="badge be">Notes</span> Notes to the financial statements
+    </div>
+  </div>
+
+  <div class="footer-note">IPSAS 19 — Provisions, Contingent Liabilities and Contingent Assets · Extended Reference Poster · Built from the 2025 IPSASB Handbook, Volume I · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

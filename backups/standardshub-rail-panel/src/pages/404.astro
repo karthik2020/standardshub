@@ -1,0 +1,217 @@
+---
+import StandardLayout from "../layouts/StandardLayout.astro";
+---
+
+<StandardLayout code="404" title="404 – Page Not Found" noindex hideFramework>
+  <div class="page-404">
+    <div class="page-404__hero">
+      <p class="page-404__code">404</p>
+      <h1 class="page-404__title">Page not found</h1>
+      <p class="page-404__desc">
+        The page you are looking for does not exist, may have moved, or the URL may be incorrect.
+      </p>
+      <div class="page-404__actions">
+        <a href="/" class="btn btn--primary">Go to Home</a>
+        <a href="/ias" class="btn btn--secondary">Browse Standards</a>
+      </div>
+    </div>
+
+    <div class="page-404__section">
+      <h2 class="page-404__section-title">Popular Standards</h2>
+      <div class="page-404__popular">
+        <a href="/ias/ias1" class="popular-link">IAS 1</a>
+        <a href="/ias/ias2" class="popular-link">IAS 2</a>
+        <a href="/ias/ias7" class="popular-link">IAS 7</a>
+        <a href="/ias/ias16" class="popular-link">IAS 16</a>
+        <a href="/ias/ias36" class="popular-link">IAS 36</a>
+        <a href="/ifrs/ifrs15" class="popular-link">IFRS 15</a>
+        <a href="/ifrs/ifrs18" class="popular-link">IFRS 18</a>
+      </div>
+    </div>
+
+    <div class="page-404__section">
+      <h2 class="page-404__section-title">Search</h2>
+      <div class="page-404__search">
+        <div class="search-box">
+          <div class="search-input-wrapper">
+            <div class="search-placeholder" id="search-placeholder"></div>
+            <input
+              class="search-input"
+              id="standard-search"
+              type="text"
+              placeholder="Search standards..."
+              aria-label="Search standards"
+              autocomplete="off"
+            />
+            <button class="search-action" id="search-action" type="button" aria-label="Clear" title="Clear">
+              ✕
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- TODO: Wire this search input to the site's standard search functionality -->
+    </div>
+  </div>
+</StandardLayout>
+
+<style>
+  .page-404 {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xl);
+  }
+
+  .page-404__hero {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-2xl);
+    text-align: center;
+  }
+
+  .page-404__code {
+    font-size: 48px;
+    font-weight: var(--weight-bold);
+    color: var(--text-muted);
+    line-height: 1;
+    margin: 0;
+    letter-spacing: -0.02em;
+  }
+
+  .page-404__title {
+    font-size: var(--text-h2);
+    font-weight: var(--weight-bold);
+    color: var(--text);
+    margin: var(--space-md) 0 var(--space-sm);
+    line-height: 1.3;
+  }
+
+  .page-404__desc {
+    font-size: var(--text-body);
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0 0 var(--space-xl);
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .page-404__actions {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    padding: 10px 20px;
+    border-radius: var(--radius-pill);
+    font-size: var(--text-small);
+    font-weight: var(--weight-semibold);
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background var(--transition-fast) var(--ease), border-color var(--transition-fast) var(--ease), transform var(--transition-fast) var(--ease);
+    cursor: pointer;
+    border: 1px solid transparent;
+  }
+
+  .btn:hover,
+  .btn:focus-visible {
+    transform: translateY(-1px);
+  }
+
+  .btn--primary {
+    background: var(--text);
+    color: var(--surface);
+    border-color: var(--text);
+  }
+
+  .btn--primary:hover,
+  .btn--primary:focus-visible {
+    background: var(--text-secondary);
+    border-color: var(--text-secondary);
+  }
+
+  .btn--secondary {
+    background: var(--surface);
+    color: var(--text);
+    border-color: var(--border);
+  }
+
+  .btn--secondary:hover,
+  .btn--secondary:focus-visible {
+    background: var(--surface-alt);
+    border-color: var(--text-muted);
+  }
+
+  .page-404__section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+  }
+
+  .page-404__section-title {
+    font-size: var(--text-h2);
+    font-weight: var(--weight-bold);
+    color: var(--text);
+    margin: 0 0 var(--space-md);
+    line-height: 1.3;
+  }
+
+  .page-404__popular {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  .popular-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: var(--radius-pill);
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    text-decoration: none;
+    font-size: var(--text-small);
+    font-weight: var(--weight-medium);
+    color: var(--text-secondary);
+    transition: background var(--transition-fast) var(--ease), border-color var(--transition-fast) var(--ease), transform var(--transition-fast) var(--ease);
+  }
+
+  .popular-link:hover,
+  .popular-link:focus-visible {
+    background: var(--surface-hover);
+    border-color: var(--text-muted);
+    transform: translateY(-1px);
+  }
+
+  .page-404__search {
+    max-width: 480px;
+  }
+
+  @media (max-width: 640px) {
+    .page-404__hero {
+      padding: var(--space-xl);
+    }
+
+    .page-404__code {
+      font-size: 36px;
+    }
+
+    .page-404__actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .btn {
+      width: 100%;
+    }
+  }
+</style>

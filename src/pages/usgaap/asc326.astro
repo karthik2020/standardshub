@@ -1,0 +1,182 @@
+﻿---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc326.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope" },
+        { id: "s3", label: "From Incurred Loss to Expected Loss" },
+        { id: "s4", label: "The CECL Measurement Objective" },
+        { id: "s5", label: "Permitted Estimation Approaches" },
+        { id: "s6", label: "Historical Loss Experience, Current Conditions & Forecasts" },
+        { id: "s7", label: "326-20 (Amortized Cost) vs 326-30 (AFS Debt Securities) Mechanics" },
+        { id: "s8", label: "Off-Balance-Sheet Credit Exposures (326-40)" },
+        { id: "s9", label: "Practical Expedients" },
+        { id: "s10", label: "Worked Example — Loss-Rate Method" },
+        { id: "s11", label: "Worked Example — the AFS Fair Value Floor" },
+        { id: "s12", label: "Disclosure Requirements" },
+        { id: "s13", label: "Critical Judgments & Estimates" },
+        { id: "s14", label: "CECL vs IFRS 9's Three-Stage ECL Model — Full Comparison" },
+        { id: "s15", label: "Statement Mapping" },
+        { id: "s16", label: "Related Topics" },
+        { id: "s17", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci"><div class="ctitle ci">A forward-looking answer to a crisis-era criticism</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 326 introduces the CURRENT EXPECTED CREDIT LOSS (CECL) model — a direct response to widespread criticism, following the 2008 financial crisis, that the pre-existing "incurred loss" model recognised credit losses too LATE, only once a loss event had already occurred. CECL requires a genuinely FORWARD-LOOKING estimate at initial recognition, aiming for earlier, more timely loss recognition that better reflects an asset's TRUE expected collectability from day one.</div></div>
+      <div class="card cs"><div class="ctitle cs">The single largest current US GAAP/IFRS financial instruments divergence</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">CECL and IFRS 9's three-stage expected credit loss model were developed largely INDEPENDENTLY by the FASB and IASB, despite both responding to the SAME crisis-era criticism — producing two genuinely different forward-looking models rather than a converged outcome.</div></div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Financial assets measured at amortized cost, AFS debt securities, and off-balance-sheet exposures</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 326 applies to: financial assets measured at AMORTISED COST (loans, trade and other receivables, held-to-maturity debt securities, net investments in leases) under Subtopic 326-20; AVAILABLE-FOR-SALE debt securities under Subtopic 326-30; and certain OFF-BALANCE-SHEET credit exposures such as loan commitments and financial guarantees under Subtopic 326-40.</div></div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>From Incurred Loss to Expected Loss</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">What changed conceptually</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">Under the OLD incurred-loss model, a credit loss could only be recognised once it was PROBABLE that a loss had been INCURRED — effectively requiring a triggering event before any allowance was booked. CECL abandons this trigger requirement entirely: an allowance for expected credit losses is established IMMEDIATELY upon origination or acquisition, reflecting the full lifetime loss expectation from day one.</div></div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>The CECL Measurement Objective</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">A single unified objective across all in-scope assets</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">The CECL allowance should reflect the entity's CURRENT ESTIMATE of expected credit losses over the CONTRACTUAL LIFE of the financial asset, considering: HISTORICAL loss experience, CURRENT conditions, and REASONABLE AND SUPPORTABLE FORECASTS of future economic conditions — a single unified measurement objective applying consistently across the entire in-scope population.</div></div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Permitted Estimation Approaches</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Genuine methodological flexibility</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">ASC 326 does NOT prescribe a single required estimation METHOD — entities may use whatever approach best fits their portfolio and available data, including: LOSS-RATE methods, ROLL-RATE methods, PROBABILITY-OF-DEFAULT/loss-given-default methods, DISCOUNTED CASH FLOW methods, and AGING SCHEDULE methods — provided the chosen method achieves CECL's underlying measurement objective.</div></div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Historical Loss Experience, Current Conditions & Forecasts</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">A three-input blend with a reversion technique</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">Entities typically START with HISTORICAL loss experience as a base, ADJUST for CURRENT conditions, and further ADJUST for REASONABLE AND SUPPORTABLE FORECASTS. For periods BEYOND that reasonable and supportable forecast horizon, the entity REVERTS to historical loss information using a REVERSION TECHNIQUE — a specific mechanical feature not present in IFRS 9's ECL model in the same explicitly named form.</div></div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>326-20 (Amortized Cost) vs 326-30 (AFS Debt Securities) Mechanics</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">A subtle but important measurement difference</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1fr 1fr 1.4fr;"><span>Subtopic</span><span>Asset type</span><span>Allowance mechanics</span></div>
+      <div class="tr" style="grid-template-columns:1fr 1fr 1.4fr;"><span>326-20</span><span>Amortised cost assets (loans, receivables, HTM debt)</span><span>Straightforward CECL allowance — full lifetime expected loss estimate</span></div>
+      <div class="tr alt" style="grid-template-columns:1fr 1fr 1.4fr;"><span>326-30</span><span>AFS debt securities</span><span>Similar allowance approach, BUT the allowance is CAPPED at the amount by which fair value is BELOW amortised cost — the "fair value floor" (Section 11)</span></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Off-Balance-Sheet Credit Exposures (326-40)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">A CECL-type liability for undrawn commitments and guarantees</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">LOAN COMMITMENTS and FINANCIAL GUARANTEES not otherwise accounted for as derivatives are also subject to a CECL-based estimate — recognised as a LIABILITY for expected credit losses over the contractual period the entity is exposed to credit risk.</div></div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Practical Expedients</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">Reducing estimation burden in defined circumstances</div><div class="check-list"><span>Collateral-dependent financial assets practical expedient — measuring expected credit losses based on the fair value of collateral</span><span>Zero-credit-risk assets practical expedient — permitting an assumption of zero expected credit losses for certain instruments with a history of zero credit loss, such as many US Treasury securities</span></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Worked Example — Loss-Rate Method</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">A simple trade receivable aging application</div>
+      <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Applying historical loss rates by aging bucket</div><div class="wk-body">An entity's $10,000,000 trade receivables balance is split by aging: $8,000,000 current (0.5% historical loss rate), $1,500,000 30-60 days past due (3% historical loss rate), $500,000 over 60 days past due (15% historical loss rate). Current economic forecasts suggest a modest deterioration, warranting a 20% upward adjustment to all historical rates.</div><div class="wk-answer">Base estimate = ($8,000,000 × 0.5%) + ($1,500,000 × 3%) + ($500,000 × 15%) = $40,000 + $45,000 + $75,000 = $160,000. Adjusted for forecasted deterioration (×1.20): <strong>$192,000</strong> CECL allowance recognised immediately.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Worked Example — the AFS Fair Value Floor</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Capping the allowance at the fair value shortfall</div>
+      <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: An AFS bond trading below amortised cost</div><div class="wk-body">An AFS debt security has an amortised cost of $1,000,000 and a fair value of $920,000 — an $80,000 shortfall. The entity's CECL analysis would otherwise indicate a $110,000 expected credit loss.</div><div class="wk-answer">Because the AFS allowance is CAPPED at the amount by which fair value is below amortised cost, the recognised allowance is limited to <strong>$80,000</strong> — NOT the full $110,000 credit-based estimate.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">What ASC 326 requires</div><div class="check-list"><span>Description of the methodology and inputs used to estimate expected credit losses, by portfolio segment</span><span>Roll-forward of the allowance for credit losses, including additions, write-offs, and recoveries</span><span>Credit quality indicators, by class of financing receivable, disaggregated by year of origination (a "vintage" disclosure)</span><span>Past-due status of financial assets</span></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+      <div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Selecting an appropriate estimation methodology for each portfolio segment</span><span>Determining the length of the "reasonable and supportable" forecast period</span><span>Whether a financial asset qualifies for the collateral-dependent or zero-credit-risk practical expedients</span></div></div>
+      <div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Expected credit losses across the entire contractual life of each portfolio</span><span>Macroeconomic forecast assumptions incorporated into the estimate</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>CECL vs IFRS 9's Three-Stage ECL Model — Full Comparison</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Comparison — ASC 326 (CECL) vs IFRS 9</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">US GAAP — CECL</span><span style="color:var(--color-text-info);">IFRS 9 — Three-Stage ECL</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Day-one allowance</span><span>FULL LIFETIME expected credit losses</span><span>Only 12-MONTH expected credit losses (Stage 1)</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Staging</span><span>NONE — single measurement basis throughout</span><span>THREE stages, based on relative credit deterioration</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Trigger for lifetime ECL</span><span>Not applicable — always lifetime</span><span>A SIGNIFICANT INCREASE in credit risk (Stage 1 → Stage 2)</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>AFS debt security allowance cap</span><span>Capped at the fair value shortfall</span><span>No equivalent cap — IFRS 9's ECL allowance for FVOCI debt instruments is not similarly limited</span></div>
+      </div>
+      <div class="callout danger" style="margin-bottom:0;">CECL's single-basis, always-lifetime approach produces a materially LARGER upfront credit loss expense on newly originated assets than IFRS 9's 12-month Stage 1 approach.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s15"><span class="num">15</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Where every ASC 326 event lands</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Initial CECL allowance recognition (326-20 assets)</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Full lifetime expected loss recognised immediately as an expense</span></div>
+      <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>AFS debt security allowance (326-30)</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Capped at the fair value shortfall</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Off-balance-sheet exposure allowance (326-40)</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Recognised as a separate liability</span></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s16"><span class="num">16</span><h2>Related Topics</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd"><div class="ctitle cd">Cross-reference map</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 310</span><span>Supplies general receivable recognition guidance this Topic's credit loss methodology applies to</span></div>
+      <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 320</span><span>Supplies the debt security classification framework, including AFS securities within this Topic's 326-30 scope</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 825</span><span>Financial Instruments — broader classification and disclosure principles</span></div>
+      </div>
+      </div>
+      <div class="card cn"><div class="ctitle cn">Quick-reference glossary preview</div>
+      <div class="glossary-item"><div class="glossary-term">Reasonable and supportable forecast</div><div class="glossary-def">The period over which an entity can develop credible forecasts of future economic conditions, used to adjust historical loss rates before reverting to historical information.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Fair value floor</div><div class="glossary-def">The cap on an AFS debt security's credit loss allowance, limited to the amount by which fair value is below amortised cost.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s17"><span class="num">17</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+      <div class="glossary-item"><div class="glossary-term">CECL (Current Expected Credit Loss)</div><div class="glossary-def">The US GAAP model requiring immediate recognition of full lifetime expected credit losses at origination or acquisition of an in-scope financial asset.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Vintage disclosure</div><div class="glossary-def">Credit quality information disaggregated by the year a financing receivable originated, a specific disclosure format required by ASC 326.</div></div>
+      </div>
+    </div>
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.ASC326 || []} />
+  </section>
+</StandardPageLayout>
+

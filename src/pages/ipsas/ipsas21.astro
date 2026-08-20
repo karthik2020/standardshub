@@ -1,0 +1,469 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import metadata from "../../data/standards/ipsas/ipsas21.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  covers={metadata.covers}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Objective, Scope & Definitions" },
+        { id: "s2", label: "Cash-Generating vs Non-Cash-Generating Assets" },
+        { id: "s3", label: "Identifying an Asset That May Be Impaired" },
+        { id: "s4", label: "Measuring Recoverable Service Amount" },
+        { id: "s5", label: "Fair Value Less Costs to Sell" },
+        { id: "s6", label: "Value in Use — Three Approaches" },
+        { id: "s7", label: "Recognizing & Measuring an Impairment Loss" },
+        { id: "s8", label: "Reversing an Impairment Loss" },
+        { id: "s9", label: "Redesignation of Assets" },
+        { id: "s10", label: "Disclosure Requirements" },
+        { id: "s11", label: "Worked Examples — Restoration & Service Units" },
+        { id: "s12", label: "Effective Date & Amendment Timeline" },
+        { id: "s13", label: "Relationship to IAS 36" },
+        { id: "s14", label: "Statement / Process Mapping" },
+        { id: "s15", label: "Related Standards" },
+        { id: "s16", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="active"
+    explanation="IPSAS 21 Impairment of Non-Cash-Generating Assets is the current, active standard issued by the IPSASB for assessing and measuring impairment of long-lived assets that are not cash-generating — using recoverable service amount or fair value less costs to sell, and reversing impairment when the cause has reversed. Effective 1 January 2006."
+    historical="IPSAS 21 addresses the public-sector gap left by IAS 36, which focuses on cash-generating units. It prescribes recoverable service amount as the primary measurement, with fair value less costs to sell as an alternative, and adds public-sector guidance on asset redesignation and restoration obligations."
+    link=""
+    linkText=""
+  />
+
+    <!-- ============ SECTION 1 — OBJECTIVE, SCOPE & DEFINITIONS ============ -->
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; Definitions (paras. 1–14)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Objective &amp; scope</div>
+        <div class="principle">Prescribes the procedures an entity applies to determine whether a NON-CASH-GENERATING asset is impaired, ensures impairment losses are recognized, specifies when to reverse them, and prescribes disclosures.</div>
+        <div class="cross-list">
+          <span>Inventories (IPSAS 12)</span>
+          <span>Binding arrangement assets / contract-cost assets (IPSAS 47)</span>
+          <span>Financial assets within IPSAS 41's scope</span>
+          <span>Investment property measured using the current value model (IPSAS 16) — already at fair value, so impairment is automatically captured</span>
+          <span>Assets (disposal groups) classified as held for sale (IPSAS 44)</span>
+        </div>
+        <div class="note">Cash-generating assets are impairment-tested under the SISTER standard, IPSAS 26, instead.</div>
+      </div>
+
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions (para. 14)</div>
+        <div class="glossary-item"><div class="glossary-term">Impairment</div><div class="glossary-def">A loss in future economic benefits or service potential, OVER AND ABOVE the systematic recognition of that loss through depreciation.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Recoverable service amount</div><div class="glossary-def">The HIGHER of a non-cash-generating asset's fair value less costs to sell, and its value in use.</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Value in use (non-cash-generating asset)</div><div class="glossary-def">The present value of the asset's REMAINING SERVICE POTENTIAL.</div></div>
+        <div class="callout info callout--flush">For impairment purposes, GOODWILL is always treated as a CASH-GENERATING asset — assessed under IPSAS 26, never this Standard (para. 20A).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 2 — CASH-GENERATING VS NON-CASH-GENERATING ASSETS ============ -->
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Cash-Generating vs Non-Cash-Generating Assets (paras. 16–21)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">The classification test</div>
+        <div class="principle">A cash-generating asset is one held with the PRIMARY OBJECTIVE of generating a commercial return — deployed the way a profit-oriented entity would deploy it, intended to earn a return reflecting the risk of holding it. An asset can be "cash-generating" even if it breaks even in a given period, and vice versa.</div>
+        <div class="callout success"><strong>Default presumption:</strong> given most public sector entities' overall objectives, the presumption is that assets are NON-CASH-GENERATING, and IPSAS 21 applies — cash-generating classification is the exception, not the rule (para. 20).</div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Mixed-use assets — the significance test</div>
+        <div class="worked">
+          <div class="wk-title">A public hospital: 9 of 10 wards fee-paying (commercial), 1 non-fee-paying, sharing joint facilities</div>
+          <div class="wk-body">The entity evaluates the SIGNIFICANCE of the non-cash-generating component to the arrangement as a whole.</div>
+          <div class="wk-answer">Since the non-cash-generating component (1 ward) is INSIGNIFICANT relative to the whole, the entity applies IPSAS 26 (cash-generating) to the whole asset rather than IPSAS 21 (para. 19).</div>
+        </div>
+        <div class="note">Where cash flows genuinely CANNOT be distinguished and the commercial use is merely incidental (e.g. a medical waste plant mostly serving public hospitals, occasionally treating private hospital waste on a commercial basis), the asset stays non-cash-generating (para. 18).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 3 — IDENTIFYING AN ASSET THAT MAY BE IMPAIRED ============ -->
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Identifying an Asset That May Be Impaired (paras. 24–34)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Minimum indications to assess at EACH reporting date (para. 27)</div>
+        <div class="elabel">EXTERNAL SOURCES</div>
+        <div class="dot-list">
+          <span>Cessation or near-cessation of demand/need for services provided by the asset</span>
+          <span>Significant long-term adverse changes in technological, legal, or government policy environment</span>
+        </div>
+        <div class="elabel">INTERNAL SOURCES</div>
+        <div class="dot-list">
+          <span>Evidence of physical damage</span>
+          <span>Significant long-term adverse changes in extent/manner of use — idle assets, restructuring/discontinuation plans, early disposal plans, useful life reassessed as finite</span>
+          <span>A decision to halt construction before completion</span>
+          <span>Internal reporting evidence the asset's service performance is/will be significantly worse than expected</span>
+        </div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Threshold nuances</div>
+        <div class="dot-list">
+          <span>An intangible asset with an INDEFINITE useful life, or not yet available for use, is tested ANNUALLY regardless of indications — assessed at a consistent time each year (para. 26A)</span>
+          <span>A halt in construction: consider whether it's just DELAYED/POSTPONED with resumption intended, vs work that will not be completed in the foreseeable future (para. 31)</span>
+          <span>Higher operating/maintenance costs than budgeted, or lower output than expected, ARE internal-reporting impairment indicators (para. 32)</span>
+          <span>MATERIALITY applies — if recoverable service amount was previously significantly higher than carrying amount and nothing has changed, re-estimation isn't required (para. 33)</span>
+        </div>
+        <div class="note">Even where no impairment loss is ultimately recognized, an impairment indication may still signal that useful life, depreciation method, or residual value needs reviewing (para. 34).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 4 — MEASURING RECOVERABLE SERVICE AMOUNT ============ -->
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Measuring Recoverable Service Amount (paras. 35–39A)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">The shortcut — you don't always need both</div>
+        <div class="formula-box">
+          <div class="f-eq">Recoverable service amount = HIGHER of (fair value less costs to sell) and (value in use)</div>
+        </div>
+        <div class="text-supporting">If EITHER amount already exceeds carrying amount, the asset is NOT impaired — no need to determine the other (para. 36). If fair value less costs to sell can't be reliably estimated, use value in use alone (para. 37).</div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Which one usually dominates?</div>
+        <div class="dot-list">
+          <span>Asset held for DISPOSAL → value in use ≈ net disposal proceeds → fair value less costs to sell is usually the recoverable service amount</span>
+          <span>Asset held ON AN ONGOING BASIS for specialized public services → value in use is LIKELY GREATER than fair value less costs to sell (para. 38)</span>
+        </div>
+        <div class="note">Indefinite-life intangible: the MOST RECENT detailed recoverable-service-amount calculation may be reused in the current period if the underlying asset composition hasn't changed significantly, the prior calculation exceeded carrying amount by a substantial margin, and it's remote that a current calculation would fall below carrying amount (para. 39A).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 5 — FAIR VALUE LESS COSTS TO SELL ============ -->
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Fair Value Less Costs to Sell (paras. 40–43)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">A hierarchy of evidence</div>
+        <ol class="ordered-list">
+        <li>BEST EVIDENCE: price in a binding sale agreement, arm's length, adjusted for directly attributable disposal costs</li>
+        <li>No binding agreement, but an ACTIVE MARKET exists &rarr; current bid price (or the most recent transaction price, absent significant intervening economic change)</li>
+        <li>Neither exists &rarr; BEST INFORMATION AVAILABLE reflecting what the entity could obtain, arm's length, at the reporting date — considering recent transactions for similar assets in the same industry</li>
+      </ol>
+        <div class="callout warn callout--flush">Fair value less costs to sell does NOT reflect a forced sale, unless management/the governing body is actually compelled to sell immediately. Costs of disposal exclude termination benefits and reorganization costs — those aren't direct incremental disposal costs (para. 43).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 6 — VALUE IN USE: THREE APPROACHES ============ -->
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Value in Use — Three Measurement Approaches (paras. 44–50)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">1. Depreciated Replacement Cost</div>
+        <div class="formula-box">
+          <div class="f-eq">Lower of reproduction cost and replacement cost, less accumulated depreciation for already-consumed service potential</div>
+        </div>
+        <div class="text-supporting">Costs are determined on an OPTIMIZED basis — an entity wouldn't replace an over-designed or over-capacity asset like-for-like. Genuine standby/surplus capacity held for safety reasons (e.g. fire engines on standby) IS part of required service potential (para. 47).</div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">2. Restoration Cost</div>
+        <div class="formula-box">
+          <div class="f-eq">Current cost of replacing pre-impairment service potential − Estimated cost to restore the asset</div>
+        </div>
+        <div class="text-supporting">Best fit for PHYSICAL DAMAGE impairments — the "before" cost is usually the depreciated reproduction/replacement cost.</div>
+      </div>
+
+      <div class="card cd">
+        <div class="ctitle cd">3. Service Units</div>
+        <div class="formula-box">
+          <div class="f-eq">Current cost of pre-impairment remaining service potential, REDUCED to reflect the lower number of service units now expected</div>
+        </div>
+        <div class="text-supporting">Best fit for reduced OUTPUT/CAPACITY impairments (e.g. fewer usable floors, lower machine throughput).</div>
+      </div>
+    </div>
+
+    <div class="grid grid-spaced">
+      <div class="card cn span2">
+        <div class="ctitle cn">Which approach fits which impairment cause? (para. 50)</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.6fr 1.4fr;"><span>Impairment cause</span><span>Generally measurable using</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1.4fr;"><span>Technological/legal/government-policy environment change</span><span>Depreciated replacement cost, or service units</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1.4fr;"><span>Change in extent/manner of use (incl. demand cessation)</span><span>Depreciated replacement cost, or service units</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1.4fr;"><span>Physical damage</span><span>Restoration cost, or depreciated replacement cost</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 7 — RECOGNIZING & MEASURING AN IMPAIRMENT LOSS ============ -->
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Recognizing &amp; Measuring an Impairment Loss (paras. 51–57)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">The core recognition rule</div>
+        <div class="formula-box">
+          <div class="f-eq">If recoverable service amount &lt; carrying amount → reduce carrying amount to recoverable service amount = IMPAIRMENT LOSS</div>
+        </div>
+        <div class="dot-list">
+          <span>Non-revalued asset → impairment loss to SURPLUS OR DEFICIT immediately</span>
+          <span>Revalued asset (IPSAS 31/45 current value model) → treated as a REVALUATION DECREASE — hits revaluation surplus first (to the extent it exists for that asset/class), excess to surplus or deficit (paras. 54, 54A)</span>
+        </div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Beyond zero, and depreciation going forward</div>
+        <div class="dot-list">
+          <span>If the estimated impairment EXCEEDS the carrying amount → reduce to ZERO; a LIABILITY is recognized only if ANOTHER IPSAS requires it (e.g. dismantling costs under IPSAS 19) (paras. 55–56)</span>
+          <span>AFTER an impairment loss, depreciation/amortization is adjusted going forward to allocate the REVISED carrying amount (less residual value) over the remaining useful life (para. 57)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 8 — REVERSING AN IMPAIRMENT LOSS ============ -->
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Reversing an Impairment Loss (paras. 58–70)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs">
+        <div class="ctitle cs">Mirror-image indications (para. 60)</div>
+        <div class="dot-list">
+          <span>Resurgence of demand/need for the asset's services</span>
+          <span>Favorable long-term technological/legal/policy environment changes</span>
+          <span>Favorable long-term changes in extent/manner of use, incl. improvement/enhancement spend</span>
+          <span>A decision to RESUME previously halted construction</span>
+          <span>Internal reporting evidence of significantly BETTER service performance than expected</span>
+        </div>
+        <div class="note">A commitment to discontinue/restructure an operation can itself be a reversal indicator — e.g. an underutilized clinic X-ray machine expected to transfer to the main radiology department for much better utilization (para. 63).</div>
+      </div>
+
+      <div class="card cd">
+        <div class="ctitle cd">The reversal mechanics — capped, and where it lands</div>
+        <div class="formula-box">
+          <div class="f-eq">Reversal ONLY IF there's been a change in the ESTIMATES used to determine recoverable service amount — never simply "time passing"</div>
+        </div>
+        <div class="dot-list">
+          <span>Increased carrying amount CANNOT exceed what it would have been (net of depreciation) had NO impairment ever been recognized (para. 68)</span>
+          <span>Non-revalued asset → reversal to surplus or deficit immediately (para. 69)</span>
+          <span>Revalued asset → treated as a REVALUATION INCREASE; but to the extent a PRIOR impairment loss on that same asset hit surplus/deficit, the reversal ALSO goes through surplus/deficit first (para. 69A)</span>
+        </div>
+        <div class="note">Depreciation is again adjusted prospectively after a reversal, over the remaining useful life (para. 70).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 9 — REDESIGNATION OF ASSETS ============ -->
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Redesignation of Assets (paras. 71–72)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">Redesignation alone does NOT trigger a test</div>
+        <div class="principle">An asset may be redesignated between cash-generating and non-cash-generating ONLY with clear evidence it's appropriate. Redesignation, BY ITSELF, does not automatically trigger an impairment test or reversal — the trigger instead comes from the ORDINARY indications in §3/§8, assessed for the asset AFTER redesignation.</div>
+        <div class="worked">
+          <div class="wk-title">Effluent treatment plant example</div>
+          <div class="wk-body">Built primarily to treat industrial effluent from a (now-demolished) social housing unit at no charge. The site will be redeveloped for industrial/retail use, and the plant will treat effluent at commercial rates going forward.</div>
+          <div class="wk-answer">The entity redesignates the plant as a CASH-GENERATING asset — future impairment testing moves to IPSAS 26.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 10 — DISCLOSURE REQUIREMENTS ============ -->
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Disclosure Requirements (paras. 72A–79)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Per class of assets (paras. 72A–73)</div>
+        <div class="check-list">
+          <span>The criteria used to distinguish non-cash-generating from cash-generating assets</span>
+          <span>Impairment losses recognized in surplus/deficit during the period, and the SOFPerformance line item(s)</span>
+          <span>Reversals of impairment losses recognized in surplus/deficit, and the line item(s)</span>
+          <span>Impairment losses recognized DIRECTLY in revaluation surplus during the period</span>
+          <span>Reversals of impairment losses recognized directly in revaluation surplus during the period</span>
+        </div>
+        <div class="note">A "class of assets" is a grouping of similar nature and use (para. 74) — this information may be combined with a PP&amp;E reconciliation required elsewhere (IPSAS 45) (para. 75). Segment reporters (IPSAS 18) also disclose impairment losses/reversals BY SEGMENT (para. 76).</div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Per MATERIAL impairment loss or reversal (para. 77)</div>
+        <div class="dot-list">
+          <span>Events and circumstances leading to the recognition or reversal</span>
+          <span>The amount recognized/reversed, and the nature of the asset</span>
+          <span>The relevant segment, if segment reporting applies</span>
+          <span>Whether recoverable service amount is fair value less costs to sell, or value in use</span>
+          <span>The basis used (e.g. active-market reference) if fair value less costs to sell; the APPROACH used (§6) if value in use</span>
+        </div>
+        <div class="note">For AGGREGATE impairments/reversals not separately disclosed under para. 77: the main asset classes affected, and the main events/circumstances (para. 78). Key assumptions used to determine recoverable service amount are ENCOURAGED, not required, to be disclosed (para. 79).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 11 — WORKED EXAMPLES ============ -->
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Worked Examples (Illustrative Examples IE9–IE16)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Restoration cost — school bus damaged in an accident</div>
+        <div class="worked">
+          <div class="wk-title">1998: bus acquired for CU200,000, 10-year useful life. 2003: road accident requires CU40,000 restoration; new bus would cost CU250,000</div>
+          <div class="wk-answer">
+            Carrying amount 2003 = CU200,000 − CU100,000 accum. depreciation (5/10 yrs) = <strong>CU100,000</strong>.<br>
+            Depreciated replacement cost (undamaged) = CU250,000 − CU125,000 (5/10 yrs) = CU125,000.<br>
+            Recoverable service amount = CU125,000 − CU40,000 restoration cost = <strong>CU85,000</strong>.<br>
+            <strong>Impairment loss = CU100,000 − CU85,000 = CU15,000.</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Restoration cost — office building damaged by fire</div>
+        <div class="worked">
+          <div class="wk-title">1984: building built for CU50m, 40-year life. 2003 (19 yrs later): fire damage requires CU35.5m structural repairs; a new building would cost CU100m</div>
+          <div class="wk-answer">
+            Carrying amount 2003 = CU50m − CU23.75m accum. depreciation (19/40) = <strong>CU26.25m</strong>.<br>
+            Depreciated replacement cost (undamaged) = CU100m − CU47.5m (19/40) = CU52.5m.<br>
+            Recoverable service amount = CU52.5m − CU35.5m restoration = <strong>CU17m</strong>.<br>
+            <strong>Impairment loss = CU26.25m − CU17m = CU9.25m.</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-spaced">
+      <div class="card ci">
+        <div class="ctitle ci">Service units — high-rise building partially unoccupied</div>
+        <div class="worked">
+          <div class="wk-title">1988: 20-story building built for CU80m, 40-year life. 2003 (15 yrs later): new safety regulations force the top 4 floors permanently vacant. Fair value less costs to sell = CU45m; replacement cost of a similar building = CU85m</div>
+          <div class="wk-answer">
+            Carrying amount 2003 = CU80m − CU30m (15/40) = <strong>CU50m</strong>.<br>
+            Depreciated replacement cost before adjustment = CU85m − CU31.875m (15/40) = CU53.125m.<br>
+            Value in use = CU53.125m × 16/20 floors = CU42.5m. Recoverable service amount = HIGHER of CU42.5m and CU45m FVLCS = <strong>CU45m</strong>.<br>
+            <strong>Impairment loss = CU50m − CU45m = CU5m.</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="card cs">
+        <div class="ctitle cs">Service units — underperforming printing machine</div>
+        <div class="worked">
+          <div class="wk-title">1998: machine bought for CU40m, expected 40m copies over 10 years. 2003 (5 yrs later): a fault causes a 25% output reduction over the remaining 5 years; a replacement machine now costs CU45m</div>
+          <div class="wk-answer">
+            Carrying amount 2003 = CU40m − CU20m (5/10) = <strong>CU20m</strong>.<br>
+            Depreciated replacement cost before adjustment = CU45m − CU22.5m (5/10) = CU22.5m.<br>
+            Recoverable service amount = CU22.5m × 75% = <strong>CU16.875m</strong>.<br>
+            <strong>Impairment loss = CU20m − CU16.875m = CU3.125m.</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 12 — EFFECTIVE DATE & AMENDMENT TIMELINE ============ -->
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Effective Date &amp; Amendment Timeline (paras. 80A–82)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Amendment history at a glance</div>
+        <div class="principle">Base Standard: periods beginning on/after <strong>1 January 2006</strong>.</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1fr 2.2fr;"><span>Effective</span><span>Change</span></div>
+          <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Apr 2011</span><span>Paras. 2, 7 amended; new 26A, 26B, 39A — IPSAS 31 (indefinite-life intangibles)</span></div>
+          <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2013</span><span>Para. 27 — Improvements to IPSAS 2011</span></div>
+          <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2017</span><span>Paras. 80, 81, 83 (IPSAS 33); para. 13 (IPSAS 35 &amp; IPSAS 37, applied together)</span></div>
+          <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2018</span><span>Paras. 3, 4, 15 deleted; paras. 6, 20, 21 amended — The Applicability of IPSAS</span></div>
+          <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2018</span><span>Paras. 2, 54, 69, 73 amended; 7, 11 deleted; new 54A, 69A, 81A — <em>Impairment of Revalued Assets</em> (Amendments to IPSAS 21 &amp; 26), Jul 2016</span></div>
+          <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2018</span><span>Para. 43 — IPSAS 39, Employee Benefits</span></div>
+          <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2019</span><span>Para. 14 amended, new para. 20A — IPSAS 40, Public Sector Combinations (goodwill treatment)</span></div>
+        </div>
+        <div class="note">The 2016 "Impairment of Revalued Assets" amendment package is the most significant substantive change since issuance — it introduced the routing of impairment losses/reversals THROUGH revaluation surplus for revalued assets (§7, §8), applied prospectively from the date of application.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 13 — RELATIONSHIP TO IAS 36 ============ -->
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Relationship to IAS/IFRS — Comparison with IAS 36 (2004)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — IPSAS 21 vs IAS 36</div>
+        <div class="principle">IPSAS 21 is drawn primarily from IAS 36 (2004), <em>Impairment of Assets</em> — but covers a fundamentally different population: NON-cash-generating public sector assets, vs. IAS 36's cash-generating assets of profit-oriented entities.</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.3fr 1.9fr;"><span>Topic</span><span>Difference</span></div>
+          <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Value in use measurement</span><span>IPSAS 21: present value of REMAINING SERVICE POTENTIAL, via 3 named approaches. IAS 36: present value of FUTURE CASH FLOWS</span></div>
+          <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Market value decline indicator</span><span>IAS 36 includes it in the black-letter minimum indications; IPSAS 21 mentions it only in commentary</span></div>
+          <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Halted construction</span><span>IPSAS 21 adds a black-letter indication (both for impairment AND reversal) — no IAS 36 equivalent</span></div>
+          <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Scope exclusions</span><span>IAS 36 excludes several IFRS-specific asset classes (biological assets, deferred tax assets, insurance-contract intangibles) that IPSAS 21 does NOT exclude, since there's no equivalent IPSAS carve-out</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 14 — STATEMENT / PROCESS MAPPING ============ -->
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">End-to-end impairment decision map</div>
+        <ol class="ordered-list">
+        <li>Is the asset CASH-GENERATING (primary objective: commercial return)? &rarr; IPSAS 26 instead. Otherwise &rarr; this Standard applies, by default (§2)</li>
+        <li>At each reporting date, is there any INDICATION of impairment (§3)? Indefinite-life intangible &rarr; test annually regardless. If no indication and not indefinite-life &rarr; stop, no formal estimate required</li>
+        <li>Estimate recoverable service amount = HIGHER of fair value less costs to sell (§5) and value in use (§6, three approaches)</li>
+        <li>Is recoverable service amount &lt; carrying amount? &rarr; recognize an IMPAIRMENT LOSS, to surplus/deficit (or revaluation surplus first, if revalued) (§7)</li>
+        <li>At each later reporting date, is there an indication the loss may have DECREASED or reversed (§8)? &rarr; re-estimate and reverse if estimates have genuinely changed, capped at the never-impaired carrying amount</li>
+      </ol>
+      </div>
+    </div>
+
+    <div class="grid grid-spaced">
+      <div class="card cs span2">
+        <div class="ctitle cs">Concept-to-statement mapping table</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>IPSAS 21 concept</span><span>Statement(s)</span><span>Notes</span></div>
+          <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Impairment loss, non-revalued asset</span><span><span class="badge bp">SOFPerf</span></span><span>Recognized immediately in surplus/deficit</span></div>
+          <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Impairment loss, revalued asset</span><span><span class="badge be">NA/E</span> <span class="badge bp">SOFPerf</span></span><span>Revaluation surplus first, excess to surplus/deficit</span></div>
+          <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Reversal of impairment</span><span><span class="badge bp">SOFPerf</span> <span class="badge be">NA/E</span></span><span>Mirrors the original loss's routing</span></div>
+          <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Reduced carrying amount</span><span><span class="badge bs">SOFP</span></span><span>Depreciation basis adjusted prospectively</span></div>
+          <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Impairment losses/reversals by class &amp; segment</span><span><span class="badge be">Notes</span></span><span>Mandatory disclosures, paras. 72A–78</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 15 — RELATED STANDARDS ============ -->
+    <div class="section-header" id="s15"><span class="num">15</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">How IPSAS 21 connects across the IPSAS body of literature</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:0.7fr 2.2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+          <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 12</span><span>Inventories are excluded from IPSAS 21's scope entirely (§1)</span></div>
+          <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 16</span><span>Investment property at fair value under the current value model needs no separate impairment test (§1)</span></div>
+          <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 18</span><span>Segment-level impairment loss/reversal disclosure (§10)</span></div>
+          <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 19</span><span>A liability beyond zero carrying amount is recognized only if IPSAS 19 requires it (e.g. dismantling obligations) (§7)</span></div>
+          <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 26</span><span>The sister standard for CASH-generating assets — the two together cover all non-financial asset impairment (§1, §2)</span></div>
+          <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 31 / 45</span><span>Revaluation models under which impairment losses/reversals route through revaluation surplus (§7, §8)</span></div>
+          <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 35 / 36 / 37</span><span>Investments in controlled entities, associates, and joint arrangements classified as non-cash-generating fall under this Standard (§1)</span></div>
+          <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 40</span><span>Goodwill is always treated as cash-generating — assessed under IPSAS 26, not here (§1)</span></div>
+          <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 41</span><span>Financial assets within its scope are excluded from IPSAS 21 (§1)</span></div>
+          <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 44</span><span>Held-for-sale assets/disposal groups are excluded from IPSAS 21's scope (§1)</span></div>
+          <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 47</span><span>Binding arrangement assets and contract-cost assets excluded from scope (§1)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 16 — GLOSSARY ============ -->
+    <div class="section-header" id="s16"><span class="num">16</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <div class="three-col">
+      <div class="card cn">
+        <div class="glossary-item"><div class="glossary-term">Cash-generating assets</div><div class="glossary-def">Assets held with the primary objective of generating a commercial return.</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Non-cash-generating assets</div><div class="glossary-def">Assets other than cash-generating assets — the default classification for most public sector assets.</div></div>
+      </div>
+      <div class="card cn">
+        <div class="glossary-item"><div class="glossary-term">Fair value less costs to sell</div><div class="glossary-def">The amount obtainable from an arm's length sale between knowledgeable, willing parties, less costs of disposal.</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Costs of disposal</div><div class="glossary-def">Incremental costs directly attributable to disposing of an asset, excluding finance costs and income tax expense.</div></div>
+      </div>
+      <div class="card cn">
+        <div class="glossary-item"><div class="glossary-term">Active market</div><div class="glossary-def">A market with homogeneous traded items, willing buyers/sellers normally available, and publicly available prices.</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Useful life</div><div class="glossary-def">The period an asset is expected to be used, or the number of production/similar units expected to be obtained from it.</div></div>
+      </div>
+    </div>
+
+    <div class="legend">
+      <div class="ltitle">Financial statement key</div>
+      <div class="lrow">
+        <span class="badge bs">SOFP</span> Statement of financial position
+        <span class="badge bp">SOFPerf</span> Statement of financial performance
+        <span class="badge be">NA/E</span> Net assets/equity (statement of changes)
+      </div>
+    </div>
+
+
+  </StandardPageLayout>

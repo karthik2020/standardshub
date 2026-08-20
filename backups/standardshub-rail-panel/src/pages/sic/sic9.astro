@@ -1,0 +1,85 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/sic/sic9.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "What SIC-9 Addressed (Historical)" },
+        { id: "s2", label: "The Conclusion It Reached (Historical)" },
+        { id: "s3", label: "Where This Guidance Lives Today" },
+        { id: "s4", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="historical-reference"
+    explanation="SIC-9 was superseded in March 2004 when the IASB issued IFRS 3 Business Combinations, which abolished the uniting-of-interests method and required the acquisition method for all business combinations."
+    historical="This page is retained for historical and comparative reference. Entities should refer to the current standard that superseded this interpretation for authoritative guidance."
+    link="/ifrs/ifrs3"
+    linkText="IFRS 3 Business Combinations"
+  />
+
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>What SIC-9 Addressed (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">What SIC-9 addressed</div>
+        <div class="principle">SIC-9 addressed how to classify a business combination as either an acquisition or a uniting of interests (then often called pooling of interests). It provided criteria for determining whether a transaction represented a true uniting of interests or, in substance, an acquisition of one entity by another.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>The Conclusion It Reached (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">The conclusion it reached</div>
+        <div class="principle">SIC-9 concluded that a business combination should be classified as a uniting of interests only when it met strict criteria—primarily that the combination involved entities of similar size and that the shareholders of the combining entities shared control of the combined entity after the transaction. In all other cases, the combination should be treated as an acquisition, with one entity identified as the acquirer.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Where This Guidance Lives Today</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card">
+        <div class="ctitle">Where this guidance lives today</div>
+        <div class="td-table">
+          <div class="tr"><span>Superseded by</span><span>IFRS 3 Business Combinations</span></div>
+          <div class="tr alt"><span>Why withdrawn</span><span>IFRS 3 abolished the uniting-of-interests method and required acquisition method for all business combinations</span></div>
+          <div class="tr"><span>Current status</span><span>Superseded</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Acquisition method", definition: "A method of accounting for a business combination where the acquirer measures the identifiable assets acquired and liabilities assumed at their acquisition-date fair values." },
+      { term: "Pooling of interests", definition: "A former method of accounting for business combinations where the combining entities were combined as if they had always been a single combined entity, without identifying an acquirer." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.SIC9} />
+  </section>
+</StandardPageLayout>

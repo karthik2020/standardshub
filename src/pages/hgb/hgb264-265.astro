@@ -1,0 +1,395 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import metadata from "../../data/standards/hgb/hgb264-265.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  summary={metadata.summary}
+  subtitle={metadata.nativeTitle}
+  covers={metadata.covers}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope" },
+        { id: "s3", label: "§264(1) — the Expanded Jahresabschluss for Corporations" },
+        { id: "s4", label: "The Preparation Deadline — 3 Months, or Longer for Small Corporations" },
+        { id: "s5", label: "§264(1a) — Extra Components for Capital-Market-Oriented Corporations" },
+        { id: "s6", label: "§264(2) — DELIVERING the True-and-Fair-View Remedy, at Last" },
+        { id: "s7", label: "Worked Example — Applying §264(2) in Full" },
+        { id: "s8", label: "§264(3)–(4) — the Subsidiary Exemption From Individual Reporting" },
+        { id: "s9", label: "Worked Example — a Subsidiary Relying on the §264(3) Exemption" },
+        { id: "s10", label: "§264a — Closing the GmbH &amp; Co. KG Loophole" },
+        { id: "s11", label: "Worked Example — Testing Whether a Partnership Is Caught by §264a" },
+        { id: "s12", label: "§264b — Exemption of §264a Partnerships via Group Consolidation" },
+        { id: "s13", label: "§264c — Adapted Equity Presentation for §264a Partnerships" },
+        { id: "s14", label: "§264d — Defining \"Kapitalmarktorientiert\" (Capital-Market-Oriented)" },
+        { id: "s15", label: "Worked Example — Testing the §264d Definition" },
+        { id: "s16", label: "§265(1)–(2) — Consistency of Structure, and Permitted Sub-Division" },
+        { id: "s17", label: "§265(3) — Combining Immaterial Items" },
+        { id: "s18", label: "Worked Example — Combining Items Under §265(3)" },
+        { id: "s19", label: "§265(4) — Adapting the Schema to a Specialised Business" },
+        { id: "s20", label: "Worked Example — an Industry-Specific Line Item Adaptation" },
+        { id: "s21", label: "§265(5) — Omitting Zero-Balance Items" },
+        { id: "s22", label: "§265(7) — Comparability of Prior-Year Figures" },
+        { id: "s23", label: "Critical Judgments &amp; Practical Difficulties" },
+        { id: "s24", label: "Relationship to IFRS" },
+        { id: "s25", label: "Statement Mapping" },
+        { id: "s26", label: "Related Provisions — Cross-Reference Map" },
+        { id: "s27", label: "Quick-Reference Glossary" }
+      ]}
+    />
+  </Fragment>
+  
+
+  <div class="wrap">
+<!-- ============ SECTION 1 ============ -->
+  
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="callout info">A STRUCTURAL TURNING POINT: everything from this poster forward belongs to Book 3, Section 2 — "Supplementary Provisions for Corporations." Every rule here applies ON TOP OF, not instead of, the general provisions (§§238–263) already covered. This poster also finally delivers the §264(2) true-and-fair-view remedy first foreshadowed in the §§242–245 poster.</div>
+
+  
+      <div class="ctitle ci">Where the corporation-specific layer of HGB begins</div>
+      <div class="principle">Everything covered so far in this poster series (§§238–263) applies to every Kaufmann — sole traders, partnerships, and corporations ALIKE. From §264 onward, Book 3, Section 2 begins LAYERING additional, more demanding requirements SPECIFICALLY onto Kapitalgesellschaften (AG, GmbH, KGaA) — reflecting the greater public interest in, and the limited-liability protection surrounding, the corporate form.</div>
+      <div class="elabel">HOW §§264–265 MAP TO GERMAN ACCOUNTING PRINCIPLES</div>
+      <div class="check-list">
+        <span><strong>Gläubigerschutz, intensified</strong> — where a Kaufmann's personal liability once protected creditors, a corporation's LIMITED liability removes that protection, so HGB compensates with MORE demanding disclosure</span>
+        <span><strong>Klarer Einblick, made concrete</strong> — §264(2) finally supplies the SPECIFIC remedy mechanism (additional Anhang disclosure) the general §243(2) principle only gestured toward</span>
+        <span><strong>Anti-avoidance</strong> — §264a prevents a partnership WITHOUT any genuinely personally-liable natural person from escaping these corporation-level rules merely through clever legal structuring</span>
+      </div>
+    </div>
+
+    <div class="card cs">
+      <div class="ctitle cs">What §§264–265 require, at a glance</div>
+      <div class="td-table">
+        <div class="th cols-06-17"><span>§</span><span>Core requirement</span></div>
+        <div class="tr cols-06-17"><span>264</span><span>Anhang and Lagebericht required; true-and-fair-view remedy; subsidiary exemption</span></div>
+        <div class="tr alt cols-06-17"><span>264a–c</span><span>Certain OHG/KG structures without a personally-liable natural person are caught by these rules too</span></div>
+        <div class="tr cols-06-17"><span>264d</span><span>Defines "capital-market-oriented," a term used repeatedly throughout the rest of Book 3</span></div>
+        <div class="tr alt cols-06-17"><span>265</span><span>General structuring principles feeding into the Bilanz and GuV formats (§§266, 275)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Scope</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Kapitalgesellschaften, and certain partnerships caught by §264a</div>
+      <div class="principle">§§264–265 bind every AG, GmbH, and KGaA, AND — per §264a — certain partnerships (typically GmbH &amp; Co. KG structures) where no natural person bears unlimited personal liability. Size-dependent relief is available throughout (small corporations face lighter deadlines and disclosure than large or capital-market-oriented ones), but the underlying obligation itself binds the entire corporate population.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>§264(1) — the Expanded Jahresabschluss for Corporations</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Bilanz + GuV + Anhang, plus a separate Lagebericht</div>
+      <div class="principle">§264(1) requires a Kapitalgesellschaft's Jahresabschluss to be EXPANDED beyond the ordinary Bilanz + GuV (§242(3)) to ALSO include an Anhang (notes) — for a corporation, "Jahresabschluss" therefore means THREE components, not two. §264(1) additionally requires a separate Lagebericht (management report), which — as established in the earlier §§242–245 poster — remains DELIBERATELY outside the Jahresabschluss definition itself, even though it is prepared and filed alongside it.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>The Preparation Deadline — 3 Months, or Longer for Small Corporations</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">§264(1) makes §243(3)'s general standard concrete</div>
+      <div class="text-supporting">Large and medium-sized corporations must prepare their Jahresabschluss and Lagebericht within the FIRST THREE MONTHS of the following fiscal year. Small corporations are permitted correspondingly LONGER — assessed against the general "time consistent with orderly business conduct" standard of §243(3), which in practice is usually understood to permit up to around six months, reflecting their more limited administrative resources relative to larger enterprises.</div>
+      <div class="note">This is the concrete deadline flagged as a forward cross-reference in the earlier §§242–245 poster — §243(3)'s general standard and §264(1)'s specific corporate deadline are two views of the SAME underlying timing obligation.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>§264(1a) — Extra Components for Capital-Market-Oriented Corporations</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">A cash flow statement, statement of changes in equity, and segment reporting — but only for the largest, most public-facing companies</div>
+      <div class="text-supporting">§264(1a) requires CAPITAL-MARKET-ORIENTED corporations (the term §264d defines — Section 14) to prepare, IN ADDITION to the ordinary Bilanz/GuV/Anhang/Lagebericht set, a Kapitalflussrechnung (cash flow statement), an Eigenkapitalspiegel (statement of changes in equity), and, where applicable, Segmentberichterstattung (segment reporting) — a considerably richer package, layered on top of the ordinary corporate requirements, reserved specifically for companies whose securities trade on an organised market.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>§264(2) — DELIVERING the True-and-Fair-View Remedy, at Last</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">The specific mechanism the general §243(2) principle only gestured toward</div>
+      <div class="principle">§264(2) sentence 1 requires a Kapitalgesellschaft's Jahresabschluss, IN OBSERVANCE of GoB, to convey a picture of the enterprise's net assets, financial position, and results of operations CORRESPONDING TO THE ACTUAL CIRCUMSTANCES (ein den tatsächlichen Verhältnissen entsprechendes Bild) — HGB's own, corporation-specific formulation of a "true and fair view." §264(2) sentence 2 then supplies the REMEDY: where special circumstances mean the Jahresabschluss does NOT convey such a picture, ADDITIONAL disclosures must be made in the Anhang.</div>
+      <div class="callout suc">This is precisely the mechanism the earlier §§242–245 poster promised to deliver here: the remedy is ADDITIONAL DISCLOSURE, never departure from a specific measurement or recognition rule elsewhere in Book 3 — reinforcing why HGB's own "fair view" concept genuinely differs in KIND from IAS 1.19–20's rare override mechanism, not merely in degree.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Worked Example — Applying §264(2) in Full</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">A concrete illustration of the disclosure-only remedy</div>
+      <div class="worked">
+        <div class="wk-title">Example 1: A concentrated customer dependency not visible in any single line item</div>
+        <div class="wk-body">A GmbH derives 78% of its total annual revenue from a single customer under a contract expiring in four months, with no firm renewal commitment yet in place. None of HGB's prescribed Bilanz or GuV line items specifically captures or highlights this concentration risk — the revenue and receivable figures appear entirely ordinary on their face.</div>
+        <div class="wk-answer">DESPITE full compliance with every specific recognition and measurement rule, the GmbH's Jahresabschluss, taken alone, would NOT convey a picture corresponding to the actual circumstances — a reader could not tell that nearly four-fifths of revenue depends on a single, soon-to-expire relationship. Under §264(2) sentence 2, the company adds a SPECIFIC disclosure in the Anhang describing this customer concentration and its contract expiry — achieving the "true and fair" objective through DISCLOSURE, without altering a single Bilanz or GuV figure.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>§264(3)–(4) — the Subsidiary Exemption From Individual Reporting</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Avoiding duplicate reporting burden within a corporate group</div>
+      <div class="principle">§264(3) permits a Kapitalgesellschaft that is itself a SUBSIDIARY, meeting specific conditions, to be EXEMPTED from certain Jahresabschluss/Lagebericht preparation, audit, and publication obligations that would otherwise apply to it individually — PROVIDED it is fully INCLUDED within a parent's own Konzernabschluss (prepared to appropriate standards), the parent's Konzernabschluss and Konzernlagebericht are themselves properly disclosed, the parent has effectively assumed responsibility for the subsidiary's obligations (e.g. covering its liabilities for the relevant period), and the shareholders have consented. §264(4) sets out further procedural conditions for relying on this exemption.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Worked Example — a Subsidiary Relying on the §264(3) Exemption</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Genuine relief, not a gap in reporting</div>
+      <div class="worked">
+        <div class="wk-title">Example 2: A wholly-owned operating subsidiary within a German group</div>
+        <div class="wk-body">A GmbH is a wholly-owned operating subsidiary of a German AG parent. The subsidiary is fully consolidated line-by-line into the parent's own Konzernabschluss, which is properly prepared, audited, and published. The parent has formally undertaken to cover the subsidiary's obligations for the relevant financial year, and the subsidiary's shareholders (i.e. the parent itself, as sole shareholder) have consented to the exemption.</div>
+        <div class="wk-answer">Meeting all the §264(3) conditions, the GmbH is EXEMPTED from preparing, having audited, and separately publishing its OWN individual Jahresabschluss and Lagebericht — its financial position is instead fully visible to the public through the PARENT'S consolidated accounts, avoiding a substantively duplicative reporting exercise.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>§264a — Closing the GmbH &amp; Co. KG Loophole</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">No natural person bears personal liability — so the corporate rules apply anyway</div>
+      <div class="principle">§264a extends Section 2's corporation-specific rules to certain OHG and KG partnerships where NO natural person is a personally, unlimited-liability partner — the classic example being a "GmbH &amp; Co. KG," a limited partnership (KG) whose ONLY general partner (Komplementär, normally bearing full personal liability) is itself a GmbH, meaning the LIMITED liability protection has effectively been extended to every participant in the structure, DESPITE its formal partnership form. Without §264a, such a structure could enjoy partnership-style lighter reporting despite delivering exactly the SAME limited-liability protection a full corporation offers — an outcome §264a exists specifically to prevent.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Worked Example — Testing Whether a Partnership Is Caught by §264a</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">The presence or absence of a personally liable natural person is decisive</div>
+      <div class="worked">
+        <div class="wk-title">Example 3: Two superficially similar KG structures</div>
+        <div class="wk-body">KG Alpha has a natural person, Ms. Weber, as its sole general partner (Komplementär), bearing full unlimited personal liability, alongside several limited partners (Kommanditisten). KG Beta has a GmbH as its sole general partner, with the SAME limited partners otherwise, and no natural person bears unlimited liability anywhere in the structure.</div>
+        <div class="wk-answer">KG Alpha is <strong>NOT</strong> caught by §264a — Ms. Weber's genuine personal liability preserves the ordinary partnership treatment. KG Beta <strong>IS</strong> caught by §264a — with NO natural person bearing unlimited liability anywhere in the structure, it must apply Section 2's corporation-specific rules (Anhang, Lagebericht, the §264(2) true-and-fair remedy, and so on) DESPITE remaining, in legal FORM, an ordinary limited partnership.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>§264b — Exemption of §264a Partnerships via Group Consolidation</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">The same relief logic as §264(3), extended to caught partnerships</div>
+      <div class="text-supporting">§264b provides an exemption mirroring §264(3)'s subsidiary relief, specifically for a partnership CAUGHT by §264a — where such a partnership is itself fully included within a properly prepared and disclosed group Konzernabschluss, it too may be relieved of the individual corporation-style reporting §264a would otherwise impose.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>§264c — Adapted Equity Presentation for §264a Partnerships</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Capital accounts, not share capital — the presentation format must adapt</div>
+      <div class="text-supporting">A partnership does not have "share capital" (Grundkapital or Stammkapital) in the same legal sense a corporation does — partners instead hold individual CAPITAL ACCOUNTS, which can behave quite differently (e.g. permitting withdrawals, and sometimes running into a debit/negative balance in ways ordinary share capital cannot). §264c supplies BESPOKE presentation rules adapting the equity section of the Bilanz specifically for a §264a-caught partnership, ensuring the prescribed corporate balance sheet FORMAT can still sensibly accommodate a genuinely different underlying legal equity structure.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>§264d — Defining "Kapitalmarktorientiert" (Capital-Market-Oriented)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">A single definition that unlocks numerous heightened requirements throughout the rest of Book 3</div>
+      <div class="principle">§264d defines a capital-market-oriented Kapitalgesellschaft as one whose transferable securities (shares, bonds, or similar instruments) are ADMITTED to trading on an organised market within the meaning of the relevant EU/German securities law, or which has APPLIED for such admission. This single definitional provision is the trigger for numerous heightened requirements scattered throughout the REST of Book 3 — the §264(1a) extra financial statement components (Section 5), audit committee requirements (a later Titel), and enhanced Anhang/Lagebericht disclosures all key off this SAME term.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 15 ============ -->
+  <div class="section-header" id="s15"><span class="num">15</span><h2>Worked Example — Testing the §264d Definition</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Applying for listing is enough — actual admission is not required</div>
+      <div class="worked">
+        <div class="wk-title">Example 4: A company mid-way through an IPO process</div>
+        <div class="wk-body">A GmbH converting to an AG has formally submitted its application for admission of its shares to trading on a regulated German stock exchange, with the listing expected to complete in approximately two months. Trading has not yet actually begun.</div>
+        <div class="wk-answer">DESPITE trading not yet having commenced, the company already qualifies as capital-market-oriented under §264d — the definition captures companies that have merely APPLIED for admission, not only those already actively trading. The heightened requirements this definition triggers therefore apply from the point of APPLICATION, not from the later date trading actually begins.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 16 ============ -->
+  <div class="section-header" id="s16"><span class="num">16</span><h2>§265(1)–(2) — Consistency of Structure, and Permitted Sub-Division</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">The presentation FORMAT itself must remain consistent, just as measurement methods must</div>
+      <div class="principle">§265(1) requires the prescribed line-item structure (Gliederungsschema) to be generally RETAINED from one year to the next — a structural application of the Bewertungsstetigkeit principle introduced in the earlier §§252–256a poster, extended here to PRESENTATION rather than measurement. §265(2) permits FURTHER sub-division (Untergliederung) of prescribed items for greater detail, and permits NEW items to be added where their content is not already captured by an existing prescribed line — but always in the ORDER the schema itself prescribes.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 17 ============ -->
+  <div class="section-header" id="s17"><span class="num">17</span><h2>§265(3) — Combining Immaterial Items</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Clarity may justify combination, provided the Anhang picks up the detail</div>
+      <div class="text-supporting">§265(3) permits prescribed items to be COMBINED where they are individually immaterial, or where combining them PROMOTES clarity of presentation — PROVIDED the items combined are then separately disclosed in the Anhang instead, ensuring no genuine loss of information, merely a shift in WHERE that information appears.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 18 ============ -->
+  <div class="section-header" id="s18"><span class="num">18</span><h2>Worked Example — Combining Items Under §265(3)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Moving detail from the face of the Bilanz into the Anhang</div>
+      <div class="worked">
+        <div class="wk-title">Example 5: Combining several small "other asset" categories</div>
+        <div class="wk-body">A GmbH has four separate, individually immaterial "other asset" line items — each below €5,000, against a €12,000,000 balance sheet total — that the prescribed schema would otherwise require presenting separately.</div>
+        <div class="wk-answer">The company COMBINES the four items into a single "sonstige Vermögensgegenstände" (other assets) line on the face of the Bilanz, promoting a cleaner, clearer presentation — the individual breakdown of the four combined amounts is instead disclosed SEPARATELY in the Anhang, preserving full transparency without cluttering the primary statement.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 19 ============ -->
+  <div class="section-header" id="s19"><span class="num">19</span><h2>§265(4) — Adapting the Schema to a Specialised Business</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">A flexibility valve for enterprises the standard format doesn't naturally fit</div>
+      <div class="text-supporting">§265(4) permits items marked with ARABIC numerals in the prescribed schema (the more granular line items, as opposed to the higher-level letter/roman-numeral headings) to be ADAPTED to the particular characteristics of the enterprise's legal form or business activity, where this is necessary for a sensible presentation — recognising that a single, one-size-fits-all schema cannot perfectly anticipate every conceivable industry's own operational realities.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 20 ============ -->
+  <div class="section-header" id="s20"><span class="num">20</span><h2>Worked Example — an Industry-Specific Line Item Adaptation</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Adapting, not abandoning, the prescribed schema</div>
+      <div class="worked">
+        <div class="wk-title">Example 6: A specialist agricultural enterprise's inventory line</div>
+        <div class="wk-body">A specialist agricultural Kapitalgesellschaft holds significant categories of livestock and standing crops that the STANDARD inventory line items in the prescribed schema do not naturally or clearly describe.</div>
+        <div class="wk-answer">Under §265(4), the company ADAPTS the arabic-numeral-level inventory sub-items to specifically label its livestock and standing crop categories, rather than forcing them awkwardly into generic manufacturing-oriented inventory labels — the HIGHER-level structure (the overall "Vorräte"/inventory heading itself) remains unchanged, but the GRANULAR labelling beneath it is tailored to the business's genuine operational character.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 21 ============ -->
+  <div class="section-header" id="s21"><span class="num">21</span><h2>§265(5) — Omitting Zero-Balance Items</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Omit only if the prior year was also zero</div>
+      <div class="text-supporting">§265(5) permits a prescribed item with NO amount to disclose (a zero balance) to be omitted from the face of the statement — UNLESS a corresponding amount existed in the PRIOR year, in which case the item must still be SHOWN (typically with a zero or a dash), preserving the comparability §265(7) separately requires.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 22 ============ -->
+  <div class="section-header" id="s22"><span class="num">22</span><h2>§265(7) — Comparability of Prior-Year Figures</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Every item needs its prior-year comparative, explained where it isn't genuinely comparable</div>
+      <div class="text-supporting">§265(7) requires comparative prior-year figures for EVERY item — and where an item's current and prior-year amounts are NOT genuinely comparable (e.g. due to a change in measurement method or presentation structure), this must be disclosed and explained, with an adjustment made in the Anhang where practicable, so readers are never left silently comparing figures that were never truly like-for-like.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 23 ============ -->
+  <div class="section-header" id="s23"><span class="num">23</span><h2>Critical Judgments &amp; Practical Difficulties</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Where judgement matters most</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+          <div class="dot-list">
+            <span>Whether "special circumstances" genuinely prevent the Jahresabschluss from conveying a true-and-fair picture, triggering §264(2)'s additional disclosure remedy</span>
+            <span>Whether a proposed line-item adaptation under §265(4) is genuinely necessary, or merely a preference for a different presentation style</span>
+          </div>
+        </div>
+        <div>
+          <div class="elabel">PRACTICAL DIFFICULTIES</div>
+          <div class="dot-list">
+            <span>Confirming all §264(3) subsidiary exemption conditions are simultaneously satisfied, particularly the parent's assumption of liability and shareholder consent</span>
+            <span>Structuring a GmbH &amp; Co. KG's equity presentation correctly under §264c, given the genuine mechanical differences between partner capital accounts and ordinary share capital</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 24 ============ -->
+  <div class="section-header" id="s24"><span class="num">24</span><h2>Relationship to IFRS</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — HGB §§264–265 vs IFRS</div>
+      <div class="td-table">
+        <div class="th cols-12-1-1"><span>Feature</span><span>HGB</span><span>IFRS</span></div>
+        <div class="tr cols-12-1-1"><span>True-and-fair-view remedy</span><span>Additional Anhang disclosure ONLY (§264(2))</span><span>Rare, genuine departure permitted (IAS 1.19–20)</span></div>
+        <div class="tr alt cols-12-1-1"><span>Subsidiary exemption from individual reporting</span><span>Explicit statutory exemption (§264(3)), subject to conditions</span><span>NO equivalent — IFRS separate financial statements remain governed by IAS 27 regardless of group inclusion</span></div>
+        <div class="tr cols-12-1-1"><span>Substance-driven scope extension (§264a)</span><span>Explicit anti-avoidance provision for disguised-corporation partnerships</span><span>NO direct equivalent — IFRS applicability is set by jurisdiction/listing rules, not a similar substance test</span></div>
+      </div>
+      <div class="note">§264a in particular illustrates something IFRS simply does not need to address in the same way — because IFRS applicability is generally triggered by SECURITIES LAW (listing status) rather than a company-LAW liability-structure test, the specific loophole §264a closes has no direct IFRS parallel to close in the first place.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 25 ============ -->
+  <div class="section-header" id="s25"><span class="num">25</span><h2>Statement Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Where every §§264–265 event lands</div>
+      <div class="td-table">
+        <div class="th cols-16-1-14"><span>Event / obligation</span><span>Statement(s) affected</span><span>Notes</span></div>
+        <div class="tr cols-16-1-14"><span>§264(2) true-and-fair shortfall</span><span><span class="badge be">Anhang</span></span><span>Additional disclosure, no change to Bilanz/GuV figures</span></div>
+        <div class="tr alt cols-16-1-14"><span>§264(3) subsidiary exemption</span><span>—</span><span>Entire individual Jahresabschluss/Lagebericht obligation falls away</span></div>
+        <div class="tr cols-16-1-14"><span>§265(3) item combination</span><span><span class="badge bs">Bilanz</span> <span class="badge be">Anhang</span></span><span>Face-of-statement simplification, detail preserved in the notes</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 26 ============ -->
+  <div class="section-header" id="s26"><span class="num">26</span><h2>Related Provisions — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How §§264–265 connect across HGB Book 3</div>
+      <div class="td-table">
+        <div class="th cols-08-2"><span>Provision</span><span>Nature of the connection</span></div>
+        <div class="tr cols-08-2"><span>§243(2)–(3)</span><span>The general principles §264(1)–(2) now make concrete and corporation-specific</span></div>
+        <div class="tr alt cols-08-2"><span>§266, §275</span><span>The specific Bilanz and GuV formats §265's general structuring principles feed directly into</span></div>
+        <div class="tr cols-08-2"><span>§290 et seq.</span><span>Governs the Konzernabschluss the §264(3)/§264b subsidiary exemptions rely upon</span></div>
+        <div class="tr alt cols-08-2"><span>§289</span><span>The Lagebericht content requirements this Titel's §264(1) obligation triggers</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 27 ============ -->
+  <div class="section-header" id="s27"><span class="num">27</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Kapitalmarktorientiert</div><div class="glossary-def">Capital-market-oriented — a corporation whose securities are admitted to, or have applied for admission to, trading on an organised market (§264d).</div></div>
+      <div class="glossary-item"><div class="glossary-term">Komplementär</div><div class="glossary-def">The general partner in a KG, normally bearing unlimited personal liability — unless itself a limited-liability entity, triggering §264a.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Gliederungsschema</div><div class="glossary-def">The prescribed line-item structure the Bilanz and GuV must follow, and which §265 requires to be generally retained from year to year.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Ein den tatsächlichen Verhältnissen entsprechendes Bild</div><div class="glossary-def">A picture corresponding to the actual circumstances — HGB's own corporation-specific formulation of "true and fair view" (§264(2)).</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Kapitalflussrechnung</div><div class="glossary-def">Cash flow statement, mandatory for capital-market-oriented corporations under §264(1a).</div></div>
+      <div class="glossary-item"><div class="glossary-term">Eigenkapitalspiegel</div><div class="glossary-def">Statement of changes in equity, also mandatory for capital-market-oriented corporations under §264(1a).</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Key</div>
+    <div class="lrow">
+      <span class="badge bs">Bilanz</span> Balance sheet
+      <span class="badge bp">GuV</span> Income statement (Gewinn- und Verlustrechnung)
+      <span class="badge be">Anhang</span> Notes to the financial statements
+    </div>
+  </div>
+  </div>
+</StandardPageLayout>

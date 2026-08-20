@@ -1,0 +1,162 @@
+---
+import StandardLayout from "../../layouts/StandardLayout.astro";
+import standards from "../../data/standards.json";
+import StandardCard from "../../components/StandardCard.astro";
+import { palette } from "../../data/standardVisuals";
+import { FRAMEWORK_CONFIG, getFramework } from "../../data/frameworks";
+import FrameworkSwitcher from "../../components/FrameworkSwitcher.astro";
+import FrameworkToolbar from "../../components/FrameworkToolbar.astro";
+import FrameworkHero from "../../components/FrameworkHero.astro";
+
+const framework = getFramework("asbe")!;
+
+const groupedASBE = /** @type {Record<string, any[]>} */ ({});
+
+for (const item of standards.ASBE) {
+  const category = item.category;
+  if (!groupedASBE[category]) {
+    groupedASBE[category] = [];
+  }
+  groupedASBE[category].push(item);
+}
+---
+
+<StandardLayout code={framework.code} title={`${framework.fullName} (${framework.code})`} framework={framework.code} hasToc={false}>
+
+  <FrameworkHero frameworkId={framework.id} />
+  <FrameworkSwitcher activeId={framework.id} />
+  <FrameworkToolbar frameworkId={framework.id} />
+<div id="no-standards-results" class="no-standards-results" style="display: none;">
+    <div class="no-results-icon">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="11" cy="11" r="8"/>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+    </div>
+    <h3>No matching standards found</h3>
+    <p>We couldn't find any standards matching your search term. Try searching for a different code or keyword.</p>
+  </div>
+
+  <div id="number-view">
+
+    <div class="standards-group">
+      <h2 class="standards-group-title">Active Standards</h2>
+      <div class="standards-grid">
+
+        {
+          standards.ASBE.filter((item) => !item.status).map((item, index) => (
+
+            <StandardCard
+              href={item.url}
+              code={item.code}
+              title={item.title}
+              framework={framework.id}
+              theme={palette[index % palette.length]}
+            />
+
+          ))
+        }
+
+      </div>
+    </div>
+
+    <div class="standards-divider"></div>
+
+    <div class="standards-group">
+      <h2 class="standards-group-title">Historical Standards</h2>
+      <div class="standards-grid">
+
+        {
+          standards.ASBE.filter((item) => item.status).map((item, index) => (
+
+            <StandardCard
+              href={item.url}
+              code={item.code}
+              title={item.title}
+              framework={framework.id}
+              status={item.status}
+              theme={palette[index % palette.length]}
+            />
+
+          ))
+        }
+
+      </div>
+    </div>
+
+  </div>
+
+  <div id="category-view" style="display:none;">
+
+    {
+      Object.entries(groupedASBE).map(
+        ([category, items]) => {
+
+          const activeItems = items.filter((item) => !item.status);
+          const historicalItems = items.filter((item) => item.status);
+
+          return (
+            <div class="category-group">
+
+              <h2>{category}</h2>
+
+              {activeItems.length > 0 && (
+                <div class="standards-group">
+                  <div class="standards-grid">
+
+                     {
+                       activeItems.map((item, index) => (
+
+              <StandardCard
+                href={item.url}
+                code={item.code}
+                title={item.title}
+                framework={framework.id}
+                theme={palette[index % palette.length]}
+              />
+
+                       ))
+                     }
+
+                  </div>
+                </div>
+              )}
+
+              {historicalItems.length > 0 && (
+                <>
+                  <div class="standards-divider"></div>
+                  <div class="standards-group">
+                    <div class="standards-grid">
+
+                      {
+                      historicalItems.map((item, index) => (
+
+                        <StandardCard
+                          href={item.url}
+                          code={item.code}
+                          title={item.title}
+                          framework={framework.id}
+                          status={item.status}
+                          theme={palette[index % palette.length]}
+                        />
+
+                      ))
+                      }
+
+                    </div>
+                  </div>
+                </>
+              )}
+
+            </div>
+          );
+
+        }
+      )
+    }
+
+  </div>
+
+  
+
+</StandardLayout>

@@ -1,0 +1,221 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import metadata from "../../data/standards/ipsas/ipsas28.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  covers={metadata.covers}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Objective, Scope & Definitions" },
+        { id: "s2", label: "Liabilities vs Net Assets/Equity — the Core Test" },
+        { id: "s3", label: "Puttable Instruments" },
+        { id: "s4", label: "Pro Rata Liquidation-Only Instruments & Reclassification" },
+        { id: "s5", label: "Compound Financial Instruments" },
+        { id: "s6", label: "Treasury Shares" },
+        { id: "s7", label: "Interest, Dividends, Losses & Gains" },
+        { id: "s8", label: "Offsetting a Financial Asset and a Financial Liability" },
+        { id: "s9", label: "Effective Date & Amendment Timeline" },
+        { id: "s10", label: "Relationship to IAS 32" },
+        { id: "s11", label: "Statement / Process Mapping" },
+        { id: "s12", label: "Related Standards" },
+        { id: "s13", label: "Glossary" }
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="active"
+    explanation="IPSAS 28 Financial Instruments: Presentation is the current, active standard issued by the IPSASB for classifying and measuring financial instruments as liabilities or net assets/equity and for offsetting. Effective for periods beginning on or after 1 January 2013. The current Standard comprises paras. 1–55."
+    historical="IPSAS 28 is the IPSASB's adaptation of IAS 32 Financial Instruments: Presentation for the public sector — replacing 'equity' with 'net assets', adapting the puttable-instrument guidance, and aligning the offset criteria for public-sector control. It complements IPSAS 41 (recognition/measurement) and IPSAS 30 (disclosure)."
+    link=""
+    linkText=""
+  />
+
+  <!-- ============ SECTION 1 ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; Definitions (paras. 1–12)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Objective &amp; scope</div>
+      <div class="principle">Establishes principles for classifying and measuring a financial instrument as a LIABILITY or as NET ASSETS/EQUITY (not 'equity', per the public-sector frame), and for OFFSETTING a financial asset with a financial liability. Applied from the ISSUER's perspective.</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Key definitions</div>
+      <div class="glossary-item"><div class="glossary-term">Financial instrument</div><div class="glossary-def">A contract that gives rise to a financial asset of one entity and a financial liability or equity instrument of another.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Puttable instrument</div><div class="glossary-def">A financial liability with the option to require the entity to buy back the instrument.</div></div>
+    </div>
+  </div>
+
+  <div class="grid grid-spaced">
+    <div class="card cd span2">
+      <div class="ctitle cd">Scope exclusions (para. 5)</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.6fr 1.4fr;"><span>Excluded</span><span>Instead, see…</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1.4fr;"><span>Scope of IPSAS 28</span><span>Paras. 1–55</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1.4fr;"><span>Recognising/measuring FI</span><span>IPSAS 41</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1.4fr;"><span>Disclosing FI</span><span>IPSAS 30</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1.4fr;"><span>Insurance contracts</span><span>IPSAS 44</span></div>
+      </div>
+      <div class="callout info callout--flush">A 'hybrid' contract (compound instrument) is bifurcated into its liability and net-asset/equity components and each is accounted for separately.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Liabilities vs Net Assets/Equity — the Core Test (paras. 13–18)</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card cw span2">
+      <div class="ctitle cw">The classification test (para. 13)</div>
+      <div class="principle">A financial instrument is a LIABILITY unless, and only unless, (a) it is evidenced by a contract to receive/return resources and (b) it does not have the characteristics of a puttable instrument or pro rata liquidation-only instrument (which are liabilities regardless). All else → net assets/equity.</div>
+      <div class="check-list"><span>No contractual obligation → equity</span><span>Puttable / liquidation-only → liability</span><span>Subsequent changes: equity = equity; liability = P&amp;L</span></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Putable Instruments (paras. 19–22)</h2><span class="line"></span></div>
+  <div class="cols-1">
+    <div class="card ci">
+      <div class="ctitle ci">Puttable = liability (para. 19)</div>
+      <div class="principle">A puttable instrument — one that entitles the holder to require the entity to repurchase the instrument — is classified as a financial LIABILITY even if the repayment is in the entity's own equity instruments.</div>
+      <div class="cross-list"><span>All-or-nothing puts</span><span>Measurement: FVOCI or FVTPL (IPSAS 41)</span><span>Distributable-profit condition</span><span>Still a liability</span></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Pro Rata Liquidation-Only Instruments & Reclassification (paras. 23–25)</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card cd span2">
+      <div class="ctitle cd">Liquidation-only = liability (para. 23)</div>
+      <div class="principle">An instrument that is redeemable only on liquidation (and only in proportion to the entity's residual distribution capacity) is a financial LIABILITY. It can NEVER be reclassified to net assets/equity. Changes in fair value go to profit or loss.</div>
+      <div class="callout warn">Reclassifications are only permitted for instruments that were equity at initial recognition and subsequently settle in a way that is NOT a 'cash settlement' of the equity item.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Compound Financial Instruments (paras. 26–28)</h2><span class="line"></span></div>
+  <div class="cols-1">
+    <div class="card cw">
+      <div class="ctitle cw">Bifurcate debt + equity (para. 26)</div>
+      <div class="principle">A compound financial instrument (e.g. convertible bond) is split at inception: the liability component at fair value (using the market rate for a similar non-convertible instrument) and the equity component as the residual. Interest on the liability is accreted over its life and charged to profit or loss.</div>
+      <div class="glossary-item"><div class="glossary-term">Effective interest</div><div class="glossary-def">The rate that exactly discounts estimated future cash payments through the expected life of the financial liability to its gross carrying amount.</div></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Treasury Shares (paras. 29–30)</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card ci span2">
+      <div class="ctitle ci">Own instruments — not income (para. 29)</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.4fr 1.6fr;"><span>Acquisition</span><span>Reduces net assets/equity directly</span></div>
+        <div class="tr" style="grid-template-columns:1.4fr 1.6fr;"><span>Held-to-date cost</span><span>No gain/loss, no recycling</span></div>
+        <div class="tr alt" style="grid-template-columns:1.4fr 1.6fr;"><span>D disposal</span><span>Increase net assets/equity directly</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Interest, Dividends, Losses &amp; Gains (paras. 31–33)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd">
+      <div class="ctitle cd">Where changes land (para. 31)</div>
+      <div class="principle">For a financial LIABILITY: interest expense, losses and (some) gains → profit or loss. For an instrument in NET ASSETS/EQUITY: dividends and gains/losses are NOT recycled to profit or loss on later re-measurement.</div>
+      <div class="callout info callout--flush">Equity-classified instruments are a 'closed box' — movements are equity, never P&amp;L.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Offsetting a Financial Asset and a Financial Liability (paras. 34–39)</h2><span class="line"></span></div>
+  <div class="cols-1 grid-spaced">
+    <div class="card cw">
+      <div class="ctitle cw">Three conditions (para. 34)</div>
+      <div class="principle">An asset and liability may be OFFSET (net reported) only if, and only if, ALL of: (1) a currently enforceable right to net settle; (2) an unconditional right to set off the amount recognised; and (3) present intention to settle net (or simultaneously). Otherwise they are disclosed gross. </div>
+      <div class="check-list"><span>Enforceable right to net settle</span><span>Unconditional set-off right</span><span>Present intention to settle net</span></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Effective Date &amp; Amendment Timeline</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card ci span2">
+      <div class="ctitle ci">Timeline</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 1.2fr;"><span>Date</span><span>Event</span></div>
+        <div class="tr" style="grid-template-columns:1fr 1.2fr;"><span>Dec 2011</span><span>Issued</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 1.2fr;"><span>1 Jan 2013</span><span>Effective date</span></div>
+        <div class="tr" style="grid-template-columns:1fr 1.2fr;"><span>2023</span><span>Amended (latest)</span></div>
+      </div>
+      <div class="callout info callout--flush">Published with IPSAS 29 and IPSAS 30 to replace the IAS 39 suite with IPSAS 41-aligned presentation.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Relationship to IAS 32</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Mapping (para. 48)</div>
+      <div class="principle">IPSAS 28 tracks IAS 32's classification, compound-instrument and offset criteria but re-denominates 'equity' as 'net assets', adds public-sector commentary on the control test, and clarifies treasury-share accounting for not-for-profit entities.</div>
+      <div class="cross-list"><span>IAS 32 classification</span><span>IPSAS 28 same (net assets/equity)</span><span>IAS 32 offset</span><span>IPSAS 28 same</span><span>IAS 32 equity</span><span>IPSAS 28 net assets</span></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card cw span2">
+      <div class="ctitle cw">Where it flows</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.4fr 1.3fr;"><span>Process</span><span>Ledger</span></div>
+        <div class="tr" style="grid-template-columns:1.4fr 1.3fr;"><span>Classification decision</span><span>Deal Capture → Liability vs Net Assets</span></div>
+        <div class="tr alt" style="grid-template-columns:1.4fr 1.3fr;"><span>Compound split</span><span>Bond Module → Liability Accretion + Equity</span></div>
+        <div class="tr" style="grid-template-columns:1.4fr 1.3fr;"><span>Offset review</span><span>Netting Master → Balance Sheet (gross if not)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Related Standards</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">See also</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2fr;"><span>Standard</span><span>Relation</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2fr;"><span>IPSAS 41</span><span>Recognition &amp; measurement of FI</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2fr;"><span>IPSAS 30</span><span>Disclosure of FI</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2fr;"><span>IAS 32</span><span>Direct equivalent</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Financial liability</div><div class="glossary-def">Probable transfer of resources, no equity characteristics.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Puttable instrument</div><div class="glossary-def">Redeemable at holder's option — always a liability.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Compound instrument</div><div class="glossary-def">Debt + equity components bifurcated at inception.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Treasury shares</div><div class="glossary-def">Entity's own instruments — reduce net assets directly.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Offsetting</div><div class="glossary-def">Netting an asset & liability on the face of the statement.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Net assets/equity</div><div class="glossary-def">Public-sector term for residual interest (IAS 32 equity).</div></div>
+    </div>
+  </div>
+</StandardPageLayout>
+

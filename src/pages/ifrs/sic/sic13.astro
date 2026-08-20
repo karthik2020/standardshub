@@ -1,0 +1,89 @@
+---
+import StandardPageLayout from "../../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../../components/FinancialStatementKey.astro";
+import Glossary from "../../../components/Glossary.astro";
+import PageToc from "../../../components/PageToc.astro";
+import LifecycleNotice from "../../../components/StandardLifecycleNotice.astro";
+import "../../../styles/standards-poster.css";
+import "../../../styles/extended.css";
+import HistoryTimeline from "../../../components/HistoryTimeline.astro";
+import history from "../../../data/history.json";
+import metadata from "../../../data/standards/sic/sic13.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType="IFRS"
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "What SIC-13 Addressed (Historical)" },
+        { id: "s2", label: "The Conclusion It Reached (Historical)" },
+        { id: "s3", label: "Where This Guidance Lives Today" },
+        { id: "s4", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="historical-reference"
+    explanation="SIC-13 was superseded in May 2011 when the IASB issued IFRS 11 Joint Arrangements, which restructured joint arrangements into joint operations and joint ventures and replaced SIC-13's specific contribution guidance with a broader model."
+    historical="This page is retained for historical and comparative reference. Entities should refer to the current standard that superseded this interpretation for authoritative guidance."
+    link="/ifrs/ifrs11"
+    linkText="IFRS 11 Joint Arrangements"
+  />
+
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>What SIC-13 Addressed (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">What SIC-13 addressed</div>
+        <div class="principle">SIC-13 addressed how a venturer should account for gains or losses on contributing non-monetary assets to a jointly controlled entity. It clarified whether such gains or losses should be recognised in full by the venturer or whether they should be eliminated to the extent of the venturer's interest in the jointly controlled entity.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>The Conclusion It Reached (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">The conclusion it reached</div>
+        <div class="principle">SIC-13 concluded that a venturer should recognise a gain or loss on the contribution of non-monetary assets to a jointly controlled entity only to the extent of the interests of other venturers. The venturer's own share of the joint venture did not give rise to recognition of a gain or loss, since the transaction was not, in substance, an exchange with an independent party.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Where This Guidance Lives Today</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card">
+        <div class="ctitle">Where this guidance lives today</div>
+        <div class="td-table">
+          <div class="tr"><span>Superseded by</span><span>IFRS 11 Joint Arrangements</span></div>
+          <div class="tr alt"><span>Why withdrawn</span><span>IFRS 11 restructured joint arrangements into joint operations and joint ventures</span></div>
+          <div class="tr"><span>Current status</span><span>Superseded</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Jointly controlled entity", definition: "A joint venture that is structured as a separate entity, over which the venturers have joint control through agreement with other parties." },
+      { term: "Venturer contribution", definition: "The transfer of non-monetary assets by a venturer to a jointly controlled entity in exchange for an equity interest, which may trigger gain or loss recognition." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.SIC13} />
+  </section>
+</StandardPageLayout>
+
+
+
+

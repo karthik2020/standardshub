@@ -1,0 +1,283 @@
+---
+import StandardPageLayout from "../../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../../components/FinancialStatementKey.astro";
+import Glossary from "../../../components/Glossary.astro";
+import PageToc from "../../../components/PageToc.astro";
+import LifecycleNotice from "../../../components/StandardLifecycleNotice.astro";
+import "../../../styles/standards-poster.css";
+import "../../../styles/extended.css";
+import HistoryTimeline from "../../../components/HistoryTimeline.astro";
+import history from "../../../data/history.json";
+import metadata from "../../../data/standards/ifric/ifric15.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType="IFRS"
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework (Historical)" },
+        { id: "s2", label: "Scope & Definitions (Historical)" },
+        { id: "s3", label: "Construction Contract vs Sale of Goods Classification (Historical)" },
+        { id: "s4", label: "The Continuous Transfer Indicator (Historical)" },
+        { id: "s5", label: "Percentage-of-Completion vs Completed Contract Method (Historical)" },
+        { id: "s6", label: "Agreements for Rendering Services (Historical)" },
+        { id: "s7", label: "How This Guidance Became Part of IFRS 15" },
+        { id: "s8", label: "The Significant Real Estate Sector Transition Impact" },
+        { id: "s9", label: "Disclosure (Historical)" },
+        { id: "s10", label: "Judgments & Estimates (Historical)" },
+        { id: "s11", label: "IFRIC 15 vs the Current IFRS 15 Approach" },
+        { id: "s12", label: "Statement Mapping (Historical)" },
+        { id: "s13", label: "Related Standards" },
+        { id: "s14", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="withdrawn"
+    explanation="IFRIC 15 addressed whether an agreement for constructing real estate fell within IAS 11's construction contract scope or IAS 18's goods-sale scope, based on the buyer's ability to specify major structural elements. This binary classification was withdrawn and replaced by IFRS 15's own more rigorous over-time vs point-in-time criteria."
+    historical="This poster is retained for historical and comparative reference. Entities must now apply IFRS 15's over-time criteria to real estate construction agreements."
+    link="/ifrs/ifrs15"
+    linkText="IFRS 15 Revenue from Contracts with Customers"
+  />
+
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Why the binary test mattered</div>
+        <div class="principle">IFRIC 15's classification decision was not merely a bookkeeping preference — it determined WHICH STANDARD applied, which in turn determined whether revenue was recognised OVER TIME (percentage-of-completion) or at a POINT IN TIME (completed contract or sale completion). The classification had a direct, material impact on when and how much revenue appeared in each reporting period.</div>
+        <div class="note">The binary nature of the IFRIC 15 test — construction contract OR sale of goods — reflected the era before IFRS 15, when IAS 11 and IAS 18 were the only revenue-oriented standards and their scopes were strictly divided.</div>
+      </div>
+      <div class="card cs">
+        <div class="ctitle cs">The underlying revenue recognition principle</div>
+        <div class="principle">At its heart, IFRIC 15 sought to determine whether the risks and rewards of the real estate's MAJOR STRUCTURAL ELEMENTS had transferred to the buyer. If the buyer could specify the structural elements — walls, floors, roof — those risks had NOT fully transferred, pointing to a SERVICE/CONSTRUCTION model. If the buyer could NOT specify them, the agreement was more like a SALE OF GOODS.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope & Definitions (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What IFRIC 15 covered</div>
+        <div class="principle">IFRIC 15 addressed agreements for the CONSTRUCTION OF REAL ESTATE — specifically, situations where an entity (typically a developer or builder) agrees to construct a building, structure, or other real estate asset for a customer, and the customer specifies or has the right to specify MAJOR STRUCTURAL ELEMENTS of the work.</div>
+        <div class="elabel">TYPICAL FACT PATTERNS</div>
+        <div class="dot-list">
+          <span>Custom home construction where the buyer selects architectural design</span>
+          <span>Commercial development agreements where the buyer specifies structural components</span>
+          <span>Speculative construction where the developer retains design control</span>
+          <span>Infrastructure projects with customer-specified structural requirements</span>
+        </div>
+      </div>
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions (historical)</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Major structural elements</div>
+          <div class="glossary-def">Elements of a construction project that form the primary load-bearing, enclosure, or foundational components of the real estate — walls, floors, roof, foundations, and similar structural components.</div>
+        </div>
+        <div class="glossary-item" style="border-bottom:none;">
+          <div class="glossary-term">Construction contract</div>
+          <div class="glossary-def">Under IAS 11, a contract specifically for the construction of an asset (or group of assets) that are closely interrelated or interdependent, measured using percentage-of-completion.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Construction Contract vs Sale of Goods Classification (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">The binary classification test</div>
+        <div class="td-table">
+          <div class="th cols-13-1"><span>Classification</span><span>Criteria</span></div>
+          <div class="tr cols-13-1"><span>Construction contract (IAS 11)</span><span>Agreement is for the CONSTRUCTION of real estate where the customer can specify MAJOR STRUCTURAL ELEMENTS — revenue recognised over time using percentage-of-completion</span></div>
+          <div class="tr alt cols-13-1"><span>Sale of goods (IAS 18)</span><span>Agreement is for the CONSTRUCTION of real estate where the buyer CANNOT specify major structural elements — revenue recognised at a point in time when risks and rewards transfer</span></div>
+        </div>
+        <div class="callout warn callout--flush">⚠️ The binary nature of IFRIC 15's test — either construction contract OR sale of goods — meant that borderline cases could produce dramatically different revenue recognition patterns. This binary rigidity was one reason IFRS 15 replaced it with a more nuanced criteria-based approach.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>The Continuous Transfer Indicator (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">How IFRIC 15 determined whether control transferred over time</div>
+        <div class="principle">Where the agreement was a SALE OF GOODS (buyer could NOT specify major structural elements), IFRIC 15 required an assessment of whether the buyer could ENJOY BENEFITS AS THE ASSET WAS BEING CONSTRUCTED — the continuous transfer indicator. If the buyer could direct the use of, and obtain substantially all of the remaining benefits from, the asset as it was constructed, revenue was recognised OVER TIME.</div>
+        <div class="elabel">FACTORS INDICATING CONTINUOUS TRANSFER</div>
+        <div class="dot-list">
+          <span>The buyer can direct the use of the asset during construction</span>
+          <span>The buyer obtains substantially all remaining benefits from the asset as it is constructed</span>
+          <span>The asset has no alternative use to the entity</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Percentage-of-Completion vs Completed Contract Method (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">The two measurement bases</div>
+        <div class="principle">Where the agreement was classified as a CONSTRUCTION CONTRACT (buyer could specify major structural elements), IAS 11's percentage-of-completion method applied: revenue was recognised OVER TIME based on the stage of completion, measured by reference to the proportion of costs incurred to date relative to total estimated costs.</div>
+        <div class="elabel">WHEN PERCENTAGE-OF-COMPLETION APPLIED</div>
+        <div class="dot-list">
+          <span>Outcome can be estimated reliably</span>
+          <span>Costs can be identified and measured reliably</span>
+          <span>Stage of completion can be measured reliably</span>
+          <span>Collectability of consideration is probable</span>
+        </div>
+      </div>
+      <div class="card cd">
+        <div class="ctitle cd">When the completed contract method was required</div>
+        <div class="principle">If the conditions for percentage-of-completion were NOT met — for example, if the outcome could not be estimated reliably — the COMPLETED CONTRACT METHOD applied: no revenue was recognised until the contract was substantially complete. This was the default under IAS 11 for high-uncertainty construction contracts.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Agreements for Rendering Services (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Service components of real estate agreements</div>
+        <div class="principle">Where a real estate construction agreement included BOTH the construction of the real estate AND the provision of RELATED SERVICES (e.g. ongoing property management, maintenance, or facilities management), IFRIC 15 required those services to be accounted for SEPARATELY under IAS 18 (revenue for services rendered over time), UNLESS the services were so closely interrelated with the construction that they formed part of the construction contract itself.</div>
+        <div class="callout info">The service vs construction separation under IFRIC 15 required judgement about whether the services were "integral to" the construction — a binary test that IFRS 15 later replaced with a more practical approach using relative standalone selling prices.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>How This Guidance Became Part of IFRS 15</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">The IFRS 15 replacement of IFRIC 15's binary classification</div>
+        <div class="principle">IFRS 15 replaced IFRIC 15's binary construction-vs-goods test with a much more nuanced, criteria-based approach. Under IFRS 15, an entity assesses whether a contract with a customer is an "agreement for construction of real estate" by applying the OVER-TIME CRITERIA in IFRS 15: control must transfer to the customer over time, assessed using one of THREE specific criteria (create/enhance an asset the customer controls, create/enhance an asset without alternative use, or a contractually enforceable right to payment for performance completed).</div>
+        <div class="callout info">The IFRS 15 approach is fundamentally different — rather than a binary structural-elements test, it uses a five-step model focused on when the customer gains control. Real estate construction agreements that previously fell into one category under IFRIC 15 may now fall into a different revenue recognition pattern under IFRS 15.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>The Significant Real Estate Sector Transition Impact</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Why the transition from IFRIC 15 to IFRS 15 was particularly impactful</div>
+        <div class="td-table">
+          <div class="th cols-16-1-14"><span>Aspect</span><span>IFRIC 15 impact</span><span>IFRS 15 impact</span></div>
+          <div class="tr cols-16-1-14"><span>Revenue timing</span><span>Binary — either over time or at a point</span><span>More nuanced — multiple over-time criteria, point-in-time default</span></div>
+          <div class="tr alt cols-16-1-14"><span>Measurement method</span><span>Percentage-of-completion under IAS 11</span><span>Input/output methods, but must depict progress in satisfying the performance obligation</span></div>
+          <div class="tr cols-16-1-14"><span>Contract costs</span><span>Incremental costs of obtaining a contract not separately addressed</span><span>Costs to obtain and fulfil a contract explicitly addressed</span></div>
+          <div class="tr alt cols-16-1-14"><span>Disclosure</span><span>Limited to IAS 11/18 requirements</span><span>Extensive qualitative and quantitative disclosure about performance obligations, transaction prices, and timing</span></div>
+        </div>
+        <div class="note">The transition from IFRIC 15 to IFRS 15 required many real estate and construction entities to reconsider not just revenue recognition timing, but the entire measurement approach to construction contracts — a significant accounting policy change when IFRS 15 was first adopted.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Historical disclosure requirements under IFRIC 15</div>
+        <div class="check-list">
+          <span>Method used to determine stage of completion (for percentage-of-completion)</span>
+          <span>Amount of revenue recognised in the period</span>
+          <span>Stage of completion at the reporting date</span>
+          <span>Contract balances (amounts due from/to customers)</span>
+          <span>Significant judgements made in determining whether an agreement was a construction contract or sale of goods</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Judgments & Estimates (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where judgement historically mattered most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Whether the buyer could specify "major structural elements" — the central binary test</span>
+              <span>Whether services were "integral to" the construction or separable</span>
+              <span>Whether the outcome of a contract could be estimated reliably enough to use percentage-of-completion</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>Stage of completion measured by cost-to-cost or other methods</span>
+              <span>Total estimated contract costs affecting revenue recognition over time</span>
+              <span>When risks and rewards had sufficiently transferred for point-in-time recognition</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>IFRIC 15 vs the Current IFRS 15 Approach</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">What changed and what did not</div>
+        <div class="td-table">
+          <div class="th cols-12-1-1"><span>Feature</span><span>IFRIC 15 (historical)</span><span>IFRS 15 (current)</span></div>
+          <div class="tr cols-12-1-1"><span>Classification test</span><span>Binary: can buyer specify major structural elements?</span><span>Criteria-based: does control transfer over time? (three criteria under IFRS 15)</span></div>
+          <div class="tr alt cols-12-1-1"><span>Revenue timing</span><span>Percentage-of-completion (IAS 11) or point-in-time (IAS 18)</span><span>Over time (if criteria met) or point-in-time (default if not)</span></div>
+          <div class="tr cols-12-1-1"><span>Measurement</span><span>Cost-to-cost or other IAS 11 stage-of-completion methods</span><span>Input/output methods depicting progress, must align with transfer of control</span></div>
+          <div class="tr alt cols-12-1-1"><span>Contract costs</span><span>Limited guidance under IAS 11</span><span>Separate treatment of costs to obtain and costs to fulfil</span></div>
+          <div class="tr cols-12-1-1"><span>Withdrawn</span><span>Yes — 2016</span><span>N/A</span></div>
+        </div>
+        <div class="note">IFRS 15's five-step model fundamentally changed the analysis for real estate construction agreements. Rather than a binary structural-elements test, entities now apply the over-time criteria, which consider whether the customer controls the asset as it is created — a conceptually different and more economically grounded approach.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Where IFRIC 15 items historically appeared</div>
+        <div class="td-table">
+          <div class="th cols-16-1-14"><span>Item</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr cols-16-1-14"><span>Revenue recognised over time (construction contract)</span><span><span class="badge bp">P&L</span></span><span>Percentage-of-completion under IAS 11</span></div>
+          <div class="tr alt cols-16-1-14"><span>Revenue at point in time (sale of goods)</span><span><span class="badge bp">P&L</span></span><span>Recognised when risks and rewards transfer under IAS 18</span></div>
+          <div class="tr cols-16-1-14"><span>Contract asset / liability</span><span><span class="badge bs">Balance Sheet</span></span><span>Billings in excess of costs/costs in excess of billings</span></div>
+          <div class="tr alt cols-16-1-14"><span>Costs recognised</span><span><span class="badge bp">P&L</span> <span class="badge bs">Balance Sheet</span></span><span>Expensed as incurred or capitalised as work-in-progress depending on recoverability</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Cross-reference map</div>
+        <div class="td-table">
+          <div class="th cols-08-2"><span>Standard</span><span>Connection</span></div>
+          <div class="tr cols-08-2"><span>IFRS 15</span><span>The current successor standard replacing IFRIC 15's binary test with a three-criteria model</span></div>
+          <div class="tr alt cols-08-2"><span>IAS 11</span><span>The construction contract standard IFRIC 15 historically cross-referenced</span></div>
+          <div class="tr cols-08-2"><span>IAS 18</span><span>The sale of goods standard IFRIC 15 historically cross-referenced</span></div>
+        </div>
+      </div>
+      <div class="card cn">
+        <div class="ctitle cn">Quick-reference glossary</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Major structural elements</div>
+          <div class="glossary-def">Load-bearing, enclosure, or foundational components of real estate (walls, floors, roof, foundations) whose specification was IFRIC 15's binary classification test.</div>
+        </div>
+        <div class="glossary-item" style="border-bottom:none;">
+          <div class="glossary-term">Percentage-of-completion</div>
+          <div class="glossary-def">The IAS 11 revenue recognition method for construction contracts, recognising revenue based on the proportion of work completed to date.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Major structural elements", definition: "Load-bearing, enclosure, or foundational components of real estate (walls, floors, roof, foundations) whose specification determined the binary classification under IFRIC 15." },
+      { term: "Percentage-of-completion", definition: "The IAS 11 revenue recognition method for construction contracts, recognising revenue based on the proportion of work completed to date." },
+      { term: "Continuous transfer indicator", definition: "IFRIC 15's test for whether the buyer could enjoy benefits as the asset was being constructed, determining whether control transferred over time." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.IFRIC15} />
+  </section>
+</StandardPageLayout>
+
+
+
+

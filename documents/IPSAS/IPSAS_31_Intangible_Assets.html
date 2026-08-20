@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPSAS 31 — Intangible Assets | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .eg  { margin-bottom: 7px; }
+  .egl { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; margin-bottom: 3px; }
+  .entry { display: flex; align-items: flex-start; gap: 4px; margin-bottom: 4px; }
+  .dr { font-size: 11px; font-weight: 500; color: var(--color-text-info);   min-width: 14px; padding-top: 1px; }
+  .cr { font-size: 11px; font-weight: 500; color: var(--color-text-danger); min-width: 14px; padding-top: 1px; padding-left: 6px; }
+  .etxt { font-size: 11px; color: var(--color-text-primary); flex: 1; line-height: 1.4; }
+  .badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .bc { background: #f3e8ff; color: #7e22ce; }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">IPSAS 31 — Intangible Assets</div>
+      <div class="hub-sub">Extended reference poster · Full Handbook structure · Statement mapping · Related standards</div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <a href="#s1">1. Objective, Scope &amp; Intangible Heritage Assets</a>
+    <a href="#s2">2. Definitions &amp; the Three-Part Test</a>
+    <a href="#s3">3. Recognition &amp; Separate Acquisition</a>
+    <a href="#s4">4. Acquisition via Combination &amp; Non-Exchange Transactions</a>
+    <a href="#s5">5. Internally Generated Intangibles — Research vs Development</a>
+    <a href="#s6">6. Cost of an Internally Generated Intangible Asset</a>
+    <a href="#s7">7. Subsequent Measurement — Historical Cost &amp; Current Value Models</a>
+    <a href="#s8">8. Useful Life — Finite vs Indefinite</a>
+    <a href="#s9">9. Amortization, Impairment &amp; Retirements</a>
+    <a href="#s10">10. Disclosure Requirements</a>
+    <a href="#s11">11. Effective Date &amp; Amendment Timeline</a>
+    <a href="#s12">12. Relationship to IAS 38</a>
+    <a href="#s13">13. Statement / Process Mapping</a>
+    <a href="#s14">14. Related Standards</a>
+    <a href="#s15">15. Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 — OBJECTIVE, SCOPE & INTANGIBLE HERITAGE ASSETS ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; Intangible Heritage Assets (paras. 1–15)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Objective &amp; scope</div>
+      <div class="principle">Prescribes the accounting treatment for intangible assets not dealt with specifically by another Standard — requiring recognition only when specified criteria are met, prescribing measurement, and requiring specified disclosures.</div>
+      <div class="cross-list">
+        <span>Financial assets (IPSAS 28)</span>
+        <span>Exploration/evaluation assets (IPSAS 50); mineral/oil/gas development and extraction expenditure</span>
+        <span>Powers and rights conferred by legislation, a constitution, or equivalent means</span>
+        <span>Deferred tax assets; insurance-contract deferred acquisition costs and intangibles</span>
+        <span>Inventories held for sale (IPSAS 12); leased intangibles (IPSAS 43); employee benefit assets (IPSAS 39)</span>
+        <span>Goodwill (IPSAS 40); held-for-sale intangibles (IPSAS 44); binding-arrangement assets (IPSAS 47)</span>
+        <span>Initial recognition/measurement of service concession assets (IPSAS 32) — though subsequent measurement/disclosure of those assets IS within scope</span>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Tangible vs intangible judgment, and intangible heritage assets</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:8px;">Where an asset has both physical AND intangible elements (e.g. fighter-jet navigation software), judgment determines which element is more significant — integral software is PP&amp;E; standalone software is intangible (para. 7).</div>
+      <div class="dot-list">
+        <span>Intangible HERITAGE assets — cultural, environmental, or historical significance (e.g. historical event recordings, rights to a public figure's likeness on stamps/coins)</span>
+        <span>Value often not fully reflected in market price; may face legal/statutory disposal restrictions; value may increase over time; useful life can be very hard to estimate (para. 12)</span>
+      </div>
+      <div class="note">Where an intangible heritage asset has economic benefits BEYOND its heritage value (e.g. royalties from a historical recording), it may be recognized/measured like a cash-generating intangible; otherwise its future benefit is limited to heritage characteristics (para. 14).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 — DEFINITIONS & THE THREE-PART TEST ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Definitions &amp; the Three-Part Intangible Asset Test (paras. 16–27)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The definition, and its three components</div>
+      <div class="formula-box">
+        <div class="f-eq">Intangible asset = an IDENTIFIABLE, NONMONETARY asset WITHOUT PHYSICAL SUBSTANCE</div>
+      </div>
+      <div class="dot-list">
+        <span><strong style="font-weight:500">Identifiability</strong> — separable (can be sold/transferred/licensed/rented/exchanged, alone or with a related item) OR arises from binding arrangements, regardless of transferability</span>
+        <span><strong style="font-weight:500">Control</strong> — power to obtain the future benefits AND restrict others' access, normally via enforceable legal rights (though legal enforceability isn't strictly required)</span>
+        <span><strong style="font-weight:500">Future economic benefits or service potential</strong> — revenue, cost savings, or other benefits from use</span>
+      </div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Where control usually fails</div>
+      <div class="cross-list">
+        <span>A skilled staff team, or training-derived skills — usually insufficient control (staff can leave)</span>
+        <span>Specific management/technical talent — unlikely to qualify unless legally protected</span>
+        <span>Portfolios of service users, market share, or user loyalty — usually insufficient control, UNLESS an arm's-length exchange transaction for similar non-contractual relationships provides evidence of both control AND separability</span>
+      </div>
+      <div class="note">An item failing the intangible-asset definition is expensed as incurred — UNLESS acquired in a public sector combination, in which case it forms part of goodwill (para. 18).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 — RECOGNITION & SEPARATE ACQUISITION ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Recognition &amp; Separate Acquisition (paras. 28–39)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The two-part recognition test (para. 28)</div>
+      <div class="check-list">
+        <span>PROBABLE that expected future economic benefits/service potential attributable to the asset will flow to the entity</span>
+        <span>Cost or fair value can be measured RELIABLY</span>
+      </div>
+      <div class="note">Initial measurement is at COST — or, for non-exchange acquisitions, FAIR VALUE at the acquisition date (para. 31). For separately acquired intangibles, the probability criterion is ALWAYS considered satisfied — the price paid inherently reflects benefit-flow expectations (para. 32).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Cost of a separately acquired intangible (paras. 34–38)</div>
+      <div class="dot-list">
+        <span>INCLUDES: purchase price (net of discounts/rebates, plus import duties/non-refundable taxes), and directly attributable preparation costs (testing, professional fees, directly-related employee benefits)</span>
+        <span>EXCLUDES: new-product introduction costs, new-location/new-user-class costs (incl. staff training), and general administration/overhead</span>
+        <span>Cost capitalization STOPS once the asset is capable of operating as management intends — subsequent use/redeployment costs, and initial operating deficits, are NOT capitalized</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 — ACQUISITION VIA COMBINATION & NON-EXCHANGE TRANSACTIONS ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Acquisition as Part of a Public Sector Combination &amp; via Non-Exchange Transactions (paras. 39A–47)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs">
+      <div class="ctitle cs">Public sector combinations (IPSAS 40 interaction)</div>
+      <div class="formula-box">
+        <div class="f-eq">Cost = fair value at the acquisition date; both recognition criteria are ALWAYS deemed satisfied</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">The acquirer recognizes an intangible SEPARATELY from goodwill, whether or not the acquired operation had recognized it — INCLUDING an in-process R&amp;D project if it's identifiable (separable or arising from binding arrangements) (paras. 39A–39B).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Non-exchange acquisitions &amp; exchanges of assets</div>
+      <div class="dot-list">
+        <span>Intangible acquired through a NON-EXCHANGE transaction → initial cost = FAIR VALUE at the date of acquisition (para. 31, 42–43)</span>
+        <span>Exchange of assets → measured at fair value UNLESS the exchange lacks commercial substance, or neither asset's fair value is reliably measurable</span>
+      </div>
+      <div class="callout danger" style="margin-bottom:0;">✕ <strong style="font-weight:600">Internally generated goodwill is NEVER recognized as an asset</strong> — it isn't an identifiable resource controlled by the entity that can be measured reliably at cost (para. 48-adjacent guidance).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 — INTERNALLY GENERATED INTANGIBLES: RESEARCH VS DEVELOPMENT ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Internally Generated Intangible Assets — Research vs Development Phase (paras. 49–62)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd">
+      <div class="ctitle cd">Research phase — NEVER capitalized</div>
+      <div class="callout danger" style="margin-bottom:9px;">✕ No intangible asset arising from research (or a project's research phase) is EVER recognized — expensed as incurred (para. 52).</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Examples: obtaining new knowledge; searching for/evaluating applications of research findings; searching for material/product/process alternatives; formulating and selecting design alternatives (para. 54). If research can't be distinguished from development, treat the WHOLE project as research (para. 51).</div>
+    </div>
+
+    <div class="card cs">
+      <div class="ctitle cs">Development phase — capitalized if ALL SIX criteria are met (para. 55)</div>
+      <div class="check-list">
+        <span>TECHNICAL FEASIBILITY of completing the asset for use or sale</span>
+        <span>INTENTION to complete and use or sell it</span>
+        <span>ABILITY to use or sell it</span>
+        <span>HOW it will generate probable future benefits — demonstrable market or internal usefulness</span>
+        <span>AVAILABILITY of adequate technical, financial, and other resources to complete development</span>
+        <span>ABILITY to measure reliably the expenditure attributable to the asset</span>
+      </div>
+      <div class="note">Internally generated BRANDS, mastheads, publishing titles, and service-user lists are NEVER recognized — indistinguishable from the cost of developing the business as a whole (para. 61).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 — COST OF AN INTERNALLY GENERATED INTANGIBLE ASSET ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Cost of an Internally Generated Intangible Asset (paras. 63–70)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">What counts, from WHEN</div>
+      <div class="formula-box">
+        <div class="f-eq">Cost = sum of expenditure incurred from the date the asset FIRST meets ALL recognition criteria — never reinstated retroactively</div>
+      </div>
+      <div class="dot-list">
+        <span>INCLUDES: materials/services consumed, directly attributable employee benefits, legal-right registration fees, amortization of patents/licenses used to generate the asset</span>
+        <span>EXCLUDES: selling/admin/overhead (unless directly attributable), inefficiencies and initial operating deficits, staff training costs</span>
+      </div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">The one-way door — no retroactive capitalization</div>
+      <div class="callout danger" style="margin-bottom:0;">✕ <strong style="font-weight:600">Once expensed, always expensed:</strong> expenditure initially recognized as an expense is NEVER later reinstated as part of an intangible asset's cost (para. 70) — even if the project subsequently meets the recognition criteria. Only expenditure incurred AFTER the criteria are first met is capitalized.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 — SUBSEQUENT MEASUREMENT: HISTORICAL COST & CURRENT VALUE MODELS ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Subsequent Measurement — Historical Cost &amp; Current Value Models (paras. 71–86)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">One policy per class, consistently applied</div>
+      <div class="formula-box">
+        <div class="f-eq">Historical cost model: cost LESS accumulated amortization and impairment</div>
+      </div>
+      <div class="formula-box">
+        <div class="f-eq">Current value model: fair value at revaluation date LESS subsequent accumulated amortization and impairment</div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">If current value is chosen, ALL other assets in that CLASS must also use it, unless no active market exists for them (para. 71). Fair value under this model is measured by reference to an ACTIVE MARKET — genuinely rare for intangibles (brands, mastheads, patents are typically unique, so no active market exists) (paras. 74, 77).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Revaluation gains/losses — mirrors IPSAS 45's PP&amp;E model</div>
+      <div class="dot-list">
+        <span>Carrying amount INCREASE → revaluation surplus (net assets/equity) directly, UNLESS reversing a prior decrease on the SAME asset previously in surplus/deficit — that portion goes to surplus/deficit</span>
+        <span>Carrying amount DECREASE → surplus or deficit, UNLESS a credit balance exists in that asset's revaluation surplus — offset there first</span>
+        <span>Cumulative revaluation surplus may transfer to accumulated surpluses/deficits when realized (on disposal, or progressively as used) — NEVER through surplus or deficit itself (para. 86)</span>
+      </div>
+      <div class="note">If an active market CEASES to exist for a revalued asset, its carrying amount FREEZES at the last active-market-referenced revalued amount (less subsequent amortization/impairment) — and the disappearance of that market may itself be an impairment indicator (paras. 81–82).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 — USEFUL LIFE: FINITE VS INDEFINITE ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Useful Life — Finite vs Indefinite (paras. 87–95A)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">The indefinite test — "no foreseeable limit"</div>
+      <div class="formula-box">
+        <div class="f-eq">INDEFINITE useful life = no foreseeable limit to the period the asset is expected to generate net cash inflows or provide service potential</div>
+      </div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ "Indefinite" does NOT mean "infinite." An indefinite conclusion should reflect ONLY the maintenance spend needed to sustain current performance — never planned FUTURE expenditure in excess of that level (para. 90).</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Binding-arrangement-derived useful life — capped at the arrangement's term</div>
+      <div class="dot-list">
+        <span>Useful life shall NOT exceed the binding arrangement's period — though it MAY be shorter, depending on expected use (para. 93)</span>
+        <span>RENEWAL periods are included only with evidence of renewal WITHOUT SIGNIFICANT COST — evidence of past renewal, satisfaction of conditions, and renewal cost being insignificant relative to expected benefits (para. 95)</span>
+        <span>A license/right granted between combining operations, later recognized in an amalgamation — or a reacquired right recognized in an acquisition — uses the REMAINING period only, EXCLUDING renewal periods (para. 93A)</span>
+      </div>
+      <div class="note">Factors considered: expected usage, product life cycles, obsolescence, industry stability, competitor actions, required maintenance spend, legal/similar limits, and dependency on other assets' useful lives (para. 89).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 — AMORTIZATION, IMPAIRMENT & RETIREMENTS ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Amortization, Impairment &amp; Retirements/Disposals (paras. 96–116)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Amortization mechanics — finite-life assets only</div>
+      <div class="dot-list">
+        <span>Begins when the asset is AVAILABLE FOR USE; ceases at the earlier of held-for-sale classification (IPSAS 44) or derecognition</span>
+        <span>Method reflects the expected CONSUMPTION pattern of benefits — straight-line if that pattern can't be reliably determined</span>
+        <span>REBUTTABLE PRESUMPTION that revenue-based amortization is inappropriate — revenue reflects too many unrelated factors (price, volume, inflation). Overcome only where the asset IS expressed as a revenue measure (e.g. a toll-road right capped at CU100m cumulative tolls), or benefit consumption is demonstrably highly correlated with revenue (paras. 97A–97C)</span>
+      </div>
+      <div class="note">RESIDUAL VALUE is assumed ZERO unless a third party is committed to purchase the asset at end-of-life, or a reliable active market is expected to exist then (para. 99). Both amortization period/method AND residual value are reviewed AT LEAST each reporting date, as accounting ESTIMATE changes under IPSAS 3 (paras. 101, 103).</span></div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">Indefinite-life assets, impairment, and derecognition</div>
+      <div class="dot-list">
+        <span>Indefinite-life assets are NEVER amortized — but tested for impairment ANNUALLY, and whenever an indication arises (para. 106–107, cross-ref IPSAS 21/26)</span>
+        <span>Useful life is reassessed EVERY period — a shift from indefinite to FINITE is itself an impairment indicator (paras. 108–109)</span>
+        <span>Derecognition: on disposal, OR when no further benefits are expected from use or disposal — gain/loss = net disposal proceeds LESS carrying amount, to surplus or deficit (paras. 111–112)</span>
+      </div>
+      <div class="note">Amortization does NOT stop merely because an asset is no longer actively used — only on full depreciation or held-for-sale classification (para. 116).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 — DISCLOSURE REQUIREMENTS ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Disclosure Requirements (paras. 117–127)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">General — per class, split internally-generated vs other (para. 117)</div>
+      <div class="check-list">
+        <span>Whether useful lives are indefinite or finite (and if finite, the lives/amortization rates)</span>
+        <span>Amortization methods used</span>
+        <span>Gross carrying amount and accumulated amortization (+ impairment) at period start/end</span>
+        <span>SOFPerformance line item(s) containing amortization</span>
+        <span>A full RECONCILIATION — additions (internal/separate/combination), disposals, revaluation changes, impairment losses/reversals, amortization, exchange differences, other changes</span>
+      </div>
+      <div class="note">Also required: indefinite-life carrying amount + supporting reasons; description/carrying amount/remaining amortization period of any INDIVIDUALLY MATERIAL asset; restricted-title assets and pledged-as-security amounts; acquisition commitments (paras. 121, 121(d)-(e)).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Current value model, R&amp;D, and encouraged extras</div>
+      <div class="dot-list">
+        <span>Revaluation-specific: effective date, revalued carrying amount vs. the historical-cost-model equivalent, and the revaluation surplus movement with any distribution restrictions (para. 123)</span>
+        <span>Fair value hierarchy package mirroring IPSAS 12/16/27: Level 1/2/3 classification, techniques/inputs, and Level 3 reconciliations (paras. 123A–123C)</span>
+        <span>AGGREGATE research and development expenditure expensed during the period (para. 125)</span>
+      </div>
+      <div class="callout success" style="margin-bottom:0;">✓ ENCOURAGED (not required): a description of fully-amortized assets STILL in use, and significant CONTROLLED-BUT-UNRECOGNIZED intangible assets that failed the recognition criteria (para. 127).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 — EFFECTIVE DATE & AMENDMENT TIMELINE ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Transitional Provisions, Effective Date &amp; Amendment Timeline (paras. 128–133)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Amendment history at a glance</div>
+      <div class="principle">Base Standard: periods beginning on/after <strong>1 April 2011</strong> — earlier adoption requires simultaneous IPSAS 21 and IPSAS 26 adoption (para. 132). Retrospective application required under IPSAS 3 for entities that had previously recognized intangible assets (para. 128).</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2.2fr;"><span>Effective</span><span>Change</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2014</span><span>Para. 6 — IPSAS 32, Service Concession Arrangements: Grantor</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2015</span><span>Paras. 79, 91, 97; new 97A–97C, 131A — Improvements to IPSAS 2014 (revenue-based amortization presumption)</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2017</span><span>Paras. 129–131, 133 — IPSAS 33, First-time Adoption</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2025</span><span>Fair value hierarchy disclosure package — IPSAS 46, Measurement (§10); consequential updates from IPSAS 45's PP&amp;E rewrite</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 — RELATIONSHIP TO IAS 38 ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Relationship to IAS/IFRS — Comparison with IAS 38</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — IPSAS 31 vs IAS 38</div>
+      <div class="principle">IPSAS 31 is drawn primarily from IAS 38 (as at 31 December 2008), <em>Intangible Assets</em>.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1.9fr;"><span>Topic</span><span>Difference</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Legislative powers/rights</span><span>IPSAS 31 adds a scope exclusion for powers/rights conferred by legislation, a constitution, or equivalent means — no IAS 38 equivalent</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Website costs</span><span>IPSAS 31 incorporates SIC-32 (Website Costs) as Application Guidance; under IFRS, SIC-32 is separate</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Intangible heritage assets</span><span>IPSAS 31 adds specific description/disclosure guidance (§1); IAS 38 has none</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Non-exchange acquisition</span><span>IPSAS 31 modifies IAS 38's government-grant guidance into a fair-value-at-acquisition rule for non-exchange transactions generally</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Commercial-substance exchange guidance</span><span>IAS 38 includes it; IPSAS 31 does NOT</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Terminology</span><span>"Revenue," "statement of financial performance," "surplus or deficit," "net assets/equity" (IPSAS 31) vs "income," "statement of comprehensive income," "profit or loss," "equity" (IAS 38)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 — STATEMENT / PROCESS MAPPING ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Recognition decision map</div>
+      <div class="dot-list">
+        <span>1. Does the item meet the three-part test — identifiable, controlled, future benefit? If no → expense, or fold into goodwill if acquired in a combination (§2)</span>
+        <span>2. Is it internally generated? RESEARCH phase → always expensed. DEVELOPMENT phase → capitalize only if all six para. 55 criteria are met (§5)</span>
+        <span>3. Choose ONE measurement policy per class: historical cost, or current value (only where an active market genuinely exists) (§7)</span>
+        <span>4. Assess useful life — FINITE → amortize systematically, review each period. INDEFINITE → no amortization, test for impairment ANNUALLY (§8, §9)</span>
+        <span>5. On disposal or when no further benefit is expected → derecognize, recognizing any gain/loss in surplus or deficit (§9)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card cs span2">
+      <div class="ctitle cs">Concept-to-statement mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>IPSAS 31 concept</span><span>Statement(s)</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Intangible asset carrying amount</span><span><span class="badge bs">SOFP</span></span><span>Historical cost or revalued amount, less amortization/impairment</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Amortization charge</span><span><span class="badge bp">SOFPerf</span></span><span>Or capitalized into another asset's cost (e.g. inventory)</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Revaluation increase</span><span><span class="badge be">NA/E</span></span><span>Unless reversing a prior decrease in surplus/deficit</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Revaluation decrease</span><span><span class="badge bp">SOFPerf</span></span><span>Unless offset against existing revaluation surplus</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Gain/loss on derecognition</span><span><span class="badge bp">SOFPerf</span></span><span>Net disposal proceeds less carrying amount</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Reconciliation, useful life, R&amp;D expense</span><span><span class="badge be">Notes</span></span><span>Mandatory disclosures, paras. 117–126</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 — RELATED STANDARDS ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How IPSAS 31 connects across the IPSAS body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.7fr 2.2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 3</span><span>Governs amortization period/method/residual value changes as accounting estimate changes; retrospective transition (§9, §11)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 5</span><span>Deferred-payment interest and borrowing-cost capitalization for qualifying intangible assets (§3)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 12</span><span>Amortization absorbed into inventory cost when the intangible is used in production (§9)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 21 / 26</span><span>Impairment testing for indefinite-life/not-yet-available intangibles, and the development-phase benefit-flow assessment (§5, §9)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 32</span><span>Service concession assets are excluded from initial recognition/measurement here, but subsequent measurement/disclosure IS covered (§1)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 39</span><span>Employee benefit costs directly attributable to intangible asset creation (§3, §6)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 40</span><span>Public sector combination acquisition accounting for intangibles and goodwill (§4)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 44</span><span>Held-for-sale classification stops amortization and may trigger the fair-value-reliably-measurable presumption (§9)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 46</span><span>Fair value measurement methodology and hierarchy disclosure package (§7, §10)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 47</span><span>Transaction consideration determination on derecognition/disposal (§9)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 15 — GLOSSARY ============ -->
+  <div class="section-header" id="s15"><span class="num">15</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Intangible asset</div><div class="glossary-def">An identifiable nonmonetary asset without physical substance.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Amortization</div><div class="glossary-def">The systematic allocation of the depreciable amount of an intangible asset over its useful life.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Research</div><div class="glossary-def">Original and planned investigation undertaken to gain new scientific or technical knowledge and understanding.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Development</div><div class="glossary-def">Applying research findings or other knowledge to a plan or design for new or substantially improved materials, devices, products, processes, systems, or services.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Intangible heritage assets</div><div class="glossary-def">Intangible assets with cultural, environmental, or historical significance.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Carrying amount</div><div class="glossary-def">The amount at which an asset is recognized after deducting accumulated amortization and impairment losses.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bs">SOFP</span> Statement of financial position
+      <span class="badge bp">SOFPerf</span> Statement of financial performance
+      <span class="badge be">NA/E</span> Net assets/equity (statement of changes)
+    </div>
+  </div>
+
+  <div class="footer-note">IPSAS 31 — Intangible Assets · Extended Reference Poster · Built from the 2025 IPSASB Handbook, Volume II · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,157 @@
+﻿---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc740.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope & Applicability" },
+        { id: "s3", label: "Temporary Differences — the Asset/Liability Method" },
+        { id: "s4", label: "Deferred Tax Assets and Liabilities" },
+        { id: "s5", label: "Valuation Allowance — the More-Likely-Than-Not Test" },
+        { id: "s6", label: "Current vs Deferred Tax Expense" },
+        { id: "s7", label: "Uncertain Tax Positions — the Threshold for Recognition" },
+        { id: "s8", label: "Intraperiod Allocation" },
+        { id: "s9", label: "Worked Example — Deferred Tax Asset Calculation" },
+        { id: "s10", label: "Worked Example — Valuation Allowance Assessment" },
+        { id: "s11", label: "Disclosure Requirements" },
+        { id: "s12", label: "Critical Judgments & Estimates" },
+        { id: "s13", label: "ASC 740 vs IAS 12 — Comprehensive Comparison" },
+         { id: "s14", label: "Statement Mapping" },
+         { id: "s15", label: "Related Topics" },
+       ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci"><div class="ctitle ci">Matching tax effects with their economic events</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 740 applies the asset/liability method to income taxes, recognising deferred tax assets and liabilities for temporary differences between the tax basis and the accounting basis of assets and liabilities. This matches the economics of the transaction: the tax consequences of an economic event are recognised in the same period as the event itself, rather than when the taxes are paid or refunded.</div></div>
+      <div class="card cs"><div class="ctitle cs">Broadly converged with IAS 12, with US-specific UTP rules</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 740 and IAS 12 both use the asset/liability method for deferred taxes and the liability method for uncertain tax positions. The MORE-LIKELY-THAN-NOT threshold for recognising uncertain tax positions under ASC 740 is functionally similar to IAS 12's recognition criteria, though ASC 740's specific measurement and disclosure requirements for uncertain tax positions are more detailed than IAS 12's equivalent.</div></div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope & Applicability</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">All domestic and foreign income taxes</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 740 applies to all domestic and foreign income taxes, including federal, state, local, and foreign income taxes. It does NOT apply to other taxes such as sales tax, property tax, or payroll tax. The scope exclusion is narrow: only income taxes fall under ASC 740, defined as taxes based on taxable income — not taxes based on gross receipts or other non-income measures.</div></div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Temporary Differences — the Asset/Liability Method</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">Differences that reverse over time</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">TEMPORARY DIFFERENCES are differences between the TAX BASIS of an asset or liability and its REPORTED amount in the financial statements that will result in taxable or deductible amounts in future years when the asset or liability is recovered or settled. A taxable temporary difference creates a deferred tax LIABILITY; a deductible temporary difference creates a deferred tax ASSET. The asset/liability method ensures that these future tax consequences are recognised today.</div></div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Deferred Tax Assets and Liabilities</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Measured using the enacted tax rate</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">Deferred tax assets and liabilities are measured using the ENACTED tax rate expected to apply in the period when the asset is realised or the liability is settled. Tax rates that are merely proposed or pending are NOT used; only laws that have been enacted into law by the balance sheet date are considered in the measurement.</div></div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Valuation Allowance — the More-Likely-Than-Not Test</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">A reserve against deferred tax assets</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">A VALUATION ALLOWANCE is recognised against deferred tax assets when it is MORE-LIKELY-THAN-NOT (greater than 50% probability) that some portion or all of the deferred tax asset will NOT be realised. This assessment considers all available positive and negative evidence, including the cumulative loss history, the nature of the temporary differences, and the availability of tax-planning strategies that could generate taxable income in future periods.</div></div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Current vs Deferred Tax Expense</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">The two components of income tax expense</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">INCOME TAX EXPENSE has two components: (1) CURRENT TAX EXPENSE — the amount of taxes payable or refundable for the current year based on taxable income; and (2) DEFERRED TAX EXPENSE (or benefit) — the change in deferred tax assets and liabilities during the year. Current tax expense is based on the tax return; deferred tax expense is based on changes in temporary differences and enacted tax rate changes.</div></div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Uncertain Tax Positions — the Threshold for Recognition</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">More-likely-than-not recognition under FIN 48</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">Uncertain tax positions are evaluated under the MORE-LIKELY-THAN-NOT threshold: a tax position must have a greater than 50% likelihood of being sustained upon examination by the relevant tax authority to be recognised in the financial statements. Positions that do NOT meet this threshold are recognised as a tax benefit only when the position is settled with the tax authority or the statute of limitations expires.</div></div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Intraperiod Allocation</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">How tax effects are allocated within the period</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">Current and deferred tax effects are allocated between continuing operations, discontinued operations, other comprehensive income, and equity. The general rule is that tax effects of items recognised in continuing operations are allocated to continuing operations. A change in judgement about the realizability of a deferred tax asset is generally allocated to continuing operations unless it relates to a prior-period item within the scope of a different category.</div></div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Worked Example — Deferred Tax Asset Calculation</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Warranty reserve creates a deductible temporary difference</div>
+      <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Warranty reserve and deferred taxes</div><div class="wk-body">An entity records $500,000 warranty expense for financial reporting purposes but can only deduct $200,000 for tax purposes in the current year. Enacted tax rate is 21%.</div><div class="wk-answer">Deductible temporary difference = $500,000 − $200,000 = <strong>$300,000</strong>. Deferred tax asset = $300,000 × 21% = <strong>$63,000</strong>. This deferred tax asset will reverse when the remaining $300,000 warranty costs are deducted for tax purposes in future years.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Worked Example — Valuation Allowance Assessment</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Assessing realizability of deferred tax assets</div>
+      <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Evaluating a net operating loss carryforward</div><div class="wk-body">An entity has $4,000,000 of deferred tax assets from NOL carryforwards. Cumulative losses total $6,000,000 over the past three years. No tax planning strategies are available. Weighted-average tax rate is 21%.</div><div class="wk-answer">The $6,000,000 cumulative loss history is STRONG NEGATIVE EVIDENCE, while the $4,000,000 deferred tax asset represents a deferred tax asset of <strong>$840,000</strong> ($4,000,000 × 21%). The entity must recognise a FULL or partial VALUATION ALLOWANCE because it is more-likely-than-not that the NOLs will not be fully realised given the loss history.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">What ASC 740 requires</div><div class="check-list"><span>Components of deferred tax assets and liabilities by type of temporary difference</span><span>Valuation allowance activity, including additions and reductions</span><span>Unrecognised tax benefits and the nature of examination risk</span><span>Effective tax rate reconciliation</span><span>Tax years subject to examination</span></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Critical Judgments & Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+      <div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Whether a tax position meets the more-likely-than-not recognition threshold</span><span>Whether sufficient positive evidence exists to reduce or eliminate a valuation allowance</span><span>Tax-planning strategies available to realise deferred tax assets</span></div></div>
+      <div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Future taxable income and timing of temporary difference reversals</span><span>Appropriate tax rate for deferred tax measurement</span><span>Probability of sustaining uncertain tax positions upon examination</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>ASC 740 vs IAS 12 — Comprehensive Comparison</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Comparison — ASC 740 vs IAS 12</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">US GAAP (ASC 740)</span><span style="color:var(--color-text-info);">IFRS (IAS 12)</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Measurement method</span><span>Asset/liability method with enacted tax rates</span><span>Substantially identical asset/liability method</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Deferred tax recognition</span><span>All temporary differences except goodwill</span><span>Same general principle</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Uncertain tax positions</span><span>More-likely-than-not threshold with detailed measurement</span><span>Probable threshold with similar outcome</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Goodwill deferred taxes</span><span>Excluded from deferred tax recognition</span><span>Also excluded in most business combination cases</span></div>
+      </div>
+      <div class="note">IAS 12 and ASC 740 are broadly converged. The most notable differences relate to uncertain tax position measurement and the specific disclosure requirements around tax rate reconciliations.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Where every ASC 740 event lands</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Current income tax expense</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Current tax liability on BS; expense in P&L</span></div>
+      <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Deferred tax expense/benefit</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Change in deferred tax assets/liabilities</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Valuation allowance release</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Reduces deferred tax asset; recognised as tax benefit</span></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s15"><span class="num">15</span><h2>Related Topics</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd"><div class="ctitle cd">Cross-reference map</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 450</span><span>Contingencies — uncertain tax positions are contingent liabilities</span></div>
+      <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 805</span><span>Business Combinations — accounting for income taxes in a business combination</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 12</span><span>Income Taxes — IFRS counterpart</span></div>
+      </div>
+      </div>
+    </div>
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.ASC740 || []} />
+  </section>
+</StandardPageLayout>
+

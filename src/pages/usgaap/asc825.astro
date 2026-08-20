@@ -1,0 +1,159 @@
+﻿---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc825.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  bannerNotice={metadata.bannerNotice}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope & Applicability" },
+        { id: "s3", label: "Classification and Measurement Overview" },
+        { id: "s4", label: "The Three Classification Categories" },
+        { id: "s5", label: "The Fair Value Option" },
+        { id: "s6", label: "Impairment of Debt and Equity Securities" },
+        { id: "s7", label: "Derivative Scope Exception for Normal Purchases and Sales" },
+        { id: "s8", label: "Worked Example — Classification of a Debt Investment" },
+        { id: "s9", label: "Disclosure Requirements" },
+        { id: "s10", label: "Critical Judgments & Estimates" },
+        { id: "s11", label: "ASC 825 vs IFRS 9 — Comprehensive Comparison" },
+        { id: "s12", label: "Statement Mapping" },
+        { id: "s13", label: "Related Topics" },
+        { id: "s14", label: "Quick-Reference Glossary" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci"><div class="ctitle ci">A comprehensive framework for financial instrument classification and measurement</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 825 is the overarching US GAAP topic for classification and measurement of financial instruments. It establishes the broad framework that was later supplemented and, in some areas, superseded by ASC 320, ASC 326, and ASC 815. The core principle is that all financial instruments should be measured in a manner that most fairly represents the instrument's economic substance — either at amortised cost, fair value, or some hybrid depending on the entity's business model and the instrument's contractual cash flow characteristics.</div></div>
+      <div class="card cs"><div class="ctitle cs">The fair value option as an escape valve</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">One of ASC 825's most distinctive features is the fair value option — an election that allows an entity to measure eligible financial instruments at fair value, with changes recognised in earnings. This option simplifies accounting by eliminating the need for complex hedge accounting or bifurcation for certain instruments, at the cost of introducing earnings volatility.</div></div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope & Applicability</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Virtually all financial instruments except those addressed by other standards</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 825 applies to all entities with financial instruments, including equity securities, debt securities, loans, receivables, derivatives, and financial guarantee contracts. Its scope excludes financial instruments specifically addressed by other topics — for example, ASC 815 governs derivatives and hedging, ASC 326 governs credit losses on financial instruments, and ASC 860 governs transfers and servicing. ASC 825 therefore functions as a 'backstop' topic, applying to any financial instrument not fully addressed elsewhere in the Codification.</div></div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Classification and Measurement Overview</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">A category-based model distinct from IFRS 9's SPPI approach</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">US GAAP's classification model for financial instruments is category-based rather than principle-based. The primary classifications are: <strong>trading</strong> — instruments bought and held principally for near-term resale; <strong>available-for-sale</strong> — instruments not classified as trading or held-to-maturity; <strong>held-to-maturity</strong> — debt securities the entity has the positive intent and ability to hold to maturity; and <strong>equity method</strong> — investments in equity securities where the entity has significant influence. This is in stark contrast to IFRS 9, which uses a single SPPI (solely payments of principal and interest) test to classify financial assets as either amortised cost or fair value through profit or loss.</div></div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>The Three Classification Categories</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs"><div class="ctitle cs">Held-to-maturity — the irrevocable intent test</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">Debt securities classified as held-to-maturity are measured at AMORTISED COST, with premiums and discounts amortised using the effective interest method. The classification requires both positive intent and ability to hold the securities to maturity. Selling or transferring a held-to-maturity security taints the category — unless the sale is so rare and unusual that it does not call into question the entity's intent for the remaining portfolio, the remaining securities must be reclassified out of held-to-maturity.</div></div>
+      <div class="card cw"><div class="ctitle cw">Trading — instruments held for short-term profit</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">Trading securities are measured at FAIR VALUE with unrealised gains and losses recognised DIRECTLY in EARNINGS. The trading category applies to securities bought and held principally for selling in the near term, as well as derivatives not formally designated as hedges. This category ensures that all changes in fair value immediately affect the income statement.</div></div>
+      <div class="card cd"><div class="ctitle cd">Available-for-sale — the residual category</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">Available-for-sale securities are measured at fair value, with unrealised gains and losses recognised in OTHER COMPREHENSIVE INCOME (OCI) — a key distinction from trading securities. On sale or impairment, the accumulated OCI gain or loss is recycled into earnings. This category serves as the residual for debt and equity securities not classified as trading or held-to-maturity.</div></div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>The Fair Value Option</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">An irrevocable election to measure at fair value</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">The fair value option under ASC 825-10 allows an entity to irrevocably elect to measure eligible financial instruments at fair value, with changes recognised in earnings. The election is made at initial recognition and is generally irrevocable, though limited exceptions exist. Eligible items include whole classes of financial assets or liabilities, certain loans receivable, and hybrid financial instruments with bifurcated embedded derivatives. The option simplifies accounting by eliminating the need to apply hedge accounting to manage mismatched measurement bases.</div></div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Impairment of Debt and Equity Securities</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">Other-than-temporary impairment for available-for-sale securities</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">For debt securities classified as available-for-sale, ASC 825 requires recognising an other-than-temporary impairment (OTTI) when the fair value falls below cost and the decline is considered other-than-temporary. The OTTI is separated into two components: (1) the credit-loss component, recognised in earnings; and (2) the non-credit component, recognised in OCI. For equity securities, the entire decline is recognised in earnings if the decline is other-than-temporary. This OTTI model has since been largely superseded by ASC 326's current expected credit loss (CECL) model for many debt instruments.</div></div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Derivative Scope Exception for Normal Purchases and Sales</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">The normal purchases and normal sales exception</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">Contracts that meet the definition of a derivative may be excluded from ASC 815's derivative accounting if they qualify for the normal purchases and normal sales exception. To qualify, the contract must: (a) be entered into for normal purchase or normal sale purposes; (b) provide for the delivery of a non-financial item; and (c) be expected to be used or sold in the normal course of business over a reasonable period. This exception prevents commodity contracts and similar agreements from being marked to market when the entity genuinely intends to take or make delivery and use or sell the underlying physical item.</div></div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Worked Example — Classification of a Debt Investment</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Applying the held-to-maturity, trading, and available-for-sale tests</div>
+      <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Classifying a corporate bond portfolio</div><div class="wk-body">An entity purchases $5 million of 10-year corporate bonds. Management's stated intent is to hold the bonds to maturity to match long-term insurance liabilities. The entity has the financial capacity to hold the bonds to maturity regardless of market conditions. One year later, interest rates rise and the bonds' fair value falls to $4.2 million.</div><div class="wk-answer"><strong>Initial classification:</strong> Held-to-maturity, because the entity has both positive intent and demonstrated ability to hold to maturity. The bonds are carried at amortised cost ($5 million less premium/discount amortisation), so the fair value decline has NO income statement impact.<br><strong>If subsequently sold:</strong> The $800,000 unrealised loss is recognised in earnings, and any remaining bonds would likely need to be reclassified out of held-to-maturity, impairing future use of the classification.<br><strong>If the decline is other-than-temporary:</strong> Under ASC 326 (for many debt instruments), a credit-loss allowance would be recognised in earnings, reflecting the present value of expected cash shortfalls.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">What ASC 825 requires</div><div class="check-list"><span>Carrying amount of financial assets and liabilities by category (trading, AFS, HTM, loans, etc.)</span><span>Fair value of financial instruments whose carrying amount does not approximate fair value, by level within the hierarchy</span><span>Methodology and significant assumptions used to estimate fair value for instruments measured at amortised cost</span><span>For items measured using the fair value option: reasons for electing the option and the impact on earnings</span><span>Concentrations of credit risk and market risk associated with financial instruments</span></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments & Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+      <div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Whether the entity has the positive intent and ability to hold debt securities to maturity</span><span>Whether an other-than-temporary decline in value exists for AFS securities</span><span>Whether to elect the fair value option for eligible instruments</span></div></div>
+      <div><div class="elabel">SIGNIFICANT ESTIMATES</span></div><div class="dot-list"><span>Credit risk adjustments in fair value measurements for noninvestment-grade securities</span><span>Appropriate discount rates for Level 3 fair value measurements</span><span>Expected credit losses under ASC 326 for debt instruments</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>ASC 825 vs IFRS 9 — Comprehensive Comparison</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Comparison — ASC 825 vs IFRS 9</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">US GAAP (ASC 825)</span><span style="color:var(--color-text-info);">IFRS (IFRS 9)</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Classification model</span><span>Category-based (trading, AFS, HTM, equity method)</span><span>SPPI test: amortised cost or FVTPL</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Business model assessment</span><span>Not a primary driver — intent and category dominate</span><span>Core driver of classification alongside SPPI</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Fair value option</span><span>Available for many eligible instruments</span><span>FVTPL election available at inception, but reclassification restricted</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Impairment model</span><span>OTTI for AFS debt; CECL under ASC 326 for loans</span><span>Three-stage expected credit loss model</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>OCI recycling</span><span>AFS debt: recycled on sale or impairment</span><span>FVOCI debt: recycled on derecognition; FVOCI equity: no recycling</span></div>
+      </div>
+      <div class="note">The classification divergence is the most significant structural difference between US GAAP and IFRS for financial instruments. IFRS 9's SPPI-based model is simpler in theory but requires more initial judgement about cash flow characteristics; ASC 825's category model is more prescriptive but requires ongoing monitoring of intent and business model.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Where every ASC 825 event lands</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Trading security fair value change</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Unrealised gains/losses through earnings</span></div>
+      <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Available-for-sale fair value change</span><span><span class="badge bs">BS</span> <span class="badge bo">OCI</span></span><span>Unrealised gains/losses in OCI, recycled to earnings on sale</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Held-to-maturity amortisation</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Amortised cost; premium/discount amortisation through earnings</span></div>
+      <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Fair value option election</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Unrealised changes recognised in earnings</span></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Topics</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd"><div class="ctitle cd">Cross-reference map</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 320</span><span>Investments—Debt and Equity Securities — detailed classification for debt/equity securities</span></div>
+      <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 326</span><span>Financial Instruments—Credit Losses — CECL impairment model for loans and debt securities</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 815</span><span>Derivatives and Hedging — derivative scope exception and hedge accounting relationships</span></div>
+      <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 9</span><span>Financial Instruments — IFRS classification and measurement counterpart</span></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+      <div class="glossary-item"><div class="glossary-term">Fair value option</div><div class="glossary-def">An irrevocable election to measure eligible financial instruments at fair value, with changes recognised in earnings, rather than using another measurement basis such as amortised cost.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Other-than-temporary impairment (OTTI)</div><div class="glossary-def">A decline in the fair value of an available-for-sale debt security below its cost that is considered other-than-temporary, requiring recognition of an impairment loss.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Normal purchases and normal sales</div><div class="glossary-def">Contracts entered into for the purchase or sale of non-financial items in the normal course of business, expected to be used or sold over a reasonable period, qualifying for an exception from derivative accounting.</div></div>
+      </div>
+    </div>
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.ASC825 || []} />
+  </section>
+</StandardPageLayout>
+

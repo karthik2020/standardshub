@@ -1,0 +1,398 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/ias/ias24.json";
+
+---
+
+<StandardPageLayout {...metadata}>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        {
+          id: "s1",
+          label: "Conceptual Framework",
+        },
+        {
+          id: "s2",
+          label: "Scope & Definitions",
+        },
+        {
+          id: "s3",
+          label: "Identifying Related Parties",
+        },
+        {
+          id: "s4",
+          label: "Control, Joint Control & Significant Influence",
+        },
+        {
+          id: "s5",
+          label: "Key Management Personnel",
+        },
+        {
+          id: "s6",
+          label: "Related Party Transactions",
+        },
+        {
+          id: "s7",
+          label: "Government-Related Entities",
+        },
+        {
+          id: "s8",
+          label: "What Is NOT a Related Party",
+        },
+        {
+          id: "s9",
+          label: "Disclosure",
+        },
+        {
+          id: "s10",
+          label: "Judgments & Estimates",
+        },
+        {
+          id: "s11",
+          label: "IFRS vs US GAAP",
+        },
+        {
+          id: "s12",
+          label: "Statement Mapping",
+        },
+        {
+          id: "s13",
+          label: "Related Standards",
+        },
+        {
+          id: "s14",
+          label: "Glossary",
+        },
+        {
+          id: "history",
+          label: "History & Development",
+        },
+      ]}
+    />
+  </Fragment>
+
+  <div class="wrap">
+    <!-- ============ SECTION 1 ============ -->
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Why related party disclosure is a pure transparency standard</div>
+        <div class="principle">IAS 24 recognises related party relationships and transactions are a NORMAL feature of business, but that they can affect an entity's financial position and performance in ways that differ from arm's-length dealings. The Framework's relevance and faithful representation objectives require users to be able to identify these effects.</div>
+        <div class="elabel">HOW IAS 24 MAPS TO THE FRAMEWORK</div>
+        <div class="check-list">
+          <span><strong style="font-weight:600">Relevance</strong> — knowledge of related party transactions and outstanding balances is essential to evaluating an entity's operations, since terms may differ from those with unrelated parties</span>
+          <span><strong style="font-weight:600">Faithful representation</strong> — profit or loss and financial position could be different had the transactions not occurred, or occurred on different terms — disclosure preserves users' ability to interpret figures correctly</span>
+          <span><strong style="font-weight:600">No recognition/measurement change</strong> — IAS 24 is a PURE disclosure standard; it does not require related party transactions to be measured differently from unrelated transactions</span>
+        </div>
+        <div class="note">Unlike almost every other standard in this library, IAS 24 has NO recognition or measurement rules of its own — it exists entirely to ensure the EXISTENCE and NATURE of related party influence is visible to users, who can then judge for themselves whether reported figures might be affected.</div>
+      </div>
+
+      <div class="card cs">
+        <div class="ctitle cs">Why disclosure, not remeasurement, is the mechanism</div>
+        <div class="principle">The Framework does not require transactions to be remeasured simply because a special relationship exists — it requires enough information for users to assess POTENTIAL effects themselves.</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.3fr 1fr;"><span>Approach NOT taken by IAS 24</span><span>Approach actually taken</span></div>
+          <div class="tr" style="grid-template-columns:1.3fr 1fr;"><span>Adjusting related party transaction amounts to "fair" arm's-length values</span><span>Disclosing the actual terms and amounts, letting users judge</span></div>
+          <div class="tr alt" style="grid-template-columns:1.3fr 1fr;"><span>Prohibiting related party transactions</span><span>Requiring transparency about their existence and nature</span></div>
+        </div>
+        <div class="callout info callout--chip" style="margin-bottom:0;">ℹ️ <strong style="font-weight:600">Qualitative characteristics in action:</strong> IAS 24 is essentially a codification of <strong style="font-weight:600">neutrality</strong> — it doesn't pass judgement on whether related party dealings are appropriate, it simply ensures they are visible.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 2 ============ -->
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope & Applicability</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What IAS 24 covers</div>
+        <div class="principle">IAS 24 shall be applied in: identifying related party relationships and transactions; identifying outstanding balances (including commitments) between an entity and its related parties; identifying circumstances requiring disclosure; and determining the disclosures to be made about those items.</div>
+        <div class="elabel">APPLIES TO</div>
+        <div style="font-size:13px;color:var(--color-text-secondary);line-height:1.6;">The separate financial statements of a parent, venturer, or investor, as well as consolidated financial statements — related party disclosures are required in BOTH.</div>
+        <div class="note">Intragroup related party transactions and balances are ELIMINATED in consolidated financial statements, so IAS 24 disclosures matter most for TRANSACTIONS THAT SURVIVE consolidation — e.g. those with associates, joint ventures, or key management personnel.</div>
+      </div>
+
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions you must know</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Related party</div>
+          <div class="glossary-def">A person or entity that is related to the entity preparing its financial statements (the "reporting entity") — defined via control, joint control, significant influence, or key management personnel relationships (Section 3).</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Related party transaction</div>
+          <div class="glossary-def">A transfer of resources, services, or obligations between a reporting entity and a related party, REGARDLESS of whether a price is charged.</div>
+        </div>
+        <div class="glossary-item" style="border-bottom:none;">
+          <div class="glossary-term">Close members of the family</div>
+          <div class="glossary-def">Family members who may be expected to influence, or be influenced by, that person in their dealings with the entity — includes the person's children, spouse/domestic partner, and dependants of the person or their spouse/domestic partner.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 3 ============ -->
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Identifying Related Parties — The Full List</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">A party is related to the reporting entity if ANY of the following apply</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">A PERSON OR CLOSE FAMILY MEMBER IS RELATED IF THEY</div>
+            <div class="check-list">
+              <span>Have control or joint control over the reporting entity</span>
+              <span>Have significant influence over the reporting entity</span>
+              <span>Are a member of key management personnel of the reporting entity, or of a parent of the reporting entity</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">AN ENTITY IS RELATED IF ANY OF THE FOLLOWING APPLY</div>
+            <div class="check-list">
+              <span>The entity and the reporting entity are members of the same GROUP (parent, subsidiaries, fellow subsidiaries)</span>
+              <span>One entity is an associate or joint venture of the other (or of a member of a group of which the other is a member)</span>
+              <span>Both entities are joint ventures of the SAME third party</span>
+              <span>One entity is a joint venture of a third entity, and the other is an associate of that same third entity</span>
+              <span>The entity is a post-employment benefit plan for the benefit of employees of either the reporting entity or an entity related to it</span>
+              <span>The entity is controlled/jointly controlled by a person identified in the "person" list above</span>
+              <span>A person with control/joint control over the reporting entity has significant influence over the entity, or is a member of its key management personnel</span>
+              <span>The entity, or any member of a group of which it is a part, provides key management personnel services to the reporting entity or its parent</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 4 ============ -->
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Control, Joint Control & Significant Influence (with worked example)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs">
+        <div class="ctitle cs">The three underlying relationship concepts</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1fr 1.5fr;"><span>Concept</span><span>Typical threshold</span></div>
+          <div class="tr" style="grid-template-columns:1fr 1.5fr;"><span>Control</span><span>Power to govern financial/operating policies to obtain benefits — typically majority voting rights (IFRS 10)</span></div>
+          <div class="tr alt" style="grid-template-columns:1fr 1.5fr;"><span>Joint control</span><span>Contractually agreed sharing of control, requiring unanimous consent of the controlling parties (IFRS 11)</span></div>
+          <div class="tr" style="grid-template-columns:1fr 1.5fr;"><span>Significant influence</span><span>Power to participate in financial/operating policy decisions, without control — often presumed at 20%+ voting power (IAS 28)</span></div>
+        </div>
+        <div class="note">These definitions are BORROWED from IFRS 10, IFRS 11, and IAS 28 respectively — IAS 24 does not redefine them, it simply uses them as the basis for identifying related parties.</div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Worked example — chain of related parties</div>
+        <div class="worked">
+          <div class="wk-title">Example 1: Mapping a related party chain</div>
+          <div class="wk-body">
+            Company A owns 100% of Company B (subsidiary). Company A also holds a 30% investment in Company C, over which it has significant influence but not control. The CEO of Company A is also a non-executive director of Company D, an unrelated third-party manufacturer with no other links to Group A.
+          </div>
+          <div class="wk-answer">
+            <strong>Related to Company B</strong> (in B's financial statements): Company A (parent), Company C (fellow related entity via A's significant influence)<br>
+            <strong>Related to Company A</strong>: Company B (subsidiary), Company C (associate), and the CEO (key management personnel)<br>
+            <strong>Company D is NOT automatically a related party</strong> of Group A merely because a shared individual sits on both boards, UNLESS that individual is also key management personnel of Group A with SIGNIFICANT influence over both entities' transactions — a common exam trap testing the boundary of the definition.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 5 ============ -->
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Key Management Personnel (KMP)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Definition, compensation disclosure & worked example</div>
+        <div class="principle">Key management personnel are those persons having authority and responsibility for planning, directing, and controlling the activities of the entity, directly or indirectly, including any director (executive or otherwise) of that entity.</div>
+        <div class="elabel">COMPENSATION CATEGORIES REQUIRING DISCLOSURE — TOTAL AND BY CATEGORY</div>
+        <div class="check-list" style="margin-bottom:9px;">
+          <span>Short-term employee benefits (salary, bonus)</span>
+          <span>Post-employment benefits (pension contributions)</span>
+          <span>Other long-term benefits</span>
+          <span>Termination benefits</span>
+          <span>Share-based payment</span>
+        </div>
+        <div class="worked" style="margin-bottom:0;">
+          <div class="wk-title">Example 2: KMP compensation disclosure</div>
+          <div class="wk-body">A company's board comprises 5 directors. Total salaries paid: $2,100,000. Pension contributions: $180,000. Share options granted, fair value at grant: $95,000. A termination payment of $250,000 was made to a departing director.</div>
+          <div class="wk-answer">
+            Disclosed by CATEGORY, not just as a lump sum: Short-term benefits $2,100,000; Post-employment benefits $180,000; Share-based payment $95,000; Termination benefits $250,000 — <strong style="color:var(--color-text-info);">Total KMP compensation: $2,625,000</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 6 ============ -->
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Related Party Transactions — Examples Requiring Disclosure</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Typical transactions requiring disclosure if material</div>
+        <div class="dot-list">
+          <span>Purchases or sales of goods (finished or unfinished)</span>
+          <span>Purchases or sales of property and other assets</span>
+          <span>Rendering or receiving of services</span>
+          <span>Leases</span>
+          <span>Transfers of research and development</span>
+          <span>Transfers under licence agreements</span>
+          <span>Transfers under finance arrangements (including loans and equity contributions in cash or in kind)</span>
+          <span>Provision of guarantees or collateral</span>
+          <span>Commitments to do something if a particular event occurs/does not occur in the future, including executory contracts (recognised and unrecognised)</span>
+          <span>Settlement of liabilities on behalf of the entity or by the entity on behalf of another party</span>
+        </div>
+        <div class="callout warn callout--chip" style="margin-bottom:0;">⚠️ Disclosure is required EVEN IF NO PRICE IS CHARGED — e.g. a parent providing free management services to a subsidiary is still a related party transaction requiring disclosure, since the definition explicitly covers transfers "regardless of whether a price is charged."</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 7 ============ -->
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Government-Related Entities — The Exemption</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">Partial exemption for government-related entities</div>
+        <div style="font-size:13px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:9px;">A reporting entity is EXEMPT from the general disclosure requirements for transactions and outstanding balances with: (a) a government that has control, joint control, or significant influence over the reporting entity; and (b) another entity that is a related party because the SAME government has control, joint control, or significant influence over both the reporting entity and the other entity.</div>
+        <div class="elabel">EVEN WHEN EXEMPT, THE ENTITY MUST STILL DISCLOSE</div>
+        <div class="dot-list">
+          <span>The name of the government and the nature of its relationship</span>
+          <span>Sufficient information for users to understand the effect of related party transactions on the financial statements — including the nature and amount of each individually significant transaction, and a qualitative/quantitative indication of the extent of other transactions that are collectively (but not individually) significant</span>
+        </div>
+        <div class="note">This exemption exists specifically to avoid onerous disclosure burdens for state-owned/controlled entities operating in economies with substantial government involvement (e.g. many state-owned utilities or banks) — but it does NOT eliminate disclosure entirely, only reduces the level of detail required for routine government-related transactions.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 8 ============ -->
+    <div class="section-header" id="s8"><span class="num">8</span><h2>What Is NOT a Related Party — Explicit Exclusions</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">IAS 24 explicitly excludes the following from the related party definition</div>
+        <div class="cross-list">
+          <span>Two entities simply because they have a director or key management person in COMMON, or because a key manager of one has significant influence over the other, UNLESS the broader definition tests in Section 3 are also independently met</span>
+          <span>Two joint venturers simply because they share JOINT CONTROL of a joint venture</span>
+          <span>Providers of finance, trade unions, public utilities, and government departments/agencies, simply in the COURSE of their normal dealings with an entity (even though they may affect its freedom of action or participate in its decision-making)</span>
+          <span>A single customer, supplier, franchisor, distributor, or general agent with whom an entity transacts a significant volume of business, MERELY by virtue of the resulting economic dependence</span>
+        </div>
+        <div class="callout danger callout--chip" style="margin-bottom:0;">✕ <strong style="font-weight:600">A frequently tested exam trap:</strong> a company's single largest customer, representing 60% of its revenue, is NOT automatically a related party — economic dependence alone does not satisfy IAS 24's control/influence/KMP tests.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 9 ============ -->
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Required disclosures</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">RELATIONSHIP & PARENT DISCLOSURES</div>
+            <div class="check-list">
+              <span>Relationships between parents and subsidiaries must be disclosed, IRRESPECTIVE of whether transactions occurred between them</span>
+              <span>The name of the entity's parent, and the ultimate controlling party if different, disclosed regardless of whether that party prepares financial statements available for public use</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">TRANSACTION & BALANCE DISCLOSURES</div>
+            <div class="check-list">
+              <span>Total KMP compensation, and by each category</span>
+              <span>For each category of related party (parent, entities with joint control/significant influence, subsidiaries, associates, joint ventures, KMP, other related parties): nature of the relationship, amount of transactions, amount of outstanding balances (with terms/conditions and details of guarantees given/received)</span>
+              <span>Provisions for doubtful related party debt, and expense recognised for bad/doubtful debts from related parties</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 10 ============ -->
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments & Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where management judgement matters most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Whether a person genuinely holds "significant influence" or is truly a member of key management personnel, especially in less formal governance structures</span>
+              <span>Whether an entity qualifies for the government-related entity exemption, and how much detail is "sufficient" under the reduced disclosure requirement</span>
+              <span>Substance-over-form assessment of relationships (e.g. informal but influential family or business connections not captured by a strict legal reading of the definition)</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>Fair value of non-cash consideration or below-market terms in related party transactions, where separately relevant to other standards (e.g. IFRS 2, IFRS 9)</span>
+              <span>Materiality threshold applied in aggregating "collectively significant" transactions under the government-related entity exemption</span>
+            </div>
+          </div>
+        </div>
+        <div class="callout warn callout--chip" style="margin-top:8px;margin-bottom:0;">⚠️ IAS 24 requires disclosure of the relationship EVEN IF NO TRANSACTIONS OCCURRED — a common oversight, since preparers often assume disclosure is only needed where an actual transaction took place.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 11 ============ -->
+    <div class="section-header" id="s11"><span class="num">11</span><h2>IFRS vs US GAAP — Key Differences</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — IAS 24 vs US GAAP (ASC 850)</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Feature</span><span style="color:var(--color-text-info);">IFRS (IAS 24)</span><span style="color:var(--color-text-warning);">US GAAP</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>KMP compensation disclosure</span><span>Detailed disclosure BY CATEGORY (short-term, post-employment, share-based, etc.) required</span><span>Less prescriptive on category-level breakdown; SEC proxy rules separately govern executive compensation disclosure in detail</span></div>
+          <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Government-related entity exemption</span><span>Specific partial exemption available</span><span>No direct equivalent exemption; disclosure generally required regardless of government ownership</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Definition breadth</span><span>Broad, principles-based definition covering control/joint control/significant influence/KMP</span><span>Broadly similar conceptually, though specific US GAAP guidance and SEC rules add more prescriptive detail in places</span></div>
+          <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Measurement</span><span>No measurement requirement — pure disclosure standard</span><span>Also no measurement requirement — pure disclosure standard, converged in this respect</span></div>
+        </div>
+        <div class="note">The two frameworks are broadly aligned in philosophy — both are disclosure-only standards — with the main practical differences lying in the LEVEL of prescribed disclosure detail (especially KMP compensation categorisation) and the government-entity exemption unique to IFRS.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 12 ============ -->
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping — Where Every Related Party Item Lands</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Comprehensive event-to-statement mapping table</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event / transaction</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Sale of goods to a related party</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Recognised at the ACTUAL transaction terms (no automatic remeasurement); disclosed separately</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Outstanding related party receivable/payable</span><span><span class="badge bs">SOFP</span></span><span>Disclosed separately from unrelated balances, with terms and any guarantees</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>KMP compensation (salaries, bonuses, pensions, share-based payment)</span><span><span class="badge bp">SOPL</span></span><span>Recognised per the relevant standard (IAS 19, IFRS 2); disclosed by category under IAS 24</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Provision for doubtful related party debt</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Recognised per IFRS 9's expected credit loss model; separately disclosed</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Guarantees given/received involving related parties</span><span><span class="badge bp">Notes</span></span><span>Disclosed even if not recognised as a liability under IAS 37</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Parent/subsidiary relationship (no transactions)</span><span><span class="badge bp">Notes</span></span><span>MUST be disclosed regardless of whether any transaction occurred</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Government-related entity transactions (exempt)</span><span><span class="badge bp">Notes</span></span><span>Reduced disclosure — name of government, nature of relationship, significant transaction details</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Cash flows from related party transactions</span><span><span class="badge bs">Cash Flow Statement</span></span><span>Classified per normal IAS 7 rules — no special related party classification</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 13 ============ -->
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">How IAS 24 connects across the IFRS body of literature</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 10</span><span>Supplies the definition of "control" that underpins identification of parent-subsidiary related party relationships</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 11</span>Supplies the "joint control" definition used to identify joint venture-related parties</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 28</span><span>Supplies the "significant influence" definition (typically 20%+ voting power presumption) used to identify associate-related parties</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 19</span><span>Post-employment benefit plans for the entity's own employees are explicitly identified as related parties, and KMP post-employment benefits must be disclosed by category</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 2</span><span>Share-based payment awards to KMP are a distinct compensation category requiring separate related party disclosure</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 37</span><span>Guarantees and commitments involving related parties, whether or not they meet IAS 37's recognition criteria, require IAS 24 disclosure</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 9</span><span>Impairment allowances on related party receivables follow IFRS 9's expected credit loss model, with the resulting provision separately disclosed under IAS 24</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 12</span><span>Provides broader disclosure requirements about interests in other entities that complement, and sometimes overlap with, IAS 24's related party disclosures</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 14 ============ -->
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+<Glossary entries={[
+      { term: "Government", definition: "Government, government agencies, and similar bodies, whether local, national, or international." },
+      { term: "Government-related entity", definition: "An entity controlled, jointly controlled, or significantly influenced by a government." },
+      { term: "Compensation", definition: "All employee benefits (IAS 19), including those in the form of share-based payment (IFRS 2), payable, or in exchange for services rendered to the entity — required disclosure for key management personnel." },
+      { term: "Close members of the family of a person", definition: "Family members expected to influence, or be influenced by, that person — includes children, spouse/domestic partner, and dependants." },
+      { term: "Ultimate controlling party", definition: "The party at the very top of a group structure that ultimately controls the reporting entity — disclosed regardless of whether it prepares publicly available financial statements." },
+      { term: "Reporting entity", definition: "The entity preparing its own financial statements — the reference point against which all related party relationships in IAS 24 are assessed." }
+    ]} />
+
+<FinancialStatementKey />
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.IAS24} />
+  </section>
+</StandardPageLayout>
+
+
+

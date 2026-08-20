@@ -1,0 +1,89 @@
+---
+import StandardPageLayout from "../../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../../components/FinancialStatementKey.astro";
+import Glossary from "../../../components/Glossary.astro";
+import PageToc from "../../../components/PageToc.astro";
+import LifecycleNotice from "../../../components/StandardLifecycleNotice.astro";
+import "../../../styles/standards-poster.css";
+import "../../../styles/extended.css";
+import HistoryTimeline from "../../../components/HistoryTimeline.astro";
+import history from "../../../data/history.json";
+import metadata from "../../../data/standards/sic/sic5.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType="IFRS"
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "What SIC-5 Addressed (Historical)" },
+        { id: "s2", label: "The Conclusion It Reached (Historical)" },
+        { id: "s3", label: "Where This Guidance Lives Today" },
+        { id: "s4", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="historical-reference"
+    explanation="SIC-5 was withdrawn in March 2003 when the IASB issued a revised IAS 32 Financial Instruments: Presentation, which incorporated contingent settlement provisions guidance into the liability/equity classification framework."
+    historical="This page is retained for historical and comparative reference. Entities should refer to the current standard that superseded this interpretation for authoritative guidance."
+    link="/ias/ias32"
+    linkText="IAS 32 Financial Instruments: Presentation"
+  />
+
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>What SIC-5 Addressed (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">What SIC-5 addressed</div>
+        <div class="principle">SIC-5 addressed the classification of financial instruments that contain contingent settlement provisions. It clarified when such provisions cause the instrument to be classified as a financial liability rather than equity, particularly where the settlement amount is linked to a variable number of the entity's own equity instruments.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>The Conclusion It Reached (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">The conclusion it reached</div>
+        <div class="principle">SIC-5 concluded that if the settlement amount is linked to a variable number of the entity's own equity instruments, the instrument should be classified as a financial liability. Only when the settlement amount is fixed (not linked to a variable number of shares) should the instrument be considered equity. This ensures that the substance of the obligation, not merely its legal form, drives classification.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Where This Guidance Lives Today</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card">
+        <div class="ctitle">Where this guidance lives today</div>
+        <div class="td-table">
+          <div class="tr"><span>Superseded by</span><span>IAS 32 Financial Instruments: Presentation</span></div>
+          <div class="tr alt"><span>Why withdrawn</span><span>The 2003 revision incorporated contingent settlement provisions guidance into the liability/equity classification framework</span></div>
+          <div class="tr"><span>Current status</span><span>Withdrawn</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Contingent settlement provision", definition: "A contractual provision that requires the issuer to deliver a variable number of its own equity instruments upon settlement." },
+      { term: "Financial liability", definition: "Any contractual obligation to deliver cash or another financial asset to another entity, or to exchange financial assets or liabilities under conditions that are potentially unfavourable." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.SIC5} />
+  </section>
+</StandardPageLayout>
+
+
+
+

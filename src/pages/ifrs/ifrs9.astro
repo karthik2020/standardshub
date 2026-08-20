@@ -1,0 +1,281 @@
+﻿---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/ifrs/ifrs9.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope & Applicability" },
+        { id: "s3", label: "Classification — Business Model" },
+        { id: "s4", label: "Classification — SPPI Test" },
+        { id: "s5", label: "Financial Liabilities" },
+        { id: "s6", label: "Expected Credit Losses" },
+        { id: "s7", label: "Derecognition" },
+        { id: "s8", label: "Hedge Accounting" },
+        { id: "s9", label: "Reclassification" },
+        { id: "s10", label: "Critical Judgments & Estimates" },
+        { id: "s11", label: "IFRS vs US GAAP" },
+        { id: "s12", label: "Statement Mapping" },
+        { id: "s13", label: "Related Standards" },
+        { id: "s14", label: "Glossary" },
+        { id: "history", label: "History & Development" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <!-- ============ SECTION 1 ============ -->
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Why classification now depends on business purpose AND cash flow nature</div>
+        <div class="principle">The Conceptual Framework requires measurement to faithfully represent how an entity expects to derive economic benefit from an asset. IFRS 9 operationalises this through a PRINCIPLES-based, TWO-part test — the entity's BUSINESS MODEL for managing the asset, and the CONTRACTUAL CASH FLOW characteristics of the instrument itself — replacing IAS 39's rigid four-category, rules-based system.</div>
+        <div class="elabel">HOW IFRS 9 MAPS TO THE FRAMEWORK</div>
+        <div class="check-list">
+          <span><strong>Faithful representation</strong> — an asset held to collect simple principal/interest cash flows is genuinely DIFFERENT from one held for short-term trading, and IFRS 9's classification reflects that</span>
+          <span><strong>Timeliness / relevance</strong> — the EXPECTED credit loss model (Section 6) recognises credit deterioration ADMISSIONS earlier than IAS 39's incurred loss approach, directly responding to global financial crisis lessons</span>
+          <span><strong>Substance over form</strong> — hedge accounting reform (Section 8) aligns accounting more closely with an entity's ACTUAL risk management strategy, rather than a rigid quantitative bright-line test</span>
+        </div>
+        <div class="note">IFRS 9 was developed in THREE PHASES (classification and measurement; impairment; hedge accounting), each directly responding to specific weaknesses identified in IAS 39 following the 2008 global financial crisis.</div>
+      </div>
+      <div class="card cs">
+        <div class="ctitle cs">The three classification categories</div>
+        <div class="principle">IFRS 9 simplifies IAS 39's four categories into three, driven by the business model and SPPI tests together.</div>
+        <div class="td-table">
+          <div class="th cols-13-1"><span>Category</span><span>Measurement basis</span></div>
+          <div class="tr cols-13-1"><span>Amortised cost</span><span>Hold to collect + SPPI cash flows</span></div>
+          <div class="tr alt cols-13-1"><span>FVOCI (debt)</span><span>Hold to collect AND sell + SPPI cash flows</span></div>
+          <div class="tr cols-13-1"><span>FVTPL</span><span>Residual — anything not qualifying for the above two</span></div>
+        </div>
+        <div class="callout info callout--chip callout--flush">A THIRD equity-specific option — FVOCI with NO recycling — reflects a deliberate Framework trade-off for equity investments an entity holds for strategic (not trading) reasons.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 2 ============ -->
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What IFRS 9 covers</div>
+        <div class="principle">IFRS 9 applies to all financial assets and financial liabilities within its scope, replacing IAS 39 in its entirety. Scope exclusions are LARGELY UNCHANGED from IAS 39: interests in subsidiaries/associates/joint ventures; employee benefit plan rights; most insurance contracts; share-based payment transactions (with limited exceptions).</div>
+        <div class="note">The general scope architecture carried forward almost UNCHANGED from IAS 39 — the source of IFRS 9's reforms was classification, impairment, and hedge accounting, not scope.</div>
+      </div>
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions you must know</div>
+        <div class="glossary-item"><div class="glossary-term">Business model</div><div class="glossary-def">How an entity manages its financial assets to generate cash flows — by collecting contractual cash flows, selling, or both.</div></div>
+        <div class="glossary-item"><div class="glossary-term">SPPI</div><div class="glossary-def">Solely Payments of Principal and Interest — the test asking whether contractual cash flows represent basic lending arrangement cash flows only.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Expected credit losses (ECL)</div><div class="glossary-def">A probability-weighted estimate of credit losses, forward-looking from initial recognition, replacing IAS 39's incurred loss trigger.</div></div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 3 ============ -->
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Classification — The Business Model Test</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Three business models, assessed at a portfolio level</div>
+        <div class="td-table">
+          <div class="th cols-1-16"><span>Business model</span><span>Description</span></div>
+          <div class="tr cols-1-16"><span>Hold to collect</span><span>Objective is to hold assets to collect contractual cash flows (sales are incidental, infrequent, or insignificant)</span></div>
+          <div class="tr alt cols-1-16"><span>Hold to collect AND sell</span><span>Both collecting contractual cash flows and selling are integral to achieving the objective</span></div>
+          <div class="tr cols-1-16"><span>Other (e.g. trading)</span><span>Managed on a fair value basis, or held for short-term trading/profit-taking</span></div>
+        </div>
+        <div class="worked worked--flush">
+          <div class="wk-title">Example 1: Assessing the business model</div>
+          <div class="wk-body">A bank holds a bond portfolio to collect coupon and principal payments to maturity, but also sells portions of the portfolio periodically in response to changes in credit risk or to manage liquidity needs — sales are more than infrequent but the portfolio is not actively traded for short-term profit.</div>
+          <div class="wk-answer">This is most likely a <strong>"hold to collect and sell"</strong> business model — both objectives (collecting cash flows and selling) are integral, pointing to FVOCI classification (assuming SPPI is also met).</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 4 ============ -->
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Classification — The SPPI Test</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Are the cash flows "basic lending" in nature?</div>
+        <div class="principle">The SPPI test asks whether contractual cash flows are SOLELY payments of PRINCIPAL and INTEREST on the principal amount outstanding — where "interest" consists of consideration for the time value of money, credit risk, and other basic lending risks/costs plus a profit margin.</div>
+        <div class="worked worked--flush">
+          <div class="wk-title">Example 2: A convertible bond fails SPPI</div>
+          <div class="wk-body">An entity holds a bond convertible into a FIXED number of the issuer's ordinary shares at the holder's option.</div>
+          <div class="wk-answer">The conversion feature introduces exposure to EQUITY price risk, unrelated to basic lending — this FAILS the SPPI test, and the ENTIRE instrument must be classified at <strong>FVTPL</strong>, regardless of the business model.</div>
+        </div>
+        <div class="callout warn callout--chip callout--flush">Failing SPPI is DECISIVE — even a "hold to collect" business model cannot rescue an instrument that fails the cash flow characteristics test; FVTPL classification is mandatory.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 5 ============ -->
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Financial Liabilities Classification</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">Largely unchanged from IAS 39 — with one key OCI carve-out</div>
+        <div class="text-supporting">Most financial liabilities continue to be measured at AMORTISED COST. Where an entity elects the fair value option for a liability, changes in fair value attributable to the entity's OWN CREDIT RISK are presented in OCI (not SOPL) — UNLESS this creates or enlarges an accounting mismatch, in which case the full change goes to SOPL. This "own credit risk in OCI" rule is a DIRECT IFRS 9 innovation, addressing the counter-intuitive IAS 39 outcome where a DETERIORATING credit rating produced a PROFIT (since the liability's fair value fell).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 6 ============ -->
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Expected Credit Losses — The Three-Stage Model</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Forward-looking provisioning from initial recognition</div>
+        <div class="td-table">
+          <div class="th cols-06-2"><span>Stage</span><span>Recognition &amp; measurement</span></div>
+          <div class="tr cols-06-2"><span>Stage 1</span><span>No significant increase in credit risk since initial recognition — 12-MONTH ECL recognised</span></div>
+          <div class="tr alt cols-06-2"><span>Stage 2</span><span>SIGNIFICANT increase in credit risk since initial recognition, but not yet credit-impaired — LIFETIME ECL recognised</span></div>
+          <div class="tr cols-06-2"><span>Stage 3</span><span>Credit-impaired (objective evidence of a loss event) — LIFETIME ECL recognised; interest calculated on the NET carrying amount</span></div>
+        </div>
+        <div class="worked worked--flush">
+          <div class="wk-title">Example 3: Moving from Stage 1 to Stage 2</div>
+          <div class="wk-body">A loan of $1,000,000 has a Stage 1 (12-month) ECL of $8,000 at initial recognition. By the next reporting date, the borrower's credit rating has deteriorated significantly (though not yet in default), triggering a "significant increase in credit risk." The lifetime ECL is now estimated at $45,000.</div>
+          <div class="wk-answer">The loan moves to <strong>Stage 2</strong> — the loss allowance INCREASES from $8,000 (12-month ECL) to <strong>$45,000</strong> (lifetime ECL), with the $37,000 incremental charge recognised immediately in profit or loss, even though NO actual default has yet occurred.</div>
+        </div>
+        <div class="note">This FORWARD-LOOKING recognition — based on a SIGNIFICANT INCREASE in credit risk, not an actual loss event — is precisely what IAS 39's incurred loss model prohibited.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 7 ============ -->
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Derecognition</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Carried forward largely unchanged from IAS 39</div>
+        <div class="text-supporting">A financial asset is derecognised when contractual rights to cash flows EXPIRE, or when the entity TRANSFERS substantially all risks/rewards of ownership. Where risks/rewards are neither substantially transferred nor retained, the test turns to whether CONTROL has been surrendered — the SAME multi-step decision tree IAS 39 used, one of the few areas NOT reformed by IFRS 9.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 8 ============ -->
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Hedge Accounting</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">A principles-based "economic relationship" test, replacing the 80-125% bright line</div>
+        <div class="principle">To qualify for hedge accounting, there must be an ECONOMIC RELATIONSHIP between the hedged item and hedging instrument, credit risk must NOT dominate value changes, and the HEDGE RATIO must match that actually used for risk management purposes.</div>
+        <div class="worked worked--flush">
+          <div class="wk-title">Example 4: A hedge that would have failed IAS 39's bright-line test</div>
+          <div class="wk-body">An entity hedges jet fuel purchases using a crude oil derivative (since no direct jet fuel derivative market exists). The historical correlation between jet fuel and crude oil prices produces an effectiveness ratio of 78% under a simple retrospective dollar-offset test.</div>
+          <div class="wk-answer">Under IAS 39's strict 80-125% bright line, this hedge would have FAILED and hedge accounting would be prohibited. Under IFRS 9's PRINCIPLES-based economic relationship test, this hedge likely QUALIFIES, since a genuine economic relationship exists between jet fuel and crude oil prices, even though the quantitative dollar-offset falls just outside the old bright line.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 9 ============ -->
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Reclassification</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">Only when the business model genuinely changes</div>
+        <div class="text-supporting">Financial assets are reclassified ONLY when an entity CHANGES its business model for managing them — expected to be a RARE event, determined by senior management as a result of external or internal changes, and demonstrable to external parties. Reclassification is applied PROSPECTIVELY from the reclassification date; NO restatement of previously recognised gains, losses, or interest.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 10 ============ -->
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where management judgement matters most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Determining the appropriate business model at a portfolio level</span>
+              <span>Assessing SPPI, particularly for structured or contingent cash flow instruments</span>
+              <span>Identifying a "significant increase in credit risk" triggering the Stage 1 → Stage 2 transition</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>Probability-weighted ECL calculations, incorporating forward-looking macroeconomic scenarios</span>
+              <span>Fair value of instruments without observable market prices</span>
+            </div>
+          </div>
+        </div>
+        <div class="callout warn callout--chip callout--warn-flush">The ECL model's forward-looking, probability-weighted, multiple-scenario approach is significantly more judgemental and DATA-INTENSIVE than IAS 39's incurred loss trigger — a major implementation challenge for many entities, particularly banks.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 11 ============ -->
+    <div class="section-header" id="s11"><span class="num">11</span><h2>IFRS vs US GAAP</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — IFRS 9 vs US GAAP (ASC 326 CECL)</div>
+        <div class="td-table">
+          <div class="th cols-12-1-1"><span>Feature</span><span>IFRS (IFRS 9)</span><span>US GAAP</span></div>
+          <div class="tr cols-12-1-1"><span>Impairment model</span><span>THREE-stage ECL — 12-month vs lifetime, based on credit deterioration</span><span>CECL ("Current Expected Credit Loss") — LIFETIME expected losses recognised for ALL financial assets from initial recognition, no staging</span></div>
+          <div class="tr alt cols-12-1-1"><span>Classification approach</span><span>Business model + SPPI test</span><span>Broadly similar categories, though with different terminology and some mechanical differences</span></div>
+          <div class="tr cols-12-1-1"><span>Hedge accounting effectiveness</span><span>Principles-based economic relationship test</span><span>Also reformed (ASU 2017-12) toward a more principles-based approach, though retaining some distinct mechanics</span></div>
+        </div>
+        <div class="note">The BIGGEST remaining difference is impairment — US GAAP's CECL model recognises LIFETIME expected losses IMMEDIATELY for all assets (no staging), a MORE conservative day-one approach than IFRS 9's staged model.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 12 ============ -->
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Comprehensive event-to-statement mapping table</div>
+        <div class="td-table">
+          <div class="th cols-16-1-14"><span>Event / transaction</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr cols-16-1-14"><span>Amortised cost interest accretion</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Effective interest method</span></div>
+          <div class="tr alt cols-16-1-14"><span>FVOCI (debt) fair value remeasurement</span><span><span class="badge bo">OCI</span> <span class="badge bs">SOFP</span></span><span>Recycled to SOPL on disposal/reclassification</span></div>
+          <div class="tr cols-16-1-14"><span>FVOCI (equity, irrevocable election) remeasurement</span><span><span class="badge bo">OCI</span> <span class="badge bs">SOFP</span></span><span>NEVER recycled, even on disposal</span></div>
+          <div class="tr alt cols-16-1-14"><span>FVTPL remeasurement</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Immediate recognition</span></div>
+          <div class="tr cols-16-1-14"><span>ECL recognition/movement between stages</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>12-month or lifetime, per staging</span></div>
+          <div class="tr alt cols-16-1-14"><span>Own credit risk on FVO liabilities</span><span><span class="badge bo">OCI</span></span><span>Unless creating an accounting mismatch</span></div>
+          <div class="tr cols-16-1-14"><span>Cash flow hedge — effective portion</span><span><span class="badge bo">OCI</span></span><span>Deferred until the hedged item affects P&amp;L</span></div>
+          <div class="tr alt cols-16-1-14"><span>Derecognition on disposal/settlement</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Gain/loss recognised; OCI recycled where applicable</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 13 ============ -->
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Cross-reference map</div>
+        <div class="td-table">
+          <div class="th cols-08-2"><span>Standard</span><span>Connection</span></div>
+          <div class="tr cols-08-2"><span>IAS 32</span><span>Supplies liability/equity classification and offsetting criteria that IFRS 9 relies upon</span></div>
+          <div class="tr alt cols-08-2"><span>IFRS 7</span><span>Supplies the disclosure requirements explaining IFRS 9 amounts and risk exposures</span></div>
+          <div class="tr cols-08-2"><span>IFRS 13</span><span>Supplies the fair value measurement framework used throughout classification and measurement</span></div>
+          <div class="tr alt cols-08-2"><span>IFRS 3</span><span>Contingent consideration liabilities remeasured through P&amp;L per IFRS 9</span></div>
+        </div>
+      </div>
+      <div class="card cn">
+        <div class="ctitle cn">Quick-reference glossary</div>
+        <div class="glossary-item"><div class="glossary-term">Significant increase in credit risk</div><div class="glossary-def">The trigger moving an asset from Stage 1 (12-month ECL) to Stage 2 (lifetime ECL).</div></div>
+        <div class="glossary-item"><div class="glossary-term">Hedge ratio</div><div class="glossary-def">The relationship between the quantity of the hedging instrument and the quantity of the hedged item, which must match actual risk management practice under IFRS 9.</div></div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 14 ============ -->
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+<Glossary entries={[
+      { term: "Business model", definition: "How an entity manages its financial assets to generate cash flows — by collecting contractual cash flows, selling, or both." },
+      { term: "SPPI", definition: "Solely Payments of Principal and Interest — the test asking whether contractual cash flows represent basic lending arrangement cash flows only." },
+      { term: "Expected credit losses (ECL)", definition: "A probability-weighted estimate of credit losses, forward-looking from initial recognition, replacing IAS 39's incurred loss trigger." },
+      { term: "Significant increase in credit risk", definition: "The trigger moving an asset from Stage 1 (12-month ECL) to Stage 2 (lifetime ECL)." },
+      { term: "Hedge ratio", definition: "The relationship between the quantity of the hedging instrument and the quantity of the hedged item, which must match actual risk management practice under IFRS 9." },
+      { term: "FVOCI", definition: "Fair value through other comprehensive income — a measurement category for debt instruments held to collect and sell, and for certain equity investments with an irrevocable election." }
+    ]} />
+
+<FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.IFRS9} />
+  </section>
+</StandardPageLayout>

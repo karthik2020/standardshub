@@ -1,0 +1,387 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import metadata from "../../data/standards/hgb/hgb300-307.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  summary={metadata.summary}
+  subtitle={metadata.nativeTitle}
+  covers={metadata.covers}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope" },
+        { id: "s3", label: "§300(1) — 100% Consolidation, Regardless of Ownership Percentage" },
+        { id: "s4", label: "§300(2) — Uniform Measurement Before Combination" },
+        { id: "s5", label: "§301 — Kapitalkonsolidierung: HGB's Own Purchase-Price-Allocation" },
+        { id: "s6", label: "Worked Example — a Full Capital Consolidation, Computing Goodwill" },
+        { id: "s7", label: "THE BARGAIN PURCHASE DIVERGENCE — Negative Difference vs IFRS 3" },
+        { id: "s8", label: "Worked Example — a Negative Difference (Bargain Purchase)" },
+        { id: "s9", label: "§302 — Repealed" },
+        { id: "s10", label: "§303 — Schuldenkonsolidierung (Debt Consolidation)" },
+        { id: "s11", label: "Worked Example — Eliminating an Intragroup Loan" },
+        { id: "s12", label: "§304 — Zwischenergebnisse: Eliminating Intragroup Profit Still Sitting in Assets" },
+        { id: "s13", label: "Worked Example — Eliminating an Inventory Markup" },
+        { id: "s14", label: "§305 — Aufwands- und Ertragskonsolidierung (Income/Expense Consolidation)" },
+        { id: "s15", label: "Worked Example — Eliminating Intragroup Revenue, Cost, and Dividend Income" },
+        { id: "s16", label: "§306 — Deferred Taxes Arising From Consolidation Itself" },
+        { id: "s17", label: "Worked Example — a Consolidation-Specific Temporary Difference" },
+        { id: "s18", label: "§307 — Anteile Anderer Gesellschafter (Non-Controlling Interests)" },
+        { id: "s19", label: "Worked Example — Calculating and Presenting NCI" },
+        { id: "s20", label: "Worked Example — Negative NCI From Accumulated Subsidiary Losses" },
+        { id: "s21", label: "Critical Judgments &amp; Practical Difficulties" },
+        { id: "s22", label: "Relationship to IFRS (IFRS 3, IFRS 10)" },
+        { id: "s23", label: "Statement Mapping" },
+        { id: "s24", label: "Related Provisions — Cross-Reference Map" },
+        { id: "s25", label: "Quick-Reference Glossary" }
+      ]}
+    />
+  </Fragment>
+  
+
+  <div class="wrap">
+<!-- ============ SECTION 1 ============ -->
+  
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="callout danger">A THIRD ANCHOR-LEVEL POSTER: this Titel supplies the actual techniques implementing the §297(3) single-enterprise fiction. §301's capital consolidation is HGB's own version of purchase-price-allocation accounting — and its treatment of a bargain purchase differs sharply from IFRS 3's immediate profit-or-loss recognition. Expect real depth below.</div>
+
+  
+      <div class="ctitle ci">Where the single-enterprise fiction becomes mechanical reality</div>
+      <div class="principle">§297(3) declared the group must be presented AS IF it were one enterprise. §§300–307 are HOW that declaration actually gets executed: combining accounts line by line, eliminating the parent's investment against the subsidiary's equity, erasing intragroup receivables/payables and intragroup profits, and carving out the portion of the subsidiary genuinely belonging to outside shareholders.</div>
+      <div class="elabel">HOW §§300–307 MAP TO GERMAN ACCOUNTING PRINCIPLES</div>
+      <div class="check-list">
+        <span><strong>Vollständigkeitsgebot, at its most literal</strong> — §300(1) requires FULL, 100% combination of every included subsidiary's accounts, regardless of the parent's actual ownership percentage</span>
+        <span><strong>Einheitstheorie (entity theory)</strong> — NCI is presented WITHIN group equity (§307), not as a liability, reflecting the view that non-controlling shareholders are still genuine equity participants in the SAME single enterprise</span>
+      </div>
+    </div>
+
+    <div class="card cs">
+      <div class="ctitle cs">What §§300–307 require, at a glance</div>
+      <div class="td-table">
+        <div class="th cols-06-17"><span>§</span><span>Core requirement</span></div>
+        <div class="tr cols-06-17"><span>300</span><span>Full (100%) combination of every subsidiary, after uniform measurement</span></div>
+        <div class="tr alt cols-06-17"><span>301</span><span>Capital consolidation — offset investment against revalued subsidiary equity; goodwill or bargain purchase</span></div>
+        <div class="tr cols-06-17"><span>302</span><span>Repealed — no current content</span></div>
+        <div class="tr alt cols-06-17"><span>303</span><span>Eliminate intragroup receivables/payables entirely</span></div>
+        <div class="tr cols-06-17"><span>304</span><span>Eliminate intragroup profit still embedded in group assets</span></div>
+        <div class="tr alt cols-06-17"><span>305</span><span>Eliminate intragroup revenue/expense and dividend income</span></div>
+        <div class="tr cols-06-17"><span>306</span><span>Deferred tax on temporary differences created BY consolidation itself</span></div>
+        <div class="tr alt cols-06-17"><span>307</span><span>Carve out non-controlling interests within group equity and group net income</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Scope</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Every subsidiary included per §§294–296</div>
+      <div class="principle">§§300–307 apply the actual consolidation mechanics to every subsidiary the previous poster's Konsolidierungskreis Titel determined must be included — with NO exceptions for partial ownership, since §300(1) consolidates fully regardless of stake size.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>§300(1) — 100% Consolidation, Regardless of Ownership Percentage</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">A 51% stake still consolidates 100% of the subsidiary's accounts</div>
+      <div class="principle">§300(1) requires the FULL combination of the parent's and each included subsidiary's individual accounts, line by line — REGARDLESS of the parent's actual ownership percentage. A subsidiary 51%-owned is consolidated at 100%, with the OTHER 49% then carved out and shown separately as non-controlling interests under §307 (Section 18) — NOT proportionately consolidated at 51% of each line item. This "full consolidation, then carve out NCI" structure is the DEFINING characteristic of Vollkonsolidierung as a technique, distinguishing it from the proportionate consolidation method still available for joint arrangements elsewhere in HGB.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>§300(2) — Uniform Measurement Before Combination</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Restating to group-wide methods and format BEFORE adding anything together</div>
+      <div class="text-supporting">§300(2) requires each entity's individual accounts to be ADJUSTED to conform to uniform group-wide measurement methods (per §308, a later Titel) and adapted to the prescribed group Bilanz/GuV format BEFORE combination — the SAME requirement illustrated with the LIFO example in the previous poster, now stated as a formal precondition to the combination step itself.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>§301 — Kapitalkonsolidierung: HGB's Own Purchase-Price-Allocation</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Offsetting the parent's investment against the subsidiary's revalued equity, at acquisition date</div>
+      <div class="principle">§301(1)–(2) requires the parent's carrying amount for its investment in the subsidiary (Beteiligungsbuchwert) to be OFFSET against its proportionate share of the subsidiary's EQUITY — generally measured using the ACQUISITION-DATE fair values of the subsidiary's identifiable assets and liabilities (the "Neubewertungsmethode," or revaluation method) — broadly analogous in overall shape to IFRS 3's acquisition method, though with HGB's own specific mechanics and terminology.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Worked Example — a Full Capital Consolidation, Computing Goodwill</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">A textbook positive-difference acquisition</div>
+      <div class="worked">
+        <div class="wk-title">Example 1: Acquiring 100% of a subsidiary above its revalued net asset value</div>
+        <div class="wk-body">A parent acquires 100% of a subsidiary for €8,500,000. At the acquisition date, the subsidiary's identifiable assets and liabilities, revalued to fair value per §301's Neubewertungsmethode, amount to €6,800,000 of net assets.</div>
+        <div class="wk-answer">Goodwill = €8,500,000 − €6,800,000 = <strong>€1,700,000</strong>, recognised on the Konzernbilanz and — CRITICALLY, per the SAME §246(1) sentence 4 rule established in the earlier §§246–251 poster — subject to MANDATORY systematic amortisation over its estimated useful life, NOT an impairment-only regime. Goodwill arising from capital consolidation is treated IDENTICALLY to goodwill arising from an individual-entity asset acquisition.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>THE BARGAIN PURCHASE DIVERGENCE — Negative Difference vs IFRS 3</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">A separate equity item, NOT immediate profit-or-loss recognition</div>
+      <div class="principle">§301(3) addresses the OPPOSITE scenario — where the parent's cost is LESS than its share of the subsidiary's revalued net assets (a "negative difference," or negativer Unterschiedsbetrag — the classic bargain purchase). Under HGB, this negative difference is shown as a SEPARATE item WITHIN group equity, rather than flowing through the Konzern-GuV immediately. This is a GENUINE, notable divergence from IFRS 3, which requires a bargain purchase gain to be recognised IMMEDIATELY IN PROFIT OR LOSS at the acquisition date, after re-verifying the measurement is correct.</div>
+      <div class="callout warn">HGB's more cautious equity-item treatment reflects its characteristic Vorsichtsprinzip instinct: an apparent "bargain" is treated with initial suspicion rather than immediately recognised as a windfall profit, consistent with the same asymmetric prudence this entire poster series has repeatedly documented.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Worked Example — a Negative Difference (Bargain Purchase)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Held in equity, not recognised as an immediate windfall gain</div>
+      <div class="worked">
+        <div class="wk-title">Example 2: Acquiring a distressed-sale subsidiary below its revalued net asset value</div>
+        <div class="wk-body">A parent acquires 100% of a financially distressed subsidiary for just €2,000,000, in a forced/distressed sale. The subsidiary's identifiable assets and liabilities, revalued to fair value, amount to €2,600,000 of net assets.</div>
+        <div class="wk-answer">The €600,000 negative difference (€2,600,000 − €2,000,000) is recognised as a SEPARATE item WITHIN group equity under §301(3) — CONTRASTING sharply with IFRS 3, which would require this SAME €600,000 to be recognised IMMEDIATELY as a bargain purchase GAIN in the Konzern-GuV (profit or loss). A group reporting under BOTH frameworks would show a materially different Konzern-GuV bottom line in the acquisition year purely because of this single divergence.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>§302 — Repealed</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">No current content</div>
+      <div class="text-supporting">§302 is currently marked "(weggefallen)" — repealed, with no substantive content remaining.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>§303 — Schuldenkonsolidierung (Debt Consolidation)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">A receivable one group company owes another simply cannot exist, from the group's perspective</div>
+      <div class="principle">§303 requires intragroup receivables and payables — and other intragroup balance sheet relationships, such as a provision one group company has recognised specifically in relation to another — to be ELIMINATED entirely from the Konzernbilanz, giving effect to the §297(3) single-enterprise fiction for BALANCE SHEET items specifically. Any difference arising from the elimination (e.g., from differing measurement bases or FX translation between the two entities' own records of the same intragroup balance) must be recognised as an expense or income item in the Konzern-GuV.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Worked Example — Eliminating an Intragroup Loan</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Both sides of the same internal loan simply vanish together</div>
+      <div class="worked">
+        <div class="wk-title">Example 3: A parent's loan to its own subsidiary</div>
+        <div class="wk-body">A parent lends €3,000,000 to its subsidiary. In the parent's own individual accounts, this appears as a €3,000,000 receivable; in the subsidiary's own individual accounts, a €3,000,000 payable.</div>
+        <div class="wk-answer">In the Konzernbilanz, BOTH the €3,000,000 receivable and the €3,000,000 payable are ELIMINATED entirely under §303 — from the group's own perspective, as a single enterprise, this is simply money moved between its own left and right pockets, and no genuine external debt exists at all.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>§304 — Zwischenergebnisse: Eliminating Intragroup Profit Still Sitting in Assets</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Stripping out the internal markup, unless genuinely immaterial</div>
+      <div class="principle">§304 requires elimination of intragroup profits or losses (Zwischenergebnisse) still contained WITHIN assets carried on the Konzernbilanz — typically inventory purchased from another group company at a markup, not yet sold to a genuinely EXTERNAL party — UNLESS the amount is of subordinate importance for giving a true and fair view of the group's position. The elimination restates the asset to its ORIGINAL group-wide cost basis, consistent with §300(2)'s uniform-measurement requirement.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Worked Example — Eliminating an Inventory Markup</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">The mechanic first illustrated conceptually in the previous poster, now with real numbers</div>
+      <div class="worked">
+        <div class="wk-title">Example 4: Unsold inventory still carrying an internal markup</div>
+        <div class="wk-body">A parent manufactures a component at a cost of €400,000, and sells it to its subsidiary for €500,000 (a €100,000 intragroup markup). By year-end, the subsidiary has NOT yet resold the component externally — it remains in the subsidiary's own closing inventory at its €500,000 purchase price.</div>
+        <div class="wk-answer">The Konzernbilanz eliminates the €100,000 intragroup profit still embedded in the inventory under §304, restating its carrying amount to the group's ORIGINAL €400,000 manufacturing cost — since from the group's own single-enterprise perspective, this component has not yet been sold to anyone OUTSIDE the group, and no profit has genuinely been earned on it yet.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>§305 — Aufwands- und Ertragskonsolidierung (Income/Expense Consolidation)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">The GuV-side counterpart to debt consolidation</div>
+      <div class="principle">§305 requires intragroup REVENUE and the corresponding intragroup EXPENSE (e.g., the parent's intragroup sale revenue against the subsidiary's matching purchase/cost-of-goods expense) to be ELIMINATED from the Konzern-GuV — the income-statement-side parallel to §303's balance-sheet-side debt consolidation. This ALSO covers elimination of intragroup DIVIDEND income: a subsidiary's dividend paid to its parent must be eliminated from the parent's own investment income, since from the group's perspective this is merely an internal transfer of the group's own already-earned profit, not genuinely new external income.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 15 ============ -->
+  <div class="section-header" id="s15"><span class="num">15</span><h2>Worked Example — Eliminating Intragroup Revenue, Cost, and Dividend Income</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Two intragroup flows, both eliminated for the same underlying reason</div>
+      <div class="worked">
+        <div class="wk-title">Example 5: Combining the earlier component sale with a subsidiary dividend</div>
+        <div class="wk-body">Continuing Example 4: the parent recorded €500,000 of intragroup revenue and the subsidiary recorded a corresponding €500,000 purchase cost. Separately, the subsidiary pays a €200,000 dividend to the parent during the year, which the parent recorded as €200,000 of investment income in its own individual GuV.</div>
+        <div class="wk-answer">In the Konzern-GuV, the €500,000 intragroup revenue is eliminated against the SAME €500,000 intragroup cost under §305 (leaving the §304 profit-elimination adjustment from Example 4 to separately handle the embedded markup). The €200,000 dividend income is ALSO eliminated entirely — the group's own already-earned profit simply moved from one pocket (the subsidiary) to another (the parent), generating no genuinely NEW income for the group as a whole.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 16 ============ -->
+  <div class="section-header" id="s16"><span class="num">16</span><h2>§306 — Deferred Taxes Arising From Consolidation Itself</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">An additional layer, on top of each entity's own ordinary §274 analysis</div>
+      <div class="principle">§306 requires deferred tax recognition for temporary differences arising SPECIFICALLY from the consolidation procedures THEMSELVES — most notably, the §304 elimination of intragroup profit creates a difference between the GROUP's own consolidated carrying amount and the TAX basis reflected in the individual entity's own local tax return (since tax authorities generally tax based on each individual entity's own, UNCONSOLIDATED figures, which still include the eliminated markup). This sits ON TOP OF the ordinary §274 deferred tax analysis each individual entity already performs in its own separate accounts — a genuinely distinct, additional layer specific to the consolidation process.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 17 ============ -->
+  <div class="section-header" id="s17"><span class="num">17</span><h2>Worked Example — a Consolidation-Specific Temporary Difference</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">The group's own books diverge from what tax authorities actually see</div>
+      <div class="worked">
+        <div class="wk-title">Example 6: Deferred tax on the eliminated inventory markup</div>
+        <div class="wk-body">Continuing Examples 4–5: the subsidiary's OWN local tax return still reflects the €500,000 purchase price for the inventory (since tax authorities tax the subsidiary on an unconsolidated, standalone basis) — but the Konzernbilanz now shows the SAME inventory at only €400,000, following the §304 elimination.</div>
+        <div class="wk-answer">This €100,000 difference between the group's own consolidated carrying amount (€400,000) and the tax basis reflected in the subsidiary's local return (€500,000) is a genuine temporary difference arising PURELY from the consolidation process — requiring its OWN deferred tax recognition under §306, applying the SAME general mandatory-liability/elective-asset asymmetry established for ordinary §274 deferred taxes in the earlier Bilanz poster.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 18 ============ -->
+  <div class="section-header" id="s18"><span class="num">18</span><h2>§307 — Anteile Anderer Gesellschafter (Non-Controlling Interests)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Carving the outside shareholders' portion back out of 100% consolidation</div>
+      <div class="principle">§307(1) requires the portion of a subsidiary's equity — AND of its net income for the period — attributable to shareholders OTHER than the parent (non-controlling interests, NCI) to be shown SEPARATELY WITHIN group equity on the Konzernbilanz, and separately within the Konzern-GuV. This is the direct consequence of §300(1)'s "consolidate 100% regardless of stake" approach: having combined the ENTIRE subsidiary, §307 now carves back OUT the portion genuinely belonging to outside shareholders, rather than never having included it in the first place.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 19 ============ -->
+  <div class="section-header" id="s19"><span class="num">19</span><h2>Worked Example — Calculating and Presenting NCI</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">The straightforward, ordinary case</div>
+      <div class="worked">
+        <div class="wk-title">Example 7: A subsidiary 75%-owned by the parent</div>
+        <div class="wk-body">A subsidiary has €4,000,000 of equity and generates €600,000 of net income for the year. The parent owns 75% of the subsidiary; the remaining 25% is held by outside shareholders.</div>
+        <div class="wk-answer">The ENTIRE €4,000,000 equity and €600,000 net income are FIRST fully consolidated into the group accounts, per §300(1). Then, under §307, NCI = 25% × €4,000,000 = <strong>€1,000,000</strong> is shown SEPARATELY within group equity, and 25% × €600,000 = <strong>€150,000</strong> of the group's reported net income is separately attributed to NCI rather than to the parent's own shareholders.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 20 ============ -->
+  <div class="section-header" id="s20"><span class="num">20</span><h2>Worked Example — Negative NCI From Accumulated Subsidiary Losses</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Losses attributed to outside shareholders even into a deficit</div>
+      <div class="worked">
+        <div class="wk-title">Example 8: A struggling subsidiary with accumulated losses exceeding NCI's original stake</div>
+        <div class="wk-body">A subsidiary, 80%-owned by the parent with the remaining 20% held by outside shareholders, has accumulated such significant losses over several years that the 20% NCI stake's own SHARE of the subsidiary's now-negative equity would itself be a NEGATIVE figure.</div>
+        <div class="wk-answer">Consistent with the broader modernisation of HGB's own approach in this area — and CONVERGING with how IFRS 10 treats the same scenario — NCI is generally shown as a NEGATIVE figure within group equity, reflecting outside shareholders' full 20% share of the accumulated losses, RATHER than the parent absorbing the entire loss itself. The exact conditions and any residual thresholds are worth double-checking against current specific text for a live filing, but the general direction — losses attributed to NCI even into deficit — reflects the accepted modern approach.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 21 ============ -->
+  <div class="section-header" id="s21"><span class="num">21</span><h2>Critical Judgments &amp; Practical Difficulties</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Where judgement matters most</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+          <div class="dot-list">
+            <span>Determining acquisition-date fair values for the §301 Neubewertungsmethode, particularly for intangible assets not previously recognised in the subsidiary's own individual accounts</span>
+            <span>Whether an intragroup profit under §304 is genuinely of "subordinate importance" and can be left unelimianted</span>
+          </div>
+        </div>
+        <div>
+          <div class="elabel">PRACTICAL DIFFICULTIES</div>
+          <div class="dot-list">
+            <span>Tracking intragroup balances and transactions across a large, multi-entity group to ensure §303/§305 eliminations are genuinely complete</span>
+            <span>Maintaining the consolidation-specific deferred tax analysis under §306 as intragroup profit positions change year to year</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 22 ============ -->
+  <div class="section-header" id="s22"><span class="num">22</span><h2>Relationship to IFRS (IFRS 3, IFRS 10)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — HGB §§300–307 vs IFRS</div>
+      <div class="td-table">
+        <div class="th cols-12-1-1"><span>Feature</span><span>HGB</span><span>IFRS</span></div>
+        <div class="tr cols-12-1-1"><span>Full (100%) consolidation approach</span><span>YES (§300(1))</span><span>YES (IFRS 10) — CONVERGED</span></div>
+        <div class="tr alt cols-12-1-1"><span>Goodwill subsequent treatment</span><span>MANDATORY amortisation (§246(1) s.4, carried into §301)</span><span>Impairment-only (IFRS 3/IAS 36)</span></div>
+        <div class="tr cols-12-1-1"><span>Bargain purchase (negative difference)</span><span>Separate GROUP EQUITY item (§301(3))</span><span>Immediate recognition in PROFIT OR LOSS (IFRS 3)</span></div>
+        <div class="tr alt cols-12-1-1"><span>NCI presentation, including negative NCI</span><span>Within equity, including negative positions</span><span>Within equity, including negative positions — CONVERGED</span></div>
+        <div class="tr cols-12-1-1"><span>Intragroup profit elimination</span><span>Required, subject to a materiality carve-out (§304)</span><span>Required, no explicit materiality carve-out named in the standard itself (though materiality applies generally)</span></div>
+      </div>
+      <div class="note">This Titel shows the SAME pattern as the earlier goodwill/business-combination comparisons in this series: the overall STRUCTURE of consolidation (full consolidation, NCI within equity) is strongly convergent, while the SPECIFIC treatment of goodwill and bargain purchases remains sharply divergent — directly tracing back to §246(1) sentence 4's mandatory amortisation rule established at the very start of this poster library.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 23 ============ -->
+  <div class="section-header" id="s23"><span class="num">23</span><h2>Statement Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Where every §§300–307 event lands</div>
+      <div class="td-table">
+        <div class="th cols-16-1-14"><span>Event / obligation</span><span>Document(s) affected</span><span>Notes</span></div>
+        <div class="tr cols-16-1-14"><span>Capital consolidation (§301)</span><span><span class="badge bo">Konzernbilanz</span></span><span>Goodwill or negative-difference equity item recognised</span></div>
+        <div class="tr alt cols-16-1-14"><span>Debt/profit elimination (§§303–304)</span><span><span class="badge bo">Konzernbilanz</span></span><span>Intragroup balances and embedded profit removed</span></div>
+        <div class="tr cols-16-1-14"><span>Income/expense elimination (§305)</span><span><span class="badge bp">Konzern-GuV</span></span><span>Intragroup revenue, cost, and dividend income removed</span></div>
+        <div class="tr alt cols-16-1-14"><span>NCI carve-out (§307)</span><span><span class="badge bo">Konzernbilanz</span> <span class="badge bp">Konzern-GuV</span></span><span>Both equity and net income split between parent and NCI</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 24 ============ -->
+  <div class="section-header" id="s24"><span class="num">24</span><h2>Related Provisions — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How §§300–307 connect across HGB Book 3</div>
+      <div class="td-table">
+        <div class="th cols-08-2"><span>Provision</span><span>Nature of the connection</span></div>
+        <div class="tr cols-08-2"><span>§297(3)</span><span>The single-enterprise fiction every mechanic in this Titel exists to implement</span></div>
+        <div class="tr alt cols-08-2"><span>§246(1) s.4</span><span>The mandatory goodwill amortisation rule carried directly into §301's capital consolidation goodwill</span></div>
+        <div class="tr cols-08-2"><span>§274</span><span>The ordinary individual-entity deferred tax framework §306 extends specifically to consolidation-created temporary differences</span></div>
+        <div class="tr alt cols-08-2"><span>§§308–309</span><span>The NEXT Titel, supplying the measurement rules underlying the uniform group-wide figures this Titel's combination and elimination steps rely upon</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 25 ============ -->
+  <div class="section-header" id="s25"><span class="num">25</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Vollkonsolidierung</div><div class="glossary-def">Full consolidation — combining 100% of a subsidiary's accounts regardless of the parent's actual ownership percentage.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Kapitalkonsolidierung</div><div class="glossary-def">Capital consolidation — offsetting the parent's investment against its share of the subsidiary's revalued equity.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Neubewertungsmethode</div><div class="glossary-def">The revaluation method — measuring the subsidiary's identifiable assets/liabilities at acquisition-date fair value for capital consolidation purposes.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Negativer Unterschiedsbetrag</div><div class="glossary-def">Negative difference — a bargain purchase, shown as a separate group equity item under HGB rather than an immediate P&amp;L gain.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Schuldenkonsolidierung</div><div class="glossary-def">Debt consolidation — eliminating intragroup receivables and payables entirely from the Konzernbilanz.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Zwischenergebnisse</div><div class="glossary-def">Intragroup profits/losses still embedded within group assets, eliminated under §304 unless genuinely immaterial.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Key</div>
+    <div class="lrow">
+      <span class="badge bo">Konzernbilanz</span> Consolidated balance sheet
+      <span class="badge bp">Konzern-GuV</span> Consolidated income statement
+    </div>
+  </div>
+  </div>
+</StandardPageLayout>

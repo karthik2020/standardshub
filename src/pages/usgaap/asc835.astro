@@ -1,0 +1,162 @@
+﻿---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc835.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  bannerNotice={metadata.bannerNotice}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope & Applicability" },
+        { id: "s3", label: "Interest Capitalisation — Qualifying Assets" },
+        { id: "s4", label: "The Amount of Capitalisable Interest" },
+        { id: "s5", label: "Suspension of Capitalisation" },
+        { id: "s6", label: "Interest Expense Recognition" },
+        { id: "s7", label: "Imputed Interest and Below-Market Loans" },
+        { id: "s8", label: "Discounting of Long-Term Liabilities" },
+        { id: "s9", label: "Worked Example — Interest Capitalisation" },
+        { id: "s10", label: "Disclosure Requirements" },
+        { id: "s11", label: "Critical Judgments & Estimates" },
+        { id: "s12", label: "ASC 835 vs IAS 23 — Comprehensive Comparison" },
+        { id: "s13", label: "Statement Mapping" },
+        { id: "s14", label: "Related Topics" },
+        { id: "s15", label: "Quick-Reference Glossary" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci"><div class="ctitle ci">Matching the cost of borrowing with the benefit of the asset</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 835 embodies the matching principle: interest costs incurred to acquire or construct a qualifying asset should be CAPITALISED as part of the asset's cost, rather than expensed immediately. This ensures that the cost of the asset reflects all expenditures necessary to bring it to the condition and location necessary for its intended use — including the cost of financing that acquisition or construction.</div></div>
+      <div class="card cs"><div class="ctitle cs">Broadly converged with IAS 23</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 835 and IAS 23 are substantially converged on the core principle of interest capitalisation. Both standards require qualifying assets to carry the capitalised interest cost, both define qualifying assets similarly, and both use the same avoidable interest approach to determine the amount to capitalise. The differences are primarily in the details of implementation rather than in substance.</div></div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope & Applicability</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Qualifying assets and the timing of capitalisation</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 835 applies to interest costs incurred during the period when an entity is acquiring, constructing, or producing a QUALIFYING ASSET — an asset that necessarily takes a substantial period of time to get ready for its intended use or sale. Examples include buildings, power generation facilities, and custom-manufactured equipment. The standard does NOT apply to inventories that are routinely manufactured or produced in large quantities on a repetitive basis, nor to assets that are ready for their intended use when acquired.</div></div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Interest Capitalisation — Qualifying Assets</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">Assets requiring a substantial period to be ready for use</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">A qualifying asset is one that takes a SUBSTANTIAL period of time to complete or ready for its intended use. The determination of 'substantial' depends on the circumstances: a custom-designed manufacturing facility taking 18 months to build is clearly qualifying; inventory produced on an assembly line over a few days is not. Qualifying assets excluded from ASC 835 — and instead accounted for under other standards — include assets held by lessees under ASC 842 (right-of-use assets) and investment property measured at fair value under ASC 980.</div></div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>The Amount of Capitalisable Interest</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Avoidable interest — the interest that could have been avoided</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">The amount of interest to capitalise is the AVOIDABLE INTEREST — the interest cost that could have been avoided if expenditures for the qualifying asset had not been made. Avoidable interest is calculated as the weighted-average accumulated expenditures multiplied by the weighted-average interest rate on borrowings. The capitalisable amount cannot exceed actual interest incurred during the period. For borrowings that are specifically for the qualifying asset, the interest rate on that borrowing is used. For general borrowings, a weighted-average rate across all outstanding borrowings is applied.</div></div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Suspension of Capitalisation</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Capitalisation pauses during periods of inactivity</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">Interest capitalisation must be SUSPENDED during periods when active construction or development activities are intentionally interrupted. A brief, predictable interruption (such as a planned construction strike or seasonal weather delay) does not require suspension if the entity has not suspended other construction-related activities. However, an extended suspension of all activities necessary to prepare the asset for its intended use requires capitalisation to cease until activities resume. Capitalisation is also suspended for excess cash not yet needed for construction.</div></div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Interest Expense Recognition</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">Expensed as incurred, except for capitalisable amounts</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">Interest expense that is NOT capitalised is recognised in the income statement as incurred, using the effective interest method for debt measured at amortised cost. This includes interest on general borrowings not related to qualifying asset construction, interest on operating leases, and interest on trade payables. The total interest expense recognised in the income statement therefore has two components: (1) capitalised interest, included in the cost of the qualifying asset; and (2) expensed interest, recognised in the period incurred.</div></div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Imputed Interest and Below-Market Loans</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2"><div class="ctitle cn">When no explicit interest rate exists</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">When a receivable or payable is issued at a below-market interest rate — for example, an interest-free note payable to a related party or a zero-coupon bond — ASC 835 requires imputing interest at a market rate. The imputed interest represents the difference between the face amount and the present value of the note, discounted at a market rate. The implied interest is recognised over the life of the instrument, even though no explicit interest payments are made. This ensures that the economic cost of borrowing is reflected in the financial statements.</div></div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Discounting of Long-Term Liabilities</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Present value as the initial measurement basis</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">Long-term liabilities that do not bear an explicit interest rate, or bear an unrealistic rate, must be recorded at the present value of the payments discounted at a market rate. ASC 835 requires using the imputed rate when the stated interest rate is negligible compared to the market rate. This imputation applies to transactions such as long-term purchase contracts, deferred compensation arrangements, and contingent consideration in business combinations. The present value discount is accreted over the life of the liability as additional interest expense.</div></div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Worked Example — Interest Capitalisation</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Calculating capitalisable interest on an asset under construction</div>
+      <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Capitalising interest on a new factory</div><div class="wk-body">An entity begins construction of a factory on 1 January, with completion expected on 30 June. Expenditures incurred are: $2,000,000 on 1 January, $3,000,000 on 1 April, and $1,000,000 on 1 June. The entity has a 6%, $5 million specific construction loan and a 4%, $10 million general revolving credit facility. The weighted-average accumulated expenditures = $2M × 6/6 + $3M × 3/6 + $1M × 1/6 = $3,500,000.</div><div class="wk-answer"><strong>Specific loan interest:</strong> $2M × 6% = $120,000<br><strong>Remaining expenditures:</strong> $3.5M − $2M = $1.5M<br><strong>General rate on excess:</strong> 4%<br><strong>Avoidable interest:</strong> $120,000 + ($1.5M × 4%) = $120,000 + $60,000 = <strong>$180,000</strong><br>If actual interest incurred exceeds $180,000, only $180,000 is capitalised; if actual interest is less, the entire amount is capitalised. The $180,000 is added to the factory's cost on the balance sheet and depreciated over the factory's useful life, matching the financing cost with the periods that benefit from the asset.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">What ASC 835 requires</div><div class="check-list"><span>Amount of interest cost capitalised during the period, and the total interest cost incurred</span><span>The interest rate(s) used to determine capitalisable interest for the period</span><span>For entities with qualifying assets: the weighted-average accumulated expenditures and the capitalization rate</span><span>Imputed interest recognised for below-market loans, including the imputed rate and the face amount of the instrument</span></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Critical Judgments & Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+      <div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Whether an asset qualifies as a qualifying asset under ASC 835</span><span>When to suspend and resume interest capitalisation during construction delays</span><span>Whether a below-market loan requires imputed interest calculation</span></div></div>
+      <div><div class="elabel">SIGNIFICANT ESTIMATES</span></div><div class="dot-list"><span>Weighted-average accumulated expenditures and timing of cash outflows</span><span>Appropriate capitalisation rate when using general borrowings</span><span>Market rate for imputing interest on below-market instruments</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>ASC 835 vs IAS 23 — Comprehensive Comparison</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Comparison — ASC 835 vs IAS 23</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">US GAAP (ASC 835)</span><span style="color:var(--color-text-info);">IFRS (IAS 23)</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Core principle</span><span>Capitalise interest on qualifying assets as part of cost</span><span>Identical principle — fully converged</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Qualifying assets</span><span>Assets taking a substantial period of time to get ready for use</span><span>Same definition and scope</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Capitalisation rate</span><span>Weighted-average rate on borrowings; specific borrowings first</span><span>Same approach — fully converged</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Suspension criteria</span><span>Suspended during prolonged periods of inactivity</span><span>Same suspension criteria — fully converged</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Disclosure</span><span>Capitalised amount, capitalization rate, and total interest cost</span><span>Same disclosure requirements — fully converged</span></div>
+      </div>
+      <div class="note">ASC 835 and IAS 23 are among the most closely converged standards in the US GAAP/IFRS landscape. The two frameworks use identical capitalisation principles, with no remaining substantive differences.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Where every ASC 835 event lands</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Interest capitalised on qualifying asset</span><span><span class="badge bs">BS</span></span><span>Added to cost of qualifying asset; depreciated over useful life</span></div>
+      <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Interest expense (non-capitalisable)</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Recognised in earnings as incurred</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Imputed interest on below-market loan</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Discount accreted over loan term as interest expense</span></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Related Topics</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd"><div class="ctitle cd">Cross-reference map</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 360</span><span>Property, Plant, and Equipment — capitalised interest becomes part of depreciable asset cost</span></div>
+      <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 470</span><span>Debt — interest accruals on short-term borrowings not related to qualifying assets</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 470-50</span><span>Debt with Conversion and Other Options — imputed interest on convertible debt</span></div>
+      <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 23</span><span>Borrowing Costs — IFRS counterpart</span></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s15"><span class="num">15</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+      <div class="glossary-item"><div class="glossary-term">Qualifying asset</div><div class="glossary-def">An asset that necessarily takes a substantial period of time to complete or ready for its intended use or sale.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Avoidable interest</div><div class="glossary-def">The interest cost that could have been avoided if expenditures for the qualifying asset had not been made.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Imputed interest</div><div class="glossary-def">Interest cost inferred for a below-market loan where no explicit interest rate exists or the stated rate is unrealistic.</div></div>
+      </div>
+    </div>
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.ASC835 || []} />
+  </section>
+</StandardPageLayout>
+

@@ -1,0 +1,410 @@
+﻿---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc215.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope & Applicability" },
+        { id: "s3", label: "What the Statement Must Show" },
+        { id: "s4", label: "Relationship with ASC 505 (Equity)" },
+        { id: "s5", label: "Alternative Presentation Formats" },
+        { id: "s6", label: "Worked Example — Building the Reconciliation" },
+        { id: "s7", label: "Disclosure Requirements" },
+        { id: "s8", label: "Critical Judgments & Estimates" },
+        { id: "s9", label: "ASC 215 vs IAS 1 Statement of Changes in Equity" },
+        { id: "s10", label: "Statement Mapping" },
+        { id: "s11", label: "Related Topics" },
+        { id: "s12", label: "Glossary" },
+        { id: "history", label: "History & Development" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1">
+      <span class="num">1</span><h2>Conceptual Framework Linkage</h2><span
+        class="line"></span>
+    </div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">
+          Explaining the "why" behind an equity balance's movement
+        </div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">
+          The Balance Sheet shows equity at a point in time; the Income
+          Statement explains part of WHY it changed (through net income).
+          Neither, alone, gives users a complete picture of every source of
+          equity movement during a period — capital raised, dividends paid,
+          treasury stock transactions, and OCI movements all also change equity.
+          The Statement of Shareholders' Equity closes that gap, reconciling the
+          OPENING and CLOSING balance of every equity component.
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s2">
+      <span class="num">2</span><h2>Scope &amp; Applicability</h2><span
+        class="line"></span>
+    </div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">
+          A required statement for essentially all entities
+        </div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">
+          ASC 215 applies to all entities preparing a complete set of US GAAP
+          financial statements. Public companies are additionally subject to SEC
+          Regulation S-X requirements that reinforce and detail the statement's
+          content — in practice, the statement is functionally REQUIRED for both
+          public and private US GAAP reporters, consistent with IAS 1's own
+          requirement for a Statement of Changes in Equity as a mandatory
+          primary statement.
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s3">
+      <span class="num">3</span><h2>What the Statement Must Show</h2><span
+        class="line"></span>
+    </div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">
+          A reconciliation, by component, from opening to closing balance
+        </div><div class="check-list">
+          <span
+            >Beginning and ending balance of EACH caption within equity (e.g.
+            common stock, additional paid-in capital, retained earnings,
+            treasury stock, accumulated OCI)</span
+          ><span>Net income (or loss) for the period</span><span
+            >Dividends declared, by class of stock</span
+          ><span
+            >Issuances, repurchases (treasury stock), and retirements of stock
+            during the period</span
+          ><span
+            >Other comprehensive income movements affecting accumulated OCI</span
+          ><span
+            >Changes in the NUMBER of shares outstanding for each class of
+            stock, alongside the dollar reconciliation</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4">
+      <span class="num">4</span><h2>Relationship with ASC 505 (Equity)</h2><span
+        class="line"></span>
+    </div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">
+          Presentation Topic vs recognition/measurement Topic
+        </div><div
+          style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;"
+        >
+          ASC 215 governs HOW equity movements are PRESENTED in the statement;
+          it does not itself govern the recognition or measurement of the
+          underlying equity transactions — stock dividends and splits, treasury
+          stock, and equity-based payments to non-employees are all
+          substantively addressed by <strong>ASC 505 (Equity)</strong> instead. This
+          division of labour — a narrow "presentation" Topic paired with a broader
+          "recognition and measurement" Topic — is a recurring structural pattern
+          across the Codification's Presentation area.
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s5">
+      <span class="num">5</span><h2>Alternative Presentation Formats</h2><span
+        class="line"></span>
+    </div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">
+          Columnar statement, or note-based reconciliation
+        </div><div
+          style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;"
+        >
+          Most entities present a COLUMNAR statement, with a separate column for
+          each equity component (common stock, APIC, retained earnings, treasury
+          stock, accumulated OCI, total) and a row for each type of transaction.
+          Alternatively, some entities disclose the SAME reconciliation
+          information within the NOTES rather than as a full separate primary
+          statement — a flexibility broadly mirroring how IAS 1 similarly allows
+          dividend-related disclosures to sit either on the face of the
+          statement or in the notes.
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s6">
+      <span class="num">6</span><h2>
+        Worked Example — Building the Reconciliation
+      </h2><span class="line"></span>
+    </div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">
+          A simplified single-period equity roll-forward
+        </div>
+        <div class="worked">
+          <div class="wk-title">
+            Example: Reconciling retained earnings for the year
+          </div><div class="wk-body">
+            At the start of the year, retained earnings is $40,000,000. During
+            the year, the entity reports net income of $8,500,000 and declares
+            cash dividends of $2,000,000.
+          </div><div class="wk-answer">
+            Retained earnings roll-forward: Opening $40,000,000 + Net income
+            $8,500,000 − Dividends declared $2,000,000 = Closing $46,500,000.
+            This same roll-forward logic is applied to EVERY OTHER equity
+            component (common stock, APIC, treasury stock, accumulated OCI) side
+            by side in the full statement, with a total column reconciling
+            opening to closing TOTAL shareholders' equity.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s7">
+      <span class="num">7</span><h2>Disclosure Requirements</h2><span
+        class="line"></span>
+    </div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">What ASC 215 requires</div><div
+          class="check-list"
+        >
+          <span
+            >A reconciliation of each equity caption's beginning and ending
+            balance, presented either as a primary statement or in the notes</span
+          ><span
+            >Changes in the number of shares outstanding for each class of stock</span
+          ><span
+            >Dividends per share, in addition to total dividends declared</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s8">
+      <span class="num">8</span><h2>Critical Judgments &amp; Estimates</h2><span
+        class="line"></span>
+    </div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where judgement matters most</div><div
+          style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;"
+        >
+          ASC 215 itself is largely mechanical once the underlying equity
+          transactions have been measured under ASC 505 and related Topics — the
+          main judgement lies in choosing between the columnar STATEMENT format
+          and NOTE-based disclosure, and in appropriately DISAGGREGATING equity
+          captions to give users a genuinely informative reconciliation rather
+          than an over-compressed summary.
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s9">
+      <span class="num">9</span><h2>
+        ASC 215 vs IAS 1 Statement of Changes in Equity
+      </h2><span class="line"></span>
+    </div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">
+          Comparison — ASC 215 vs IAS 1's Statement of Changes in Equity
+        </div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;">
+            <span>Feature</span><span style="color:var(--color-text-warning);"
+              >US GAAP (ASC 215)</span
+            ><span style="color:var(--color-text-info);">IFRS (IAS 1)</span>
+          </div>
+          <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;">
+            <span>Statement name</span><span
+              >Statement of Shareholders' (or Stockholders') Equity</span
+            ><span>Statement of Changes in Equity</span>
+          </div>
+          <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;">
+            <span>Mandatory primary statement?</span><span
+              >Effectively yes, in practice, though a note-based alternative
+              exists in narrow cases</span
+            ><span
+              >Yes — explicitly listed among IAS 1's required primary
+              statements, no note-based alternative</span
+            >
+          </div>
+          <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;">
+            <span>Content</span><span
+              >Reconciliation of each equity caption + share count changes</span
+            ><span
+              >Substantively the same — reconciliation of each equity component,
+              including OCI, plus disclosure of dividends</span
+            >
+          </div>
+        </div>
+        <div class="note">
+          Format and content are highly converged between the two frameworks —
+          this is one of the more closely aligned presentation Topics in the
+          entire Codification relative to its IFRS counterpart.
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10">
+      <span class="num">10</span><h2>Statement Mapping</h2><span class="line"
+      ></span>
+    </div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Where every ASC 215 event lands</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;">
+            <span>Event</span><span>Statement(s) affected</span><span
+              >Notes</span
+            >
+          </div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;">
+            <span>Net income for the period</span><span
+              ><span class="badge bp">IS</span>
+              <span class="badge be">SE</span></span
+            ><span
+              >Flows into retained earnings within the equity statement</span
+            >
+          </div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;">
+            <span>Dividends declared</span><span
+              ><span class="badge be">SE</span></span
+            ><span>Reduces retained earnings; no income statement impact</span>
+          </div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;">
+            <span>Share issuances / treasury stock transactions</span><span
+              ><span class="badge bs">BS</span>
+              <span class="badge be">SE</span></span
+            ><span
+              >Recognised under ASC 505; reconciled through the equity statement</span
+            >
+          </div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;">
+            <span>OCI movements</span><span
+              ><span class="badge bo">OCI</span>
+              <span class="badge be">SE</span></span
+            ><span>Flows into accumulated OCI within the equity statement</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11">
+      <span class="num">11</span><h2>Related Topics</h2><span class="line"
+      ></span>
+    </div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">Cross-reference map</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:0.8fr 2fr;">
+            <span>Topic</span><span>Connection</span>
+          </div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;">
+            <span>ASC 505</span><span
+              >Governs recognition/measurement of the underlying equity
+              transactions this statement reconciles</span
+            >
+          </div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;">
+            <span>ASC 220</span><span
+              >Supplies the OCI movements reconciled within accumulated OCI in
+              this statement</span
+            >
+          </div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;">
+            <span>ASC 260</span><span
+              >Earnings per Share — shares outstanding disclosed here feed EPS
+              denominator calculations</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="card cn">
+        <div class="ctitle cn">Quick-reference glossary preview</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Additional paid-in capital (APIC)</div><div
+            class="glossary-def"
+          >
+            The amount received from issuing shares in excess of their par or
+            stated value — a distinct equity caption reconciled in the Statement
+            of Shareholders' Equity.
+          </div>
+        </div>
+        <div class="glossary-item" style="border-bottom:none;">
+          <div class="glossary-term">Accumulated OCI</div><div
+            class="glossary-def"
+          >
+            The cumulative balance of other comprehensive income items
+            recognised over time, reconciled as its own column within the equity
+            statement.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12">
+      <span class="num">12</span><h2>Quick-Reference Glossary</h2><span
+        class="line"></span>
+    </div>
+    
+
+    <Glossary
+      entries={[
+        
+        {
+          term: "Additional paid-in capital (APIC)",
+          definition:
+            "The amount received from issuing shares in excess of their par or stated value — a distinct equity caption reconciled in the Statement of Shareholders' Equity.",
+        },
+        {
+          term: "Accumulated OCI",
+          definition:
+            "The cumulative balance of other comprehensive income items recognised over time, reconciled as its own column within the equity statement.",
+        },
+        {
+          term: "Treasury stock",
+          definition:
+            "An entity's own previously issued shares that it has reacquired and holds, presented as a reduction of total equity — reconciled as its own column in the equity statement.",
+        },
+        {
+          term: "Par value",
+          definition:
+            "The nominal, legally stated minimum value per share assigned to common or preferred stock, distinct from the market or issue price.",
+        },
+      ]}
+    />
+
+    <FinancialStatementKey />
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.ASC215} />
+  </section>
+</StandardPageLayout>
+

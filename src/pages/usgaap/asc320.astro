@@ -1,0 +1,195 @@
+﻿---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/usgaap/asc320.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        {
+          id: "s1",
+          label: "Conceptual Framework Linkage",
+        },
+        {
+          id: "s2",
+          label: "Scope — Now Primarily Debt Securities",
+        },
+        {
+          id: "s3",
+          label: "Three Classification Categories",
+        },
+        {
+          id: "s4",
+          label: "Held-to-Maturity — the Positive Intent and Ability Test",
+        },
+        {
+          id: "s5",
+          label: "Transfers Between Categories",
+        },
+        {
+          id: "s6",
+          label: "Worked Example — AFS Debt Security Fair Value Movement",
+        },
+        {
+          id: "s7",
+          label: "Disclosure Requirements",
+        },
+        {
+          id: "s8",
+          label: "Critical Judgments & Estimates",
+        },
+        {
+          id: "s9",
+          label: "ASC 320 vs IFRS 9 — Intent-Based vs Business-Model Classification",
+        },
+        {
+          id: "s10",
+          label: "Statement Mapping",
+        },
+        {
+          id: "s11",
+          label: "Related Topics",
+        },
+        {
+          id: "s12",
+          label: "Glossary",
+        },
+        {
+          id: "history",
+          label: "History & Development",
+        },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci"><div class="ctitle ci">Classification drives measurement, drives where gains/losses land</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">How a debt security is CLASSIFIED determines whether it is measured at amortised cost or fair value, and — if fair value — whether changes flow through net income or OCI. ASC 320 exists to define these classification categories precisely, since classification (not measurement mechanics per se) is where most of the real judgement, and most divergence from IFRS, actually lives.</div></div>
+      <div class="card cs"><div class="ctitle cs">A Topic reshaped by ASU 2016-01</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 320's TITLE still references both debt and equity securities, but ASU 2016-01 (effective 2018) moved essentially ALL equity security guidance into the newly created ASC 321, leaving ASC 320 to govern primarily DEBT securities today — a naming legacy worth knowing, since the Topic's scope no longer matches its full title.</div></div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope — Now Primarily Debt Securities</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">What remains within ASC 320 today</div><div style="font-size: var(--text-small); color: var(--color-text-secondary); line-height: 1.6;">ASC 320 governs investments in DEBT securities — instruments representing a creditor relationship with the issuer, such as corporate bonds, government securities, and mortgage-backed securities — classified into one of three categories (Section 3). Equity securities (representing an ownership interest) are addressed separately under ASC 321.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Three Classification Categories</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">Held-to-maturity, trading, or available-for-sale</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1fr 1fr 1.6fr;"><span>Category</span><span>Measurement</span><span>Gains/losses location</span></div>
+      <div class="tr" style="grid-template-columns:1fr 1fr 1.6fr;"><span>Held-to-maturity (HTM)</span><span>Amortised cost</span><span>Not remeasured; interest income only in net income</span></div>
+      <div class="tr alt" style="grid-template-columns:1fr 1fr 1.6fr;"><span>Trading</span><span>Fair value</span><span>Through NET INCOME</span></div>
+      <div class="tr" style="grid-template-columns:1fr 1fr 1.6fr;"><span>Available-for-sale (AFS)</span><span>Fair value</span><span>Through OCI (recycled to net income on sale)</span></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Held-to-Maturity — the Positive Intent and Ability Test</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">A strict, intent-based classification test</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">HTM classification requires the entity to have BOTH the POSITIVE INTENT and the ABILITY to hold the security to MATURITY — a strict test. Certain SALES do not automatically "taint" the entire HTM portfolio, including sales close to maturity (when interest rate risk is no longer a meaningful factor in fair value), sales after collecting substantially all of the original principal, and sales attributable to specific, isolated, non-recurring circumstances beyond the entity's control.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Transfers Between Categories</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Permitted only in rare circumstances</div><div style="font-size:var(--text-small);color:var(--color-text-secondary);line-height:1.6;">Transfers of debt securities BETWEEN the three categories are permitted, but transfers INTO or OUT OF the trading category are expected to be RARE, given the near-term-resale intent trading classification implies. Transfers between HTM and AFS also carry specific rules — for example, a transfer OUT of HTM raises questions about whether the entity's positive intent/ability assertion remains valid for its REMAINING HTM portfolio.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Worked Example — AFS Debt Security Fair Value Movement</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Tracking an unrealised gain through OCI, then recycling on sale</div>
+      <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Purchase, remeasurement, and sale of an AFS bond</div><div class="wk-body">An entity purchases a corporate bond for $1,000,000, classified AFS. At the next reporting date, its fair value has risen to $1,050,000. The entity later sells the bond for $1,080,000.</div><div class="wk-answer"><strong>At remeasurement:</strong> Debit AFS security $50,000 / Credit OCI $50,000 (unrealised gain, no net income impact).<br><strong>At sale:</strong> Debit Cash $1,080,000 / Credit AFS security $1,050,000 / Credit Realised gain (net income) $30,000 (the further gain since the last remeasurement) — AND the entity reclassifies the previously deferred $50,000 OCI gain into net income as well, per the recycling mechanic, so total net income recognised on sale reflects the FULL $80,000 gain from original cost.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">What ASC 320 requires</div><div class="check-list"><span>Amortised cost, fair value, and gross unrealised gains/losses by major security type, for each classification category</span><span>Contractual maturities of debt securities, in defined maturity bands</span><span>Proceeds from sales of AFS securities, and gross realised gains/losses reclassified from OCI</span><span>Circumstances of any sale that could call HTM intent/ability into question</span></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+      <div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Whether the entity genuinely has positive intent AND ability to hold a security to maturity</span><span>Whether a specific sale genuinely falls within an HTM-non-tainting exception</span></div></div>
+      <div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Fair value of debt securities without a readily observable quoted market price</span><span>Expected credit losses under ASC 326-30's allowance methodology for AFS securities</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>ASC 320 vs IFRS 9 — Intent-Based vs Business-Model Classification</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Comparison — ASC 320 vs IFRS 9's debt instrument classification</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">US GAAP (ASC 320)</span><span style="color:var(--color-text-info);">IFRS 9</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Classification basis</span><span>Management's stated INTENT for each individual security (HTM/trading/AFS)</span><span>The entity's overall BUSINESS MODEL for managing a group of assets, combined with the CASH FLOW CHARACTERISTICS (SPPI test) of the specific instrument</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Number of categories</span><span>Three: HTM, trading, AFS</span><span>Three (broadly analogous): amortised cost, FVOCI, FVTPL</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Reclassification frequency</span><span>Rare, especially for HTM/trading</span><span>Reclassification permitted only when the BUSINESS MODEL itself changes — also expected to be rare</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>"Tainting" consequences of early sales</span><span>Can call the ENTIRE HTM portfolio's classification into question</span><span>IFRS 9's business-model test is somewhat more resilient to occasional sales, since it looks at the OVERALL objective of the business model rather than the intent for each individual instrument</span></div>
+      </div>
+      <div class="note">Both frameworks reach broadly similar THREE-CATEGORY outcomes, but via genuinely different underlying LOGIC — an instrument-by-instrument intent test under US GAAP, versus a portfolio-level business-model-plus-cash-flow-characteristics test under IFRS 9 — meaning the classification of an economically identical security can, in edge cases, differ between the two frameworks.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Where every ASC 320 event lands</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>HTM interest income</span><span><span class="badge bp">IS</span></span><span>Effective interest method, no fair value remeasurement</span></div>
+      <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Trading security fair value change</span><span><span class="badge bp">IS</span></span><span>Both realised and unrealised, recognised immediately</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>AFS security unrealised fair value change</span><span><span class="badge bo">OCI</span></span><span>Deferred until sale</span></div>
+      <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>AFS security sold</span><span><span class="badge bo">OCI</span> <span class="badge bp">IS</span></span><span>Cumulative OCI gain/loss reclassified to net income</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>AFS credit loss allowance</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Per ASC 326-30, potentially reversible</span></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Related Topics</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd"><div class="ctitle cd">Cross-reference map</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 321</span><span>Governs equity securities, split out from this Topic by ASU 2016-01</span></div>
+      <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 326</span><span>Supplies the credit loss allowance methodology for AFS debt securities</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 820</span><span>Fair Value Measurement — supplies the general fair value framework applied to trading and AFS securities</span></div>
+      </div>
+      </div>
+      <div class="card cn"><div class="ctitle cn">Quick-reference glossary preview</div>
+      <div class="glossary-item"><div class="glossary-term">Positive intent and ability</div><div class="glossary-def">The strict dual test required for held-to-maturity classification — a genuine plan AND the financial capacity to hold a security to maturity.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Tainting</div><div class="glossary-def">A consequence of certain sales that calls the classification of an entity's remaining HTM portfolio into question, potentially requiring reclassification.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+      <div class="glossary-item"><div class="glossary-term">Held-to-maturity (HTM)</div><div class="glossary-def">A debt security classification requiring positive intent and ability to hold to maturity, measured at amortised cost.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Available-for-sale (AFS)</div><div class="glossary-def">The residual debt security classification, measured at fair value with unrealised gains/losses through OCI, recycled to net income on sale.</div></div>
+      </div>
+    </div>
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.ASC320 || []} />
+  </section>
+</StandardPageLayout>
+

@@ -1,0 +1,358 @@
+﻿---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import metadata from "../../data/standards/ias/ias11.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope & Applicability" },
+        { id: "s3", label: "Recognition — Percentage of Completion" },
+        { id: "s4", label: "Contract Revenue & Costs" },
+        { id: "s5", label: "Stage of Completion Methods" },
+        { id: "s6", label: "Expected Losses" },
+        { id: "s7", label: "Uncertain Outcome Treatment" },
+        { id: "s8", label: "Combining & Segmenting Contracts" },
+        { id: "s9", label: "Disclosure Requirements" },
+        { id: "s10", label: "Critical Judgments & Estimates" },
+        { id: "s11", label: "IAS 11 vs IFRS 15" },
+        { id: "s12", label: "Statement Mapping" },
+        { id: "s13", label: "Related Standards" },
+        { id: "s14", label: "Quick-Reference Glossary" },
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="superseded"
+    explanation="IAS 11 was withdrawn and replaced by IFRS 15 Revenue from Contracts with Customers, effective for periods beginning on or after 1 January 2018."
+    historical="It is retained here for historical reference and because its percentage-of-completion logic underpins IFRS 15's over-time revenue recognition model. For current construction contract accounting, always apply IFRS 15."
+    link="/ifrs/ifrs15"
+    linkText="IFRS 15 Revenue from Contracts with Customers"
+  />
+
+  <div class="wrap">
+    <!-- ============ SECTION 1 ============ -->
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Why revenue was recognised before completion</div>
+        <div class="principle">For contracts spanning multiple reporting periods, waiting until final delivery to recognise any revenue would badly misrepresent an entity's performance in the interim periods — the Conceptual Framework's relevance objective favours reflecting economic activity as it happens, not bunching it all into one period.</div>
+        <div class="elabel">HOW IAS 11 MAPPED TO THE FRAMEWORK'S ELEMENTS</div>
+        <div class="check-list">
+          <span><strong style="font-weight:500">Income recognition</strong> — recognised progressively as the contract activity is performed (an early form of "over time" recognition later formalised by IFRS 15)</span>
+          <span><strong style="font-weight:500">Matching</strong> — contract costs were expensed in the same period as the related revenue they helped generate, preserving the matching concept</span>
+          <span><strong style="font-weight:500">Prudence</strong> — expected losses were recognised immediately in full, not spread across the contract</span>
+        </div>
+        <div class="note">IAS 11's percentage-of-completion method was philosophically the direct ancestor of IFRS 15's "recognise revenue over time" criteria — the underlying economic logic did not disappear with the standard's withdrawal, it was absorbed into a broader, principles-based framework.</div>
+      </div>
+
+      <div class="card cs">
+        <div class="ctitle cs">Measurement principles applied by IAS 11</div>
+        <div class="principle">IAS 11 measured revenue by reference to the stage of completion of the contract activity at the reporting date — a form of current-progress measurement rather than a completed-transaction measurement.</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.3fr 1fr;"><span>Framework basis</span><span>Used by IAS 11 for…</span></div>
+          <div class="tr" style="grid-template-columns:1.3fr 1fr;"><span>Historical cost</span><span>Contract costs incurred to date</span></div>
+          <div class="tr alt" style="grid-template-columns:1.3fr 1fr;"><span>Progress-based allocation</span><span>Revenue recognised each period, proportional to stage of completion</span></div>
+        </div>
+        <div class="callout info callout--chip" style="margin-bottom:0;">Qualitative characteristics in action: percentage-of-completion prioritised relevance — but only when outcome could be estimated reliably; otherwise the standard fell back to a cost-recovery approach, favouring faithful representation over premature profit recognition.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 2 ============ -->
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What IAS 11 covered</div>
+        <div class="principle">IAS 11 applied to accounting for construction contracts in the financial statements of contractors — a contract specifically negotiated for the construction of an asset or combination of assets closely interrelated in terms of design, technology, function, or purpose.</div>
+        <div class="elabel">TYPICAL CONTRACT TYPES</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Contracts for the construction of a single asset (e.g. a bridge, building, dam, pipeline) or a number of assets closely interrelated as a single project (e.g. a refinery); also contracts for rendering services directly related to construction, such as project management and architectural services, and contracts for asset destruction/restoration and environmental restoration following demolition.</div>
+        <div class="note">This scope, and its underlying "over time" recognition logic, is now embedded within IFRS 15's general five-step model (Section 11) rather than existing as a separate standard.</div>
+      </div>
+
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions you must know</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Construction contract</div>
+          <div class="glossary-def">A contract specifically negotiated for the construction of an asset or a combination of assets that are closely interrelated or interdependent in terms of their design, technology, and function, or their ultimate purpose or use.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Fixed price contract</div>
+          <div class="glossary-def">A construction contract in which the contractor agrees to a fixed contract price, or a fixed rate per unit of output, sometimes subject to cost escalation clauses.</div>
+        </div>
+        <div class="glossary-item" style="border-bottom:none;">
+          <div class="glossary-term">Cost plus contract</div>
+          <div class="glossary-def">A construction contract in which the contractor is reimbursed for allowable/defined costs, plus a percentage of these costs or a fixed fee.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 3 ============ -->
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Recognition — The Percentage of Completion Method</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">The reliability threshold and recognition mechanics</div>
+        <div class="principle">When the outcome of a construction contract could be estimated reliably, contract revenue and contract costs were recognised as revenue and expenses respectively by reference to the stage of completion at the reporting date.</div>
+        <div class="two-col">
+          <div class="spec-box" style="margin-bottom:0;">
+            <div class="spec-title" style="color:var(--color-text-success);">Fixed price contracts — reliable estimate required</div>
+            <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.5;">Total contract revenue measurable reliably; probable economic benefits will flow; contract costs to complete and stage of completion at year end can be measured reliably; costs attributable can be clearly identified and measured reliably.</div>
+          </div>
+          <div class="spec-box" style="margin-bottom:0;">
+            <div class="spec-title" style="color:var(--color-text-success);">Cost plus contracts — a lower bar</div>
+            <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.5;">Probable economic benefits will flow; costs attributable, whether or not specifically reimbursable, can be clearly identified and measured reliably — no need to estimate total contract revenue in advance.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 4 ============ -->
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Contract Revenue &amp; Contract Costs (with worked example)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs">
+        <div class="ctitle cs">Components of contract revenue and costs</div>
+        <div class="elabel">CONTRACT REVENUE COMPRISED</div>
+        <div class="dot-list" style="margin-bottom:9px;">
+          <span>The initial amount of revenue agreed in the contract</span>
+          <span>Variations, claims, and incentive payments, to the extent probable they'll result in revenue and are reliably measurable</span>
+        </div>
+        <div class="elabel">CONTRACT COSTS COMPRISED</div>
+        <div class="dot-list">
+          <span>Costs directly related to the specific contract (site labour, materials, depreciation of construction plant, design/technical assistance costs)</span>
+          <span>Costs attributable to contract activity in general, allocable to the contract on a systematic and rational basis (insurance, construction overheads)</span>
+          <span>Other costs specifically chargeable to the customer under the contract terms</span>
+        </div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Worked example — cost-basis percentage of completion</div>
+        <div class="worked">
+          <div class="wk-title">Example 1: Three-year construction contract</div>
+          <div class="wk-body">
+            A fixed-price contract has a total contract price of $10,000,000. Estimated total costs are $8,000,000. By the end of Year 1, costs incurred to date are $2,000,000, with reasonable confidence the outcome can be estimated reliably.
+          </div>
+          <div class="wk-answer">
+            <strong>Stage of completion</strong> = 2,000,000 ÷ 8,000,000 = 25%<br>
+            <strong>Revenue recognised, Year 1</strong> = 25% × 10,000,000 = <strong style="color:var(--color-text-info);">$2,500,000</strong><br>
+            <strong>Costs recognised, Year 1</strong> = $2,000,000 (actual costs incurred, matched to revenue)<br>
+            <strong>Gross profit recognised, Year 1</strong> = 2,500,000 − 2,000,000 = <strong style="color:var(--color-text-success);">$500,000</strong>
+          </div>
+        </div>
+        <div class="note">This same cost-to-cost input method remains a common technique for measuring progress under IFRS 15's "over time" recognition model.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 5 ============ -->
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Stage of Completion — Measurement Methods</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">The three permitted methods</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1fr 1.6fr;"><span>Method</span><span>Basis</span></div>
+          <div class="tr" style="grid-template-columns:1fr 1.6fr;"><span>Cost-to-cost</span><span>Costs incurred to date ÷ Estimated total contract costs (the most common approach — used in Example 1 above)</span></div>
+          <div class="tr alt" style="grid-template-columns:1fr 1.6fr;"><span>Surveys of work performed</span><span>Independent professional assessment (e.g. quantity surveyor) of the physical proportion of work completed</span></div>
+          <div class="tr" style="grid-template-columns:1fr 1.6fr;"><span>Physical completion</span><span>Completion of a physical proportion of the contract work, measured in units of output (e.g. kilometres of road built)</span></div>
+        </div>
+        <div class="note">Progress payments and advances received from customers often do not reflect the actual work performed and are explicitly excluded from stage-of-completion measurement under any of the three methods.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 6 ============ -->
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Expected Losses — Immediate Recognition</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd">
+        <div class="ctitle cd">The prudence override</div>
+        <div class="formula-box">
+          <div class="f-eq">When it is probable total contract costs will exceed total contract revenue, the expected loss is recognised as an expense immediately, in full — regardless of how much work has been completed</div>
+        </div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">This applied regardless of whether work had commenced, the stage of completion, or the amount of profit expected on other contracts — a strict, contract-by-contract prudence rule.</div>
+      </div>
+
+      <div class="card cn">
+        <div class="ctitle cn">Worked example — onerous contract</div>
+        <div class="worked">
+          <div class="wk-title">Example 2: Expected loss recognised in full</div>
+          <div class="wk-body">
+            A contract has a fixed price of $5,000,000. Due to unexpected cost overruns, total estimated costs are now $5,600,000. Costs incurred to date represent 30% of the revised total estimated costs.
+          </div>
+          <div class="wk-answer">
+            <strong>Total expected loss</strong> = 5,000,000 − 5,600,000 = <strong style="color:var(--color-text-danger);">$(600,000)</strong><br>
+            The full $600,000 loss is recognised immediately in the current period — not just 30% of it. Revenue for the period is still recognised based on the 30% stage of completion, but total costs recognised are increased to ensure the full loss appears in the current period's result.
+          </div>
+        </div>
+        <div class="note">This immediate full-loss recognition rule carries directly through into IFRS 15/IAS 37's treatment of onerous contracts today.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 7 ============ -->
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Treatment When the Outcome Cannot Be Estimated Reliably</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2">
+        <div class="ctitle cw">Cost-recovery (zero-profit) approach</div>
+        <div class="principle">When the outcome of a construction contract could not be estimated reliably (common in early stages of a contract), revenue was recognised only to the extent of contract costs incurred that were probable of recovery, and contract costs were expensed in the period incurred — meaning no profit was recognised until reliable estimation became possible.</div>
+        <div class="worked" style="margin-bottom:0;">
+          <div class="wk-title">Example 3: Early-stage contract, outcome not yet reliable</div>
+          <div class="wk-body">A new, complex contract has incurred $400,000 of costs by year end, all of which are expected to be recoverable, but management cannot yet reliably estimate total contract revenue or total costs due to significant unresolved technical uncertainties.</div>
+          <div class="wk-answer">
+            <strong>Revenue recognised</strong> = $400,000 (equal to recoverable costs incurred — a "zero margin" approach)<br>
+            <strong>Costs recognised</strong> = $400,000<br>
+            <strong>Profit recognised</strong> = <strong style="color:var(--color-text-info);">$0</strong>, even though real profit may ultimately be earned once the contract outcome becomes clear
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 8 ============ -->
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Combining &amp; Segmenting Contracts</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Segmenting a single contract</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Construction of each asset was treated as a separate contract when: separate proposals were submitted for each asset; each asset was subject to separate negotiation and could be accepted/rejected separately; and the costs/revenues of each asset could be identified.</div>
+      </div>
+
+      <div class="card cs">
+        <div class="ctitle cs">Combining multiple contracts</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">A group of contracts (with one or more customers) was treated as a single contract when: the group was negotiated as a single package; the contracts were so closely interrelated they were, in effect, part of a single project with an overall profit margin; and the contracts were performed concurrently or in a continuous sequence.</div>
+        <div class="note">This combining/segmenting logic maps closely to IFRS 15's contract combination and performance obligation identification criteria (Section 11).</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 9 ============ -->
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure Requirements (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Required disclosures</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">GENERAL DISCLOSURES</div>
+            <div class="check-list">
+              <span>Amount of contract revenue recognised as revenue in the period</span>
+              <span>Methods used to determine contract revenue recognised, and the stage of completion of contracts in progress</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">CONTRACTS IN PROGRESS AT YEAR END</div>
+            <div class="check-list">
+              <span>Aggregate costs incurred and recognised profits (less recognised losses) to date</span>
+              <span>Advances received, and retentions</span>
+              <span>Gross amount due from/to customers for contract work, presented as an asset/liability</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 10 ============ -->
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments &amp; Estimates (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where management judgement mattered most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Whether the outcome of a contract could genuinely be estimated "reliably"</span>
+              <span>Whether contracts should be combined or segmented</span>
+              <span>Which stage-of-completion method best reflected the pattern of work performed</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>Total estimated contract costs and revenue, including variations and claims</span>
+              <span>Costs to complete, reviewed and revised (as a change in accounting estimate under IAS 8) at each reporting date</span>
+            </div>
+          </div>
+        </div>
+        <div class="callout warn callout--chip" style="margin-top:8px;margin-bottom:0;">These same judgement areas persist under IFRS 15's over-time recognition model — the specific standard changed in 2018, but the underlying estimation challenges of long-term contract accounting did not disappear.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 11 ============ -->
+    <div class="section-header" id="s11"><span class="num">11</span><h2>IAS 11 vs IFRS 15 — What Changed</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — the transition from IAS 11 to IFRS 15</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Feature</span><span style="color:var(--color-text-info);">IAS 11 (superseded)</span><span style="color:var(--color-text-warning);">IFRS 15 (current)</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Core model</span><span>Percentage of completion for construction contracts specifically</span><span>Five-step model applied to all revenue contracts; construction is just one application of "recognise over time" criteria</span></div>
+          <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Recognition trigger</span><span>Stage of completion, given a reliable estimate</span><span>Satisfaction of a performance obligation, either over time (3 specific criteria) or at a point in time</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Reliable-estimate fallback</span><span>Cost-recovery / zero-profit approach</span><span>Similar concept — revenue recognised only to the extent costs incurred are expected to be recoverable, when progress cannot be reasonably measured</span></div>
+          <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Contract combining/segmenting</span><span>Own separate criteria</span><span>Now embedded within IFRS 15's contract combination and distinct performance obligation identification (Steps 1–2)</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Variable consideration (claims, incentives)</span><span>Included if probable and reliably measurable</span><span>Governed by IFRS 15's variable consideration constraint — "highly probable" no significant reversal</span></div>
+        </div>
+        <div class="note">IFRS 15 did not abandon percentage-of-completion logic — it generalised it into the "over time" recognition criteria that apply across all industries, not just construction, while adding more prescriptive guidance on variable consideration and contract modifications.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 12 ============ -->
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping — Where Every Contract Event Landed</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Comprehensive event-to-statement mapping table (historical, under IAS 11)</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event / transaction</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Contract costs incurred</span><span><span class="badge bs">SOFP</span></span><span>Accumulated as "costs incurred on contracts" pending matching to revenue</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Revenue recognised per stage of completion</span><span><span class="badge bp">SOPL</span></span><span>Recognised progressively across the contract's life</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Costs matched to revenue recognised</span><span><span class="badge bp">SOPL</span></span><span>Expensed in the same period as the related revenue</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Expected loss identified</span><span><span class="badge bp">SOPL</span></span><span>Full loss recognised immediately, regardless of completion stage</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Gross amount due from customers</span><span><span class="badge bs">SOFP</span></span><span>Asset — costs plus recognised profit exceeds progress billings</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Gross amount due to customers</span><span><span class="badge bs">SOFP</span></span><span>Liability — progress billings exceed costs plus recognised profit</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Progress billings and advances received</span><span><span class="badge bs">Cash Flow Statement</span></span><span>Operating activities inflow</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Stage-of-completion method, contract totals</span><span><span class="badge bp">Notes</span></span><span>Mandatory disclosure</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 13 ============ -->
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">How IAS 11's legacy connects across the IFRS body of literature</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 15</span><span>The direct successor standard — absorbed and generalised IAS 11's percentage-of-completion logic into its "recognise revenue over time" criteria</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 2</span><span>Construction work in progress is excluded from IAS 2's scope specifically because it is (now) governed by IFRS 15's contract asset/liability model instead</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 37</span><span>Onerous construction contracts, where unavoidable costs exceed expected benefits, are now assessed under IAS 37's onerous contract provisions rather than IAS 11's standalone expected-loss rule</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 23</span><span>Borrowing costs directly attributable to a qualifying construction contract asset may still be capitalised, a rule that survived the transition to IFRS 15 largely unchanged</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 8</span><span>Revisions to estimated total contract costs/revenue are treated as changes in accounting estimate, applied prospectively — a principle carried forward unchanged into IFRS 15 practice</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 14 ============ -->
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+    <div class="three-col">
+      <div class="card cn">
+        <div class="glossary-item"><div class="glossary-term">Retentions</div><div class="glossary-def">Amounts of progress billings not paid until satisfaction of conditions specified in the contract for their payment, or until defects have been rectified.</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Progress billings</div><div class="glossary-def">Amounts billed for work performed on a contract, whether or not paid by the customer.</div></div>
+      </div>
+      <div class="card cn">
+        <div class="glossary-item"><div class="glossary-term">Advances</div><div class="glossary-def">Amounts received by the contractor before the related work is performed.</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Variation</div><div class="glossary-def">An instruction by the customer for a change in the scope of work to be performed under the contract.</div></div>
+      </div>
+      <div class="card cn">
+        <div class="glossary-item"><div class="glossary-term">Claim</div><div class="glossary-def">An amount the contractor seeks to collect from the customer/other party as reimbursement for costs not included in the contract price (e.g. customer-caused delays, errors in specifications).</div></div>
+        <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Incentive payment</div><div class="glossary-def">Additional amounts payable to the contractor if specified performance standards are met or exceeded.</div></div>
+      </div>
+    </div>
+
+    <FinancialStatementKey />
+  </div>
+</StandardPageLayout>

@@ -1,0 +1,89 @@
+---
+import StandardPageLayout from "../../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../../components/FinancialStatementKey.astro";
+import Glossary from "../../../components/Glossary.astro";
+import PageToc from "../../../components/PageToc.astro";
+import LifecycleNotice from "../../../components/StandardLifecycleNotice.astro";
+import "../../../styles/standards-poster.css";
+import "../../../styles/extended.css";
+import HistoryTimeline from "../../../components/HistoryTimeline.astro";
+import history from "../../../data/history.json";
+import metadata from "../../../data/standards/sic/sic16.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType="IFRS"
+  title={metadata.title}
+  description={metadata.summary}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "What SIC-16 Addressed (Historical)" },
+        { id: "s2", label: "The Conclusion It Reached (Historical)" },
+        { id: "s3", label: "Where This Guidance Lives Today" },
+        { id: "s4", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="historical-reference"
+    explanation="SIC-16 was withdrawn in March 2003 when the IASB issued a revised IAS 32 Financial Instruments: Presentation, which incorporated treasury share treatment directly into the standard at paragraphs 33–34, removing the need for the interpretation."
+    historical="This page is retained for historical and comparative reference. Entities should refer to the current standard that superseded this interpretation for authoritative guidance."
+    link="/ias/ias32"
+    linkText="IAS 32 Financial Instruments: Presentation"
+  />
+
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>What SIC-16 Addressed (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">What SIC-16 addressed</div>
+        <div class="principle">SIC-16 addressed accounting for reacquired own equity instruments, commonly known as treasury shares. It clarified how an entity should account for the purchase, sale, issue or cancellation of its own equity instruments and whether any gain or loss should be recognised in profit or loss.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>The Conclusion It Reached (Historical)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">The conclusion it reached</div>
+        <div class="principle">SIC-16 concluded that reacquired own equity instruments should be accounted for as a deduction from equity. No gain or loss should be recognised in profit or loss on the purchase, sale, issue or cancellation of treasury shares. Consideration paid or received should be recognised directly in equity, consistent with the treatment of transactions with owners in their capacity as owners.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>Where This Guidance Lives Today</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card">
+        <div class="ctitle">Where this guidance lives today</div>
+        <div class="td-table">
+          <div class="tr"><span>Superseded by</span><span>IAS 32 Financial Instruments: Presentation</span></div>
+          <div class="tr alt"><span>Why withdrawn</span><span>The 2003 revision incorporated treasury share treatment directly into IAS 32.33–34</span></div>
+          <div class="tr"><span>Current status</span><span>Withdrawn</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Glossary</h2><span class="line"></span></div>
+    <Glossary entries={[
+      { term: "Treasury shares", definition: "Own equity instruments that have been reacquired by the issuing entity, deducted from equity, and not recognised as a financial asset." },
+      { term: "Own equity instruments", definition: "Instruments that represent a residual interest in the issuing entity's assets after deducting liabilities, including ordinary shares, preference shares and stock options." }
+    ]} />
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.SIC16} />
+  </section>
+</StandardPageLayout>
+
+
+
+

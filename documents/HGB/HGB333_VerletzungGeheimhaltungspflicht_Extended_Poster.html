@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HGB §333 — Verletzung der Geheimhaltungspflicht | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">HGB §333 — Verletzung der Geheimhaltungspflicht (Breach of Confidentiality)</div>
+      <div class="hub-sub">Extended reference poster · Book 3, Section 2, Subsection 6 · The other side of the auditor's trust relationship — confidentiality, not accuracy · German commercial law</div>
+    </div>
+  </div>
+
+  <div class="callout suc" style="max-width:900px;margin:0 auto 20px;text-align:center;">THE FLIP SIDE OF §332: where §332 punishes an auditor for disclosing TOO LITTLE or falsely — concealing findings or issuing a false opinion — §333 punishes the opposite failure: disclosing something that should have stayed confidential. Together they define the two boundaries of the SAME trust relationship the audit apparatus (§§316–324a) exists to protect.</div>
+
+  <div class="toc">
+    <a href="#s1">1. Conceptual Framework Linkage</a>
+    <a href="#s2">2. Scope — Auditors, Assistants, and Enforcement-Panel Staff</a>
+    <a href="#s3">3. §333(1) — the Base Offence</a>
+    <a href="#s4">4. Four Categories of Protected Company — a Deliberate Callback to Earlier Posters</a>
+    <a href="#s5">5. Worked Example — Disclosing a Subsidiary's Trade Secret</a>
+    <a href="#s6">6. The Prüfstelle Extension — Protecting Enforcement-Review Information Too</a>
+    <a href="#s7">7. Worked Example — an Enforcement-Panel Employee's Improper Disclosure</a>
+    <a href="#s8">8. §333(2) Sentence 1 — Aggravation for Consideration, Enrichment, or Harm</a>
+    <a href="#s9">9. §333(2) Sentence 2 — a Genuinely Distinct Prohibited Act: Unauthorized USE</a>
+    <a href="#s10">10. Worked Example — Contrasting Disclosure and Exploitation</a>
+    <a href="#s11">11. The Antragsdelikt Requirement — Prosecution Only on the Company's Own Complaint</a>
+    <a href="#s12">12. Worked Example — a Company Choosing Not to Pursue Prosecution</a>
+    <a href="#s13">13. §333 vs §332 — Two Boundaries of the Same Trust Relationship</a>
+    <a href="#s14">14. Critical Judgments &amp; Practical Difficulties</a>
+    <a href="#s15">15. Relationship to IFRS</a>
+    <a href="#s16">16. Statement Mapping</a>
+    <a href="#s17">17. Related Provisions — Cross-Reference Map</a>
+    <a href="#s18">18. Quick-Reference Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Protecting what should stay private, not what should be made public</div>
+      <div class="principle">Every provision this series has documented about disclosure, transparency, and true-and-fair views assumes information SHOULD reach the public. §333 protects the necessary exception: an auditor's privileged access to a company's most sensitive internal information — trade secrets, business plans, commercially sensitive detail — comes WITH an obligation to keep it confidential, breach of which is itself a criminal offence.</div>
+      <div class="elabel">HOW §333 MAPS TO GERMAN ACCOUNTING PRINCIPLES</div>
+      <div class="check-list">
+        <span><strong style="font-weight:500">Trust as a two-way obligation</strong> — the audit relationship this series has documented depends on the AUDITED company trusting the auditor with sensitive access, exactly as much as the PUBLIC trusts the auditor's own opinion</span>
+        <span><strong style="font-weight:500">Consistency with parallel company-law offences</strong> — §333 mirrors comparable confidentiality-protection provisions under AktG §404 and GmbHG §85, reflecting a broader, coordinated confidentiality-protection theme across German company law generally</span>
+      </div>
+    </div>
+
+    <div class="card cs">
+      <div class="ctitle cs">What §333 covers, at a glance</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.6fr 1.7fr;"><span>§</span><span>Core content</span></div>
+        <div class="tr" style="grid-template-columns:0.6fr 1.7fr;"><span>333(1)</span><span>Unauthorized disclosure of a trade/business secret learned during the audit (up to 1 year)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.6fr 1.7fr;"><span>333(2) S.1</span><span>Aggravation for consideration, enrichment, or harm intent (up to 2 years)</span></div>
+        <div class="tr" style="grid-template-columns:0.6fr 1.7fr;"><span>333(2) S.2</span><span>A separate offence: unauthorized USE/exploitation of the same secret (up to 2 years)</span></div>
+      </div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ Genuinely important procedural point: this is an ANTRAGSDELIKT — see Section 11.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Scope — Auditors, Assistants, and Enforcement-Panel Staff</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">A Sonderdelikt, with a later-added second Täterkreis</div>
+      <div class="principle">§333's PRIMARY Täterkreis mirrors §332's — the Abschlussprüfer (statutory auditor) or their Gehilfe (assistant), established across the earlier Audit poster. A LATER amendment extended §333 to ALSO cover employees of a Prüfstelle (the Financial Reporting Enforcement Panel established under §342b — briefly noted at the very start of this HGB project's structural overview, but not yet covered in detail in this poster series) who improperly disclose information learned during their own review activity.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>§333(1) — the Base Offence</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Unauthorized disclosure of a secret learned during the audit</div>
+      <div class="principle">§333(1) criminalises an auditor or their assistant who, WITHOUT authorization, discloses a secret (Geheimnis) — specifically a Betriebs- oder Geschäftsgeheimnis (trade or business secret) — that became known to them IN THEIR CAPACITY as auditor DURING the audit of the Jahresabschluss, an Einzelabschluss under §325(2a) (the same cross-reference flagged with appropriate care in the previous poster), or the Konzernabschluss — punishable by imprisonment of up to ONE YEAR or a fine.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Four Categories of Protected Company — a Deliberate Callback to Earlier Posters</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">The exact same consolidation-relationship definitions established throughout this series</div>
+      <div class="principle">§333(1) protects secrets belonging to FOUR distinct categories of company, EACH directly reusing a definition established earlier in this poster series:</div>
+      <div class="check-list">
+        <span><strong style="font-weight:500">The Kapitalgesellschaft itself</strong> — the company being audited</span>
+        <span><strong style="font-weight:500">A Tochterunternehmen (§290(1)-(2))</strong> — a subsidiary under the control tests established in the very first Konzernabschluss poster</span>
+        <span><strong style="font-weight:500">A gemeinsam geführtes Unternehmen (§310)</strong> — a jointly-managed enterprise under the proportionate consolidation Titel</span>
+        <span><strong style="font-weight:500">An assoziiertes Unternehmen (§311)</strong> — an associated company under the equity method Titel</span>
+      </div>
+      <div class="note">This is a genuinely elegant piece of drafting: rather than redefining these relationships from scratch, §333 simply POINTS BACK to the same definitions this entire poster series has already documented in detail, extending confidentiality protection across the FULL range of group relationships an auditor's work might touch.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Worked Example — Disclosing a Subsidiary's Trade Secret</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Protection extends throughout the group, not just to the audited parent</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 1: Disclosing a subsidiary's confidential manufacturing process</div>
+        <div class="wk-body">During a Konzernabschluss audit, an auditor gains detailed knowledge of a specific, confidential manufacturing process used by one of the parent's subsidiaries — a genuine trade secret with real commercial value. The auditor later mentions specific details of this process, without authorization, in a conversation with an acquaintance at a competing firm.</div>
+        <div class="wk-answer">Even though the disclosed secret belongs to the SUBSIDIARY rather than the parent company being directly audited, §333(1) still applies — the protection explicitly extends to a Tochterunternehmen under §290(1)-(2), exactly as established in the earlier Konzernabschluss poster series, satisfying the base offence and exposing the auditor to imprisonment of up to one year or a fine.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>The Prüfstelle Extension — Protecting Enforcement-Review Information Too</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Extending confidentiality protection beyond the ordinary audit itself</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">A later amendment extends §333(1) to ALSO cover an employee of a Prüfstelle (per §342b(1) — the Financial Reporting Enforcement Panel briefly identified in this series' very first structural overview of HGB Book 3, though not yet covered in a dedicated poster) who, without authorization, discloses a trade/business secret or other company insight learned during a FORMAL enforcement review — a genuinely separate function from the ordinary statutory audit, but one carrying comparable access to sensitive company information, and therefore warranting the SAME confidentiality protection.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Worked Example — an Enforcement-Panel Employee's Improper Disclosure</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">The same protection, a genuinely different role</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 2: A Prüfstelle staff member sharing information from an enforcement review</div>
+        <div class="wk-body">During a formal enforcement review of a company's Jahresabschluss (the kind of review the Prüfstelle established under §342b conducts), a Prüfstelle employee learns significant, non-public detail about the company's internal restructuring plans, and later shares this information, without authorization, with a friend working in financial media.</div>
+        <div class="wk-answer">The Prüfstelle employee, though NOT an auditor or auditor's assistant in the ordinary sense, falls WITHIN the extended §333(1) Täterkreis specifically for information learned during their own review activity — the unauthorized disclosure satisfies the same offence, reflecting the legislature's judgement that this genuinely different oversight function warrants equivalent confidentiality protection.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>§333(2) Sentence 1 — Aggravation for Consideration, Enrichment, or Harm</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">A familiar aggravation structure, now applied to confidentiality</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">§333(2) sentence 1 raises the maximum penalty to TWO years' imprisonment (or a fine) where the offender acts FOR CONSIDERATION or with intent to ENRICH themselves or another, or to HARM another party — precisely the same aggravation structure this series has now seen in both §332(2) sentence 1 (the auditor's own accuracy offence) and, in spirit, the general Entgelt/Bereicherungsabsicht pattern running through this whole Subsection.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>§333(2) Sentence 2 — a Genuinely Distinct Prohibited Act: Unauthorized USE</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Not merely telling someone else — actually exploiting the secret oneself</div>
+      <div class="principle">§333(2) sentence 2 supplies a GENUINELY SEPARATE prohibited act, reaching the SAME two-year maximum: unauthorized USE or exploitation (unbefugt verwertet) of the SAME kind of secret — distinct from mere disclosure. An auditor who never tells anyone else about a secret, but personally TRADES on it (for instance, using confidential knowledge of an impending negative development to sell their own shares before the information becomes public) commits THIS specific variant, even absent any disclosure to a third party at all.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Worked Example — Contrasting Disclosure and Exploitation</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Two different auditors, two different variants of the same underlying offence</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 3: One auditor tells a competitor, another trades on the secret personally</div>
+        <div class="wk-body">Auditor A learns of a client's confidential, imminent product launch during an audit, and shares the specific details with a competing company for a fee. Auditor B, on a different engagement, learns of a client's confidential upcoming loss announcement and, WITHOUT telling anyone else at all, personally sells a substantial personal shareholding in the client company before the loss becomes public.</div>
+        <div class="wk-answer">Auditor A commits UNAUTHORIZED DISCLOSURE under §333(1), aggravated to the two-year maximum under §333(2) sentence 1 given the fee received. Auditor B commits an entirely DIFFERENT variant — unauthorized USE/exploitation under §333(2) sentence 2 — reaching the SAME two-year maximum, DESPITE never disclosing the secret to anyone else at all; personally trading on confidential knowledge is itself independently criminalised.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>The Antragsdelikt Requirement — Prosecution Only on the Company's Own Complaint</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">A genuinely important procedural distinction from §331, §331a, and §332</div>
+      <div class="principle">§333 is confirmed to be an Antragsdelikt — a category of offence German prosecutors do NOT pursue automatically on their own initiative, but ONLY upon a formal complaint (Strafantrag) from the AFFECTED party — here, the Kapitalgesellschaft (or the relevant subsidiary/joint/associated company) whose secret was disclosed. This reflects the legislature's judgement that the protected interest is primarily the COMPANY's own private business interest, rather than a broader public interest the state has an independent stake in vindicating regardless of the victim's own wishes — a genuinely different procedural posture than §331, §331a, and §332, all of which the state may prosecute on its own initiative.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Worked Example — a Company Choosing Not to Pursue Prosecution</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">The company's own choice genuinely controls whether the case proceeds at all</div>
+      <div class="worked" style="margin-bottom:0;">
+        <div class="wk-title">Example 4: A company preferring quiet resolution over prosecution</div>
+        <div class="wk-body">A company discovers its own former auditor improperly disclosed a business secret to a third party, satisfying §333(1) in principle — but the company, wishing to avoid the reputational exposure and disruption a public criminal proceeding might bring, chooses NOT to file the formal Strafantrag required to trigger prosecution.</div>
+        <div class="wk-answer">DESPITE the underlying conduct genuinely satisfying §333(1)'s elements, prosecution does NOT proceed WITHOUT the company's own affirmative complaint — a genuinely different outcome than would apply under §331, §331a, or §332, where state prosecutors could pursue the matter regardless of the affected party's own preference.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>§333 vs §332 — Two Boundaries of the Same Trust Relationship</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Too little/wrong disclosure vs too much disclosure — genuinely opposite failure modes</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 1fr;"><span>§332 — Verletzung der Berichtspflicht</span><span>§333 — Verletzung der Geheimhaltungspflicht</span></div>
+        <div class="tr" style="grid-template-columns:1fr 1fr;"><span>Failing to report ACCURATELY to the public/company</span><span>Disclosing what should have stayed CONFIDENTIAL</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 1fr;"><span>Ex officio prosecution</span><span>Antragsdelikt — company complaint required</span></div>
+        <div class="tr" style="grid-template-columns:1fr 1fr;"><span>Up to 3/5 years (with PIE aggravation)</span><span>Up to 1/2 years (no PIE-specific tier)</span></div>
+      </div>
+      <div class="note">Together, §332 and §333 mark the TWO opposite boundaries of the same underlying trust relationship an auditor holds — required to disclose enough, and accurately, to the PUBLIC and the company itself, while simultaneously required to disclose NOTHING MORE than that to anyone else.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Critical Judgments &amp; Practical Difficulties</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Where judgement matters most</div>
+      <div class="two-col">
+        <div>
+          <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+          <div class="dot-list">
+            <span>Distinguishing a genuine "Betriebs- oder Geschäftsgeheimnis" from other, less sensitive confidential information not carrying the same protection</span>
+          </div>
+        </div>
+        <div>
+          <div class="elabel">PRACTICAL DIFFICULTIES</div>
+          <div class="dot-list">
+            <span>Determining, for a multi-entity engagement, who is authorised (Antragsberechtigt) to file the required complaint on behalf of an affected subsidiary or associated company</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 15 ============ -->
+  <div class="section-header" id="s15"><span class="num">15</span><h2>Relationship to IFRS</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Confidentiality obligations sit entirely outside any accounting standard</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">As with every other criminal provision this series has documented, IFRS itself has no equivalent — auditor confidentiality obligations are governed by each jurisdiction's own professional ethics rules, contract law, and (where applicable) specific criminal statutes, never by an accounting standard directly. §333 completes this poster series' now-familiar theme: the audit trust relationship IFRS presupposes but never itself legislates is, in Germany, given genuine criminal-law teeth on BOTH sides — accuracy (§332) and confidentiality (§333) alike.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 16 ============ -->
+  <div class="section-header" id="s16"><span class="num">16</span><h2>Statement Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Where every §333 event lands</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event / obligation</span><span>Document affected</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Unauthorized disclosure</span><span>—</span><span>No specific financial statement affected; the underlying company secret itself</span></div>
+        <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Unauthorized use/exploitation</span><span>—</span><span>A genuinely separate prohibited act from disclosure</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 17 ============ -->
+  <div class="section-header" id="s17"><span class="num">17</span><h2>Related Provisions — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How §333 connects across HGB Book 3</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Provision</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>§290(1)-(2), §310, §311</span><span>Supplies the four company-relationship definitions §333(1) protects secrets of</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>§342b</span><span>Establishes the Prüfstelle whose employees §333(1) extends to cover</span></div>
+        <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>§332</span><span>The closely related but genuinely opposite-facing offence covered in the previous poster</span></div>
+        <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>AktG §404, GmbHG §85</span><span>Comparable confidentiality-protection offences elsewhere in German company law, reflecting a coordinated legislative theme</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 18 ============ -->
+  <div class="section-header" id="s18"><span class="num">18</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Betriebs- oder Geschäftsgeheimnis</div><div class="glossary-def">Trade or business secret — the specific category of confidential information §333 protects.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Unbefugt offenbaren</div><div class="glossary-def">To disclose without authorization — the base prohibited act under §333(1).</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Unbefugt verwerten</div><div class="glossary-def">To use/exploit without authorization — a distinct prohibited act under §333(2) sentence 2, independent of disclosure.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Antragsdelikt</div><div class="glossary-def">An offence prosecuted only upon a formal complaint (Strafantrag) from the affected party, not automatically by the state.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Prüfstelle</div><div class="glossary-def">The Financial Reporting Enforcement Panel established under §342b, whose employees' confidentiality is also protected under §333's extended scope.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Antragsberechtigt</div><div class="glossary-def">Authorized to file the complaint — a genuinely practical question in multi-entity engagements involving subsidiaries or associated companies.</div></div>
+    </div>
+  </div>
+
+  <div class="footer-note">HGB §333 — Verletzung der Geheimhaltungspflicht · Extended Reference Poster · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>

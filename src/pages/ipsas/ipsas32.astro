@@ -1,0 +1,233 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import PageToc from "../../components/PageToc.astro";
+import LifecycleNotice from "../../components/StandardLifecycleNotice.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import metadata from "../../data/standards/ipsas/ipsas32.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  covers={metadata.covers}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Objective, Scope & Out-of-Scope Arrangements" },
+        { id: "s2", label: "Definitions — Grantor, Operator, Asset & Arrangement" },
+        { id: "s3", label: "Recognition of a Service Concession Asset — the Control Test" },
+        { id: "s4", label: "Initial Measurement & Reclassification of Existing Grantor Assets" },
+        { id: "s5", label: "Recognition & Measurement of the Corresponding Liability" },
+        { id: "s6", label: "Financial Liability Model" },
+        { id: "s7", label: "Grant of a Right to the Operator Model" },
+        { id: "s8", label: "Dividing the Arrangement" },
+        { id: "s9", label: "Other Liabilities, Commitments, Contingent Liabilities/Assets & Other Revenues" },
+        { id: "s10", label: "Presentation & Disclosure" },
+        { id: "s11", label: "Transitional Provisions, Effective Date & Amendment Timeline" },
+        { id: "s12", label: "Relationship to IFRIC 12" },
+        { id: "s13", label: "Statement / Process Mapping" },
+        { id: "s14", label: "Related Standards — Cross-Reference Map" },
+        { id: "s15", label: "Quick-Reference Glossary" }
+      ]}
+    />
+  </Fragment>
+
+  <LifecycleNotice
+    type="active"
+    explanation="IPSAS 32 Service Concession Arrangements: Grantor is the current, active standard issued by the IPSASB for accounting by a public-sector grantor for service concession arrangements. Effective for periods beginning on or after 1 January 2014 (earlier application encouraged). Paras. 1–37."
+    historical="IPSAS 32 has no direct IAS/IFRS equivalent (IFRIC 12 underpins the economics) — the public sector's 'grantor' framing and the two presentation models (financial-liability model and grantor-right model) are IPSAS-specific."
+    link=""
+    linkText=""
+  />
+
+  <!-- ============ SECTION 1 ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; Out-of-Scope Arrangements (paras. 1–7)</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card ci span2">
+      <div class="ctitle ci">Grantor accounting (para. 1)</div>
+      <div class="principle">Prescribes how a public-sector GRANTOR accounts for a service concession arrangement where it transfers the right to use an asset (build, manage, operate or maintain) in return for a share of output or other considerations.</div>
+      <div class="cross-list"><span>Grantor = public entity</span><span>Out of scope: operator-only arrangements</span><span>Private finance initiative (PFI) carve-out</span><span>Applies only if grantor retains control/rights</span></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Definitions — Grantor, Operator, Asset &amp; Arrangement (para. 8)</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card cd span2">
+      <div class="ctitle cd">Key terms (para. 8)</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1.7fr;"><span>Term</span><span>Meaning</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.7fr;"><span>Grantor</span><span>Public entity that grants the right to a service concession asset</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.7fr;"><span>Operator</span><span>Party that builds/manages/operates the asset</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.7fr;"><span>Service concession asset</span><span>The right to obtain use of the asset over the term</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Recognition of a Service Concession Asset — the Control Test (paras. 9–10)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Control test (para. 9)</div>
+      <div class="principle">The grantor recognises a service concession asset ONLY if it retains, throughout the term, the right to obtain the asset (or control of it) at the end. The test is whether the grantor will end with a right to use the asset.</div>
+      <div class="check-list"><span>Retained right to obtain asset</span><span>Control of the asset at end</span><span>Otherwise: recognise as revenue over time</span></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Initial Measurement &amp; Reclassification of Existing Grantor Assets (paras. 11–13)</h2><span class="line"></span></div>
+  <div class="cols-1 grid-spaced">
+    <div class="card ci">
+      <div class="ctitle ci">Value at transfer (para. 11)</div>
+      <div class="principle">The service concession asset is initially measured at the higher of (a) the fair value of the asset received and (b) the fair value of the consideration to which the grantor is entitled. Existing grantor assets reclassified into the concession are measured at fair value.</div>
+      <div class="callout info callout--flush">If the grantor receives no up-front consideration, the asset is recognised at the fair value of the obligation accepted.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Recognition &amp; Measurement of the Corresponding Liability (paras. 14–17)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">The liability (para. 14)</div>
+      <div class="principle">The grantor recognises a liability for the present value of the obligation to transfer the asset at the end of the concession, the obligation to make payments to the operator, and any contingent consideration. Subsequent measurement: amortised cost (effective interest) until derecognised.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.4fr 1.6fr;"><span>Component</span><span>Carried as</span></div>
+        <div class="tr" style="grid-template-columns:1.4fr 1.6fr;"><span>Asset transfer obligation</span><span>Liability — PV of asset</span></div>
+        <div class="tr alt" style="grid-template-columns:1.4fr 1.6fr;"><span>Payments to operator</span><span>Liability — PV of cash flows</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Financial Liability Model (paras. 18–23)</h2><span class="line"></span></div>
+  <div class="cols-1 grid-spaced">
+    <div class="card cw">
+      <div class="ctitle cw">One model fits all (para. 18)</div>
+      <div class="principle">In the financial-liability model, the grantor recognises (a) a financial liability for the present value of the obligation to transfer the asset and the obligation to make payments, and (b) an asset for any consideration received. Revenue is recognised over the concession period using the effective interest method on the liability.</div>
+      <div class="callout warn">The grantor's obligation to transfer the asset at a future date is treated as a DEEMED financing — not current revenue.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Grant of a Right to the Operator Model (paras. 24–26)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Two obligations (para. 24)</div>
+      <div class="principle">Where the grantor grants a right to the operator to use the asset, the grantor recognises a financial liability for the obligation to transfer the underlying asset and a separate liability for the obligation to make payments. The service concession asset is derecognised when control transfers back.</div>
+      <div class="check-list"><span>Financial liability — asset obligation</span><span>Financial liability — payment obligation</span><span>Service concession asset derecognised on transfer-back</span></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Dividing the Arrangement</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card cd span2">
+      <div class="ctitle cd">Split when criteria differ (para. 27)</div>
+      <div class="principle">Where parts of the arrangement fall under different models (e.g., asset transfer under the financial-liability model and a grantor right under the operator model), the grantor accounts for each part separately using the relevant model.</div>
+      <div class="callout info callout--flush">Document the basis for the split and the measurement of each component.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Other Liabilities, Commitments, Contingent Liabilities/Assets &amp; Other Revenues (paras. 29–30)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Catch-all disclosures (para. 29)</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 1.3fr;"><span>Item</span><span>Treatment</span></div>
+        <div class="tr" style="grid-template-columns:1fr 1.3fr;"><span>Commitments</span><span>Disclose nature & amount</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 1.3fr;"><span>Contingent liabilities/assets</span><span>IPSAS 19-style disclosure</span></div>
+        <div class="tr" style="grid-template-columns:1fr 1.3fr;"><span>Other revenues</span><span>FV of output share recognised over time</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Presentation &amp; Disclosure (paras. 31–33)</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card ci span2">
+      <div class="ctitle ci">On the face (para. 31)</div>
+      <div class="principle">The service concession asset is presented as a NON-CURRENT asset; the financial liability is presented on the face of the statement of financial position. Disclose the nature of the arrangement, the significant terms, and the sensitivity of the liability to changes in market rates.</div>
+      <div class="callout warn">Split presentation — asset and liability are NOT netted (offset only per IPSAS 28 criteria).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Transitional Provisions, Effective Date &amp; Amendment Timeline (paras. 34–37)</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card cd span2">
+      <div class="ctitle cd">Timeline</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 1.2fr;"><span>Date</span><span>Event</span></div>
+        <div class="tr" style="grid-template-columns:1fr 1.2fr;"><span>Oct 2011</span><span>Issued</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 1.2fr;"><span>1 Jan 2014</span><span>Effective date</span></div>
+        <div class="tr" style="grid-template-columns:1fr 1.2fr;"><span>2017</span><span>Amended (latest)</span></div>
+      </div>
+      <div class="callout info callout--flush">Transition: retrospective application with IPSAS 28 offset/disclosure alignment.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Relationship to IFRIC 12</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw span2">
+      <div class="ctitle cw">Economic twin (para. 38)</div>
+      <div class="principle">IPSAS 32 adopts IFRIC 12's grantor accounting but adds the public-sector control test and the two-model election. It diverges from IFRIC 12 on presentation of the financial liability and on the treatment of existing grantor assets.</div>
+      <div class="cross-list"><span>IFRIC 12 control test</span><span>IPSAS 32 grantor control test</span><span>IFRIC 12 two models</span><span>IPSAS 32 financial-liability / operator models</span></div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+  <div class="grid grid-spaced">
+    <div class="card ci span2">
+      <div class="ctitle ci">Where it flows</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.4fr 1.3fr;"><span>Process</span><span>Ledger</span></div>
+        <div class="tr" style="grid-template-columns:1.4fr 1.3fr;"><span>Concession assessment</span><span>Project Charter → control test</span></div>
+        <div class="tr alt" style="grid-template-columns:1.4fr 1.3fr;"><span>PV of obligations</span><span>Treasury → Financial Liabilities</span></div>
+        <div class="tr" style="grid-template-columns:1.4fr 1.3fr;"><span>Revenue recognition</span><span>FV of output share → Grant Receivable</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 14 ============ -->
+  <div class="section-header" id="s14"><span class="num">14</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">See also</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2fr;"><span>Standard</span><span>Relation</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2fr;"><span>IPSAS 28</span><span>Presentation of the financial liability</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2fr;"><span>IPSAS 41</span><span>Determining fair value of the asset/liability</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2fr;"><span>IFRIC 12</span><span>Economic underpinning</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 15 ============ -->
+  <div class="section-header" id="s15"><span class="num">15</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Grantor</div><div class="glossary-def">Public entity granting use of an asset in a service concession.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Operator</div><div class="glossary-def">Party that builds/manages/operates the concession asset.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Service concession asset</div><div class="glossary-def">Grantor's right to obtain the asset; measured at FV.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Control test</div><div class="glossary-def">Grantor must retain right to obtain asset at end of term.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Financial liability model</div><div class="glossary-def">Asset + liability measured at PV; revenue over time.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Operator model</div><div class="glossary-def">Grantor grants a right to the operator to the asset.</div></div>
+    </div>
+  </div>
+</StandardPageLayout>
+

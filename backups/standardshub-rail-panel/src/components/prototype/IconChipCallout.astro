@@ -1,0 +1,35 @@
+---
+import {
+  Info,
+  TriangleAlert,
+  Check,
+  X,
+  Lightbulb,
+} from "@lucide/astro";
+
+interface Props {
+  variant: "info" | "warn" | "danger" | "suc" | "formula";
+  filled?: boolean; // Variant B = filled chip; omit = Variant A (outlined)
+}
+
+const { variant = "info", filled = false } = Astro.props;
+
+const icons = {
+  info: Info,
+  warn: TriangleAlert,
+  suc: Check,
+  danger: X,
+  formula: Lightbulb,
+} as const;
+
+const Icon = icons[variant];
+---
+
+<div class:list={["pc2-callout", `pc2-callout--${variant}`, { "pc2-callout--b": filled }]}>
+  <span class="pc2-chip">
+    <Icon />
+  </span>
+  <div class="pc2-body">
+    <slot />
+  </div>
+</div>

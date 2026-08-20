@@ -1,0 +1,404 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/ias/ias32.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        {
+          id: "s1",
+          label: "Conceptual Framework Linkage",
+        },
+        {
+          id: "s2",
+          label: "Scope & Applicability",
+        },
+        {
+          id: "s3",
+          label: "Liability vs Equity Test",
+        },
+        {
+          id: "s4",
+          label: "Compound Instruments",
+        },
+        {
+          id: "s5",
+          label: "Puttable Instruments",
+        },
+        {
+          id: "s6",
+          label: "Preference Shares",
+        },
+        {
+          id: "s7",
+          label: "Treasury Shares",
+        },
+        {
+          id: "s8",
+          label: "Offsetting Assets & Liabilities",
+        },
+        {
+          id: "s9",
+          label: "Disclosure Requirements",
+        },
+        {
+          id: "s10",
+          label: "Critical Judgments & Estimates",
+        },
+        {
+          id: "s11",
+          label: "IFRS vs US GAAP",
+        },
+        {
+          id: "s12",
+          label: "Statement Mapping",
+        },
+        {
+          id: "s13",
+          label: "Related Standards",
+        },
+        {
+          id: "s14",
+          label: "Quick-Reference Glossary",
+        },
+        {
+          id: "history",
+          label: "History & Development",
+        },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <!-- ============ SECTION 1 ============ -->
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Why the liability/equity classification test comes DIRECTLY from the Framework</div>
+        <div class="principle">The Conceptual Framework defines a LIABILITY as a present obligation to transfer an economic resource, and EQUITY as the residual interest in assets after deducting liabilities. IAS 32 applies this exact distinction to financial instruments — the legal FORM of an instrument (e.g. calling it a "share") is irrelevant if its SUBSTANCE creates a genuine obligation.</div>
+        <div class="elabel">HOW IAS 32 MAPS TO THE FRAMEWORK</div>
+        <div class="check-list">
+          <span><strong style="font-weight:600">Substance over form</strong> — the classification is determined by the SUBSTANCE of the contractual arrangement, not merely its legal form (e.g. "preference shares" can be liabilities in substance)</span>
+          <span><strong style="font-weight:600">Faithful representation</strong> — misclassifying a genuine obligation as equity would overstate equity and understate leverage, materially distorting a user's assessment of financial risk</span>
+          <span><strong style="font-weight:600">The residual interest concept</strong> — equity, by definition, has NO contractual obligation to deliver cash or another financial asset; ANY such obligation, however structured, points toward liability classification</span>
+        </div>
+        <div class="note">IAS 32's classification test is one of the most direct, unmediated applications of the Conceptual Framework's own definitions anywhere in IFRS — there is very little "standard-specific" machinery layered on top; it largely just asks whether the Framework's liability definition is met.</div>
+      </div>
+
+      <div class="card cs">
+        <div class="ctitle cs">Why IAS 32 is presentation-only, with IFRS 9 measuring</div>
+        <div class="principle">IAS 32 answers WHERE an instrument, or component of an instrument, sits (liability, equity, or split between both) — it does NOT provide measurement rules; those come from IFRS 9 (financial liabilities/assets) and general equity accounting principles.</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.3fr 1fr;"><span>Classification outcome</span><span>Subsequent measurement basis</span></div>
+          <div class="tr" style="grid-template-columns:1.3fr 1fr;"><span>Financial liability</span><span>IFRS 9 — amortised cost or fair value, as applicable</span></div>
+          <div class="tr alt" style="grid-template-columns:1.3fr 1fr;"><span>Equity instrument</span><span>Not remeasured; simply presented within equity at the amount received (less issue costs)</span></div>
+        </div>
+        <div class="callout info callout--chip" style="margin-bottom:0;">ℹ️ <strong style="font-weight:600">Qualitative characteristics in action:</strong> the clean separation of PRESENTATION (IAS 32) from MEASUREMENT (IFRS 9) reflects the Framework's structured approach — get the classification right first, since it determines which measurement regime subsequently applies.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 2 ============ -->
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; Applicability</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw">
+        <div class="ctitle cw">What IAS 32 covers</div>
+        <div class="principle">IAS 32 establishes principles for presenting financial instruments as liabilities or equity, and for offsetting financial assets and financial liabilities — applied by all entities issuing or holding financial instruments.</div>
+        <div class="elabel">SCOPE EXCLUSIONS (COMMON TO ALL FINANCIAL INSTRUMENT STANDARDS)</div>
+        <div class="cross-list">
+          <span>Interests in subsidiaries, associates, and joint ventures accounted for under IFRS 10/IAS 27/IAS 28 (except where those standards require IAS 32/IFRS 9 treatment for certain items)</span>
+          <span>Employers' rights and obligations under employee benefit plans (IAS 19)</span>
+          <span>Insurance contracts (IFRS 17), though derivatives embedded in insurance contracts remain within scope</span>
+          <span>Contracts for contingent consideration in a business combination (IFRS 3), from the acquirer's perspective</span>
+          <span>Share-based payment transactions (IFRS 2), except for treasury share purchases related to employee share option plans</span>
+        </div>
+      </div>
+
+      <div class="card cd">
+        <div class="ctitle cd">Key definitions you must know</div>
+        <div class="glossary-item">
+          <div class="glossary-term">Financial liability</div>
+          <div class="glossary-def">A contractual obligation to deliver cash or another financial asset to another entity, OR to exchange financial assets/liabilities under potentially unfavourable conditions, OR a contract settled in the entity's own equity instruments that meets specific conditions.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Equity instrument</div>
+          <div class="glossary-def">Any contract that evidences a RESIDUAL interest in the assets of an entity after deducting all of its liabilities.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Financial instrument</div>
+          <div class="glossary-def">Any contract that gives rise to a financial asset of one entity AND a financial liability or equity instrument of another entity.</div>
+        </div>
+        <div class="glossary-item" style="border-bottom:none;">
+          <div class="glossary-term">Compound financial instrument</div>
+          <div class="glossary-def">A non-derivative financial instrument that contains BOTH a liability component and an equity component from the ISSUER's perspective (e.g. a convertible bond).</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 3 ============ -->
+    <div class="section-header" id="s3"><span class="num">3</span><h2>The Liability vs Equity Test — The Core Question</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Does the issuer have a contractual obligation to deliver cash (or another financial asset)?</div>
+        <div class="principle">The critical feature distinguishing a financial liability from an equity instrument is the EXISTENCE of a contractual obligation on one party to the financial instrument (the issuer) EITHER to deliver cash/another financial asset to another party, OR to exchange financial instruments with another party under conditions potentially UNFAVOURABLE to the issuer.</div>
+        <div class="two-col">
+          <div class="spec-box" style="margin-bottom:0;">
+            <div class="spec-title" style="color:var(--color-text-danger);">Points toward LIABILITY classification</div>
+            <div class="text-supporting text-supporting--tight">Mandatory redemption at a fixed/determinable date or at the holder's option; contractually obligated dividend/coupon payments the issuer cannot avoid; obligations settled in a VARIABLE number of the issuer's own shares whose value equals a fixed amount (or an amount based on a variable other than the issuer's own share price)</div>
+          </div>
+          <div class="spec-box" style="margin-bottom:0;">
+            <div class="spec-title" style="color:var(--color-text-success);">Points toward EQUITY classification</div>
+            <div class="text-supporting text-supporting--tight">No contractual obligation to deliver cash; distributions are discretionary (declared at the issuer's option); settlement (if any) via a FIXED number of the issuer's own equity instruments for a FIXED amount of cash (the "fixed-for-fixed" condition)</div>
+          </div>
+        </div>
+        <div class="callout danger callout--chip" style="margin-top:8px;margin-bottom:0;">✕ <strong style="font-weight:600">"Redeemable preference shares" are almost always financial LIABILITIES</strong>, not equity, DESPITE their legal name and form — because the issuer has a contractual obligation to redeem (deliver cash) at a future date, satisfying the liability definition regardless of what the instrument is called.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 4 ============ -->
+    <div class="section-header" id="s4"><span class="num">4</span><h2>Compound Instruments — Splitting Liability and Equity</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs">
+        <div class="ctitle cs">The split accounting method</div>
+        <div class="formula-box formula-box--chip">
+          <div class="f-label">STEP-BY-STEP APPROACH</div>
+          <div class="f-eq">1) Measure the LIABILITY component first, at the fair value of a similar liability WITHOUT the equity conversion feature<br>2) The EQUITY component is the RESIDUAL — total proceeds LESS the liability component (a "with-and-without" method)</div>
+        </div>
+        <div class="text-supporting">This residual approach ensures the liability and equity components ALWAYS sum to total proceeds — the equity component is NEVER independently valued, only derived by subtraction.</div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Worked example — convertible bond split</div>
+        <div class="worked">
+          <div class="wk-title">Example 1: Splitting a convertible bond into liability and equity</div>
+          <div class="wk-body">
+            An entity issues a convertible bond for total proceeds of $10,000,000. A similar bond WITHOUT the conversion option would have a fair value of $9,200,000, calculated by discounting the bond's cash flows at the market rate for a similar non-convertible bond.
+          </div>
+          <div class="wk-answer">
+            <strong>Liability component</strong> = <strong style="color:var(--color-text-info);">$9,200,000</strong> (present value of cash flows using the market rate for a non-convertible bond)<br>
+            <strong>Equity component (residual)</strong> = 10,000,000 − 9,200,000 = <strong style="color:var(--color-text-success);">$800,000</strong>
+          </div>
+        </div>
+        <div class="entry"><span class="dr">Dr</span><div class="etxt">Cash $10,000,000<div class="badges"><span class="badge bs">SOFP</span></div></div></div>
+        <div class="entry"><span class="cr">Cr</span><div class="etxt">Financial liability — convertible bond $9,200,000<div class="badges"><span class="badge bs">SOFP</span></div></div></div>
+        <div class="entry"><span class="cr">Cr</span><div class="etxt">Equity — convertible bond option reserve $800,000<div class="badges"><span class="badge be">Equity</span></div></div></div>
+        <div class="note">Transaction costs are allocated between the two components PRO RATA to their relative carrying amounts — once split, the liability component is subsequently accreted to face value via the effective interest method under IFRS 9, while the equity component is never remeasured.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 5 ============ -->
+    <div class="section-header" id="s5"><span class="num">5</span><h2>Puttable Instruments — The Narrow Exception to Equity Classification</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">A specific relief for certain co-operative/partnership-style instruments</div>
+        <div class="principle">Some financial instruments give the HOLDER a right to put the instrument back to the issuer for cash (e.g. shares in a co-operative, or units in a partnership) — technically meeting the liability definition. IAS 32 provides a NARROW exception permitting equity classification if ALL of a specific, strict set of conditions are met.</div>
+        <div class="elabel">KEY CONDITIONS FOR THE PUTTABLE INSTRUMENT EXCEPTION</div>
+        <div class="check-list">
+          <span>Entitles the holder to a pro-rata share of the entity's net assets on liquidation</span>
+          <span>Is in the class of instruments SUBORDINATE to all other classes</span>
+          <span>All instruments in that subordinate class have IDENTICAL features</span>
+          <span>Besides the put right, the instrument has no other contractual obligation to deliver cash/another financial asset, or to exchange under potentially unfavourable conditions</span>
+          <span>Total expected cash flows attributable to the instrument over its life are based substantially on profit/loss, change in recognised net assets, or change in fair value over the instrument's life</span>
+        </div>
+        <div class="note">This is a genuinely narrow exception, most commonly relevant for co-operative entities, mutual funds, and certain partnership structures — the vast majority of ordinary puttable/redeemable instruments do NOT qualify and remain classified as liabilities.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 6 ============ -->
+    <div class="section-header" id="s6"><span class="num">6</span><h2>Preference Shares — Classification Walkthrough</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci">
+        <div class="ctitle ci">Reading the terms carefully</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.4fr 1fr;"><span>Feature</span><span>Classification impact</span></div>
+          <div class="tr" style="grid-template-columns:1.4fr 1fr;"><span>Mandatorily redeemable at a fixed date</span><span>LIABILITY</span></div>
+          <div class="tr alt" style="grid-template-columns:1.4fr 1fr;"><span>Redeemable at the HOLDER's option</span><span>LIABILITY (holder can compel cash delivery)</span></div>
+          <div class="tr" style="grid-template-columns:1.4fr 1fr;"><span>Redeemable ONLY at the ISSUER's option, dividends fully discretionary</span><span>EQUITY (issuer avoids any obligation)</span></div>
+          <div class="tr alt" style="grid-template-columns:1.4fr 1fr;"><span>Cumulative, mandatory fixed dividend</span><span>LIABILITY (or a liability component, if also convertible)</span></div>
+        </div>
+      </div>
+
+      <div class="card cw">
+        <div class="ctitle cw">Worked example — mandatorily redeemable preference shares</div>
+        <div class="worked">
+          <div class="wk-title">Example 2: Preference shares classified as a liability</div>
+          <div class="wk-body">
+            An entity issues 100,000 preference shares of $10 each ($1,000,000 total), mandatorily redeemable at par in 5 years, with a fixed 6% cumulative dividend the issuer cannot avoid paying.
+          </div>
+          <div class="wk-answer">
+            Despite being LEGALLY called "shares," this instrument meets the financial liability definition in FULL (mandatory redemption AND mandatory dividend) — classified entirely as a <strong style="color:var(--color-text-danger);">financial liability</strong>, with the "dividend" payments actually presented as INTEREST expense in the SOPL, not as a distribution of profit.
+          </div>
+        </div>
+        <div class="note">Reclassifying the dividend as interest expense is a direct consequence of the substance-over-form classification — this materially changes both the SOFP gearing ratio AND the SOPL, since what looks like a dividend distribution becomes a P&amp;L charge.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 7 ============ -->
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Treasury Shares</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">An entity cannot recognise a gain/loss on its own shares</div>
+        <div class="text-supporting">If an entity reacquires its OWN equity instruments, those instruments ("treasury shares") are DEDUCTED from equity — NO gain or loss is recognised in profit or loss on the purchase, sale, issue, or cancellation of an entity's own equity instruments. Consideration paid or received is recognised DIRECTLY in equity.</div>
+        <div class="callout warn callout--chip" style="margin-bottom:0;">⚠️ This is a direct application of the Framework's principle that an entity cannot profit from transactions with its OWNERS in their capacity as owners — treasury share transactions are, by definition, transactions in the entity's own equity, never income-statement events.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 8 ============ -->
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Offsetting Financial Assets &amp; Liabilities</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">The two-condition offsetting test — with worked example</div>
+        <div class="principle">A financial asset and a financial liability shall be OFFSET, and the net amount presented, when, and ONLY when, an entity BOTH: (a) currently has a legally enforceable right to set off the recognised amounts; AND (b) intends either to settle on a net basis, or to realise the asset and settle the liability SIMULTANEOUSLY.</div>
+        <div class="worked" style="margin-bottom:0;">
+          <div class="wk-title">Example 3: Failing the offsetting test</div>
+          <div class="wk-body">An entity has a $500,000 receivable from, and a $500,000 payable to, the SAME counterparty. A master netting agreement gives a legally enforceable right of set-off ONLY in the event of default or bankruptcy of the counterparty — not in the ORDINARY course of business.</div>
+          <div class="wk-answer">
+            These amounts CANNOT be offset in the financial statements — a right of set-off that exists ONLY on default does not meet the "currently" enforceable and intention-to-settle-net conditions REQUIRED for presentation on a net basis. Both the $500,000 receivable and $500,000 payable are presented GROSS on the SOFP, though offsetting-related disclosures under IFRS 7 may still be required.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 9 ============ -->
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">Required disclosures (most detailed disclosure now sits in IFRS 7)</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">CLASSIFICATION-RELATED DISCLOSURES</div>
+            <div class="check-list">
+              <span>For compound instruments, the split between the liability and equity components at initial recognition</span>
+              <span>Circumstances of any puttable instrument classified as equity under the narrow exception</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">OFFSETTING DISCLOSURES</div>
+            <div class="check-list">
+              <span>Gross amounts, amounts offset in accordance with the criteria, and resulting net amounts presented</span>
+              <span>Amounts subject to an enforceable master netting arrangement or similar agreement, whether or not offset</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 10 ============ -->
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+        <div class="ctitle cn">Where management judgement matters most</div>
+        <div class="two-col">
+          <div>
+            <div class="elabel">SIGNIFICANT JUDGEMENTS</div>
+            <div class="dot-list">
+              <span>Determining whether an instrument's substance creates a genuine contractual obligation, regardless of its legal label</span>
+              <span>Whether a puttable instrument meets ALL the strict conditions for the narrow equity classification exception</span>
+              <span>Whether a legally enforceable right of set-off is "currently" enforceable (not merely contingent on default) and whether net settlement is genuinely intended</span>
+            </div>
+          </div>
+          <div>
+            <div class="elabel">SIGNIFICANT ESTIMATES</div>
+            <div class="dot-list">
+              <span>Fair value of the liability component of a compound instrument, using a market rate for a similar instrument without the equity feature</span>
+              <span>Allocating transaction costs between the liability and equity components of a compound instrument</span>
+            </div>
+          </div>
+        </div>
+        <div class="callout warn callout--chip" style="margin-top:8px;margin-bottom:0;">⚠️ Classification decisions under IAS 32 can materially affect an entity's REPORTED GEARING and dividend cover ratios — reclassifying an instrument from equity to liability increases reported leverage and can convert "dividend" payments into P&amp;L interest expense, both closely watched by lenders and analysts.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 11 ============ -->
+    <div class="section-header" id="s11"><span class="num">11</span><h2>IFRS vs US GAAP — Key Differences</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2">
+        <div class="ctitle ci">Comparison — IAS 32 vs US GAAP (ASC 480 / ASC 470-20)</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Feature</span><span style="color:var(--color-text-info);">IFRS (IAS 32)</span><span style="color:var(--color-text-warning);">US GAAP</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Convertible bond split method</span><span>"With-and-without": liability first at fair value, equity is the residual — NO subsequent remeasurement of either component</span><span>Historically required more complex bifurcation approaches (e.g. cash conversion feature guidance); recent ASU 2020-06 simplified US GAAP to more closely resemble a single-liability approach in many cases, reducing prior divergence</span></div>
+          <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Puttable instrument exception</span><span>Narrow, specific exception permitting equity classification if strict conditions are met</span><span>ASC 480 has its own, differently structured criteria for mandatorily redeemable instruments and puttable equity — not identical mechanics to IAS 32's exception</span></div>
+          <div class="tr" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Offsetting criteria</span><span>Requires BOTH a currently enforceable legal right AND intention to settle net/simultaneously</span><span>Broadly similar dual test, though specific master netting agreement guidance differs in detail (particularly for derivatives under repurchase/reverse repurchase agreements)</span></div>
+          <div class="tr alt" style="grid-template-columns:1.2fr 1fr 1fr;"><span>Redeemable preference shares</span><span>Almost always a liability if mandatorily redeemable</span><span>Similarly classified as a liability (or "mezzanine"/temporary equity in some cases) under ASC 480 — the "temporary equity" concept has no direct IFRS equivalent</span></div>
+        </div>
+        <div class="note">The US GAAP concept of "temporary equity" or "mezzanine equity" — a presentation category BETWEEN liabilities and permanent equity, used for certain redeemable instruments — has NO direct equivalent under IFRS, where an instrument must be classified as either liability or equity (or split as a compound instrument), with no intermediate category.</div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 12 ============ -->
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Statement Mapping — Where Every Classification Event Lands</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2">
+        <div class="ctitle cs">Comprehensive event-to-statement mapping table</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event / transaction</span><span>Statement(s) affected</span><span>Notes</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Issue of ordinary shares (genuine equity)</span><span><span class="badge be">Equity</span></span><span>No liability recognised; proceeds credited to equity, net of issue costs</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Issue of mandatorily redeemable preference shares</span><span><span class="badge bs">SOFP</span></span><span>Classified in full as a financial liability</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>"Dividend" payments on liability-classified preference shares</span><span><span class="badge bp">SOPL</span></span><span>Presented as interest expense, not a distribution of profit</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Issue of a convertible bond (compound instrument)</span><span><span class="badge bs">SOFP</span> <span class="badge be">Equity</span></span><span>Split between liability (IFRS 9) and equity (residual) components</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Accretion of the liability component to face value</span><span><span class="badge bp">SOPL</span> <span class="badge bs">SOFP</span></span><span>Effective interest method under IFRS 9; equity component never remeasured</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Purchase of treasury shares</span><span><span class="badge be">Equity</span></span><span>Deducted from equity; no gain/loss recognised</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Sale/reissue of treasury shares</span><span><span class="badge be">Equity</span></span><span>Consideration recognised directly in equity, never through SOPL</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Offsetting a financial asset and liability meeting both tests</span><span><span class="badge bs">SOFP</span></span><span>Presented net, rather than gross</span></div>
+          <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Amounts subject to a master netting agreement, not meeting the offset test</span><span><span class="badge bp">Notes</span></span><span>Presented gross on the SOFP; disclosed per IFRS 7</span></div>
+          <div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Compound instrument component split</span><span><span class="badge bp">Notes</span></span><span>Mandatory disclosure of the initial split methodology and amounts</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 13 ============ -->
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2">
+        <div class="ctitle cd">How IAS 32 connects across the IFRS body of literature</div>
+        <div class="td-table">
+          <div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 9</span><span>Supplies ALL subsequent measurement rules once IAS 32 has determined an instrument (or component) is a financial liability or financial asset</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 7</span><span>Supplies the extensive disclosure requirements about financial instruments' nature and risks, complementing IAS 32's presentation/offsetting focus</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 1</span><span>Governs where liability-classified vs equity-classified instruments are presented on the SOFP, and how "dividend" payments reclassified as interest are shown in the SOPL</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 2</span><span>Share-based payment arrangements are generally EXCLUDED from IAS 32's scope, except treasury share purchases connected to employee share plans</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IFRS 3</span><span>Contingent consideration classified as a liability (variable settlement) versus equity (fixed settlement) in a business combination follows IAS 32's underlying classification logic</span></div>
+          <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>IAS 21</span><span>Foreign currency-denominated compound instruments require careful application of both the split-accounting rules here and IAS 21's translation rules</span></div>
+          <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>IAS 33</span><span>The liability/equity split of compound instruments directly affects diluted earnings per share calculations, since only the equity (conversion) component is relevant to potential ordinary shares</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION 14 ============ -->
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+<Glossary entries={[
+      { term: "Fixed-for-fixed condition", definition: "The requirement that settlement in the issuer's own equity instruments involves a FIXED number of shares for a FIXED amount of cash/other financial asset, for the arrangement to qualify as an equity instrument." },
+      { term: "Contingent settlement provisions", definition: "Clauses requiring settlement in cash (or otherwise as a liability) upon the occurrence of an uncertain future event outside the control of both parties — generally results in liability classification unless the contingency is not genuine or would only arise in remote/liquidation scenarios." },
+      { term: "Treasury shares", definition: "An entity's own equity instruments reacquired by itself or its subsidiaries — deducted from equity, never treated as a financial asset." },
+      { term: "Residual interest", definition: "The claim on an entity's assets remaining after deducting all liabilities — the Framework's definition of equity, which IAS 32 uses as its classification benchmark." },
+      { term: "Master netting arrangement", definition: "A contractual agreement providing for a single net settlement of all instruments covered, typically in the event of default — does not automatically satisfy IAS 32's offsetting criteria unless net settlement is also the norm in the ordinary course of business." },
+      { term: "Puttable instrument", definition: "A financial instrument giving the holder the right to sell it back to the issuer for cash or another financial asset — normally a liability, unless the narrow equity exception conditions are all satisfied." }
+    ]} />
+
+<FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.IAS32} />
+  </section>
+</StandardPageLayout>
+
+
+

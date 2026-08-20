@@ -1,0 +1,62 @@
+---
+import StandardPageLayout from "../../../layouts/StandardPageLayout.astro";
+import PageToc from "../../../components/PageToc.astro";
+import "../../../styles/standards-poster.css";
+import "../../../styles/extended.css";
+import metadata from "../../../data/standards/hgb/drs21.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  subtitle={metadata.nativeTitle}
+  framework="hgb"
+  status={metadata.status}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Scope" },        { id: "s2", label: "Structure" },        { id: "s3", label: "Methods" },        { id: "s4", label: "Worked example" },        { id: "s5", label: "IFRS" }
+      ]}
+    />
+  </Fragment>
+
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Scope — Elaborating §297(1) HGB's Cash Flow Requirement</h2><span class="line"></span></div><div class="grid">
+<div class="card info span2">
+<div class="ctitle">A single unified standard, not three separate documents</div>
+<div class="principle">DRS 21 replaced the earlier three-document cluster (general DRS 2, plus credit-institution DRS 2-10 and insurance DRS 2-20, both covered in the withdrawn tier) with ONE standard containing dedicated internal annexes for the sector-specific adaptations — elaborating the Kapitalflussrechnung mandatory content §297(1) HGB requires for capital-market-oriented parents (and voluntary for others), established in detail in the earlier HGB poster series.</div>
+</div>
+</div><div class="section-header" id="s2"><span class="num">2</span><h2>The Three-Category Structure</h2><span class="line"></span></div><div class="cols-1">
+<div class="card">
+<div class="ctitle">Operating, investing, financing</div>
+<div class="check-list">
+<span>Cash flow from operating activities (laufende Geschäftstätigkeit)</span>
+<span>Cash flow from investing activities (Investitionstätigkeit)</span>
+<span>Cash flow from financing activities (Finanzierungstätigkeit)</span>
+</div>
+</div>
+<div class="card">
+<div class="ctitle">Sector-specific adaptations (annexes)</div>
+<div class="principle">Credit institutions present cash flows reflecting the trading-book netting concept established in the earlier HGB credit institutions poster; insurers present cash flows reflecting their own technical-provision-dominated balance sheet structure — both genuinely different from an ordinary trading/manufacturing enterprise's own three-category presentation.</div>
+</div>
+</div><div class="section-header" id="s3"><span class="num">3</span><h2>Direct vs. Indirect Method — Both Permitted, One Preferred</h2><span class="line"></span></div><div class="grid">
+<div class="card warn span2">
+<div class="ctitle">A genuine choice, with a stated preference</div>
+<div class="principle">DRS 21 permits BOTH the direct method (showing actual gross cash receipts and payments) and the indirect method (starting from net income and adjusting for non-cash items) for the operating activities section — while explicitly RECOMMENDING the indirect method as the more common and practically manageable approach, particularly given how it more naturally reconciles to the Konzern-GuV already prepared. In practice, the vast majority of German groups use the indirect method.</div>
+</div>
+</div><div class="section-header" id="s4"><span class="num">4</span><h2>Worked Example — Reconciling Net Income to Operating Cash Flow</h2><span class="line"></span></div><div class="grid">
+<div class="card span2">
+<div class="worked">
+<div class="wk-title">Building the indirect-method operating section</div>
+<div class="wk-body">A group reports €5,000,000 net income for the year, including €800,000 of depreciation/amortisation (a non-cash expense), a €300,000 increase in trade receivables (cash NOT yet collected), and a €150,000 increase in trade payables (cash NOT yet paid).</div>
+<div class="wk-answer">Operating cash flow = €5,000,000 + €800,000 (add back non-cash depreciation) − €300,000 (increase in receivables reduces cash) + €150,000 (increase in payables preserves cash) = <strong>€5,650,000</strong> — reconciling accrual-basis net income to the group's own genuine cash generation for the period.</div>
+</div>
+</div>
+</div><div class="section-header" id="s5"><span class="num">5</span><h2>Relationship to IFRS (IAS 7)</h2><span class="line"></span></div><div class="grid">
+<div class="card span2">
+<div class="ctitle">One of the strongest convergence points in the entire DRS library</div>
+<div class="principle">DRS 21's three-category structure and direct/indirect method choice closely mirror IAS 7 in almost every material respect — genuinely one of the cleanest convergence points this whole poster series (HGB and DRS combined) has documented, reflecting how the cash flow statement's own underlying logic (cash is cash, regardless of accounting framework) leaves comparatively little room for genuine national divergence.</div>
+</div>
+</div>
+</StandardPageLayout>

@@ -1,0 +1,169 @@
+---
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import FinancialStatementKey from "../../components/FinancialStatementKey.astro";
+import Glossary from "../../components/Glossary.astro";
+import PageToc from "../../components/PageToc.astro";
+import "../../styles/standards-poster.css";
+import "../../styles/extended.css";
+import HistoryTimeline from "../../components/HistoryTimeline.astro";
+import history from "../../data/history.json";
+import metadata from "../../data/standards/ukgaap/frs101.json";
+---
+
+<StandardPageLayout
+  code={metadata.code}
+  standardType={metadata.framework}
+  title={metadata.title}
+  description={metadata.description}
+  issued={metadata.issued}
+  latestAmendment={metadata.latestAmendment}
+  status={metadata.status}
+  summary={metadata.summary}
+  bannerNotice={metadata.bannerNotice}
+>
+  <Fragment slot="toc">
+    <PageToc
+      items={[
+        { id: "s1", label: "Conceptual Framework Linkage" },
+        { id: "s2", label: "Scope — Qualifying Entities" },
+        { id: "s3", label: "The Qualifying Conditions" },
+        { id: "s4", label: "The Notice and No-Objection Requirement" },
+        { id: "s5", label: "What Is Actually \"Reduced\" — the Disclosure Exemptions" },
+        { id: "s6", label: "What Is NOT Reduced — Recognition and Measurement Stay Fully IFRS" },
+        { id: "s7", label: "Statement Presentation Under the Companies Act" },
+        { id: "s8", label: "Worked Example — Applying the Qualifying Conditions" },
+        { id: "s9", label: "Worked Example — a Disclosure Exemption in Practice" },
+        { id: "s10", label: "Disclosure Requirements (What Remains)" },
+        { id: "s11", label: "Critical Judgments" },
+        { id: "s12", label: "Relationship to IAS/IFRS" },
+        { id: "s13", label: "Statement Mapping" },
+        { id: "s14", label: "Related Standards" },
+        { id: "s15", label: "Glossary" },
+      ]}
+    />
+  </Fragment>
+  <div class="wrap">
+
+    <div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Full IFRS measurement, lighter disclosure — a genuine relief mechanism, not a separate GAAP</div><div class="principle">FRS 101 exists to solve a SPECIFIC, practical problem: within a group that prepares CONSOLIDATED accounts under IFRS, requiring EVERY individual subsidiary and the parent's own INDIVIDUAL accounts to carry the FULL IFRS disclosure burden is often DUPLICATIVE and disproportionate — since the group's own consolidated IFRS accounts already provide the primary, comprehensive disclosure. FRS 101 allows QUALIFYING entities to use IFRS RECOGNITION and MEASUREMENT (so the NUMBERS are identical to what full IFRS would produce) while EXEMPTING them from many IFRS DISCLOSURE requirements.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s2"><span class="num">2</span><h2>Scope — Qualifying Entities</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Members of an IFRS group, preparing their own individual accounts</div><div class="principle">FRS 101 applies to the INDIVIDUAL (not consolidated) financial statements of a "QUALIFYING ENTITY" — broadly, a member of a GROUP where the ULTIMATE (or an intermediate) parent prepares PUBLICLY AVAILABLE consolidated financial statements which are INTENDED to give a true and fair view, using IFRS as adopted for use in the UK.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s3"><span class="num">3</span><h2>The Qualifying Conditions</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">Group membership, plus a restriction on certain financial institutions</div><div class="principle">To qualify, an entity must be a MEMBER of a group where a parent prepares PUBLICLY AVAILABLE consolidated financial statements under IFRS (as adopted for use in the UK) that give a true and fair view, and the entity itself is INCLUDED in that consolidation. Certain entities are EXCLUDED from qualifying regardless of group membership — notably entities with securities traded on a REGULATED market (which must use full IFRS themselves) and certain FINANCIAL INSTITUTIONS required to prepare publicly available financial statements, given the heightened public interest in their FULL disclosure.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s4"><span class="num">4</span><h2>The Notice and No-Objection Requirement</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Shareholders must be informed, and must not object</div><div class="principle">A qualifying entity must give WRITTEN NOTICE to its SHAREHOLDERS of its intention to apply the FRS 101 reduced disclosure framework, and shareholders holding a SPECIFIED minimum proportion of shares (or voting rights) must NOT have OBJECTED in writing within a set period — a genuine SHAREHOLDER PROTECTION mechanism, ensuring the reduced disclosure relief isn't imposed without at least an opportunity for affected owners to object.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s5"><span class="num">5</span><h2>What Is Actually "Reduced" — the Disclosure Exemptions</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">Specific, named exemptions from otherwise-mandatory IFRS disclosures</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.2fr 2fr;"><span>Area</span><span>Exemption</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 2fr;"><span>Cash flow statement</span><span>Exemption from presenting a statement of cash flows (subtopic to certain conditions)</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 2fr;"><span>IFRS 7 Financial Instruments</span><span>Exemption from many of the detailed financial instrument risk disclosures</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 2fr;"><span>IFRS 2 Share-based Payment</span><span>Exemption from certain group share-based payment disclosures where the parent's own consolidated accounts already disclose this</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 2fr;"><span>IAS 24 Related Party Disclosures</span><span>Exemption from disclosing transactions with other WHOLLY-OWNED members of the same group</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 2fr;"><span>IFRS 8 Segment Reporting</span><span>Full exemption, since segment information is a group-consolidated-level concept</span></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s6"><span class="num">6</span><h2>What Is NOT Reduced — Recognition and Measurement Stay Fully IFRS</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">The underlying numbers are unaffected</div><div class="principle">Critically, FRS 101 does NOT change RECOGNITION or MEASUREMENT in ANY way — an entity applying FRS 101 measures its assets, liabilities, income, and expenses EXACTLY as it would under FULL IFRS. This is a genuinely important distinction from FRS 102 (which is based on the DIFFERENT, simplified IFRS for SMEs measurement model) — FRS 101 is purely a DISCLOSURE relief mechanism layered on top of otherwise UNCHANGED IFRS numbers.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s7"><span class="num">7</span><h2>Statement Presentation Under the Companies Act</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">IFRS measurement, Companies Act statutory formats</div><div class="principle">Despite using IFRS recognition and measurement, an entity applying FRS 101 must STILL comply with the UK/Irish Companies Act's STATUTORY FORMAT requirements for its primary statements — typically presented as a <strong>BALANCE SHEET</strong> and <strong>PROFIT AND LOSS ACCOUNT</strong> (rather than the IFRS-style "Statement of Financial Position" and "Statement of Comprehensive Income" titles, though either naming convention is generally understood to describe the same statements) — reflecting that FRS 101 operates WITHIN, not outside, UK/Irish company law's own presentational requirements.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s8"><span class="num">8</span><h2>Worked Example — Applying the Qualifying Conditions</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cw span2"><div class="ctitle cw">Confirming eligibility before electing FRS 101</div>
+      <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: A UK trading subsidiary within an IFRS group</div><div class="wk-body">A UK manufacturing subsidiary is wholly owned by a German parent listed on a regulated EU market, which prepares publicly available consolidated IFRS accounts including this subsidiary. The subsidiary is not a bank or insurer, and has issued the required shareholder notice with no objection received.</div><div class="wk-answer">The subsidiary MEETS all FRS 101 qualifying conditions — it may prepare its INDIVIDUAL UK statutory accounts using <strong>FRS 101</strong>, applying IFRS recognition/measurement (matching the numbers used in the parent's consolidation) while benefiting from REDUCED disclosure requirements in its own standalone accounts.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s9"><span class="num">9</span><h2>Worked Example — a Disclosure Exemption in Practice</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Omitting the cash flow statement</div>
+      <div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Relying on the cash flow exemption</div><div class="wk-body">The same qualifying subsidiary would, under full IFRS (IAS 7), be required to present a statement of cash flows.</div><div class="wk-answer">Applying FRS 101's cash flow exemption (subject to the specified conditions being met, including that the parent's own PUBLICLY AVAILABLE consolidated financial statements include a consolidated cash flow statement), the subsidiary may OMIT its own individual cash flow statement — while its Balance Sheet and Profit and Loss Account continue to be measured EXACTLY as full IFRS would require.</div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s10"><span class="num">10</span><h2>Disclosure Requirements (What Remains)</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">What FRS 101 still requires</div><div class="check-list"><span>A statement that the entity has taken advantage of the FRS 101 disclosure exemptions</span><span>Identification of the parent whose consolidated financial statements include the entity, and where those accounts can be obtained</span><span>All disclosures NOT specifically exempted continue to apply in full</span></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s11"><span class="num">11</span><h2>Critical Judgments</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+      <div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Whether the entity genuinely meets all qualifying conditions, including the group membership and public-availability tests</span><span>Whether specific exemption conditions (e.g. the cash flow exemption's conditions) are satisfied</span></div></div>
+      <div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>None distinct from those already required under full IFRS recognition/measurement</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s12"><span class="num">12</span><h2>Relationship to IAS/IFRS</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card ci span2"><div class="ctitle ci">Comparison — FRS 101 vs full IFRS</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">FRS 101</span><span style="color:var(--color-text-info);">Full IFRS (as adopted for use in the UK)</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Recognition and measurement</span><span>IDENTICAL to full IFRS</span><span>Full IFRS</span></div>
+      <div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Disclosure burden</span><span>REDUCED — specific named exemptions</span><span>Full disclosure required</span></div>
+      <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Statement titles</span><span>Companies Act statutory formats (Balance Sheet, Profit and Loss Account)</span><span>IFRS-style titles typically used (though the UK Companies Act formats can still apply for UK-incorporated entities)</span></div>
+      </div>
+      <div class="note">FRS 101 is genuinely UNIQUE among the "new UK GAAP" suite in that it is NOT itself a different measurement basis — it is entirely a DISCLOSURE relief layered on unchanged IFRS numbers, distinguishing it sharply from FRS 102's DIFFERENT (IFRS-for-SMEs-based) recognition and measurement model.</div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s13"><span class="num">13</span><h2>Statement Mapping</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cs span2"><div class="ctitle cs">Where every FRS 101 election has an effect</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+      <div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Election of FRS 101</span><span>Notes only</span><span>Reduces disclosure notes; primary statement figures unchanged from full IFRS</span></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s14"><span class="num">14</span><h2>Related Standards</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cd span2"><div class="ctitle cd">Cross-reference map</div>
+      <div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Standard</span><span>Connection</span></div>
+      <div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>FRS 100</span><span>Directs qualifying entities toward FRS 101 within the overall UK GAAP hierarchy</span></div>
+      <div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>FRS 102</span><span>The alternative main standard for entities that don't qualify for, or don't elect, FRS 101</span></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="section-header" id="s15"><span class="num">15</span><h2>Glossary</h2><span class="line"></span></div>
+    <div class="grid">
+      <div class="card cn span2">
+      <div class="glossary-item"><div class="glossary-term">Qualifying entity</div><div class="glossary-def">A member of a group whose parent prepares publicly available consolidated IFRS accounts, eligible to apply FRS 101.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Disclosure exemption</div><div class="glossary-def">A specific relief from an otherwise-mandatory IFRS disclosure requirement, available to qualifying entities under FRS 101, with no effect on recognition or measurement.</div></div>
+      </div>
+    </div>
+
+    <FinancialStatementKey />
+
+  </div>
+  <section id="history">
+    <HistoryTimeline items={history.frs101 || []} />
+  </section>
+</StandardPageLayout>

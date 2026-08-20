@@ -1,128 +1,127 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    const input = document.getElementById("standard-search");
-    const placeholder = document.getElementById("search-placeholder");
-    const button = document.getElementById("search-action");
-    const container = document.querySelector(".search-input");
+    const inputs = document.querySelectorAll("#standard-search");
 
-    if (!input || !placeholder || !button || !container) return;
+    inputs.forEach((input) => {
 
-    const suggestions = [
+        const wrapper = input.closest(".search-input-wrapper");
+        if (!wrapper) return;
 
-        "IAS 38",
-        "Revenue",
-        "IFRS 15",
-        "Leases",
-        "IAS 16",
-        "Fair value",
-        "IAS 36",
-        "Impairment",
-        "Cash flows",
-        "Goodwill",
-        "Consolidation"
+        const placeholder = wrapper.querySelector(".search-placeholder");
+        const button = wrapper.querySelector(".search-action");
 
-    ];
+        if (!placeholder || !button) return;
 
-    let index = 0;
-    let timer;
-    let buttonAnimated = false;
+        const suggestions = [
+            "Search IAS 16...",
+            "Search Revenue...",
+            "Search Leases...",
+            "Search PPE...",
+            "Search Inventories...",
+            "Search IAS 38..."
+        ];
 
-    placeholder.textContent = suggestions[index];
+        let index = 0;
+        let timer;
 
-    function rotatePlaceholder() {
+        function rotatePlaceholder() {
 
-        if (
-            document.activeElement === input ||
-            input.value.trim() !== ""
-        ) {
+            if (
+                document.activeElement === input ||
+                input.value.trim() !== ""
+            ) {
+                scheduleNext();
+                return;
+            }
 
-            scheduleNext();
-            return;
-
-        }
-
-        placeholder.classList.add("leaving");
-
-        setTimeout(() => {
-
-            index = (index + 1) % suggestions.length;
-
-            placeholder.textContent = suggestions[index];
-
-            placeholder.classList.remove("leaving");
-
-            placeholder.classList.add("entering");
-
-            requestAnimationFrame(() => {
-
-                placeholder.classList.remove("entering");
-
-            });
-
-            scheduleNext();
-
-        }, 160);
-
-    }
-
-    let firstRotation = true;
-
-    function scheduleNext() {
-
-        clearTimeout(timer);
-
-        const delay = firstRotation ? 2000 : 3000;
-
-        firstRotation = false;
-
-        timer = setTimeout(
-            rotatePlaceholder,
-            delay
-        );
-
-    }
-
-    scheduleNext();
-
-    input.addEventListener("focus", () => {
-
-        container.classList.add("focused");
-
-        if (!buttonAnimated) {
-
-            buttonAnimated = true;
-
-            button.classList.add("button-active");
-            button.classList.add("button-intro");
+            placeholder.classList.add("leaving");
 
             setTimeout(() => {
 
-                button.classList.remove("button-intro");
+                index = (index + 1) % suggestions.length;
 
-            }, 250);
+                placeholder.textContent = suggestions[index];
+
+                placeholder.classList.remove("leaving");
+                placeholder.classList.add("entering");
+
+                requestAnimationFrame(() => {
+                    placeholder.classList.remove("entering");
+                });
+
+                scheduleNext();
+
+            }, 160);
+
+        }
+
+        let firstRotation = true;
+
+        function scheduleNext() {
+
+            clearTimeout(timer);
+            if (document.hidden) return;
+
+            const delay = firstRotation ? 2000 : 3000;
+
+            firstRotation = false;
+
+            timer = setTimeout(rotatePlaceholder, delay);
 
         }
 
-    });
+        document.addEventListener("visibilitychange", () => {
+            if (document.hidden) {
+                clearTimeout(timer);
+            } else {
+                scheduleNext();
+            }
+        });
 
-    input.addEventListener("blur", () => {
+        function updateClearButton() {
 
-        if (input.value.trim() === "") {
-
-            container.classList.remove("focused");
-
-            buttonAnimated = false;
-
-            button.classList.remove("button-active");
-
-            index = 0;
-            firstRotation = true;
-
-            placeholder.textContent = suggestions[index];
-
-            scheduleNext();
+            if (input.value.trim() !== "") {
+                button.classList.add("visible");
+            } else {
+                button.classList.remove("visible");
+            }
 
         }
+
+        scheduleNext();
+
+        input.addEventListener("focus", () => {
+            wrapper.classList.add("focused");
+            updateClearButton();
+        });
+
+        input.addEventListener("blur", () => {
+            if (input.value.trim() === "") {
+                wrapper.classList.remove("focused");
+
+                index = 0;
+                firstRotation = true;
+
+                placeholder.textContent = suggestions[index];
+
+                scheduleNext();
+            }
+            updateClearButton();
+        });
+
+        input.addEventListener("input", updateClearButton);
+
+        button.addEventListener("click", () => {
+            input.value = "";
+            updateClearButton();
+            input.focus();
+        });
+
+        input.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                button.click();
+            }
+        });
 
     });
 

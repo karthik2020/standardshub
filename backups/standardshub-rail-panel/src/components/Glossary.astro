@@ -1,0 +1,39 @@
+---
+/*
+Glossary
+
+Reusable glossary component for IAS / IFRS / Ind AS pages.
+
+Props:
+- entries
+- title (optional)
+
+Displays glossary entries responsively (3 → 2 → 1 columns).
+
+Do not manually group glossary entries.
+*/
+
+interface GlossaryEntry {
+  term: string;
+  definition: string;
+}
+
+interface Props {
+  entries: GlossaryEntry[];
+  title?: string;
+}
+
+const { entries = [], title } = Astro.props;
+---
+
+<div class="card cn">
+  {title && <div class="ctitle cn">{title}</div>}
+  <div class="glossary-grid">
+    {entries.map((entry) => (
+      <div class="glossary-item">
+        <div class="glossary-term">{entry.term}</div>
+        <div class="glossary-def">{entry.definition}</div>
+      </div>
+    ))}
+  </div>
+</div>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASC 842 — Leases | Extended Reference</title>
+<style>
+  :root { --color-background-secondary:#f9fafb;--color-background-tertiary:#f3f4f6;--color-background-info:#eff6ff;--color-background-success:#f0fdf4;--color-background-warning:#fffbeb;--color-background-danger:#fff1f2;--color-border-secondary:#e5e7eb;--color-border-tertiary:#e5e7eb;--color-border-info:#3b82f6;--color-border-success:#22c55e;--color-border-warning:#f59e0b;--color-border-danger:#ef4444;--color-text-primary:#111827;--color-text-secondary:#374151;--color-text-tertiary:#9ca3af;--color-text-info:#2563eb;--color-text-success:#16a34a;--color-text-warning:#b45309;--color-text-danger:#dc2626;--border-radius-lg:10px;--border-radius-md:8px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#fff;color:#111827;margin:0;padding:0;}
+  body{padding:20px;max-width:1180px;margin:0 auto;}*{box-sizing:border-box;}.wrap{padding:1rem 0 .5rem;}
+  .hub{display:flex;justify-content:center;margin-bottom:8px;}.hub-box{padding:12px 28px;background:var(--color-background-secondary);border:1.5px solid var(--color-border-secondary);border-radius:var(--border-radius-lg);text-align:center;}
+  .hub-title{font-size:17px;font-weight:600;color:var(--color-text-primary);}.hub-sub{font-size:11px;color:var(--color-text-tertiary);margin-top:3px;}
+  .toc{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin:14px 0 26px;}.toc a{font-size:10.5px;font-weight:500;padding:4px 11px;border-radius:14px;background:var(--color-background-tertiary);color:var(--color-text-secondary);text-decoration:none;border:1px solid var(--color-border-tertiary);}
+  .section-header{display:flex;align-items:center;gap:8px;margin:30px 0 12px;}.section-header .num{font-size:11px;font-weight:700;color:#fff;background:var(--color-text-info);width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .section-header h2{font-size:14px;font-weight:600;color:var(--color-text-primary);margin:0;}.section-header .line{flex:1;height:1px;background:var(--color-border-tertiary);}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start;}.span2{grid-column:span 2;}
+  .card{border-radius:var(--border-radius-lg);border:1px solid var(--color-border-tertiary);padding:13px 14px;background:var(--color-background-secondary);}
+  .card.ci{border-left:3px solid var(--color-border-info);}.card.cs{border-left:3px solid var(--color-border-success);}.card.cw{border-left:3px solid var(--color-border-warning);}.card.cd{border-left:3px solid var(--color-border-danger);}.card.cn{border-left:3px solid var(--color-border-secondary);}
+  .ctitle{font-size:13px;font-weight:500;margin-bottom:7px;}.ctitle.ci{color:var(--color-text-info);}.ctitle.cs{color:var(--color-text-success);}.ctitle.cw{color:var(--color-text-warning);}.ctitle.cd{color:var(--color-text-danger);}.ctitle.cn{color:var(--color-text-primary);}
+  .principle{font-size:11px;color:var(--color-text-secondary);margin-bottom:9px;line-height:1.55;padding:6px 8px;background:var(--color-background-tertiary);border-radius:6px;}
+  .elabel{font-size:10px;font-weight:500;color:var(--color-text-tertiary);margin-bottom:5px;letter-spacing:.03em;}
+  .note{font-size:10px;color:var(--color-text-tertiary);font-style:italic;line-height:1.5;margin-top:4px;}
+  .callout{font-size:11px;line-height:1.5;padding:6px 9px;border-radius:6px;margin-bottom:8px;}
+  .callout.info{background:var(--color-background-info);color:var(--color-text-info);border:1px solid var(--color-border-info);}
+  .callout.warn{background:var(--color-background-warning);color:var(--color-text-warning);border:1px solid var(--color-border-warning);}
+  .callout.danger{background:var(--color-background-danger);color:var(--color-text-danger);border:1px solid var(--color-border-danger);}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start;}
+  .dot-list span,.check-list span,.cross-list span{display:block;padding-left:14px;position:relative;font-size:11px;color:var(--color-text-secondary);line-height:1.75;}
+  .dot-list span::before{content:"·";position:absolute;left:1px;color:var(--color-text-tertiary);}
+  .check-list span::before{content:"✓";position:absolute;left:0;color:var(--color-text-success);font-size:10px;top:2px;font-weight:700;}
+  .cross-list span::before{content:"✕";position:absolute;left:0;color:var(--color-text-danger);font-size:10px;top:2px;}
+  .td-table{border:1px solid var(--color-border-tertiary);border-radius:8px;overflow:hidden;font-size:10px;margin-bottom:8px;}
+  .td-table .th{display:grid;background:var(--color-background-tertiary);padding:5px 8px;font-weight:500;color:var(--color-text-secondary);}
+  .td-table .tr{display:grid;padding:4px 8px;border-top:1px solid var(--color-border-tertiary);color:var(--color-text-secondary);}.td-table .tr.alt{background:var(--color-background-tertiary);}
+  .worked{border:1px solid var(--color-border-info);border-radius:8px;padding:10px 12px;background:var(--color-background-info);margin-bottom:9px;}
+  .worked .wk-title{font-size:11px;font-weight:600;color:var(--color-text-info);margin-bottom:5px;}.worked .wk-body{font-size:11px;color:var(--color-text-secondary);line-height:1.6;}
+  .worked .wk-answer{margin-top:6px;padding-top:6px;border-top:1px dashed var(--color-border-info);font-size:11px;color:var(--color-text-primary);}
+  .glossary-item{padding:7px 0;border-bottom:1px solid var(--color-border-tertiary);}.glossary-term{font-size:11.5px;font-weight:600;color:var(--color-text-primary);}.glossary-def{font-size:11px;color:var(--color-text-secondary);line-height:1.5;margin-top:2px;}
+  .legend{margin-top:20px;padding:12px 16px;background:var(--color-background-secondary);border:1px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);}
+  .lrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:11px;color:var(--color-text-secondary);margin-top:4px;}.ltitle{font-size:11px;font-weight:500;color:var(--color-text-primary);}
+  .badge{font-size:9px;font-weight:500;padding:1px 5px;border-radius:4px;}.bs{background:var(--color-background-info);color:var(--color-text-info);}.bp{background:var(--color-background-danger);color:var(--color-text-danger);}.bo{background:var(--color-background-success);color:var(--color-text-success);}.be{background:var(--color-background-warning);color:var(--color-text-warning);}.bc{background:#ede9fe;color:#6d28d9;}
+  .footer-note{margin-top:24px;padding:12px 16px;background:var(--color-background-tertiary);border-radius:var(--border-radius-md);font-size:10.5px;color:var(--color-text-tertiary);text-align:center;}
+  @media (max-width:640px){.grid,.two-col{grid-template-columns:1fr;}.span2{grid-column:span 1;}}
+</style></head>
+<body><div class="wrap">
+
+<div class="hub"><div class="hub-box"><div class="hub-title">ASC 842 — Leases</div><div class="hub-sub">Extended reference poster · US GAAP · Current standard, superseding ASC 840 · Counterpart of IFRS 16 · USD examples</div></div></div>
+
+<div class="toc">
+<a href="#s1">1. Conceptual Framework Linkage</a><a href="#s2">2. Scope &amp; the Short-Term Lease Exception</a><a href="#s3">3. Lease Identification — Is There a Lease at All?</a>
+<a href="#s4">4. Lessee Initial Recognition — ROU Asset &amp; Lease Liability</a><a href="#s5">5. Lessee Classification — Finance vs Operating</a>
+<a href="#s6">6. Lessee Subsequent Measurement — Two Different Expense Patterns</a><a href="#s7">7. THE KEY DIVERGENCE — IFRS 16's Single Lessee Model</a>
+<a href="#s8">8. Lessor Accounting</a><a href="#s9">9. Sale-Leaseback Transactions Under ASC 842</a><a href="#s10">10. Practical Expedients &amp; Transition</a>
+<a href="#s11">11. Worked Example — Initial ROU Asset &amp; Lease Liability Measurement</a><a href="#s12">12. Worked Example — Operating Lease Single Lease Cost vs IFRS 16's Front-Loaded Pattern</a>
+<a href="#s13">13. Disclosure Requirements</a><a href="#s14">14. Critical Judgments &amp; Estimates</a>
+<a href="#s15">15. ASC 842 vs IFRS 16 — Comprehensive Comparison</a><a href="#s16">16. Statement Mapping</a><a href="#s17">17. Related Topics</a><a href="#s18">18. Glossary</a>
+</div>
+
+<div class="section-header" id="s1"><span class="num">1</span><h2>Conceptual Framework Linkage</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card ci"><div class="ctitle ci">The headline change: nearly all leases now on the balance sheet</div><div class="principle">ASC 842 — the product of a JOINT FASB-IASB project — fundamentally changed lessee accounting: nearly ALL leases (with a narrow short-term exception) are now recognised on the LESSEE's balance sheet as a RIGHT-OF-USE (ROU) asset and a corresponding LEASE LIABILITY, eliminating the ASC 840 off-balance-sheet operating lease result that had long been criticised as obscuring genuine financial commitments.</div></div>
+<div class="card cd"><div class="ctitle cd">Converged on recognition, diverged on subsequent expense pattern</div><div class="principle">ASC 842 and IFRS 16 are CONVERGED on the headline "put it on the balance sheet" principle — but IFRS 16 went further, ELIMINATING lessee lease classification entirely, while ASC 842 RETAINED a dual finance/operating classification model for lessees, producing a genuine, consequential divergence in subsequent EXPENSE RECOGNITION PATTERNS (Section 7) — arguably the most significant remaining US GAAP/IFRS split from the otherwise-joint lease project.</div>
+</div>
+</div>
+
+<div class="section-header" id="s2"><span class="num">2</span><h2>Scope &amp; the Short-Term Lease Exception</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cw span2"><div class="ctitle cw">A narrow carve-out preserving the old off-balance-sheet result</div><div class="principle">ASC 842 applies to leases of IDENTIFIED assets. A SHORT-TERM LEASE EXCEPTION exists: leases with a term of 12 MONTHS OR LESS (and no purchase option the lessee is reasonably certain to exercise) may be accounted for similarly to old ASC 840 operating leases — expensed on a straight-line basis, WITHOUT ROU asset/liability recognition — a genuine, narrow practical relief, broadly mirrored by IFRS 16's OWN short-term lease exception (also 12 months or less).</div>
+</div>
+</div>
+
+<div class="section-header" id="s3"><span class="num">3</span><h2>Lease Identification — Is There a Lease at All?</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">Control over the use of an identified asset</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">A contract IS (or CONTAINS) a lease if it conveys the RIGHT to CONTROL the USE of an IDENTIFIED asset for a period of time in exchange for consideration — "control" meaning the customer has the right to obtain substantially all of the economic benefits from the asset's use, AND the right to direct its use. This identification threshold is broadly CONVERGED with IFRS 16's own lease identification model — another product of the joint project.</div>
+</div>
+</div>
+
+<div class="section-header" id="s4"><span class="num">4</span><h2>Lessee Initial Recognition — ROU Asset &amp; Lease Liability</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cs span2"><div class="ctitle cs">Present value of lease payments, on both sides of the entry</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">At COMMENCEMENT, the lessee recognises a LEASE LIABILITY at the PRESENT VALUE of remaining lease payments (discounted using the rate implicit in the lease, or the lessee's INCREMENTAL BORROWING RATE if the implicit rate isn't readily determinable), and a corresponding RIGHT-OF-USE (ROU) ASSET — initially equal to the lease liability, adjusted for prepaid rent, lease incentives received, and initial direct costs. This initial measurement mechanic is CONVERGED with IFRS 16's own lessee initial recognition.</div>
+</div>
+</div>
+
+<div class="section-header" id="s5"><span class="num">5</span><h2>Lessee Classification — Finance vs Operating</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cw span2"><div class="ctitle cw">Five criteria, echoing the old ASC 840 bright lines (now indicators, not rigid thresholds)</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Lessees STILL classify each lease as FINANCE or OPERATING, based on five criteria closely echoing ASC 840's old capital lease tests: ownership transfer, bargain purchase option, lease term is a MAJOR PART of remaining economic life (guidance retains the 75% threshold as an example, not a rigid bright line), present value of payments represents SUBSTANTIALLY ALL of fair value (90% retained as an illustrative threshold), and the asset is so SPECIALISED it has no alternative use to the lessor at lease end. <strong>BOTH balance sheet recognition RESULTS look identical at commencement</strong> (ROU asset + lease liability either way) — the classification ONLY affects the SUBSEQUENT expense recognition pattern (Section 6).</div>
+</div>
+</div>
+
+<div class="section-header" id="s6"><span class="num">6</span><h2>Lessee Subsequent Measurement — Two Different Expense Patterns</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">Front-loaded finance vs straight-line single lease cost</div>
+<div class="td-table"><div class="th" style="grid-template-columns:1fr 2fr;"><span>Classification</span><span>Subsequent expense pattern</span></div>
+<div class="tr" style="grid-template-columns:1fr 2fr;"><span>Finance lease</span><span>ROU asset amortised (typically straight-line) SEPARATELY from interest expense on the lease liability (effective interest method) — total expense is FRONT-LOADED (higher combined interest + amortisation early, declining over time), just like an old ASC 840 capital lease</span></div>
+<div class="tr alt" style="grid-template-columns:1fr 2fr;"><span>Operating lease</span><span>A SINGLE LEASE COST is recognised on a STRAIGHT-LINE basis over the lease term (combining interest accretion and ROU amortisation into one even, level total expense) — a genuinely NEW mechanic, distinct from both the old ASC 840 operating lease AND the finance lease pattern</span></div>
+</div>
+<div class="note">This dual-pattern outcome is exactly what IFRS 16 chose to ELIMINATE (Section 7) — under IFRS 16, EVERY lessee lease produces the FRONT-LOADED finance-lease-style pattern, with no operating lease "single lease cost" option at all.</div>
+</div>
+</div>
+
+<div class="section-header" id="s7"><span class="num">7</span><h2>THE KEY DIVERGENCE — IFRS 16's Single Lessee Model</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">No lessee classification distinction under IFRS 16 — everything is treated like a finance lease</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">IFRS 16 took a genuinely BOLDER structural step than ASC 842: it <strong>ELIMINATED lessee lease classification ENTIRELY</strong>. Under IFRS 16, EVERY lessee lease (beyond the short-term/low-value exceptions) is accounted for using a SINGLE model — ROU asset amortisation SEPARATE from interest expense on the lease liability, PRODUCING THE SAME FRONT-LOADED expense pattern for ALL leases, with NO "operating lease" straight-line single-cost alternative. <strong>ASC 842, by contrast, RETAINED the dual finance/operating classification for lessees</strong> — a genuine STRUCTURAL divergence: identical leases can produce a level, straight-line TOTAL expense under US GAAP (if classified operating) but ALWAYS a front-loaded expense pattern under IFRS, REGARDLESS of how that same lease would have been classified under the old dual-model thinking. IFRS 16 also includes a LOW-VALUE ASSET exception (for leases of assets below a low absolute value threshold) that ASC 842 does NOT have as a parallel elective scope exception.</div>
+</div>
+</div>
+
+<div class="section-header" id="s8"><span class="num">8</span><h2>Lessor Accounting</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cw span2"><div class="ctitle cw">Sales-type, direct financing, and operating — largely carried forward from ASC 840</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">LESSOR accounting under ASC 842 largely RETAINS the three-category framework from ASC 840 — SALES-TYPE leases (dealer profit recognised at commencement), DIRECT FINANCING leases (pure financing, no dealer profit, recognised over the lease term), and OPERATING leases (lessor retains the asset on its own books, recognising rental income over time) — with updated classification criteria mirroring the lessee's five criteria.</div>
+</div>
+</div>
+
+<div class="section-header" id="s9"><span class="num">9</span><h2>Sale-Leaseback Transactions Under ASC 842</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">A genuine "sale" test, now aligned with ASC 606's control-transfer principle</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Under ASC 842, whether a sale-leaseback transaction qualifies as a genuine SALE is assessed using ASC 606's CONTROL transfer criteria — if control genuinely transfers, the sale is recognised (gain/loss immediately, subject to adjustment for off-market terms), and the leaseback is accounted for under the normal lessee model; if control does NOT transfer, the transaction is accounted for as a FINANCING arrangement instead. IFRS 16 applies a broadly similar control-transfer test drawing on IFRS 15, producing a largely CONVERGED sale-leaseback assessment mechanism.</div>
+</div>
+</div>
+
+<div class="section-header" id="s10"><span class="num">10</span><h2>Practical Expedients &amp; Transition</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cs span2"><div class="ctitle cs">Package of practical expedients available at adoption</div><div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">Entities adopting ASC 842 could elect a PACKAGE of practical expedients (applied consistently) allowing them to NOT reassess whether expired/existing contracts contain leases, NOT reassess lease classification for existing leases, and NOT reassess initial direct costs for existing leases — substantially easing the transition burden from ASC 840.</div>
+</div>
+</div>
+
+<div class="section-header" id="s11"><span class="num">11</span><h2>Worked Example — Initial ROU Asset &amp; Lease Liability Measurement</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cw span2"><div class="ctitle cw">Commencement recognition</div>
+<div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: A 5-year office lease</div><div class="wk-body">A lessee enters a 5-year office lease with annual payments of $200,000 (paid at year-end), and an incremental borrowing rate of 6%. The lessee pays $15,000 of initial direct costs.</div><div class="wk-answer">Present value of 5 annual $200,000 payments at 6% = approximately <strong>$842,600</strong> (lease liability). ROU asset = $842,600 (lease liability) + $15,000 (initial direct costs) = <strong>$857,600</strong>. Both the ROU asset and lease liability are recognised on the balance sheet at commencement — regardless of whether this lease is subsequently classified as finance or operating.</div></div>
+</div>
+</div>
+
+<div class="section-header" id="s12"><span class="num">12</span><h2>Worked Example — Operating Lease Single Lease Cost vs IFRS 16's Front-Loaded Pattern</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card ci span2"><div class="ctitle ci">Same lease, genuinely different expense trajectories</div>
+<div class="worked" style="margin-bottom:0;"><div class="wk-title">Example: Comparing US GAAP operating lease vs IFRS 16 treatment for an identical lease</div><div class="wk-body">Using the same 5-year, $842,600 lease liability from the prior example, classified as an OPERATING lease under US GAAP (meeting none of the five finance lease criteria).</div><div class="wk-answer"><strong>Under ASC 842 (operating lease):</strong> total lease cost of $200,000 per year is recognised on a STRAIGHT-LINE basis — a LEVEL $200,000 annual expense every year, for all 5 years.<br><strong>Under IFRS 16:</strong> since NO operating lease alternative exists, the SAME lease produces interest expense (declining each year as the liability amortises, e.g. roughly $50,600 in year 1, declining thereafter) PLUS separate straight-line ROU amortisation of $842,600 ÷ 5 = $168,520 per year — a COMBINED expense that is HIGHEST in year 1 (interest + amortisation ≈ $219,100) and LOWEST in year 5, a genuinely FRONT-LOADED pattern, unlike the level $200,000 US GAAP result for the identical contract.</div></div>
+</div>
+</div>
+
+<div class="section-header" id="s13"><span class="num">13</span><h2>Disclosure Requirements</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd span2"><div class="ctitle cd">What ASC 842 requires</div><div class="check-list"><span>Qualitative disclosures about the nature of leases, including significant judgments and options</span><span>Quantitative disclosures — finance and operating lease cost, weighted average remaining lease term, and weighted average discount rate</span><span>Maturity analysis of lease liabilities for at least the next 5 years and a total thereafter</span><span>Cash flow information about leasing activities</span></div>
+</div>
+</div>
+
+<div class="section-header" id="s14"><span class="num">14</span><h2>Critical Judgments &amp; Estimates</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cn span2"><div class="ctitle cn">Where judgement matters most</div>
+<div class="two-col"><div><div class="elabel">SIGNIFICANT JUDGEMENTS</div><div class="dot-list"><span>Whether a contract contains a lease, particularly the "control" assessment for embedded leases</span><span>Lessee classification between finance and operating</span><span>Whether renewal/termination options are reasonably certain of exercise, affecting lease term</span></div></div>
+<div><div class="elabel">SIGNIFICANT ESTIMATES</div><div class="dot-list"><span>Incremental borrowing rate, where the rate implicit in the lease is not readily determinable</span><span>Standalone selling prices used to allocate consideration in contracts with lease and non-lease components</span></div></div></div>
+</div>
+</div>
+
+<div class="section-header" id="s15"><span class="num">15</span><h2>ASC 842 vs IFRS 16 — Comprehensive Comparison</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card ci span2"><div class="ctitle ci">Comparison — ASC 842 vs IFRS 16</div>
+<div class="td-table"><div class="th" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Feature</span><span style="color:var(--color-text-warning);">US GAAP (ASC 842)</span><span style="color:var(--color-text-info);">IFRS (IFRS 16)</span></div>
+<div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Lessee balance sheet recognition</span><span>ROU asset + lease liability, nearly all leases</span><span>Same — converged headline principle</span></div>
+<div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Lessee classification</span><span>RETAINED — dual finance/operating model</span><span>ELIMINATED — single model, all leases treated like finance leases</span></div>
+<div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Operating lease expense pattern</span><span>Straight-line single lease cost (level total expense)</span><span>NO equivalent — all leases produce a front-loaded interest + amortisation pattern</span></div>
+<div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Short-term lease exception</span><span>≤12 months, no reasonably certain purchase option</span><span>Same ≤12 months threshold — converged</span></div>
+<div class="tr" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Low-value asset exception</span><span>NOT available as a parallel elective exception</span><span>Available — leases of low-value underlying assets may be excluded</span></div>
+<div class="tr alt" style="grid-template-columns:1.2fr 1.2fr 1.2fr;"><span>Sale-leaseback control assessment</span><span>Based on ASC 606 control transfer</span><span>Based on IFRS 15 control transfer — broadly converged</span></div>
+</div>
+<div class="note">The lessee classification/expense-pattern divergence is the single most consequential remaining split from the joint lease project — identical lease economics can genuinely produce different income statement TRAJECTORIES (though the same eventual TOTAL expense over the lease term) purely because of which framework applies.</div>
+</div>
+</div>
+
+<div class="section-header" id="s16"><span class="num">16</span><h2>Statement Mapping</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cs span2"><div class="ctitle cs">Where every ASC 842 event lands</div>
+<div class="td-table"><div class="th" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Event</span><span>Statement(s) affected</span><span>Notes</span></div>
+<div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Lease commencement</span><span><span class="badge bs">BS</span></span><span>ROU asset and lease liability recognised at present value of payments</span></div>
+<div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Finance lease subsequent expense</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Separate interest expense and ROU amortisation, front-loaded total</span></div>
+<div class="tr" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Operating lease subsequent expense</span><span><span class="badge bs">BS</span> <span class="badge bp">IS</span></span><span>Single, straight-line lease cost</span></div>
+<div class="tr alt" style="grid-template-columns:1.6fr 1fr 1.4fr;"><span>Lease payments</span><span><span class="badge bc">SCF</span></span><span>Split between operating and financing activities depending on classification</span></div>
+</div>
+</div>
+</div>
+
+<div class="section-header" id="s17"><span class="num">17</span><h2>Related Topics</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cd"><div class="ctitle cd">Cross-reference map</div>
+<div class="td-table"><div class="th" style="grid-template-columns:0.8fr 2fr;"><span>Topic</span><span>Connection</span></div>
+<div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 840</span><span>Predecessor standard — see the companion legacy poster for the "before" picture ASC 842 replaced</span></div>
+<div class="tr alt" style="grid-template-columns:0.8fr 2fr;"><span>ASC 606</span><span>Supplies the control-transfer test used to assess whether a sale-leaseback qualifies as a genuine sale</span></div>
+<div class="tr" style="grid-template-columns:0.8fr 2fr;"><span>ASC 360</span><span>Property, Plant &amp; Equipment — intersects with ROU asset impairment testing</span></div>
+</div>
+</div>
+<div class="card cn"><div class="ctitle cn">Quick-reference glossary preview</div>
+<div class="glossary-item"><div class="glossary-term">Right-of-use (ROU) asset</div><div class="glossary-def">The lessee's asset representing its right to use an underlying asset over the lease term.</div></div>
+<div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Single lease cost</div><div class="glossary-def">The straight-line total expense recognised for an operating lease under ASC 842, combining interest accretion and ROU amortisation into one level amount — with no IFRS 16 equivalent.</div></div>
+</div>
+</div>
+
+<div class="section-header" id="s18"><span class="num">18</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+<div class="grid">
+<div class="card cn span2">
+<div class="glossary-item"><div class="glossary-term">Incremental borrowing rate</div><div class="glossary-def">The rate a lessee would have to pay to borrow, on a collateralised basis, an amount equal to the lease payments, used when the rate implicit in the lease is not readily determinable.</div></div>
+<div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Short-term lease exception</div><div class="glossary-def">A scope exception for leases with a term of 12 months or less, allowing continued straight-line expensing without ROU asset/liability recognition.</div></div>
+</div>
+</div>
+
+<div class="legend"><div class="ltitle">Financial statement key (US GAAP native terminology)</div><div class="lrow"><span class="badge bs">BS</span> Balance Sheet <span class="badge bp">IS</span> Income Statement <span class="badge bo">OCI</span> Other Comprehensive Income <span class="badge be">SE</span> Statement of Shareholders' Equity <span class="badge bc">SCF</span> Statement of Cash Flows</div></div>
+
+<div class="footer-note">ASC 842 — Leases · Extended Reference Poster · Self-contained, no internet connection required</div>
+</div></body></html>

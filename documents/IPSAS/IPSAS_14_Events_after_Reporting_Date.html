@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPSAS 14 — Events after the Reporting Date | Extended Reference</title>
+<style>
+  :root {
+    --color-background-secondary: #f9fafb;
+    --color-background-tertiary:  #f3f4f6;
+    --color-background-info:      #eff6ff;
+    --color-background-success:   #f0fdf4;
+    --color-background-warning:   #fffbeb;
+    --color-background-danger:    #fff1f2;
+    --color-border-secondary: #e5e7eb;
+    --color-border-tertiary:  #e5e7eb;
+    --color-border-info:      #3b82f6;
+    --color-border-success:   #22c55e;
+    --color-border-warning:   #f59e0b;
+    --color-border-danger:    #ef4444;
+    --color-text-primary:   #111827;
+    --color-text-secondary: #374151;
+    --color-text-tertiary:  #9ca3af;
+    --color-text-info:      #2563eb;
+    --color-text-success:   #16a34a;
+    --color-text-warning:   #b45309;
+    --color-text-danger:    #dc2626;
+    --border-radius-lg: 10px;
+    --border-radius-md: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff; color: #111827; margin: 0; padding: 0;
+  }
+  body { padding: 20px; max-width: 1180px; margin: 0 auto; }
+  * { box-sizing: border-box; }
+  .wrap { padding: 1rem 0 0.5rem; }
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub-box { padding: 12px 28px; background: var(--color-background-secondary); border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); text-align: center; }
+  .hub-title { font-size: 17px; font-weight: 600; color: var(--color-text-primary); }
+  .hub-sub   { font-size: 11px; color: var(--color-text-tertiary); margin-top: 3px; }
+  .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 14px 0 26px; }
+  .toc a { font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 14px; background: var(--color-background-tertiary); color: var(--color-text-secondary); text-decoration: none; border: 1px solid var(--color-border-tertiary); }
+  .toc a:hover { border-color: var(--color-border-info); color: var(--color-text-info); }
+  .section-header { display: flex; align-items: center; gap: 8px; margin: 30px 0 12px; }
+  .section-header .num { font-size: 11px; font-weight: 700; color: #ffffff; background: var(--color-text-info); width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin: 0; }
+  .section-header .line { flex: 1; height: 1px; background: var(--color-border-tertiary); }
+  .grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+  .span2 { grid-column: span 2; }
+  .card  { border-radius: var(--border-radius-lg); border: 1px solid var(--color-border-tertiary); padding: 13px 14px; background: var(--color-background-secondary); }
+  .card.ci { border-left: 3px solid var(--color-border-info); }
+  .card.cs { border-left: 3px solid var(--color-border-success); }
+  .card.cw { border-left: 3px solid var(--color-border-warning); }
+  .card.cd { border-left: 3px solid var(--color-border-danger); }
+  .card.cn { border-left: 3px solid var(--color-border-secondary); }
+  .cnum   { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 1px; }
+  .ctitle { font-size: 13px; font-weight: 500; margin-bottom: 7px; }
+  .ctitle.ci { color: var(--color-text-info); }
+  .ctitle.cs { color: var(--color-text-success); }
+  .ctitle.cw { color: var(--color-text-warning); }
+  .ctitle.cd { color: var(--color-text-danger); }
+  .ctitle.cn { color: var(--color-text-primary); }
+  .principle { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 9px; line-height: 1.55; padding: 6px 8px; background: var(--color-background-tertiary); border-radius: 6px; }
+  .elabel { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 5px; letter-spacing: 0.03em; }
+  .eg  { margin-bottom: 7px; }
+  .egl { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; margin-bottom: 3px; }
+  .entry { display: flex; align-items: flex-start; gap: 4px; margin-bottom: 4px; }
+  .dr { font-size: 11px; font-weight: 500; color: var(--color-text-info);   min-width: 14px; padding-top: 1px; }
+  .cr { font-size: 11px; font-weight: 500; color: var(--color-text-danger); min-width: 14px; padding-top: 1px; padding-left: 6px; }
+  .etxt { font-size: 11px; color: var(--color-text-primary); flex: 1; line-height: 1.4; }
+  .badges { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
+  .badge  { font-size: 9px; font-weight: 500; padding: 1px 5px; border-radius: 4px; }
+  .bs { background: var(--color-background-info);    color: var(--color-text-info); }
+  .bp { background: var(--color-background-danger);  color: var(--color-text-danger); }
+  .bo { background: var(--color-background-success); color: var(--color-text-success); }
+  .be { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .bc { background: #f3e8ff; color: #7e22ce; }
+  .div { height: 1px; background: var(--color-border-tertiary); margin: 7px 0; }
+  .note { font-size: 10px; color: var(--color-text-tertiary); font-style: italic; line-height: 1.5; margin-top: 4px; }
+  .callout { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .callout.info   { background: var(--color-background-info);    color: var(--color-text-info);    border: 1px solid var(--color-border-info); }
+  .callout.warn   { background: var(--color-background-warning); color: var(--color-text-warning); border: 1px solid var(--color-border-warning); }
+  .callout.danger { background: var(--color-background-danger);  color: var(--color-text-danger);  border: 1px solid var(--color-border-danger); }
+  .callout.suc    { background: var(--color-background-success); color: var(--color-text-success); border: 1px solid var(--color-border-success); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: start; }
+  .dot-list span, .check-list span, .cross-list span {
+    display: block; padding-left: 14px; position: relative;
+    font-size: 11px; color: var(--color-text-secondary); line-height: 1.75;
+  }
+  .dot-list   span::before { content: "·"; position: absolute; left: 1px; color: var(--color-text-tertiary); }
+  .check-list span::before { content: "✓"; position: absolute; left: 0; color: var(--color-text-success); font-size: 10px; top: 2px; font-weight: 700; }
+  .cross-list span::before { content: "✕"; position: absolute; left: 0; color: var(--color-text-danger);  font-size: 10px; top: 2px; }
+  .spec-box { padding: 9px 10px; border: 1px solid var(--color-border-tertiary); border-radius: 8px; background: var(--color-background-tertiary); margin-bottom: 7px; }
+  .spec-title { font-size: 11px; font-weight: 500; margin-bottom: 5px; }
+  .formula-box { background: var(--color-background-tertiary); border: 1px solid var(--color-border-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; font-size: 11px; line-height: 1.8; }
+  .formula-box .f-label { font-size: 10px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .formula-box .f-eq { font-weight: 500; color: var(--color-text-primary); }
+  .td-table { border: 1px solid var(--color-border-tertiary); border-radius: 8px; overflow: hidden; font-size: 10px; margin-bottom: 8px; }
+  .td-table .th { display: grid; background: var(--color-background-tertiary); padding: 5px 8px; font-weight: 500; color: var(--color-text-secondary); }
+  .td-table .tr { display: grid; padding: 4px 8px; border-top: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  .td-table .tr.alt { background: var(--color-background-tertiary); }
+  .worked { border: 1px solid var(--color-border-info); border-radius: 8px; padding: 10px 12px; background: var(--color-background-info); margin-bottom: 9px; }
+  .worked .wk-title { font-size: 11px; font-weight: 600; color: var(--color-text-info); margin-bottom: 5px; }
+  .worked .wk-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .worked .wk-answer { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--color-border-info); font-size: 11px; color: var(--color-text-primary); }
+  .glossary-item { padding: 7px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+  .glossary-term { font-size: 11.5px; font-weight: 600; color: var(--color-text-primary); }
+  .glossary-def { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-top: 2px; }
+  .legend { margin-top: 20px; padding: 12px 16px; background: var(--color-background-secondary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); }
+  .lrow  { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+  .ltitle { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+  .footer-note { margin-top: 24px; padding: 12px 16px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); font-size: 10.5px; color: var(--color-text-tertiary); text-align: center; }
+  @media (max-width: 640px) {
+    .grid, .two-col, .three-col { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hub">
+    <div class="hub-box">
+      <div class="hub-title">IPSAS 14 — Events after the Reporting Date</div>
+      <div class="hub-sub">Extended reference poster · Full Handbook structure · Worked examples · Statement mapping · Related standards</div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <a href="#s1">1. Objective, Scope &amp; Definitions</a>
+    <a href="#s2">2. Authorizing the Financial Statements for Issue</a>
+    <a href="#s3">3. Adjusting Events</a>
+    <a href="#s4">4. Non-Adjusting Events</a>
+    <a href="#s5">5. Dividends or Similar Distributions</a>
+    <a href="#s6">6. Going Concern</a>
+    <a href="#s7">7. Restructuring</a>
+    <a href="#s8">8. Disclosure Requirements</a>
+    <a href="#s9">9. Effective Date &amp; Amendment Timeline</a>
+    <a href="#s10">10. Relationship to IAS 10</a>
+    <a href="#s11">11. Statement / Process Mapping</a>
+    <a href="#s12">12. Related Standards</a>
+    <a href="#s13">13. Glossary</a>
+  </div>
+
+  <!-- ============ SECTION 1 — OBJECTIVE, SCOPE & DEFINITIONS ============ -->
+  <div class="section-header" id="s1"><span class="num">1</span><h2>Objective, Scope &amp; Definitions (paras. 1–5)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Objective &amp; scope</div>
+      <div class="principle">Prescribes (a) when an entity should ADJUST its financial statements for events after the reporting date, and (b) what to disclose about the authorization date and about those events. Also requires an entity NOT to prepare statements on a going concern basis if post-reporting-date events show that assumption is no longer appropriate.</div>
+      <div class="check-list">
+        <span>Applies to an entity preparing accrual-basis financial statements, for accounting and disclosure of events after the reporting date</span>
+      </div>
+      <div class="note">Paras. 3–4 [Deleted].</div>
+    </div>
+
+    <div class="card cd">
+      <div class="ctitle cd">The core definition (para. 5)</div>
+      <div class="glossary-item" style="border-bottom:none;">
+        <div class="glossary-term">Events after the reporting date</div>
+        <div class="glossary-def">Favorable and unfavorable events occurring between the reporting date and the date the financial statements are AUTHORIZED FOR ISSUE.</div>
+      </div>
+      <div class="elabel" style="margin-top:9px;">TWO TYPES</div>
+      <div class="dot-list">
+        <span><strong style="font-weight:500">Adjusting events</strong> — provide evidence of conditions that EXISTED at the reporting date</span>
+        <span><strong style="font-weight:500">Non-adjusting events</strong> — indicative of conditions that AROSE after the reporting date</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 — AUTHORIZING FOR ISSUE ============ -->
+  <div class="section-header" id="s2"><span class="num">2</span><h2>Authorizing the Financial Statements for Issue (paras. 6–8)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Two dates that matter</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.1fr 1.9fr;"><span>Date</span><span>Meaning</span></div>
+        <div class="tr" style="grid-template-columns:1.1fr 1.9fr;"><span>Reporting date</span><span>The last day of the period the financial statements cover</span></div>
+        <div class="tr alt" style="grid-template-columns:1.1fr 1.9fr;"><span>Date of authorization for issue</span><span>When the individual/body with authority approves the statements for issue — the audit opinion is given on THESE finalized statements</span></div>
+      </div>
+      <div class="note">Events after the reporting date are ALL events in between — even if they occur after a surplus/deficit announcement, a controlled entity's own authorization, or publication of other selected information (para. 6).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Who authorizes — and the "second approval" wrinkle</div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:8px;">Responsibility varies by jurisdiction. Typically: individual agency statements — the head of the central finance agency (controller/accountant-general). Whole-of-government consolidated statements — jointly the head of the central finance agency and the finance minister.</div>
+      <div class="callout warn" style="margin-bottom:0;">⚠️ Some jurisdictions require SUBMISSION to another body afterward (e.g. Parliament or a local council) that may have the power to require CHANGES. If changes are made, the amended statements are a NEW set of financial statements (para. 8, 27) — the authorization date resets.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 — ADJUSTING EVENTS ============ -->
+  <div class="section-header" id="s3"><span class="num">3</span><h2>Adjusting Events after the Reporting Date (paras. 10–11)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Examples requiring adjustment (para. 11)</div>
+      <div class="dot-list">
+        <span>Court case SETTLED after the reporting date, confirming a present obligation existed → adjust/recognize a provision under IPSAS 19 (not just disclose a contingent liability)</span>
+        <span>Information received about an asset being IMPAIRED at the reporting date — e.g. a debtor's post-year-end bankruptcy usually confirms credit impairment already existed; inventory sold after year-end evidences its NRV at the reporting date</span>
+        <span>Post-year-end determination of the COST of assets purchased or PROCEEDS of assets sold before the reporting date</span>
+        <span>Post-year-end determination of revenue-sharing amounts under an agreement in place DURING the reporting period</span>
+        <span>Post-year-end determination of performance bonuses, where a present legal/constructive obligation existed at the reporting date</span>
+        <span>Discovery of FRAUD or errors showing the financial statements were incorrect</span>
+      </div>
+      <div class="note">Government officials announcing intentions between the reporting date and authorization: usually NOT an adjusting event, unless there's sufficient evidence the intention CAN and WILL be fulfilled and it relates to conditions existing at the reporting date (para. 9).</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 — NON-ADJUSTING EVENTS ============ -->
+  <div class="section-header" id="s4"><span class="num">4</span><h2>Non-Adjusting Events after the Reporting Date (paras. 12–13)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd">
+      <div class="ctitle cd">The rule &amp; two Handbook examples</div>
+      <div class="callout danger" style="margin-bottom:9px;">✕ An entity shall NOT adjust recognized amounts for non-adjusting events, however material.</div>
+      <div class="dot-list">
+        <span>A decline in the FAIR VALUE of regularly-revalued property between the reporting date and authorization — reflects LATER circumstances, not the property's condition at the reporting date</span>
+        <span>An entity decides, AFTER the reporting date, to distribute additional community-service-program benefits — expenses aren't adjusted for the current period, even though the decision may warrant disclosure</span>
+      </div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Material non-adjusting events triggering disclosure (para. 31)</div>
+      <div class="dot-list">
+        <span>Unusually large fair-value declines unrelated to reporting-date conditions</span>
+        <span>A major public sector combination (IPSAS 40), disposal of a major controlled entity, or outsourcing all/substantially all activities</span>
+        <span>Discontinuing an operation/major program; major asset purchases, held-for-sale classifications (IPSAS 44), disposals, or expropriations</span>
+        <span>Destruction of a major building by fire; major restructuring announced/commenced (IPSAS 19)</span>
+        <span>Legislation forgiving loans; abnormal asset-price or FX-rate swings; tax rate/law changes with a significant effect</span>
+        <span>Significant new commitments/contingent liabilities (e.g. guarantees issued); major litigation arising SOLELY from post-year-end events</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 — DIVIDENDS OR SIMILAR DISTRIBUTIONS ============ -->
+  <div class="section-header" id="s5"><span class="num">5</span><h2>Dividends or Similar Distributions (paras. 14–16)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Not a liability at the reporting date — disclose instead</div>
+      <div class="principle">If dividends/similar distributions are declared AFTER the reporting date, the entity SHALL NOT recognize them as a liability at the reporting date — no obligation existed at that time. They're disclosed in the notes per IPSAS 1 instead.</div>
+      <div class="note">Public sector context: dividends can arise when a controlling entity consolidates a commercial public sector entity with outside ownership interests, or under a "purchaser-provider" financial management model requiring income distributions to a controlling entity (e.g. central government) (para. 15). Dividends/distributions do NOT include a return of capital.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 6 — GOING CONCERN ============ -->
+  <div class="section-header" id="s6"><span class="num">6</span><h2>Going Concern (paras. 17–24)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cw">
+      <div class="ctitle cw">Individual entity vs whole-of-government</div>
+      <div class="principle">Going concern is more RELEVANT for individual entities than for a government as a whole. An agency might not be a going concern because government has decided to transfer its activities elsewhere — but that restructuring has NO impact on the government's own going concern status.</div>
+      <div class="formula-box">
+        <div class="f-eq">SHALL NOT prepare on a going concern basis if, AFTER the reporting date, there's a determined intention to liquidate/cease operating, or no realistic alternative but to do so</div>
+      </div>
+    </div>
+
+    <div class="card ci">
+      <div class="ctitle ci">What to weigh, and what happens next</div>
+      <div class="dot-list" style="margin-bottom:9px;">
+        <span>Current/expected performance; announced or potential restructuring</span>
+        <span>Likelihood of continued government funding, and potential replacement funding sources</span>
+      </div>
+      <div class="note">Budget-funded entities: going concern issues generally arise only if government announces it will STOP funding. Self-funding entities: deteriorating post-year-end results/position may itself signal a going-concern problem (paras. 20–21). If the assumption fails, judgment determines the impact on asset/liability CARRYING VALUES, and whether new liabilities arise or debt covenant clauses reclassify debts as current (paras. 22–23).</div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card cd span2">
+      <div class="ctitle cd">Disclosure triggers cross-referenced to IPSAS 1 (para. 24)</div>
+      <div class="dot-list">
+        <span>Statements NOT prepared on a going concern basis → disclose that fact, the basis actually used, and WHY the entity isn't considered a going concern</span>
+        <span>Material uncertainties that MAY cast significant doubt, even where the going-concern conclusion still holds → disclosed regardless, and this can arise from events/conditions AFTER the reporting date</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 7 — RESTRUCTURING ============ -->
+  <div class="section-header" id="s7"><span class="num">7</span><h2>Restructuring (para. 25)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cs span2">
+      <div class="ctitle cs">Disposing of a component ≠ automatic going-concern doubt</div>
+      <div class="principle">A restructuring announced after the reporting date that meets the non-adjusting-event definition is disclosed per this Standard. IPSAS 19 governs recognition of any associated restructuring PROVISION. Merely disposing of a component of the entity does NOT, by itself, call the entity's going-concern status into question — but where the restructuring DOES mean the entity is no longer a going concern, the nature and amount of recognized assets/liabilities may need to change.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 8 — DISCLOSURE REQUIREMENTS ============ -->
+  <div class="section-header" id="s8"><span class="num">8</span><h2>Disclosure Requirements (paras. 26–31)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci">
+      <div class="ctitle ci">Authorization date &amp; updating disclosures</div>
+      <div class="check-list" style="margin-bottom:9px;">
+        <span>Date the financial statements were AUTHORIZED FOR ISSUE, and who gave that authorization</span>
+        <span>If another body can AMEND the statements after issuance, disclose that fact</span>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);line-height:1.6;">If new information about REPORTING-DATE conditions arrives before authorization, existing disclosures are UPDATED in light of it — even if amounts recognized don't change. Example: new evidence about a contingent liability that existed at the reporting date updates that disclosure regardless of whether a provision is now recognized (paras. 28–29).</div>
+    </div>
+
+    <div class="card cw">
+      <div class="ctitle cw">Non-adjusting event disclosure (para. 30)</div>
+      <div class="check-list">
+        <span>The NATURE of each material category of non-adjusting event</span>
+        <span>An ESTIMATE of its financial effect, OR a statement that no estimate can be made</span>
+      </div>
+      <div class="note">Materiality is assessed against whether NON-disclosure could influence users' economic decisions — see §4 for the Handbook's own list of triggering examples.</div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 9 — EFFECTIVE DATE & AMENDMENT TIMELINE ============ -->
+  <div class="section-header" id="s9"><span class="num">9</span><h2>Effective Date &amp; Amendment Timeline (paras. 32–34)</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cn span2">
+      <div class="ctitle cn">Amendment history at a glance</div>
+      <div class="principle">Base Standard: periods beginning on/after <strong>1 January 2008</strong>. Supersedes IPSAS 14 (2001) (para. 34, "Withdrawal"). Appendix — Amendments to Other IPSAS — is [Deleted].</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1fr 2.2fr;"><span>Effective</span><span>Change</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2011</span><span>Para. 16 — Improvements to IPSAS (Jan 2010)</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2017</span><span>Para. 33 (IPSAS 33); para. 31 (Improvements to IPSAS 2015)</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2018</span><span>Paras. 3, 4 deleted; paras. 15, 21 amended — The Applicability of IPSAS (Apr 2016)</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2019</span><span>Para. 31 — IPSAS 40, Public Sector Combinations</span></div>
+        <div class="tr" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2023</span><span>Para. 11 — IPSAS 41, Financial Instruments</span></div>
+        <div class="tr alt" style="grid-template-columns:1fr 2.2fr;"><span>1 Jan 2025</span><span>Paras. 16, 31 — IPSAS 44, Non-current Assets Held for Sale and Discontinued Operations</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 10 — RELATIONSHIP TO IAS 10 ============ -->
+  <div class="section-header" id="s10"><span class="num">10</span><h2>Relationship to IAS/IFRS — Comparison with IAS 10</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card ci span2">
+      <div class="ctitle ci">Comparison — IPSAS 14 vs IAS 10</div>
+      <div class="principle">IPSAS 14 is drawn primarily from IAS 10 (revised 2003), <em>Events after the Balance Sheet Date</em>, including the IASB's May 2008 Improvements to IFRS.</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.3fr 1.9fr;"><span>Topic</span><span>Difference</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Going concern judgment</span><span>IPSAS 14 notes judgment is needed for the CARRYING VALUE impact when going concern fails (para. 22) — no IAS 10 equivalent</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>Authorization-for-issue commentary</span><span>IPSAS 14 has additional commentary (paras. 6–8) on determining that date across varied public sector governance structures</span></div>
+        <div class="tr" style="grid-template-columns:1.3fr 1.9fr;"><span>Terminology</span><span>"Net assets/equity," "reporting date" (IPSAS 14) vs "equity," "balance sheet date" (IAS 10)</span></div>
+        <div class="tr alt" style="grid-template-columns:1.3fr 1.9fr;"><span>"Reporting date" definition</span><span>IPSAS 14 defines it explicitly; IAS 10 has no equivalent definition of "balance sheet date"</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 11 — STATEMENT / PROCESS MAPPING ============ -->
+  <div class="section-header" id="s11"><span class="num">11</span><h2>Statement / Process Mapping</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">Adjusting vs non-adjusting — decision map</div>
+      <div class="dot-list">
+        <span>1. Did the event occur between the reporting date and the authorization date? If no → not an "event after the reporting date" at all</span>
+        <span>2. Does it provide evidence of a condition that EXISTED at the reporting date? → ADJUSTING — update recognized amounts, or recognize items not previously recognized (§3)</span>
+        <span>3. Is it indicative of a condition that AROSE afterward? → NON-ADJUSTING — do not change recognized amounts (§4)</span>
+        <span>4. Is a non-adjusting event MATERIAL? → disclose its nature and financial effect (or state none can be estimated) (§8)</span>
+        <span>5. Does the event affect whether the entity remains a GOING CONCERN? → reassess the basis of preparation entirely, regardless of adjusting/non-adjusting classification (§6)</span>
+        <span>6. Were dividends/distributions DECLARED after the reporting date? → never a liability at the reporting date; disclose only (§5)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:10px;">
+    <div class="card cs span2">
+      <div class="ctitle cs">Concept-to-statement mapping table</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>IPSAS 14 concept</span><span>Statement(s)</span><span>Notes</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Adjusting event</span><span><span class="badge bs">SOFP</span> <span class="badge bp">SOFPerf</span></span><span>Recognized amounts updated directly</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Non-adjusting event (material)</span><span><span class="badge be">Notes</span></span><span>Nature + financial effect estimate disclosed only</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Going concern failure post-year-end</span><span><span class="badge bs">SOFP</span> <span class="badge be">Notes</span></span><span>Basis of preparation changes entirely, per IPSAS 1</span></div>
+        <div class="tr alt" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Dividends declared after the reporting date</span><span><span class="badge be">Notes</span></span><span>Never a SOFP liability at the reporting date</span></div>
+        <div class="tr" style="grid-template-columns:1.7fr 1fr 1.3fr;"><span>Authorization date &amp; authority</span><span><span class="badge be">Notes</span></span><span>Mandatory per para. 26</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 12 — RELATED STANDARDS ============ -->
+  <div class="section-header" id="s12"><span class="num">12</span><h2>Related Standards — Cross-Reference Map</h2><span class="line"></span></div>
+  <div class="grid">
+    <div class="card cd span2">
+      <div class="ctitle cd">How IPSAS 14 connects across the IPSAS body of literature</div>
+      <div class="td-table">
+        <div class="th" style="grid-template-columns:0.7fr 2.2fr;"><span>Standard</span><span>Nature of the connection</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 1</span><span>Going concern and material uncertainty disclosure requirements that IPSAS 14 events can trigger (§6, §8)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 19</span><span>Provision recognition/adjustment for adjusting events (e.g. settled litigation); restructuring provisions (§3, §7)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 40</span><span>Major public sector combinations after the reporting date — specific disclosure requirements layered on top (§4)</span></div>
+        <div class="tr alt" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 41</span><span>Amended para. 11's impairment example wording (financial asset credit-impairment terminology) (§3)</span></div>
+        <div class="tr" style="grid-template-columns:0.7fr 2.2fr;"><span>IPSAS 44</span><span>Held-for-sale classification and discontinued operations as a non-adjusting event trigger (§4)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 13 — GLOSSARY ============ -->
+  <div class="section-header" id="s13"><span class="num">13</span><h2>Quick-Reference Glossary</h2><span class="line"></span></div>
+  <div class="three-col">
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Adjusting events</div><div class="glossary-def">Events after the reporting date providing evidence of conditions that existed at the reporting date.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Non-adjusting events</div><div class="glossary-def">Events after the reporting date indicative of conditions that arose after the reporting date.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Reporting date</div><div class="glossary-def">The last day of the reporting period to which the financial statements relate.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Date of authorization for issue</div><div class="glossary-def">The date the financial statements receive approval from the individual/body with authority to finalize them.</div></div>
+    </div>
+    <div class="card cn">
+      <div class="glossary-item"><div class="glossary-term">Going concern</div><div class="glossary-def">The assumption that an entity will continue operations for the foreseeable future — reassessed for events after the reporting date.</div></div>
+      <div class="glossary-item" style="border-bottom:none;"><div class="glossary-term">Dividends or similar distributions</div><div class="glossary-def">Distributions to owners, excluding a return of capital.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="ltitle">Financial statement key</div>
+    <div class="lrow">
+      <span class="badge bs">SOFP</span> Statement of financial position
+      <span class="badge bp">SOFPerf</span> Statement of financial performance
+      <span class="badge be">Notes</span> Notes to the financial statements
+    </div>
+  </div>
+
+  <div class="footer-note">IPSAS 14 — Events after the Reporting Date · Extended Reference Poster · Built from the 2025 IPSASB Handbook, Volume I · Self-contained, no internet connection required</div>
+
+</div>
+</body>
+</html>
