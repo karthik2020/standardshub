@@ -3,6 +3,7 @@ import StandardLayout from "../../layouts/StandardLayout.astro";
 import type { StandardSummary } from "../../data/standards";
 import StandardCard from "../../components/StandardCard.astro";
 import { FRAMEWORK_CONFIG, getFramework } from "../../data/frameworks";
+import FrameworkHero from "../../components/FrameworkHero.astro";
 import standards from "../../data/standards.json";
 import { palette } from "../../data/standardVisuals";
 
@@ -26,11 +27,7 @@ const ASBJ_FAMILY_DESCRIPTIONS: Record<string, string> = {
 
 <StandardLayout code={framework.code} title={`${framework.fullName} (${framework.code})`} framework={framework.code} hasToc={false}>
 
-  <h1>{framework.fullName}</h1>
-
-  <p class="category-description">
-    {framework.description}
-  </p>
+  <FrameworkHero frameworkId={framework.id} />
 
   <div class="view-toggle">
 

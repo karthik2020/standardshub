@@ -4132,8 +4132,8 @@ html[data-theme="dark"] .toc a.active::before {
    track. The sidebar and the TOC (separate grid item) are untouched, and
    no whitespace appears between the sidebar and the content. */
 @media (min-width: 1600px) {
-    .reading-column {
-        /* max-inline-size: 960px; */
+    .page-body:not(.home-layout) .reading-column {
+        max-inline-size: 960px;
         margin-inline: auto;
     }
 
@@ -5021,4 +5021,123 @@ html[data-sidebar-theme="dark"] .standards-sidebar .theme-icon-moon {
     .sidebar {
         transition: none;
     }
+}
+
+/* Framework Landing Page Hero Redesign */
+
+.framework-hero-container {
+    position: relative;
+    z-index: 10;
+    box-shadow: var(--shadow-lg);
+    border-radius: var(--radius-xl);
+    padding: var(--space-3xl) var(--space-xl);
+    background: linear-gradient(135deg, var(--surface) 0%, var(--surface-alt) 100%);
+    border: 1px solid var(--border);
+    overflow: visible;
+    margin-bottom: var(--space-3xl);
+    text-align: left;
+}
+
+.framework-hero-container .hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.framework-hero-container h1 {
+    font-size: 38px;
+    font-weight: var(--weight-bold);
+    color: var(--text);
+    margin: 0 0 var(--space-xs) 0;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+}
+
+.framework-hero-container .category-description {
+    font-size: var(--text-body);
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 800px;
+    margin: 0 0 var(--space-lg) 0;
+}
+
+.framework-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: 6px 12px;
+    background: var(--framework-accent-soft, var(--surface-hover));
+    color: var(--framework-accent, var(--text-secondary));
+    border: 1px solid color-mix(in srgb, var(--framework-accent) 20%, transparent);
+    border-radius: var(--radius-pill);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    margin-bottom: var(--space-lg);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.framework-stats-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    margin-top: var(--space-xl);
+}
+
+.stat-card {
+    flex: 1;
+    min-width: 140px;
+    max-width: 220px;
+    background: color-mix(in srgb, var(--surface) 80%, transparent);
+    border: 1px solid var(--border);
+    padding: var(--space-md) var(--space-lg);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: transform var(--duration-fast) var(--ease), border-color var(--duration-fast) var(--ease);
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--framework-accent) 30%, var(--border));
+}
+
+.stat-value {
+    display: block;
+    font-size: 28px;
+    font-weight: var(--weight-bold);
+    color: var(--framework-accent, var(--text));
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.stat-label {
+    display: block;
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.framework-hero-container .hero-bg-mesh {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    opacity: 0.15;
+    background-image: 
+        radial-gradient(at 10% 10%, var(--framework-accent) 0px, transparent 40%),
+        radial-gradient(at 90% 20%, color-mix(in srgb, var(--framework-accent) 50%, white) 0px, transparent 45%),
+        radial-gradient(at 50% 80%, color-mix(in srgb, var(--framework-accent) 30%, transparent) 0px, transparent 50%);
+    filter: blur(40px);
+    transform: translate3d(0,0,0);
+}
+
+html[data-theme="dark"] .framework-hero-container .hero-bg-mesh {
+    opacity: 0.12;
+    background-image: 
+        radial-gradient(at 10% 10%, var(--framework-accent) 0px, transparent 50%),
+        radial-gradient(at 90% 20%, color-mix(in srgb, var(--framework-accent) 30%, black) 0px, transparent 50%);
 }

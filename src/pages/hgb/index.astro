@@ -2,6 +2,7 @@
 import StandardLayout from "../../layouts/StandardLayout.astro";
 import StandardCard from "../../components/StandardCard.astro";
 import { FRAMEWORK_CONFIG, getFramework } from "../../data/frameworks";
+import FrameworkHero from "../../components/FrameworkHero.astro";
 import standards from "../../data/standards.json";
 import { palette } from "../../data/standardVisuals";
 
@@ -9,11 +10,7 @@ const framework = getFramework("hgb")!;
 ---
 
 <StandardLayout code={framework.code} title={framework.fullName} framework={framework.code} hasToc={false}>
-  <h1>{framework.fullName}</h1>
-
-  <p class="category-description">
-    {framework.description}
-  </p>
+  <FrameworkHero frameworkId={framework.id} />
 
   <div class="standards-group">
     <h2 class="standards-group-title">HGB Standards</h2>

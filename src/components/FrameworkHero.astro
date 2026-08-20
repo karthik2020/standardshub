@@ -1,0 +1,78 @@
+---
+/*
+FrameworkHero
+
+Reusable hero component for all framework and sub-framework landing pages.
+Calculates active, historical, and total standard counts from standards.json
+and renders a brand-colored ambient mesh background, a descriptive badge, and stats cards.
+*/
+
+import standards from "../data/standards.json";
+import { getFramework } from "../data/frameworks";
+
+interface Props {
+  frameworkId: string;
+}
+
+const { frameworkId } = Astro.props;
+const framework = getFramework(frameworkId)!;
+
+// Helper to map framework ID/code to the correct key in standards.json
+const codeToKey = (code: string) => {
+  if (code === "Ind AS") return "IndAS";
+  if (code === "IFRS Sustainability") return "IFRSSustainability";
+  if (code === "IFRS Publications") return "IFRSPublications";
+  if (code === "IFRS for SMEs") return "IFRSForSMEs";
+  if (code === "IFRIC") return "IFRIC";
+  if (code === "SIC") return "SIC";
+  if (code === "US GAAP") return "USGAAP";
+  if (code === "UK GAAP") return "UKGAAP";
+  if (code === "ASBE") return "ASBE";
+  if (code === "ASPE") return "ASPE";
+  if (code === "ASBJ") return "ASBJ";
+  if (code === "HGB") return "HGB";
+  return code;
+};
+
+const key = codeToKey(framework.code);
+const list = standards[key as keyof typeof standards] ?? [];
+
+// Calculate stats
+const totalCount = list.length;
+const activeCount = list.filter((s: any) => !s.status || s.status === "Active" || s.status === "Amended" || s.status === "Revised 2026").length;
+const historicalCount = list.filter((s: any) => s.status && s.status !== "Active" && s.status !== "Amended" && s.status !== "Revised 2026").length;
+---
+
+<div class={`framework-hero-container hero-${framework.id}`} data-framework={framework.id}>
+  <div class="hero-bg-mesh-wrapper">
+    <div class="hero-bg-mesh"></div>
+  </div>
+  <div class="hero-content">
+    <div class="framework-badge">
+      <span class="badge-text">{framework.code} Reference Directory</span>
+    </div>
+    
+    <h1>{framework.fullName}</h1>
+    
+    <p class="category-description">
+      {framework.description}
+    </p>
+
+    <div class="framework-stats-bar">
+      <div class="stat-card">
+        <span class="stat-value">{totalCount}</span>
+        <span class="stat-label">Total Standards</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">{activeCount}</span>
+        <span class="stat-label">Active / Current</span>
+      </div>
+      {historicalCount > 0 && (
+        <div class="stat-card">
+          <span class="stat-value">{historicalCount}</span>
+          <span class="stat-label">Historical / Withdrawn</span>
+        </div>
+      )}
+    </div>
+  </div>
+</div>
