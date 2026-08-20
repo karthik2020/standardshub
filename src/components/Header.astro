@@ -18,13 +18,15 @@ import { getFramework } from "../data/frameworks";
 const defaultFramework = getFramework("ias")!;
 
 const {
-    code = "",
-    framework = defaultFramework.code,
+    code,
+    framework,
     title,
 } = Astro.props;
 
-const frameworkConfig = getFramework(framework) ?? defaultFramework;
-const isHome = code.toLowerCase() === "home";
+const safeCode = code || "";
+const safeFramework = framework || defaultFramework.code;
+const frameworkConfig = getFramework(safeFramework) ?? defaultFramework;
+const isHome = safeCode.toLowerCase() === "home";
 ---
 
 <header class="site-header">
@@ -42,7 +44,7 @@ const isHome = code.toLowerCase() === "home";
                 <span>Home</span>
             </a>
 
-            {!isHome && code.toLowerCase() !== frameworkConfig.code.toLowerCase() && (
+            {!isHome && safeCode.toLowerCase() !== (frameworkConfig.code || "").toLowerCase() && (
                 <>
                     <ChevronRight size={14} strokeWidth={1.5} class="breadcrumb-separator" aria-hidden="true" />
 
@@ -61,10 +63,10 @@ const isHome = code.toLowerCase() === "home";
 
                     <span class="breadcrumb-current" aria-current="page">
                         <span class={`breadcrumb-code ${frameworkConfig.id}`}>
-                            {code}
+                            {safeCode}
                         </span>
 
-                        {!isHome && code.toLowerCase() !== frameworkConfig.code.toLowerCase() && (
+                        {!isHome && safeCode.toLowerCase() !== (frameworkConfig.code || "").toLowerCase() && (
                             <>
                                 <span class="breadcrumb-dot"> • </span>
 
@@ -86,8 +88,8 @@ const isHome = code.toLowerCase() === "home";
                     </button>
 
                     <div class="header-mobile-title-container">
-                        <span class="header-mobile-code" data-framework={frameworkConfig.id}>{code}</span>
-                        {!isHome && code.toLowerCase() !== frameworkConfig.code.toLowerCase() && (
+                        <span class="header-mobile-code" data-framework={frameworkConfig.id}>{safeCode}</span>
+                        {!isHome && safeCode.toLowerCase() !== (frameworkConfig.code || "").toLowerCase() && (
                             <span class="header-mobile-title">{title}</span>
                         )}
                     </div>
