@@ -1,18 +1,18 @@
 ---
 /*
-  BannerNotice — reusable, full-width semantic notice banner.
+  BannerNotice – reusable, full-width semantic notice banner.
 
   A modern, solid-colour banner with a subtle diagonal stripe overlay,
   a left icon, a bold uppercase title and a supporting paragraph.
 
-  Metadata-driven API — pages declare ONLY the semantic variant, a title
+  Metadata-driven API – pages declare ONLY the semantic variant, a title
   and body text. The component alone maps each variant to its icon,
   colour, stripe style and typography. Pages never specify icons or colours.
 
   Usage (via page metadata):
     <BannerNotice
       variant="warning"
-      title="Ind AS — Converged with IAS 1, but with a divergence"
+      title="Ind AS – Converged with IAS 1, but with a divergence"
       body="Supporting paragraph text…"
     />
 
@@ -23,22 +23,22 @@
 
   Props:
   - variant: "success" | "warning" | "danger" | "info"  (required)
-      success — standards substantially converged with IAS / IFRS   (green)
-      warning — standards with significant national modifications    (amber)
-      danger  — withdrawn / superseded / historical standards        (red)
-      info    — newly issued / recently issued standards             (blue)
-  - title:  string  (required) — rendered bold + uppercase
-  - body?:  string  — supporting paragraph. If omitted, the default slot is used.
+      success – standards substantially converged with IAS / IFRS   (green)
+      warning – standards with significant national modifications    (amber)
+      danger  – withdrawn / superseded / historical standards        (red)
+      info    – newly issued / recently issued standards             (blue)
+  - title:  string  (required) – rendered bold + uppercase
+  - body?:  string  – supporting paragraph. If omitted, the default slot is used.
   - action?: { label, code, title, href }
       Optional, generic call-to-action footer. When provided, a full-row link
       is rendered: an uppercase `label` heading (e.g. "Current Standard",
       "Replaced By", "See Also", "Read Next", "Related Standard") above a
-      "{code} — {title} →" row that links to `href`. Omitted entirely when absent.
+      "{code} – {title} →" row that links to `href`. Omitted entirely when absent.
       This generic shape supports many future scenarios without component changes.
 
   Reusable across IAS, IFRS and Ind AS (current, historical, and future
   standards such as IFRS 18/19/20 and future amendments) with no component
-  changes — only the variant/title/body metadata differs.
+  changes – only the variant/title/body metadata differs.
 */
 
 import { icon } from "@fortawesome/fontawesome-svg-core";
@@ -99,7 +99,7 @@ const arrowSvg = icon(faArrowRight).html.join("");
       <span class="banner-notice__action-label">{action.label}</span>
       <span class="banner-notice__action-main">
         <span class="banner-notice__action-text">
-          {action.code} — {action.title}
+          {action.code} – {action.title}
         </span>
         <span class="banner-notice__action-arrow" aria-hidden="true" set:html={arrowSvg} />
       </span>
