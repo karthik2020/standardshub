@@ -127,7 +127,7 @@ export function resolveSeo(input: SeoInput, pathname: string): ResolvedSeo {
 
 /**
  * Determines which structured-data schema a page should use, derived entirely
- * from signals the layouts already supply — no page-specific JSON-LD logic.
+ * from signals the layouts already supply – no page-specific JSON-LD logic.
  *
  *   - Standard pages (a `standard` context is present)         → "article"
  *   - The home page (code "Home", framework "home")            → "website"

@@ -65,6 +65,9 @@ export interface StandardMetadata {
   /** One-line summary */
   summary: string;
 
+  /** Detailed description for SEO */
+  description?: string;
+
   /** Covered paragraphs or sections (e.g. HGB §§238–241a) */
   covers?: string[];
 
@@ -84,7 +87,7 @@ export interface StandardMetadata {
      * Optional, generic call-to-action footer. When present, the banner
      * renders a full-row link with an uppercase `label` heading (e.g.
      * "Current Standard", "Replaced By", "See Also", "Read Next") above a
-     * "{code} — {title} →" row linking to `href`. Omitted entirely when absent.
+     * "{code} – {title} →" row linking to `href`. Omitted entirely when absent.
      * Generic by design so future scenarios need only new metadata, not
      * component changes.
      */

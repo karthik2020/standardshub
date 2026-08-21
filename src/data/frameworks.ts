@@ -87,8 +87,8 @@ export const FRAMEWORK_CONFIG: Record<string, FrameworkConfig> = {
     categories: [
       "IPSAS Standards",
       "Cash Basis IPSAS",
-      "RPG — Recommended Practice Guidelines",
-      "SRS — Sustainability Reporting Standards",
+      "RPG – Recommended Practice Guidelines",
+      "SRS – Sustainability Reporting Standards",
       "Conceptual Framework",
       "Supporting / Reference Material",
     ],
