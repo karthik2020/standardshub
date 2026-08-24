@@ -1,0 +1,32 @@
+---
+title: "Disclosure of Interests in Other Entities"
+description: "Requires disclosures about an entity's interests in controlled entities, joint arrangements, associates and structured entities that are not consolidated – covering composition, non-controlling interests, significant restrictions and risks, ownership changes, and the fair-value hierarchy. Effective 1 January 2017. (IFRS 12 equivalent.)"
+code: "IPSAS 38"
+framework: "IPSAS"
+url: "/ipsas/ipsas38"
+issued: "2015-01"
+latestAmendment: "2023-01"
+status: "Active"
+category: "IPSAS Standards"
+---
+
+# Disclosure of Interests in Other Entities
+
+Requires disclosures about an entity's interests in controlled entities, joint arrangements, associates and structured entities that are not consolidated – covering composition, non-controlling interests, significant restrictions and risks, ownership changes, and the fair-value hierarchy. Effective 1 January 2017. (IFRS 12 equivalent.)
+
+IPSAS 38 Disclosure of Interests in Other Entities requires an entity to disclose information that enables users to evaluate the nature of, and risks associated with, its interests in controlled entities, joint arrangements, associates and unconsolidated structured entities. The disclosures cover the composition of the interest and related non-controlling interests, significant restrictions and risks from consolidated structured entities, consequences of ownership changes and loss of control, interests in unconsolidated structured entities, and the fair-value hierarchy used to measure the interest.
+
+**Issued:** 2015-01
+
+**Latest Amendment:** 2023-01
+
+**Effective:** 2017-01-01
+
+## Covered Sections
+
+- paras 1–57
+
+## History & Development
+
+History identifier: `ipsas38`
+

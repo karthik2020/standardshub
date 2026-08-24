@@ -7,8 +7,11 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "generate:markdown": "tsx scripts/generate-markdown.ts",
+    "generate:llms": "tsx scripts/generate-llms-txt.ts",
+    "build": "npm run generate:markdown && npm run generate:llms && astro build",
     "preview": "astro preview",
+    "serve": "tsx scripts/dev-server.ts",
     "astro": "astro"
   },
   "dependencies": {
@@ -21,6 +24,7 @@
     "typescript": "^6.0.3"
   },
   "devDependencies": {
-    "playwright": "^1.62.1"
+    "playwright": "^1.62.1",
+    "tsx": "^4.23.12"
   }
 }
