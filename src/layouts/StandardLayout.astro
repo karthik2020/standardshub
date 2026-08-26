@@ -6,6 +6,7 @@ import StandardsPanel from "../components/StandardsPanel.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Seo from "../components/Seo.astro";
+import SquareAd from "../components/SquareAd.astro";
 import { detectSeoType } from "../utils/seo";
 import { getFramework } from "../data/frameworks";
 import { ArrowUp, ChevronRight, Sun, Moon } from "@lucide/astro";
@@ -150,6 +151,9 @@ const seoType = detectSeoType({ code, framework, standard, hideFramework });
             {hasToc && (
               <aside class="page-toc">
                 <slot name="toc" />
+                <div class="square-ad-container">
+                  <SquareAd />
+                </div>
               </aside>
             )}
           </div>

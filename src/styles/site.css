@@ -3223,7 +3223,11 @@ html[data-theme="dark"] .page-content table a:hover {
     align-self: start;
     min-height: 0;
     max-height: calc(100vh - var(--header-height) - var(--space-2xl));
-    overflow-y: auto;
+    /* Flex column: the TOC scrolls in the available space above a fixed,
+       always-visible advertisement (see .square-ad-container). */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 .toc {
@@ -3244,23 +3248,47 @@ html[data-theme="dark"] .page-content table a:hover {
     }
 }
 
-.page-toc::-webkit-scrollbar {
+.page-toc::-webkit-scrollbar,
+.toc::-webkit-scrollbar {
     width: 6px;
 }
 
-.page-toc::-webkit-scrollbar-track {
+.page-toc::-webkit-scrollbar-track,
+.toc::-webkit-scrollbar-track {
     background: transparent;
 }
 
-.page-toc::-webkit-scrollbar-thumb {
+.page-toc::-webkit-scrollbar-thumb,
+.toc::-webkit-scrollbar-thumb {
     background: var(--framework-accent);
     border-radius: var(--radius-pill);
     background-clip: padding-box;
 }
 
-.page-toc {
+.page-toc,
+.toc {
     scrollbar-width: thin;
     scrollbar-color: var(--framework-accent) transparent;
+}
+
+/* Square (1:1) Adsterra placement rendered directly below the TOC inside the
+   same .page-toc column. Fixed (flex: 0 0 auto) so it remains visible within the
+   sidebar viewing area even when the TOC scrolls. */
+.square-ad-container {
+    flex: 0 0 auto;
+    margin-top: var(--space-lg);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+    overflow: hidden;
+    /* Centre + constrain the square widget so it never forces page overflow. */
+}
+
+.square-ad-container > div {
+    width: 100%;
+    max-width: 100%;
 }
 
 .toc-title {
@@ -3376,6 +3404,11 @@ html[data-theme="dark"] .toc a.active::before {
     border: none;
     padding: 0;
     border-radius: 0;
+    /* Scroll within the available column height, leaving room below for
+       the (fixed) advertisement so the ad stays visible for long TOCs. */
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
 }
 
 .page-toc .toc-title {
