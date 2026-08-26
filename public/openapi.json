@@ -1,0 +1,160 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "StandardsHub API",
+    "version": "1.0.0",
+    "description": "Accounting standards reference library API with MPP and x402 payment discovery.",
+    "x-service-info": {
+      "categories": ["reference", "education", "finance"]
+    }
+  },
+  "servers": [
+    {
+      "url": "https://standardshub.in"
+    }
+  ],
+  "paths": {
+    "/pay": {
+      "post": {
+        "summary": "Pay for premium standard access",
+        "description": "Initiates a payment for premium accounting standard content.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "standardCode": {
+                    "type": "string",
+                    "description": "The standard code to purchase."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Payment session created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment required",
+            "headers": {
+              "WWW-Authenticate": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "x402 payment requirements"
+              }
+            }
+          }
+        },
+        "x-payment-info": {
+          "intent": "session",
+          "method": "stripe",
+          "amount": 9.99,
+          "currency": "USD",
+          "description": "Premium standard access"
+        },
+        "x402": {
+          " facilitator": "https://facilitator.example.com",
+          "network": "base",
+          "requirements": [
+            {
+              "scheme": "exact",
+              "network": "base",
+              "maxAmountRequired": "999000000",
+              "paywallAddress": "0x1234567890abcdef1234567890abcdef12345678",
+              "asset": {
+                "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+                "symbol": "USDC",
+                "decimals": 6
+              },
+              "description": "Premium standard access",
+              "mimeType": "application/json"
+            }
+          ]
+        }
+      }
+    },
+    "/charge": {
+      "post": {
+        "summary": "One-time charge for standard download",
+        "description": "Processes a one-time charge for a downloadable standard pack.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "packId": {
+                    "type": "string",
+                    "description": "The pack identifier."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Charge processed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment required",
+            "headers": {
+              "WWW-Authenticate": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "x402 payment requirements"
+              }
+            }
+          }
+        },
+        "x-payment-info": {
+          "intent": "charge",
+          "method": "card",
+          "amount": 4.99,
+          "currency": "USD",
+          "description": "Standard pack download"
+        },
+        "x402": {
+          "facilitator": "https://facilitator.example.com",
+          "network": "base",
+          "requirements": [
+            {
+              "scheme": "exact",
+              "network": "base",
+              "maxAmountRequired": "499000000",
+              "paywallAddress": "0x1234567890abcdef1234567890abcdef12345678",
+              "asset": {
+                "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+                "symbol": "USDC",
+                "decimals": 6
+              },
+              "description": "Standard pack download",
+              "mimeType": "application/json"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
