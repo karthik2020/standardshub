@@ -1,0 +1,68 @@
+openapi: 3.0.2
+info:
+  title: StandardsHub Markdown API
+  version: 1.0.0
+  description: Returns markdown representations of accounting standards when requested with Accept: text/markdown
+servers:
+  - url: https://standardshub.in
+paths:
+  /{framework}/{slug}:
+    get:
+      summary: Get standard as markdown
+      description: |
+        Returns a clean Markdown representation of an accounting standard page.
+        Requires the request header `Accept: text/markdown`.
+        Response includes `x-markdown-tokens` header with estimated token count.
+      parameters:
+        - name: framework
+          in: path
+          required: true
+          schema:
+            type: string
+          example: usgaap
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+          example: asc105
+      responses:
+        '200':
+          description: Markdown representation of the standard
+          headers:
+            Content-Type:
+              schema:
+                type: string
+              example: text/markdown; charset=utf-8
+            x-markdown-tokens:
+              schema:
+                type: integer
+              description: Estimated token count of the markdown response
+          content:
+            text/markdown:
+              schema:
+                type: string
+              example: |
+                ---
+                title: "Generally Accepted Accounting Principles"
+                description: "Establishes the FASB Accounting Standards Codification..."
+                ---
+                
+                # Generally Accepted Accounting Principles
+                
+                Establishes the FASB Accounting Standards Codification...
+        '404':
+          description: Standard not found
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: Standard not found
+        '406':
+          description: Markdown not accepted
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                error: "This endpoint only serves markdown. Use Accept: text/markdown"

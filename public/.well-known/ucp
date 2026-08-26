@@ -1,0 +1,72 @@
+{
+  "protocol_version": "1.0",
+  "services": [
+    {
+      "id": "standards-access",
+      "name": "Standards Access",
+      "description": "Access accounting standards as clean Markdown or metadata.",
+      "endpoints": [
+        {
+          "path": "/{framework}/{slug}",
+          "method": "GET",
+          "accept": "text/markdown",
+          "description": "Retrieve a standard as Markdown via content negotiation."
+        },
+        {
+          "path": "/markdown/{framework}/{slug}.md",
+          "method": "GET",
+          "accept": "text/markdown",
+          "description": "Direct access to pre-generated Markdown files."
+        }
+      ]
+    },
+    {
+      "id": "search",
+      "name": "Search",
+      "description": "Search accounting standards by code, title, or keyword.",
+      "endpoints": [
+        {
+          "path": "/llms.txt",
+          "method": "GET",
+          "accept": "text/plain",
+          "description": "Retrieve the agent-readable index of available standards."
+        }
+      ]
+    },
+    {
+      "id": "payments",
+      "name": "Payments",
+      "description": "x402 payment protocol support for agent-native transactions.",
+      "endpoints": [
+        {
+          "path": "/pay",
+          "method": "POST",
+          "accept": "application/json",
+          "description": "Initiate a payment session with x402 payment requirements."
+        },
+        {
+          "path": "/charge",
+          "method": "POST",
+          "accept": "application/json",
+          "description": "Process a one-time charge with x402 payment requirements."
+        }
+      ]
+    }
+  ],
+  "capabilities": {
+    "content_negotiation": true,
+    "markdown": true,
+    "search": true,
+    "payments": true,
+    "x402": true
+  },
+  "endpoints": {
+    "api_base_url": "https://standardshub.in",
+    "discovery": [
+      "/.well-known/api-catalog",
+      "/.well-known/acp.json",
+      "/llms.txt",
+      "/openapi.json"
+    ]
+  }
+}
