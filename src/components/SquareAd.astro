@@ -8,10 +8,42 @@
   Usage:
     <SquareAd />
 
-  The script is marked is:inline so Astro leaves the third-party
-  snippet untouched (no bundling / processing).
+  The Adsterra script is loaded only on desktop viewports (>=1201px).
+  Below that breakpoint `.page-toc` becomes the mobile TOC bottom sheet,
+  so we must not run the third-party script there (it interferes with the
+  fixed "Top"/"Contents" pills). On mobile the (empty) container is removed
+  and its wrapper hidden, so no empty/visible ad box remains.
+
+  The Adsterra IDs, URLs and attributes are unchanged from the provider
+  snippet; on desktop the exact `<script>` is injected at runtime.
 */
 ---
 
-<script is:inline async="async" data-cfasync="false" src="https://pl31040612.profitableratecpmnetwork.com/e8f3b47080954c66625210244ef5dcce/invoke.js"></script>
 <div id="container-e8f3b47080954c66625210244ef5dcce"></div>
+
+<script is:inline>
+  (function () {
+    var CONTAINER_ID = "container-e8f3b47080954c66625210244ef5dcce";
+    var SRC = "https://pl31040612.profitableratecpmnetwork.com/e8f3b47080954c66625210244ef5dcce/invoke.js";
+
+    var root = document.getElementById(CONTAINER_ID);
+    if (!root) return;
+
+    if (!window.matchMedia("(min-width: 1201px)").matches) {
+      // Mobile: do not load the ad. Remove the empty container and hide its
+      // wrapper so no empty/visible box remains in the mobile TOC sheet.
+      var wrap = root.parentElement;
+      if (wrap && wrap.classList && wrap.classList.contains("square-ad-container")) {
+        wrap.style.display = "none";
+      }
+      root.remove();
+      return;
+    }
+
+    var s = document.createElement("script");
+    s.async = true;
+    s.setAttribute("data-cfasync", "false");
+    s.src = SRC;
+    root.appendChild(s);
+  })();
+</script>
