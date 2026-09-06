@@ -8,18 +8,47 @@
   Usage:
     <BannerAd />
 
-  The scripts are marked is:inline so Astro leaves the third-party
-  snippets untouched (no bundling / processing).
+  The Adsterra script is loaded only on desktop viewports (>=1201px).
+  The 728x90 iframe format does not fit mobile viewports, so the
+  third-party script is prevented from executing on smaller screens.
+  On mobile the empty container is removed and its wrapper hidden, so
+  no empty/visible box remains and no horizontal overflow is introduced.
+
+  The Adsterra key, URL, dimensions and parameters are unchanged from
+  the provider snippet; on desktop the exact scripts are injected at
+  runtime.
 */
 ---
 
+<div id="banner-ad-container" class="banner-ad-container"></div>
+
 <script is:inline>
-  atOptions = {
-    'key' : '2c1fc4ec157164ae34a423b1e38b80cb',
-    'format' : 'iframe',
-    'height' : 90,
-    'width' : 728,
-    'params' : {}
-  };
+  (function () {
+    var CONTAINER_ID = "banner-ad-container";
+    var SRC = "https://www.highrevenueformat.com/2c1fc4ec157164ae34a423b1e38b80cb/invoke.js";
+    var AT_OPTIONS = {
+      'key' : '2c1fc4ec157164ae34a423b1e38b80cb',
+      'format' : 'iframe',
+      'height' : 90,
+      'width' : 728,
+      'params' : {}
+    };
+
+    var root = document.getElementById(CONTAINER_ID);
+    if (!root) return;
+
+    if (!window.matchMedia("(min-width: 1201px)").matches) {
+      var wrap = root.parentElement;
+      if (wrap && wrap.classList && wrap.classList.contains("banner-ad-wrapper")) {
+        wrap.style.display = "none";
+      }
+      root.remove();
+      return;
+    }
+
+    window.atOptions = AT_OPTIONS;
+    var s = document.createElement("script");
+    s.src = SRC;
+    document.head.appendChild(s);
+  })();
 </script>
-<script is:inline src="https://www.highrevenueformat.com/2c1fc4ec157164ae34a423b1e38b80cb/invoke.js"></script>
